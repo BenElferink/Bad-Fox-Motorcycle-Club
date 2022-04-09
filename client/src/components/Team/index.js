@@ -15,12 +15,12 @@ const team = [
       "I'm a Fullstack Developer with 3 years of experience, and have been involved in the CNFT space for almost a year now. I'm have helped build several communities at their early stages.",
     socials: [
       {
-        type: TWITTER,
-        url: 'https://twitter.com/BenElferink',
-      },
-      {
         type: LINKEDIN,
         url: 'https://www.linkedin.com/in/ben-elferink-37ba251b9',
+      },
+      {
+        type: TWITTER,
+        url: 'https://twitter.com/BenElferink',
       },
     ],
   },
@@ -32,6 +32,10 @@ const team = [
       'I have 2 years of experience in graphic design, and am an artist from a very young age. I just dived into the CNFT space, and am very excited to work on Bad Fox MC!',
     socials: [
       {
+        type: LINKEDIN,
+        url: 'https://www.linkedin.com/in/david-minkov-50187620a',
+      },
+      {
         type: INSTAGRAM,
         url: 'https://instagram.com/david_minkov',
       },
@@ -40,10 +44,11 @@ const team = [
   {
     profileSrc: '/images/team/chris.jpg',
     name: 'Christian Mitrev',
-    title: 'Artist / Head Founder / Financier',
+    title: 'Head Founder / Artist / Financier',
     description:
       "I'm an artist with 2 years of experience, and am a stock/crypto trader with 3 years of experience. I formed the team and initial idea behind Bad Fox MC!",
     socials: [
+      // https://www.facebook.com/chris.mitrav
       {
         type: INSTAGRAM,
         url: 'https://instagram.com/m__chris',
