@@ -12,7 +12,7 @@ import { HOME, MAP, SNEAK, TEAM } from '../../constants'
 
 const mintOnline = false
 
-export default function Header({ scrollTo, scrolledTo }) {
+export default function Header({ scrollTo }) {
   const { isMobile } = useScreenSize()
   const [openMobileMenu, setOpenMobileMenu] = useState(false)
   const [showMintAlert, setShowMintAlert] = useState(false)
@@ -56,11 +56,6 @@ export default function Header({ scrollTo, scrolledTo }) {
     scrollTo(TEAM)
     setOpenMobileMenu(false)
   }
-
-  const homeSelected = scrolledTo === HOME
-  const sneaksSelected = scrolledTo === SNEAK
-  const mapSelected = scrolledTo === MAP
-  const teamSelected = scrolledTo === TEAM
 
   const clickTwitter = () => {
     window.open('https://twitter.com/BadFoxMC', '_blank')
@@ -114,10 +109,10 @@ export default function Header({ scrollTo, scrolledTo }) {
             <BaseButton label='Mint' onClick={clickMint} transparent disabled={!mintOnline} style={btnStyle} />
           </OnlineIndicator>
 
-          <BaseButton label='Home' onClick={clickHome} selected={homeSelected} transparent style={btnStyle} />
-          <BaseButton label='Sneaks' onClick={clickSneaks} selected={sneaksSelected} transparent style={btnStyle} />
-          <BaseButton label='Roadmap' onClick={clickRoadmap} selected={mapSelected} transparent style={btnStyle} />
-          <BaseButton label='Team' onClick={clickTeam} selected={teamSelected} transparent style={btnStyle} />
+          <BaseButton label='Home' onClick={clickHome} transparent style={btnStyle} />
+          <BaseButton label='Sneaks' onClick={clickSneaks} transparent style={btnStyle} />
+          <BaseButton label='Roadmap' onClick={clickRoadmap} transparent style={btnStyle} />
+          <BaseButton label='Team' onClick={clickTeam} transparent style={btnStyle} />
 
           <div className='flex-row'>
             <IconButton onClick={clickTwitter}>
