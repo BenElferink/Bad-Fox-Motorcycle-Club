@@ -44,7 +44,7 @@ const team = [
   {
     profileSrc: '/images/team/chris.jpg',
     name: 'Christian Mitrev',
-    title: 'Head Founder / Artist / Financier',
+    title: 'Head Founder / Artist',
     description:
       "I'm an artist with 2 years of experience, and am a stock/crypto trader with 3 years of experience. I formed the team and initial idea behind Bad Fox MC!",
     socials: [
