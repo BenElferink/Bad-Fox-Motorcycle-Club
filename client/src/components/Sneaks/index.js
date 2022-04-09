@@ -26,7 +26,7 @@ const Sneaks = forwardRef((props, ref) => {
       <Swiper modules={[Navigation]} navigation loop slidesPerView={slidesPerView}>
         {sneaks.map((str) => (
           <SwiperSlide key={str}>
-            <img src={str} className={styles.img} />
+            <img src={str} alt='' className={styles.img} />
           </SwiperSlide>
         ))}
       </Swiper>
