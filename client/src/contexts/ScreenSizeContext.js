@@ -31,8 +31,7 @@ export function ScreenSizeProvider({ children }) {
     }
   }, [])
 
-  const isMobile = width ? width <= 768 : true
-  const isDesktop = width ? width >= 1440 : false
+  const isMobile = width ? width < 768 : true
 
-  return <ScreenSizeContext.Provider value={{ width, height, isMobile, isDesktop }}>{children}</ScreenSizeContext.Provider>
+  return <ScreenSizeContext.Provider value={{ width, height, isMobile }}>{children}</ScreenSizeContext.Provider>
 }
