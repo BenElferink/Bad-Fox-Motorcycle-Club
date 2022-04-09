@@ -5,8 +5,8 @@
 
 @media only screen and (min-width: 768px) {
   .root {
-    max-width: 42vw;
-    margin: 7rem 2rem 0 auto;
+    max-width: 40vw;
+    margin: 2rem 1rem 0 auto;
     padding: 0.1rem 1rem;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 1rem;
