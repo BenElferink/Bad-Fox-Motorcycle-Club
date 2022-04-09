@@ -9,8 +9,9 @@ export default function App() {
   const { isMobile } = useScreenSize()
   const [scrolledTo, setScrolledTo] = useState(HOME)
   const landingRef = useRef(null)
-  const teamRef = useRef(null)
+  const sneakRef = useRef(null)
   const mapRef = useRef(null)
+  const teamRef = useRef(null)
 
   const loopRefs = (type, value, ...args) => {
     for (let i = 0; i < args.length; i++) {
@@ -31,7 +32,7 @@ export default function App() {
     const handler = (e) => {
       const { pageYOffset, innerHeight } = e.path[1]
       const distance = pageYOffset + innerHeight
-      loopRefs('scrolledTo', distance, mapRef.current, teamRef.current, landingRef.current)
+      loopRefs('scrolledTo', distance, sneakRef.current, mapRef.current, landingRef.current, teamRef.current)
     }
 
     window.addEventListener('scroll', handler)
@@ -41,7 +42,7 @@ export default function App() {
   }, [])
 
   const scrollTo = (elemId) => {
-    loopRefs('scrollTo', elemId, mapRef.current, teamRef.current, landingRef.current)
+    loopRefs('scrollTo', elemId, sneakRef.current, mapRef.current, landingRef.current, teamRef.current)
   }
 
   return (

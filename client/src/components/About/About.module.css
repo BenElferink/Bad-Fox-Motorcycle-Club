@@ -10,7 +10,6 @@
     padding: 0.1rem 1rem;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 1rem;
-    font-size: 1.1rem;
     -webkit-backdrop-filter: blur(0.4rem);
     backdrop-filter: blur(0.4rem);
     box-shadow: 0 0 0.7rem var(--white);

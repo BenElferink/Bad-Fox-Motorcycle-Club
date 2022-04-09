@@ -21,6 +21,7 @@ function BaseButton({
       startIcon={Icon ? <Icon /> : null}
       onClick={onClick}
       style={{
+        padding: '0.4rem 0.8rem',
         backgroundColor: selected ? 'var(--white)' : transparent ? 'transparent' : 'var(--black)',
         color: selected ? 'var(--black)' : 'var(--white)',
         boxShadow: transparent ? 'none' : '',

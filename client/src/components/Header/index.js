@@ -8,7 +8,7 @@ import OnlineIndicator from '../OnlineIndicator'
 import Twitter from '../../icons/Twitter'
 import Discord from '../../icons/Discord'
 import styles from './Header.module.css'
-import { HOME, MAP, TEAM } from '../../constants'
+import { HOME, MAP, SNEAK, TEAM } from '../../constants'
 
 const mintOnline = false
 
@@ -44,18 +44,23 @@ export default function Header({ scrollTo, scrolledTo }) {
     scrollTo(HOME)
     setOpenMobileMenu(false)
   }
-  const clickTeam = () => {
-    scrollTo(TEAM)
+  const clickSneaks = () => {
+    scrollTo(SNEAK)
     setOpenMobileMenu(false)
   }
   const clickRoadmap = () => {
     scrollTo(MAP)
     setOpenMobileMenu(false)
   }
+  const clickTeam = () => {
+    scrollTo(TEAM)
+    setOpenMobileMenu(false)
+  }
 
   const homeSelected = scrolledTo === HOME
-  const teamSelected = scrolledTo === TEAM
+  const sneaksSelected = scrolledTo === SNEAK
   const mapSelected = scrolledTo === MAP
+  const teamSelected = scrolledTo === TEAM
 
   const clickTwitter = () => {
     window.open('https://twitter.com/BadFoxMC', '_blank')
@@ -110,8 +115,9 @@ export default function Header({ scrollTo, scrolledTo }) {
           </OnlineIndicator>
 
           <BaseButton label='Home' onClick={clickHome} selected={homeSelected} transparent style={btnStyle} />
-          <BaseButton label='Team' onClick={clickTeam} selected={teamSelected} transparent style={btnStyle} />
+          <BaseButton label='Sneaks' onClick={clickSneaks} selected={sneaksSelected} transparent style={btnStyle} />
           <BaseButton label='Roadmap' onClick={clickRoadmap} selected={mapSelected} transparent style={btnStyle} />
+          <BaseButton label='Team' onClick={clickTeam} selected={teamSelected} transparent style={btnStyle} />
 
           <div className='flex-row'>
             <IconButton onClick={clickTwitter}>
