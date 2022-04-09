@@ -1,7 +1,8 @@
 import { forwardRef } from 'react'
 import { Avatar, IconButton } from '@mui/material'
-import { Instagram, LinkedIn } from '@mui/icons-material'
 import Twitter from '../../icons/Twitter'
+import LinkedIn from '../../icons/LinkedIn'
+import Instagram from '../../icons/Instagram'
 import { INSTAGRAM, LINKEDIN, TEAM, TWITTER } from '../../constants'
 import styles from './Team.module.css'
 
@@ -10,7 +11,8 @@ const team = [
     profileSrc: '/images/team/ben.jpeg',
     name: 'Ben Elferink',
     title: 'Lead Developer / Community Manager',
-    description: 'lorem ipsum',
+    description:
+      "I'm a Fullstack Developer with 3 years of experience, and have been involved in the CNFT space for almost a year now. I'm have helped build several communities at their early stages.",
     socials: [
       {
         type: TWITTER,
@@ -26,7 +28,8 @@ const team = [
     profileSrc: '/images/team/chris.jpg',
     name: 'Christian Mitrev',
     title: 'Artist / Head Founder / Financier',
-    description: 'lorem ipsum',
+    description:
+      "I'm an artist with 2 years of experience, and am a stock/crypto trader with 3 years of experience. I formed the team and initial idea behind Bad Fox MC!",
     socials: [
       {
         type: INSTAGRAM,
@@ -38,7 +41,8 @@ const team = [
     profileSrc: '/images/team/david.jpg',
     name: 'David Minkov',
     title: 'Lead Artist',
-    description: 'lorem ipsum',
+    description:
+      'I have 2 years of experience in graphic design, and am an artist from a very young age. I just dived into the CNFT space, and am very excited to work on Bad Fox MC!',
     socials: [
       {
         type: INSTAGRAM,
