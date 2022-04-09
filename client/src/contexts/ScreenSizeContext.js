@@ -11,8 +11,8 @@ export function useScreenSize() {
 // export the provider (handle all the logic here)
 export function ScreenSizeProvider({ children }) {
   const [{ width, height }, setWindowDimensions] = useState({
-    width: undefined,
-    height: undefined,
+    width: 0,
+    height: 0,
   })
 
   useEffect(() => {

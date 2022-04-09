@@ -42,6 +42,22 @@ body {
   cursor: all-scroll;
 }
 
+.swiper-slide {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.swiper-button-prev {
+  color: var(--brown) !important;
+  text-shadow: 0 0 1rem var(--white);
+}
+
+.swiper-button-next {
+  color: var(--brown) !important;
+  text-shadow: 0 0 1rem var(--white);
+}
+
 /* .scroll::-webkit-scrollbar {
   display: none;
 } */

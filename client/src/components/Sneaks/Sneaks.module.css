@@ -1,0 +1,17 @@
+.root {
+  width: 90%;
+  margin: 2rem auto;
+}
+
+.img {
+  width: 280px;
+  height: 280px;
+  border-radius: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .img {
+    width: 330px;
+    height: 330px;
+  }
+}

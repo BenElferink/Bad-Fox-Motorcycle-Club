@@ -3,6 +3,7 @@ import { useScreenSize } from './contexts/ScreenSizeContext'
 import Header from './components/Header'
 import Landing from './components/Landing'
 import About from './components/About'
+import Sneaks from './components/Sneaks'
 import Team from './components/Team'
 import { HOME } from './constants'
 
@@ -53,6 +54,7 @@ export default function App() {
       <Header scrollTo={scrollTo} scrolledTo={scrolledTo} />
       <Landing ref={landingRef} />
       {isMobile ? <About /> : null}
+      <Sneaks ref={sneakRef} />
       <Team ref={teamRef} />
     </div>
   )
