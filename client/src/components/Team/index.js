@@ -1,9 +1,9 @@
 import { forwardRef } from 'react'
+import { Avatar, IconButton } from '@mui/material'
+import { Instagram, LinkedIn } from '@mui/icons-material'
+import Twitter from '../../icons/Twitter'
 import { INSTAGRAM, LINKEDIN, TEAM, TWITTER } from '../../constants'
 import styles from './Team.module.css'
-import { Avatar, IconButton } from '@mui/material'
-import Twitter from '../../icons/Twitter'
-import { Instagram, LinkedIn } from '@mui/icons-material'
 
 const team = [
   {
