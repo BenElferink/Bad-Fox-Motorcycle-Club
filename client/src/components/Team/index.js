@@ -12,7 +12,7 @@ const team = [
     name: 'Ben Elferink',
     title: 'Lead Developer / Community Manager',
     description:
-      "I'm a Fullstack Developer with 3 years of experience, and have been involved in the CNFT space for almost a year now. I'm have helped build several communities at their early stages.",
+      "I'm a Fullstack Developer with 3 years of experience, and have been involved in the CNFT space for almost a year now. I have helped build several communities at their early stages.",
     socials: [
       {
         type: LINKEDIN,
