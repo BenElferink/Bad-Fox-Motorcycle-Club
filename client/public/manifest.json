@@ -1,7 +1,7 @@
 {
-  "name": "Web Application",
-  "short_name": "Web App",
-  "description": "An awesome web application!",
+  "short_name": "Bad Fox MC",
+  "name": "Bad Fox Motorcycle Club",
+  "description": "BFMC is a CNFT collection on the Cardano Blockchain",
   "icons": [
     {
       "src": "favicon.ico",
@@ -24,7 +24,7 @@
   "theme_color": "#000000",
   "background_color": "#ffffff",
   "developer": {
-    "name": "",
-    "url": ""
+    "name": "Ben Elferink",
+    "url": "https://github.com/belferink1996"
   }
 }

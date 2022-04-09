@@ -1,38 +1,49 @@
 :root {
   --online: #44b700;
   --offline: #b74400;
+
+  --black: rgb(10, 10, 10);
+  --white: rgb(245, 245, 245);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: 'Roboto';
   font-size: 16px;
+  background-color: var(--black) !important;
+  color: var(--white) !important;
 }
 
 .App {
   width: 100vw;
   min-height: 100vh;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-col {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.header {
-  width: 100% !important;
-  padding: 0 1rem !important;
-  background-color: whitesmoke !important;
-  color: black !important;
-
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  justify-content: space-between !important;
+.scroll {
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  cursor: all-scroll;
 }
 
-.error {
-  margin: 0.5rem;
-  color: red;
-  text-align: center;
-}
+/* .scroll::-webkit-scrollbar {
+  display: none;
+} */
 
 /*
   Extra Small Devices, Phones 

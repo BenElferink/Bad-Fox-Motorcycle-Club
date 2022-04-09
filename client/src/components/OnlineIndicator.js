@@ -1,7 +1,7 @@
-import {styled} from '@mui/material/styles'
-import {Badge, Avatar} from '@mui/material'
+import { styled } from '@mui/material/styles'
+import { Badge, Avatar, Tooltip } from '@mui/material'
 
-const StyledBadge = styled(Badge)(({theme}) => ({
+const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
     backgroundColor: 'black',
     color: 'black',
@@ -30,34 +30,32 @@ const StyledBadge = styled(Badge)(({theme}) => ({
   },
 }))
 
-const OnlineBadge = styled(StyledBadge)(({theme}) => ({
+const OnlineBadge = styled(StyledBadge)(({ theme }) => ({
   '& .MuiBadge-badge': {
     backgroundColor: 'var(--online)',
     color: 'var(--online)',
   },
 }))
 
-const OfflineBadge = styled(StyledBadge)(({theme}) => ({
+const OfflineBadge = styled(StyledBadge)(({ theme }) => ({
   '& .MuiBadge-badge': {
     backgroundColor: 'var(--offline)',
     color: 'var(--offline)',
   },
 }))
 
-export default function OnlineIndicator({online = false, children = <Avatar src='' alt='' />}) {
-  return online ? (
-    <OnlineBadge
-      variant='dot'
-      overlap='circular'
-      anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}>
-      {children}
-    </OnlineBadge>
-  ) : (
-    <OfflineBadge
-      variant='dot'
-      overlap='circular'
-      anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}>
-      {children}
-    </OfflineBadge>
+export default function OnlineIndicator({ online = false, children = <Avatar src='' alt='' /> }) {
+  return (
+    <Tooltip title={online ? 'online' : 'offline'} placement='top'>
+      {online ? (
+        <OnlineBadge variant='dot' overlap='circular' anchorOrigin={{ vertical: 'top', horizontal: 'left' }}>
+          {children}
+        </OnlineBadge>
+      ) : (
+        <OfflineBadge variant='dot' overlap='circular' anchorOrigin={{ vertical: 'top', horizontal: 'left' }}>
+          {children}
+        </OfflineBadge>
+      )}
+    </Tooltip>
   )
 }

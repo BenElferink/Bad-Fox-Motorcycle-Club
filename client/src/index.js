@@ -1,17 +1,18 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App'
-import {AuthProvider} from './contexts/AuthContext'
+import { createRoot } from 'react-dom/client'
+import { ScreenSizeProvider } from './contexts/ScreenSizeContext'
 import CssBaseline from '@mui/material/CssBaseline'
+import App from './App'
 import '@fontsource/roboto'
-import './styles/index.css'
+import './globals.css'
+import 'animate.css'
+// https://animate.style
 
-ReactDOM.render(
+createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
+    <ScreenSizeProvider>
       <CssBaseline />
       <App />
-    </AuthProvider>
-  </React.StrictMode>,
-  document.getElementById('root'),
+    </ScreenSizeProvider>
+  </React.StrictMode>
 )
