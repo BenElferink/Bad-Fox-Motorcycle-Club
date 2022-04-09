@@ -25,19 +25,6 @@ const team = [
     ],
   },
   {
-    profileSrc: '/images/team/chris.jpg',
-    name: 'Christian Mitrev',
-    title: 'Artist / Head Founder / Financier',
-    description:
-      "I'm an artist with 2 years of experience, and am a stock/crypto trader with 3 years of experience. I formed the team and initial idea behind Bad Fox MC!",
-    socials: [
-      {
-        type: INSTAGRAM,
-        url: 'https://instagram.com/m__chris',
-      },
-    ],
-  },
-  {
     profileSrc: '/images/team/david.jpg',
     name: 'David Minkov',
     title: 'Lead Artist',
@@ -47,6 +34,19 @@ const team = [
       {
         type: INSTAGRAM,
         url: 'https://instagram.com/david_minkov',
+      },
+    ],
+  },
+  {
+    profileSrc: '/images/team/chris.jpg',
+    name: 'Christian Mitrev',
+    title: 'Artist / Head Founder / Financier',
+    description:
+      "I'm an artist with 2 years of experience, and am a stock/crypto trader with 3 years of experience. I formed the team and initial idea behind Bad Fox MC!",
+    socials: [
+      {
+        type: INSTAGRAM,
+        url: 'https://instagram.com/m__chris',
       },
     ],
   },
