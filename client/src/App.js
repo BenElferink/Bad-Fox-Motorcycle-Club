@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { useScreenSize } from './contexts/ScreenSizeContext'
 import Header from './components/Header'
 import Landing from './components/Landing'
