@@ -3,11 +3,13 @@ import { useScreenSize } from './contexts/ScreenSizeContext'
 import Header from './components/Header'
 import Landing from './components/Landing'
 import About from './components/About'
+import Team from './components/Team'
 import { HOME } from './constants'
 
 export default function App() {
   const { isMobile } = useScreenSize()
   const [scrolledTo, setScrolledTo] = useState(HOME)
+  const listenRef = useRef(true)
   const landingRef = useRef(null)
   const sneakRef = useRef(null)
   const mapRef = useRef(null)
@@ -32,7 +34,7 @@ export default function App() {
     const handler = (e) => {
       const { pageYOffset, innerHeight } = e.path[1]
       const distance = pageYOffset + innerHeight
-      loopRefs('scrolledTo', distance, sneakRef.current, mapRef.current, landingRef.current, teamRef.current)
+      if (listenRef.current) loopRefs('scrolledTo', distance, sneakRef.current, mapRef.current, landingRef.current, teamRef.current)
     }
 
     window.addEventListener('scroll', handler)
@@ -42,6 +44,7 @@ export default function App() {
   }, [])
 
   const scrollTo = (elemId) => {
+    listenRef.current = false
     loopRefs('scrollTo', elemId, sneakRef.current, mapRef.current, landingRef.current, teamRef.current)
   }
 
@@ -50,6 +53,7 @@ export default function App() {
       <Header scrollTo={scrollTo} scrolledTo={scrolledTo} />
       <Landing ref={landingRef} />
       {isMobile ? <About /> : null}
+      <Team ref={teamRef} />
     </div>
   )
 }
