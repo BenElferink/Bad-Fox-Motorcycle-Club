@@ -1,17 +1,22 @@
 .root {
-  width: 90%;
-  margin: 2rem auto;
+  max-width: 90vw;
+  width: 100%;
+  margin: 5rem auto;
 }
 
 .img {
-  width: 280px;
-  height: 280px;
+  width: 17.5rem;
+  height: 17.5rem;
   border-radius: 1rem;
 }
 
 @media only screen and (min-width: 768px) {
+  .root {
+    margin: 10rem auto;
+  }
+
   .img {
-    width: 330px;
-    height: 330px;
+    width: 21rem;
+    height: 21rem;
   }
 }

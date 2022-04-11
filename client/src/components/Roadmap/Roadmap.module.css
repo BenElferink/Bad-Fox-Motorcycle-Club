@@ -1,0 +1,13 @@
+.root {
+  width: 100%;
+  /* margin: 5rem auto; */
+  text-align: center;
+  font-size: 2rem;
+  color: var(--grey);
+}
+
+/* @media only screen and (min-width: 768px) {
+  .root {
+    margin: 10rem auto;
+  }
+} */

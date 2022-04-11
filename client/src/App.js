@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Landing from './components/Landing'
 import About from './components/About'
 import Sneaks from './components/Sneaks'
+import Roadmap from './components/Roadmap'
 import Team from './components/Team'
 import { HOME } from './constants'
 
@@ -21,7 +22,7 @@ export default function App() {
       for (let i = 0; i < args.length; i++) {
         const curr = args[i]
         if (type === 'scrollTo' && curr?.id === value) {
-          curr?.scrollIntoView()
+          curr?.scrollIntoView({ block: 'center' })
           break
         }
       }
@@ -38,6 +39,7 @@ export default function App() {
       <Landing ref={landingRef} />
       {isMobile ? <About /> : null}
       <Sneaks ref={sneakRef} />
+      <Roadmap ref={mapRef} />
       <Team ref={teamRef} />
     </div>
   )

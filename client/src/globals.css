@@ -3,8 +3,13 @@
   --offline: #b74400;
 
   --black: rgb(10, 10, 10);
+  --grey: rgb(120, 135, 150);
   --white: rgb(245, 245, 245);
   --brown: rgb(100, 85, 85);
+  --orange: rgb(255, 80, 55);
+  --pink: rgb(255, 0, 130);
+
+  --gradient: linear-gradient(65deg, var(--orange), var(--pink));
 }
 
 html {
@@ -40,22 +45,6 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
   cursor: all-scroll;
-}
-
-.swiper-slide {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.swiper-button-prev {
-  color: var(--brown) !important;
-  text-shadow: 0 0 1rem var(--white);
-}
-
-.swiper-button-next {
-  color: var(--brown) !important;
-  text-shadow: 0 0 1rem var(--white);
 }
 
 /* .scroll::-webkit-scrollbar {
