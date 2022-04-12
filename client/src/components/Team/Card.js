@@ -6,7 +6,7 @@ import Instagram from '../../icons/Instagram'
 import { INSTAGRAM, LINKEDIN, TWITTER } from '../../constants'
 import styles from './Team.module.css'
 
-export default function Card({ item }) {
+export default function Card({ profileSrc, name, title, description, socials = [] }) {
   const [deg, setDeg] = useState(0)
 
   const doFlip = () => {
@@ -22,17 +22,17 @@ export default function Card({ item }) {
 
   return (
     <div className={styles.card} style={{ transform: `rotateY(${deg}deg)` }} onMouseEnter={doFlip}>
-      <Avatar src={item.profileSrc} className={styles.avatar} />
+      <Avatar src={profileSrc} className={styles.avatar} />
 
       <div>
-        <h4>{item.name}</h4>
-        <h6>{item.title}</h6>
-        <p>{item.description}</p>
+        <h4>{name}</h4>
+        <h6>{title}</h6>
+        <p>{description}</p>
       </div>
 
       <div className={styles.socials}>
-        {item.socials.map((social) => (
-          <IconButton key={`${item.name}-${social.type}`} onClick={() => clickSocial(social.url)}>
+        {socials.map((social) => (
+          <IconButton key={`${name}-${social.type}`} onClick={() => clickSocial(social.url)}>
             {(() => {
               switch (social.type) {
                 case TWITTER:

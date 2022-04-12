@@ -22,7 +22,7 @@ export default function App() {
       for (let i = 0; i < args.length; i++) {
         const curr = args[i]
         if (type === 'scrollTo' && curr?.id === value) {
-          curr?.scrollIntoView({ block: 'center' })
+          curr?.scrollIntoView({ block: 'nearest' })
           break
         }
       }

@@ -1,7 +1,7 @@
 .root {
   width: 100vw;
   height: calc(100vw * 0.7);
-  background: url('/public/images/landing/bg.jpg') no-repeat center;
+  background: url('../../images/landing/bg.jpg') no-repeat center;
   background-size: cover;
 }
 

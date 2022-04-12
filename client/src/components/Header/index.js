@@ -7,8 +7,9 @@ import BaseButton from '../BaseButton'
 import OnlineIndicator from '../OnlineIndicator'
 import Twitter from '../../icons/Twitter'
 import Discord from '../../icons/Discord'
-import styles from './Header.module.css'
 import { HOME, MAP, SNEAK, TEAM } from '../../constants'
+import logo from '../../images/logo/white_alpha.png'
+import styles from './Header.module.css'
 
 const mintOnline = false
 
@@ -75,11 +76,7 @@ export default function Header({ scrollTo }) {
     <AppBar className={styles.root} position='sticky'>
       <div className='flex-row'>
         <IconButton onClick={clickHome}>
-          <Avatar
-            alt=''
-            src='/images/logo/white_alpha.png'
-            sx={{ width: isMobile ? 55 : 69, height: isMobile ? 55 : 69, margin: '1rem 1rem 1rem 0.5rem' }}
-          />
+          <Avatar alt='' src={logo} sx={{ width: isMobile ? 55 : 69, height: isMobile ? 55 : 69, margin: '1rem 1rem 1rem 0.5rem' }} />
         </IconButton>
         <h1 style={{ fontSize: isMobile ? '1rem' : 'unset' }}>Bad Fox Motorcycle Club</h1>
       </div>
