@@ -8,7 +8,6 @@ import styles from './Team.module.css'
 
 export default function Card({ item }) {
   const [deg, setDeg] = useState(0)
-  const borderPx = '10px'
 
   const doFlip = () => {
     setDeg(180)
@@ -22,7 +21,7 @@ export default function Card({ item }) {
   }
 
   return (
-    <div className={styles.card} style={{ borderRadius: borderPx, transform: `rotateY(${deg}deg)` }} onMouseEnter={doFlip}>
+    <div className={styles.card} style={{ transform: `rotateY(${deg}deg)` }} onMouseEnter={doFlip}>
       <Avatar src={item.profileSrc} className={styles.avatar} />
 
       <div>
