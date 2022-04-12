@@ -1,13 +1,77 @@
 .root {
   width: 100%;
-  /* margin: 5rem auto; */
-  text-align: center;
-  font-size: 2rem;
+  padding: 0 1rem;
   color: var(--grey);
 }
 
-/* @media only screen and (min-width: 768px) {
-  .root {
-    margin: 10rem auto;
-  }
-} */
+.root > h1 {
+  text-align: center;
+}
+
+.chapter {
+  max-width: 420px;
+  margin: 0 auto;
+  user-select: none;
+}
+
+.rightChapter {
+  margin-left: 50%;
+}
+.leftChapter {
+  margin-right: 50%;
+}
+
+.chapter > h2 {
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+}
+.rightChapter > h2 {
+  direction: ltr;
+}
+.leftChapter > h2 {
+  direction: rtl;
+}
+.mobileChapter > h2 > svg,
+.rightChapter > h2 > svg {
+  margin-right: 0.7rem;
+}
+.leftChapter > h2 > svg {
+  margin-left: 0.7rem;
+}
+
+.event {
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: rgba(120, 135, 150, 0.2);
+  border-radius: 1rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.rightEvent {
+  direction: ltr;
+}
+.leftEvent {
+  direction: rtl;
+}
+
+.event > h3 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+.leftEvent > h3 {
+  justify-content: space-between;
+}
+.mobileEvent > h3 > svg,
+.rightEvent > h3 > svg {
+  margin-right: 0.7rem;
+}
+.leftEvent > h3 > svg {
+  margin-left: 0.7rem;
+}
+
+.event > p {
+  margin: 1rem 0 0 0;
+}

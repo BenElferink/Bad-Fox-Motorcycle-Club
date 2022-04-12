@@ -1,0 +1,106 @@
+[
+  {
+    "complete": true,
+    "chapter": "Q1 2022",
+    "events": [
+      {
+        "complete": true,
+        "title": "Form team of specialists",
+        "description": "This is the very start of our journey, we formed a team, and discussed the project and it's future plans!"
+      },
+      {
+        "complete": true,
+        "title": "Start drawing the Fox collection",
+        "description": "Fun fact: we started with an idea of creating female Boss Cats, they were going to be called \"Miss Cats\", but as we started drawing them, something didn't feel right. That's when we started from scratch and Bad Fox MC was born!"
+      },
+      {
+        "complete": true,
+        "title": "Contact other teams and plan potential collaborations",
+        "description": "We have ambitious goals to bring our holders into the metaverse, and therefore we are in talks with teams such as: OGBears, CardaStacks, Ada Realms, Boss Cat Custom Club, and others. These discussions may resolve with collaborations and added utility to our roadmap, and these discussions may also be rejected, so please don't view these projects as confirmed partners just yet."
+      }
+    ]
+  },
+  {
+    "complete": false,
+    "chapter": "Q2 2022",
+    "events": [
+      {
+        "complete": true,
+        "title": "Launch Twitter and Discord",
+        "description": "Description TBA"
+      },
+      {
+        "complete": true,
+        "title": "Develop official website",
+        "description": "Description TBA"
+      },
+      {
+        "complete": false,
+        "title": "Build community, run events and competitions",
+        "description": "Description TBA"
+      },
+      {
+        "complete": false,
+        "title": "Continued work on the Fox collection",
+        "description": "Description TBA"
+      },
+      {
+        "complete": false,
+        "title": "Start drawing the Motorcycle collection",
+        "description": "Description TBA"
+      },
+      {
+        "complete": false,
+        "title": "Increase marketing and exposure",
+        "description": "Description TBA"
+      }
+    ]
+  },
+  {
+    "complete": false,
+    "chapter": "Q3 2022",
+    "events": [
+      {
+        "complete": false,
+        "title": "Launch 1st collection: Fox",
+        "description": "Description TBA"
+      },
+      {
+        "complete": false,
+        "title": "ADA payouts to Fox holders",
+        "description": "Description TBA"
+      },
+      {
+        "complete": false,
+        "title": "Announce official collaborations!",
+        "description": "Description TBA"
+      },
+      {
+        "complete": false,
+        "title": "Continued work on the Motorcycle collection",
+        "description": "Description TBA"
+      }
+    ]
+  },
+  {
+    "complete": false,
+    "chapter": "Q4 2022",
+    "events": [
+      {
+        "complete": false,
+        "title": "Launch 2nd collection: Motorcycle",
+        "description": "Description TBA"
+      },
+      {
+        "complete": false,
+        "title": "ADA payouts to Motorcycle holders",
+        "description": "Description TBA"
+      },
+      {
+        "complete": false,
+        "title": "Hot announcements coming! (hint: burn, airdrop, metaverse)",
+        "description": "Description TBA"
+      }
+    ]
+  }
+]
