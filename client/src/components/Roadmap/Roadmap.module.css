@@ -26,11 +26,8 @@
   display: flex;
   align-items: center;
 }
-.rightChapter > h2 {
-  direction: ltr;
-}
 .leftChapter > h2 {
-  direction: rtl;
+  flex-direction: row-reverse;
 }
 .mobileChapter > h2 > svg,
 .rightChapter > h2 > svg {
@@ -49,19 +46,13 @@
   cursor: pointer;
 }
 
-.rightEvent {
-  direction: ltr;
-}
-.leftEvent {
-  direction: rtl;
-}
-
 .event > h3 {
   margin: 0;
   display: flex;
   align-items: center;
 }
 .leftEvent > h3 {
+  flex-direction: row-reverse;
   justify-content: space-between;
 }
 .mobileEvent > h3 > svg,
