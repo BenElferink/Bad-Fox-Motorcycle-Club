@@ -19,7 +19,6 @@
   text-align: center;
   box-shadow: -1px -1px 0.3rem var(--white);
   position: relative;
-  transition: all 0.3s ease-out;
 }
 
 .card h4 {
