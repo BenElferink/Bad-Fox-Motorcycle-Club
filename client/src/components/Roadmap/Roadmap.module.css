@@ -21,6 +21,10 @@
   margin-right: 50%;
 }
 
+.chapter svg {
+  fill: var(--orange);
+  filter: drop-shadow(0 0 0.5rem var(--pink));
+}
 .chapter > h2 {
   padding: 0 1rem;
   display: flex;
@@ -44,6 +48,10 @@
   border-radius: 1rem;
   text-align: left;
   cursor: pointer;
+}
+
+.event:hover {
+  box-shadow: 0 0 0.5rem var(--orange);
 }
 
 .event > h3 {
