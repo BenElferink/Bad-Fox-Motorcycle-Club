@@ -9,16 +9,18 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import './swiper-overrides.css'
 import angel from '../../images/sneaks/angel.png'
-import asian from '../../images/sneaks/asian.png'
 import biker from '../../images/sneaks/biker.png'
 import cheese from '../../images/sneaks/cheese.png'
 import kurama from '../../images/sneaks/kurama.png'
 import neon from '../../images/sneaks/neon.png'
 import samurai from '../../images/sneaks/samurai.png'
-import snoop from '../../images/sneaks/snoop.png'
-import shades from '../../images/sneaks/shades.png'
+import male from '../../images/sneaks/_base_m.png'
+import scouter from '../../images/sneaks/_prot_f_cyborg_pink.png'
+import khaleesi from '../../images/sneaks/f_khaleesi.png'
+import wonderWoman from '../../images/sneaks/f_wonder_woman_v1.png'
+import zombie from '../../images/sneaks/f_zombie.png'
 
-const sneaks = [cheese, shades, snoop, neon, asian, angel, samurai, biker, kurama]
+const sneaks = [male, cheese, angel, khaleesi, wonderWoman, samurai, neon, zombie, scouter, kurama, biker]
 
 const Sneaks = forwardRef((props, ref) => {
   const { isMobile, width } = useScreenSize()
