@@ -5,8 +5,7 @@ export default function About() {
     <section className={styles.root}>
       <h2>About Bad Fox MC</h2>
       <p>
-        Bad Fox Motorcycle Club is a <strong>community driven</strong> NFT project, coming from the <strong>best projects on Cardano</strong>, with
-        close groups of friends in the CNFT space being the <strong>core of the community</strong>.
+        Bad Fox Motorcycle Club is a <strong>community driven</strong> NFT Project. The team comes from some of the <strong>best projects on Cardano</strong> and the <strong>core of the community</strong> is comprised of close friends we've met along the way.
       </p>
       <p>
         In terms of utility, BFMC will be <strong>rewarding all holders passively</strong> with ADA, and will (later on) have{' '}

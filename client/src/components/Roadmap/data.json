@@ -5,18 +5,18 @@
     "events": [
       {
         "complete": true,
-        "title": "Form team of specialists",
-        "description": "This is the very start of our journey, we formed a team, and discussed the project and it's future plans!"
+        "title": "Build a Team",
+        "description": "This is the very start of our journey. We built a team with specialized skills and discussed our vision for the future of Bad Fox MC."
       },
       {
         "complete": true,
-        "title": "Start drawing the Fox collection",
-        "description": "Fun fact: we started with an idea of creating female Boss Cats, they were going to be called \"Miss Cats\", but as we started drawing them, something didn't feel right. That's when we started from scratch and Bad Fox MC was born!"
+        "title": "Start Drawing the Fox Collection",
+        "description": "Fun fact: We started with the idea of creating female Boss Cats and naming them “Miss Cats”. As we started drawing them, something didn't feel right. That's when we decided to start from scratch and Bad Fox MC was born!"
       },
       {
         "complete": true,
-        "title": "Contact other teams and plan potential collaborations",
-        "description": "We have ambitious goals to bring our holders into the metaverse, and therefore we are in talks with teams such as: OGBears, CardaStacks, Ada Realms, Boss Cat Custom Club, and others. These discussions may resolve with collaborations and added utility to our roadmap, and these discussions may also be rejected, so please don't view these projects as confirmed partners just yet."
+        "title": "Plan Potential Collaborations",
+        "description": "We have ambitious goals to bring our holders into the metaverse and are in talks with teams such as: OG bears, CardaStacks, ADA Realm, Boss Cat Custom Club and others. These discussions may bear fruit and add utility to our roadmap but these are still in the early stages and not guaranteed."
       }
     ]
   },
@@ -26,33 +26,33 @@
     "events": [
       {
         "complete": true,
-        "title": "Launch Twitter and Discord",
-        "description": "Twitter has been created at end of March, and Discord has been opened to the public early April. We are focused on organic, purely authentic growth, with genuine people, many efforts have been made to prevent any bots from accessing the server or obtaining certain roles."
+        "title": "Launch Twitter & Discord",
+        "description": "Our Twitter account was created at the end of March and Discord was opened to the public in early April. We are focused on purely organic growth with genuine people. Many efforts have been made to prevent bots from accessing the server or obtaining certain roles."
       },
       {
         "complete": true,
-        "title": "Develop official website",
-        "description": "Website devlopment is initially focused on showing our artwork, display information about our plans, and expose the team. At a later stage the website will include the minting portal as well as offical partners, and some cool community tools."
+        "title": "Develop Official Website",
+        "description": "Website development is initially focused on disseminating project information, BFMC artwork and exposing the team to the community. At a later stage, the website will include the minting portal, official partner listings and some cool community tools."
       },
       {
         "complete": false,
-        "title": "Build community, run events and competitions",
-        "description": "As previously mentioned, we are focused on organic growth, we're exposing our community and project to some of the best projects on Cardano, rewarding active members with OG roles, and every OG can gift 3 whitelist roles to their friends, we've received lots of positive feedback about this innovative approach. We have events announced almost every week for new OG roles, just tune into Discord!"
+        "title": "Build Community (Events and Competitions)",
+        "description": "As previously mentioned, we are focused on organic growth. We're exposing our community and project to some of the best projects on Cardano. We'll be rewarding active members with OG roles. Every OG can give 3 whitelist roles to their friends. We've received lots of positive feedback about this innovative approach. We have events announced almost every week for new OG roles. Stay tuned to our Discord!"
       },
       {
         "complete": false,
-        "title": "Continued work on the Fox collection",
-        "description": "At this point we should have both the female and male models ready, and we need to make a last push on creating more traits so that the collection is as unique is possible."
+        "title": "Finalize the Fox Collection",
+        "description": "At this point we should have both the female and male models ready. Now, it's time to create more traits so that the collection is as unique as possible."
       },
       {
         "complete": false,
-        "title": "Start drawing the Motorcycle collection",
-        "description": "We plan on creating our 1st few motorcycle prototypes before we launch our 1st drop, so that our community can benefit from an early insight of what is expected after we mint the fox collection."
+        "title": "Start Drawing the Motorcycle Collection",
+        "description": "We plan on creating our first few motorcycle prototypes before we launch our first drop. This way, our community can benefit from an early insight of what is expected after we mint the fox collection."
       },
       {
         "complete": false,
-        "title": "Increase marketing and exposure",
-        "description": "Just before the fox collection launches, we will increase marketing and exposure per demand. We will make proper evaluations about our marketing approach according to our rate of growth by this time."
+        "title": "Increase Marketing and Exposure",
+        "description": "Just before the fox collection launches, we will increase marketing and exposure. We will evaluate and tailor our approach to match our growth rate."
       }
     ]
   },
@@ -62,23 +62,23 @@
     "events": [
       {
         "complete": false,
-        "title": "Launch 1st collection: Fox",
-        "description": "There will be 6,000 fox minted - half of which are female, and the other half are male. Mint prices vary between 35-55 ADA, depends if you are OG, WL, or public."
+        "title": "Launch 1st Collection: Fox",
+        "description": "There will be 6,000 foxes minted. Half female and half male. Mint prices will range from 35-55 ADA, dependent on your role (OG, WL, or Public)."
       },
       {
         "complete": false,
-        "title": "ADA payouts to Fox holders",
-        "description": "We're planning to run certain games or events every week, to reward holders of winning traits with ADA. We're also going to distribute the majority of our royalties to every holder every month!"
+        "title": "ADA Payouts to Fox Holders",
+        "description": "We're planning to run games or events every week, to reward holders of winning traits with ADA. We're also going to distribute a portion of our royalties to each fox holder, every month."
       },
       {
         "complete": false,
-        "title": "Announce official collaborations!",
-        "description": "By this time we expect to have established partnerships with metaverse projects and teams, and this is when we plan on announcing these collaborations."
+        "title": "Announce Official Collaborations",
+        "description": "By this time, we expect to have established partnerships with metaverse projects. This is when we plan on announcing these collaborations."
       },
       {
         "complete": false,
-        "title": "Continued work on the Motorcycle collection",
-        "description": "Increase the rate of production, and work on sneak peeks for the motorcycle collection."
+        "title": "Continued Work on the Motorcycle Collection",
+        "description": "Increase rate of production and work on sneak peaks for the motorcycle collection."
       }
     ]
   },
@@ -88,18 +88,18 @@
     "events": [
       {
         "complete": false,
-        "title": "Launch 2nd collection: Motorcycle",
-        "description": "There will be 3,000 motorcycles minted. No parts, the motorcycles are a 1 piece. Mint price(s) are yet to be determined."
+        "title": "Launch 2nd Collection: Motorcycle",
+        "description": "There will be 3000 motorcycles minted. Motorcycles will be minted whole. No individual parts. Mint prices are yet to be determined."
       },
       {
         "complete": false,
-        "title": "ADA payouts to Motorcycle holders",
-        "description": "Similar to the fox collection, we will be paying every motorcycle holder every month using majority of royalties. However, unlike the fox collection, we will not be doing weekly events for the motorcycle collection."
+        "title": "ADA Payouts to Motorcycle Holders",
+        "description": "Like the Fox Collection, we're going to distribute a portion of our royalties to each motorcycle holder, every month. However, unlike the Fox Collection, we will not be doing weekly events for motorcycle collection holders."
       },
       {
         "complete": false,
-        "title": "Hot announcements coming! (burn, airdrop, metaverse)",
-        "description": "Early next year, we want to do a burn event which holders can burn 1 male fox + 1 female fox + 1 motorcycle, and get a 3rd generation token in return, that token will reward holders lifetime airdrops, metaverse related. To achieve this ambitous plan we have established contact with other teams through 2022, and will continue to do so in 2023."
+        "title": "Stay Tuned: Big Announcements Coming! (Burn, AirDrop Metaverse)",
+        "description": "Early next year, we want to do a burn event. Holders will have the opportunity to burn 1 male fox, 1 female fox and 1 motorcycle in exchange for a 3rd generation token. The token will reward holders with metaverse related, lifetime airdrops. To achieve this ambitious plan, we have been in contact with other teams and will continue to do so going forward."
       }
     ]
   }
