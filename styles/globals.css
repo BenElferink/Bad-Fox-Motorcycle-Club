@@ -1,0 +1,73 @@
+:root {
+  --online: #44b700;
+  --offline: #b74400;
+
+  --black: rgb(10, 10, 10);
+  --grey: rgb(120, 135, 150);
+  --white: rgb(245, 245, 245);
+  --brown: rgb(100, 85, 85);
+  --orange: rgb(255, 80, 55);
+  --pink: rgb(255, 0, 130);
+
+  --gradient: linear-gradient(65deg, var(--orange), var(--pink));
+  --cardano-blue: #1231a6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Roboto';
+  font-size: 16px;
+  background-color: var(--black) !important;
+  color: var(--white) !important;
+}
+
+.App {
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scroll {
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  cursor: all-scroll;
+}
+
+/* .scroll::-webkit-scrollbar {
+  display: none;
+} */
+
+/*
+  Extra Small Devices, Phones 
+  @media only screen and (min-width: 480px) {}
+*/
+
+/*
+  Small Devices, Tablets
+  @media only screen and (min-width: 768px) {}
+*/
+
+/*
+  Medium Devices, Desktops
+  @media only screen and (min-width: 992px) {}
+*/
+
+/*
+  Large Devices, Wide Screens
+  @media only screen and (min-width: 1200px) {}
+*/
