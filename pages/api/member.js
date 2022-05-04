@@ -71,7 +71,11 @@ export default async (req, res) => {
           return res.status(400).json({ message: 'Please provide a valid wallet address (starts with addr1)' })
         }
 
-        const stakeKey = await getStakeKeyFromWalletAddress(walletAddress)
+        let stakeKey = ''
+
+        try {
+          stakeKey = await getStakeKeyFromWalletAddress(walletAddress)
+        } catch (error) {}
 
         const wallet = {
           address: walletAddress,
