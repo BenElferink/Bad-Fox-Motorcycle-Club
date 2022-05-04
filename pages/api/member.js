@@ -14,36 +14,54 @@ export default async (req, res) => {
       return res.status(400).json({ message: 'Query param required: token' })
     }
 
-    // get userId using an access token
-    const { data: userData } = await axios.get('https://discord.com/api/users/@me', {
-      headers: {
-        authorization: `Bearer ${query.token}`,
-      },
-    })
+    let userData = {}
+    let memberData = {}
+
+    try {
+      // get userId using an access token
+      const { data } = await axios.get('https://discord.com/api/users/@me', {
+        headers: {
+          authorization: `Bearer ${query.token}`,
+        },
+      })
+
+      userData = data
+    } catch (error) {
+      console.error(error)
+      res.status(500).json({})
+    }
 
     const userId = userData.id
 
-    // get guild member using userId
-    const { data: memberData } = await axios.get(`https://discord.com/api/guilds/${DISCORD_GUILD_ID}/members/${userId}`, {
-      headers: {
-        authorization: `Bot ${DISCORD_BOT_TOKEN}`,
-      },
-    })
+    try {
+      // get guild member using userId
+      const { data } = await axios.get(`https://discord.com/api/guilds/${DISCORD_GUILD_ID}/members/${userId}`, {
+        headers: {
+          authorization: `Bot ${DISCORD_BOT_TOKEN}`,
+        },
+      })
+
+      memberData = data
+    } catch (error) {
+      console.error(error)
+      if (error.isAxiosError && error.response.status === 404) {
+        return res.status(404).json({ message: 'User is not in the "Bad Fox MC" Discord server' })
+      }
+      res.status(500).json({})
+    }
 
     // collect updated values for this member
     const username = `${memberData.user.username}#${memberData.user.discriminator}`
     const roles = {
-      isOG: memberData.roles.includes(DISCORD_ROLE_ID_OG),
-      isWL: memberData.roles.includes(DISCORD_ROLE_ID_WL),
-      isPublicReserve: memberData.roles.includes(DISCORD_ROLE_ID_PUBLIC_RESERVE),
+      isOG: memberData.roles?.includes(DISCORD_ROLE_ID_OG),
+      isWL: memberData.roles?.includes(DISCORD_ROLE_ID_WL),
+      isPublicReserve: memberData.roles?.includes(DISCORD_ROLE_ID_PUBLIC_RESERVE),
     }
 
     switch (method) {
       case 'GET': {
         // find and update member in DB, or create one if new
-        let member = await DiscordMember.findOne({
-          userId,
-        })
+        let member = await DiscordMember.findOne({ userId })
 
         if (!member) {
           member = new DiscordMember({
@@ -75,7 +93,9 @@ export default async (req, res) => {
 
         try {
           stakeKey = await getStakeKeyFromWalletAddress(walletAddress)
-        } catch (error) {}
+        } catch (error) {
+          return res.status(404).json({ message: 'Could not retrieve stake key - is your wallet address correct?' })
+        }
 
         const wallet = {
           address: walletAddress,
@@ -83,9 +103,7 @@ export default async (req, res) => {
         }
 
         // find and update member in DB, or create one if new
-        let member = await DiscordMember.findOne({
-          userId,
-        })
+        let member = await DiscordMember.findOne({ userId })
 
         if (!member) {
           member = new DiscordMember({
@@ -113,11 +131,6 @@ export default async (req, res) => {
     }
   } catch (error) {
     console.error(error)
-
-    if (error.isAxiosError && error.response.status === 404) {
-      return res.status(404).json({ message: 'User is not in the "Bad Fox MC" Discord server' })
-    }
-
     res.status(500).json({})
   }
 }
