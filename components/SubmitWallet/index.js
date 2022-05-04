@@ -82,15 +82,13 @@ export default function SubmitWallet() {
       {journeySuccess ? (
         <>
           <h2>Done!</h2>
-          <p>
-            You have successfully submitted your wallet address.
-            <br />
-            <br />
+          <p>You have successfully submitted your wallet address.</p>
+          <p className={styles.addr}>
             Your Wallet Address:
             <br />
             <span>{member.wallet?.address}</span>
-            <br />
-            <br />
+          </p>
+          <p className={styles.addr}>
             Your Stake Key:
             <br />
             <span>{member.wallet?.stakeKey}</span>

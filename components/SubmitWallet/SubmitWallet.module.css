@@ -18,11 +18,11 @@
   margin: 0.5rem 0;
   text-align: center;
 }
-.root > p {
+.addr {
   inline-size: 80vw;
   overflow-wrap: break-word;
 }
-.root > p > span {
+.addr > span {
   font-size: 0.8rem;
 }
 
