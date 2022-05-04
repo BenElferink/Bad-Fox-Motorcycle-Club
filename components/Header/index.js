@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import { Alert, AlertTitle, AppBar, Avatar, IconButton, Slide } from '@mui/material'
@@ -12,7 +13,8 @@ import styles from './Header.module.css'
 
 const mintOnline = false
 
-export default function Header({ scrollTo }) {
+export default function Header({ scrollTo = () => null }) {
+  const router = useRouter()
   const { isMobile } = useScreenSize()
   const [openMobileMenu, setOpenMobileMenu] = useState(false)
   const [showMintAlert, setShowMintAlert] = useState(false)
@@ -31,6 +33,11 @@ export default function Header({ scrollTo }) {
     }
   }, [showMintAlert])
 
+  const clickRegister = () => {
+    router.push('/register')
+    setOpenMobileMenu(false)
+  }
+
   const clickMint = () => {
     if (mintOnline) {
       // TODO: add mint
@@ -41,7 +48,12 @@ export default function Header({ scrollTo }) {
   }
 
   const clickHome = () => {
-    scrollTo(HOME)
+    if (router.asPath === '/') {
+      scrollTo(HOME)
+    } else {
+      router.push('/')
+    }
+
     setOpenMobileMenu(false)
   }
   const clickSneaks = () => {
@@ -71,11 +83,26 @@ export default function Header({ scrollTo }) {
   const btnStyle = { width: 'fit-content', margin: isMobile ? '0.5rem' : 'unset' }
   const alertStyle = { width: 'fit-content', position: 'absolute', top: '1rem', right: '1rem', zIndex: '999' }
 
+  const Socials = () => (
+    <div className='flex-row'>
+      <IconButton onClick={clickTwitter}>
+        <Twitter size={26} fill='var(--white)' />
+      </IconButton>
+      <IconButton onClick={clickDiscord}>
+        <Discord size={26} fill='var(--white)' />
+      </IconButton>
+    </div>
+  )
+
   return (
     <AppBar className={styles.root} position='sticky'>
       <div className='flex-row'>
         <IconButton onClick={clickHome}>
-          <Avatar alt='' src='/images/logo/white_alpha.png' sx={{ width: isMobile ? 55 : 69, height: isMobile ? 55 : 69, margin: '1rem 1rem 1rem 0.5rem' }} />
+          <Avatar
+            alt=''
+            src='/images/logo/white_alpha.png'
+            sx={{ width: isMobile ? 55 : 69, height: isMobile ? 55 : 69, margin: '1rem 1rem 1rem 0.5rem' }}
+          />
         </IconButton>
         <h1 style={{ fontSize: isMobile ? '1rem' : 'unset' }}>Bad Fox Motorcycle Club</h1>
       </div>
@@ -100,25 +127,29 @@ export default function Header({ scrollTo }) {
         onClose={() => setOpenMobileMenu(false)}
         style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
       >
-        <nav className={isMobile ? 'flex-col' : 'flex-row'} style={navStyle}>
-          <OnlineIndicator online={mintOnline}>
-            <BaseButton label='Mint' onClick={clickMint} transparent disabled={!mintOnline} style={btnStyle} />
-          </OnlineIndicator>
+        {router.asPath === '/' ? (
+          <nav className={isMobile ? 'flex-col' : 'flex-row'} style={navStyle}>
+            <BaseButton label='Home' onClick={clickHome} transparent style={btnStyle} />
+            <BaseButton label='Sneaks' onClick={clickSneaks} transparent style={btnStyle} />
+            <BaseButton label='Roadmap' onClick={clickRoadmap} transparent style={btnStyle} />
+            <BaseButton label='Team' onClick={clickTeam} transparent style={btnStyle} />
 
-          <BaseButton label='Home' onClick={clickHome} transparent style={btnStyle} />
-          <BaseButton label='Sneaks' onClick={clickSneaks} transparent style={btnStyle} />
-          <BaseButton label='Roadmap' onClick={clickRoadmap} transparent style={btnStyle} />
-          <BaseButton label='Team' onClick={clickTeam} transparent style={btnStyle} />
+            <OnlineIndicator online={true}>
+              <BaseButton label='Register' onClick={clickRegister} transparent style={btnStyle} />
+            </OnlineIndicator>
+            <OnlineIndicator online={mintOnline}>
+              <BaseButton label='Mint' onClick={clickMint} transparent disabled={!mintOnline} style={btnStyle} />
+            </OnlineIndicator>
 
-          <div className='flex-row'>
-            <IconButton onClick={clickTwitter}>
-              <Twitter size={26} fill='var(--white)' />
-            </IconButton>
-            <IconButton onClick={clickDiscord}>
-              <Discord size={26} fill='var(--white)' />
-            </IconButton>
-          </div>
-        </nav>
+            <Socials />
+          </nav>
+        ) : (
+          <nav className={isMobile ? 'flex-col' : 'flex-row'} style={navStyle}>
+            <BaseButton label='Home' onClick={clickHome} transparent style={btnStyle} />
+
+            <Socials />
+          </nav>
+        )}
       </Modal>
     </AppBar>
   )

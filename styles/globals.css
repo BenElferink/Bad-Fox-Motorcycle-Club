@@ -11,6 +11,7 @@
 
   --gradient: linear-gradient(65deg, var(--orange), var(--pink));
   --cardano-blue: #1231a6;
+  --discord-purple: #7289da;
 }
 
 html {

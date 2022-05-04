@@ -10,7 +10,7 @@ import '../styles/swiper-overrides.css'
 import '../styles/globals.css'
 // https://animate.style
 
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
     <ScreenSizeProvider>
       <CssBaseline />
@@ -31,4 +31,4 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-export default MyApp
+export default App

@@ -1,17 +1,16 @@
 import { useRef } from 'react'
 import { useScreenSize } from '../contexts/ScreenSizeContext'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 import Landing from '../components/Landing'
 import About from '../components/About'
 import Sneaks from '../components/Sneaks'
 import Roadmap from '../components/Roadmap'
 import Team from '../components/Team'
-import Footer from '../components/Footer'
 import { HOME } from '../constants/scroll-nav'
 
-export default function App() {
+export default function Home() {
   const { isMobile } = useScreenSize()
-  const landingRef = useRef(null)
   const sneakRef = useRef(null)
   const mapRef = useRef(null)
   const teamRef = useRef(null)
@@ -31,13 +30,13 @@ export default function App() {
   }
 
   const scrollTo = (elemId) => {
-    loopRefs('scrollTo', elemId, sneakRef.current, mapRef.current, landingRef.current, teamRef.current)
+    loopRefs('scrollTo', elemId, sneakRef.current, mapRef.current, teamRef.current)
   }
 
   return (
     <div className='App flex-col'>
       <Header scrollTo={scrollTo} />
-      <Landing ref={landingRef} />
+      <Landing isHome />
       {isMobile ? <About /> : null}
       <Sneaks ref={sneakRef} />
       <Roadmap ref={mapRef} />

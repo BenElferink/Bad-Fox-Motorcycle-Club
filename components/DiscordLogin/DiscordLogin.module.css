@@ -1,0 +1,24 @@
+.root {
+  width: fit-content;
+  padding: 1rem;
+  margin: 0.5rem auto 0 auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 1rem;
+  -webkit-backdrop-filter: blur(0.4rem);
+  backdrop-filter: blur(0.4rem);
+  box-shadow: 0 0 0.5rem var(--white);
+}
+
+.root > * {
+  margin: 0.5rem 0;
+}
+
+.root p {
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .root {
+    margin: calc(100vw * 0.1) auto 0 auto;
+  }
+}
