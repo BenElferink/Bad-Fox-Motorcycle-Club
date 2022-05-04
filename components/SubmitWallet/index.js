@@ -109,24 +109,36 @@ export default function SubmitWallet() {
       ) : (
         <>
           <h2>Welcome {member.username}!</h2>
-          <p>
-            You have the following roles:
-            <br />
-            <strong>
-              {member.roles?.isOG ? 'OG Fox, ' : null}
-              {member.roles?.isWL ? 'WL Fox, ' : null}
-              {member.roles?.isPublicReserve ? 'Public Reserve, ' : null}
-            </strong>
-          </p>
-          <p>Please submit your wallet address, this will be the wallet you'll be minting from!</p>
-          <input placeholder='Your addr1...' value={walletAddress} onChange={(e) => setWalletAddress(e.target.value)} className={styles.inp} />
-          <BaseButton
-            label='Submit'
-            onClick={clickSubmit}
-            style={{
-              background: 'var(--discord-purple)',
-            }}
-          />
+          {member.roles?.isOG || member.roles?.isWL || member.roles?.isPublicReserve ? (
+            <>
+              <p>
+                You have the following roles:
+                <br />
+                <strong>
+                  {member.roles?.isOG ? 'OG Fox, ' : null}
+                  {member.roles?.isWL ? 'WL Fox, ' : null}
+                  {member.roles?.isPublicReserve ? 'Public Reserve, ' : null}
+                </strong>
+              </p>
+              <p>Please submit your wallet address, this will be the wallet you'll be minting from!</p>
+              <input placeholder='Your addr1...' value={walletAddress} onChange={(e) => setWalletAddress(e.target.value)} className={styles.inp} />
+              <BaseButton
+                label='Submit'
+                onClick={clickSubmit}
+                style={{
+                  background: 'var(--discord-purple)',
+                }}
+              />
+            </>
+          ) : (
+            <p>
+              Unfortunately you are not eligible to submit a wallet address.
+              <br />
+              Please make sure you have one of the following roles:
+              <br />
+              <strong>OG Fox, WL Fox, Public Reserve</strong>
+            </p>
+          )}
         </>
       )}
     </section>
