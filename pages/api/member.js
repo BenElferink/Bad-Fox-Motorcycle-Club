@@ -11,7 +11,7 @@ export default async (req, res) => {
     const { method, query, body } = req
 
     if (!query.token) {
-      return res.status(400).json({ message: 'Query param required: token' })
+      return res.status(400).json({ type: 'BAD_REQUEST', message: 'Query param required: token' })
     }
 
     let userData = {}
@@ -45,7 +45,7 @@ export default async (req, res) => {
     } catch (error) {
       console.error(error)
       if (error.isAxiosError && error.response.status === 404) {
-        return res.status(404).json({ message: 'User is not in the "Bad Fox MC" Discord server' })
+        return res.status(404).json({ type: 'MEMBER_ERROR', message: 'User is not in the Discord server' })
       }
       res.status(500).json({})
     }
@@ -84,9 +84,9 @@ export default async (req, res) => {
         const { walletAddress } = body
 
         if (!walletAddress) {
-          return res.status(400).json({ message: 'Body param required: walletAddress' })
+          return res.status(400).json({ type: 'BAD_REQUEST', message: 'Body param required: walletAddress' })
         } else if (walletAddress.indexOf('addr1') !== 0) {
-          return res.status(400).json({ message: 'Please provide a valid wallet address (starts with addr1)' })
+          return res.status(400).json({ type: 'BAD_REQUEST', message: 'Please provide a valid wallet address (starts with addr1)' })
         }
 
         let stakeKey = ''
@@ -94,7 +94,7 @@ export default async (req, res) => {
         try {
           stakeKey = await getStakeKeyFromWalletAddress(walletAddress)
         } catch (error) {
-          return res.status(404).json({ message: 'Could not retrieve stake key - is your wallet address correct?' })
+          return res.status(404).json({ type: 'WALLET_ERROR', message: 'Could not retrieve stake key' })
         }
 
         const wallet = {

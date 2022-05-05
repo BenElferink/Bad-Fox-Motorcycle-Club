@@ -10,4 +10,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  position: static;
+  z-index: -1;
 }

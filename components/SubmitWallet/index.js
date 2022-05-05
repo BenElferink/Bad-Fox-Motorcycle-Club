@@ -1,6 +1,8 @@
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import Loader from '../../components/Loader'
 import BaseButton from '../../components/BaseButton'
 import styles from './SubmitWallet.module.css'
@@ -10,12 +12,16 @@ export default function SubmitWallet() {
   const { asPath } = router
 
   const [loading, setLoading] = useState(false)
-  const [errorMessage, setErrorMessage] = useState('Discord member not found')
-  const [journeySuccess, setJourneySuccess] = useState(false)
+  const [error, setError] = useState({})
 
   const [token, setToken] = useState('')
   const [member, setMember] = useState({})
   const [walletAddress, setWalletAddress] = useState('')
+  const [forceEdit, setForceEdit] = useState(false)
+
+  useEffect(() => {
+    setWalletAddress(member?.wallet?.address ?? '')
+  }, [member])
 
   const getMember = async (path) => {
     const query = path.split('#')[1]
@@ -36,12 +42,14 @@ export default function SubmitWallet() {
           const res = await axios.get(`/api/member?token=${t}`)
 
           setMember(res.data)
-          setErrorMessage('')
-          if (res.data.wallet?.address) {
-            setWalletAddress(res.data.wallet.address)
-          }
+          setError({})
         } catch (error) {
-          setErrorMessage(error?.response?.data?.message ?? error?.message ?? 'Unexpected error!')
+          const e = error?.response?.data ?? {
+            type: 'UNEXPECTED',
+            message: error?.message ?? 'Unexpected error!',
+          }
+
+          setError(e)
         }
 
         setLoading(false)
@@ -68,43 +76,64 @@ export default function SubmitWallet() {
       })
 
       setMember(res.data)
-      setErrorMessage('')
-      setJourneySuccess(true)
+      setError({})
+      setForceEdit(false)
     } catch (error) {
-      setErrorMessage(error?.response?.data?.message ?? error?.message ?? 'Unexpected error!')
+      const e = error?.response?.data ?? {
+        type: 'UNEXPECTED',
+        message: error?.message ?? 'Unexpected error!',
+      }
+
+      setError(e)
     }
 
     setLoading(false)
   }
 
+  const clickEdit = () => {
+    setForceEdit(true)
+    setError({})
+  }
+
+  const { width, isMobile } = useScreenSize()
+
   return (
     <section className={`${styles.root} flex-col`}>
-      {journeySuccess ? (
-        <>
-          <h2>Done!</h2>
-          <p>You have successfully submitted your wallet address.</p>
-          <p className={styles.addr}>
-            Your Wallet Address:
-            <br />
-            <span>{member.wallet?.address}</span>
-          </p>
-          <p className={styles.addr}>
-            Your Stake Key:
-            <br />
-            <span>{member.wallet?.stakeKey}</span>
-          </p>
-        </>
-      ) : loading ? (
+      {loading ? (
         <>
           <h2>Please wait a moment...</h2>
           <Loader />
         </>
-      ) : errorMessage ? (
+      ) : error.type && error.message ? (
         <>
           <h2>An error occurred:</h2>
-          <p>{errorMessage}</p>
+          <p>{error.message}</p>
+          {error.type === 'WALLET_ERROR' ? (
+            <>
+              <ol>
+                <li>
+                  Is your wallet address correct?
+                  <br />
+                  <p className={styles.addr}>{walletAddress}</p>
+                </li>
+                <br />
+                <li>
+                  Are you using <strong>Eternl (CCVault)</strong>? If yes, you will have to sumbit a "used" address, see the example below!
+                </li>
+              </ol>
+              <Image
+                src='/images/docs/ccvault_address_issue.png'
+                alt='ccvault'
+                width={width > 1196 ? 1196 : 1196 / (1196 / width)}
+                height={width > 1196 ? 586 : 586 / (1196 / width)}
+                style={{ borderRadius: '1rem' }}
+              />
+              <br />
+              <BaseButton label='Try Again' onClick={clickEdit} style={{ background: 'var(--discord-purple)' }} />
+            </>
+          ) : null}
         </>
-      ) : (
+      ) : !member?.wallet?.address || forceEdit ? (
         <>
           <h2>Welcome {member.username}!</h2>
           {member.roles?.isOG || member.roles?.isWL || member.roles?.isPublicReserve ? (
@@ -120,13 +149,7 @@ export default function SubmitWallet() {
               </p>
               <p>Please submit your wallet address, this will be the wallet you'll be minting from!</p>
               <input placeholder='Your addr1...' value={walletAddress} onChange={(e) => setWalletAddress(e.target.value)} className={styles.inp} />
-              <BaseButton
-                label='Submit'
-                onClick={clickSubmit}
-                style={{
-                  background: 'var(--discord-purple)',
-                }}
-              />
+              <BaseButton label='Submit' onClick={clickSubmit} style={{ background: 'var(--discord-purple)' }} />
             </>
           ) : (
             <p>
@@ -137,6 +160,22 @@ export default function SubmitWallet() {
               <strong>OG Fox, WL Fox, Public Reserve</strong>
             </p>
           )}
+        </>
+      ) : (
+        <>
+          <h2>Done!</h2>
+          <p>You have successfully submitted your wallet address.</p>
+          <p className={styles.addr}>
+            Your Wallet Address:
+            <br />
+            <span>{member.wallet?.address}</span>
+          </p>
+          <p className={styles.addr}>
+            Your Stake Key:
+            <br />
+            <span>{member.wallet?.stakeKey}</span>
+          </p>
+          <BaseButton label='Change Address' onClick={clickEdit} style={{ background: 'var(--discord-purple)' }} />
         </>
       )}
     </section>

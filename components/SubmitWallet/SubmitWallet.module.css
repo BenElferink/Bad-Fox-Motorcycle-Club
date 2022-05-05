@@ -19,7 +19,7 @@
   text-align: center;
 }
 .addr {
-  inline-size: 80vw;
+  inline-size: 55vw;
   overflow-wrap: break-word;
 }
 .addr > span {
@@ -41,10 +41,6 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .root {
-    margin: calc(100vw * 0.1) auto 0 auto;
-  }
-
   .inp {
     width: 80%;
   }
