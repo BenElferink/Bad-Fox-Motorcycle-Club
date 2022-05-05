@@ -1,12 +1,19 @@
 [
   "/images/sneaks/f_biker.png",
+  
   "/images/sneaks/f_samurai.png",
-  "/images/sneaks/f_cheese.png",
-  "/images/sneaks/f_zombie.png",
+  "/images/sneaks/m_roman.png",
+
   "/images/sneaks/f_angel.png",
+  "/images/sneaks/m_devil.png",
+
   "/images/sneaks/f_khaleesi.png",
+  "/images/sneaks/m_freddy.png",
+  
   "/images/sneaks/f_wonder_woman.png",
-  "/images/sneaks/f_sheikh.png",
-  "/images/sneaks/f_scouter_pink.png",
-  "/images/sneaks/f_kurama.png"
+  "/images/sneaks/m_leon.png",
+
+  "/images/sneaks/f_zombie.png",
+  "/images/sneaks/f_kurama.png",
+  "/images/sneaks/f_sheikh.png"
 ]
