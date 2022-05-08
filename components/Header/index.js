@@ -40,11 +40,11 @@ export default function Header({ scrollTo = () => null }) {
 
   const clickMint = () => {
     if (mintOnline) {
-      // TODO: add mint
+      router.push('/mint')
     } else {
       setShowMintAlert(true)
-      setOpenMobileMenu(false)
     }
+    setOpenMobileMenu(false)
   }
 
   const clickHome = () => {
