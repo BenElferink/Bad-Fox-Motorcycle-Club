@@ -9,16 +9,8 @@
   box-shadow: 0 0 0.5rem var(--white);
 }
 
-.root > * {
+.root > h2,
+.root > p {
   margin: 0.5rem 0;
-}
-
-.root p {
   text-align: center;
-}
-
-@media only screen and (min-width: 768px) {
-  .root {
-    margin: calc(100vw * 0.1) auto 0 auto;
-  }
 }

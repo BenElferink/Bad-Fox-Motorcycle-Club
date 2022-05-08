@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
+import { useDiscordAuth } from '../../contexts/DiscordAuthContext'
+import Section from '../Section'
 import Loader from '../../components/Loader'
 import BaseButton from '../../components/BaseButton'
 import styles from './SubmitWallet.module.css'
@@ -11,11 +12,9 @@ export default function SubmitWallet() {
   const router = useRouter()
   const { asPath } = router
 
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState({})
+  const { width } = useScreenSize()
+  const { loading, error, clearError, member, getMemberWithToken, patchMemberWalletAddress } = useDiscordAuth()
 
-  const [token, setToken] = useState('')
-  const [member, setMember] = useState({})
   const [walletAddress, setWalletAddress] = useState('')
   const [forceEdit, setForceEdit] = useState(false)
 
@@ -23,42 +22,23 @@ export default function SubmitWallet() {
     setWalletAddress(member?.wallet?.address ?? '')
   }, [member])
 
-  const getMember = async (path) => {
-    const query = path.split('#')[1]
-
-    if (query) {
-      let t = ''
-
-      query.split('&').forEach((str) => {
-        const [k, v] = str.split('=')
-        if (k === 'access_token') t = v
-      })
-
-      if (t) {
-        setToken(t)
-        setLoading(true)
-
-        try {
-          const res = await axios.get(`/api/member?token=${t}`)
-
-          setMember(res.data)
-          setError({})
-        } catch (error) {
-          const e = error?.response?.data ?? {
-            type: 'UNEXPECTED',
-            message: error?.message ?? 'Unexpected error!',
-          }
-
-          setError(e)
-        }
-
-        setLoading(false)
-      }
-    }
-  }
-
   useEffect(() => {
-    if (asPath) getMember(asPath)
+    ;(async () => {
+      if (asPath) {
+        const query = asPath.split('#')[1]
+
+        if (query) {
+          let t = ''
+
+          query.split('&').forEach((str) => {
+            const [k, v] = str.split('=')
+            if (k === 'access_token') t = v
+          })
+
+          await getMemberWithToken(t)
+        }
+      }
+    })()
   }, [asPath])
 
   const clickSubmit = async () => {
@@ -68,37 +48,17 @@ export default function SubmitWallet() {
       return alert('Please enter a valid wallet address (starts with addr1)')
     }
 
-    setLoading(true)
-
-    try {
-      const res = await axios.patch(`/api/member?token=${token}`, {
-        walletAddress,
-      })
-
-      setMember(res.data)
-      setError({})
-      setForceEdit(false)
-    } catch (error) {
-      const e = error?.response?.data ?? {
-        type: 'UNEXPECTED',
-        message: error?.message ?? 'Unexpected error!',
-      }
-
-      setError(e)
-    }
-
-    setLoading(false)
+    await patchMemberWalletAddress(walletAddress)
+    setForceEdit(false)
   }
 
   const clickEdit = () => {
     setForceEdit(true)
-    setError({})
+    clearError()
   }
 
-  const { width, isMobile } = useScreenSize()
-
   return (
-    <section className={`${styles.root} flex-col`}>
+    <Section>
       {loading ? (
         <>
           <h2>Please wait a moment...</h2>
@@ -133,33 +93,29 @@ export default function SubmitWallet() {
             </>
           ) : null}
         </>
+      ) : !member.roles?.isOG && !member.roles?.isWL && !member.roles?.isPublicReserve ? (
+        <p>
+          Unfortunately you are not eligible to submit a wallet address.
+          <br />
+          Please make sure you have one of the following roles:
+          <br />
+          <strong>OG Fox, WL Fox, Public Reserve</strong>
+        </p>
       ) : !member?.wallet?.address || forceEdit ? (
         <>
           <h2>Welcome {member.username}!</h2>
-          {member.roles?.isOG || member.roles?.isWL || member.roles?.isPublicReserve ? (
-            <>
-              <p>
-                You have the following roles:
-                <br />
-                <strong>
-                  {member.roles?.isOG ? 'OG Fox, ' : null}
-                  {member.roles?.isWL ? 'WL Fox, ' : null}
-                  {member.roles?.isPublicReserve ? 'Public Reserve, ' : null}
-                </strong>
-              </p>
-              <p>Please submit your wallet address, this will be the wallet you'll be minting from!</p>
-              <input placeholder='Your addr1...' value={walletAddress} onChange={(e) => setWalletAddress(e.target.value)} className={styles.inp} />
-              <BaseButton label='Submit' onClick={clickSubmit} style={{ background: 'var(--discord-purple)' }} />
-            </>
-          ) : (
-            <p>
-              Unfortunately you are not eligible to submit a wallet address.
-              <br />
-              Please make sure you have one of the following roles:
-              <br />
-              <strong>OG Fox, WL Fox, Public Reserve</strong>
-            </p>
-          )}
+          <p>
+            You have the following roles:
+            <br />
+            <strong>
+              {member.roles?.isOG ? 'OG Fox, ' : null}
+              {member.roles?.isWL ? 'WL Fox, ' : null}
+              {member.roles?.isPublicReserve ? 'Public Reserve, ' : null}
+            </strong>
+          </p>
+          <p>Please submit your wallet address, this will be the wallet you'll be minting from!</p>
+          <input placeholder='Your addr1...' value={walletAddress} onChange={(e) => setWalletAddress(e.target.value)} className={styles.inp} />
+          <BaseButton label='Submit' onClick={clickSubmit} style={{ background: 'var(--discord-purple)' }} />
         </>
       ) : (
         <>
@@ -178,6 +134,6 @@ export default function SubmitWallet() {
           <BaseButton label='Change Address' onClick={clickEdit} style={{ background: 'var(--discord-purple)' }} />
         </>
       )}
-    </section>
+    </Section>
   )
 }
