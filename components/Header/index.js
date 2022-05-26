@@ -9,14 +9,14 @@ import OnlineIndicator from '../OnlineIndicator'
 import Twitter from '../../icons/Twitter'
 import Discord from '../../icons/Discord'
 import { HOME, MAP, SNEAK, TEAM } from '../../constants/scroll-nav'
+import { REGISTER_ONLINE, MINT_ONLINE } from '../../constants/booleans'
 import styles from './Header.module.css'
-
-const mintOnline = false
 
 export default function Header({ scrollTo = () => null }) {
   const router = useRouter()
   const { isMobile } = useScreenSize()
   const [openMobileMenu, setOpenMobileMenu] = useState(false)
+  const [showRegisterAlert, setShowRegisterAlert] = useState(false)
   const [showMintAlert, setShowMintAlert] = useState(false)
 
   useEffect(() => {
@@ -24,6 +24,14 @@ export default function Header({ scrollTo = () => null }) {
       setOpenMobileMenu(false)
     }
   }, [isMobile])
+
+  useEffect(() => {
+    if (showRegisterAlert) {
+      setTimeout(() => {
+        setShowRegisterAlert(false)
+      }, 4000)
+    }
+  }, [showRegisterAlert])
 
   useEffect(() => {
     if (showMintAlert) {
@@ -34,12 +42,16 @@ export default function Header({ scrollTo = () => null }) {
   }, [showMintAlert])
 
   const clickRegister = () => {
-    router.push('/register')
+    if (REGISTER_ONLINE) {
+      router.push('/register')
+    } else {
+      setShowRegisterAlert(true)
+    }
     setOpenMobileMenu(false)
   }
 
   const clickMint = () => {
-    if (mintOnline) {
+    if (MINT_ONLINE) {
       router.push('/mint')
     } else {
       setShowMintAlert(true)
@@ -107,6 +119,13 @@ export default function Header({ scrollTo = () => null }) {
         <h1 style={{ fontSize: isMobile ? '1rem' : 'unset' }}>Bad Fox Motorcycle Club</h1>
       </div>
 
+      <Slide direction='up' in={showRegisterAlert} mountOnEnter unmountOnExit>
+        <Alert severity='info' style={alertStyle}>
+          <AlertTitle>Registration is offline</AlertTitle>
+          Wallet lists are closed
+        </Alert>
+      </Slide>
+
       <Slide direction='up' in={showMintAlert} mountOnEnter unmountOnExit>
         <Alert severity='info' style={alertStyle}>
           <AlertTitle>Mint is offline</AlertTitle>
@@ -134,11 +153,11 @@ export default function Header({ scrollTo = () => null }) {
             <BaseButton label='Roadmap' onClick={clickRoadmap} transparent style={btnStyle} />
             <BaseButton label='Team' onClick={clickTeam} transparent style={btnStyle} />
 
-            <OnlineIndicator online={true}>
+            <OnlineIndicator online={REGISTER_ONLINE}>
               <BaseButton label='Register' onClick={clickRegister} transparent style={btnStyle} />
             </OnlineIndicator>
-            <OnlineIndicator online={mintOnline}>
-              <BaseButton label='Mint' onClick={clickMint} transparent disabled={!mintOnline} style={btnStyle} />
+            <OnlineIndicator online={MINT_ONLINE}>
+              <BaseButton label='Mint' onClick={clickMint} transparent disabled={!MINT_ONLINE} style={btnStyle} />
             </OnlineIndicator>
 
             <Socials />

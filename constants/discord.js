@@ -1,3 +1,5 @@
+// https://github.com/GregTCLTK/Discord-Api-Endpoints/blob/master/Endpoints.md
+
 module.exports = {
   DISCORD_GUILD_ID: '951826641695432734',
   DISCORD_ROLE_ID_OG: '957270960065609798',

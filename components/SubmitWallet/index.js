@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import { useDiscordAuth } from '../../contexts/DiscordAuthContext'
@@ -9,11 +8,8 @@ import BaseButton from '../../components/BaseButton'
 import styles from './SubmitWallet.module.css'
 
 export default function SubmitWallet() {
-  const router = useRouter()
-  const { asPath } = router
-
   const { width } = useScreenSize()
-  const { loading, error, clearError, member, getMemberWithToken, patchMemberWalletAddress } = useDiscordAuth()
+  const { loading, error, clearError, member, patchMemberWalletAddress } = useDiscordAuth()
 
   const [walletAddress, setWalletAddress] = useState('')
   const [forceEdit, setForceEdit] = useState(false)
@@ -21,25 +17,6 @@ export default function SubmitWallet() {
   useEffect(() => {
     setWalletAddress(member?.wallet?.address ?? '')
   }, [member])
-
-  useEffect(() => {
-    (async () => {
-      if (asPath) {
-        const query = asPath.split('#')[1]
-
-        if (query) {
-          let t = ''
-
-          query.split('&').forEach((str) => {
-            const [k, v] = str.split('=')
-            if (k === 'access_token') t = v
-          })
-
-          await getMemberWithToken(t)
-        }
-      }
-    })()
-  }, [asPath])
 
   const clickSubmit = async () => {
     if (!walletAddress) {
@@ -102,12 +79,11 @@ export default function SubmitWallet() {
   if (!member.roles?.isOG && !member.roles?.isWL && !member.roles?.isPublicReserve) {
     return (
       <Section>
+        <h2>You are not eligible to submit a wallet address.</h2>
         <p>
-          Unfortunately you are not eligible to submit a wallet address.
-          <br />
           Please make sure you have one of the following roles:
           <br />
-          <strong>OG Fox, WL Fox, Public Reserve</strong>
+          <strong>OG, Whitelist, Public Reserve</strong>
         </p>
       </Section>
     )
@@ -121,8 +97,8 @@ export default function SubmitWallet() {
           You have the following roles:
           <br />
           <strong>
-            {member.roles?.isOG ? 'OG Fox, ' : null}
-            {member.roles?.isWL ? 'WL Fox, ' : null}
+            {member.roles?.isOG ? 'OG, ' : null}
+            {member.roles?.isWL ? 'Whitelist, ' : null}
             {member.roles?.isPublicReserve ? 'Public Reserve, ' : null}
           </strong>
         </p>
