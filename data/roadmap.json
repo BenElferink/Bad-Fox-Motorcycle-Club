@@ -35,7 +35,7 @@
         "description": "Website development is initially focused on disseminating project information, BFMC artwork and exposing the team to the community. At a later stage, the website will include the minting portal, official partner listings and some cool community tools."
       },
       {
-        "complete": false,
+        "complete": true,
         "title": "Build Community (Events and Competitions)",
         "description": "As previously mentioned, we are focused on organic growth. We're exposing our community and project to some of the best projects on Cardano. We'll be rewarding active members with OG roles. Every OG can give 3 whitelist roles to their friends. We've received lots of positive feedback about this innovative approach. We have events announced almost every week for new OG roles. Stay tuned to our Discord!"
       },
@@ -68,7 +68,7 @@
       {
         "complete": false,
         "title": "ADA Payouts to Fox Holders",
-        "description": "We're planning to run games or events every week, to reward holders of winning traits with ADA. We're also going to distribute a portion of our royalties to each fox holder, every month."
+        "description": "We're going to distribute 80% of our royalties to each fox holder, every month."
       },
       {
         "complete": false,
@@ -94,7 +94,7 @@
       {
         "complete": false,
         "title": "ADA Payouts to Motorcycle Holders",
-        "description": "Like the Fox Collection, we're going to distribute a portion of our royalties to each motorcycle holder, every month. However, unlike the Fox Collection, we will not be doing weekly events for motorcycle collection holders."
+        "description": "Like the Fox Collection, we're going to distribute a portion of our royalties to each motorcycle holder, every month."
       },
       {
         "complete": false,
