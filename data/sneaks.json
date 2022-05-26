@@ -1,19 +1,22 @@
 [
   "/images/sneaks/f_biker.png",
-  
+  "/images/sneaks/m_biker.png",
+
+  "/images/sneaks/f_angel.png",
+  "/images/sneaks/m_angel.png",
+
+  "/images/sneaks/f_devil.png",
+  "/images/sneaks/m_devil.png",
+
+  "/images/sneaks/f_kurama.png",
+  "/images/sneaks/m_gara.png",
+
   "/images/sneaks/f_samurai.png",
   "/images/sneaks/m_roman.png",
 
-  "/images/sneaks/f_angel.png",
-  "/images/sneaks/m_devil.png",
-
-  "/images/sneaks/f_khaleesi.png",
+  "/images/sneaks/f_punkish.png",
   "/images/sneaks/m_freddy.png",
-  
-  "/images/sneaks/f_wonder_woman.png",
-  "/images/sneaks/m_leon.png",
 
-  "/images/sneaks/f_zombie.png",
-  "/images/sneaks/f_kurama.png",
-  "/images/sneaks/f_sheikh.png"
+  "/images/sneaks/f_sheikh.png",
+  "/images/sneaks/m_tattoos.png"
 ]
