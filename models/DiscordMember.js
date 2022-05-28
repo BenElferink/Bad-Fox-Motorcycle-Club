@@ -22,11 +22,6 @@ const DiscordMember = new mongoose.Schema(
         required: true,
         default: false,
       },
-      isPublicReserve: {
-        type: mongoose.Schema.Types.Boolean,
-        required: true,
-        default: false,
-      },
     },
     wallet: {
       address: {

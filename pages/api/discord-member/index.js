@@ -1,8 +1,8 @@
 import axios from 'axios'
-import connectDB from '../../utils/mongo'
-import DiscordMember from '../../models/DiscordMember'
-import { DISCORD_BOT_TOKEN, DISCORD_GUILD_ID, DISCORD_ROLE_ID_OG, DISCORD_ROLE_ID_PUBLIC_RESERVE, DISCORD_ROLE_ID_WL } from '../../constants/discord'
-import getStakeKeyFromWalletAddress from '../../functions/blockfrost/getStakeKeyFromWalletAddress'
+import connectDB from '../../../utils/mongo'
+import DiscordMember from '../../../models/DiscordMember'
+import { DISCORD_BOT_TOKEN, DISCORD_GUILD_ID, DISCORD_ROLE_ID_OG, DISCORD_ROLE_ID_WL } from '../../../constants/discord'
+import getStakeKeyFromWalletAddress from '../../../functions/blockfrost/getStakeKeyFromWalletAddress'
 
 export default async (req, res) => {
   try {
@@ -55,7 +55,6 @@ export default async (req, res) => {
     const roles = {
       isOG: memberData.roles?.includes(DISCORD_ROLE_ID_OG),
       isWL: memberData.roles?.includes(DISCORD_ROLE_ID_WL),
-      isPublicReserve: memberData.roles?.includes(DISCORD_ROLE_ID_PUBLIC_RESERVE),
     }
 
     switch (method) {

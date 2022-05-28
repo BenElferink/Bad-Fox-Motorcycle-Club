@@ -28,7 +28,7 @@ export function DiscordAuthProvider({ children }) {
       setLoading(true)
 
       try {
-        const res = await axios.get(`/api/member?token=${t}`)
+        const res = await axios.get(`/api/discord-member?token=${t}`)
 
         setMember(res.data)
         clearError()
@@ -55,7 +55,7 @@ export function DiscordAuthProvider({ children }) {
     setLoading(true)
 
     try {
-      const res = await axios.patch(`/api/member?token=${token}`, {
+      const res = await axios.patch(`/api/discord-member?token=${token}`, {
         walletAddress: str,
       })
 

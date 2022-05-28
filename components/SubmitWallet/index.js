@@ -76,14 +76,14 @@ export default function SubmitWallet() {
     )
   }
 
-  if (!member.roles?.isOG && !member.roles?.isWL && !member.roles?.isPublicReserve) {
+  if (!member.roles?.isOG && !member.roles?.isWL) {
     return (
       <Section>
         <h2>You are not eligible to submit a wallet address.</h2>
         <p>
           Please make sure you have one of the following roles:
           <br />
-          <strong>OG, Whitelist, Public Reserve</strong>
+          <strong>OG, Whitelist</strong>
         </p>
       </Section>
     )
@@ -99,7 +99,6 @@ export default function SubmitWallet() {
           <strong>
             {member.roles?.isOG ? 'OG, ' : null}
             {member.roles?.isWL ? 'Whitelist, ' : null}
-            {member.roles?.isPublicReserve ? 'Public Reserve, ' : null}
           </strong>
         </p>
         <p>Please submit your wallet address, this will be the wallet you'll be minting from!</p>
