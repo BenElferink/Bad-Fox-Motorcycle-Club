@@ -129,7 +129,7 @@ export default function Header({ scrollTo = () => null }) {
       <Slide direction='up' in={showMintAlert} mountOnEnter unmountOnExit>
         <Alert severity='info' style={alertStyle}>
           <AlertTitle>Mint is offline</AlertTitle>
-          See the roadmap for an estimated mint date
+          Mint will go live July 15th
         </Alert>
       </Slide>
 
