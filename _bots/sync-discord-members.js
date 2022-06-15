@@ -33,7 +33,7 @@ const run = async () => {
           }
         }
       } catch (error) {
-        if (error.isAxiosError && error.response.status === 404) {
+        if (error.isAxiosError && error.response?.status === 404) {
           console.error(registeredMember.username, '- not in server')
 
           try {
