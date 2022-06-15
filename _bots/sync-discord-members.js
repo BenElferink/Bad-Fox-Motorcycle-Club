@@ -2,7 +2,8 @@ require('dotenv').config()
 const axios = require('axios')
 const { DISCORD_BOT_TOKEN, DISCORD_GUILD_ID, DISCORD_ROLE_ID_OG, DISCORD_ROLE_ID_WL } = require('../constants/discord')
 
-const URL = 'https://badfoxmc.com'
+// Don't forget to un-comment the DELETE method in /pages/api/registered-members/[userId].js
+const URL = 'http://localhost:3000' // 'https://badfoxmc.com'
 
 const run = async () => {
   try {
