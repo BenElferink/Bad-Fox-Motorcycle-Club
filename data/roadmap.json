@@ -21,7 +21,7 @@
     ]
   },
   {
-    "complete": false,
+    "complete": true,
     "chapter": "Q2 2022",
     "events": [
       {
@@ -45,12 +45,12 @@
         "description": "At this point we should have both the female and male models ready. Now, it's time to create more traits so that the collection is as unique as possible."
       },
       {
-        "complete": false,
+        "complete": true,
         "title": "Start Drawing the Motorcycle Collection",
         "description": "We plan on creating our first few motorcycle prototypes before we launch our first drop. This way, our community can benefit from an early insight of what is expected after we mint the fox collection."
       },
       {
-        "complete": false,
+        "complete": true,
         "title": "Increase Marketing and Exposure",
         "description": "Just before the fox collection launches, we will increase marketing and exposure. We will evaluate and tailor our approach to match our growth rate."
       }
