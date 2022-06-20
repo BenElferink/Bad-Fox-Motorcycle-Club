@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
+import { useMint } from '../../contexts/MintContext'
 import { Alert, AlertTitle, AppBar, Avatar, IconButton, Slide } from '@mui/material'
 import { MenuRounded } from '@mui/icons-material'
 import Modal from '../Modal'
@@ -9,12 +10,12 @@ import OnlineIndicator from '../OnlineIndicator'
 import Twitter from '../../icons/Twitter'
 import Discord from '../../icons/Discord'
 import { HOME, MAP, SNEAK, TEAM } from '../../constants/scroll-nav'
-import { REGISTER_ONLINE, MINT_ONLINE } from '../../constants/booleans'
 import styles from './Header.module.css'
 
 export default function Header({ scrollTo = () => null }) {
   const router = useRouter()
   const { isMobile } = useScreenSize()
+  const { isRegisterOnline, isPreSaleOnline, isPublicSaleOnline } = useMint()
   const [openMobileMenu, setOpenMobileMenu] = useState(false)
   const [showRegisterAlert, setShowRegisterAlert] = useState(false)
   const [showMintAlert, setShowMintAlert] = useState(false)
@@ -42,7 +43,7 @@ export default function Header({ scrollTo = () => null }) {
   }, [showMintAlert])
 
   const clickRegister = () => {
-    if (REGISTER_ONLINE) {
+    if (isRegisterOnline) {
       router.push('/register')
     } else {
       setShowRegisterAlert(true)
@@ -51,7 +52,7 @@ export default function Header({ scrollTo = () => null }) {
   }
 
   const clickMint = () => {
-    if (MINT_ONLINE) {
+    if (isPreSaleOnline || isPublicSaleOnline) {
       router.push('/mint')
     } else {
       setShowMintAlert(true)
@@ -141,7 +142,7 @@ export default function Header({ scrollTo = () => null }) {
 
       <Modal
         title=''
-        hideElement={!isMobile}
+        onlyChildren={!isMobile}
         open={!isMobile || openMobileMenu}
         onClose={() => setOpenMobileMenu(false)}
         style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
@@ -153,11 +154,11 @@ export default function Header({ scrollTo = () => null }) {
             <BaseButton label='Roadmap' onClick={clickRoadmap} transparent style={btnStyle} />
             <BaseButton label='Team' onClick={clickTeam} transparent style={btnStyle} />
 
-            <OnlineIndicator online={REGISTER_ONLINE}>
+            <OnlineIndicator online={isRegisterOnline}>
               <BaseButton label='Register' onClick={clickRegister} transparent style={btnStyle} />
             </OnlineIndicator>
-            <OnlineIndicator online={MINT_ONLINE}>
-              <BaseButton label='Mint' onClick={clickMint} transparent disabled={!MINT_ONLINE} style={btnStyle} />
+            <OnlineIndicator online={isPreSaleOnline || isPublicSaleOnline}>
+              <BaseButton label='Mint' onClick={clickMint} transparent disabled={!isPreSaleOnline && !isPublicSaleOnline} style={btnStyle} />
             </OnlineIndicator>
 
             <Socials />

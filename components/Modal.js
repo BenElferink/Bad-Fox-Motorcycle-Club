@@ -2,10 +2,10 @@ import { useScreenSize } from '../contexts/ScreenSizeContext'
 import { Modal as MuiModal, IconButton, Typography, Fade } from '@mui/material'
 import { CloseRounded } from '@mui/icons-material'
 
-function Modal({ open, onClose, title = 'Title', hideElement, style = {}, children }) {
+function Modal({ open, onClose, style = {}, title = 'Title', children, onlyChildren }) {
   const { isMobile } = useScreenSize()
 
-  if (hideElement) {
+  if (onlyChildren) {
     return children
   }
 
@@ -31,7 +31,7 @@ function Modal({ open, onClose, title = 'Title', hideElement, style = {}, childr
             ...style,
           }}
         >
-          <IconButton sx={{ margin: '1.5rem', position: 'absolute', top: '0', right: '0', zIndex: '9' }} onClick={onClose}>
+          <IconButton sx={{ margin: '0.5rem', position: 'absolute', top: '0', right: '0', zIndex: '9' }} onClick={onClose}>
             <CloseRounded color='error' />
           </IconButton>
           {title && <Typography variant='h5'>{title}</Typography>}

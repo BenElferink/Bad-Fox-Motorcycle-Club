@@ -8,6 +8,7 @@ import Sneaks from '../components/Sneaks'
 import Roadmap from '../components/Roadmap'
 import Team from '../components/Team'
 import { HOME } from '../constants/scroll-nav'
+import CountDown from '../components/CountDown'
 
 export default function Home() {
   const { isMobile } = useScreenSize()
@@ -37,6 +38,7 @@ export default function Home() {
     <div className='App flex-col'>
       <Header scrollTo={scrollTo} />
       <Landing isHome />
+      <CountDown />
       {isMobile ? <About /> : null}
       <Sneaks ref={sneakRef} />
       <Roadmap ref={mapRef} />

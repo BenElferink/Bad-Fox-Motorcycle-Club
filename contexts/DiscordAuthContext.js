@@ -1,5 +1,5 @@
-import axios from 'axios'
 import { createContext, useContext, useState } from 'react'
+import axios from 'axios'
 
 // init context
 const DiscordAuthContext = createContext()

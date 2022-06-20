@@ -1,18 +1,19 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { useDiscordAuth } from '../../contexts/DiscordAuthContext'
+import { useMint } from '../../contexts/MintContext'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import Landing from '../../components/Landing'
 import Section from '../../components/Section'
 import Loader from '../../components/Loader'
 import SubmitWallet from '../../components/SubmitWallet'
-import { REGISTER_ONLINE } from '../../constants/booleans'
 
 export default function Redirect() {
   const router = useRouter()
   const { asPath } = router
   const { loading, token, member, getMemberWithToken } = useDiscordAuth()
+  const { isRegisterOnline } = useMint()
 
   useEffect(() => {
     ;(async () => {
@@ -37,7 +38,7 @@ export default function Redirect() {
     <div className='App flex-col'>
       <Header />
       <Landing>
-        {REGISTER_ONLINE ? (
+        {isRegisterOnline ? (
           loading ? (
             <Section>
               <h2>Please wait a moment...</h2>

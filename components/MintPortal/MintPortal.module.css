@@ -5,3 +5,19 @@
 .addr > span {
   font-size: 0.8rem;
 }
+
+.mintModal {
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+}
+.mintModalDevision {
+  margin: 1rem 0;
+}
+.mintModalDevision * {
+  margin: 0;
+}
+
+/* .mintModal h4 {
+  text-align: center;
+} */
