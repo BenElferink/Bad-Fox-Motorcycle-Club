@@ -4,12 +4,19 @@
   margin-bottom: 1rem;
   padding: 0 1rem;
   color: var(--grey);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
   position: static;
   z-index: -1;
 }
 
 .cardano {
   height: 90px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
