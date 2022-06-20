@@ -1,5 +1,6 @@
 import connectDB from '../../../utils/mongo'
 import MintAddress from '../../../models/MintAddress'
+import { ADMIN_CODE } from '../../../constants/api-keys'
 
 export default async (req, res) => {
   try {
@@ -7,7 +8,7 @@ export default async (req, res) => {
 
     const {
       method,
-      query: { policyId },
+      query: { policyId, adminCode },
       body: { ogAddress = '', wlAddress = '', publicAddress = '' },
     } = req
 
@@ -16,20 +17,6 @@ export default async (req, res) => {
     }
 
     switch (method) {
-      case 'POST': {
-        const mint = new MintAddress({
-          policyId,
-          ogAddress,
-          wlAddress,
-          publicAddress,
-        })
-
-        await mint.save()
-
-        res.status(201).json(mint)
-        break
-      }
-
       case 'GET': {
         const mint = await MintAddress.findOne({ policyId })
 
@@ -41,7 +28,36 @@ export default async (req, res) => {
         break
       }
 
+      case 'POST': {
+        if (adminCode !== ADMIN_CODE) {
+          return res.status(401).json({})
+        }
+
+        let mint = await MintAddress.findOne({ policyId })
+
+        if (mint) {
+          return res.status(400).json({})
+        }
+
+        mint = new MintAddress({
+          policyId,
+          ogAddress,
+          wlAddress,
+          publicAddress,
+        })
+
+        await mint.save()
+
+        res.status(201).json(mint)
+
+        break
+      }
+
       case 'PATCH': {
+        if (adminCode !== ADMIN_CODE) {
+          return res.status(401).json({})
+        }
+
         const mint = await MintAddress.findOne({ policyId })
 
         if (!mint) {

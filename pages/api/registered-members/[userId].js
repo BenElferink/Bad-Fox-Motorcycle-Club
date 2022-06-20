@@ -1,5 +1,6 @@
 import connectDB from '../../../utils/mongo'
 import DiscordMember from '../../../models/DiscordMember'
+import { ADMIN_CODE } from '../../../constants/api-keys'
 
 export default async (req, res) => {
   try {
@@ -7,7 +8,7 @@ export default async (req, res) => {
 
     const {
       method,
-      query: { userId },
+      query: { userId, adminCode },
     } = req
 
     switch (method) {
@@ -22,12 +23,16 @@ export default async (req, res) => {
         break
       }
 
-      // case 'DELETE': {
-      //   await DiscordMember.deleteOne({ userId })
+      case 'DELETE': {
+        if (adminCode !== ADMIN_CODE) {
+          return res.status(401).json({})
+        }
 
-      //   res.status(204).json()
-      //   break
-      // }
+        await DiscordMember.deleteOne({ userId })
+
+        res.status(204).json()
+        break
+      }
 
       default: {
         res.status(404).json({})

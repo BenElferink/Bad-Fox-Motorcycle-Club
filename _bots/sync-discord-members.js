@@ -1,5 +1,6 @@
 require('dotenv').config()
 const axios = require('axios')
+const { ADMIN_CODE } = require('../constants/api-keys')
 const { DISCORD_BOT_TOKEN, DISCORD_GUILD_ID, DISCORD_ROLE_ID_OG, DISCORD_ROLE_ID_WL } = require('../constants/discord')
 
 // Don't forget to un-comment the DELETE method in /pages/api/registered-members/[userId].js
@@ -27,7 +28,7 @@ const run = async () => {
 
         if (!isOG && !isWL) {
           try {
-            await axios.delete(URL + '/api/registered-members/' + registeredMember.userId)
+            await axios.delete(`${URL}/api/registered-members/${registeredMember.userId}?adminCode=${ADMIN_CODE}`)
           } catch (error) {
             console.error(error)
           }
@@ -37,7 +38,7 @@ const run = async () => {
           console.error(registeredMember.username, '- not in server')
 
           try {
-            await axios.delete(URL + '/api/registered-members/' + registeredMember.userId)
+            await axios.delete(`${URL}/api/registered-members/${registeredMember.userId}?adminCode=${ADMIN_CODE}`)
           } catch (error) {
             console.error(error)
           }
