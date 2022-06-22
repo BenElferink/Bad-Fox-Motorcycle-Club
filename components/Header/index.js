@@ -12,7 +12,7 @@ import Discord from '../../icons/Discord'
 import { HOME, MAP, SNEAK, TEAM } from '../../constants/scroll-nav'
 import styles from './Header.module.css'
 
-export default function Header({ scrollTo = () => null }) {
+export default function Header({ isHome = false, scrollTo = () => null }) {
   const router = useRouter()
   const { isMobile } = useScreenSize()
   const { isRegisterOnline, isPreSaleOnline, isPublicSaleOnline } = useMint()
@@ -42,6 +42,35 @@ export default function Header({ scrollTo = () => null }) {
     }
   }, [showMintAlert])
 
+  const clickHome = () => {
+    if (router.asPath === '/') {
+      scrollTo(HOME)
+    } else {
+      router.push('/')
+    }
+    setOpenMobileMenu(false)
+  }
+
+  const clickSneaks = () => {
+    scrollTo(SNEAK)
+    setOpenMobileMenu(false)
+  }
+
+  const clickRoadmap = () => {
+    scrollTo(MAP)
+    setOpenMobileMenu(false)
+  }
+
+  const clickTeam = () => {
+    scrollTo(TEAM)
+    setOpenMobileMenu(false)
+  }
+
+  // const clickTraits = () => {
+  //   router.push('/traits')
+  //   setOpenMobileMenu(false)
+  // }
+
   const clickRegister = () => {
     if (isRegisterOnline) {
       router.push('/register')
@@ -57,28 +86,6 @@ export default function Header({ scrollTo = () => null }) {
     } else {
       setShowMintAlert(true)
     }
-    setOpenMobileMenu(false)
-  }
-
-  const clickHome = () => {
-    if (router.asPath === '/') {
-      scrollTo(HOME)
-    } else {
-      router.push('/')
-    }
-
-    setOpenMobileMenu(false)
-  }
-  const clickSneaks = () => {
-    scrollTo(SNEAK)
-    setOpenMobileMenu(false)
-  }
-  const clickRoadmap = () => {
-    scrollTo(MAP)
-    setOpenMobileMenu(false)
-  }
-  const clickTeam = () => {
-    scrollTo(TEAM)
     setOpenMobileMenu(false)
   }
 
@@ -147,12 +154,14 @@ export default function Header({ scrollTo = () => null }) {
         onClose={() => setOpenMobileMenu(false)}
         style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
       >
-        {router.asPath === '/' ? (
+        {isHome ? (
           <nav className={isMobile ? 'flex-col' : 'flex-row'} style={navStyle}>
             <BaseButton label='Home' onClick={clickHome} transparent style={btnStyle} />
             <BaseButton label='Sneaks' onClick={clickSneaks} transparent style={btnStyle} />
             <BaseButton label='Roadmap' onClick={clickRoadmap} transparent style={btnStyle} />
             <BaseButton label='Team' onClick={clickTeam} transparent style={btnStyle} />
+
+            {/* <BaseButton label='Traits' onClick={clickTraits} transparent style={btnStyle} /> */}
 
             <OnlineIndicator online={isRegisterOnline}>
               <BaseButton label='Register' onClick={clickRegister} transparent style={btnStyle} />

@@ -8,10 +8,14 @@ export default async (req, res) => {
   try {
     await connectDB()
 
-    const { method, query, body } = req
+    const {
+      method,
+      query: { discordToken },
+      body,
+    } = req
 
-    if (!query.token) {
-      return res.status(400).json({ type: 'BAD_REQUEST', message: 'Query param required: token' })
+    if (!discordToken) {
+      return res.status(400).json({ type: 'BAD_REQUEST', message: 'Query param required: discordToken' })
     }
 
     let userData = {}
@@ -21,14 +25,15 @@ export default async (req, res) => {
       // get userId using an access token
       const { data } = await axios.get('https://discord.com/api/users/@me', {
         headers: {
-          authorization: `Bearer ${query.token}`,
+          authorization: `Bearer ${discordToken}`,
         },
       })
 
       userData = data
     } catch (error) {
       console.error(error)
-      res.status(500).json({})
+
+      return res.status(500).json({})
     }
 
     const userId = userData.id
@@ -44,10 +49,12 @@ export default async (req, res) => {
       memberData = data
     } catch (error) {
       console.error(error)
+
       if (error.isAxiosError && error.response.status === 404) {
         return res.status(404).json({ type: 'MEMBER_ERROR', message: 'User is not in the Discord server' })
       }
-      res.status(500).json({})
+
+      return res.status(500).json({})
     }
 
     // collect updated values for this member
@@ -75,8 +82,7 @@ export default async (req, res) => {
 
         await member.save()
 
-        res.status(200).json(member)
-        break
+        return res.status(200).json(member)
       }
 
       case 'PATCH': {
@@ -119,17 +125,16 @@ export default async (req, res) => {
 
         await member.save()
 
-        res.status(200).json(member)
-        break
+        return res.status(200).json(member)
       }
 
       default: {
-        res.status(404).json({})
-        break
+        return res.status(404).json({})
       }
     }
   } catch (error) {
     console.error(error)
-    res.status(500).json({})
+
+    return res.status(500).json({})
   }
 }

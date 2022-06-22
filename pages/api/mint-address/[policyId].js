@@ -26,7 +26,7 @@ export default async (req, res) => {
 
       case 'POST': {
         if (adminCode !== ADMIN_CODE) {
-          return res.status(401).json({ type: 'UNAUTHORIZED', message: 'Admin code is not valid' })
+          return res.status(401).json({ type: 'UNAUTHORIZED', message: 'Admin code is invalid' })
         }
 
         let mint = await MintAddress.findOne({ policyId })
@@ -51,7 +51,7 @@ export default async (req, res) => {
 
       case 'PATCH': {
         if (adminCode !== ADMIN_CODE) {
-          return res.status(401).json({ type: 'UNAUTHORIZED', message: 'Admin code is not valid' })
+          return res.status(401).json({ type: 'UNAUTHORIZED', message: 'Admin code is invalid' })
         }
 
         const mint = await MintAddress.findOne({ policyId })

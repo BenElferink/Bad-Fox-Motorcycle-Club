@@ -11,6 +11,10 @@ export default async (req, res) => {
       query: { userId, adminCode },
     } = req
 
+    if (adminCode !== ADMIN_CODE) {
+      return res.status(401).json({ type: 'UNAUTHORIZED', message: 'Admin code is invalid' })
+    }
+
     switch (method) {
       case 'GET': {
         const member = await DiscordMember.findOne({ userId })
@@ -24,10 +28,6 @@ export default async (req, res) => {
       }
 
       case 'DELETE': {
-        if (adminCode !== ADMIN_CODE) {
-          return res.status(401).json({})
-        }
-
         await DiscordMember.deleteOne({ userId })
 
         res.status(204).json()

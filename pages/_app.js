@@ -25,10 +25,10 @@ function App({ Component, pageProps }) {
             <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
             <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
             <link rel='manifest' href='/manifest.json' />
-            {/* <meta name='author' content='' /> */}
+            <meta name='author' content='Ben Elferink' />
             {/* <meta name='description' content='' /> */}
             {/* <meta name='keywords' content='' /> */}
-            <title>Bad Fox MC</title>
+            <title>Bad Fox Motorcycle Club</title>
           </Head>
           <Component {...pageProps} />
         </MintProvider>

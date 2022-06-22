@@ -3,12 +3,19 @@ const axios = require('axios')
 const { ADMIN_CODE } = require('../constants/api-keys')
 const { DISCORD_BOT_TOKEN, DISCORD_GUILD_ID, DISCORD_ROLE_ID_OG, DISCORD_ROLE_ID_WL } = require('../constants/discord')
 
-// Don't forget to un-comment the DELETE method in /pages/api/registered-members/[userId].js
 const URL = 'http://localhost:3000' // 'https://badfoxmc.com'
+
+const deleteMember = async (userId) => {
+  try {
+    await axios.delete(`${URL}/api/registered-members/${userId}?adminCode=${ADMIN_CODE}`)
+  } catch (error) {
+    console.error(error)
+  }
+}
 
 const run = async () => {
   try {
-    const { data } = await axios.get(URL + '/api/registered-members')
+    const { data } = await axios.get(`${URL}/api/registered-members?adminCode=${ADMIN_CODE}`)
 
     for (const registeredMember of data.members) {
       try {
@@ -27,21 +34,13 @@ const run = async () => {
         }
 
         if (!isOG && !isWL) {
-          try {
-            await axios.delete(`${URL}/api/registered-members/${registeredMember.userId}?adminCode=${ADMIN_CODE}`)
-          } catch (error) {
-            console.error(error)
-          }
+          await deleteMember(registeredMember.userId)
         }
       } catch (error) {
         if (error.isAxiosError && error.response?.status === 404) {
           console.error(registeredMember.username, '- not in server')
 
-          try {
-            await axios.delete(`${URL}/api/registered-members/${registeredMember.userId}?adminCode=${ADMIN_CODE}`)
-          } catch (error) {
-            console.error(error)
-          }
+          await deleteMember(registeredMember.userId)
         } else {
           console.error(error)
         }

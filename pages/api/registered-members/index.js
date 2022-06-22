@@ -1,11 +1,19 @@
 import connectDB from '../../../utils/mongo'
 import DiscordMember from '../../../models/DiscordMember'
+import { ADMIN_CODE } from '../../../constants/api-keys'
 
 export default async (req, res) => {
   try {
     await connectDB()
 
-    const { method } = req
+    const {
+      method,
+      query: { adminCode },
+    } = req
+
+    if (adminCode !== ADMIN_CODE) {
+      return res.status(401).json({ type: 'UNAUTHORIZED', message: 'Admin code is invalid' })
+    }
 
     switch (method) {
       case 'GET': {

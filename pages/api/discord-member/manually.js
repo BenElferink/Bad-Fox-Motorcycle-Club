@@ -3,6 +3,7 @@ import connectDB from '../../../utils/mongo'
 import DiscordMember from '../../../models/DiscordMember'
 import { DISCORD_BOT_TOKEN, DISCORD_GUILD_ID, DISCORD_ROLE_ID_OG, DISCORD_ROLE_ID_WL } from '../../../constants/discord'
 import getStakeKeyFromWalletAddress from '../../../functions/blockfrost/getStakeKeyFromWalletAddress'
+import { ADMIN_CODE } from '../../../constants/api-keys'
 
 export default async (req, res) => {
   try {
@@ -10,8 +11,12 @@ export default async (req, res) => {
 
     const {
       method,
-      body: { userId, walletAddress },
+      body: { adminCode, userId, walletAddress },
     } = req
+
+    if (adminCode !== ADMIN_CODE) {
+      return res.status(401).json({ type: 'UNAUTHORIZED', message: 'Admin code is invalid' })
+    }
 
     let memberData = {}
 
@@ -26,11 +31,12 @@ export default async (req, res) => {
       memberData = data
     } catch (error) {
       console.error(error)
+
       if (error.isAxiosError && error.response.status === 404) {
         return res.status(404).json({ type: 'MEMBER_ERROR', message: 'User is not in the Discord server' })
       }
 
-      res.status(500).json({})
+      return res.status(500).json({})
     }
 
     // collect updated values for this member
@@ -79,13 +85,11 @@ export default async (req, res) => {
 
         await member.save()
 
-        res.status(200).json(member)
-        break
+        return res.status(200).json(member)
       }
 
       default: {
-        res.status(404).json({})
-        break
+        return res.status(404).json({})
       }
     }
   } catch (error) {
