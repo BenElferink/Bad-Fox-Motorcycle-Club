@@ -51,11 +51,6 @@ export default function Header({ isHome = false, scrollTo = () => null }) {
     setOpenMobileMenu(false)
   }
 
-  const clickSneaks = () => {
-    scrollTo(SNEAK)
-    setOpenMobileMenu(false)
-  }
-
   const clickRoadmap = () => {
     scrollTo(MAP)
     setOpenMobileMenu(false)
@@ -66,10 +61,10 @@ export default function Header({ isHome = false, scrollTo = () => null }) {
     setOpenMobileMenu(false)
   }
 
-  // const clickTraits = () => {
-  //   router.push('/traits')
-  //   setOpenMobileMenu(false)
-  // }
+  const clickTraits = () => {
+    router.push('/traits')
+    setOpenMobileMenu(false)
+  }
 
   const clickRegister = () => {
     if (isRegisterOnline) {
@@ -157,11 +152,9 @@ export default function Header({ isHome = false, scrollTo = () => null }) {
         {isHome ? (
           <nav className={isMobile ? 'flex-col' : 'flex-row'} style={navStyle}>
             <BaseButton label='Home' onClick={clickHome} transparent style={btnStyle} />
-            <BaseButton label='Sneaks' onClick={clickSneaks} transparent style={btnStyle} />
+            {/* <BaseButton label='Traits' onClick={clickTraits} transparent style={btnStyle} /> */}
             <BaseButton label='Roadmap' onClick={clickRoadmap} transparent style={btnStyle} />
             <BaseButton label='Team' onClick={clickTeam} transparent style={btnStyle} />
-
-            {/* <BaseButton label='Traits' onClick={clickTraits} transparent style={btnStyle} /> */}
 
             <OnlineIndicator online={isRegisterOnline}>
               <BaseButton label='Register' onClick={clickRegister} transparent style={btnStyle} />

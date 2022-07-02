@@ -1,0 +1,23 @@
+[
+  {
+    "name": "CardaStacks",
+    "url": "https://www.cardastacks.com",
+    "logo": "/images/partners/cardastacks.png",
+    "logoHeight": "80px",
+    "logoWidth": "100px"
+  },
+  {
+    "name": "OGBears",
+    "url": "https://www.ogbears.com",
+    "logo": "/images/partners/ogbears.png",
+    "logoHeight": "80px",
+    "logoWidth": "55px"
+  },
+  {
+    "name": "Dot Dot Labs",
+    "url": "https://dotdotlabs.io",
+    "logo": "/images/partners/dotdotlabs.png",
+    "logoHeight": "80px",
+    "logoWidth": "100px"
+  }
+]

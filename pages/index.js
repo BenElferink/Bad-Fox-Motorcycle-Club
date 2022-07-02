@@ -6,13 +6,13 @@ import Landing from '../components/Landing'
 import CountDown from '../components/CountDown'
 import About from '../components/About'
 import Sneaks from '../components/Sneaks'
+import Partnerships from '../components/Partnerships'
 import Roadmap from '../components/Roadmap'
 import Team from '../components/Team'
 import { HOME } from '../constants/scroll-nav'
 
 export default function Home() {
   const { isMobile } = useScreenSize()
-  const sneakRef = useRef(null)
   const mapRef = useRef(null)
   const teamRef = useRef(null)
 
@@ -31,7 +31,7 @@ export default function Home() {
   }
 
   const scrollTo = (elemId) => {
-    loopRefs('scrollTo', elemId, sneakRef.current, mapRef.current, teamRef.current)
+    loopRefs('scrollTo', elemId, mapRef.current, teamRef.current)
   }
 
   return (
@@ -40,7 +40,8 @@ export default function Home() {
       <Landing isHome />
       <CountDown />
       {isMobile ? <About /> : null}
-      <Sneaks ref={sneakRef} />
+      <Sneaks />
+      <Partnerships />
       <Roadmap ref={mapRef} />
       <Team ref={teamRef} />
       <Footer />
