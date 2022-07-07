@@ -5,6 +5,20 @@ const { DISCORD_BOT_TOKEN, DISCORD_GUILD_ID, DISCORD_ROLE_ID_OG, DISCORD_ROLE_ID
 
 const URL = 'http://localhost:3000' // 'https://badfoxmc.com'
 
+const getDiscordProfile = async (userId) => {
+  try {
+    const { data } = await axios.get(`https://discord.com/api/guilds/${DISCORD_GUILD_ID}/members/${userId}`, {
+      headers: {
+        authorization: `Bot ${DISCORD_BOT_TOKEN}`,
+      },
+    })
+
+    return data
+  } catch (error) {
+    return await getDiscordProfile(userId)
+  }
+}
+
 const deleteMember = async (userId) => {
   try {
     await axios.delete(`${URL}/api/registered-members/${userId}?adminCode=${ADMIN_CODE}`)
@@ -20,12 +34,7 @@ const run = async () => {
     for (const registeredMember of data.members) {
       try {
         // get guild member using userId
-        const { data: discordMember } = await axios.get(`https://discord.com/api/guilds/${DISCORD_GUILD_ID}/members/${registeredMember.userId}`, {
-          headers: {
-            authorization: `Bot ${DISCORD_BOT_TOKEN}`,
-          },
-        })
-
+        const discordMember = await getDiscordProfile(registeredMember.userId)
         const isOG = discordMember.roles?.includes(DISCORD_ROLE_ID_OG)
         const isWL = discordMember.roles?.includes(DISCORD_ROLE_ID_WL)
 
@@ -33,7 +42,13 @@ const run = async () => {
           console.error('has both roles -', registeredMember.username, registeredMember.userId)
         }
 
-        if (!isOG && !isWL) {
+        if ((!isOG && !isWL) || !registeredMember.wallet?.address) {
+          if (!isOG && !isWL) {
+            console.error(registeredMember.username, '- has no mint roles')
+          } else {
+            console.error(registeredMember.username, '- did not submit address')
+          }
+
           await deleteMember(registeredMember.userId)
         }
       } catch (error) {
