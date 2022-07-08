@@ -10,7 +10,7 @@ export function useMint() {
 
 // export the provider (handle all the logic here)
 export function MintProvider({ children }) {
-  const REGISTER_END_DATE_TIME = new Date('2022-07-11T00:00:00.000+00:00')
+  const REGISTER_END_DATE_TIME = new Date('2022-07-14T00:00:00.000+00:00')
   const PRE_SALE_DATE_TIME = new Date('2022-07-15T07:00:00.000+00:00')
   const PUBLIC_SALE_DATE_TIME = new Date('2022-07-15T19:00:00.000+00:00')
 
