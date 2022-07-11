@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { ScreenSizeProvider } from '../contexts/ScreenSizeContext'
 import { DiscordAuthProvider } from '../contexts/DiscordAuthContext'
 import { MintProvider } from '../contexts/MintContext'
+import { createTheme, ThemeProvider } from '@mui/material'
 import CssBaseline from '@mui/material/CssBaseline'
 import '@fontsource/roboto'
 import 'animate.css'
@@ -12,12 +13,17 @@ import '../styles/swiper-overrides.css'
 import '../styles/globals.css'
 // https://animate.style
 
+const theme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+})
+
 function App({ Component, pageProps }) {
   return (
     <ScreenSizeProvider>
       <DiscordAuthProvider>
         <MintProvider>
-          <CssBaseline />
           <Head>
             <meta name='viewport' content='width=device-width, initial-scale=1.0' />
             <link rel='icon' type='image/x-icon' href='/favicon.ico' />
@@ -30,7 +36,11 @@ function App({ Component, pageProps }) {
             {/* <meta name='keywords' content='' /> */}
             <title>Bad Fox Motorcycle Club</title>
           </Head>
-          <Component {...pageProps} />
+
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </ThemeProvider>
         </MintProvider>
       </DiscordAuthProvider>
     </ScreenSizeProvider>

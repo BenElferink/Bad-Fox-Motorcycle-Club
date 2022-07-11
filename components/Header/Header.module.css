@@ -1,7 +1,7 @@
 .root {
   width: 100% !important;
   padding: 0 1rem !important;
-  background-color: rgba(0, 0, 0, 0.8) !important;
+  background: rgba(0, 0, 0, 0.8) !important;
   color: var(--white) !important;
 
   display: flex !important;

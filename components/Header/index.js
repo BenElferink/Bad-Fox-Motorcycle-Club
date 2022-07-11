@@ -9,7 +9,7 @@ import BaseButton from '../BaseButton'
 import OnlineIndicator from '../OnlineIndicator'
 import Twitter from '../../icons/Twitter'
 import Discord from '../../icons/Discord'
-import { HOME, MAP, SNEAK, TEAM } from '../../constants/scroll-nav'
+import { HOME, MAP, TEAM } from '../../constants/scroll-nav'
 import styles from './Header.module.css'
 
 export default function Header({ isHome = false, scrollTo = () => null }) {
@@ -152,7 +152,7 @@ export default function Header({ isHome = false, scrollTo = () => null }) {
         {isHome ? (
           <nav className={isMobile ? 'flex-col' : 'flex-row'} style={navStyle}>
             <BaseButton label='Home' onClick={clickHome} transparent style={btnStyle} />
-            {/* <BaseButton label='Traits' onClick={clickTraits} transparent style={btnStyle} /> */}
+            <BaseButton label='Traits' onClick={clickTraits} transparent style={btnStyle} />
             <BaseButton label='Roadmap' onClick={clickRoadmap} transparent style={btnStyle} />
             <BaseButton label='Team' onClick={clickTeam} transparent style={btnStyle} />
 

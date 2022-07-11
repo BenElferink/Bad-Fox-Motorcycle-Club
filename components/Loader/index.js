@@ -11,15 +11,15 @@ const animationDelays = [
   '-10s',
 ]
 
-const Loader = () => {
+const Loader = ({ className = '', color = 'var(--white)' }) => {
   return (
-    <div className={classes.root}>
+    <div className={`${classes.root} ${className}`}>
       <div className={classes.loading}>
         {animationDelays.map((value, idx) => (
           <div
             key={`loader-${idx}-${value}`}
             className={classes.loaderSquare}
-            style={{ animationDelay: value }}
+            style={{ animationDelay: value, background: color }}
           />
         ))}
       </div>

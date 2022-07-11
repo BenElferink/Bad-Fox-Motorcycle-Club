@@ -16,7 +16,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "sync-members-bot": "node ./_bots/sync-discord-members.js"
+    "sync-members-bot": "node ./_bots/sync-discord-members.js",
+    "count-traits-bot": "node ./_bots/count-traits.js"
   },
   "dependencies": {
     "@blockfrost/blockfrost-js": "^4.1.0",
