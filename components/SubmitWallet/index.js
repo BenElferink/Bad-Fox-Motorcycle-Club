@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import { useDiscordAuth } from '../../contexts/DiscordAuthContext'
 import Section from '../Section'
-import Loader from '../../components/Loader'
-import BaseButton from '../../components/BaseButton'
+import Loader from '../Loader'
+import BaseButton from '../BaseButton'
 import styles from './SubmitWallet.module.css'
 
 export default function SubmitWallet() {
@@ -15,7 +15,11 @@ export default function SubmitWallet() {
   const [forceEdit, setForceEdit] = useState(false)
 
   useEffect(() => {
-    setWalletAddress(member?.wallet?.address ?? '')
+    const v = member?.wallet?.address ?? ''
+
+    if (v) {
+      setWalletAddress(v)
+    }
   }, [member])
 
   const clickSubmit = async () => {
@@ -58,7 +62,8 @@ export default function SubmitWallet() {
               </li>
               <br />
               <li>
-                Are you using <strong>Eternl (CCVault)</strong>? If yes, you will have to sumbit a "used" address, see the example below!
+                Are you using <strong>Eternl (CCVault)</strong>? If yes, you will have to sumbit a "used"
+                address, see the example below!
               </li>
             </ol>
             <Image
@@ -69,7 +74,11 @@ export default function SubmitWallet() {
               style={{ borderRadius: '1rem' }}
             />
             <br />
-            <BaseButton label='Try Again' onClick={clickEdit} style={{ background: 'var(--discord-purple)' }} />
+            <BaseButton
+              label='Try Again'
+              onClick={clickEdit}
+              style={{ background: 'var(--discord-purple)' }}
+            />
           </>
         ) : null}
       </Section>
@@ -102,7 +111,12 @@ export default function SubmitWallet() {
           </strong>
         </p>
         <p>Please submit your wallet address, this will be the wallet you'll be minting from!</p>
-        <input placeholder='Your addr1...' value={walletAddress} onChange={(e) => setWalletAddress(e.target.value)} className={styles.inp} />
+        <input
+          placeholder='Your addr1...'
+          value={walletAddress}
+          onChange={(e) => setWalletAddress(e.target.value)}
+          className={styles.inp}
+        />
         <BaseButton label='Submit' onClick={clickSubmit} style={{ background: 'var(--discord-purple)' }} />
       </Section>
     )
@@ -113,12 +127,12 @@ export default function SubmitWallet() {
       <h2>Done!</h2>
       <p>You have successfully submitted your wallet address.</p>
       <p className={styles.addr}>
-        Your Wallet Address:
+        Your wallet address:
         <br />
         <span>{member.wallet?.address}</span>
       </p>
       <p className={styles.addr}>
-        Your Stake Key:
+        Your stake key:
         <br />
         <span>{member.wallet?.stakeKey}</span>
       </p>

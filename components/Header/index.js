@@ -84,6 +84,11 @@ export default function Header({ isHome = false, scrollTo = () => null }) {
     setOpenMobileMenu(false)
   }
 
+  const clickCheckWallet = () => {
+    router.push('/registration-check')
+    setOpenMobileMenu(false)
+  }
+
   const clickTwitter = () => {
     window.open('https://twitter.com/BadFoxMC', '_blank')
     setOpenMobileMenu(false)
@@ -93,7 +98,11 @@ export default function Header({ isHome = false, scrollTo = () => null }) {
     setOpenMobileMenu(false)
   }
 
-  const navStyle = { width: isMobile ? '100%' : 'unset', height: isMobile ? '100vh' : '100%', justifyContent: 'center' }
+  const navStyle = {
+    width: isMobile ? '100%' : 'unset',
+    height: isMobile ? '100vh' : '100%',
+    justifyContent: 'center',
+  }
   const burgerStyle = { color: 'var(--white)', fontSize: '2rem' }
   const btnStyle = { width: 'fit-content', margin: isMobile ? '0.5rem' : 'unset' }
   const alertStyle = { width: 'fit-content', position: 'absolute', top: '1rem', right: '1rem', zIndex: '999' }
@@ -160,8 +169,15 @@ export default function Header({ isHome = false, scrollTo = () => null }) {
               <BaseButton label='Register' onClick={clickRegister} transparent style={btnStyle} />
             </OnlineIndicator>
             <OnlineIndicator online={isPreSaleOnline || isPublicSaleOnline}>
-              <BaseButton label='Mint' onClick={clickMint} transparent disabled={!isPreSaleOnline && !isPublicSaleOnline} style={btnStyle} />
+              <BaseButton
+                label='Mint'
+                onClick={clickMint}
+                transparent
+                disabled={!isPreSaleOnline && !isPublicSaleOnline}
+                style={btnStyle}
+              />
             </OnlineIndicator>
+            <BaseButton label='Check Wallet' onClick={clickCheckWallet} transparent style={btnStyle} />
 
             <Socials />
           </nav>

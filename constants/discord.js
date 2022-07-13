@@ -9,6 +9,10 @@ module.exports = {
     process.env.NODE_ENV === 'development'
       ? 'https://discord.com/api/oauth2/authorize?client_id=967368512941203466&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fregister%2Fredirect&response_type=token&scope=identify'
       : 'https://discord.com/api/oauth2/authorize?client_id=967368512941203466&redirect_uri=https%3A%2F%2Fbadfoxmc.com%2Fregister%2Fredirect&response_type=token&scope=identify',
+  DISCORD_REDIRECT_URL_REGISTRATION_CHECK:
+    process.env.NODE_ENV === 'development'
+      ? 'https://discord.com/api/oauth2/authorize?client_id=967368512941203466&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fregistration-check%2Fredirect&response_type=token&scope=identify'
+      : 'https://discord.com/api/oauth2/authorize?client_id=967368512941203466&redirect_uri=https%3A%2F%2Fbadfoxmc.com%2Fregistration-check%2Fredirect&response_type=token&scope=identify',
   DISCORD_REDIRECT_URL_MINT:
     process.env.NODE_ENV === 'development'
       ? 'https://discord.com/api/oauth2/authorize?client_id=967368512941203466&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fmint%2Fredirect&response_type=token&scope=identify'

@@ -4,21 +4,20 @@ import { useMint } from '../../contexts/MintContext'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import Landing from '../../components/Landing'
-import Section from '../../components/Section'
 import DiscordLogin from '../../components/DiscordLogin'
-import { DISCORD_REDIRECT_URL_MINT } from '../../constants/discord'
+import { DISCORD_REDIRECT_URL_REGISTRATION_CHECK } from '../../constants/discord'
 
-export default function Register() {
+export default function RegistrationCheck() {
   const router = useRouter()
+  const { isRegisterOnline } = useMint()
   const { token, member } = useDiscordAuth()
-  const { isPreSaleOnline, isPublicSaleOnline } = useMint()
 
   const clickLogin = () => {
-    router.push(DISCORD_REDIRECT_URL_MINT)
+    router.push(DISCORD_REDIRECT_URL_REGISTRATION_CHECK)
   }
 
-  if ((isPreSaleOnline && token && member) || isPublicSaleOnline) {
-    router.push('/mint/redirect')
+  if (isRegisterOnline && token && member) {
+    router.push('/registration-check/redirect')
 
     return <div className='App' />
   }
@@ -27,15 +26,11 @@ export default function Register() {
     <div className='App flex-col'>
       <Header />
       <Landing>
-        {isPreSaleOnline ? (
-          <DiscordLogin
-            title='Mint your NFTs'
-            text='Login with your Discord account to mint your NFTs.'
-            onClick={clickLogin}
-          />
-        ) : (
-          <Section>Mint is offline!</Section>
-        )}
+        <DiscordLogin
+          title='Check Your Wallet Address'
+          text='Login with your Discord account to check your registered wallet address.'
+          onClick={clickLogin}
+        />
       </Landing>
       <Footer />
     </div>

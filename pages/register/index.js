@@ -28,7 +28,11 @@ export default function Register() {
       <Header />
       <Landing>
         {isRegisterOnline ? (
-          <DiscordLogin title='Register for Mint' text='Login with your Discord account to submit your wallet address.' onClick={clickLogin} />
+          <DiscordLogin
+            title='Register for Mint'
+            text='Login with your Discord account to submit your wallet address.'
+            onClick={clickLogin}
+          />
         ) : (
           <Section>Wallet registration is closed!</Section>
         )}

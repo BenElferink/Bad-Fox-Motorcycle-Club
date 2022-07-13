@@ -12,24 +12,15 @@ import MintPortal from '../../components/MintPortal'
 export default function Redirect() {
   const router = useRouter()
   const { asPath } = router
-  const { loading, token, member, getMemberWithToken } = useDiscordAuth()
+  const { loading, token, member, getDiscordTokenFromQuery, getMemberWithToken } = useDiscordAuth()
   const { isPreSaleOnline, isPublicSaleOnline } = useMint()
 
   useEffect(() => {
     ;(async () => {
       if (asPath) {
         const query = asPath.split('#')[1]
-
-        if (query) {
-          let t = ''
-
-          query.split('&').forEach((str) => {
-            const [k, v] = str.split('=')
-            if (k === 'access_token') t = v
-          })
-
-          await getMemberWithToken(t)
-        }
+        const t = getDiscordTokenFromQuery(query)
+        await getMemberWithToken(t)
       }
     })()
   }, [asPath])

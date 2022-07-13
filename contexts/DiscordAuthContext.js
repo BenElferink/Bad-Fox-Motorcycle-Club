@@ -20,6 +20,17 @@ export function DiscordAuthProvider({ children }) {
     setError({})
   }
 
+  const getDiscordTokenFromQuery = (query) => {
+    let t = ''
+
+    query.split('&').forEach((str) => {
+      const [k, v] = str.split('=')
+      if (k === 'access_token') t = v
+    })
+
+    return t
+  }
+
   const getMemberWithToken = async (str) => {
     const t = str ?? token
 
@@ -81,6 +92,7 @@ export function DiscordAuthProvider({ children }) {
         loading,
         error,
         clearError,
+        getDiscordTokenFromQuery,
         getMemberWithToken,
         patchMemberWalletAddress,
       }}

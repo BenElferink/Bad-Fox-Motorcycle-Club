@@ -1,0 +1,7 @@
+.addr {
+  inline-size: 55vw;
+  overflow-wrap: break-word;
+}
+.addr > span {
+  font-size: 0.8rem;
+}
