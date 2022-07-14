@@ -1,7 +1,12 @@
 import axios from 'axios'
 import connectDB from '../../../utils/mongo'
 import DiscordMember from '../../../models/DiscordMember'
-import { DISCORD_BOT_TOKEN, DISCORD_GUILD_ID, DISCORD_ROLE_ID_OG, DISCORD_ROLE_ID_WL } from '../../../constants/discord'
+import {
+  DISCORD_BOT_TOKEN,
+  DISCORD_GUILD_ID,
+  DISCORD_ROLE_ID_OG,
+  DISCORD_ROLE_ID_WL,
+} from '../../../constants/discord'
 import getStakeKeyFromWalletAddress from '../../../functions/blockfrost/getStakeKeyFromWalletAddress'
 import { ADMIN_CODE } from '../../../constants/api-keys'
 
@@ -11,7 +16,8 @@ export default async (req, res) => {
 
     const {
       method,
-      body: { adminCode, userId, walletAddress },
+      query: { adminCode },
+      body: { userId, walletAddress },
     } = req
 
     if (adminCode !== ADMIN_CODE) {
@@ -22,11 +28,14 @@ export default async (req, res) => {
 
     try {
       // get guild member using userId
-      const { data } = await axios.get(`https://discord.com/api/guilds/${DISCORD_GUILD_ID}/members/${userId}`, {
-        headers: {
-          authorization: `Bot ${DISCORD_BOT_TOKEN}`,
-        },
-      })
+      const { data } = await axios.get(
+        `https://discord.com/api/guilds/${DISCORD_GUILD_ID}/members/${userId}`,
+        {
+          headers: {
+            authorization: `Bot ${DISCORD_BOT_TOKEN}`,
+          },
+        }
+      )
 
       memberData = data
     } catch (error) {
@@ -51,7 +60,12 @@ export default async (req, res) => {
         if (!walletAddress) {
           return res.status(400).json({ type: 'BAD_REQUEST', message: 'Body param required: walletAddress' })
         } else if (walletAddress.indexOf('addr1') !== 0) {
-          return res.status(400).json({ type: 'BAD_REQUEST', message: 'Please provide a valid wallet address (starts with addr1)' })
+          return res
+            .status(400)
+            .json({
+              type: 'BAD_REQUEST',
+              message: 'Please provide a valid wallet address (starts with addr1)',
+            })
         }
 
         let stakeKey = ''
