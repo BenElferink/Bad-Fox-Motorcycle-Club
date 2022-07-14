@@ -16,8 +16,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "sync-members-bot": "node ./_bots/sync-discord-members.js",
-    "count-traits-bot": "node ./_bots/count-traits.js"
+    "count-traits": "node ./_scripts/count-traits.js",
+    "sync-discord-members": "node ./_scripts/sync-discord-members.js",
+    "list-duplicate-stake-keys": "node ./_scripts/list-duplicate-stake-keys.js",
+    "export-lists": "node ./_scripts/export-lists.js"
   },
   "dependencies": {
     "@blockfrost/blockfrost-js": "^4.1.0",
@@ -36,6 +38,7 @@
     "swiper": "^8.1.4"
   },
   "devDependencies": {
-    "dotenv": "^16.0.1"
+    "dotenv": "^16.0.1",
+    "write-excel-file": "^1.4.8"
   }
 }
