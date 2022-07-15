@@ -94,7 +94,7 @@ export default function MintPortal() {
       <Section>
         <h2>Public Mint</h2>
 
-        <MintScreen role='Public' maxMints={3} mintPrice={62} mintAddress={mintObj.publicAddress} loading={fetching} />
+        <MintScreen role='Public' maxMints={4} mintPrice={62} mintAddress={mintObj.publicAddress} loading={fetching} />
       </Section>
     )
   }
