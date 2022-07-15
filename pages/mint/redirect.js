@@ -17,7 +17,7 @@ export default function Redirect() {
 
   useEffect(() => {
     ;(async () => {
-      if (asPath) {
+      if (asPath && !isPublicSaleOnline) {
         const query = asPath.split('#')[1]
         const t = getDiscordTokenFromQuery(query)
         await getMemberWithToken(t)

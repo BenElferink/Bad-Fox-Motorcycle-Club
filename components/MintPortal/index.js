@@ -37,12 +37,11 @@ const MintScreen = ({ role = 'None', maxMints = 0, mintPrice = 0, mintAddress = 
         </ul>
       </div>
 
-      <div className={styles.mintModalDevision}>
-        <h4>Mint address:</h4>
-        {loading ? <Loader /> : <span>{isCopied ? 'Copied 👍' : mintAddress}</span>}
-      </div>
-
-      <BaseButton label='COPY ADDRESS' onClick={() => clickCopy(mintAddress)} style={{ background: 'var(--discord-purple)' }} />
+      <BaseButton
+        label={isCopied ? 'COPIED 👍' : 'COPY MINT ADDRESS'}
+        onClick={() => clickCopy(mintAddress)}
+        style={{ background: 'var(--discord-purple)' }}
+      />
     </div>
   )
 }
@@ -94,7 +93,13 @@ export default function MintPortal() {
       <Section>
         <h2>Public Mint</h2>
 
-        <MintScreen role='Public' maxMints={4} mintPrice={62} mintAddress={mintObj.publicAddress} loading={fetching} />
+        <MintScreen
+          role='Public'
+          maxMints={4}
+          mintPrice={62}
+          mintAddress={mintObj.publicAddress}
+          loading={fetching}
+        />
       </Section>
     )
   }
@@ -149,7 +154,11 @@ export default function MintPortal() {
         <span>{member.wallet?.stakeKey}</span>
       </p>
 
-      <BaseButton label='MINT NOW' onClick={() => setOpenModal(true)} style={{ background: 'var(--discord-purple)' }} />
+      <BaseButton
+        label='MINT NOW'
+        onClick={() => setOpenModal(true)}
+        style={{ background: 'var(--discord-purple)' }}
+      />
 
       <Modal
         open={openModal}
@@ -158,9 +167,21 @@ export default function MintPortal() {
         style={{ background: 'var(--brown)' }}
       >
         {member.roles?.isOG ? (
-          <MintScreen role='OG' maxMints={3} mintPrice={42} mintAddress={mintObj.ogAddress} loading={fetching} />
+          <MintScreen
+            role='OG'
+            maxMints={3}
+            mintPrice={42}
+            mintAddress={mintObj.ogAddress}
+            loading={fetching}
+          />
         ) : member.roles?.isWL ? (
-          <MintScreen role='WL' maxMints={2} mintPrice={52} mintAddress={mintObj.wlAddress} loading={fetching} />
+          <MintScreen
+            role='WL'
+            maxMints={2}
+            mintPrice={52}
+            mintAddress={mintObj.wlAddress}
+            loading={fetching}
+          />
         ) : (
           <div className={styles.mintModal}>You're not supposed to be here.</div>
         )}
