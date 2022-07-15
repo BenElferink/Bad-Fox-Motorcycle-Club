@@ -1,0 +1,37 @@
+{
+  "_wen": 1657829118726,
+  "policyId": "fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967",
+  "count": 1,
+  "assets": [
+    {
+      "asset": "fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967426164466f7831363238",
+      "policy_id": "fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967",
+      "asset_name": "426164466f7831363238",
+      "fingerprint": "asset1xvkg8a60slwvevkwvuguu83g5g9xx0mc0zv2jj",
+      "quantity": "1",
+      "initial_mint_tx_hash": "810c9eed9da2a504c5959c005f0aeb1ba1f083e7ceac3072e7f72f29b937f43c",
+      "mint_or_burn_count": 1,
+      "onchain_metadata": {
+        "name": "Bad Fox #1628",
+        "image": ["ipfs://QmZodJsAx22ApVfm3gYfKcduUHTm9sLTu1xCXjsh74Aeob"],
+        "project": "Bad Fox Motorcycle Club",
+        "twitter": "https://twitter.com/BadFoxMC",
+        "website": "https://badfoxmc.com",
+        "mediaType": "image/png",
+        "attributes": {
+          "Ear": "(U) None",
+          "Back": "(U) None",
+          "Skin": "(M) Floyd",
+          "Mouth": "(M) Grawl",
+          "Gender": "Male",
+          "Clothes": "(M) Tank Top",
+          "Eyewear": "(U) Broken Visor",
+          "Headwear": "(U) Tengu Mask",
+          "Background": "(U) Grey Abstract"
+        },
+        "collection": "Fox Collection"
+      },
+      "metadata": null
+    }
+  ]
+}
