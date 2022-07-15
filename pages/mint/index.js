@@ -6,6 +6,7 @@ import Footer from '../../components/Footer'
 import Landing from '../../components/Landing'
 import Section from '../../components/Section'
 import DiscordLogin from '../../components/DiscordLogin'
+import MintPortal from '../../components/MintPortal'
 import { DISCORD_REDIRECT_URL_MINT } from '../../constants/discord'
 
 export default function Register() {
@@ -17,7 +18,19 @@ export default function Register() {
     router.push(DISCORD_REDIRECT_URL_MINT)
   }
 
-  if ((isPreSaleOnline && token && member) || isPublicSaleOnline) {
+  if (isPublicSaleOnline) {
+    return (
+      <div className='App flex-col'>
+        <Header />
+        <Landing>
+          <MintPortal />
+        </Landing>
+        <Footer />
+      </div>
+    )
+  }
+
+  if (isPreSaleOnline && token && member) {
     router.push('/mint/redirect')
 
     return <div className='App' />
