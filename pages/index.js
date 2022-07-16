@@ -38,7 +38,7 @@ export default function Home() {
     <div className='App flex-col'>
       <Header isHome scrollTo={scrollTo} />
       <Landing isHome />
-      <CountDown />
+      {/* <CountDown /> */}
       {isMobile ? <About /> : null}
       <Sneaks />
       <Partnerships />

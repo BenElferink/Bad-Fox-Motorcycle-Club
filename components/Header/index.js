@@ -165,7 +165,7 @@ export default function Header({ isHome = false, scrollTo = () => null }) {
             <BaseButton label='Roadmap' onClick={clickRoadmap} transparent style={btnStyle} />
             <BaseButton label='Team' onClick={clickTeam} transparent style={btnStyle} />
 
-            <OnlineIndicator online={isRegisterOnline}>
+            {/* <OnlineIndicator online={isRegisterOnline}>
               <BaseButton label='Register' onClick={clickRegister} transparent style={btnStyle} />
             </OnlineIndicator>
             <OnlineIndicator online={isPreSaleOnline || isPublicSaleOnline}>
@@ -177,7 +177,7 @@ export default function Header({ isHome = false, scrollTo = () => null }) {
                 style={btnStyle}
               />
             </OnlineIndicator>
-            <BaseButton label='Check Wallet' onClick={clickCheckWallet} transparent style={btnStyle} />
+            <BaseButton label='Check Wallet' onClick={clickCheckWallet} transparent style={btnStyle} /> */}
 
             <Socials />
           </nav>
