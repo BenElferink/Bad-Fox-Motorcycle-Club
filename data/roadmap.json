@@ -61,14 +61,14 @@
     "chapter": "Q3 2022",
     "events": [
       {
-        "complete": false,
+        "complete": true,
         "title": "Launch 1st Collection: Fox",
         "description": "There will be 6,000 foxes minted. Half female and half male. Mint prices will range from 42-62 ADA, dependent on your role (OG, WL, or Public)."
       },
       {
         "complete": false,
         "title": "ADA Payouts to Fox Holders",
-        "description": "We're going to distribute 80% of our royalties to each fox holder, every month."
+        "description": "We're going to distribute 80% of our royalties to each fox holder, for every 1m in secondary volume."
       },
       {
         "complete": true,
@@ -94,7 +94,7 @@
       {
         "complete": false,
         "title": "ADA Payouts to Motorcycle Holders",
-        "description": "Like the Fox Collection, we're going to distribute a portion of our royalties to each motorcycle holder, every month."
+        "description": "Like the Fox Collection, we're going to distribute a portion of our royalties to each motorcycle holder, for every 1m in secondary volume."
       },
       {
         "complete": false,
