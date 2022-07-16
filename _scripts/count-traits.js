@@ -13,10 +13,10 @@ const run = async () => {
 
       const labelCount = assets.filter(
         (assetObj) =>
-          assetObj[category.replace(' + Tail', '')]
-            .replace('(U) ', '')
-            .replace('(F) ', '')
-            .replace('(M) ', '') === label
+          assetObj[category.replace(' + Tail', '')].replace(
+            attributeObj.gender === 'Male' ? '(M) ' : attributeObj.gender === 'Female' ? '(F) ' : '(U) ',
+            ''
+          ) === label
       ).length
 
       const payload = {

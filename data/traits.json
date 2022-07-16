@@ -1,6 +1,13 @@
 {
   "Back": [
     {
+      "label": "Devil Wings",
+      "gender": "Male",
+      "image": "/images/traits/Back/M_Devil_Wings.png",
+      "count": 25,
+      "percent": "0.42%"
+    },
+    {
       "label": "Gara",
       "gender": "Male",
       "image": "/images/traits/Back/M_Gara.png",
@@ -11,29 +18,22 @@
       "label": "Devil Wings",
       "gender": "Female",
       "image": "/images/traits/Back/F_Devil_Wings.png",
-      "count": 58,
-      "percent": "0.97%"
-    },
-    {
-      "label": "Devil Wings",
-      "gender": "Male",
-      "image": "/images/traits/Back/M_Devil_Wings.png",
-      "count": 58,
-      "percent": "0.97%"
+      "count": 33,
+      "percent": "0.55%"
     },
     {
       "label": "Angel Wings",
       "gender": "Female",
       "image": "/images/traits/Back/F_Angel_Wings.png",
-      "count": 80,
-      "percent": "1.33%"
+      "count": 36,
+      "percent": "0.60%"
     },
     {
       "label": "Angel Wings",
       "gender": "Male",
       "image": "/images/traits/Back/M_Angel_Wings.png",
-      "count": 80,
-      "percent": "1.33%"
+      "count": 44,
+      "percent": "0.73%"
     },
     {
       "label": "Trident",
@@ -376,6 +376,13 @@
       "percent": "0.40%"
     },
     {
+      "label": "Space Suit",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Space_Suit.png",
+      "count": 27,
+      "percent": "0.45%"
+    },
+    {
       "label": "Secret Agent",
       "gender": "Male",
       "image": "/images/traits/Clothes/M_Secret_Agent.png",
@@ -386,6 +393,13 @@
       "label": "Luxury Robe",
       "gender": "Male",
       "image": "/images/traits/Clothes/M_Luxury_Robe.png",
+      "count": 38,
+      "percent": "0.63%"
+    },
+    {
+      "label": "Space Suit",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Space_Suit.png",
       "count": 38,
       "percent": "0.63%"
     },
@@ -404,6 +418,13 @@
       "percent": "1.02%"
     },
     {
+      "label": "Japanese Robe",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Japanese_Robe.png",
+      "count": 62,
+      "percent": "1.03%"
+    },
+    {
       "label": "Luxury Vest",
       "gender": "Male",
       "image": "/images/traits/Clothes/M_Luxury_Vest.png",
@@ -418,23 +439,9 @@
       "percent": "1.07%"
     },
     {
-      "label": "Space Suit",
-      "gender": "Female",
-      "image": "/images/traits/Clothes/F_Space_Suit.png",
-      "count": 65,
-      "percent": "1.08%"
-    },
-    {
       "label": "Purple Suit",
       "gender": "Male",
       "image": "/images/traits/Clothes/M_Purple_Suit.png",
-      "count": 65,
-      "percent": "1.08%"
-    },
-    {
-      "label": "Space Suit",
-      "gender": "Male",
-      "image": "/images/traits/Clothes/M_Space_Suit.png",
       "count": 65,
       "percent": "1.08%"
     },
@@ -444,6 +451,13 @@
       "image": "/images/traits/Clothes/M_Toga.png",
       "count": 69,
       "percent": "1.15%"
+    },
+    {
+      "label": "None",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_None.png",
+      "count": 71,
+      "percent": "1.18%"
     },
     {
       "label": "Freddy",
@@ -458,6 +472,27 @@
       "image": "/images/traits/Clothes/M_Snoop.png",
       "count": 74,
       "percent": "1.23%"
+    },
+    {
+      "label": "Japanese Robe",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Japanese_Robe.png",
+      "count": 79,
+      "percent": "1.32%"
+    },
+    {
+      "label": "Sport Jacket",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Sport_Jacket.png",
+      "count": 79,
+      "percent": "1.32%"
+    },
+    {
+      "label": "None",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_None.png",
+      "count": 83,
+      "percent": "1.38%"
     },
     {
       "label": "Armor",
@@ -488,6 +523,13 @@
       "percent": "1.48%"
     },
     {
+      "label": "Scarf",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Scarf.png",
+      "count": 90,
+      "percent": "1.50%"
+    },
+    {
       "label": "Khaleesi",
       "gender": "Female",
       "image": "/images/traits/Clothes/F_Khaleesi.png",
@@ -505,6 +547,13 @@
       "label": "Tank Top",
       "gender": "Male",
       "image": "/images/traits/Clothes/M_Tank_Top.png",
+      "count": 93,
+      "percent": "1.55%"
+    },
+    {
+      "label": "Scarf",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Scarf.png",
       "count": 93,
       "percent": "1.55%"
     },
@@ -586,6 +635,13 @@
       "percent": "1.80%"
     },
     {
+      "label": "Torn",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Torn.png",
+      "count": 108,
+      "percent": "1.80%"
+    },
+    {
       "label": "Robot Arm",
       "gender": "Male",
       "image": "/images/traits/Clothes/M_Robot_Arm.png",
@@ -649,6 +705,13 @@
       "percent": "2.08%"
     },
     {
+      "label": "Torn",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Torn.png",
+      "count": 125,
+      "percent": "2.08%"
+    },
+    {
       "label": "Green Jacket",
       "gender": "Male",
       "image": "/images/traits/Clothes/M_Green_Jacket.png",
@@ -663,18 +726,11 @@
       "percent": "2.12%"
     },
     {
-      "label": "Japanese Robe",
+      "label": "Sport Jacket",
       "gender": "Female",
-      "image": "/images/traits/Clothes/F_Japanese_Robe.png",
-      "count": 141,
-      "percent": "2.35%"
-    },
-    {
-      "label": "Japanese Robe",
-      "gender": "Male",
-      "image": "/images/traits/Clothes/M_Japanese_Robe.png",
-      "count": 141,
-      "percent": "2.35%"
+      "image": "/images/traits/Clothes/F_Sport_Jacket.png",
+      "count": 134,
+      "percent": "2.23%"
     },
     {
       "label": "Bath Robe",
@@ -698,20 +754,6 @@
       "percent": "2.53%"
     },
     {
-      "label": "None",
-      "gender": "Female",
-      "image": "/images/traits/Clothes/F_None.png",
-      "count": 154,
-      "percent": "2.57%"
-    },
-    {
-      "label": "None",
-      "gender": "Male",
-      "image": "/images/traits/Clothes/M_None.png",
-      "count": 154,
-      "percent": "2.57%"
-    },
-    {
       "label": "Prisoner",
       "gender": "Male",
       "image": "/images/traits/Clothes/M_Prisoner.png",
@@ -733,60 +775,18 @@
       "percent": "2.92%"
     },
     {
-      "label": "Scarf",
-      "gender": "Female",
-      "image": "/images/traits/Clothes/F_Scarf.png",
-      "count": 183,
-      "percent": "3.05%"
-    },
-    {
-      "label": "Scarf",
+      "label": "Biker",
       "gender": "Male",
-      "image": "/images/traits/Clothes/M_Scarf.png",
-      "count": 183,
-      "percent": "3.05%"
-    },
-    {
-      "label": "Sport Jacket",
-      "gender": "Female",
-      "image": "/images/traits/Clothes/F_Sport_Jacket.png",
-      "count": 213,
-      "percent": "3.55%"
-    },
-    {
-      "label": "Sport Jacket",
-      "gender": "Male",
-      "image": "/images/traits/Clothes/M_Sport_Jacket.png",
-      "count": 213,
-      "percent": "3.55%"
-    },
-    {
-      "label": "Torn",
-      "gender": "Female",
-      "image": "/images/traits/Clothes/F_Torn.png",
-      "count": 233,
-      "percent": "3.88%"
-    },
-    {
-      "label": "Torn",
-      "gender": "Male",
-      "image": "/images/traits/Clothes/M_Torn.png",
-      "count": 233,
-      "percent": "3.88%"
+      "image": "/images/traits/Clothes/M_Biker.png",
+      "count": 192,
+      "percent": "3.20%"
     },
     {
       "label": "Biker",
       "gender": "Female",
       "image": "/images/traits/Clothes/F_Biker.png",
-      "count": 385,
-      "percent": "6.42%"
-    },
-    {
-      "label": "Biker",
-      "gender": "Male",
-      "image": "/images/traits/Clothes/M_Biker.png",
-      "count": 385,
-      "percent": "6.42%"
+      "count": 193,
+      "percent": "3.22%"
     }
   ],
   "Ear": [
@@ -912,6 +912,13 @@
       "percent": "0.73%"
     },
     {
+      "label": "Big Shades",
+      "gender": "Female",
+      "image": "/images/traits/Eyewear/F_Big_Shades.png",
+      "count": 44,
+      "percent": "0.73%"
+    },
+    {
       "label": "Floyd",
       "gender": "Male",
       "image": "/images/traits/Eyewear/M_Floyd.png",
@@ -954,6 +961,27 @@
       "percent": "1.07%"
     },
     {
+      "label": "Big Shades",
+      "gender": "Male",
+      "image": "/images/traits/Eyewear/M_Big_Shades.png",
+      "count": 65,
+      "percent": "1.08%"
+    },
+    {
+      "label": "Scouter",
+      "gender": "Male",
+      "image": "/images/traits/Eyewear/M_Scouter.png",
+      "count": 74,
+      "percent": "1.23%"
+    },
+    {
+      "label": "Scouter",
+      "gender": "Female",
+      "image": "/images/traits/Eyewear/F_Scouter.png",
+      "count": 75,
+      "percent": "1.25%"
+    },
+    {
       "label": "Snoop",
       "gender": "Unisex",
       "image": "/images/traits/Eyewear/U_Snoop.png",
@@ -966,20 +994,6 @@
       "image": "/images/traits/Eyewear/U_Eye_Plaster.png",
       "count": 101,
       "percent": "1.68%"
-    },
-    {
-      "label": "Big Shades",
-      "gender": "Female",
-      "image": "/images/traits/Eyewear/F_Big_Shades.png",
-      "count": 109,
-      "percent": "1.82%"
-    },
-    {
-      "label": "Big Shades",
-      "gender": "Male",
-      "image": "/images/traits/Eyewear/M_Big_Shades.png",
-      "count": 109,
-      "percent": "1.82%"
     },
     {
       "label": "Hotiego",
@@ -1017,20 +1031,6 @@
       "percent": "2.38%"
     },
     {
-      "label": "Scouter",
-      "gender": "Female",
-      "image": "/images/traits/Eyewear/F_Scouter.png",
-      "count": 149,
-      "percent": "2.48%"
-    },
-    {
-      "label": "Scouter",
-      "gender": "Male",
-      "image": "/images/traits/Eyewear/M_Scouter.png",
-      "count": 149,
-      "percent": "2.48%"
-    },
-    {
       "label": "Broken Visor",
       "gender": "Unisex",
       "image": "/images/traits/Eyewear/U_Broken_Visor.png",
@@ -1061,6 +1061,13 @@
   ],
   "Headwear": [
     {
+      "label": "Freddy Fedora",
+      "gender": "Male",
+      "image": "/images/traits/Headwear/M_Freddy_Fedora.png",
+      "count": 0,
+      "percent": "0.00%"
+    },
+    {
       "label": "Wonder Woman",
       "gender": "Female",
       "image": "/images/traits/Headwear/F_Wonder_Woman.png",
@@ -1075,11 +1082,39 @@
       "percent": "0.45%"
     },
     {
+      "label": "Angel Halo",
+      "gender": "Female",
+      "image": "/images/traits/Headwear/F_Angel_Halo.png",
+      "count": 39,
+      "percent": "0.65%"
+    },
+    {
       "label": "Khaleesi",
       "gender": "Female",
       "image": "/images/traits/Headwear/F_Khaleesi.png",
       "count": 40,
       "percent": "0.67%"
+    },
+    {
+      "label": "Devil Horns",
+      "gender": "Female",
+      "image": "/images/traits/Headwear/F_Devil_Horns.png",
+      "count": 41,
+      "percent": "0.68%"
+    },
+    {
+      "label": "Devil Horns",
+      "gender": "Male",
+      "image": "/images/traits/Headwear/M_Devil_Horns.png",
+      "count": 42,
+      "percent": "0.70%"
+    },
+    {
+      "label": "Angel Halo",
+      "gender": "Male",
+      "image": "/images/traits/Headwear/M_Angel_Halo.png",
+      "count": 43,
+      "percent": "0.72%"
     },
     {
       "label": "Rapper",
@@ -1094,6 +1129,13 @@
       "image": "/images/traits/Headwear/F_Aqua_Crown.png",
       "count": 46,
       "percent": "0.77%"
+    },
+    {
+      "label": "Spiked Hair",
+      "gender": "Male",
+      "image": "/images/traits/Headwear/M_Spiked_Hair.png",
+      "count": 49,
+      "percent": "0.82%"
     },
     {
       "label": "Snoop",
@@ -1122,13 +1164,6 @@
       "image": "/images/traits/Headwear/M_Grey_Snapback.png",
       "count": 53,
       "percent": "0.88%"
-    },
-    {
-      "label": "Freddy Fedora",
-      "gender": "Male",
-      "image": "/images/traits/Headwear/M_Freddy_Fedora.png",
-      "count": 54,
-      "percent": "0.90%"
     },
     {
       "label": "Green Snapback",
@@ -1173,6 +1208,13 @@
       "percent": "1.15%"
     },
     {
+      "label": "Spiked Hair",
+      "gender": "Female",
+      "image": "/images/traits/Headwear/F_Spiked_Hair.png",
+      "count": 70,
+      "percent": "1.17%"
+    },
+    {
       "label": "Blonde Undercut",
       "gender": "Male",
       "image": "/images/traits/Headwear/M_Blonde_Undercut.png",
@@ -1199,34 +1241,6 @@
       "image": "/images/traits/Headwear/F_Pink_Undercut.png",
       "count": 80,
       "percent": "1.33%"
-    },
-    {
-      "label": "Angel Halo",
-      "gender": "Female",
-      "image": "/images/traits/Headwear/F_Angel_Halo.png",
-      "count": 82,
-      "percent": "1.37%"
-    },
-    {
-      "label": "Angel Halo",
-      "gender": "Male",
-      "image": "/images/traits/Headwear/M_Angel_Halo.png",
-      "count": 82,
-      "percent": "1.37%"
-    },
-    {
-      "label": "Devil Horns",
-      "gender": "Female",
-      "image": "/images/traits/Headwear/F_Devil_Horns.png",
-      "count": 83,
-      "percent": "1.38%"
-    },
-    {
-      "label": "Devil Horns",
-      "gender": "Male",
-      "image": "/images/traits/Headwear/M_Devil_Horns.png",
-      "count": 83,
-      "percent": "1.38%"
     },
     {
       "label": "Sweat Band",
@@ -1288,8 +1302,8 @@
       "label": "Jason Mask",
       "gender": "Unisex",
       "image": "/images/traits/Headwear/U_Jason_Mask.png",
-      "count": 110,
-      "percent": "1.83%"
+      "count": 109,
+      "percent": "1.82%"
     },
     {
       "label": "Cheese",
@@ -1304,20 +1318,6 @@
       "image": "/images/traits/Headwear/F_Bandana.png",
       "count": 118,
       "percent": "1.97%"
-    },
-    {
-      "label": "Spiked Hair",
-      "gender": "Female",
-      "image": "/images/traits/Headwear/F_Spiked_Hair.png",
-      "count": 119,
-      "percent": "1.98%"
-    },
-    {
-      "label": "Spiked Hair",
-      "gender": "Male",
-      "image": "/images/traits/Headwear/M_Spiked_Hair.png",
-      "count": 119,
-      "percent": "1.98%"
     },
     {
       "label": "Kitsune Mask",
@@ -1413,6 +1413,13 @@
       "percent": "1.90%"
     },
     {
+      "label": "Cigar",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Cigar.png",
+      "count": 115,
+      "percent": "1.92%"
+    },
+    {
       "label": "Joint",
       "gender": "Male",
       "image": "/images/traits/Mouth/M_Joint.png",
@@ -1439,6 +1446,13 @@
       "image": "/images/traits/Mouth/M_Ninja_Star.png",
       "count": 145,
       "percent": "2.42%"
+    },
+    {
+      "label": "Knife",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Knife.png",
+      "count": 148,
+      "percent": "2.47%"
     },
     {
       "label": "Tongue",
@@ -1469,6 +1483,13 @@
       "percent": "2.87%"
     },
     {
+      "label": "Cigar",
+      "gender": "Female",
+      "image": "/images/traits/Mouth/F_Cigar.png",
+      "count": 173,
+      "percent": "2.88%"
+    },
+    {
       "label": "Lollipop",
       "gender": "Male",
       "image": "/images/traits/Mouth/M_Lollipop.png",
@@ -1481,6 +1502,13 @@
       "image": "/images/traits/Mouth/M_Steak.png",
       "count": 188,
       "percent": "3.13%"
+    },
+    {
+      "label": "Knife",
+      "gender": "Female",
+      "image": "/images/traits/Mouth/F_Knife.png",
+      "count": 199,
+      "percent": "3.32%"
     },
     {
       "label": "Wheat",
@@ -1497,11 +1525,32 @@
       "percent": "3.67%"
     },
     {
+      "label": "Septum",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Septum.png",
+      "count": 238,
+      "percent": "3.97%"
+    },
+    {
+      "label": "Grawl",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Grawl.png",
+      "count": 239,
+      "percent": "3.98%"
+    },
+    {
       "label": "Octopus",
       "gender": "Female",
       "image": "/images/traits/Mouth/F_Octopus.png",
       "count": 242,
       "percent": "4.03%"
+    },
+    {
+      "label": "Grawl",
+      "gender": "Female",
+      "image": "/images/traits/Mouth/F_Grawl.png",
+      "count": 257,
+      "percent": "4.28%"
     },
     {
       "label": "Rose",
@@ -1518,25 +1567,25 @@
       "percent": "4.72%"
     },
     {
-      "label": "Cigar",
-      "gender": "Female",
-      "image": "/images/traits/Mouth/F_Cigar.png",
-      "count": 288,
-      "percent": "4.80%"
-    },
-    {
-      "label": "Cigar",
-      "gender": "Male",
-      "image": "/images/traits/Mouth/M_Cigar.png",
-      "count": 288,
-      "percent": "4.80%"
-    },
-    {
       "label": "Frown",
       "gender": "Female",
       "image": "/images/traits/Mouth/F_Frown.png",
       "count": 294,
       "percent": "4.90%"
+    },
+    {
+      "label": "Septum",
+      "gender": "Female",
+      "image": "/images/traits/Mouth/F_Septum.png",
+      "count": 296,
+      "percent": "4.93%"
+    },
+    {
+      "label": "None",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_None.png",
+      "count": 310,
+      "percent": "5.17%"
     },
     {
       "label": "Goatee",
@@ -1546,60 +1595,11 @@
       "percent": "5.40%"
     },
     {
-      "label": "Knife",
-      "gender": "Female",
-      "image": "/images/traits/Mouth/F_Knife.png",
-      "count": 347,
-      "percent": "5.78%"
-    },
-    {
-      "label": "Knife",
-      "gender": "Male",
-      "image": "/images/traits/Mouth/M_Knife.png",
-      "count": 347,
-      "percent": "5.78%"
-    },
-    {
-      "label": "Grawl",
-      "gender": "Female",
-      "image": "/images/traits/Mouth/F_Grawl.png",
-      "count": 496,
-      "percent": "8.27%"
-    },
-    {
-      "label": "Grawl",
-      "gender": "Male",
-      "image": "/images/traits/Mouth/M_Grawl.png",
-      "count": 496,
-      "percent": "8.27%"
-    },
-    {
-      "label": "Septum",
-      "gender": "Female",
-      "image": "/images/traits/Mouth/F_Septum.png",
-      "count": 534,
-      "percent": "8.90%"
-    },
-    {
-      "label": "Septum",
-      "gender": "Male",
-      "image": "/images/traits/Mouth/M_Septum.png",
-      "count": 534,
-      "percent": "8.90%"
-    },
-    {
       "label": "None",
       "gender": "Female",
       "image": "/images/traits/Mouth/F_None.png",
-      "count": 649,
-      "percent": "10.82%"
-    },
-    {
-      "label": "None",
-      "gender": "Male",
-      "image": "/images/traits/Mouth/M_None.png",
-      "count": 649,
-      "percent": "10.82%"
+      "count": 339,
+      "percent": "5.65%"
     }
   ],
   "Skin + Tail": [
@@ -1625,11 +1625,53 @@
       "percent": "0.48%"
     },
     {
+      "label": "Gold",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Gold.png",
+      "count": 46,
+      "percent": "0.77%"
+    },
+    {
+      "label": "Platinum",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Platinum.png",
+      "count": 55,
+      "percent": "0.92%"
+    },
+    {
       "label": "Pink Panther",
       "gender": "Male",
       "image": "/images/traits/SkinAndTail/M_Pink_Panther.png",
       "count": 59,
       "percent": "0.98%"
+    },
+    {
+      "label": "Devil",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Devil.png",
+      "count": 64,
+      "percent": "1.07%"
+    },
+    {
+      "label": "Zombie",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Zombie.png",
+      "count": 64,
+      "percent": "1.07%"
+    },
+    {
+      "label": "Gold",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Gold.png",
+      "count": 65,
+      "percent": "1.08%"
+    },
+    {
+      "label": "Platinum",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Platinum.png",
+      "count": 81,
+      "percent": "1.35%"
     },
     {
       "label": "Gara",
@@ -1653,18 +1695,11 @@
       "percent": "1.73%"
     },
     {
-      "label": "Gold",
-      "gender": "Female",
-      "image": "/images/traits/SkinAndTail/F_Gold.png",
-      "count": 111,
-      "percent": "1.85%"
-    },
-    {
-      "label": "Gold",
+      "label": "Devil",
       "gender": "Male",
-      "image": "/images/traits/SkinAndTail/M_Gold.png",
-      "count": 111,
-      "percent": "1.85%"
+      "image": "/images/traits/SkinAndTail/M_Devil.png",
+      "count": 104,
+      "percent": "1.73%"
     },
     {
       "label": "Huntress",
@@ -1674,25 +1709,18 @@
       "percent": "1.93%"
     },
     {
+      "label": "Zombie",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Zombie.png",
+      "count": 116,
+      "percent": "1.93%"
+    },
+    {
       "label": "Cyborg",
       "gender": "Male",
       "image": "/images/traits/SkinAndTail/M_Cyborg.png",
       "count": 128,
       "percent": "2.13%"
-    },
-    {
-      "label": "Platinum",
-      "gender": "Female",
-      "image": "/images/traits/SkinAndTail/F_Platinum.png",
-      "count": 136,
-      "percent": "2.27%"
-    },
-    {
-      "label": "Platinum",
-      "gender": "Male",
-      "image": "/images/traits/SkinAndTail/M_Platinum.png",
-      "count": 136,
-      "percent": "2.27%"
     },
     {
       "label": "Aqua",
@@ -1723,37 +1751,9 @@
       "percent": "2.65%"
     },
     {
-      "label": "Devil",
-      "gender": "Female",
-      "image": "/images/traits/SkinAndTail/F_Devil.png",
-      "count": 168,
-      "percent": "2.80%"
-    },
-    {
-      "label": "Devil",
-      "gender": "Male",
-      "image": "/images/traits/SkinAndTail/M_Devil.png",
-      "count": 168,
-      "percent": "2.80%"
-    },
-    {
-      "label": "Zombie",
-      "gender": "Female",
-      "image": "/images/traits/SkinAndTail/F_Zombie.png",
-      "count": 180,
-      "percent": "3.00%"
-    },
-    {
       "label": "Sky Blue",
       "gender": "Male",
       "image": "/images/traits/SkinAndTail/M_Sky_Blue.png",
-      "count": 180,
-      "percent": "3.00%"
-    },
-    {
-      "label": "Zombie",
-      "gender": "Male",
-      "image": "/images/traits/SkinAndTail/M_Zombie.png",
       "count": 180,
       "percent": "3.00%"
     },
@@ -1793,9 +1793,23 @@
       "percent": "3.80%"
     },
     {
+      "label": "Vanilla",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Vanilla.png",
+      "count": 236,
+      "percent": "3.93%"
+    },
+    {
       "label": "Scratched",
       "gender": "Male",
       "image": "/images/traits/SkinAndTail/M_Scratched.png",
+      "count": 237,
+      "percent": "3.95%"
+    },
+    {
+      "label": "Tanned",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Tanned.png",
       "count": 237,
       "percent": "3.95%"
     },
@@ -1808,59 +1822,45 @@
     },
     {
       "label": "Dark Tone",
-      "gender": "Female",
-      "image": "/images/traits/SkinAndTail/F_Dark_Tone.png",
-      "count": 557,
-      "percent": "9.28%"
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Dark_Tone.png",
+      "count": 246,
+      "percent": "4.10%"
     },
     {
       "label": "Dark Tone",
-      "gender": "Male",
-      "image": "/images/traits/SkinAndTail/M_Dark_Tone.png",
-      "count": 557,
-      "percent": "9.28%"
-    },
-    {
-      "label": "Tanned",
       "gender": "Female",
-      "image": "/images/traits/SkinAndTail/F_Tanned.png",
-      "count": 560,
-      "percent": "9.33%"
-    },
-    {
-      "label": "Tanned",
-      "gender": "Male",
-      "image": "/images/traits/SkinAndTail/M_Tanned.png",
-      "count": 560,
-      "percent": "9.33%"
-    },
-    {
-      "label": "Vanilla",
-      "gender": "Female",
-      "image": "/images/traits/SkinAndTail/F_Vanilla.png",
-      "count": 565,
-      "percent": "9.42%"
-    },
-    {
-      "label": "Vanilla",
-      "gender": "Male",
-      "image": "/images/traits/SkinAndTail/M_Vanilla.png",
-      "count": 565,
-      "percent": "9.42%"
-    },
-    {
-      "label": "Fox",
-      "gender": "Female",
-      "image": "/images/traits/SkinAndTail/F_Fox.png",
-      "count": 780,
-      "percent": "13.00%"
+      "image": "/images/traits/SkinAndTail/F_Dark_Tone.png",
+      "count": 311,
+      "percent": "5.18%"
     },
     {
       "label": "Fox",
       "gender": "Male",
       "image": "/images/traits/SkinAndTail/M_Fox.png",
-      "count": 780,
-      "percent": "13.00%"
+      "count": 322,
+      "percent": "5.37%"
+    },
+    {
+      "label": "Tanned",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Tanned.png",
+      "count": 323,
+      "percent": "5.38%"
+    },
+    {
+      "label": "Vanilla",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Vanilla.png",
+      "count": 329,
+      "percent": "5.48%"
+    },
+    {
+      "label": "Fox",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Fox.png",
+      "count": 458,
+      "percent": "7.63%"
     }
   ]
 }
