@@ -1061,13 +1061,6 @@
   ],
   "Headwear": [
     {
-      "label": "Freddy Fedora",
-      "gender": "Male",
-      "image": "/images/traits/Headwear/M_Freddy_Fedora.png",
-      "count": 0,
-      "percent": "0.00%"
-    },
-    {
       "label": "Wonder Woman",
       "gender": "Female",
       "image": "/images/traits/Headwear/F_Wonder_Woman.png",
@@ -1164,6 +1157,13 @@
       "image": "/images/traits/Headwear/M_Grey_Snapback.png",
       "count": 53,
       "percent": "0.88%"
+    },
+    {
+      "label": "Freddy Fedora",
+      "gender": "Male",
+      "image": "/images/traits/Headwear/M_Freddy_Fedora.png",
+      "count": 54,
+      "percent": "0.90%"
     },
     {
       "label": "Green Snapback",
