@@ -1,10 +1,10 @@
 const fs = require('fs')
 const traitsFile = require('../data/traits')
-const metadataFile = require('../data/final_metadata')
+const blockfrostFile = require('../data/blockfrost')
 
 const run = async () => {
   const traits = {}
-  const assets = Object.values(metadataFile)
+  const assets = blockfrostFile.assets
   const numOfAssets = assets.length
 
   Object.entries(traitsFile).forEach(([category, attributes]) => {
@@ -13,7 +13,7 @@ const run = async () => {
 
       const labelCount = assets.filter(
         (assetObj) =>
-          assetObj[category.replace(' + Tail', '')].replace(
+          assetObj.onchain_metadata.attributes[category.replace(' + Tail', '')].replace(
             attributeObj.gender === 'Male' ? '(M) ' : attributeObj.gender === 'Female' ? '(F) ' : '(U) ',
             ''
           ) === label
