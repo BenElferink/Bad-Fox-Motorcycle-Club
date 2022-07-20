@@ -15,7 +15,7 @@ export default function SubmitWallet() {
   const [forceEdit, setForceEdit] = useState(false)
 
   useEffect(() => {
-    const v = member?.wallet?.address ?? ''
+    const v = member.wallet.address
 
     if (v) {
       setWalletAddress(v)
@@ -85,29 +85,29 @@ export default function SubmitWallet() {
     )
   }
 
-  if (!member.roles?.isOG && !member.roles?.isWL) {
+  if (!member.roles.isOG) {
     return (
       <Section>
         <h2>You are not eligible to submit a wallet address.</h2>
         <p>
           Please make sure you have one of the following roles:
           <br />
-          <strong>OG, Whitelist</strong>
+          <strong>OG</strong>
         </p>
       </Section>
     )
   }
 
-  if (!member?.wallet?.address || forceEdit) {
+  if (!member.wallet.address || forceEdit) {
     return (
       <Section>
         <h2>Welcome {member.username}!</h2>
         <p>
-          You have the following roles:
+          You have the following (mint) roles:
           <br />
           <strong>
-            {member.roles?.isOG ? 'OG, ' : null}
-            {member.roles?.isWL ? 'Whitelist, ' : null}
+            {member.roles.isOG ? 'OG, ' : null}
+            {!member.roles.isOG ? 'None' : null}
           </strong>
         </p>
         <p>Please submit your wallet address, this will be the wallet you'll be minting from!</p>
@@ -127,14 +127,14 @@ export default function SubmitWallet() {
       <h2>Done!</h2>
       <p>You have successfully submitted your wallet address.</p>
       <p className={styles.addr}>
-        Your wallet address:
+        Your (registered) wallet address:
         <br />
-        <span>{member.wallet?.address}</span>
+        <span>{member.wallet.address}</span>
       </p>
       <p className={styles.addr}>
-        Your stake key:
+        Your (collected) stake key:
         <br />
-        <span>{member.wallet?.stakeKey}</span>
+        <span>{member.wallet.stakeKey}</span>
       </p>
       <BaseButton label='Change Address' onClick={clickEdit} style={{ background: 'var(--discord-purple)' }} />
     </Section>

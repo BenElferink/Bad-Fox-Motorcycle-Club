@@ -24,39 +24,26 @@ export default function ViewSubmittedWallet() {
     )
   }
 
-  if (!member.roles?.isOG && !member.roles?.isWL) {
-    return (
-      <Section>
-        <h2>You are not eligible to participate in the pre-sale.</h2>
-        <p>
-          Please make sure you have one of the following roles:
-          <br />
-          <strong>OG, Whitelist</strong>
-        </p>
-      </Section>
-    )
-  }
-
   return (
     <Section>
       <h2>Welcome {member.username}!</h2>
       <p>
-        You have the following roles:
+        You have the following (mint) roles:
         <br />
         <strong>
-          {member.roles?.isOG ? 'OG, ' : null}
-          {member.roles?.isWL ? 'Whitelist, ' : null}
+          {member.roles.isOG ? 'OG, ' : null}
+          {!member.roles.isOG ? 'None' : null}
         </strong>
       </p>
       <p className={styles.addr}>
-        Your wallet address:
+        Your (registered) wallet address:
         <br />
-        <span>{member?.wallet?.address ?? 'Not submitted'}</span>
+        <span>{member.wallet.address ?? 'Not submitted'}</span>
       </p>
       <p className={styles.addr}>
-        Your stake key:
+        Your (collected) stake key:
         <br />
-        <span>{member?.wallet?.stakeKey ?? 'Not submitted'}</span>
+        <span>{member.wallet.stakeKey ?? 'Not submitted'}</span>
       </p>
     </Section>
   )

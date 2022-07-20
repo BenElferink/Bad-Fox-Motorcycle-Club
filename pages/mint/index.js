@@ -31,7 +31,7 @@ export default function Register() {
   }
 
   if (isPreSaleOnline && token && member) {
-    router.push('/mint/redirect')
+    router.push(`${router.asPath}/redirect`)
 
     return <div className='App' />
   }

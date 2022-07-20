@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import { useMint } from '../../contexts/MintContext'
-import { Alert, AlertTitle, AppBar, Avatar, IconButton, Slide } from '@mui/material'
+import { Alert, AlertTitle, AppBar, Avatar, IconButton, Menu, MenuItem, Slide } from '@mui/material'
 import { MenuRounded } from '@mui/icons-material'
 import Modal from '../Modal'
 import BaseButton from '../BaseButton'
@@ -12,13 +12,15 @@ import Discord from '../../icons/Discord'
 import { HOME, MAP, TEAM } from '../../constants/scroll-nav'
 import styles from './Header.module.css'
 
-export default function Header({ isHome = false, scrollTo = () => null }) {
-  const router = useRouter()
+export default function Header({ scrollTo = () => null }) {
   const { isMobile } = useScreenSize()
-  const { isRegisterOnline, isPreSaleOnline, isPublicSaleOnline } = useMint()
+  const { isRegisterOnline } = useMint()
+
+  const router = useRouter()
+  const isHome = router.asPath === '/'
+
   const [openMobileMenu, setOpenMobileMenu] = useState(false)
-  const [showRegisterAlert, setShowRegisterAlert] = useState(false)
-  const [showMintAlert, setShowMintAlert] = useState(false)
+  const [alertMessage, setAlertMessage] = useState('')
 
   useEffect(() => {
     if (isMobile) {
@@ -27,23 +29,15 @@ export default function Header({ isHome = false, scrollTo = () => null }) {
   }, [isMobile])
 
   useEffect(() => {
-    if (showRegisterAlert) {
+    if (alertMessage) {
       setTimeout(() => {
-        setShowRegisterAlert(false)
-      }, 4000)
+        setAlertMessage('')
+      }, 5000)
     }
-  }, [showRegisterAlert])
-
-  useEffect(() => {
-    if (showMintAlert) {
-      setTimeout(() => {
-        setShowMintAlert(false)
-      }, 4000)
-    }
-  }, [showMintAlert])
+  }, [alertMessage])
 
   const clickHome = () => {
-    if (router.asPath === '/') {
+    if (isHome) {
       scrollTo(HOME)
     } else {
       router.push('/')
@@ -66,26 +60,17 @@ export default function Header({ isHome = false, scrollTo = () => null }) {
     setOpenMobileMenu(false)
   }
 
-  const clickRegister = () => {
+  const clickRegisterWallet = () => {
     if (isRegisterOnline) {
-      router.push('/register')
+      router.push('/wallet/register')
     } else {
-      setShowRegisterAlert(true)
-    }
-    setOpenMobileMenu(false)
-  }
-
-  const clickMint = () => {
-    if (isPreSaleOnline || isPublicSaleOnline) {
-      router.push('/mint')
-    } else {
-      setShowMintAlert(true)
+      setAlertMessage('Wallet registration is currently closed')
     }
     setOpenMobileMenu(false)
   }
 
   const clickCheckWallet = () => {
-    router.push('/registration-check')
+    router.push('/wallet/check')
     setOpenMobileMenu(false)
   }
 
@@ -93,19 +78,68 @@ export default function Header({ isHome = false, scrollTo = () => null }) {
     window.open('https://twitter.com/BadFoxMC', '_blank')
     setOpenMobileMenu(false)
   }
+
   const clickDiscord = () => {
     window.open('https://discord.gg/badfoxmc', '_blank')
     setOpenMobileMenu(false)
   }
 
-  const navStyle = {
-    width: isMobile ? '100%' : 'unset',
-    height: isMobile ? '100vh' : '100%',
-    justifyContent: 'center',
+  const jsStyles = {
+    nav: {
+      width: isMobile ? '100%' : 'unset',
+      height: isMobile ? '100vh' : '100%',
+      justifyContent: 'center',
+    },
+    burger: {
+      color: 'var(--white)',
+      fontSize: '2rem',
+    },
+    btn: {
+      width: 'fit-content',
+      margin: isMobile ? '0.5rem' : 'unset',
+    },
+    alert: {
+      width: 'fit-content',
+      position: 'absolute',
+      top: '1rem',
+      right: '1rem',
+      zIndex: '999',
+    },
   }
-  const burgerStyle = { color: 'var(--white)', fontSize: '2rem' }
-  const btnStyle = { width: 'fit-content', margin: isMobile ? '0.5rem' : 'unset' }
-  const alertStyle = { width: 'fit-content', position: 'absolute', top: '1rem', right: '1rem', zIndex: '999' }
+
+  const WalletMenu = () => {
+    const [anchorEl, setAnchorEl] = useState(null)
+    const open = Boolean(anchorEl)
+
+    if (isMobile) {
+      return (
+        <Fragment>
+          <OnlineIndicator online={isRegisterOnline}>
+            <BaseButton label='Register' onClick={clickRegisterWallet} transparent />
+          </OnlineIndicator>
+          <BaseButton label='Check' onClick={clickCheckWallet} style={jsStyles.btn} />
+        </Fragment>
+      )
+    }
+
+    return (
+      <div>
+        <BaseButton
+          label='Wallet'
+          onClick={(e) => setAnchorEl(e.currentTarget)}
+          transparent
+          style={jsStyles.btn}
+        />
+
+        <Menu open={open} onClose={() => setAnchorEl(null)} anchorEl={anchorEl}>
+          <OnlineIndicator online={isRegisterOnline}>
+            <MenuItem onClick={clickRegisterWallet}>Register</MenuItem>
+          </OnlineIndicator>
+          <MenuItem onClick={clickCheckWallet}>Check</MenuItem>
+        </Menu>
+      </div>
+    )
+  }
 
   const Socials = () => (
     <div className='flex-row'>
@@ -131,23 +165,16 @@ export default function Header({ isHome = false, scrollTo = () => null }) {
         <h1 style={{ fontSize: isMobile ? '1rem' : 'unset' }}>Bad Fox Motorcycle Club</h1>
       </div>
 
-      <Slide direction='up' in={showRegisterAlert} mountOnEnter unmountOnExit>
-        <Alert severity='info' style={alertStyle}>
-          <AlertTitle>Registration is offline</AlertTitle>
-          Wallet lists are closed
-        </Alert>
-      </Slide>
-
-      <Slide direction='up' in={showMintAlert} mountOnEnter unmountOnExit>
-        <Alert severity='info' style={alertStyle}>
-          <AlertTitle>Mint is offline</AlertTitle>
-          Mint will go live July 15th
+      <Slide direction='up' in={Boolean(alertMessage)} mountOnEnter unmountOnExit>
+        <Alert severity='info' style={jsStyles.alert}>
+          <AlertTitle>Woopsies!</AlertTitle>
+          {alertMessage}
         </Alert>
       </Slide>
 
       {isMobile && !openMobileMenu ? (
         <IconButton onClick={() => setOpenMobileMenu(true)}>
-          <MenuRounded style={burgerStyle} />
+          <MenuRounded style={jsStyles.burger} />
         </IconButton>
       ) : null}
 
@@ -158,36 +185,17 @@ export default function Header({ isHome = false, scrollTo = () => null }) {
         onClose={() => setOpenMobileMenu(false)}
         style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
       >
-        {isHome ? (
-          <nav className={isMobile ? 'flex-col' : 'flex-row'} style={navStyle}>
-            <BaseButton label='Home' onClick={clickHome} transparent style={btnStyle} />
-            <BaseButton label='Traits' onClick={clickTraits} transparent style={btnStyle} />
-            <BaseButton label='Roadmap' onClick={clickRoadmap} transparent style={btnStyle} />
-            <BaseButton label='Team' onClick={clickTeam} transparent style={btnStyle} />
+        <nav className={isMobile ? 'flex-col' : 'flex-row'} style={jsStyles.nav}>
+          <BaseButton label='Home' onClick={clickHome} transparent style={jsStyles.btn} />
 
-            {/* <OnlineIndicator online={isRegisterOnline}>
-              <BaseButton label='Register' onClick={clickRegister} transparent style={btnStyle} />
-            </OnlineIndicator>
-            <OnlineIndicator online={isPreSaleOnline || isPublicSaleOnline}>
-              <BaseButton
-                label='Mint'
-                onClick={clickMint}
-                transparent
-                disabled={!isPreSaleOnline && !isPublicSaleOnline}
-                style={btnStyle}
-              />
-            </OnlineIndicator>
-            <BaseButton label='Check Wallet' onClick={clickCheckWallet} transparent style={btnStyle} /> */}
+          {isHome ? <BaseButton label='Roadmap' onClick={clickRoadmap} transparent style={jsStyles.btn} /> : null}
+          {isHome ? <BaseButton label='Team' onClick={clickTeam} transparent style={jsStyles.btn} /> : null}
 
-            <Socials />
-          </nav>
-        ) : (
-          <nav className={isMobile ? 'flex-col' : 'flex-row'} style={navStyle}>
-            <BaseButton label='Home' onClick={clickHome} transparent style={btnStyle} />
+          <BaseButton label='Traits' onClick={clickTraits} transparent style={jsStyles.btn} />
 
-            <Socials />
-          </nav>
-        )}
+          {/* <WalletMenu /> */}
+          <Socials />
+        </nav>
       </Modal>
     </AppBar>
   )

@@ -104,20 +104,20 @@ export default function MintPortal() {
     )
   }
 
-  if (!member.roles?.isOG && !member.roles?.isWL) {
+  if (!member.roles.isOG) {
     return (
       <Section>
         <h2>You are not eligible to mint.</h2>
         <p>
           Please make sure you have one of the following roles:
           <br />
-          <strong>OG, Whitelist</strong>
+          <strong>OG</strong>
         </p>
       </Section>
     )
   }
 
-  if (!member?.wallet?.address || !member?.wallet?.stakeKey) {
+  if (!member.wallet.address || !member.wallet.stakeKey) {
     return (
       <Section>
         <h2>You are not eligible to mint.</h2>
@@ -138,20 +138,20 @@ export default function MintPortal() {
         You have the following roles:
         <br />
         <strong>
-          {member.roles?.isOG ? 'OG, ' : null}
-          {member.roles?.isWL ? 'Whitelist, ' : null}
+          {member.roles.isOG ? 'OG, ' : null}
+          {!member.roles.isOG ? 'None' : null}
         </strong>
       </p>
 
       <p className={styles.addr}>
         Your (registered) wallet address:
         <br />
-        <span>{member.wallet?.address}</span>
+        <span>{member.wallet.address}</span>
       </p>
       <p className={styles.addr}>
         Your (collected) stake key:
         <br />
-        <span>{member.wallet?.stakeKey}</span>
+        <span>{member.wallet.stakeKey}</span>
       </p>
 
       <BaseButton
@@ -163,25 +163,11 @@ export default function MintPortal() {
       <Modal
         open={openModal}
         onClose={() => setOpenModal(false)}
-        title={`${member.roles?.isOG ? 'OG' : member.roles?.isWL ? 'Whitelist' : 'Error'} Mint`}
+        title={`${member.roles.isOG ? 'OG' : 'Error'} Mint`}
         style={{ background: 'var(--brown)' }}
       >
-        {member.roles?.isOG ? (
-          <MintScreen
-            role='OG'
-            maxMints={3}
-            mintPrice={42}
-            mintAddress={mintObj.ogAddress}
-            loading={fetching}
-          />
-        ) : member.roles?.isWL ? (
-          <MintScreen
-            role='WL'
-            maxMints={2}
-            mintPrice={52}
-            mintAddress={mintObj.wlAddress}
-            loading={fetching}
-          />
+        {member.roles.isOG ? (
+          <MintScreen role='OG' maxMints={3} mintPrice={42} mintAddress={mintObj.ogAddress} loading={fetching} />
         ) : (
           <div className={styles.mintModal}>You're not supposed to be here.</div>
         )}

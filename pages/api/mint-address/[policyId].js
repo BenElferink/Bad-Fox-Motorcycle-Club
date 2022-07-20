@@ -17,7 +17,9 @@ export default async (req, res) => {
         const mint = await MintAddress.findOne({ policyId })
 
         if (!mint) {
-          return res.status(404).json({ type: 'NOT_FOUND', message: `Mint address not found for Policy ID: ${policyId}` })
+          return res
+            .status(404)
+            .json({ type: 'NOT_FOUND', message: `Mint address not found for Policy ID: ${policyId}` })
         }
 
         res.status(200).json(mint)
@@ -32,7 +34,9 @@ export default async (req, res) => {
         let mint = await MintAddress.findOne({ policyId })
 
         if (mint) {
-          return res.status(400).json({ type: 'BAD_REQUEST', message: `Mint address already exists for Policy ID: ${policyId}` })
+          return res
+            .status(400)
+            .json({ type: 'BAD_REQUEST', message: `Mint address already exists for Policy ID: ${policyId}` })
         }
 
         mint = new MintAddress({
@@ -57,7 +61,9 @@ export default async (req, res) => {
         const mint = await MintAddress.findOne({ policyId })
 
         if (!mint) {
-          return res.status(404).json({ type: 'NOT_FOUND', message: `Mint address not found for Policy ID: ${policyId}` })
+          return res
+            .status(404)
+            .json({ type: 'NOT_FOUND', message: `Mint address not found for Policy ID: ${policyId}` })
         }
 
         mint.ogAddress = ogAddress ?? mint.ogAddress

@@ -1,15 +1,15 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { useDiscordAuth } from '../../contexts/DiscordAuthContext'
-import { useMint } from '../../contexts/MintContext'
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
-import Landing from '../../components/Landing'
-import Section from '../../components/Section'
-import Loader from '../../components/Loader'
-import SubmitWallet from '../../components/SubmitWallet'
+import { useDiscordAuth } from '../../../contexts/DiscordAuthContext'
+import { useMint } from '../../../contexts/MintContext'
+import Header from '../../../components/Header'
+import Footer from '../../../components/Footer'
+import Landing from '../../../components/Landing'
+import Section from '../../../components/Section'
+import Loader from '../../../components/Loader'
+import SubmitWallet from '../../../components/SubmitWallet'
 
-export default function Redirect() {
+export default function RegisterWalletRedirect() {
   const router = useRouter()
   const { asPath } = router
   const { loading, token, member, getDiscordTokenFromQuery, getMemberWithToken } = useDiscordAuth()

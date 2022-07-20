@@ -14,21 +14,17 @@ const DiscordMember = new mongoose.Schema(
     roles: {
       isOG: {
         type: mongoose.Schema.Types.Boolean,
-        required: true,
-        default: false,
-      },
-      isWL: {
-        type: mongoose.Schema.Types.Boolean,
-        required: true,
         default: false,
       },
     },
     wallet: {
       address: {
         type: mongoose.Schema.Types.String,
+        default: '',
       },
       stakeKey: {
         type: mongoose.Schema.Types.String,
+        default: '',
       },
     },
   },

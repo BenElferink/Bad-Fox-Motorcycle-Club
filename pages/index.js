@@ -3,7 +3,7 @@ import { useScreenSize } from '../contexts/ScreenSizeContext'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Landing from '../components/Landing'
-import CountDown from '../components/CountDown'
+// import CountDown from '../components/CountDown'
 import About from '../components/About'
 import Sneaks from '../components/Sneaks'
 import Partnerships from '../components/Partnerships'
@@ -36,7 +36,7 @@ export default function Home() {
 
   return (
     <div className='App flex-col'>
-      <Header isHome scrollTo={scrollTo} />
+      <Header scrollTo={scrollTo} />
       <Landing isHome />
       {/* <CountDown /> */}
       {isMobile ? <About /> : null}

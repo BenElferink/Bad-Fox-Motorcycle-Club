@@ -1,8 +1,8 @@
-import axios from 'axios'
 import connectDB from '../../../utils/mongo'
 import DiscordMember from '../../../models/DiscordMember'
-import { DISCORD_BOT_TOKEN, DISCORD_GUILD_ID, DISCORD_ROLE_ID_OG, DISCORD_ROLE_ID_WL } from '../../../constants/discord'
+import { DISCORD_ROLE_ID_OG } from '../../../constants/discord'
 import getStakeKeyFromWalletAddress from '../../../functions/blockfrost/getStakeKeyFromWalletAddress'
+import getDiscordMember from '../../../functions/getDiscordMember'
 
 export default async (req, res) => {
   try {
@@ -10,58 +10,27 @@ export default async (req, res) => {
 
     const {
       method,
-      query: { discordToken },
+      query: { discordUserId, discordToken },
       body,
     } = req
 
-    if (!discordToken) {
-      return res.status(400).json({ type: 'BAD_REQUEST', message: 'Query param required: discordToken' })
+    if (!discordUserId && !discordToken) {
+      return res
+        .status(400)
+        .json({ type: 'BAD_REQUEST', message: 'Query param required: discordUserId, discordToken' })
     }
 
-    let userData = {}
-    let memberData = {}
+    const discordMember = await getDiscordMember(discordUserId, discordToken)
 
-    try {
-      // get userId using an access token
-      const { data } = await axios.get('https://discord.com/api/users/@me', {
-        headers: {
-          authorization: `Bearer ${discordToken}`,
-        },
-      })
-
-      userData = data
-    } catch (error) {
-      console.error(error)
-
-      return res.status(500).json({})
-    }
-
-    const userId = userData.id
-
-    try {
-      // get guild member using userId
-      const { data } = await axios.get(`https://discord.com/api/guilds/${DISCORD_GUILD_ID}/members/${userId}`, {
-        headers: {
-          authorization: `Bot ${DISCORD_BOT_TOKEN}`,
-        },
-      })
-
-      memberData = data
-    } catch (error) {
-      console.error(error)
-
-      if (error.isAxiosError && error.response.status === 404) {
-        return res.status(404).json({ type: 'MEMBER_ERROR', message: 'User is not in the Discord server' })
-      }
-
-      return res.status(500).json({})
+    if (!discordMember) {
+      return res.status(404).json({ type: 'MEMBER_ERROR', message: 'User is not in the Discord server' })
     }
 
     // collect updated values for this member
-    const username = `${memberData.user.username}#${memberData.user.discriminator}`
+    const userId = discordMember.user.id
+    const username = `${discordMember.user.username}#${discordMember.user.discriminator}`
     const roles = {
-      isOG: memberData.roles?.includes(DISCORD_ROLE_ID_OG),
-      isWL: memberData.roles?.includes(DISCORD_ROLE_ID_WL),
+      isOG: discordMember.role?.includes(DISCORD_ROLE_ID_OG),
     }
 
     switch (method) {
@@ -91,7 +60,10 @@ export default async (req, res) => {
         if (!walletAddress) {
           return res.status(400).json({ type: 'BAD_REQUEST', message: 'Body param required: walletAddress' })
         } else if (walletAddress.indexOf('addr1') !== 0) {
-          return res.status(400).json({ type: 'BAD_REQUEST', message: 'Please provide a valid wallet address (starts with addr1)' })
+          return res.status(400).json({
+            type: 'BAD_REQUEST',
+            message: 'Please provide a valid wallet address (starts with addr1)',
+          })
         }
 
         let stakeKey = ''
@@ -100,6 +72,16 @@ export default async (req, res) => {
           stakeKey = await getStakeKeyFromWalletAddress(walletAddress)
         } catch (error) {
           return res.status(404).json({ type: 'WALLET_ERROR', message: 'Could not retrieve stake key' })
+        }
+
+        // verify that the stake key is not a duplicate
+        const foundStakeKey = await DiscordMember.findOne({ 'wallet.stakeKey': stakeKey })
+
+        if (foundStakeKey) {
+          return res.status(400).json({
+            type: 'BAD_REQUEST',
+            message: `This stake key is already registered by ${foundStakeKey.username}`,
+          })
         }
 
         const wallet = {

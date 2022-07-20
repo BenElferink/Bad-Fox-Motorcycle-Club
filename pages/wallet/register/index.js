@@ -1,24 +1,24 @@
 import { useRouter } from 'next/router'
-import { useDiscordAuth } from '../../contexts/DiscordAuthContext'
-import { useMint } from '../../contexts/MintContext'
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
-import Landing from '../../components/Landing'
-import Section from '../../components/Section'
-import DiscordLogin from '../../components/DiscordLogin'
-import { DISCORD_REDIRECT_URL_REGISTER } from '../../constants/discord'
+import { useDiscordAuth } from '../../../contexts/DiscordAuthContext'
+import { useMint } from '../../../contexts/MintContext'
+import Header from '../../../components/Header'
+import Footer from '../../../components/Footer'
+import Landing from '../../../components/Landing'
+import Section from '../../../components/Section'
+import DiscordLogin from '../../../components/DiscordLogin'
+import { DISCORD_REDIRECT_URL_WALLET_REGISTER } from '../../../constants/discord'
 
-export default function Register() {
+export default function RegisterWallet() {
   const router = useRouter()
   const { isRegisterOnline } = useMint()
   const { token, member } = useDiscordAuth()
 
   const clickLogin = () => {
-    router.push(DISCORD_REDIRECT_URL_REGISTER)
+    router.push(DISCORD_REDIRECT_URL_WALLET_REGISTER)
   }
 
   if (isRegisterOnline && token && member) {
-    router.push('/register/redirect')
+    router.push(`${router.asPath}/redirect`)
 
     return <div className='App' />
   }
