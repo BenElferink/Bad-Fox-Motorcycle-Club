@@ -20,7 +20,8 @@
     "list-duplicate-stake-keys": "node ./_scripts/list-duplicate-stake-keys.js",
     "export-lists": "node ./_scripts/export-lists.js",
     "count-traits": "node ./_scripts/count-traits.js",
-    "pull-from-blockfrost": "node ./_scripts/pull-from-blockfrost.js"
+    "fetch-assets-from-blockfrost": "node ./_scripts/fetch-assets-from-blockfrost.js",
+    "get-wallets-for-royalty-distribution": "node ./_scripts/get-wallets-for-royalty-distribution.js"
   },
   "dependencies": {
     "@blockfrost/blockfrost-js": "^4.1.0",

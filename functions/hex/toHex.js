@@ -9,4 +9,4 @@ const toHex = (txt) => {
   return result
 }
 
-export default toHex
+module.exports = toHex

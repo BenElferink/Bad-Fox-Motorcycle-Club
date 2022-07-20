@@ -1,4 +1,4 @@
-import blockfrost from '../../utils/blockfrost'
+const blockfrost = require('../../utils/blockfrost')
 
 const getStakeKeyFromWalletAddress = (walletAddress) => {
   return new Promise(async (resolve, reject) => {
@@ -12,4 +12,4 @@ const getStakeKeyFromWalletAddress = (walletAddress) => {
   })
 }
 
-export default getStakeKeyFromWalletAddress
+module.expots = getStakeKeyFromWalletAddress

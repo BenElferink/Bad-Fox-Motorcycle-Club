@@ -1,5 +1,5 @@
-import axios from 'axios'
-import { DISCORD_BOT_TOKEN, DISCORD_GUILD_ID } from '../constants/discord'
+const axios = require('axios')
+const { DISCORD_BOT_TOKEN, DISCORD_GUILD_ID } = require('../constants/discord')
 
 const getDiscordMember = async (discordUserId, discordUserToken) => {
   let userId = discordUserId
@@ -50,4 +50,4 @@ const getDiscordMember = async (discordUserId, discordUserToken) => {
   }
 }
 
-export default getDiscordMember
+module.exports = getDiscordMember

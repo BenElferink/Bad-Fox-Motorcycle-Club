@@ -1,4 +1,4 @@
-import blockfrost from '../../utils/blockfrost'
+const blockfrost = require('../../utils/blockfrost')
 
 const getWalletAddressOfAsset = (assetId) => {
   return new Promise(async (resolve, reject) => {
@@ -12,4 +12,4 @@ const getWalletAddressOfAsset = (assetId) => {
   })
 }
 
-export default getWalletAddressOfAsset
+module.exports = getWalletAddressOfAsset
