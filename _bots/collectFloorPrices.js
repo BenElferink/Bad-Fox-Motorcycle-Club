@@ -11,13 +11,19 @@ const getFox = async (timestamp) =>
 
     const writeToDb = (obj) =>
       new Promise(async (resolve, reject) => {
+        const payload = {
+          type: obj.type,
+          price: obj.type,
+          timestamp,
+        }
+
         try {
           console.log(`Making request for type ${obj.type}`)
-          await axios.post(`http://localhost:3000/api/floor/${FOX_POLICY_ID}?adminCode=${ADMIN_CODE}`, obj)
+          await axios.post(`https://badfoxmc.com/api/floor/${FOX_POLICY_ID}?adminCode=${ADMIN_CODE}`, payload)
           return resolve(true)
         } catch (error) {
-          console.error(error.response.data)
-          return writeToDb(obj)
+          console.error(error?.response?.data)
+          return writeToDb(payload)
         }
       })
 
@@ -44,8 +50,6 @@ const runCronJob = async () => {
 
   console.log('Cron job finished')
 }
-
-// runCronJob()
 
 cron.schedule('0 0 * * *', runCronJob, {
   scheduled: true,

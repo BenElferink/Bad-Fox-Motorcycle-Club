@@ -33,7 +33,7 @@ export default async (req, res) => {
           return res.status(401).json({ type: 'UNAUTHORIZED', message: 'Admin code is invalid' })
         }
 
-        if (!bodyType || !price || !timestamp) {
+        if (!bodyType || (!price && price !== null) || !timestamp) {
           return res
             .status(400)
             .json({ type: 'BAD_REQUEST', message: 'Body params required: type, price, timestamp' })

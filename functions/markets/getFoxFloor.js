@@ -19,7 +19,7 @@ const getFoxFloor = async () => {
     }
 
     console.log(`Found floor for ${gender} - ${thisFloor}`)
-    floorData.push({ type: gender, price: thisFloor, timestamp: Date.now() })
+    floorData.push({ type: gender, price: thisFloor })
   }
 
   console.log('Found all floor prices')

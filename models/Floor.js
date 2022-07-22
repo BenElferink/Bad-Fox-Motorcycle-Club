@@ -11,11 +11,11 @@ const Floor = new mongoose.Schema({
   },
   price: {
     type: mongoose.Schema.Types.Number,
-    required: true,
+    default: null,
   },
   timestamp: {
     type: mongoose.Schema.Types.Number,
-    required: true,
+    default: Date.now(),
   },
 })
 
