@@ -20,7 +20,8 @@
     "fetch-assets": "node ./_scripts/fetchAssetsFromBlockfrost.js",
     "postfetch-assets": "npm run count-traits",
     "export-spreadsheets": "node ./_scripts/exportSpreadsheet.js",
-    "get-royalty-wallets": "node ./_scripts/getWalletsForRoyaltyDistribution.js"
+    "get-royalty-wallets": "node ./_scripts/getWalletsForRoyaltyDistribution.js",
+    "floor-bot": "node ./_bots/collectFloorPrices.js"
   },
   "dependencies": {
     "@blockfrost/blockfrost-js": "^4.1.0",
@@ -41,6 +42,8 @@
   },
   "devDependencies": {
     "dotenv": "^16.0.1",
+    "node-cron": "^3.0.1",
+    "uuid": "^8.3.2",
     "write-excel-file": "^1.4.8"
   }
 }
