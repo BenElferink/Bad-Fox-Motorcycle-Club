@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Box, Chip, FormControl, InputLabel, MenuItem, OutlinedInput, Select, TextField } from '@mui/material'
 import { TuneRounded as FilterIcon } from '@mui/icons-material'
+import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import { useMarket } from '../../contexts/MarketContext'
 import Modal from '../Modal'
 import Loader from '../Loader'
@@ -8,11 +9,13 @@ import BaseButton from '../BaseButton'
 import AssetCard from '../AssetCard'
 import foxTraitsJsonFile from '../../data/traits/fox'
 import styles from './MarketListings.module.css'
+import Toggle from '../Toggle'
 
 const TRAITS_MATRIX = Object.entries(foxTraitsJsonFile).sort((a, b) => a[0].localeCompare(b[0]))
 const INITIAL_DISPLAY_AMOUNT = 20
 
 function MarketListings() {
+  const { isMobile } = useScreenSize()
   const { fetchAndSetAllFoxes, allListedFoxes } = useMarket()
   const [loading, setLoading] = useState(false)
 
@@ -26,8 +29,11 @@ function MarketListings() {
     }
   }, [])
 
-  const [search, setSearch] = useState('')
+  const [ascending, setAscending] = useState(true)
+  const [sortByPrice, setSortByPrice] = useState(true)
+
   const [openFilters, setOpenFilters] = useState(false)
+  const [search, setSearch] = useState('')
   const [filters, setFilters] = useState(
     (() => {
       const payload = {}
@@ -66,54 +72,92 @@ function MarketListings() {
       }
     })
 
-    if (selected.length || search) {
-      return allListedFoxes
-        .filter((item) => {
-          const matchingCategories = []
+    return allListedFoxes
+      .filter((item) => {
+        const matchingCategories = []
 
-          selected.forEach(([cat, selections]) => {
-            let categoryMatch = false
+        selected.forEach(([cat, selections]) => {
+          let categoryMatch = false
 
-            if (selections.includes(item.attributes[cat])) {
-              categoryMatch = true
-            }
+          if (selections.includes(item.attributes[cat])) {
+            categoryMatch = true
+          }
 
-            if (categoryMatch) {
-              matchingCategories.push(cat)
-            }
-          })
-
-          return matchingCategories.length === selected.length
+          if (categoryMatch) {
+            matchingCategories.push(cat)
+          }
         })
-        .filter((item) => !search || (search && item.name.indexOf(search) !== -1))
-    } else {
-      return allListedFoxes
-    }
+
+        return matchingCategories.length === selected.length
+      })
+      .filter((item) => !search || (search && item.name.indexOf(search) !== -1))
+      .sort((a, b) =>
+        ascending && sortByPrice
+          ? a.price - b.price
+          : !ascending && sortByPrice
+          ? b.price - a.price
+          : ascending && !sortByPrice
+          ? a.rank - b.rank
+          : !ascending && !sortByPrice
+          ? b.rank - a.rank
+          : 0
+      )
   }
 
   return (
     <div className='flex-col'>
       <div className={styles.optionsWrapper}>
-        <BaseButton
-          label='Filter Attributes'
-          onClick={() => setOpenFilters((prev) => !prev)}
-          icon={FilterIcon}
-          style={{
-            width: 'calc(60% - 0.5rem)',
-            marginRight: '0.5rem',
-            backgroundColor: 'var(--charcoal)',
-          }}
-        />
-        <TextField
-          label='Search by #ID'
-          placeholder='4949'
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          style={{ width: '40%' }}
-        />
+        <div className={styles.togglesWrapper}>
+          <div className='flex-col'>
+            {!isMobile ? (ascending ? 'Ascend' : 'Descend') : null}
+            <Toggle
+              labelLeft={isMobile ? 'Descend' : ''}
+              labelRight={isMobile ? 'Ascend' : ''}
+              showIcons={false}
+              state={{ value: ascending, setValue: setAscending }}
+              style={{ margin: isMobile ? '0.5rem 0.3rem' : '0 0.3rem' }}
+            />
+          </div>
+          <div className='flex-col'>
+            {!isMobile ? (sortByPrice ? 'Price' : 'Rank') : null}
+            <Toggle
+              labelLeft={isMobile ? 'Rank' : ''}
+              labelRight={isMobile ? 'Price' : ''}
+              showIcons={false}
+              state={{ value: sortByPrice, setValue: setSortByPrice }}
+              style={{ margin: isMobile ? '0.5rem 0.3rem' : '0 0.3rem' }}
+            />
+          </div>
+        </div>
+
+        <div>
+          <BaseButton
+            label='Filter Attributes'
+            onClick={() => setOpenFilters((prev) => !prev)}
+            icon={FilterIcon}
+            style={{
+              width: 'calc(60% - 0.5rem)',
+              marginRight: '0.5rem',
+              backgroundColor: 'var(--brown)',
+            }}
+            hoverColor='var(--orange)'
+          />
+          <TextField
+            label='Search by #ID'
+            placeholder='4949'
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            style={{ width: '40%' }}
+          />
+        </div>
       </div>
 
-      <Modal title='Filter Attributes' open={openFilters} onClose={() => setOpenFilters((prev) => !prev)}>
+      <Modal
+        title='Filter Attributes'
+        open={openFilters}
+        onClose={() => setOpenFilters((prev) => !prev)}
+        style={{ backgroundColor: 'var(--charcoal)' }}
+      >
         <div className={styles.listOfFilters}>
           {TRAITS_MATRIX.map(([category, traits], idx1) => (
             <div key={`market-category-${category}-${idx1}`}>

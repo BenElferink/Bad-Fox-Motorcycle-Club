@@ -50,6 +50,23 @@ body {
   cursor: all-scroll;
 }
 
+.react-toggle-track {
+  background-color: var(--brown) !important;
+}
+.react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track {
+  background-color: var(--orange) !important;
+}
+.react-toggle--checked .react-toggle-track {
+  background-color: var(--brown) !important;
+}
+.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
+  background-color: var(--orange) !important;
+}
+.react-toggle--checked .react-toggle-thumb {
+  left: 27px;
+  border-color: var(--brown) !important;
+}
+
 /* .scroll::-webkit-scrollbar {
   display: none;
 } */

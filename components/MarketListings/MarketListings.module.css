@@ -1,6 +1,15 @@
 .optionsWrapper {
   margin: 0.5rem 1rem 0 1rem;
   display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+.optionsWrapper > div {
+  display: flex;
+}
+.togglesWrapper {
+  width: 100%;
+  justify-content: space-evenly;
 }
 
 .listOfFilters {
@@ -15,4 +24,15 @@
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-evenly;
+}
+
+@media only screen and (min-width: 768px) {
+  .optionsWrapper {
+    flex-direction: row;
+    align-items: none;
+  }
+
+  .togglesWrapper {
+    width: fit-content;
+  }
 }
