@@ -1,0 +1,1866 @@
+{
+  "Back": [
+    {
+      "label": "Devil Wings",
+      "gender": "Male",
+      "image": "/images/traits/Back/M_Devil_Wings.png",
+      "count": 25,
+      "percent": "0.42%"
+    },
+    {
+      "label": "Gara",
+      "gender": "Male",
+      "image": "/images/traits/Back/M_Gara.png",
+      "count": 30,
+      "percent": "0.50%"
+    },
+    {
+      "label": "Devil Wings",
+      "gender": "Female",
+      "image": "/images/traits/Back/F_Devil_Wings.png",
+      "count": 33,
+      "percent": "0.55%"
+    },
+    {
+      "label": "Angel Wings",
+      "gender": "Female",
+      "image": "/images/traits/Back/F_Angel_Wings.png",
+      "count": 36,
+      "percent": "0.60%"
+    },
+    {
+      "label": "Angel Wings",
+      "gender": "Male",
+      "image": "/images/traits/Back/M_Angel_Wings.png",
+      "count": 44,
+      "percent": "0.73%"
+    },
+    {
+      "label": "Trident",
+      "gender": "Female",
+      "image": "/images/traits/Back/F_Trident.png",
+      "count": 86,
+      "percent": "1.43%"
+    },
+    {
+      "label": "Lightsabers",
+      "gender": "Unisex",
+      "image": "/images/traits/Back/U_Lightsabers.png",
+      "count": 107,
+      "percent": "1.78%"
+    },
+    {
+      "label": "Samurai Swords",
+      "gender": "Female",
+      "image": "/images/traits/Back/F_Samurai_Swords.png",
+      "count": 129,
+      "percent": "2.15%"
+    },
+    {
+      "label": "Big Sword",
+      "gender": "Male",
+      "image": "/images/traits/Back/M_Big_Sword.png",
+      "count": 137,
+      "percent": "2.28%"
+    },
+    {
+      "label": "White Flag",
+      "gender": "Unisex",
+      "image": "/images/traits/Back/U_White_Flag.png",
+      "count": 159,
+      "percent": "2.65%"
+    },
+    {
+      "label": "Scythe",
+      "gender": "Unisex",
+      "image": "/images/traits/Back/U_Scythe.png",
+      "count": 183,
+      "percent": "3.05%"
+    },
+    {
+      "label": "Nail Bat",
+      "gender": "Unisex",
+      "image": "/images/traits/Back/U_Nail_Bat.png",
+      "count": 194,
+      "percent": "3.23%"
+    },
+    {
+      "label": "Machete",
+      "gender": "Unisex",
+      "image": "/images/traits/Back/U_Machete.png",
+      "count": 209,
+      "percent": "3.48%"
+    },
+    {
+      "label": "Blue Flag",
+      "gender": "Unisex",
+      "image": "/images/traits/Back/U_Blue_Flag.png",
+      "count": 216,
+      "percent": "3.60%"
+    },
+    {
+      "label": "Rifle",
+      "gender": "Unisex",
+      "image": "/images/traits/Back/U_Rifle.png",
+      "count": 263,
+      "percent": "4.38%"
+    },
+    {
+      "label": "Baseball Bat",
+      "gender": "Unisex",
+      "image": "/images/traits/Back/U_Baseball_Bat.png",
+      "count": 379,
+      "percent": "6.32%"
+    },
+    {
+      "label": "Hockey Stick",
+      "gender": "Unisex",
+      "image": "/images/traits/Back/U_Hockey_Stick.png",
+      "count": 387,
+      "percent": "6.45%"
+    },
+    {
+      "label": "None",
+      "gender": "Unisex",
+      "image": "/images/traits/Back/U_None.png",
+      "count": 3383,
+      "percent": "56.38%"
+    }
+  ],
+  "Background": [
+    {
+      "label": "Limited Edition",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Limited_Edition.png",
+      "count": 8,
+      "percent": "0.13%"
+    },
+    {
+      "label": "Mars Red",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Mars_Red.png",
+      "count": 135,
+      "percent": "2.25%"
+    },
+    {
+      "label": "Grey Glare",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Grey_Glare.png",
+      "count": 141,
+      "percent": "2.35%"
+    },
+    {
+      "label": "Stardust",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Stardust.png",
+      "count": 149,
+      "percent": "2.48%"
+    },
+    {
+      "label": "Paint Ball Pink",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Paint_Ball_Pink.png",
+      "count": 158,
+      "percent": "2.63%"
+    },
+    {
+      "label": "Clear Sky",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Clear_Sky.png",
+      "count": 164,
+      "percent": "2.73%"
+    },
+    {
+      "label": "Light Grey",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Light_Grey.png",
+      "count": 169,
+      "percent": "2.82%"
+    },
+    {
+      "label": "Plain Reflected",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Plain_Reflected.png",
+      "count": 172,
+      "percent": "2.87%"
+    },
+    {
+      "label": "Cold Evening",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Cold_Evening.png",
+      "count": 176,
+      "percent": "2.93%"
+    },
+    {
+      "label": "Grey Faded",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Grey_Faded.png",
+      "count": 176,
+      "percent": "2.93%"
+    },
+    {
+      "label": "Plain",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Plain.png",
+      "count": 178,
+      "percent": "2.97%"
+    },
+    {
+      "label": "Dark Grey",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Dark_Grey.png",
+      "count": 179,
+      "percent": "2.98%"
+    },
+    {
+      "label": "Tourquise with Halo",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Tourquise_with_Halo.png",
+      "count": 179,
+      "percent": "2.98%"
+    },
+    {
+      "label": "Dark Night",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Dark_Night.png",
+      "count": 180,
+      "percent": "3.00%"
+    },
+    {
+      "label": "Desert",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Desert.png",
+      "count": 182,
+      "percent": "3.03%"
+    },
+    {
+      "label": "Green Faded",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Green_Faded.png",
+      "count": 184,
+      "percent": "3.07%"
+    },
+    {
+      "label": "Yellow with Halo",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Yellow_with_Halo.png",
+      "count": 184,
+      "percent": "3.07%"
+    },
+    {
+      "label": "Bourdeaux with Halo",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Bourdeaux_with_Halo.png",
+      "count": 185,
+      "percent": "3.08%"
+    },
+    {
+      "label": "Off White",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Off_White.png",
+      "count": 185,
+      "percent": "3.08%"
+    },
+    {
+      "label": "Soft Pink",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Soft_Pink.png",
+      "count": 185,
+      "percent": "3.08%"
+    },
+    {
+      "label": "Olive Green",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Olive_Green.png",
+      "count": 186,
+      "percent": "3.10%"
+    },
+    {
+      "label": "Salmon",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Salmon.png",
+      "count": 186,
+      "percent": "3.10%"
+    },
+    {
+      "label": "Smokey",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Smokey.png",
+      "count": 188,
+      "percent": "3.13%"
+    },
+    {
+      "label": "Spring Morning",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Spring_Morning.png",
+      "count": 192,
+      "percent": "3.20%"
+    },
+    {
+      "label": "Blue with Halo",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Blue_with_Halo.png",
+      "count": 193,
+      "percent": "3.22%"
+    },
+    {
+      "label": "Snowy",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Snowy.png",
+      "count": 195,
+      "percent": "3.25%"
+    },
+    {
+      "label": "Soft Purple",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Soft_Purple.png",
+      "count": 195,
+      "percent": "3.25%"
+    },
+    {
+      "label": "Dark Purple with Halo",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Dark_Purple_with_Halo.png",
+      "count": 199,
+      "percent": "3.32%"
+    },
+    {
+      "label": "Light Purple with Halo",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Light_Purple_with_Halo.png",
+      "count": 200,
+      "percent": "3.33%"
+    },
+    {
+      "label": "Early Morning",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Early_Morning.png",
+      "count": 201,
+      "percent": "3.35%"
+    },
+    {
+      "label": "Grey Abstract",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Grey_Abstract.png",
+      "count": 202,
+      "percent": "3.37%"
+    },
+    {
+      "label": "Warm Evening",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Warm_Evening.png",
+      "count": 202,
+      "percent": "3.37%"
+    },
+    {
+      "label": "Blue Faded",
+      "gender": "Unisex",
+      "image": "/images/traits/Background/U_Blue_Faded.png",
+      "count": 209,
+      "percent": "3.48%"
+    }
+  ],
+  "Clothes": [
+    {
+      "label": "Wonder Woman",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Wonder_Woman.png",
+      "count": 22,
+      "percent": "0.37%"
+    },
+    {
+      "label": "Iron Suit",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Iron_Suit.png",
+      "count": 24,
+      "percent": "0.40%"
+    },
+    {
+      "label": "Space Suit",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Space_Suit.png",
+      "count": 27,
+      "percent": "0.45%"
+    },
+    {
+      "label": "Secret Agent",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Secret_Agent.png",
+      "count": 31,
+      "percent": "0.52%"
+    },
+    {
+      "label": "Luxury Robe",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Luxury_Robe.png",
+      "count": 38,
+      "percent": "0.63%"
+    },
+    {
+      "label": "Space Suit",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Space_Suit.png",
+      "count": 38,
+      "percent": "0.63%"
+    },
+    {
+      "label": "Camper",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Camper.png",
+      "count": 51,
+      "percent": "0.85%"
+    },
+    {
+      "label": "Gold Toga",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Gold_Toga.png",
+      "count": 61,
+      "percent": "1.02%"
+    },
+    {
+      "label": "Japanese Robe",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Japanese_Robe.png",
+      "count": 62,
+      "percent": "1.03%"
+    },
+    {
+      "label": "Luxury Vest",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Luxury_Vest.png",
+      "count": 63,
+      "percent": "1.05%"
+    },
+    {
+      "label": "Floyd",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Floyd.png",
+      "count": 64,
+      "percent": "1.07%"
+    },
+    {
+      "label": "Purple Suit",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Purple_Suit.png",
+      "count": 65,
+      "percent": "1.08%"
+    },
+    {
+      "label": "Toga",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Toga.png",
+      "count": 69,
+      "percent": "1.15%"
+    },
+    {
+      "label": "None",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_None.png",
+      "count": 71,
+      "percent": "1.18%"
+    },
+    {
+      "label": "Freddy",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Freddy.png",
+      "count": 73,
+      "percent": "1.22%"
+    },
+    {
+      "label": "Snoop",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Snoop.png",
+      "count": 74,
+      "percent": "1.23%"
+    },
+    {
+      "label": "Japanese Robe",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Japanese_Robe.png",
+      "count": 79,
+      "percent": "1.32%"
+    },
+    {
+      "label": "Sport Jacket",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Sport_Jacket.png",
+      "count": 79,
+      "percent": "1.32%"
+    },
+    {
+      "label": "None",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_None.png",
+      "count": 83,
+      "percent": "1.38%"
+    },
+    {
+      "label": "Armor",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Armor.png",
+      "count": 85,
+      "percent": "1.42%"
+    },
+    {
+      "label": "Cape",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Cape.png",
+      "count": 87,
+      "percent": "1.45%"
+    },
+    {
+      "label": "Jason",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Jason.png",
+      "count": 88,
+      "percent": "1.47%"
+    },
+    {
+      "label": "Archery",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Archery.png",
+      "count": 89,
+      "percent": "1.48%"
+    },
+    {
+      "label": "Scarf",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Scarf.png",
+      "count": 90,
+      "percent": "1.50%"
+    },
+    {
+      "label": "Khaleesi",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Khaleesi.png",
+      "count": 93,
+      "percent": "1.55%"
+    },
+    {
+      "label": "Chain",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Chain.png",
+      "count": 93,
+      "percent": "1.55%"
+    },
+    {
+      "label": "Tank Top",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Tank_Top.png",
+      "count": 93,
+      "percent": "1.55%"
+    },
+    {
+      "label": "Scarf",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Scarf.png",
+      "count": 93,
+      "percent": "1.55%"
+    },
+    {
+      "label": "Lace Bra",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Lace_Bra.png",
+      "count": 94,
+      "percent": "1.57%"
+    },
+    {
+      "label": "Lab Coat",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Lab_Coat.png",
+      "count": 94,
+      "percent": "1.57%"
+    },
+    {
+      "label": "Pouch",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Pouch.png",
+      "count": 98,
+      "percent": "1.63%"
+    },
+    {
+      "label": "Purple Beads",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Purple_Beads.png",
+      "count": 98,
+      "percent": "1.63%"
+    },
+    {
+      "label": "Mustard Stripes",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Mustard_Stripes.png",
+      "count": 99,
+      "percent": "1.65%"
+    },
+    {
+      "label": "Steampunk",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Steampunk.png",
+      "count": 99,
+      "percent": "1.65%"
+    },
+    {
+      "label": "Stripper",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Stripper.png",
+      "count": 102,
+      "percent": "1.70%"
+    },
+    {
+      "label": "Netted Bra",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Netted_Bra.png",
+      "count": 102,
+      "percent": "1.70%"
+    },
+    {
+      "label": "Shoulder Strap",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Shoulder_Strap.png",
+      "count": 104,
+      "percent": "1.73%"
+    },
+    {
+      "label": "Stripper Spiked",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Stripper_Spiked.png",
+      "count": 107,
+      "percent": "1.78%"
+    },
+    {
+      "label": "Green Bandana",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Green_Bandana.png",
+      "count": 108,
+      "percent": "1.80%"
+    },
+    {
+      "label": "Torn",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Torn.png",
+      "count": 108,
+      "percent": "1.80%"
+    },
+    {
+      "label": "Robot Arm",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Robot_Arm.png",
+      "count": 109,
+      "percent": "1.82%"
+    },
+    {
+      "label": "Fur Coat",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Fur_Coat.png",
+      "count": 111,
+      "percent": "1.85%"
+    },
+    {
+      "label": "Stripes",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Stripes.png",
+      "count": 112,
+      "percent": "1.87%"
+    },
+    {
+      "label": "Red Dress",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Red_Dress.png",
+      "count": 117,
+      "percent": "1.95%"
+    },
+    {
+      "label": "Janitor",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Janitor.png",
+      "count": 120,
+      "percent": "2.00%"
+    },
+    {
+      "label": "Black Dress",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Black_Dress.png",
+      "count": 122,
+      "percent": "2.03%"
+    },
+    {
+      "label": "Leon",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Leon.png",
+      "count": 123,
+      "percent": "2.05%"
+    },
+    {
+      "label": "Sport Vest",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Sport_Vest.png",
+      "count": 124,
+      "percent": "2.07%"
+    },
+    {
+      "label": "Leather Jacket",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Leather_Jacket.png",
+      "count": 125,
+      "percent": "2.08%"
+    },
+    {
+      "label": "Torn",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Torn.png",
+      "count": 125,
+      "percent": "2.08%"
+    },
+    {
+      "label": "Green Jacket",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Green_Jacket.png",
+      "count": 126,
+      "percent": "2.10%"
+    },
+    {
+      "label": "White Stripes",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_White_Stripes.png",
+      "count": 127,
+      "percent": "2.12%"
+    },
+    {
+      "label": "Sport Jacket",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Sport_Jacket.png",
+      "count": 134,
+      "percent": "2.23%"
+    },
+    {
+      "label": "Bath Robe",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Bath_Robe.png",
+      "count": 149,
+      "percent": "2.48%"
+    },
+    {
+      "label": "Farmer",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Farmer.png",
+      "count": 149,
+      "percent": "2.48%"
+    },
+    {
+      "label": "Hoodie",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Hoodie.png",
+      "count": 152,
+      "percent": "2.53%"
+    },
+    {
+      "label": "Prisoner",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Prisoner.png",
+      "count": 155,
+      "percent": "2.58%"
+    },
+    {
+      "label": "Hooters",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Hooters.png",
+      "count": 162,
+      "percent": "2.70%"
+    },
+    {
+      "label": "Jeans Jacket",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Jeans_Jacket.png",
+      "count": 175,
+      "percent": "2.92%"
+    },
+    {
+      "label": "Biker",
+      "gender": "Male",
+      "image": "/images/traits/Clothes/M_Biker.png",
+      "count": 192,
+      "percent": "3.20%"
+    },
+    {
+      "label": "Biker",
+      "gender": "Female",
+      "image": "/images/traits/Clothes/F_Biker.png",
+      "count": 193,
+      "percent": "3.22%"
+    }
+  ],
+  "Ear": [
+    {
+      "label": "Diamond Stud",
+      "gender": "Unisex",
+      "image": "/images/traits/Ear/U_Diamond_Stud.png",
+      "count": 126,
+      "percent": "2.10%"
+    },
+    {
+      "label": "Double Gold Rings",
+      "gender": "Unisex",
+      "image": "/images/traits/Ear/U_Double_Gold_Rings.png",
+      "count": 175,
+      "percent": "2.92%"
+    },
+    {
+      "label": "Gold Wing",
+      "gender": "Unisex",
+      "image": "/images/traits/Ear/U_Gold_Wing.png",
+      "count": 177,
+      "percent": "2.95%"
+    },
+    {
+      "label": "Gold Death Arrow",
+      "gender": "Unisex",
+      "image": "/images/traits/Ear/U_Gold_Death_Arrow.png",
+      "count": 187,
+      "percent": "3.12%"
+    },
+    {
+      "label": "Double Silver Rings",
+      "gender": "Unisex",
+      "image": "/images/traits/Ear/U_Double_Silver_Rings.png",
+      "count": 308,
+      "percent": "5.13%"
+    },
+    {
+      "label": "Quadriple Silver Rings",
+      "gender": "Unisex",
+      "image": "/images/traits/Ear/U_Quadriple_Silver_Rings.png",
+      "count": 359,
+      "percent": "5.98%"
+    },
+    {
+      "label": "Silver Bull",
+      "gender": "Unisex",
+      "image": "/images/traits/Ear/U_Silver_Bull.png",
+      "count": 377,
+      "percent": "6.28%"
+    },
+    {
+      "label": "Bone",
+      "gender": "Unisex",
+      "image": "/images/traits/Ear/U_Bone.png",
+      "count": 429,
+      "percent": "7.15%"
+    },
+    {
+      "label": "None",
+      "gender": "Unisex",
+      "image": "/images/traits/Ear/U_None.png",
+      "count": 3862,
+      "percent": "64.37%"
+    }
+  ],
+  "Eyewear": [
+    {
+      "label": "Red Laser Shades",
+      "gender": "Unisex",
+      "image": "/images/traits/Eyewear/U_Red_Laser_Shades.png",
+      "count": 22,
+      "percent": "0.37%"
+    },
+    {
+      "label": "Red Laser Particles",
+      "gender": "Unisex",
+      "image": "/images/traits/Eyewear/U_Red_Laser_Particles.png",
+      "count": 25,
+      "percent": "0.42%"
+    },
+    {
+      "label": "Pink Laser Shades",
+      "gender": "Unisex",
+      "image": "/images/traits/Eyewear/U_Pink_Laser_Shades.png",
+      "count": 29,
+      "percent": "0.48%"
+    },
+    {
+      "label": "Pink Visor",
+      "gender": "Female",
+      "image": "/images/traits/Eyewear/F_Pink_Visor.png",
+      "count": 38,
+      "percent": "0.63%"
+    },
+    {
+      "label": "VR Headset",
+      "gender": "Unisex",
+      "image": "/images/traits/Eyewear/U_VR_Headset.png",
+      "count": 40,
+      "percent": "0.67%"
+    },
+    {
+      "label": "Ski Goggles",
+      "gender": "Male",
+      "image": "/images/traits/Eyewear/M_Ski_Goggles.png",
+      "count": 43,
+      "percent": "0.72%"
+    },
+    {
+      "label": "Carnival Mask",
+      "gender": "Female",
+      "image": "/images/traits/Eyewear/F_Carnival_Mask.png",
+      "count": 44,
+      "percent": "0.73%"
+    },
+    {
+      "label": "Neon Glasses",
+      "gender": "Female",
+      "image": "/images/traits/Eyewear/F_Neon_Glasses.png",
+      "count": 44,
+      "percent": "0.73%"
+    },
+    {
+      "label": "Big Shades",
+      "gender": "Female",
+      "image": "/images/traits/Eyewear/F_Big_Shades.png",
+      "count": 44,
+      "percent": "0.73%"
+    },
+    {
+      "label": "Floyd",
+      "gender": "Male",
+      "image": "/images/traits/Eyewear/M_Floyd.png",
+      "count": 48,
+      "percent": "0.80%"
+    },
+    {
+      "label": "Pink Luxury Shades",
+      "gender": "Male",
+      "image": "/images/traits/Eyewear/M_Pink_Luxury_Shades.png",
+      "count": 52,
+      "percent": "0.87%"
+    },
+    {
+      "label": "Aviators",
+      "gender": "Male",
+      "image": "/images/traits/Eyewear/M_Aviators.png",
+      "count": 59,
+      "percent": "0.98%"
+    },
+    {
+      "label": "Pixels",
+      "gender": "Female",
+      "image": "/images/traits/Eyewear/F_Pixels.png",
+      "count": 60,
+      "percent": "1.00%"
+    },
+    {
+      "label": "Fire Shades",
+      "gender": "Female",
+      "image": "/images/traits/Eyewear/F_Fire_Shades.png",
+      "count": 63,
+      "percent": "1.05%"
+    },
+    {
+      "label": "Leon",
+      "gender": "Male",
+      "image": "/images/traits/Eyewear/M_Leon.png",
+      "count": 64,
+      "percent": "1.07%"
+    },
+    {
+      "label": "Big Shades",
+      "gender": "Male",
+      "image": "/images/traits/Eyewear/M_Big_Shades.png",
+      "count": 65,
+      "percent": "1.08%"
+    },
+    {
+      "label": "Scouter",
+      "gender": "Male",
+      "image": "/images/traits/Eyewear/M_Scouter.png",
+      "count": 74,
+      "percent": "1.23%"
+    },
+    {
+      "label": "Scouter",
+      "gender": "Female",
+      "image": "/images/traits/Eyewear/F_Scouter.png",
+      "count": 75,
+      "percent": "1.25%"
+    },
+    {
+      "label": "Snoop",
+      "gender": "Unisex",
+      "image": "/images/traits/Eyewear/U_Snoop.png",
+      "count": 99,
+      "percent": "1.65%"
+    },
+    {
+      "label": "Eye Plaster",
+      "gender": "Unisex",
+      "image": "/images/traits/Eyewear/U_Eye_Plaster.png",
+      "count": 101,
+      "percent": "1.68%"
+    },
+    {
+      "label": "Hotiego",
+      "gender": "Unisex",
+      "image": "/images/traits/Eyewear/U_Hotiego.png",
+      "count": 113,
+      "percent": "1.88%"
+    },
+    {
+      "label": "Nose Plaster",
+      "gender": "Unisex",
+      "image": "/images/traits/Eyewear/U_Nose_Plaster.png",
+      "count": 119,
+      "percent": "1.98%"
+    },
+    {
+      "label": "Steampunk Glasses Spiked",
+      "gender": "Unisex",
+      "image": "/images/traits/Eyewear/U_Steampunk_Glasses_Spiked.png",
+      "count": 137,
+      "percent": "2.28%"
+    },
+    {
+      "label": "Cheek Plaster",
+      "gender": "Unisex",
+      "image": "/images/traits/Eyewear/U_Cheek_Plaster.png",
+      "count": 141,
+      "percent": "2.35%"
+    },
+    {
+      "label": "Steampunk Glasses Round",
+      "gender": "Unisex",
+      "image": "/images/traits/Eyewear/U_Steampunk_Glasses_Round.png",
+      "count": 143,
+      "percent": "2.38%"
+    },
+    {
+      "label": "Broken Visor",
+      "gender": "Unisex",
+      "image": "/images/traits/Eyewear/U_Broken_Visor.png",
+      "count": 150,
+      "percent": "2.50%"
+    },
+    {
+      "label": "3D Glasses",
+      "gender": "Unisex",
+      "image": "/images/traits/Eyewear/U_3D_Glasses.png",
+      "count": 160,
+      "percent": "2.67%"
+    },
+    {
+      "label": "Retro Shades",
+      "gender": "Unisex",
+      "image": "/images/traits/Eyewear/U_Retro_Shades.png",
+      "count": 207,
+      "percent": "3.45%"
+    },
+    {
+      "label": "None",
+      "gender": "Unisex",
+      "image": "/images/traits/Eyewear/U_None.png",
+      "count": 3741,
+      "percent": "62.35%"
+    }
+  ],
+  "Headwear": [
+    {
+      "label": "Wonder Woman",
+      "gender": "Female",
+      "image": "/images/traits/Headwear/F_Wonder_Woman.png",
+      "count": 19,
+      "percent": "0.32%"
+    },
+    {
+      "label": "Warrior Helmet",
+      "gender": "Male",
+      "image": "/images/traits/Headwear/M_Warrior_Helmet.png",
+      "count": 27,
+      "percent": "0.45%"
+    },
+    {
+      "label": "Angel Halo",
+      "gender": "Female",
+      "image": "/images/traits/Headwear/F_Angel_Halo.png",
+      "count": 39,
+      "percent": "0.65%"
+    },
+    {
+      "label": "Khaleesi",
+      "gender": "Female",
+      "image": "/images/traits/Headwear/F_Khaleesi.png",
+      "count": 40,
+      "percent": "0.67%"
+    },
+    {
+      "label": "Devil Horns",
+      "gender": "Female",
+      "image": "/images/traits/Headwear/F_Devil_Horns.png",
+      "count": 41,
+      "percent": "0.68%"
+    },
+    {
+      "label": "Devil Horns",
+      "gender": "Male",
+      "image": "/images/traits/Headwear/M_Devil_Horns.png",
+      "count": 42,
+      "percent": "0.70%"
+    },
+    {
+      "label": "Angel Halo",
+      "gender": "Male",
+      "image": "/images/traits/Headwear/M_Angel_Halo.png",
+      "count": 43,
+      "percent": "0.72%"
+    },
+    {
+      "label": "Rapper",
+      "gender": "Male",
+      "image": "/images/traits/Headwear/M_Rapper.png",
+      "count": 44,
+      "percent": "0.73%"
+    },
+    {
+      "label": "Aqua Crown",
+      "gender": "Female",
+      "image": "/images/traits/Headwear/F_Aqua_Crown.png",
+      "count": 46,
+      "percent": "0.77%"
+    },
+    {
+      "label": "Spiked Hair",
+      "gender": "Male",
+      "image": "/images/traits/Headwear/M_Spiked_Hair.png",
+      "count": 49,
+      "percent": "0.82%"
+    },
+    {
+      "label": "Snoop",
+      "gender": "Male",
+      "image": "/images/traits/Headwear/M_Snoop.png",
+      "count": 51,
+      "percent": "0.85%"
+    },
+    {
+      "label": "Sheikh Bear",
+      "gender": "Female",
+      "image": "/images/traits/Headwear/F_Sheikh_Bear.png",
+      "count": 53,
+      "percent": "0.88%"
+    },
+    {
+      "label": "Skrillex Hair",
+      "gender": "Female",
+      "image": "/images/traits/Headwear/F_Skrillex_Hair.png",
+      "count": 53,
+      "percent": "0.88%"
+    },
+    {
+      "label": "Grey Snapback",
+      "gender": "Male",
+      "image": "/images/traits/Headwear/M_Grey_Snapback.png",
+      "count": 53,
+      "percent": "0.88%"
+    },
+    {
+      "label": "Freddy Fedora",
+      "gender": "Male",
+      "image": "/images/traits/Headwear/M_Freddy_Fedora.png",
+      "count": 54,
+      "percent": "0.90%"
+    },
+    {
+      "label": "Green Snapback",
+      "gender": "Male",
+      "image": "/images/traits/Headwear/M_Green_Snapback.png",
+      "count": 59,
+      "percent": "0.98%"
+    },
+    {
+      "label": "Santa Hat",
+      "gender": "Male",
+      "image": "/images/traits/Headwear/M_Santa_Hat.png",
+      "count": 59,
+      "percent": "0.98%"
+    },
+    {
+      "label": "Medusa",
+      "gender": "Female",
+      "image": "/images/traits/Headwear/F_Medusa.png",
+      "count": 60,
+      "percent": "1.00%"
+    },
+    {
+      "label": "Leon Beanie",
+      "gender": "Male",
+      "image": "/images/traits/Headwear/M_Leon_Beanie.png",
+      "count": 62,
+      "percent": "1.03%"
+    },
+    {
+      "label": "Queen Crown",
+      "gender": "Female",
+      "image": "/images/traits/Headwear/F_Queen_Crown.png",
+      "count": 65,
+      "percent": "1.08%"
+    },
+    {
+      "label": "Leaf Crown",
+      "gender": "Unisex",
+      "image": "/images/traits/Headwear/U_Leaf_Crown.png",
+      "count": 69,
+      "percent": "1.15%"
+    },
+    {
+      "label": "Spiked Hair",
+      "gender": "Female",
+      "image": "/images/traits/Headwear/F_Spiked_Hair.png",
+      "count": 70,
+      "percent": "1.17%"
+    },
+    {
+      "label": "Blonde Undercut",
+      "gender": "Male",
+      "image": "/images/traits/Headwear/M_Blonde_Undercut.png",
+      "count": 74,
+      "percent": "1.23%"
+    },
+    {
+      "label": "Thorn Crown",
+      "gender": "Unisex",
+      "image": "/images/traits/Headwear/U_Thorn_Crown.png",
+      "count": 75,
+      "percent": "1.25%"
+    },
+    {
+      "label": "Beanie",
+      "gender": "Female",
+      "image": "/images/traits/Headwear/F_Beanie.png",
+      "count": 80,
+      "percent": "1.33%"
+    },
+    {
+      "label": "Pink Undercut",
+      "gender": "Female",
+      "image": "/images/traits/Headwear/F_Pink_Undercut.png",
+      "count": 80,
+      "percent": "1.33%"
+    },
+    {
+      "label": "Sweat Band",
+      "gender": "Male",
+      "image": "/images/traits/Headwear/M_Sweat_Band.png",
+      "count": 84,
+      "percent": "1.40%"
+    },
+    {
+      "label": "Dragon Ball Crystal",
+      "gender": "Unisex",
+      "image": "/images/traits/Headwear/U_Dragon_Ball_Crystal.png",
+      "count": 85,
+      "percent": "1.42%"
+    },
+    {
+      "label": "Red Mohawk",
+      "gender": "Female",
+      "image": "/images/traits/Headwear/F_Red_Mohawk.png",
+      "count": 88,
+      "percent": "1.47%"
+    },
+    {
+      "label": "Green Marine",
+      "gender": "Male",
+      "image": "/images/traits/Headwear/M_Green_Marine.png",
+      "count": 93,
+      "percent": "1.55%"
+    },
+    {
+      "label": "Orange Undercut",
+      "gender": "Male",
+      "image": "/images/traits/Headwear/M_Orange_Undercut.png",
+      "count": 98,
+      "percent": "1.63%"
+    },
+    {
+      "label": "Unicorn",
+      "gender": "Female",
+      "image": "/images/traits/Headwear/F_Unicorn.png",
+      "count": 99,
+      "percent": "1.65%"
+    },
+    {
+      "label": "Camouflage",
+      "gender": "Unisex",
+      "image": "/images/traits/Headwear/U_Camouflage.png",
+      "count": 109,
+      "percent": "1.82%"
+    },
+    {
+      "label": "Tengu Mask",
+      "gender": "Unisex",
+      "image": "/images/traits/Headwear/U_Tengu_Mask.png",
+      "count": 109,
+      "percent": "1.82%"
+    },
+    {
+      "label": "Jason Mask",
+      "gender": "Unisex",
+      "image": "/images/traits/Headwear/U_Jason_Mask.png",
+      "count": 110,
+      "percent": "1.83%"
+    },
+    {
+      "label": "Cheese",
+      "gender": "Unisex",
+      "image": "/images/traits/Headwear/U_Cheese.png",
+      "count": 113,
+      "percent": "1.88%"
+    },
+    {
+      "label": "Bandana",
+      "gender": "Female",
+      "image": "/images/traits/Headwear/F_Bandana.png",
+      "count": 118,
+      "percent": "1.97%"
+    },
+    {
+      "label": "Kitsune Mask",
+      "gender": "Unisex",
+      "image": "/images/traits/Headwear/U_Kitsune_Mask.png",
+      "count": 121,
+      "percent": "2.02%"
+    },
+    {
+      "label": "Opera Mask",
+      "gender": "Unisex",
+      "image": "/images/traits/Headwear/U_Opera_Mask.png",
+      "count": 122,
+      "percent": "2.03%"
+    },
+    {
+      "label": "Light Helmet",
+      "gender": "Unisex",
+      "image": "/images/traits/Headwear/U_Light_Helmet.png",
+      "count": 134,
+      "percent": "2.23%"
+    },
+    {
+      "label": "Heavy Helmet",
+      "gender": "Unisex",
+      "image": "/images/traits/Headwear/U_Heavy_Helmet.png",
+      "count": 150,
+      "percent": "2.50%"
+    },
+    {
+      "label": "Pirate",
+      "gender": "Unisex",
+      "image": "/images/traits/Headwear/U_Pirate.png",
+      "count": 157,
+      "percent": "2.62%"
+    },
+    {
+      "label": "Straw Hat",
+      "gender": "Unisex",
+      "image": "/images/traits/Headwear/U_Straw_Hat.png",
+      "count": 172,
+      "percent": "2.87%"
+    },
+    {
+      "label": "Small Top Hat",
+      "gender": "Unisex",
+      "image": "/images/traits/Headwear/U_Small_Top_Hat.png",
+      "count": 174,
+      "percent": "2.90%"
+    },
+    {
+      "label": "None",
+      "gender": "Unisex",
+      "image": "/images/traits/Headwear/U_None.png",
+      "count": 2457,
+      "percent": "40.95%"
+    }
+  ],
+  "Mouth": [
+    {
+      "label": "Gold Bottom",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Gold_Bottom.png",
+      "count": 26,
+      "percent": "0.43%"
+    },
+    {
+      "label": "Gold Top",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Gold_Top.png",
+      "count": 34,
+      "percent": "0.57%"
+    },
+    {
+      "label": "Cash Bag",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Cash_Bag.png",
+      "count": 50,
+      "percent": "0.83%"
+    },
+    {
+      "label": "Clover",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Clover.png",
+      "count": 50,
+      "percent": "0.83%"
+    },
+    {
+      "label": "Crypto",
+      "gender": "Female",
+      "image": "/images/traits/Mouth/F_Crypto.png",
+      "count": 114,
+      "percent": "1.90%"
+    },
+    {
+      "label": "Cigar",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Cigar.png",
+      "count": 115,
+      "percent": "1.92%"
+    },
+    {
+      "label": "Joint",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Joint.png",
+      "count": 123,
+      "percent": "2.05%"
+    },
+    {
+      "label": "Weed Pipe",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Weed_Pipe.png",
+      "count": 125,
+      "percent": "2.08%"
+    },
+    {
+      "label": "Pipe",
+      "gender": "Female",
+      "image": "/images/traits/Mouth/F_Pipe.png",
+      "count": 142,
+      "percent": "2.37%"
+    },
+    {
+      "label": "Ninja Star",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Ninja_Star.png",
+      "count": 145,
+      "percent": "2.42%"
+    },
+    {
+      "label": "Knife",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Knife.png",
+      "count": 148,
+      "percent": "2.47%"
+    },
+    {
+      "label": "Tongue",
+      "gender": "Female",
+      "image": "/images/traits/Mouth/F_Tongue.png",
+      "count": 156,
+      "percent": "2.60%"
+    },
+    {
+      "label": "Luxury Cigarette",
+      "gender": "Female",
+      "image": "/images/traits/Mouth/F_Luxury_Cigarette.png",
+      "count": 165,
+      "percent": "2.75%"
+    },
+    {
+      "label": "Cigarette",
+      "gender": "Female",
+      "image": "/images/traits/Mouth/F_Cigarette.png",
+      "count": 168,
+      "percent": "2.80%"
+    },
+    {
+      "label": "Tongue Cute",
+      "gender": "Female",
+      "image": "/images/traits/Mouth/F_Tongue_Cute.png",
+      "count": 172,
+      "percent": "2.87%"
+    },
+    {
+      "label": "Cigar",
+      "gender": "Female",
+      "image": "/images/traits/Mouth/F_Cigar.png",
+      "count": 173,
+      "percent": "2.88%"
+    },
+    {
+      "label": "Lollipop",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Lollipop.png",
+      "count": 187,
+      "percent": "3.12%"
+    },
+    {
+      "label": "Steak",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Steak.png",
+      "count": 188,
+      "percent": "3.13%"
+    },
+    {
+      "label": "Knife",
+      "gender": "Female",
+      "image": "/images/traits/Mouth/F_Knife.png",
+      "count": 199,
+      "percent": "3.32%"
+    },
+    {
+      "label": "Wheat",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Wheat.png",
+      "count": 214,
+      "percent": "3.57%"
+    },
+    {
+      "label": "Toothpick",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Toothpick.png",
+      "count": 220,
+      "percent": "3.67%"
+    },
+    {
+      "label": "Septum",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Septum.png",
+      "count": 238,
+      "percent": "3.97%"
+    },
+    {
+      "label": "Grawl",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Grawl.png",
+      "count": 239,
+      "percent": "3.98%"
+    },
+    {
+      "label": "Octopus",
+      "gender": "Female",
+      "image": "/images/traits/Mouth/F_Octopus.png",
+      "count": 242,
+      "percent": "4.03%"
+    },
+    {
+      "label": "Grawl",
+      "gender": "Female",
+      "image": "/images/traits/Mouth/F_Grawl.png",
+      "count": 257,
+      "percent": "4.28%"
+    },
+    {
+      "label": "Rose",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Rose.png",
+      "count": 264,
+      "percent": "4.40%"
+    },
+    {
+      "label": "Lipstick",
+      "gender": "Female",
+      "image": "/images/traits/Mouth/F_Lipstick.png",
+      "count": 283,
+      "percent": "4.72%"
+    },
+    {
+      "label": "Frown",
+      "gender": "Female",
+      "image": "/images/traits/Mouth/F_Frown.png",
+      "count": 294,
+      "percent": "4.90%"
+    },
+    {
+      "label": "Septum",
+      "gender": "Female",
+      "image": "/images/traits/Mouth/F_Septum.png",
+      "count": 296,
+      "percent": "4.93%"
+    },
+    {
+      "label": "None",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_None.png",
+      "count": 310,
+      "percent": "5.17%"
+    },
+    {
+      "label": "Goatee",
+      "gender": "Male",
+      "image": "/images/traits/Mouth/M_Goatee.png",
+      "count": 324,
+      "percent": "5.40%"
+    },
+    {
+      "label": "None",
+      "gender": "Female",
+      "image": "/images/traits/Mouth/F_None.png",
+      "count": 339,
+      "percent": "5.65%"
+    }
+  ],
+  "Skin + Tail": [
+    {
+      "label": "Tron",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Tron.png",
+      "count": 23,
+      "percent": "0.38%"
+    },
+    {
+      "label": "Lava",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Lava.png",
+      "count": 24,
+      "percent": "0.40%"
+    },
+    {
+      "label": "Kurama",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Kurama.png",
+      "count": 29,
+      "percent": "0.48%"
+    },
+    {
+      "label": "Gold",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Gold.png",
+      "count": 46,
+      "percent": "0.77%"
+    },
+    {
+      "label": "Platinum",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Platinum.png",
+      "count": 55,
+      "percent": "0.92%"
+    },
+    {
+      "label": "Pink Panther",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Pink_Panther.png",
+      "count": 59,
+      "percent": "0.98%"
+    },
+    {
+      "label": "Devil",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Devil.png",
+      "count": 64,
+      "percent": "1.07%"
+    },
+    {
+      "label": "Zombie",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Zombie.png",
+      "count": 64,
+      "percent": "1.07%"
+    },
+    {
+      "label": "Gold",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Gold.png",
+      "count": 65,
+      "percent": "1.08%"
+    },
+    {
+      "label": "Platinum",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Platinum.png",
+      "count": 81,
+      "percent": "1.35%"
+    },
+    {
+      "label": "Gara",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Gara.png",
+      "count": 91,
+      "percent": "1.52%"
+    },
+    {
+      "label": "Floyd",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Floyd.png",
+      "count": 97,
+      "percent": "1.62%"
+    },
+    {
+      "label": "Freddy",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Freddy.png",
+      "count": 104,
+      "percent": "1.73%"
+    },
+    {
+      "label": "Devil",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Devil.png",
+      "count": 104,
+      "percent": "1.73%"
+    },
+    {
+      "label": "Huntress",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Huntress.png",
+      "count": 116,
+      "percent": "1.93%"
+    },
+    {
+      "label": "Zombie",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Zombie.png",
+      "count": 116,
+      "percent": "1.93%"
+    },
+    {
+      "label": "Cyborg",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Cyborg.png",
+      "count": 128,
+      "percent": "2.13%"
+    },
+    {
+      "label": "Green Scales",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Green_Scales.png",
+      "count": 144,
+      "percent": "2.40%"
+    },
+    {
+      "label": "Aqua",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Aqua.png",
+      "count": 144,
+      "percent": "2.40%"
+    },
+    {
+      "label": "Scratched Cute",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Scratched_Cute.png",
+      "count": 151,
+      "percent": "2.52%"
+    },
+    {
+      "label": "Yakuza",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Yakuza.png",
+      "count": 159,
+      "percent": "2.65%"
+    },
+    {
+      "label": "Sky Blue",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Sky_Blue.png",
+      "count": 180,
+      "percent": "3.00%"
+    },
+    {
+      "label": "Khaleesi",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Khaleesi.png",
+      "count": 188,
+      "percent": "3.13%"
+    },
+    {
+      "label": "Wonder Woman",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Wonder_Woman.png",
+      "count": 193,
+      "percent": "3.22%"
+    },
+    {
+      "label": "Scratched Rough",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Scratched_Rough.png",
+      "count": 202,
+      "percent": "3.37%"
+    },
+    {
+      "label": "Olive",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Olive.png",
+      "count": 207,
+      "percent": "3.45%"
+    },
+    {
+      "label": "Pink",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Pink.png",
+      "count": 228,
+      "percent": "3.80%"
+    },
+    {
+      "label": "Vanilla",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Vanilla.png",
+      "count": 236,
+      "percent": "3.93%"
+    },
+    {
+      "label": "Scratched",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Scratched.png",
+      "count": 237,
+      "percent": "3.95%"
+    },
+    {
+      "label": "Tanned",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Tanned.png",
+      "count": 237,
+      "percent": "3.95%"
+    },
+    {
+      "label": "Pale",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Pale.png",
+      "count": 239,
+      "percent": "3.98%"
+    },
+    {
+      "label": "Dark Tone",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Dark_Tone.png",
+      "count": 246,
+      "percent": "4.10%"
+    },
+    {
+      "label": "Dark Tone",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Dark_Tone.png",
+      "count": 311,
+      "percent": "5.18%"
+    },
+    {
+      "label": "Fox",
+      "gender": "Male",
+      "image": "/images/traits/SkinAndTail/M_Fox.png",
+      "count": 322,
+      "percent": "5.37%"
+    },
+    {
+      "label": "Tanned",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Tanned.png",
+      "count": 323,
+      "percent": "5.38%"
+    },
+    {
+      "label": "Vanilla",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Vanilla.png",
+      "count": 329,
+      "percent": "5.48%"
+    },
+    {
+      "label": "Fox",
+      "gender": "Female",
+      "image": "/images/traits/SkinAndTail/F_Fox.png",
+      "count": 458,
+      "percent": "7.63%"
+    }
+  ]
+}

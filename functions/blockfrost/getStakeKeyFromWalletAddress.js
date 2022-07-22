@@ -12,4 +12,4 @@ const getStakeKeyFromWalletAddress = (walletAddress) => {
   })
 }
 
-module.expots = getStakeKeyFromWalletAddress
+module.exports = getStakeKeyFromWalletAddress

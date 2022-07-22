@@ -11,9 +11,9 @@ const animationDelays = [
   '-10s',
 ]
 
-const Loader = ({ className = '', color = 'var(--white)' }) => {
+const Loader = ({ style = {}, className = '', color = 'var(--white)' }) => {
   return (
-    <div className={`${classes.root} ${className}`}>
+    <div className={`${classes.root} ${className}`} style={style}>
       <div className={classes.loading}>
         {animationDelays.map((value, idx) => (
           <div

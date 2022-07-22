@@ -1,0 +1,18 @@
+.optionsWrapper {
+  margin: 0.5rem 1rem 0 1rem;
+  display: flex;
+}
+
+.listOfFilters {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.listOfAssets {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}

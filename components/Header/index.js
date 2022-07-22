@@ -60,6 +60,11 @@ export default function Header({ scrollTo = () => null }) {
     setOpenMobileMenu(false)
   }
 
+  const clickMarket = () => {
+    router.push('/market')
+    setOpenMobileMenu(false)
+  }
+
   const clickRegisterWallet = () => {
     if (isRegisterOnline) {
       router.push('/wallet/register')
@@ -191,6 +196,7 @@ export default function Header({ scrollTo = () => null }) {
           {isHome ? <BaseButton label='Roadmap' onClick={clickRoadmap} transparent style={jsStyles.btn} /> : null}
           {isHome ? <BaseButton label='Team' onClick={clickTeam} transparent style={jsStyles.btn} /> : null}
 
+          <BaseButton label='Market' onClick={clickMarket} transparent style={jsStyles.btn} />
           <BaseButton label='Traits' onClick={clickTraits} transparent style={jsStyles.btn} />
 
           {/* <WalletMenu /> */}

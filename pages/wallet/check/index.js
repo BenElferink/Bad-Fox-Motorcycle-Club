@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import { useDiscordAuth } from '../../../contexts/DiscordAuthContext'
 import { useMint } from '../../../contexts/MintContext'
 import Header from '../../../components/Header'
@@ -16,9 +17,15 @@ export default function CheckWallet() {
     router.push(DISCORD_REDIRECT_URL_WALLET_CHECK)
   }
 
-  if (isRegisterOnline && token && member) {
-    router.push(`${router.asPath}/redirect`)
+  const isOkToRedirect = isRegisterOnline && token && member
 
+  useEffect(() => {
+    if (isOkToRedirect) {
+      router.push(`${router.asPath}/redirect`)
+    }
+  }, [isOkToRedirect])
+
+  if (isOkToRedirect) {
     return <div className='App' />
   }
 

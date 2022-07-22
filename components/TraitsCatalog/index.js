@@ -2,7 +2,7 @@ import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
 import Image from 'next/image'
 import { useState } from 'react'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
-import data from '../../data/traits.json'
+import data from '../../data/traits/fox'
 import Loader from '../Loader'
 import styles from './TraitsCatalog.module.css'
 

@@ -16,12 +16,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "sync-discord-members": "node ./_scripts/sync-discord-members.js",
-    "list-duplicate-stake-keys": "node ./_scripts/list-duplicate-stake-keys.js",
-    "export-lists": "node ./_scripts/export-lists.js",
-    "count-traits": "node ./_scripts/count-traits.js",
-    "fetch-assets-from-blockfrost": "node ./_scripts/fetch-assets-from-blockfrost.js",
-    "get-wallets-for-royalty-distribution": "node ./_scripts/get-wallets-for-royalty-distribution.js"
+    "count-traits": "node ./_scripts/countTraits.js",
+    "fetch-assets": "node ./_scripts/fetchAssetsFromBlockfrost.js",
+    "postfetch-assets": "npm run count-traits",
+    "export-spreadsheets": "node ./_scripts/exportSpreadsheet.js",
+    "get-royalty-wallets": "node ./_scripts/getWalletsForRoyaltyDistribution.js"
   },
   "dependencies": {
     "@blockfrost/blockfrost-js": "^4.1.0",

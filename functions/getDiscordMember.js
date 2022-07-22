@@ -23,7 +23,7 @@ const getDiscordMember = async (discordUserId, discordUserToken) => {
     } catch (error) {
       console.error(error)
 
-      return res.status(500).json({})
+      return null
     }
   }
 
