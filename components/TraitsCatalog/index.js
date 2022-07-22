@@ -1,32 +1,13 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
-import Image from 'next/image'
 import { useState } from 'react'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import data from '../../data/traits/fox'
-import Loader from '../Loader'
+import LoadingImage from './LoadingImage'
 import styles from './TraitsCatalog.module.css'
 
 const TraitsCatalog = () => {
   const { isMobile } = useScreenSize()
   const [selectedCategory, setSelectedCategory] = useState('Skin + Tail')
-
-  const LoaderImage = ({ src, alt }) => {
-    const [loading, setLoading] = useState(true)
-
-    return (
-      <div className={styles.traitCardImageWrapper}>
-        <Image
-          className={styles.traitCardImage}
-          src={src}
-          alt={alt}
-          width={isMobile ? 250 : 300}
-          height={isMobile ? 250 : 300}
-          onLoadingComplete={() => setLoading(false)}
-        />
-        {loading ? <Loader className={styles.traitCardLoader} color='var(--black)' /> : null}
-      </div>
-    )
-  }
 
   return (
     <div>
@@ -63,7 +44,7 @@ const TraitsCatalog = () => {
       <div className={styles.traitCatalog}>
         {data[selectedCategory].map((trait) => (
           <div key={`trait-catalog-list-item-${trait.label}-${trait.gender}`} className={styles.traitCard}>
-            <LoaderImage src={trait.image} alt={trait.label} />
+            <LoadingImage src={trait.image} alt={trait.label} />
             <h3 className={styles.traitCardTitle}>{trait.label}</h3>
             <table className={styles.traitCardTable}>
               <thead>
