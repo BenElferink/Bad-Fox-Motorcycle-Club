@@ -1,20 +1,18 @@
 import { useRouter } from 'next/router'
-import { Fragment, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
-import { useMint } from '../../contexts/MintContext'
-import { Alert, AlertTitle, AppBar, Avatar, IconButton, Menu, MenuItem, Slide } from '@mui/material'
+import { Alert, AlertTitle, AppBar, Avatar, IconButton, Slide } from '@mui/material'
 import { MenuRounded } from '@mui/icons-material'
 import Modal from '../Modal'
 import BaseButton from '../BaseButton'
-import OnlineIndicator from '../OnlineIndicator'
-import Twitter from '../../icons/Twitter'
-import Discord from '../../icons/Discord'
+import TraitsMenu from './TraitsMenu'
+// import WalletMenu from './WalletMenu'
+import Socials from './Socials'
 import { HOME, MAP, TEAM } from '../../constants/scroll-nav'
 import styles from './Header.module.css'
 
 export default function Header({ scrollTo = () => null }) {
   const { isMobile } = useScreenSize()
-  const { isRegisterOnline } = useMint()
 
   const router = useRouter()
   const isHome = router.asPath === '/'
@@ -35,6 +33,8 @@ export default function Header({ scrollTo = () => null }) {
       }, 5000)
     }
   }, [alertMessage])
+
+  const closeMenu = () => setOpenMobileMenu(false)
 
   const clickHome = () => {
     if (isHome) {
@@ -65,30 +65,6 @@ export default function Header({ scrollTo = () => null }) {
     setOpenMobileMenu(false)
   }
 
-  const clickRegisterWallet = () => {
-    if (isRegisterOnline) {
-      router.push('/wallet/register')
-    } else {
-      setAlertMessage('Wallet registration is currently closed')
-    }
-    setOpenMobileMenu(false)
-  }
-
-  const clickCheckWallet = () => {
-    router.push('/wallet/check')
-    setOpenMobileMenu(false)
-  }
-
-  const clickTwitter = () => {
-    window.open('https://twitter.com/BadFoxMC', '_blank')
-    setOpenMobileMenu(false)
-  }
-
-  const clickDiscord = () => {
-    window.open('https://discord.gg/badfoxmc', '_blank')
-    setOpenMobileMenu(false)
-  }
-
   const jsStyles = {
     nav: {
       width: isMobile ? '100%' : 'unset',
@@ -111,51 +87,6 @@ export default function Header({ scrollTo = () => null }) {
       zIndex: '999',
     },
   }
-
-  const WalletMenu = () => {
-    const [anchorEl, setAnchorEl] = useState(null)
-    const open = Boolean(anchorEl)
-
-    if (isMobile) {
-      return (
-        <Fragment>
-          <OnlineIndicator online={isRegisterOnline}>
-            <BaseButton label='Register' onClick={clickRegisterWallet} transparent />
-          </OnlineIndicator>
-          <BaseButton label='Check' onClick={clickCheckWallet} style={jsStyles.btn} />
-        </Fragment>
-      )
-    }
-
-    return (
-      <div>
-        <BaseButton
-          label='Wallet'
-          onClick={(e) => setAnchorEl(e.currentTarget)}
-          transparent
-          style={jsStyles.btn}
-        />
-
-        <Menu open={open} onClose={() => setAnchorEl(null)} anchorEl={anchorEl}>
-          <OnlineIndicator online={isRegisterOnline}>
-            <MenuItem onClick={clickRegisterWallet}>Register</MenuItem>
-          </OnlineIndicator>
-          <MenuItem onClick={clickCheckWallet}>Check</MenuItem>
-        </Menu>
-      </div>
-    )
-  }
-
-  const Socials = () => (
-    <div className='flex-row'>
-      <IconButton onClick={clickTwitter}>
-        <Twitter size={26} fill='var(--white)' />
-      </IconButton>
-      <IconButton onClick={clickDiscord}>
-        <Discord size={26} fill='var(--white)' />
-      </IconButton>
-    </div>
-  )
 
   return (
     <AppBar className={styles.root} position='sticky'>
@@ -187,7 +118,7 @@ export default function Header({ scrollTo = () => null }) {
         title=''
         onlyChildren={!isMobile}
         open={!isMobile || openMobileMenu}
-        onClose={() => setOpenMobileMenu(false)}
+        onClose={closeMenu}
         style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
       >
         <nav className={isMobile ? 'flex-col' : 'flex-row'} style={jsStyles.nav}>
@@ -197,10 +128,10 @@ export default function Header({ scrollTo = () => null }) {
           {isHome ? <BaseButton label='Team' onClick={clickTeam} transparent style={jsStyles.btn} /> : null}
 
           <BaseButton label='Market' onClick={clickMarket} transparent style={jsStyles.btn} />
-          <BaseButton label='Traits' onClick={clickTraits} transparent style={jsStyles.btn} />
 
-          {/* <WalletMenu /> */}
-          <Socials />
+          <TraitsMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} setAlertMessage={setAlertMessage} />
+          {/* <WalletMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} setAlertMessage={setAlertMessage} /> */}
+          <Socials closeMenu={closeMenu} />
         </nav>
       </Modal>
     </AppBar>

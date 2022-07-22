@@ -30,14 +30,14 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }))
 
-const OnlineBadge = styled(StyledBadge)(({ theme }) => ({
+const OnlineBadge = styled(StyledBadge)(() => ({
   '& .MuiBadge-badge': {
     backgroundColor: 'var(--online)',
     color: 'var(--online)',
   },
 }))
 
-const OfflineBadge = styled(StyledBadge)(({ theme }) => ({
+const OfflineBadge = styled(StyledBadge)(() => ({
   '& .MuiBadge-badge': {
     backgroundColor: 'var(--offline)',
     color: 'var(--offline)',
