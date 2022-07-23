@@ -43,9 +43,9 @@ function AssetCard({
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
               <tbody>
                 {tableRows.map((row, idx) => (
-                  <tr key={`${name}-table-row-${idx}`}>
+                  <tr key={`${mainTitles[0]}-table-row-${idx}`}>
                     {row.map((str) => (
-                      <td key={`${name}-table-row-${idx}-item-${str}`}>
+                      <td key={`${mainTitles[0]}-table-row-${idx}-item-${str}`}>
                         <Typography variant='body2' color='text.secondary' fontSize='smaller'>
                           {str}
                         </Typography>
