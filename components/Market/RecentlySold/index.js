@@ -15,7 +15,7 @@ function RecentlySold() {
   const [page, setPage] = useState(1)
 
   useEffect(() => {
-    if (!loading) {
+    if (!loading || (page === 1 && !recentlySoldFoxes.length)) {
       ;(async () => {
         setLoading(true)
         await fetchAndSetRecentFoxes({ sold: true, page })

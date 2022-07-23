@@ -2,7 +2,8 @@ import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
 import { useState } from 'react'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import data from '../../data/traits/fox'
-import LoadingImage from './LoadingImage'
+import AssetCard from '../AssetCard'
+import BaseButton from '../BaseButton'
 import styles from './TraitsCatalog.module.css'
 
 const TraitsCatalog = () => {
@@ -30,39 +31,33 @@ const TraitsCatalog = () => {
           </FormControl>
         ) : (
           Object.keys(data).map((category) => (
-            <button
+            <BaseButton
               key={`trait-catalog-category-${category}`}
+              label={category}
               onClick={() => setSelectedCategory(category)}
+              backgroundColor='var(--brown)'
+              hoverColor='var(--orange)'
               className={selectedCategory === category ? styles.selectedButton : ''}
-            >
-              {category}
-            </button>
+              color='var(--black)'
+            />
           ))
         )}
       </div>
 
       <div className={styles.traitCatalog}>
         {data[selectedCategory].map((trait) => (
-          <div key={`trait-catalog-list-item-${trait.label}-${trait.gender}`} className={styles.traitCard}>
-            <LoadingImage src={trait.image} alt={trait.label} />
-            <h3 className={styles.traitCardTitle}>{trait.label}</h3>
-            <table className={styles.traitCardTable}>
-              <thead>
-                <tr>
-                  <th>Gender:</th>
-                  <th>Count:</th>
-                  <th>Percent:</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{trait.gender}</td>
-                  <td>{trait.count}</td>
-                  <td>{trait.percent}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <AssetCard
+            key={`trait-catalog-list-item-${trait.label}-${trait.gender}`}
+            backgroundColor='var(--brown)'
+            color='var(--black)'
+            mainTitles={[trait.label]}
+            imageSrc={trait.image}
+            itemUrl={trait.image}
+            tableRows={[
+              ['Gender:', 'Count:', 'Percent:'],
+              [trait.gender, trait.count, trait.percent],
+            ]}
+          />
         ))}
       </div>
     </div>

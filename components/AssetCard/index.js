@@ -1,5 +1,28 @@
-import { Card, CardActionArea, CardContent, CardMedia, Divider, Typography } from '@mui/material'
-import { Fragment } from 'react'
+import Image from 'next/image'
+import { Fragment, useState } from 'react'
+import { Card, CardActionArea, CardContent, Divider, Typography } from '@mui/material'
+import { useScreenSize } from '../../contexts/ScreenSizeContext'
+import Loader from '../Loader'
+import styles from './AssetCard.module.css'
+
+const LoadingImage = ({ src, alt, color }) => {
+  const { isMobile } = useScreenSize()
+  const [loading, setLoading] = useState(true)
+
+  return (
+    <div className={styles.cardImageWrapper}>
+      <Image
+        className={styles.cardImage}
+        src={src}
+        alt={alt}
+        width={isMobile ? 270 : 300}
+        height={isMobile ? 270 : 300}
+        onLoadingComplete={() => setLoading(false)}
+      />
+      {loading ? <Loader className={styles.cardLoader} color={color} /> : null}
+    </div>
+  )
+}
 
 function AssetCard({
   mainTitles = [],
@@ -8,19 +31,18 @@ function AssetCard({
   tableRows,
   onClick,
   itemUrl = 'https://jpg.store',
+  backgroundColor = 'var(--charcoal)',
+  color = 'var(--white)',
 }) {
   return (
-    <Card sx={{ margin: '1rem 2rem', borderRadius: '1rem', overflow: 'visible' }}>
+    <Card
+      sx={{ margin: '1rem 2rem', borderRadius: '1rem', overflow: 'visible', background: backgroundColor, color }}
+    >
       <CardActionArea
         style={{ display: 'flex', flexDirection: 'column' }}
         onClick={() => (onClick ? onClick() : window.open(itemUrl, '_blank'))}
       >
-        <CardMedia
-          component='img'
-          image={imageSrc}
-          alt=''
-          sx={{ width: '300px', height: '300px', borderRadius: '1rem 1rem 0 0' }}
-        />
+        <LoadingImage src={imageSrc} alt='' color={color} />
         <CardContent style={{ maxWidth: 'unset', width: '100%' }}>
           <Typography variant='h5' fontSize='big'>
             {mainTitles.map((str, idx) => (
@@ -30,7 +52,7 @@ function AssetCard({
               </Fragment>
             ))}
           </Typography>
-          <Typography variant='body2' color='text.secondary' fontSize='medium'>
+          <Typography variant='body2' color={color ?? 'text.secondary'} fontSize='medium'>
             {subTitles.map((str, idx) => (
               <Fragment key={`card-string-${str}-${idx}`}>
                 {str}
@@ -46,7 +68,7 @@ function AssetCard({
                   <tr key={`${mainTitles[0]}-table-row-${idx}`}>
                     {row.map((str) => (
                       <td key={`${mainTitles[0]}-table-row-${idx}-item-${str}`}>
-                        <Typography variant='body2' color='text.secondary' fontSize='smaller'>
+                        <Typography variant='body2' color={color ?? 'text.secondary'} fontSize='smaller'>
                           {str}
                         </Typography>
                       </td>

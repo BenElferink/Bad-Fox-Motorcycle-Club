@@ -10,7 +10,10 @@ function BaseButton({
   disabled = false,
   transparent = false,
   style = {},
+  className = '',
+  backgroundColor,
   hoverColor,
+  color,
 }) {
   const ref = useRef(null)
   const { isMobile } = useScreenSize()
@@ -24,10 +27,12 @@ function BaseButton({
       fullWidth={isMobile}
       startIcon={Icon ? <Icon /> : null}
       onClick={onClick}
+      className={className}
       style={{
         padding: '0.4rem 0.8rem',
-        backgroundColor: selected ? 'var(--white)' : transparent ? 'transparent' : 'var(--black)',
-        color: selected ? 'var(--black)' : 'var(--white)',
+        backgroundColor:
+          backgroundColor ?? (selected ? 'var(--white)' : transparent ? 'transparent' : 'var(--black)'),
+        color: color ?? (selected ? 'var(--black)' : 'var(--white)'),
         boxShadow: transparent ? 'none' : '',
         ...style,
         cursor: disabled ? 'not-allowed' : 'pointer',
@@ -39,7 +44,7 @@ function BaseButton({
       }}
       onMouseLeave={() => {
         ref.current.style.backgroundColor =
-          style.backgroundColor ?? (selected ? 'var(--white)' : transparent ? 'transparent' : 'var(--black)')
+          backgroundColor ?? (selected ? 'var(--white)' : transparent ? 'transparent' : 'var(--black)')
       }}
     >
       {label}

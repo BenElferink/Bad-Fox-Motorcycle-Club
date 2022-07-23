@@ -56,11 +56,6 @@ export default function Header({ scrollTo = () => null }) {
     setOpenMobileMenu(false)
   }
 
-  const clickTraits = () => {
-    router.push('/traits')
-    setOpenMobileMenu(false)
-  }
-
   const clickMarket = () => {
     router.push('/market')
     setOpenMobileMenu(false)
@@ -92,11 +87,11 @@ export default function Header({ scrollTo = () => null }) {
   return (
     <AppBar className={styles.root} position='sticky'>
       <div className='flex-row'>
-        <IconButton onClick={clickHome}>
+        <IconButton onClick={clickHome} sx={{ margin: '1rem 1rem 1rem 0.5rem' }}>
           <Avatar
             alt=''
             src='/images/logo/white_alpha.png'
-            sx={{ width: isMobile ? 55 : 69, height: isMobile ? 55 : 69, margin: '1rem 1rem 1rem 0.5rem' }}
+            sx={{ width: isMobile ? 55 : 69, height: isMobile ? 55 : 69 }}
           />
         </IconButton>
         <h1 style={{ fontSize: isMobile ? '1rem' : 'unset' }}>Bad Fox Motorcycle Club</h1>

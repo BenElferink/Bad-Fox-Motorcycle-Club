@@ -7,18 +7,8 @@
 }
 
 .categoryButtons button {
-  margin: 0 0.1rem;
-  padding: 0.5rem 1rem;
-  background-color: var(--brown);
-  border: none;
-  border-radius: 0.7rem 0.7rem 0 0;
-  font-size: 1rem;
+  margin: 0.5rem 0.1rem 0 0.1rem;
   cursor: pointer;
-}
-
-.categoryButtons button:hover,
-.categoryButtons button:active {
-  background-color: var(--orange) !important;
 }
 
 .selectedButton {
@@ -30,40 +20,4 @@
   flex-flow: row wrap;
   align-items: center;
   justify-content: center;
-}
-
-.traitCard {
-  margin: 0.5rem;
-  padding: 0.5rem;
-  background-color: var(--brown);
-  border-radius: 1rem;
-  color: var(--black);
-}
-
-.traitCardImageWrapper {
-  position: relative;
-}
-.traitCardImage {
-  border: 1px solid var(--black);
-  border-radius: 1rem;
-}
-.traitCardLoader {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.traitCardTitle {
-  margin: 0.5rem auto;
-  font-size: 1.4rem;
-  text-align: center;
-}
-
-.traitCardTable {
-  width: 100%;
-  margin: 0.5rem auto;
-  border-collapse: collapse;
-  font-size: 1rem;
-  text-align: center;
 }

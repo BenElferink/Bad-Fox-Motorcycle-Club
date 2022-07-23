@@ -22,7 +22,7 @@ function Listings() {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    if (!allListedFoxes.length) {
+    if (!loading) {
       ;(async () => {
         setLoading(true)
         await fetchAndSetAllFoxes()
@@ -140,8 +140,8 @@ function Listings() {
             style={{
               width: 'calc(60% - 0.5rem)',
               marginRight: '0.5rem',
-              backgroundColor: 'var(--brown)',
             }}
+            backgroundColor='var(--brown)'
             hoverColor='var(--orange)'
           />
           <TextField
@@ -154,12 +154,7 @@ function Listings() {
         </div>
       </div>
 
-      <Modal
-        title='Filter Attributes'
-        open={openFilters}
-        onClose={() => setOpenFilters((prev) => !prev)}
-        style={{ backgroundColor: 'var(--charcoal)' }}
-      >
+      <Modal title='Filter Attributes' open={openFilters} onClose={() => setOpenFilters((prev) => !prev)}>
         <div className={styles.listOfFilters}>
           {TRAITS_MATRIX.map(([category, traits], idx1) => (
             <div key={`market-category-${category}-${idx1}`}>

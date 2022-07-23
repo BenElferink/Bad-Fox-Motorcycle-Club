@@ -23,7 +23,7 @@ function Modal({ open, onClose, style = {}, title = 'Title', children, onlyChild
             maxHeight: isMobile ? '100vh' : '90vh',
             padding: '1rem',
             borderRadius: isMobile ? '0' : '1rem',
-            backgroundColor: 'var(--black)',
+            backgroundColor: 'var(--charcoal)',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
