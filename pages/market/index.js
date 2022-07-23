@@ -1,12 +1,15 @@
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import Footer from '../../components/Footer'
+import Header from '../../components/Header'
+import Listings from '../../components/Market/Listings'
+import RecentlySold from '../../components/Market/RecentlySold'
 
 export default function Market() {
-  const router = useRouter()
-
-  useEffect(() => {
-    router.push(`${router.asPath}/listings`)
-  }, [])
-
-  return <div className='App' />
+  return (
+    <div className='App flex-col'>
+      <Header />
+      <Listings />
+      <RecentlySold />
+      <Footer />
+    </div>
+  )
 }

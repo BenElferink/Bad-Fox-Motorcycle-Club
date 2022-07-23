@@ -25,13 +25,13 @@ export function MarketProvider({ children }) {
     }
   }
 
-  const fetchAndSetRecentFoxes = async ({ sold = false, page = 1 }) => {
+  const fetchAndSetRecentFoxes = async ({ sold = true, page = 1 }) => {
     try {
       const { data } = await axios.get(`/api/listings/fox/recent?sold=${sold}&page=${page}`)
       if (sold) {
-        setRecentlySoldFoxes(data)
+        setRecentlySoldFoxes((prev) => [...prev, ...data])
       } else {
-        setRecentlyListedFoxes(data)
+        setRecentlyListedFoxes((prev) => [...prev, ...data])
       }
     } catch (error) {
       console.error(error)
@@ -49,8 +49,8 @@ export function MarketProvider({ children }) {
         fetchAndSetAllFoxes,
         fetchAndSetRecentFoxes,
         allListedFoxes,
-        recentlyListedFoxes,
         recentlySoldFoxes,
+        recentlyListedFoxes,
       }}
     >
       {children}

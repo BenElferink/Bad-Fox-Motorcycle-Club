@@ -1,0 +1,53 @@
+.root {
+  height: 85vh;
+  width: 97vw;
+  background: var(--charcoal);
+  border-radius: 0 2rem 2rem 0;
+  box-shadow: 0 0 3px 1px var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 7vh;
+  z-index: 9999;
+  transition: all 0.4s;
+}
+
+.arrowBtnWrap {
+  width: 97vw;
+  position: relative;
+}
+.arrowBtn {
+  background: var(--charcoal) !important;
+  box-shadow: 0 0 2px 1px var(--white);
+  position: absolute !important;
+  top: 150px !important;
+  z-index: 1;
+}
+
+.closed {
+  left: -97%;
+}
+.closed .arrowBtn {
+  right: -30px !important;
+}
+
+.open {
+  left: 0;
+}
+.open .arrowBtn {
+  right: -1.5vw !important;
+}
+
+.content {
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  margin: 1rem 0;
+  font-size: 1.7rem;
+  font-weight: 400;
+}

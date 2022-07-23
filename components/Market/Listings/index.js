@@ -1,20 +1,22 @@
 import { useEffect, useRef, useState } from 'react'
 import { Box, Chip, FormControl, InputLabel, MenuItem, OutlinedInput, Select, TextField } from '@mui/material'
 import { TuneRounded as FilterIcon } from '@mui/icons-material'
-import { useScreenSize } from '../../contexts/ScreenSizeContext'
-import { useMarket } from '../../contexts/MarketContext'
-import Modal from '../Modal'
-import Loader from '../Loader'
-import BaseButton from '../BaseButton'
-import AssetCard from '../AssetCard'
-import foxTraitsJsonFile from '../../data/traits/fox'
-import styles from './MarketListings.module.css'
-import Toggle from '../Toggle'
+import { useScreenSize } from '../../../contexts/ScreenSizeContext'
+import { useMarket } from '../../../contexts/MarketContext'
+import Modal from '../../Modal'
+import Loader from '../../Loader'
+import Toggle from '../../Toggle'
+import BaseButton from '../../BaseButton'
+import AssetCard from '../../AssetCard'
+import SideDrawer from '../../SideDrawer'
+import foxTraitsJsonFile from '../../../data/traits/fox'
+import styles from './Listings.module.css'
+import { ADA_SYMBOL } from '../../../constants/ada'
 
 const TRAITS_MATRIX = Object.entries(foxTraitsJsonFile).sort((a, b) => a[0].localeCompare(b[0]))
 const INITIAL_DISPLAY_AMOUNT = 20
 
-function MarketListings() {
+function Listings() {
   const { isMobile } = useScreenSize()
   const { fetchAndSetAllFoxes, allListedFoxes } = useMarket()
   const [loading, setLoading] = useState(false)
@@ -205,9 +207,8 @@ function MarketListings() {
           idx < displayNum ? (
             <AssetCard
               key={`market-listing-${item.assetId}-${idx}`}
-              name={item.name}
-              rank={item.rank}
-              price={item.price}
+              mainTitles={[`${ADA_SYMBOL}${item.price}`]}
+              subTitles={[`Rank ${item.rank}`, item.name]}
               imageSrc={item.imageUrl}
               itemUrl={item.itemUrl}
               tableRows={Object.entries(item.attributes)
@@ -226,10 +227,12 @@ function MarketListings() {
         )}
       </div>
 
+      <SideDrawer title='Recently Sold'></SideDrawer>
+
       {loading ? <Loader /> : null}
       <div ref={bottomRef} />
     </div>
   )
 }
 
-export default MarketListings
+export default Listings

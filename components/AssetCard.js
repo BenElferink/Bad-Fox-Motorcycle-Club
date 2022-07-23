@@ -1,8 +1,14 @@
-import React, { Fragment } from 'react'
 import { Card, CardActionArea, CardContent, CardMedia, Divider, Typography } from '@mui/material'
-import { ADA_SYMBOL } from '../constants/ada'
+import { Fragment } from 'react'
 
-function AssetCard({ name, price, rank, imageSrc, tableRows, onClick, itemUrl = 'https://jpg.store' }) {
+function AssetCard({
+  mainTitles = [],
+  subTitles = [],
+  imageSrc,
+  tableRows,
+  onClick,
+  itemUrl = 'https://jpg.store',
+}) {
   return (
     <Card sx={{ margin: '1rem 2rem', borderRadius: '1rem', overflow: 'visible' }}>
       <CardActionArea
@@ -17,12 +23,20 @@ function AssetCard({ name, price, rank, imageSrc, tableRows, onClick, itemUrl = 
         />
         <CardContent style={{ maxWidth: 'unset', width: '100%' }}>
           <Typography variant='h5' fontSize='big'>
-            {price ? `${ADA_SYMBOL}${price}` : null}
+            {mainTitles.map((str, idx) => (
+              <Fragment key={`card-string-${str}-${idx}`}>
+                {str}
+                {idx !== mainTitles.length - 1 ? <br /> : null}
+              </Fragment>
+            ))}
           </Typography>
           <Typography variant='body2' color='text.secondary' fontSize='medium'>
-            {rank ? `Rank ${rank}` : null}
-            {name && rank ? <br /> : null}
-            {name}
+            {subTitles.map((str, idx) => (
+              <Fragment key={`card-string-${str}-${idx}`}>
+                {str}
+                {idx !== subTitles.length - 1 ? <br /> : null}
+              </Fragment>
+            ))}
           </Typography>
           <Divider sx={{ margin: '0.5rem 0' }} />
           {tableRows && tableRows.length ? (
