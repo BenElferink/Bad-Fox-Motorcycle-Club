@@ -5,6 +5,8 @@ const getFoxFloor = require('../functions/markets/getFoxFloor')
 const { ADMIN_CODE } = require('../constants/api-keys')
 const { FOX_POLICY_ID } = require('../constants/policy-ids')
 
+const BFMC_API = 'https://badfoxmc.com/api'
+
 const getFox = async (timestamp) =>
   new Promise(async (resolve, reject) => {
     const floorData = await getFoxFloor()
@@ -19,11 +21,13 @@ const getFox = async (timestamp) =>
 
         try {
           console.log(`Making request for type ${obj.type}`)
-          await axios.post(`https://badfoxmc.com/api/floor/${FOX_POLICY_ID}?adminCode=${ADMIN_CODE}`, payload)
+          await axios.post(`${BFMC_API}/floor/${FOX_POLICY_ID}?adminCode=${ADMIN_CODE}`, payload)
           return resolve(true)
         } catch (error) {
+          console.error(error)
+          console.error(error?.message)
           console.error(error?.response?.data)
-          return writeToDb(payload)
+          return reject(error.message)
         }
       })
 
