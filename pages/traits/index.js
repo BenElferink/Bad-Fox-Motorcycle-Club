@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-export default function Traits() {
+export default function Redirect() {
   const router = useRouter()
 
   useEffect(() => {
-    router.push(`${router.asPath}/catalog`)
+    router.push('/catalog/traits/fox')
   }, [])
 
   return <div className='App' />

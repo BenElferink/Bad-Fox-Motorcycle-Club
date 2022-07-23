@@ -5,8 +5,9 @@ import { Alert, AlertTitle, AppBar, Avatar, IconButton, Slide } from '@mui/mater
 import { MenuRounded } from '@mui/icons-material'
 import Modal from '../Modal'
 import BaseButton from '../BaseButton'
-import TraitsMenu from './TraitsMenu'
-// import WalletMenu from './WalletMenu'
+import CatalogMenu from './CatalogMenu'
+import WalletMenu from './WalletMenu'
+// import MintMenu from './MintMenu'
 import Socials from './Socials'
 import { HOME, MAP, TEAM } from '../../constants/scroll-nav'
 import styles from './Header.module.css'
@@ -129,8 +130,9 @@ export default function Header({ scrollTo = () => null }) {
 
           <BaseButton label='Market' onClick={clickMarket} transparent style={jsStyles.btn} />
 
-          <TraitsMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} setAlertMessage={setAlertMessage} />
-          {/* <WalletMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} setAlertMessage={setAlertMessage} /> */}
+          <CatalogMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} setAlertMessage={setAlertMessage} />
+          <WalletMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} setAlertMessage={setAlertMessage} />
+          {/* <MintMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} setAlertMessage={setAlertMessage} /> */}
           <Socials closeMenu={closeMenu} />
         </nav>
       </Modal>

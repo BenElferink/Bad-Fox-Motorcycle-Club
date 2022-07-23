@@ -5,7 +5,7 @@ export default function Redirect() {
   const router = useRouter()
 
   useEffect(() => {
-    router.push('/catalog/traits/fox')
+    router.push(`${router.asPath}/fox`)
   }, [])
 
   return <div className='App' />
