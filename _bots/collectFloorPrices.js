@@ -15,7 +15,7 @@ const getFox = async (timestamp) =>
       new Promise(async (resolve, reject) => {
         const payload = {
           type: obj.type,
-          price: obj.type,
+          price: obj.price,
           timestamp,
         }
 
@@ -24,7 +24,6 @@ const getFox = async (timestamp) =>
           await axios.post(`${BFMC_API}/floor/${FOX_POLICY_ID}?adminCode=${ADMIN_CODE}`, payload)
           return resolve(true)
         } catch (error) {
-          console.error(error)
           console.error(error?.message)
           console.error(error?.response?.data)
           return reject(error.message)
