@@ -1,7 +1,6 @@
 const axios = require('axios')
-const ranksFile = require('../../data/ranks.json')
-const { BLOCKFROST_API_KEY } = require('../../constants/api-keys')
-const { BLOCKFROST_API, JPG_API, JPG_IMAGE_API, CNFT_TOOLS_API } = require('../../constants/api-urls')
+const { JPG_API, JPG_IMAGE_API, CNFT_TOOLS_API, CNFT_TOOLS_IMAGE_API } = require('../../constants/api-urls')
+const blockfrost = require('../../utils/blockfrost')
 
 let cnftToolsAssets = []
 
@@ -39,25 +38,20 @@ const populateAssetFromAssetId = async (assetId) => {
   console.log(`Populating asset with ID ${assetId}`)
 
   try {
-    const { data } = await axios.get(`${BLOCKFROST_API}/assets/${assetId}`, {
-      headers: {
-        project_id: BLOCKFROST_API_KEY,
-      },
-    })
-
-    const jpgData = await fetchAssetFromJpgStore(data.policy_id, data.onchain_metadata.name.split('#')[1])
+    const data = await blockfrost.assetsById(assetId)
 
     if (!cnftToolsAssets.length) {
       cnftToolsAssets = await fetchAssetsFromCnftTools(data.policy_id)
     }
 
+    const jpgData = await fetchAssetFromJpgStore(data.policy_id, data.onchain_metadata.name.split('#')[1])
+    const cnftToolsData = cnftToolsAssets.find((item) => item.name === data.onchain_metadata.name)
+
     const ipfsImageUrl = data.onchain_metadata.image[0]
     const jpgImageUrl = `${JPG_IMAGE_API}/${jpgData.tokens[0].optimized_source}1200x`
-    const cnftToolsImageUrl = `https://cnft.tools/static/assets/projectthumbs/badfoxmotorcycleclub/${
-      cnftToolsAssets.find((item) => item.name === data.onchain_metadata.name).iconurl
-    }`
+    const cnftToolsImageUrl = `${CNFT_TOOLS_IMAGE_API}/badfoxmotorcycleclub/${cnftToolsData.iconurl}`
 
-    const rank = Number(ranksFile[`BadFox${data.onchain_metadata.name.split('#')[1]}`])
+    const rank = Number(cnftToolsData.rarityRank)
 
     return {
       ...data,

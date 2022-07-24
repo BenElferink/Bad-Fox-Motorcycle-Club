@@ -130,9 +130,18 @@ const FoxAssetsOptions = ({
                   )}
                 >
                   {traits.map((obj, idx2) => {
-                    const trait = `${obj.gender === 'Male' ? '(M)' : obj.gender === 'Female' ? '(F)' : '(U)'} ${
-                      obj.label
-                    }`
+                    const trait =
+                      category === 'Gender'
+                        ? obj.label
+                        : `${
+                            obj.gender === 'Male'
+                              ? '(M) '
+                              : obj.gender === 'Female'
+                              ? '(F) '
+                              : obj.gender === 'Unisex'
+                              ? '(U) '
+                              : ''
+                          }${obj.label}`
 
                     return (
                       <MenuItem key={`market-category-attribute-${obj.label}-${idx2}`} value={trait}>

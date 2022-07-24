@@ -1,4 +1,20 @@
 {
+  "Gender": [
+    {
+      "label": "Female",
+      "gender": "Female",
+      "image": "/images/traits/fox/None.png",
+      "count": 3000,
+      "percent": "50.00%"
+    },
+    {
+      "label": "Male",
+      "gender": "Male",
+      "image": "/images/traits/fox/None.png",
+      "count": 3000,
+      "percent": "50.00%"
+    }
+  ],
   "Back": [
     {
       "label": "Devil Wings",
@@ -122,7 +138,7 @@
     {
       "label": "None",
       "gender": "Unisex",
-      "image": "/images/traits/fox/Back/U_None.png",
+      "image": "/images/traits/fox/None.png",
       "count": 3383,
       "percent": "56.38%"
     }
@@ -849,7 +865,7 @@
     {
       "label": "None",
       "gender": "Unisex",
-      "image": "/images/traits/fox/Ear/U_None.png",
+      "image": "/images/traits/fox/None.png",
       "count": 3862,
       "percent": "64.37%"
     }
@@ -1054,7 +1070,7 @@
     {
       "label": "None",
       "gender": "Unisex",
-      "image": "/images/traits/fox/Eyewear/U_None.png",
+      "image": "/images/traits/fox/None.png",
       "count": 3741,
       "percent": "62.35%"
     }
@@ -1371,7 +1387,7 @@
     {
       "label": "None",
       "gender": "Unisex",
-      "image": "/images/traits/fox/Headwear/U_None.png",
+      "image": "/images/traits/fox/None.png",
       "count": 2457,
       "percent": "40.95%"
     }
