@@ -30,16 +30,20 @@ const FoxTraitsOptions = ({ callbackSelectedCategory = () => {} }) => {
           ))}
         </TextField>
       ) : (
-        Object.keys(traitsData).map((category) => (
-          <BaseButton
-            key={`category-button-${category}`}
-            label={category}
-            onClick={() => setSelectedCategory(category)}
-            backgroundColor='var(--brown)'
-            hoverColor='var(--orange)'
-            className={selectedCategory === category ? styles.selectedButton : ''}
-          />
-        ))
+        Object.keys(traitsData)
+          .sort((a, b) => a[0].localeCompare(b[0]))
+          .map((category) =>
+            category !== 'Gender' ? (
+              <BaseButton
+                key={`category-button-${category}`}
+                label={category}
+                onClick={() => setSelectedCategory(category)}
+                backgroundColor='var(--brown)'
+                hoverColor='var(--orange)'
+                className={selectedCategory === category ? styles.selectedButton : ''}
+              />
+            ) : null
+          )
       )}
     </div>
   )
