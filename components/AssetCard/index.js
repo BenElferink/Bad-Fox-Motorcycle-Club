@@ -36,7 +36,14 @@ function AssetCard({
 }) {
   return (
     <Card
-      sx={{ margin: '1rem 2rem', borderRadius: '1rem', overflow: 'visible', background: backgroundColor, color }}
+      sx={{
+        margin: '1rem 2rem',
+        border: '1px solid var(--black)',
+        borderRadius: '1rem',
+        overflow: 'visible',
+        background: backgroundColor,
+        color,
+      }}
     >
       <CardActionArea
         style={{ display: 'flex', flexDirection: 'column' }}

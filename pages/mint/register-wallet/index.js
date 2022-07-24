@@ -9,7 +9,7 @@ import Section from '../../../components/Section'
 import DiscordLogin from '../../../components/DiscordLogin'
 import { DISCORD_REDIRECT_URL_WALLET_REGISTER } from '../../../constants/discord'
 
-export default function RegisterWallet() {
+export default function Page() {
   const router = useRouter()
   const { isRegisterOnline } = useMint()
   const { token, member } = useDiscordAuth()

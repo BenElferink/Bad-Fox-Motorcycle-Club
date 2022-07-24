@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Box, Chip, FormControl, InputLabel, MenuItem, OutlinedInput, Select, TextField } from '@mui/material'
+import { Box, Chip, MenuItem, OutlinedInput, TextField } from '@mui/material'
 import { TuneRounded as FilterIcon } from '@mui/icons-material'
 import { useScreenSize } from '../../../contexts/ScreenSizeContext'
 import { useMarket } from '../../../contexts/MarketContext'
@@ -158,40 +158,40 @@ function Listings() {
         <div className={styles.listOfFilters}>
           {TRAITS_MATRIX.map(([category, traits], idx1) => (
             <div key={`market-category-${category}-${idx1}`}>
-              <FormControl sx={{ m: 1, width: 300 }}>
-                <InputLabel>{category}</InputLabel>
-                <Select
-                  multiple
-                  value={filters[category]}
-                  onChange={(e) => {
-                    const value = e.target.value
-                    setFilters((prev) => ({
-                      ...prev,
-                      [category]: typeof value === 'string' ? value.split(',') : value,
-                    }))
-                  }}
-                  input={<OutlinedInput id='select-multiple-chip' label='Chip' />}
-                  renderValue={(selected) => (
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                      {selected.map((value) => (
-                        <Chip key={value} label={value} />
-                      ))}
-                    </Box>
-                  )}
-                >
-                  {traits.map((obj, idx2) => {
-                    const trait = `${obj.gender === 'Male' ? '(M)' : obj.gender === 'Female' ? '(F)' : '(U)'} ${
-                      obj.label
-                    }`
+              <TextField
+                select
+                multiple
+                label={category}
+                value={filters[category]}
+                onChange={(e) => {
+                  const value = e.target.value
+                  setFilters((prev) => ({
+                    ...prev,
+                    [category]: typeof value === 'string' ? value.split(',') : value,
+                  }))
+                }}
+                input={<OutlinedInput id='select-multiple-chip' label='Chip' />}
+                renderValue={(selected) => (
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                    {selected.map((value) => (
+                      <Chip key={value} label={value} />
+                    ))}
+                  </Box>
+                )}
+                sx={{ m: 1, width: 300 }}
+              >
+                {traits.map((obj, idx2) => {
+                  const trait = `${obj.gender === 'Male' ? '(M)' : obj.gender === 'Female' ? '(F)' : '(U)'} ${
+                    obj.label
+                  }`
 
-                    return (
-                      <MenuItem key={`market-category-attribute-${obj.label}-${idx2}`} value={trait}>
-                        {trait}
-                      </MenuItem>
-                    )
-                  })}
-                </Select>
-              </FormControl>
+                  return (
+                    <MenuItem key={`market-category-attribute-${obj.label}-${idx2}`} value={trait}>
+                      {trait}
+                    </MenuItem>
+                  )
+                })}
+              </TextField>
             </div>
           ))}
         </div>

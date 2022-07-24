@@ -9,7 +9,7 @@ import Section from '../../../components/Section'
 import Loader from '../../../components/Loader'
 import SubmitWallet from '../../../components/SubmitWallet'
 
-export default function RegisterWalletRedirect() {
+export default function Page() {
   const router = useRouter()
   const { asPath } = router
   const { loading, token, member, getDiscordTokenFromQuery, getMemberWithToken } = useDiscordAuth()

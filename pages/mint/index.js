@@ -9,7 +9,7 @@ import DiscordLogin from '../../components/DiscordLogin'
 import MintPortal from '../../components/MintPortal'
 import { DISCORD_REDIRECT_URL_MINT } from '../../constants/discord'
 
-export default function Register() {
+export default function Page() {
   const router = useRouter()
   const { token, member } = useDiscordAuth()
   const { isPreSaleOnline, isPublicSaleOnline } = useMint()

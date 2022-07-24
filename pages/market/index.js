@@ -3,7 +3,7 @@ import Header from '../../components/Header'
 import Listings from '../../components/Market/Listings'
 import RecentlySold from '../../components/Market/RecentlySold'
 
-export default function Market() {
+export default function Page() {
   return (
     <div className='App flex-col'>
       <Header />

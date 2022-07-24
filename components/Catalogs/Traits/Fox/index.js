@@ -1,12 +1,12 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
+import { MenuItem, TextField } from '@mui/material'
 import { useState } from 'react'
-import { useScreenSize } from '../../contexts/ScreenSizeContext'
-import data from '../../data/traits/fox'
-import AssetCard from '../AssetCard'
-import BaseButton from '../BaseButton'
-import styles from './TraitsCatalog.module.css'
+import { useScreenSize } from '../../../../contexts/ScreenSizeContext'
+import data from '../../../../data/traits/fox'
+import AssetCard from '../../../AssetCard'
+import BaseButton from '../../../BaseButton'
+import styles from './FoxTraitsCatalog.module.css'
 
-const TraitsCatalog = () => {
+const FoxTraitsCatalog = () => {
   const { isMobile } = useScreenSize()
   const [selectedCategory, setSelectedCategory] = useState('Skin + Tail')
 
@@ -14,21 +14,19 @@ const TraitsCatalog = () => {
     <div>
       <div className={styles.categoryButtons}>
         {isMobile ? (
-          <FormControl variant='filled' sx={{ minWidth: 270 }}>
-            <InputLabel id='select-category-label'>Category</InputLabel>
-            <Select
-              labelId='select-category-label'
-              id='select-category'
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-            >
-              {Object.keys(data).map((category) => (
-                <MenuItem key={`trait-catalog-category-${category}`} value={category}>
-                  {category}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+          <TextField
+            select
+            label='Category'
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            sx={{ width: 300 }}
+          >
+            {Object.keys(data).map((category) => (
+              <MenuItem key={`trait-catalog-category-${category}`} value={category}>
+                {category}
+              </MenuItem>
+            ))}
+          </TextField>
         ) : (
           Object.keys(data).map((category) => (
             <BaseButton
@@ -38,7 +36,6 @@ const TraitsCatalog = () => {
               backgroundColor='var(--brown)'
               hoverColor='var(--orange)'
               className={selectedCategory === category ? styles.selectedButton : ''}
-              color='var(--black)'
             />
           ))
         )}
@@ -48,8 +45,6 @@ const TraitsCatalog = () => {
         {data[selectedCategory].map((trait) => (
           <AssetCard
             key={`trait-catalog-list-item-${trait.label}-${trait.gender}`}
-            backgroundColor='var(--brown)'
-            color='var(--black)'
             mainTitles={[trait.label]}
             imageSrc={trait.image}
             itemUrl={trait.image}
@@ -64,4 +59,4 @@ const TraitsCatalog = () => {
   )
 }
 
-export default TraitsCatalog
+export default FoxTraitsCatalog

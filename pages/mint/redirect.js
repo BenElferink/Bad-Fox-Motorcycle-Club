@@ -9,7 +9,7 @@ import Section from '../../components/Section'
 import Loader from '../../components/Loader'
 import MintPortal from '../../components/MintPortal'
 
-export default function Redirect() {
+export default function Page() {
   const router = useRouter()
   const { asPath } = router
   const { loading, token, member, getDiscordTokenFromQuery, getMemberWithToken } = useDiscordAuth()

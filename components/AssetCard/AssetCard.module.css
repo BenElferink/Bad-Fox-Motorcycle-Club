@@ -3,6 +3,7 @@
 }
 
 .cardImage {
+  background-color: rgba(200, 200, 200, 0.1);
   border: 1px solid var(--black);
   border-radius: 1rem 1rem 0 0;
 }

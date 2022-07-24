@@ -11,7 +11,7 @@ import Roadmap from '../components/Roadmap'
 import Team from '../components/Team'
 import { HOME } from '../constants/scroll-nav'
 
-export default function Home() {
+export default function Page() {
   const { isMobile } = useScreenSize()
   const mapRef = useRef(null)
   const teamRef = useRef(null)

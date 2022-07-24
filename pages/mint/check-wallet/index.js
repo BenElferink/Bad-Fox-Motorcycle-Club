@@ -8,7 +8,7 @@ import Landing from '../../../components/Landing'
 import DiscordLogin from '../../../components/DiscordLogin'
 import { DISCORD_REDIRECT_URL_WALLET_CHECK } from '../../../constants/discord'
 
-export default function CheckWallet() {
+export default function Page() {
   const router = useRouter()
   const { isRegisterOnline } = useMint()
   const { token, member } = useDiscordAuth()
