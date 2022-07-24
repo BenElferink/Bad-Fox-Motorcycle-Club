@@ -14,7 +14,7 @@ const run = async () => {
       const prefix = gender === 'Male' ? '(M) ' : gender === 'Female' ? '(F) ' : '(U) '
 
       const labelCount = assets.filter(
-        (item) => label === item.onchain_metadata.attributes[category.replace(' + Tail', '')].replace(prefix, '')
+        (item) => label === item.onchain_metadata.attributes[category].replace(prefix, '')
       ).length
 
       const payload = {

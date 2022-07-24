@@ -1,30 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
-import { useMarket } from '../../../contexts/MarketContext'
-import traitsData from '../../../data/traits/fox'
-import Loader from '../../Loader'
-import AssetCard from '../../AssetCard'
-import FoxAssetsOptions from '../../FilterOptions/Assets/Fox'
-import { ADA_SYMBOL } from '../../../constants/ada'
-import styles from './Listings.module.css'
+import collectionData from '../../../../data/assets/fox'
+import traitsData from '../../../../data/traits/fox'
+import AssetCard from '../../../AssetCard'
+import FoxAssetsOptions from '../../../FilterOptions/Assets/Fox'
+import styles from './FoxCollectionCatalog.module.css'
 
 const INITIAL_DISPLAY_AMOUNT = 50
 
-function Listings() {
-  const { fetchAndSetAllFoxes, allListedFoxes } = useMarket()
-  const [loading, setLoading] = useState(false)
-
-  useEffect(() => {
-    if (!loading) {
-      ;(async () => {
-        setLoading(true)
-        await fetchAndSetAllFoxes()
-        setLoading(false)
-      })()
-    }
-  }, [])
+const FoxCollectionCatalog = () => {
+  const assets = collectionData.assets
 
   const [ascending, setAscending] = useState(true)
-  const [sortByRank, setSortbyRank] = useState(false)
+  const [sortByRank, setSortByRank] = useState(true)
   const [search, setSearch] = useState('')
   const [filters, setFilters] = useState({})
 
@@ -37,14 +24,14 @@ function Listings() {
       }
     })
 
-    return allListedFoxes
+    return assets
       .filter((item) => {
         const matchingCategories = []
 
         selected.forEach(([cat, selections]) => {
           let categoryMatch = false
 
-          if (selections.includes(item.attributes[cat])) {
+          if (selections.includes(item.onchain_metadata.attributes[cat])) {
             categoryMatch = true
           }
 
@@ -55,16 +42,18 @@ function Listings() {
 
         return matchingCategories.length === selected.length
       })
-      .filter((item) => !search || (search && item.name.indexOf(search) !== -1))
+      .filter((item) => !search || (search && item.onchain_metadata.name.indexOf(search) !== -1))
       .sort((a, b) =>
         ascending && !sortByRank
-          ? a.price - b.price
+          ? Number(a.onchain_metadata.name.replace('Bad Fox #', '')) -
+            Number(b.onchain_metadata.name.replace('Bad Fox #', ''))
           : !ascending && !sortByRank
-          ? b.price - a.price
+          ? Number(b.onchain_metadata.name.replace('Bad Fox #', '')) -
+            Number(a.onchain_metadata.name.replace('Bad Fox #', ''))
           : ascending && sortByRank
-          ? a.rank - b.rank
+          ? a.onchain_metadata.rank - b.onchain_metadata.rank
           : !ascending && sortByRank
-          ? b.rank - a.rank
+          ? b.onchain_metadata.rank - a.onchain_metadata.rank
           : 0
       )
   }
@@ -92,9 +81,11 @@ function Listings() {
     <div className='flex-col'>
       <FoxAssetsOptions
         callbackAscending={(bool) => setAscending(bool)}
-        callbackSortByRank={(bool) => setSortbyRank(bool)}
+        callbackSortByRank={(bool) => setSortByRank(bool)}
         callbackSearch={(str) => setSearch(str)}
         callbackFilters={(obj) => setFilters(obj)}
+        defaultSortByRank={true}
+        noRankText='ID'
       />
 
       <div className={`scroll ${styles.listOfAssets}`}>
@@ -102,12 +93,12 @@ function Listings() {
           filteredAssets.map((item, idx) =>
             idx < displayNum ? (
               <AssetCard
-                key={`market-listing-${item.assetId}-${idx}`}
-                mainTitles={[`${ADA_SYMBOL}${item.price}`]}
-                subTitles={[`Rank ${item.rank}`, item.name]}
-                imageSrc={item.imageUrl}
-                itemUrl={item.itemUrl}
-                tableRows={Object.entries(item.attributes)
+                key={`fox-collection-${item.asset}-${idx}`}
+                mainTitles={[item.onchain_metadata.name]}
+                subTitles={[`Rank ${item.onchain_metadata.rank}`]}
+                imageSrc={item.onchain_metadata.image.cnftTools}
+                itemUrl={`https://jpg.store/asset/${item.asset}`}
+                tableRows={Object.entries(item.onchain_metadata.attributes)
                   .sort((a, b) => a[0].localeCompare(b[0]))
                   .map(([cat, attr]) => [
                     `${cat}:`,
@@ -122,14 +113,13 @@ function Listings() {
             ) : null
           )
         ) : (
-          <p className={styles.noneListed}>None listed...</p>
+          <p className={styles.noneListed}>None exist...</p>
         )}
       </div>
 
-      {loading ? <Loader /> : null}
       <div ref={bottomRef} />
     </div>
   )
 }
 
-export default Listings
+export default FoxCollectionCatalog

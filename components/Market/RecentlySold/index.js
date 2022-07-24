@@ -44,7 +44,7 @@ function RecentlySold() {
                 attr,
                 cat === 'Gender'
                   ? '50%'
-                  : foxTraitsJsonFile[cat === 'Skin' ? `${cat} + Tail` : cat].find(
+                  : foxTraitsJsonFile[cat].find(
                       (obj) => obj.label === attr.replace('(F) ', '').replace('(M) ', '').replace('(U) ', '')
                     )?.percent,
               ])}

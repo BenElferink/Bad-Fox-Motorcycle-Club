@@ -4,7 +4,6 @@ import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import { Menu, MenuItem } from '@mui/material'
 import BaseButton from '../BaseButton'
 import Split from './Split'
-import OnlineIndicator from '../OnlineIndicator'
 
 const CatalogMenu = ({ btnStyle = {}, closeMenu = () => {}, setAlertMessage = () => {} }) => {
   const router = useRouter()
@@ -14,8 +13,7 @@ const CatalogMenu = ({ btnStyle = {}, closeMenu = () => {}, setAlertMessage = ()
   const open = Boolean(anchorEl)
 
   const clickFoxCollection = () => {
-    // router.push('/catalog/collection/fox')
-    setAlertMessage('This feature is coming soon')
+    router.push('/catalog/collection/fox')
 
     setAnchorEl(null)
     closeMenu()
@@ -33,9 +31,7 @@ const CatalogMenu = ({ btnStyle = {}, closeMenu = () => {}, setAlertMessage = ()
       <Fragment>
         <Split />
 
-        <OnlineIndicator online={false}>
-          <BaseButton label='Fox Collection' onClick={clickFoxCollection} style={btnStyle} />
-        </OnlineIndicator>
+        <BaseButton label='Fox Collection' onClick={clickFoxCollection} style={btnStyle} />
         <BaseButton label='Fox Traits' onClick={clickFoxTraits} transparent />
       </Fragment>
     )
@@ -47,11 +43,9 @@ const CatalogMenu = ({ btnStyle = {}, closeMenu = () => {}, setAlertMessage = ()
 
       <Menu open={open} onClose={() => setAnchorEl(null)} anchorEl={anchorEl}>
         <div>
-          <OnlineIndicator online={false}>
-            <MenuItem onClick={clickFoxCollection} sx={{ width: 200, height: 50 }}>
-              Fox Collection
-            </MenuItem>
-          </OnlineIndicator>
+          <MenuItem onClick={clickFoxCollection} sx={{ width: 200, height: 50 }}>
+            Fox Collection
+          </MenuItem>
         </div>
         <div>
           <MenuItem onClick={clickFoxTraits} sx={{ width: 200, height: 50 }}>
