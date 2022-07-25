@@ -9,7 +9,7 @@ import styles from './SubmitWallet.module.css'
 
 export default function SubmitWallet() {
   const { width } = useScreenSize()
-  const { loading, error, clearError, account, updateAccountMintAddress } = useAuth()
+  const { loading, error, clearError, account, updateAccountMintWallet } = useAuth()
 
   const [walletAddress, setWalletAddress] = useState('')
   const [forceEdit, setForceEdit] = useState(false)
@@ -29,7 +29,7 @@ export default function SubmitWallet() {
       return alert('Please enter a valid wallet address (starts with addr1)')
     }
 
-    await updateAccountMintAddress(walletAddress)
+    await updateAccountMintWallet(walletAddress)
     setForceEdit(false)
   }
 

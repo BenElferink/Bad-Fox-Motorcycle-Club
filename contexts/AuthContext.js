@@ -1,7 +1,8 @@
 import { useRouter } from 'next/router'
-import { createContext, useContext, useState } from 'react'
-import toast from 'react-hot-toast'
+import { createContext, useContext, useEffect, useState } from 'react'
 import axios from 'axios'
+import toast from 'react-hot-toast'
+import blockfrostJsonFile from '../data/assets/fox'
 
 // init context
 const AuthContext = createContext()
@@ -18,7 +19,16 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState({})
   const [token, setToken] = useState('')
-  const [account, setMember] = useState({})
+  const [account, setAccount] = useState({})
+  const [myAssets, setMyAssets] = useState([])
+
+  useEffect(() => {
+    account.portfolioWallets?.forEach((wallet) => {
+      wallet.assets.forEach((assetId) => {
+        setMyAssets((prev) => [...prev, blockfrostJsonFile.assets.find(({ asset }) => asset === assetId)])
+      })
+    })
+  }, [account])
 
   const handleError = (e) => {
     setError({
@@ -59,7 +69,8 @@ export function AuthProvider({ children }) {
     try {
       const res = await axios.get(`/api/account?discordToken=${t}`)
 
-      setMember(res.data)
+      setMyAssets([])
+      setAccount(res.data)
       clearError()
     } catch (e) {
       handleError(e)
@@ -68,7 +79,7 @@ export function AuthProvider({ children }) {
     setLoading(false)
   }
 
-  const updateAccountMintAddress = async (walletAddress) => {
+  const updateAccountMintWallet = async (walletAddress) => {
     if (!walletAddress) {
       return toast.error('Please enter a wallet address')
     }
@@ -80,15 +91,70 @@ export function AuthProvider({ children }) {
     setLoading(true)
 
     try {
-      const res = await axios.post(`/api/account/mint-wallet/${walletAddress}?discordToken=${token}`)
+      await axios.post(`/api/account/mint-wallet/${walletAddress}?discordToken=${token}`)
 
-      setMember(res.data)
       clearError()
     } catch (e) {
       handleError(e)
     }
 
     setLoading(false)
+    await getAccountWithDiscordToken()
+  }
+
+  const addAccountPortfolioWallet = async (walletAddressOrStakeKey) => {
+    if (!walletAddressOrStakeKey) {
+      return toast.error('Please enter a wallet address or stake key')
+    }
+
+    if (walletAddressOrStakeKey.indexOf('addr1') !== 0 && walletAddressOrStakeKey.indexOf('stake1') !== 0) {
+      return toast.error('Please enter a valid wallet address or stake key')
+    }
+
+    setLoading(true)
+
+    try {
+      await axios.post(`/api/account/portfolio-wallets/${walletAddressOrStakeKey}?discordToken=${token}`)
+
+      clearError()
+    } catch (e) {
+      handleError(e)
+    }
+
+    setLoading(false)
+    await getAccountWithDiscordToken()
+  }
+
+  const deleteAccountPortfolioWallet = async (stakeKey) => {
+    if (window.confirm('Are you sure you want to delete this wallet?')) {
+      setLoading(true)
+
+      try {
+        await axios.delete(`/api/account/portfolio-wallets/${stakeKey}?discordToken=${token}`)
+
+        clearError()
+      } catch (e) {
+        handleError(e)
+      }
+
+      setLoading(false)
+      await getAccountWithDiscordToken()
+    }
+  }
+
+  const syncAccountPortfolioWallets = async () => {
+    setLoading(true)
+
+    try {
+      await axios.delete(`/api/account/portfolio-wallets/sync?discordToken=${token}`)
+
+      clearError()
+    } catch (e) {
+      handleError(e)
+    }
+
+    setLoading(false)
+    await getAccountWithDiscordToken()
   }
 
   return (
@@ -98,9 +164,13 @@ export function AuthProvider({ children }) {
         error,
         token,
         account,
+        myAssets,
         clearError,
         getAccountWithDiscordToken,
-        updateAccountMintAddress,
+        updateAccountMintWallet,
+        addAccountPortfolioWallet,
+        deleteAccountPortfolioWallet,
+        syncAccountPortfolioWallets,
       }}
     >
       {children}

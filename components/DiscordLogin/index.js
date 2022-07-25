@@ -10,12 +10,10 @@ export default function DiscordLogin({ title = '', text = '', onClick = () => co
 
       <BaseButton
         label='Login'
-        icon={Discord}
         onClick={onClick}
-        style={{
-          width: '100%',
-          backgroundColor: 'var(--discord-purple)',
-        }}
+        icon={Discord}
+        backgroundColor='var(--discord-purple)'
+        style={{ width: '100%' }}
       />
     </Section>
   )
