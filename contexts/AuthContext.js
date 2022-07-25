@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import blockfrostJsonFile from '../data/assets/fox'
+import { FOX_POLICY_ID } from '../constants/policy-ids'
 
 // init context
 const AuthContext = createContext()
@@ -24,7 +25,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     account.portfolioWallets?.forEach((wallet) => {
-      wallet.assets.forEach((assetId) => {
+      wallet.assets[FOX_POLICY_ID]?.forEach((assetId) => {
         setMyAssets((prev) => [...prev, blockfrostJsonFile.assets.find(({ asset }) => asset === assetId)])
       })
     })

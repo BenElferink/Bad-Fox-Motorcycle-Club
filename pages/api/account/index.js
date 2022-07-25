@@ -44,10 +44,13 @@ export default async (req, res) => {
 
     switch (method) {
       case 'GET': {
-        // find and update account in DB, or create one if new
         let account = await Account.findOne({
           userId,
-        }).populate('portfolioWallets')
+        })
+
+        if (account.portfolioWallets?.length) {
+          account.populate('portfolioWallets')
+        }
 
         if (!account) {
           account = new Account({
