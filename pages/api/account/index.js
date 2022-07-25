@@ -70,7 +70,7 @@ export default async (req, res) => {
           userId,
         })
 
-        res.status(204).json({})
+        res.status(204).end()
         break
       }
 

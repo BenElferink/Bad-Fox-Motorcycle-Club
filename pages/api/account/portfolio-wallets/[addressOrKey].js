@@ -125,7 +125,7 @@ export default async (req, res) => {
 
         await account.save()
 
-        return res.status(204).json({})
+        return res.status(204).end()
       }
 
       case 'DELETE': {
@@ -146,7 +146,7 @@ export default async (req, res) => {
 
         await account.save()
 
-        return res.status(204).json({})
+        return res.status(204).end()
       }
 
       default: {

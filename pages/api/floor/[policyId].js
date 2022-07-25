@@ -75,7 +75,7 @@ export default async (req, res) => {
 
         await newFloor.save()
 
-        return res.status(204).json({})
+        return res.status(204).end()
       }
 
       default: {
