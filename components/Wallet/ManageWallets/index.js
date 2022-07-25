@@ -7,8 +7,6 @@ import Loader from '../../Loader'
 import styles from './ManageWallets.module.css'
 import { FOX_POLICY_ID } from '../../../constants/policy-ids'
 
-// https://github.com/belferink1996/frog-factory-trait-tool/blob/main/components/MyPortfolio/MyWallets/index.js
-
 const ManageWallets = () => {
   const { account, addAccountPortfolioWallet, deleteAccountPortfolioWallet, syncAccountPortfolioWallets } =
     useAuth()
