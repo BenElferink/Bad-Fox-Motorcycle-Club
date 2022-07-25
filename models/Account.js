@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
+import { FOX_POLICY_ID } from '../constants/policy-ids'
 
-const DiscordMember = new mongoose.Schema(
+const Account = new mongoose.Schema(
   {
     userId: {
       type: mongoose.Schema.Types.String,
@@ -17,16 +18,22 @@ const DiscordMember = new mongoose.Schema(
         default: false,
       },
     },
-    wallet: {
-      address: {
-        type: mongoose.Schema.Types.String,
-        default: '',
-      },
+    mintWallet: {
       stakeKey: {
         type: mongoose.Schema.Types.String,
         default: '',
       },
+      address: {
+        type: mongoose.Schema.Types.String,
+        default: '',
+      },
     },
+    portfolioWallets: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Wallet',
+      },
+    ],
   },
   {
     timestamps: true,
@@ -38,4 +45,4 @@ const DiscordMember = new mongoose.Schema(
   }
 )
 
-export default mongoose.models.DiscordMember ?? mongoose.model('DiscordMember', DiscordMember)
+export default mongoose.models.Account ?? mongoose.model('Account', Account)

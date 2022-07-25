@@ -1,26 +1,26 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { useScreenSize } from '../../contexts/ScreenSizeContext'
-import { useDiscordAuth } from '../../contexts/DiscordAuthContext'
-import Section from '../Section'
-import Loader from '../Loader'
-import BaseButton from '../BaseButton'
+import { useScreenSize } from '../../../contexts/ScreenSizeContext'
+import { useAuth } from '../../../contexts/AuthContext'
+import Section from '../../Section'
+import Loader from '../../Loader'
+import BaseButton from '../../BaseButton'
 import styles from './SubmitWallet.module.css'
 
 export default function SubmitWallet() {
   const { width } = useScreenSize()
-  const { loading, error, clearError, member, patchMemberWalletAddress } = useDiscordAuth()
+  const { loading, error, clearError, account, updateAccountMintAddress } = useAuth()
 
   const [walletAddress, setWalletAddress] = useState('')
   const [forceEdit, setForceEdit] = useState(false)
 
   useEffect(() => {
-    const v = member.wallet.address
+    const v = account.mintWallet.address
 
     if (v) {
       setWalletAddress(v)
     }
-  }, [member])
+  }, [account])
 
   const clickSubmit = async () => {
     if (!walletAddress) {
@@ -29,7 +29,7 @@ export default function SubmitWallet() {
       return alert('Please enter a valid wallet address (starts with addr1)')
     }
 
-    await patchMemberWalletAddress(walletAddress)
+    await updateAccountMintAddress(walletAddress)
     setForceEdit(false)
   }
 
@@ -62,8 +62,8 @@ export default function SubmitWallet() {
               </li>
               <br />
               <li>
-                Are you using <strong>Eternl (CCVault)</strong>? If yes, you will have to sumbit a "used"
-                address, see the example below!
+                Are you using <strong>Eternl (CCVault)</strong>? If yes, you will have to sumbit a "used" address,
+                see the example below!
               </li>
             </ol>
             <Image
@@ -74,18 +74,14 @@ export default function SubmitWallet() {
               style={{ borderRadius: '1rem' }}
             />
             <br />
-            <BaseButton
-              label='Try Again'
-              onClick={clickEdit}
-              style={{ background: 'var(--discord-purple)' }}
-            />
+            <BaseButton label='Try Again' onClick={clickEdit} style={{ background: 'var(--discord-purple)' }} />
           </>
         ) : null}
       </Section>
     )
   }
 
-  if (!member.roles.isOG) {
+  if (!account.roles?.isOG) {
     return (
       <Section>
         <h2>You are not eligible to submit a wallet address.</h2>
@@ -98,16 +94,16 @@ export default function SubmitWallet() {
     )
   }
 
-  if (!member.wallet.address || forceEdit) {
+  if (!account.mintWallet?.address || forceEdit) {
     return (
       <Section>
-        <h2>Welcome {member.username}!</h2>
+        <h2>Welcome {account.username}!</h2>
         <p>
           You have the following (mint) roles:
           <br />
           <strong>
-            {member.roles.isOG ? 'OG, ' : null}
-            {!member.roles.isOG ? 'None' : null}
+            {account.roles?.isOG ? 'OG, ' : null}
+            {!account.roles?.isOG ? 'None' : null}
           </strong>
         </p>
         <p>Please submit your wallet address, this will be the wallet you'll be minting from!</p>
@@ -129,12 +125,12 @@ export default function SubmitWallet() {
       <p className={styles.addr}>
         Your (registered) wallet address:
         <br />
-        <span>{member.wallet.address}</span>
+        <span>{account.mintWallet?.address || 'Not submitted'}</span>
       </p>
       <p className={styles.addr}>
         Your (collected) stake key:
         <br />
-        <span>{member.wallet.stakeKey}</span>
+        <span>{account.mintWallet?.stakeKey || 'Not submitted'}</span>
       </p>
       <BaseButton label='Change Address' onClick={clickEdit} style={{ background: 'var(--discord-purple)' }} />
     </Section>

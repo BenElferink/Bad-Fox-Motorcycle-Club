@@ -1,5 +1,6 @@
 import connectDB from '../../../utils/mongo'
 import MintAddress from '../../../models/MintAddress'
+import POLICY_IDS from '../../../constants/policy-ids'
 import { ADMIN_CODE } from '../../../constants/api-keys'
 
 export default async (req, res) => {
@@ -8,35 +9,56 @@ export default async (req, res) => {
 
     const {
       method,
-      query: { policyId, adminCode },
+      headers: { admin_code },
+      query: { policyId },
       body: { ogAddress = '', wlAddress = '', publicAddress = '' },
     } = req
 
+    if (!policyId) {
+      return res.status(400).json({
+        type: 'BAD_REQUEST',
+        message: 'Query params required: policyId',
+      })
+    }
+
+    if (!Object.values(POLICY_IDS).includes(policyId)) {
+      return res.status(400).json({
+        type: 'BAD_REQUEST',
+        message: `This policy ID is not allowed: ${policyId}`,
+      })
+    }
+
     switch (method) {
       case 'GET': {
-        const mint = await MintAddress.findOne({ policyId })
+        const mint = await MintAddress.findOne({
+          policyId,
+        })
 
         if (!mint) {
-          return res
-            .status(404)
-            .json({ type: 'NOT_FOUND', message: `Mint address not found for Policy ID: ${policyId}` })
+          return res.status(404).json({
+            type: 'NOT_FOUND',
+            message: `Mint address not found for Policy ID: ${policyId}`,
+          })
         }
 
-        res.status(200).json(mint)
-        break
+        return res.status(200).json(mint)
       }
 
       case 'POST': {
-        if (adminCode !== ADMIN_CODE) {
-          return res.status(401).json({ type: 'UNAUTHORIZED', message: 'Admin code is invalid' })
+        if (admin_code !== ADMIN_CODE) {
+          return res.status(401).json({
+            type: 'UNAUTHORIZED',
+            message: 'Admin code is invalid',
+          })
         }
 
         let mint = await MintAddress.findOne({ policyId })
 
         if (mint) {
-          return res
-            .status(400)
-            .json({ type: 'BAD_REQUEST', message: `Mint address already exists for Policy ID: ${policyId}` })
+          return res.status(400).json({
+            type: 'BAD_REQUEST',
+            message: `Mint address already exists for Policy ID: ${policyId}`,
+          })
         }
 
         mint = new MintAddress({
@@ -48,22 +70,24 @@ export default async (req, res) => {
 
         await mint.save()
 
-        res.status(201).json(mint)
-
-        break
+        return res.status(201).json(mint)
       }
 
       case 'PATCH': {
-        if (adminCode !== ADMIN_CODE) {
-          return res.status(401).json({ type: 'UNAUTHORIZED', message: 'Admin code is invalid' })
+        if (admin_code !== ADMIN_CODE) {
+          return res.status(401).json({
+            type: 'UNAUTHORIZED',
+            message: 'Admin code is invalid',
+          })
         }
 
         const mint = await MintAddress.findOne({ policyId })
 
         if (!mint) {
-          return res
-            .status(404)
-            .json({ type: 'NOT_FOUND', message: `Mint address not found for Policy ID: ${policyId}` })
+          return res.status(404).json({
+            type: 'NOT_FOUND',
+            message: `Mint address not found for Policy ID: ${policyId}`,
+          })
         }
 
         mint.ogAddress = ogAddress ?? mint.ogAddress
@@ -72,17 +96,19 @@ export default async (req, res) => {
 
         await mint.save()
 
-        res.status(200).json(mint)
-        break
+        return res.status(204).json({})
       }
 
       default: {
-        res.status(404).json({})
-        break
+        return res.status(404).json({
+          type: 'NOT_FOUND',
+          message: 'Method does not exist for this route',
+        })
       }
     }
   } catch (error) {
-    console.error(error)
-    res.status(500).json({})
+    console.error(error.message)
+
+    return res.status(500).json({})
   }
 }

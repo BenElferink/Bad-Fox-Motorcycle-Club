@@ -1,10 +1,10 @@
-import { useDiscordAuth } from '../../contexts/DiscordAuthContext'
-import Section from '../Section'
-import Loader from '../Loader'
-import styles from './ViewSubmittedWallet.module.css'
+import { useAuth } from '../../../contexts/AuthContext'
+import Section from '../../Section'
+import Loader from '../../Loader'
+import styles from './CheckWallet.module.css'
 
-export default function ViewSubmittedWallet() {
-  const { loading, error, member } = useDiscordAuth()
+export default function CheckWallet() {
+  const { loading, error, account } = useAuth()
 
   if (loading) {
     return (
@@ -26,24 +26,24 @@ export default function ViewSubmittedWallet() {
 
   return (
     <Section>
-      <h2>Welcome {member.username}!</h2>
+      <h2>Welcome {account.username}!</h2>
       <p>
         You have the following (mint) roles:
         <br />
         <strong>
-          {member.roles.isOG ? 'OG, ' : null}
-          {!member.roles.isOG ? 'None' : null}
+          {account.roles?.isOG ? 'OG, ' : null}
+          {!account.roles?.isOG ? 'None' : null}
         </strong>
       </p>
       <p className={styles.addr}>
         Your (registered) wallet address:
         <br />
-        <span>{member.wallet.address ?? 'Not submitted'}</span>
+        <span>{account.mintWallet?.address || 'Not submitted'}</span>
       </p>
       <p className={styles.addr}>
         Your (collected) stake key:
         <br />
-        <span>{member.wallet.stakeKey ?? 'Not submitted'}</span>
+        <span>{account.mintWallet?.stakeKey || 'Not submitted'}</span>
       </p>
     </Section>
   )

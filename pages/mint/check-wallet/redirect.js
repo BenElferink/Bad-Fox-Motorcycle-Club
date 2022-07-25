@@ -1,27 +1,20 @@
-import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { useDiscordAuth } from '../../../contexts/DiscordAuthContext'
+import { useAuth } from '../../../contexts/AuthContext'
 import Header from '../../../components/Header'
 import Footer from '../../../components/Footer'
 import Landing from '../../../components/Landing'
 import Section from '../../../components/Section'
 import Loader from '../../../components/Loader'
-import ViewSubmittedWallet from '../../../components/ViewSubmittedWallet'
+import CheckWallet from '../../../components/Mint/CheckWallet'
 
 export default function Page() {
-  const router = useRouter()
-  const { asPath } = router
-  const { loading, token, member, getDiscordTokenFromQuery, getMemberWithToken } = useDiscordAuth()
+  const { loading, token, account, getAccountWithDiscordToken } = useAuth()
 
   useEffect(() => {
     ;(async () => {
-      if (asPath) {
-        const query = asPath.split('#')[1]
-        const t = getDiscordTokenFromQuery(query)
-        await getMemberWithToken(t)
-      }
+      await getAccountWithDiscordToken()
     })()
-  }, [asPath])
+  }, [])
 
   return (
     <div className='App flex-col'>
@@ -32,8 +25,8 @@ export default function Page() {
             <h2>Please wait a moment...</h2>
             <Loader />
           </Section>
-        ) : token && member ? (
-          <ViewSubmittedWallet />
+        ) : token && account ? (
+          <CheckWallet />
         ) : (
           <Section>You are not authorized!</Section>
         )}

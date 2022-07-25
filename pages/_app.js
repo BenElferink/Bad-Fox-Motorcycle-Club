@@ -1,8 +1,10 @@
 import Head from 'next/head'
-import { ScreenSizeProvider } from '../contexts/ScreenSizeContext'
-import { DiscordAuthProvider } from '../contexts/DiscordAuthContext'
+import { Fragment } from 'react'
+import { Toaster } from 'react-hot-toast'
+import { AuthProvider } from '../contexts/AuthContext'
 import { MintProvider } from '../contexts/MintContext'
 import { MarketProvider } from '../contexts/MarketContext'
+import { ScreenSizeProvider } from '../contexts/ScreenSizeContext'
 import { createTheme, ThemeProvider } from '@mui/material'
 import CssBaseline from '@mui/material/CssBaseline'
 import '@fontsource/roboto'
@@ -22,31 +24,35 @@ const theme = createTheme({
 
 function App({ Component, pageProps }) {
   return (
-    <ScreenSizeProvider>
-      <DiscordAuthProvider>
+    <Fragment>
+      <Head>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <link rel='icon' type='image/x-icon' href='/favicon.ico' />
+        <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
+        <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
+        <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
+        <link rel='manifest' href='/manifest.json' />
+        <meta name='author' content='Ben Elferink' />
+        {/* <meta name='description' content='' /> */}
+        {/* <meta name='keywords' content='' /> */}
+        <title>Bad Fox Motorcycle Club</title>
+      </Head>
+
+      <Toaster />
+
+      <AuthProvider>
         <MintProvider>
           <MarketProvider>
-            <Head>
-              <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-              <link rel='icon' type='image/x-icon' href='/favicon.ico' />
-              <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
-              <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
-              <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
-              <link rel='manifest' href='/manifest.json' />
-              <meta name='author' content='Ben Elferink' />
-              {/* <meta name='description' content='' /> */}
-              {/* <meta name='keywords' content='' /> */}
-              <title>Bad Fox Motorcycle Club</title>
-            </Head>
-
-            <ThemeProvider theme={theme}>
-              <CssBaseline />
-              <Component {...pageProps} />
-            </ThemeProvider>
+            <ScreenSizeProvider>
+              <ThemeProvider theme={theme}>
+                <CssBaseline />
+                <Component {...pageProps} />
+              </ThemeProvider>
+            </ScreenSizeProvider>
           </MarketProvider>
         </MintProvider>
-      </DiscordAuthProvider>
-    </ScreenSizeProvider>
+      </AuthProvider>
+    </Fragment>
   )
 }
 

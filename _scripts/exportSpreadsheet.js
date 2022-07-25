@@ -11,9 +11,11 @@ const run = async () => {
   const ogs = [HEADER_ROW]
 
   try {
-    const { data } = await axios.get(`${URL}/api/registered-members?adminCode=${ADMIN_CODE}`)
+    const {
+      data: { accounts },
+    } = await axios.get(`${URL}/api/account/all`, { headers: { admin_code: ADMIN_CODE } })
 
-    for (const { username, roles, wallet } of data.members) {
+    for (const { username, roles, wallet } of accounts) {
       if (!wallet.address) {
         console.error(username, '- did not submit address')
       } else {

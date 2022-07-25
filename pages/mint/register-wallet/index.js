@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { useDiscordAuth } from '../../../contexts/DiscordAuthContext'
+import { useAuth } from '../../../contexts/AuthContext'
 import { useMint } from '../../../contexts/MintContext'
 import Header from '../../../components/Header'
 import Footer from '../../../components/Footer'
@@ -12,13 +12,13 @@ import { DISCORD_REDIRECT_URL_WALLET_REGISTER } from '../../../constants/discord
 export default function Page() {
   const router = useRouter()
   const { isRegisterOnline } = useMint()
-  const { token, member } = useDiscordAuth()
+  const { token, account } = useAuth()
 
   const clickLogin = () => {
     router.push(DISCORD_REDIRECT_URL_WALLET_REGISTER)
   }
 
-  const isOkToRedirect = isRegisterOnline && token && member
+  const isOkToRedirect = isRegisterOnline && token && account
 
   useEffect(() => {
     if (isOkToRedirect) {

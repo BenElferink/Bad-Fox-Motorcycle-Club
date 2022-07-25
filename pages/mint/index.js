@@ -1,17 +1,17 @@
 import { useRouter } from 'next/router'
-import { useDiscordAuth } from '../../contexts/DiscordAuthContext'
+import { useAuth } from '../../contexts/AuthContext'
 import { useMint } from '../../contexts/MintContext'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import Landing from '../../components/Landing'
 import Section from '../../components/Section'
 import DiscordLogin from '../../components/DiscordLogin'
-import MintPortal from '../../components/MintPortal'
+import MintPortal from '../../components/Mint/MintPortal'
 import { DISCORD_REDIRECT_URL_MINT } from '../../constants/discord'
 
 export default function Page() {
   const router = useRouter()
-  const { token, member } = useDiscordAuth()
+  const { token, account } = useAuth()
   const { isPreSaleOnline, isPublicSaleOnline } = useMint()
 
   const clickLogin = () => {
@@ -30,7 +30,7 @@ export default function Page() {
     )
   }
 
-  if (isPreSaleOnline && token && member) {
+  if (isPreSaleOnline && token && account) {
     router.push(`${router.asPath}/redirect`)
 
     return <div className='App' />

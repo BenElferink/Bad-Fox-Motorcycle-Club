@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from 'react'
 import axios from 'axios'
+import { FOX_POLICY_ID } from '../constants/policy-ids'
 
 // init context
 const MarketContext = createContext()
@@ -17,7 +18,7 @@ export function MarketProvider({ children }) {
 
   const fetchAndSetAllFoxes = async () => {
     try {
-      const res = await axios.get(`/api/listings/fox`)
+      const res = await axios.get(`/api/market/${FOX_POLICY_ID}`)
       setAllListedFoxes(res.data)
     } catch (error) {
       console.error(error)
@@ -25,9 +26,9 @@ export function MarketProvider({ children }) {
     }
   }
 
-  const fetchAndSetRecentFoxes = async ({ sold = true, page = 1 }) => {
+  const fetchAndSetRecentFoxes = async ({ sold = false, page = 1 }) => {
     try {
-      const { data } = await axios.get(`/api/listings/fox/recent?sold=${sold}&page=${page}`)
+      const { data } = await axios.get(`/api/market/${FOX_POLICY_ID}/recent?sold=${sold}&page=${page}`)
       if (sold) {
         setRecentlySoldFoxes((prev) => [...prev, ...data])
       } else {

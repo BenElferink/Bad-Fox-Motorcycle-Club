@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useDiscordAuth } from '../../contexts/DiscordAuthContext'
-import { useMint } from '../../contexts/MintContext'
-import Section from '../Section'
-import Modal from '../Modal'
-import Loader from '../Loader'
-import BaseButton from '../BaseButton'
-import { FOX_POLICY_ID } from '../../constants/policy-ids'
+import { useAuth } from '../../../contexts/AuthContext'
+import { useMint } from '../../../contexts/MintContext'
+import Section from '../../Section'
+import Modal from '../../Modal'
+import Loader from '../../Loader'
+import BaseButton from '../../BaseButton'
+import { FOX_POLICY_ID } from '../../../constants/policy-ids'
 import styles from './MintPortal.module.css'
 
 const MintScreen = ({ role = 'None', maxMints = 0, mintPrice = 0, mintAddress = 'None', loading = false }) => {
@@ -40,14 +40,14 @@ const MintScreen = ({ role = 'None', maxMints = 0, mintPrice = 0, mintAddress = 
       <BaseButton
         label={isCopied ? 'COPIED 👍' : 'COPY MINT ADDRESS'}
         onClick={() => clickCopy(mintAddress)}
-        style={{ background: 'var(--discord-purple)' }}
+        style={{ backgroundColor: 'var(--discord-purple)' }}
       />
     </div>
   )
 }
 
 export default function MintPortal() {
-  const { loading, error, member } = useDiscordAuth()
+  const { loading, error, account } = useAuth()
   const { isPublicSaleOnline } = useMint()
 
   const [openModal, setOpenModal] = useState(false)
@@ -104,7 +104,7 @@ export default function MintPortal() {
     )
   }
 
-  if (!member.roles.isOG) {
+  if (!account.roles?.isOG) {
     return (
       <Section>
         <h2>You are not eligible to mint.</h2>
@@ -117,7 +117,7 @@ export default function MintPortal() {
     )
   }
 
-  if (!member.wallet.address || !member.wallet.stakeKey) {
+  if (!account.mintWallet?.address || !account.mintWallet?.stakeKey) {
     return (
       <Section>
         <h2>You are not eligible to mint.</h2>
@@ -132,26 +132,26 @@ export default function MintPortal() {
 
   return (
     <Section>
-      <h2>Welcome {member.username}!</h2>
+      <h2>Welcome {account.username}!</h2>
 
       <p>
         You have the following roles:
         <br />
         <strong>
-          {member.roles.isOG ? 'OG, ' : null}
-          {!member.roles.isOG ? 'None' : null}
+          {account.roles?.isOG ? 'OG, ' : null}
+          {!account.roles?.isOG ? 'None' : null}
         </strong>
       </p>
 
       <p className={styles.addr}>
         Your (registered) wallet address:
         <br />
-        <span>{member.wallet.address}</span>
+        <span>{account.mintWallet?.address || 'Not submitted'}</span>
       </p>
       <p className={styles.addr}>
         Your (collected) stake key:
         <br />
-        <span>{member.wallet.stakeKey}</span>
+        <span>{account.mintWallet?.stakeKey || 'Not submitted'}</span>
       </p>
 
       <BaseButton
@@ -163,10 +163,10 @@ export default function MintPortal() {
       <Modal
         open={openModal}
         onClose={() => setOpenModal(false)}
-        title={`${member.roles.isOG ? 'OG' : 'Error'} Mint`}
+        title={`${account.roles.isOG ? 'OG' : 'Error'} Mint`}
         style={{ background: 'var(--brown)' }}
       >
-        {member.roles.isOG ? (
+        {account.roles.isOG ? (
           <MintScreen role='OG' maxMints={3} mintPrice={42} mintAddress={mintObj.ogAddress} loading={fetching} />
         ) : (
           <div className={styles.mintModal}>You're not supposed to be here.</div>

@@ -21,7 +21,7 @@ const getFox = async (timestamp) =>
 
         try {
           console.log(`Making request for type ${obj.type}`)
-          await axios.post(`${BFMC_API}/floor/${FOX_POLICY_ID}?adminCode=${ADMIN_CODE}`, payload)
+          await axios.post(`${BFMC_API}/floor/${FOX_POLICY_ID}`, payload, { headers: { admin_code: ADMIN_CODE } })
           return resolve(true)
         } catch (error) {
           console.error(error?.message)
