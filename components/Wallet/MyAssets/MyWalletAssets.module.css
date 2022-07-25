@@ -1,0 +1,10 @@
+.listOfAssets {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.noneListed {
+  font-size: 2rem;
+}

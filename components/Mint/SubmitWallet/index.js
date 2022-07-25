@@ -74,7 +74,7 @@ export default function SubmitWallet() {
               style={{ borderRadius: '1rem' }}
             />
             <br />
-            <BaseButton label='Try Again' onClick={clickEdit} style={{ background: 'var(--discord-purple)' }} />
+            <BaseButton label='Try Again' onClick={clickEdit} backgroundColor='var(--discord-purple)' />
           </>
         ) : null}
       </Section>
@@ -113,7 +113,7 @@ export default function SubmitWallet() {
           onChange={(e) => setWalletAddress(e.target.value)}
           className={styles.inp}
         />
-        <BaseButton label='Submit' onClick={clickSubmit} style={{ background: 'var(--discord-purple)' }} />
+        <BaseButton label='Submit' onClick={clickSubmit} backgroundColor='var(--discord-purple)' />
       </Section>
     )
   }
@@ -132,7 +132,7 @@ export default function SubmitWallet() {
         <br />
         <span>{account.mintWallet?.stakeKey || 'Not submitted'}</span>
       </p>
-      <BaseButton label='Change Address' onClick={clickEdit} style={{ background: 'var(--discord-purple)' }} />
+      <BaseButton label='Change Address' onClick={clickEdit} backgroundColor='var(--discord-purple)' />
     </Section>
   )
 }

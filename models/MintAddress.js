@@ -1,5 +1,20 @@
 import mongoose from 'mongoose'
 
+const addressObject = {
+  address: {
+    type: mongoose.Schema.Types.String,
+    default: 'None',
+  },
+  amount: {
+    type: mongoose.Schema.Types.Number,
+    default: 0,
+  },
+  price: {
+    type: mongoose.Schema.Types.Number,
+    default: 0,
+  },
+}
+
 const MintAddress = new mongoose.Schema(
   {
     policyId: {
@@ -7,17 +22,12 @@ const MintAddress = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    ogAddress: {
-      type: mongoose.Schema.Types.String,
-    },
-    wlAddress: {
-      type: mongoose.Schema.Types.String,
-    },
-    publicAddress: {
-      type: mongoose.Schema.Types.String,
-    },
+    og: addressObject,
+    wl: addressObject,
+    pub: addressObject,
   },
   {
+    versionKey: false,
     timestamps: true,
     // this creates and maintains:
     // {

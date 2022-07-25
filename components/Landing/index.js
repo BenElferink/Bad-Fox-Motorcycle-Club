@@ -13,7 +13,13 @@ const Landing = ({ isHome = false, children }) => {
       {isHome ? (
         <div className={styles.content}>
           <div className={`${styles.fox} animate__animated animate__slow animate__infinite animate__bounce`}>
-            <Image src='/images/landing/fox.png' alt='fox' width={imageSize} height={imageSize} />
+            {/* <Image src='/images/landing/fox.png' alt='fox' width={imageSize} height={imageSize} /> */}
+            <Image
+              src='https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/images/landing/fox.png'
+              alt='fox'
+              width={imageSize}
+              height={imageSize}
+            />
           </div>
           {!isMobile ? <About /> : null}
         </div>

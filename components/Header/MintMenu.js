@@ -1,13 +1,14 @@
-import { Fragment, useState } from 'react'
 import { useRouter } from 'next/router'
+import { Fragment, useState } from 'react'
+import toast from 'react-hot-toast'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import { useMint } from '../../contexts/MintContext'
 import { Menu, MenuItem } from '@mui/material'
+import Split from './Split'
 import BaseButton from '../BaseButton'
 import OnlineIndicator from '../OnlineIndicator'
-import Split from './Split'
 
-const MintMenu = ({ btnStyle = {}, closeMenu = () => {}, setAlertMessage = () => {} }) => {
+const MintMenu = ({ btnStyle = {}, closeMenu = () => {} }) => {
   const router = useRouter()
   const { isMobile } = useScreenSize()
   const { isRegisterOnline, isPreSaleOnline, isPublicSaleOnline } = useMint()
@@ -26,7 +27,7 @@ const MintMenu = ({ btnStyle = {}, closeMenu = () => {}, setAlertMessage = () =>
     if (isRegisterOnline) {
       router.push('/mint/register-wallet')
     } else {
-      setAlertMessage('Wallet registration is currently closed')
+      toast.error('Wallet registration is currently closed')
     }
 
     setAnchorEl(null)
@@ -37,7 +38,7 @@ const MintMenu = ({ btnStyle = {}, closeMenu = () => {}, setAlertMessage = () =>
     if (isPreSaleOnline || isPublicSaleOnline) {
       router.push('/mint')
     } else {
-      setAlertMessage('Mint is offline')
+      toast.error('Mint is offline')
     }
 
     setAnchorEl(null)

@@ -1,7 +1,9 @@
 .root {
   width: 100vw;
   height: calc(100vw * 0.7);
-  background: url('/images/landing/bg.jpg') no-repeat center;
+  /* background: url('/images/landing/bg.jpg') no-repeat center; */
+  background: url('https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/images/landing/bg.jpg')
+    no-repeat center;
   background-size: cover;
 }
 

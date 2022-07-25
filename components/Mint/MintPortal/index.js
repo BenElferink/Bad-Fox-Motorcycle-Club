@@ -40,7 +40,7 @@ const MintScreen = ({ role = 'None', maxMints = 0, mintPrice = 0, mintAddress = 
       <BaseButton
         label={isCopied ? 'COPIED 👍' : 'COPY MINT ADDRESS'}
         onClick={() => clickCopy(mintAddress)}
-        style={{ backgroundColor: 'var(--discord-purple)' }}
+        backgroundColor='var(--discord-purple)'
       />
     </div>
   )
@@ -95,9 +95,9 @@ export default function MintPortal() {
 
         <MintScreen
           role='Public'
-          maxMints={4}
-          mintPrice={62}
-          mintAddress={mintObj.publicAddress}
+          maxMints={mintObj.pub?.amount}
+          mintPrice={mintObj.pub?.price}
+          mintAddress={mintObj.pub?.address}
           loading={fetching}
         />
       </Section>
@@ -154,11 +154,7 @@ export default function MintPortal() {
         <span>{account.mintWallet?.stakeKey || 'Not submitted'}</span>
       </p>
 
-      <BaseButton
-        label='MINT NOW'
-        onClick={() => setOpenModal(true)}
-        style={{ background: 'var(--discord-purple)' }}
-      />
+      <BaseButton label='MINT NOW' onClick={() => setOpenModal(true)} backgroundColor='var(--discord-purple)' />
 
       <Modal
         open={openModal}
@@ -167,7 +163,13 @@ export default function MintPortal() {
         style={{ background: 'var(--brown)' }}
       >
         {account.roles.isOG ? (
-          <MintScreen role='OG' maxMints={3} mintPrice={42} mintAddress={mintObj.ogAddress} loading={fetching} />
+          <MintScreen
+            role='OG'
+            maxMints={mintObj.og?.amount}
+            mintPrice={mintObj.og?.price}
+            mintAddress={mintObj.og?.address}
+            loading={fetching}
+          />
         ) : (
           <div className={styles.mintModal}>You're not supposed to be here.</div>
         )}

@@ -1,4 +1,4 @@
-import { useScreenSize } from '../contexts/ScreenSizeContext'
+import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import { Button } from '@mui/material'
 import { useRef } from 'react'
 
@@ -14,6 +14,7 @@ function BaseButton({
   backgroundColor,
   hoverColor,
   color,
+  size,
 }) {
   const ref = useRef(null)
   const { isMobile } = useScreenSize()
@@ -23,7 +24,7 @@ function BaseButton({
       ref={ref}
       variant='contained'
       color='secondary'
-      size={isMobile ? 'medium' : 'large'}
+      size={size || (isMobile ? 'medium' : 'large')}
       fullWidth={isMobile}
       startIcon={Icon ? <Icon /> : null}
       onClick={onClick}

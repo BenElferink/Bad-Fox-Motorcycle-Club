@@ -5,7 +5,7 @@ import { Menu, MenuItem } from '@mui/material'
 import BaseButton from '../BaseButton'
 import Split from './Split'
 
-const CatalogMenu = ({ btnStyle = {}, closeMenu = () => {}, setAlertMessage = () => {} }) => {
+const CatalogMenu = ({ btnStyle = {}, closeMenu = () => {} }) => {
   const router = useRouter()
   const { isMobile } = useScreenSize()
 

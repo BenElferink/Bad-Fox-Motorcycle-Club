@@ -67,23 +67,25 @@ function AssetCard({
               </Fragment>
             ))}
           </Typography>
-          <Divider sx={{ margin: '0.5rem 0' }} />
           {tableRows && tableRows.length ? (
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-              <tbody>
-                {tableRows.map((row, idx) => (
-                  <tr key={`${mainTitles[0]}-table-row-${idx}`}>
-                    {row.map((str) => (
-                      <td key={`${mainTitles[0]}-table-row-${idx}-item-${str}`}>
-                        <Typography variant='body2' color={color ?? 'text.secondary'} fontSize='smaller'>
-                          {str}
-                        </Typography>
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <Fragment>
+              <Divider sx={{ margin: '0.5rem 0' }} />
+              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <tbody>
+                  {tableRows.map((row, idx) => (
+                    <tr key={`${mainTitles[0]}-table-row-${idx}`}>
+                      {row.map((str) => (
+                        <td key={`${mainTitles[0]}-table-row-${idx}-item-${str}`}>
+                          <Typography variant='body2' color={color ?? 'text.secondary'} fontSize='smaller'>
+                            {str}
+                          </Typography>
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </Fragment>
           ) : null}
         </CardContent>
       </CardActionArea>

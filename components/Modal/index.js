@@ -1,4 +1,4 @@
-import { useScreenSize } from '../contexts/ScreenSizeContext'
+import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import { Modal as MuiModal, IconButton, Typography, Fade } from '@mui/material'
 import { CloseRounded } from '@mui/icons-material'
 

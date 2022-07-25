@@ -15,6 +15,7 @@ const Wallet = new mongoose.Schema(
     },
   },
   {
+    versionKey: false,
     timestamps: true,
     // this creates and maintains:
     // {

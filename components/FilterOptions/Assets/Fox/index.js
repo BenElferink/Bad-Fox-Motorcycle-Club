@@ -144,8 +144,13 @@ const FoxAssetsOptions = ({
                           }${obj.label}`
 
                     return (
-                      <MenuItem key={`market-category-attribute-${obj.label}-${idx2}`} value={trait}>
-                        {trait}
+                      <MenuItem
+                        key={`market-category-attribute-${obj.label}-${idx2}`}
+                        value={trait}
+                        sx={{ justifyContent: 'space-between' }}
+                      >
+                        <span>{trait}</span>
+                        <span>{obj.percent}</span>
                       </MenuItem>
                     )
                   })}

@@ -14,7 +14,9 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import '../styles/swiper-overrides.css'
 import '../styles/globals.css'
+
 // https://animate.style
+// https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public
 
 const theme = createTheme({
   palette: {

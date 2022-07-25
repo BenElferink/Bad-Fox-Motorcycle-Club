@@ -43,7 +43,7 @@ export default async (req, res) => {
         }
 
         const count = await Floor.countDocuments(filters)
-        const foundFloors = await Floor.find(filters)
+        const foundFloors = await Floor.find(filters).sort({ timestamp: -1 })
 
         return res.status(200).json({
           count,

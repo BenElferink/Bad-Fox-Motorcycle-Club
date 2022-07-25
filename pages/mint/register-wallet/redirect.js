@@ -5,7 +5,8 @@ import Header from '../../../components/Header'
 import Footer from '../../../components/Footer'
 import Landing from '../../../components/Landing'
 import Section from '../../../components/Section'
-import Loader from '../../../components/Loader'
+import DiscordFetchingAccount from '../../../components/DiscordAuth/FetchingAccount'
+import DiscordNotAuthorized from '../../../components/DiscordAuth/NotAuthorized'
 import SubmitWallet from '../../../components/Mint/SubmitWallet'
 
 export default function Page() {
@@ -23,22 +24,21 @@ export default function Page() {
   return (
     <div className='App flex-col'>
       <Header />
-      <Landing>
-        {isRegisterOnline ? (
-          loading ? (
-            <Section>
-              <h2>Please wait a moment...</h2>
-              <Loader />
-            </Section>
-          ) : token && account ? (
+      {isRegisterOnline ? (
+        loading && (!token || !account) ? (
+          <DiscordFetchingAccount />
+        ) : token && account ? (
+          <Landing>
             <SubmitWallet />
-          ) : (
-            <Section>You are not authorized!</Section>
-          )
+          </Landing>
         ) : (
+          <DiscordNotAuthorized />
+        )
+      ) : (
+        <Landing>
           <Section>Wallet registration is closed!</Section>
-        )}
-      </Landing>
+        </Landing>
+      )}
       <Footer />
     </div>
   )

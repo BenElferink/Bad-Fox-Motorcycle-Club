@@ -48,7 +48,7 @@ export function AuthProvider({ children }) {
     if (router.asPath) {
       const query = router.asPath.split('#')[1]
 
-      query.split('&').forEach((str) => {
+      query?.split('&').forEach((str) => {
         const [k, v] = str.split('=')
         if (k === 'access_token') t = v
       })
@@ -127,20 +127,18 @@ export function AuthProvider({ children }) {
   }
 
   const deleteAccountPortfolioWallet = async (stakeKey) => {
-    if (window.confirm('Are you sure you want to delete this wallet?')) {
-      setLoading(true)
+    setLoading(true)
 
-      try {
-        await axios.delete(`/api/account/portfolio-wallets/${stakeKey}?discordToken=${token}`)
+    try {
+      await axios.delete(`/api/account/portfolio-wallets/${stakeKey}?discordToken=${token}`)
 
-        clearError()
-      } catch (e) {
-        handleError(e)
-      }
-
-      setLoading(false)
-      await getAccountWithDiscordToken()
+      clearError()
+    } catch (e) {
+      handleError(e)
     }
+
+    setLoading(false)
+    await getAccountWithDiscordToken()
   }
 
   const syncAccountPortfolioWallets = async () => {

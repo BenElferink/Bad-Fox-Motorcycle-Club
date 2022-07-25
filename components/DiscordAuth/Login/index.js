@@ -1,6 +1,6 @@
-import Section from '../../components/Section'
-import BaseButton from '../../components/BaseButton'
-import Discord from '../../icons/Discord'
+import Section from '../../Section'
+import BaseButton from '../../BaseButton'
+import Discord from '../../../icons/Discord'
 
 export default function DiscordLogin({ title = '', text = '', onClick = () => console.log('click') }) {
   return (
@@ -9,7 +9,7 @@ export default function DiscordLogin({ title = '', text = '', onClick = () => co
       {text ? <p>{text}</p> : null}
 
       <BaseButton
-        label='Login'
+        label='Authorize'
         onClick={onClick}
         icon={Discord}
         backgroundColor='var(--discord-purple)'

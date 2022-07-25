@@ -1,29 +1,35 @@
+import { useRouter } from 'next/router'
 import { Fragment, useState } from 'react'
-// import { useRouter } from 'next/router'
+import toast from 'react-hot-toast'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import { Menu, MenuItem } from '@mui/material'
-import BaseButton from '../BaseButton'
 import Split from './Split'
+import BaseButton from '../BaseButton'
 import OnlineIndicator from '../OnlineIndicator'
 
-const WalletMenu = ({ btnStyle = {}, closeMenu = () => {}, setAlertMessage = () => {} }) => {
-  // const router = useRouter()
+const WalletMenu = ({ btnStyle = {}, closeMenu = () => {} }) => {
+  const router = useRouter()
   const { isMobile } = useScreenSize()
 
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
 
+  const clickManageWallets = () => {
+    router.push('/wallet/manage')
+
+    setAnchorEl(null)
+    closeMenu()
+  }
+
   const clickMyAssets = () => {
-    // router.push('/wallet/assets')
-    setAlertMessage('This feature is coming soon')
+    router.push('/wallet/assets')
 
     setAnchorEl(null)
     closeMenu()
   }
 
   const clickMyTraits = () => {
-    // router.push('/wallet/traits')
-    setAlertMessage('This feature is coming soon')
+    router.push('/wallet/traits')
 
     setAnchorEl(null)
     closeMenu()
@@ -31,7 +37,7 @@ const WalletMenu = ({ btnStyle = {}, closeMenu = () => {}, setAlertMessage = () 
 
   const clickMyPortfolio = () => {
     // router.push('/wallet/portfolio')
-    setAlertMessage('This feature is coming soon')
+    toast.error('This feature is coming soon')
 
     setAnchorEl(null)
     closeMenu()
@@ -42,12 +48,9 @@ const WalletMenu = ({ btnStyle = {}, closeMenu = () => {}, setAlertMessage = () 
       <Fragment>
         <Split />
 
-        <OnlineIndicator online={false}>
-          <BaseButton label='My Assets' onClick={clickMyAssets} transparent style={btnStyle} />
-        </OnlineIndicator>
-        <OnlineIndicator online={false}>
-          <BaseButton label='My Traits' onClick={clickMyTraits} transparent style={btnStyle} />
-        </OnlineIndicator>
+        <BaseButton label='Manage Wallets' onClick={clickManageWallets} transparent style={btnStyle} />
+        <BaseButton label='My Assets' onClick={clickMyAssets} transparent style={btnStyle} />
+        <BaseButton label='My Traits' onClick={clickMyTraits} transparent style={btnStyle} />
         <OnlineIndicator online={false}>
           <BaseButton label='My Portfolio' onClick={clickMyPortfolio} transparent style={btnStyle} />
         </OnlineIndicator>
@@ -61,18 +64,19 @@ const WalletMenu = ({ btnStyle = {}, closeMenu = () => {}, setAlertMessage = () 
 
       <Menu open={open} onClose={() => setAnchorEl(null)} anchorEl={anchorEl}>
         <div>
-          <OnlineIndicator online={false}>
-            <MenuItem onClick={clickMyAssets} sx={{ width: 200, height: 50 }}>
-              My Assets
-            </MenuItem>
-          </OnlineIndicator>
+          <MenuItem onClick={clickManageWallets} sx={{ width: 200, height: 50 }}>
+            Manage Wallets
+          </MenuItem>
         </div>
         <div>
-          <OnlineIndicator online={false}>
-            <MenuItem onClick={clickMyTraits} sx={{ width: 200, height: 50 }}>
-              My Traits
-            </MenuItem>
-          </OnlineIndicator>
+          <MenuItem onClick={clickMyAssets} sx={{ width: 200, height: 50 }}>
+            My Assets
+          </MenuItem>
+        </div>
+        <div>
+          <MenuItem onClick={clickMyTraits} sx={{ width: 200, height: 50 }}>
+            My Traits
+          </MenuItem>
         </div>
         <div>
           <OnlineIndicator online={false}>

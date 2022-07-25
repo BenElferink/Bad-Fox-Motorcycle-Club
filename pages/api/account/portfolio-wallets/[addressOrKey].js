@@ -119,7 +119,7 @@ export default async (req, res) => {
 
         account.username = username
         account.roles = roles
-        if (!account.portfolioWallets.find((str) => str === wallet._id)) {
+        if (!account.portfolioWallets.find((str) => str.toString() === wallet._id.toString())) {
           account.portfolioWallets.push(wallet._id)
         }
 
@@ -142,7 +142,9 @@ export default async (req, res) => {
 
         account.username = username
         account.roles = roles
-        account.portfolioWallets = account.portfolioWallets.filter((str) => str !== wallet._id)
+        account.portfolioWallets = account.portfolioWallets.filter(
+          (str) => str.toString() !== wallet._id.toString()
+        )
 
         await account.save()
 

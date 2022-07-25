@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
-import { Alert, AlertTitle, AppBar, Avatar, IconButton, Slide } from '@mui/material'
+import { AppBar, Avatar, IconButton } from '@mui/material'
 import { MenuRounded } from '@mui/icons-material'
 import Modal from '../Modal'
 import BaseButton from '../BaseButton'
@@ -19,21 +19,12 @@ export default function Header({ scrollTo = () => null }) {
   const isHome = router.asPath === '/'
 
   const [openMobileMenu, setOpenMobileMenu] = useState(false)
-  const [alertMessage, setAlertMessage] = useState('')
 
   useEffect(() => {
     if (isMobile) {
       setOpenMobileMenu(false)
     }
   }, [isMobile])
-
-  useEffect(() => {
-    if (alertMessage) {
-      setTimeout(() => {
-        setAlertMessage('')
-      }, 5000)
-    }
-  }, [alertMessage])
 
   const closeMenu = () => setOpenMobileMenu(false)
 
@@ -97,13 +88,6 @@ export default function Header({ scrollTo = () => null }) {
         <h1 style={{ fontSize: isMobile ? '1rem' : 'unset' }}>Bad Fox Motorcycle Club</h1>
       </div>
 
-      <Slide direction='up' in={Boolean(alertMessage)} mountOnEnter unmountOnExit>
-        <Alert severity='info' style={jsStyles.alert}>
-          <AlertTitle>Woopsies!</AlertTitle>
-          {alertMessage}
-        </Alert>
-      </Slide>
-
       {isMobile && !openMobileMenu ? (
         <IconButton onClick={() => setOpenMobileMenu(true)}>
           <MenuRounded style={jsStyles.burger} />
@@ -125,9 +109,9 @@ export default function Header({ scrollTo = () => null }) {
 
           <BaseButton label='Market' onClick={clickMarket} transparent style={jsStyles.btn} />
 
-          <CatalogMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} setAlertMessage={setAlertMessage} />
-          <WalletMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} setAlertMessage={setAlertMessage} />
-          {/* <MintMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} setAlertMessage={setAlertMessage} /> */}
+          <CatalogMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
+          <WalletMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
+          {/* <MintMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} /> */}
           <Socials closeMenu={closeMenu} />
         </nav>
       </Modal>

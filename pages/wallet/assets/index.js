@@ -1,24 +1,21 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { useAuth } from '../../../contexts/AuthContext'
-import { useMint } from '../../../contexts/MintContext'
-import Header from '../../../components/Header'
 import Footer from '../../../components/Footer'
+import Header from '../../../components/Header'
 import Landing from '../../../components/Landing'
-import Section from '../../../components/Section'
 import DiscordLogin from '../../../components/DiscordAuth/Login'
-import { DISCORD_AUTH_URL_REGISTER_MINT_WALLET } from '../../../constants/discord'
+import { DISCORD_AUTH_URL_MY_WALLET_ASSETS } from '../../../constants/discord'
 
-export default function Page() {
+const Page = () => {
   const router = useRouter()
-  const { isRegisterOnline } = useMint()
   const { token, account } = useAuth()
 
   const clickLogin = () => {
-    router.push(DISCORD_AUTH_URL_REGISTER_MINT_WALLET)
+    router.push(DISCORD_AUTH_URL_MY_WALLET_ASSETS)
   }
 
-  const isOkToSkipAuth = isRegisterOnline && token && account
+  const isOkToSkipAuth = token && account
 
   useEffect(() => {
     if (isOkToSkipAuth) {
@@ -34,17 +31,15 @@ export default function Page() {
     <div className='App flex-col'>
       <Header />
       <Landing>
-        {isRegisterOnline ? (
-          <DiscordLogin
-            title='Login with Discord'
-            text='Login to register your wallet address'
-            onClick={clickLogin}
-          />
-        ) : (
-          <Section>Wallet registration is closed!</Section>
-        )}
+        <DiscordLogin
+          title='Login with Discord'
+          text='You need to authorize yourself in order to view your assets'
+          onClick={clickLogin}
+        />
       </Landing>
       <Footer />
     </div>
   )
 }
+
+export default Page
