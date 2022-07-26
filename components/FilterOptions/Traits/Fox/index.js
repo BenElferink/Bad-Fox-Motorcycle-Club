@@ -5,7 +5,7 @@ import traitsData from '../../../../data/traits/fox'
 import BaseButton from '../../../BaseButton'
 import styles from './FoxTraitsOptions.module.css'
 
-const FoxTraitsOptions = ({ callbackSelectedCategory = () => {} }) => {
+const FoxTraitsOptions = ({ callbackSelectedCategory = () => {}, children }) => {
   const { isMobile } = useScreenSize()
   const [selectedCategory, setSelectedCategory] = useState('Skin')
 
@@ -45,6 +45,7 @@ const FoxTraitsOptions = ({ callbackSelectedCategory = () => {} }) => {
             ) : null
           )
       )}
+      {children}
     </div>
   )
 }

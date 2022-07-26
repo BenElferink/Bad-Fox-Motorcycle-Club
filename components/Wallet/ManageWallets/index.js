@@ -8,8 +8,13 @@ import styles from './ManageWallets.module.css'
 import { FOX_POLICY_ID } from '../../../constants/policy-ids'
 
 const ManageWallets = () => {
-  const { account, addAccountPortfolioWallet, deleteAccountPortfolioWallet, syncAccountPortfolioWallets } =
-    useAuth()
+  const {
+    loading: authLoading,
+    account,
+    addAccountPortfolioWallet,
+    deleteAccountPortfolioWallet,
+    syncAccountPortfolioWallets,
+  } = useAuth()
 
   const wallets = account.portfolioWallets ?? []
 
@@ -45,7 +50,7 @@ const ManageWallets = () => {
     }
   }
 
-  if (loading || !account) {
+  if (authLoading || loading || !account) {
     return <Loader />
   }
 

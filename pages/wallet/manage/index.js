@@ -9,13 +9,13 @@ import { DISCORD_AUTH_URL_MANAGE_MY_WALLETS } from '../../../constants/discord'
 
 const Page = () => {
   const router = useRouter()
-  const { token, account } = useAuth()
+  const { account } = useAuth()
 
   const clickLogin = () => {
     router.push(DISCORD_AUTH_URL_MANAGE_MY_WALLETS)
   }
 
-  const isOkToSkipAuth = token && account
+  const isOkToSkipAuth = account
 
   useEffect(() => {
     if (isOkToSkipAuth) {

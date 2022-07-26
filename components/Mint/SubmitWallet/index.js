@@ -9,7 +9,7 @@ import styles from './SubmitWallet.module.css'
 
 export default function SubmitWallet() {
   const { width } = useScreenSize()
-  const { loading, error, clearError, account, updateAccountMintWallet } = useAuth()
+  const { loading, error, account, updateAccountMintWallet } = useAuth()
 
   const [walletAddress, setWalletAddress] = useState('')
   const [forceEdit, setForceEdit] = useState(false)
@@ -35,7 +35,6 @@ export default function SubmitWallet() {
 
   const clickEdit = () => {
     setForceEdit(true)
-    clearError()
   }
 
   if (loading) {
@@ -47,7 +46,7 @@ export default function SubmitWallet() {
     )
   }
 
-  if (error.type && error.message) {
+  if (error.type && error.message && !forceEdit) {
     return (
       <Section>
         <h2>An error occurred:</h2>

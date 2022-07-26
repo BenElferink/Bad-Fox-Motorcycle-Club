@@ -1,6 +1,7 @@
 import { useAuth } from '../../../contexts/AuthContext'
 import { useEffect, useRef, useState } from 'react'
 import traitsData from '../../../data/traits/fox'
+import Loader from '../../Loader'
 import AssetCard from '../../AssetCard'
 import FoxAssetsOptions from '../../FilterOptions/Assets/Fox'
 import styles from './MyWalletAssets.module.css'
@@ -8,7 +9,7 @@ import styles from './MyWalletAssets.module.css'
 const INITIAL_DISPLAY_AMOUNT = 50
 
 const MyWalletAssets = () => {
-  const { myAssets } = useAuth()
+  const { loading: authLoading, myAssets } = useAuth()
   const assets = myAssets
 
   const [ascending, setAscending] = useState(true)
@@ -118,6 +119,7 @@ const MyWalletAssets = () => {
         )}
       </div>
 
+      {authLoading ? <Loader /> : null}
       <div ref={bottomRef} />
     </div>
   )

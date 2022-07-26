@@ -8,20 +8,20 @@ import DiscordNotAuthorized from '../../../components/DiscordAuth/NotAuthorized'
 import CheckWallet from '../../../components/Mint/CheckWallet'
 
 export default function Page() {
-  const { loading, token, account, getAccountWithDiscordToken } = useAuth()
+  const { loading, account, getAccount } = useAuth()
 
   useEffect(() => {
     ;(async () => {
-      await getAccountWithDiscordToken()
+      await getAccount()
     })()
   }, [])
 
   return (
     <div className='App flex-col'>
       <Header />
-      {loading && (!token || !account) ? (
+      {loading ? (
         <DiscordFetchingAccount />
-      ) : token && account ? (
+      ) : account ? (
         <Landing>
           <CheckWallet />
         </Landing>

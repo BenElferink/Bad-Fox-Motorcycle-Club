@@ -10,13 +10,13 @@ import DiscordNotAuthorized from '../../components/DiscordAuth/NotAuthorized'
 import MintPortal from '../../components/Mint/MintPortal'
 
 export default function Page() {
-  const { loading, token, account, getAccountWithDiscordToken } = useAuth()
+  const { loading, account, getAccount } = useAuth()
   const { isPreSaleOnline, isPublicSaleOnline } = useMint()
 
   useEffect(() => {
     ;(async () => {
       if (isPreSaleOnline) {
-        await getAccountWithDiscordToken()
+        await getAccount()
       }
     })()
   }, [isPreSaleOnline])
@@ -25,9 +25,9 @@ export default function Page() {
     <div className='App flex-col'>
       <Header />
       {isPreSaleOnline || isPublicSaleOnline ? (
-        loading && (!token || !account) ? (
+        loading ? (
           <DiscordFetchingAccount />
-        ) : (isPreSaleOnline && token && account) || isPublicSaleOnline ? (
+        ) : (isPreSaleOnline && account) || isPublicSaleOnline ? (
           <Landing>
             <MintPortal />
           </Landing>

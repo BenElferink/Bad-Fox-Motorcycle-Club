@@ -11,14 +11,14 @@ import { DISCORD_REDIRECT_URL_MINT } from '../../constants/discord'
 
 export default function Page() {
   const router = useRouter()
-  const { token, account } = useAuth()
+  const { account } = useAuth()
   const { isPreSaleOnline, isPublicSaleOnline } = useMint()
 
   const clickLogin = () => {
     router.push(DISCORD_REDIRECT_URL_MINT)
   }
 
-  const isOkToSkipAuth = (isPreSaleOnline && token && account) || isPublicSaleOnline
+  const isOkToSkipAuth = (isPreSaleOnline && account) || isPublicSaleOnline
 
   useEffect(() => {
     if (isOkToSkipAuth) {

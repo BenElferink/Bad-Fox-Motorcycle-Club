@@ -12,13 +12,13 @@ import { DISCORD_AUTH_URL_REGISTER_MINT_WALLET } from '../../../constants/discor
 export default function Page() {
   const router = useRouter()
   const { isRegisterOnline } = useMint()
-  const { token, account } = useAuth()
+  const { account } = useAuth()
 
   const clickLogin = () => {
     router.push(DISCORD_AUTH_URL_REGISTER_MINT_WALLET)
   }
 
-  const isOkToSkipAuth = isRegisterOnline && token && account
+  const isOkToSkipAuth = isRegisterOnline && account
 
   useEffect(() => {
     if (isOkToSkipAuth) {

@@ -8,7 +8,7 @@ const DiscordNotAuthorized = () => {
   const router = useRouter()
 
   const clickLogin = () => {
-    router.push('/')
+    router.push(router.asPath.indexOf('/redirect') !== -1 ? router.asPath.replace('/redirect', '') : '/')
   }
 
   return (
@@ -18,7 +18,7 @@ const DiscordNotAuthorized = () => {
         <p>You need to be logged in with Discord in order to continue</p>
 
         <BaseButton
-          label='GO HOME'
+          label='GO BACK'
           onClick={clickLogin}
           backgroundColor='var(--discord-purple)'
           style={{ width: '100%' }}

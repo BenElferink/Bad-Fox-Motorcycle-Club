@@ -7,24 +7,18 @@ import DiscordNotAuthorized from '../../../components/DiscordAuth/NotAuthorized'
 import MyWalletTraits from '../../../components/Wallet/MyTraits'
 
 export default function Page() {
-  const { loading, token, account, getAccountWithDiscordToken } = useAuth()
+  const { loading, token, account, getAccount } = useAuth()
 
   useEffect(() => {
     ;(async () => {
-      await getAccountWithDiscordToken()
+      await getAccount()
     })()
   }, [])
 
   return (
     <div className='App flex-col'>
       <Header />
-      {loading && (!token || !account) ? (
-        <DiscordFetchingAccount />
-      ) : token && account ? (
-        <MyWalletTraits />
-      ) : (
-        <DiscordNotAuthorized />
-      )}
+      {loading ? <DiscordFetchingAccount /> : account ? <MyWalletTraits /> : <DiscordNotAuthorized />}
       <Footer />
     </div>
   )

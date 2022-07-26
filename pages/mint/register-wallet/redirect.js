@@ -10,13 +10,13 @@ import DiscordNotAuthorized from '../../../components/DiscordAuth/NotAuthorized'
 import SubmitWallet from '../../../components/Mint/SubmitWallet'
 
 export default function Page() {
-  const { loading, token, account, getAccountWithDiscordToken } = useAuth()
+  const { loading, token, account, getAccount } = useAuth()
   const { isRegisterOnline } = useMint()
 
   useEffect(() => {
     ;(async () => {
       if (isRegisterOnline) {
-        await getAccountWithDiscordToken()
+        await getAccount()
       }
     })()
   }, [isRegisterOnline])
@@ -25,9 +25,9 @@ export default function Page() {
     <div className='App flex-col'>
       <Header />
       {isRegisterOnline ? (
-        loading && (!token || !account) ? (
+        loading ? (
           <DiscordFetchingAccount />
-        ) : token && account ? (
+        ) : account ? (
           <Landing>
             <SubmitWallet />
           </Landing>

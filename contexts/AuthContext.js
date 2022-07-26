@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import blockfrostJsonFile from '../data/assets/fox'
+import { ADMIN_CODE } from '../constants/api-keys'
 import { FOX_POLICY_ID } from '../constants/policy-ids'
 
 // init context
@@ -20,16 +21,9 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState({})
   const [token, setToken] = useState('')
+  const [userId, setUserId] = useState('')
   const [account, setAccount] = useState({})
   const [myAssets, setMyAssets] = useState([])
-
-  useEffect(() => {
-    account.portfolioWallets?.forEach((wallet) => {
-      wallet.assets[FOX_POLICY_ID]?.forEach((assetId) => {
-        setMyAssets((prev) => [...prev, blockfrostJsonFile.assets.find(({ asset }) => asset === assetId)])
-      })
-    })
-  }, [account])
 
   const handleError = (e) => {
     setError({
@@ -58,20 +52,25 @@ export function AuthProvider({ children }) {
     return t
   }
 
-  const getAccountWithDiscordToken = async () => {
+  const getAccount = async () => {
     const t = token || getDiscordTokenFromQuery()
+    const id = userId || account?.userId
 
-    if (!t) {
-      return toast.error('Could not get Discord auth token')
+    if (!t && !id) {
+      // toast.error('Could not authorize with Discord')
+      return
     }
 
     setLoading(true)
 
     try {
-      const res = await axios.get(`/api/account?discordToken=${t}`)
+      const res = await axios.get(`/api/account?${t ? `discordToken=${t}` : `discordUserId=${id}`}`, {
+        headers: { admin_code: ADMIN_CODE },
+      })
 
       setMyAssets([])
       setAccount(res.data)
+      setUserId(res.data.userId)
       clearError()
     } catch (e) {
       handleError(e)
@@ -79,6 +78,28 @@ export function AuthProvider({ children }) {
 
     setLoading(false)
   }
+
+  useEffect(() => {
+    // once window is loaded, get Discord user ID from local storage
+    if (window) {
+      const stored = window.localStorage.getItem('BadFoxMC_DiscordUserID')
+
+      if (stored) {
+        setUserId(stored)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    // once the account changes, set Discord user ID to local storage
+    if (window && userId) {
+      window.localStorage.setItem('BadFoxMC_DiscordUserID', userId)
+    }
+
+    if (userId) {
+      getAccount()
+    }
+  }, [userId])
 
   const updateAccountMintWallet = async (walletAddress) => {
     if (!walletAddress) {
@@ -100,7 +121,7 @@ export function AuthProvider({ children }) {
     }
 
     setLoading(false)
-    await getAccountWithDiscordToken()
+    await getAccount()
   }
 
   const addAccountPortfolioWallet = async (walletAddressOrStakeKey) => {
@@ -123,7 +144,7 @@ export function AuthProvider({ children }) {
     }
 
     setLoading(false)
-    await getAccountWithDiscordToken()
+    await getAccount()
   }
 
   const deleteAccountPortfolioWallet = async (stakeKey) => {
@@ -138,7 +159,7 @@ export function AuthProvider({ children }) {
     }
 
     setLoading(false)
-    await getAccountWithDiscordToken()
+    await getAccount()
   }
 
   const syncAccountPortfolioWallets = async () => {
@@ -153,19 +174,25 @@ export function AuthProvider({ children }) {
     }
 
     setLoading(false)
-    await getAccountWithDiscordToken()
+    await getAccount()
   }
+
+  useEffect(() => {
+    account.portfolioWallets?.forEach((wallet) => {
+      wallet.assets[FOX_POLICY_ID]?.forEach((assetId) => {
+        setMyAssets((prev) => [...prev, blockfrostJsonFile.assets.find(({ asset }) => asset === assetId)])
+      })
+    })
+  }, [account])
 
   return (
     <AuthContext.Provider
       value={{
         loading,
         error,
-        token,
         account,
         myAssets,
-        clearError,
-        getAccountWithDiscordToken,
+        getAccount,
         updateAccountMintWallet,
         addAccountPortfolioWallet,
         deleteAccountPortfolioWallet,

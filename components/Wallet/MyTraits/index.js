@@ -1,14 +1,17 @@
-import { useAuth } from '../../../contexts/AuthContext'
 import { useState } from 'react'
+import { useAuth } from '../../../contexts/AuthContext'
 import traitsData from '../../../data/traits/fox'
+import Loader from '../../Loader'
+import Toggle from '../../Toggle'
 import AssetCard from '../../AssetCard'
 import FoxTraitsOptions from '../../FilterOptions/Traits/Fox'
 import styles from './MyWalletTraits.module.css'
 
 const MyWalletTraits = () => {
-  const { myAssets } = useAuth()
+  const { loading: authLoading, myAssets } = useAuth()
   const assets = myAssets
 
+  const [showAll, setShowAll] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState('')
 
   const renderTraits = () => {
@@ -44,11 +47,21 @@ const MyWalletTraits = () => {
 
   return (
     <div className='flex-col'>
-      <FoxTraitsOptions callbackSelectedCategory={(str) => setSelectedCategory(str)} />
+      <FoxTraitsOptions callbackSelectedCategory={(str) => setSelectedCategory(str)}>
+        <div className='flex-col' style={{ margin: '0.5rem' }}>
+          {showAll ? 'Display All Traits' : 'Display Owned Traits'}
+          <Toggle
+            labelLeft={''}
+            labelRight={''}
+            showIcons={false}
+            state={{ value: showAll, setValue: setShowAll }}
+          />
+        </div>
+      </FoxTraitsOptions>
 
       <div className={styles.traitCatalog}>
         {renderTraits()[selectedCategory]?.map((trait) =>
-          trait.owned !== 0 ? (
+          showAll || trait.owned !== 0 ? (
             <AssetCard
               key={`trait-catalog-list-item-${trait.label}-${trait.gender}`}
               mainTitles={[trait.label]}
@@ -63,6 +76,8 @@ const MyWalletTraits = () => {
           ) : null
         )}
       </div>
+
+      {authLoading ? <Loader /> : null}
     </div>
   )
 }
