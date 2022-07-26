@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useScreenSize } from '../../../contexts/ScreenSizeContext'
 import { useAuth } from '../../../contexts/AuthContext'
 import traitsData from '../../../data/traits/fox'
 import Loader from '../../Loader'
@@ -8,6 +9,7 @@ import FoxTraitsOptions from '../../FilterOptions/Traits/Fox'
 import styles from './MyWalletTraits.module.css'
 
 const MyWalletTraits = () => {
+  const { isMobile } = useScreenSize()
   const { loading: authLoading, myAssets } = useAuth()
   const assets = myAssets
 
@@ -49,10 +51,10 @@ const MyWalletTraits = () => {
     <div className='flex-col'>
       <FoxTraitsOptions callbackSelectedCategory={(str) => setSelectedCategory(str)}>
         <div className='flex-col' style={{ margin: '0.5rem' }}>
-          {showAll ? 'Display All Traits' : 'Display Owned Traits'}
+          {!isMobile ? (showAll ? 'All Traits' : 'Owned Traits') : null}
           <Toggle
-            labelLeft={''}
-            labelRight={''}
+            labelLeft={!isMobile ? '' : 'Owned Traits'}
+            labelRight={!isMobile ? '' : 'All Traits'}
             showIcons={false}
             state={{ value: showAll, setValue: setShowAll }}
           />

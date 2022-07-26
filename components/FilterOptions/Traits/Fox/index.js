@@ -45,6 +45,7 @@ const FoxTraitsOptions = ({ callbackSelectedCategory = () => {}, children }) => 
             ) : null
           )
       )}
+
       {children}
     </div>
   )
