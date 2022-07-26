@@ -66,6 +66,7 @@ const ManageWallets = () => {
           backgroundColor='var(--grey)'
           hoverColor='var(--orange)'
           disabled={loading}
+          fullWidth={false}
           className={input.length ? '' : styles.hide}
           onClick={handleSubmit}
         />

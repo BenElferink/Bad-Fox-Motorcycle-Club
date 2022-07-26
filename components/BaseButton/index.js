@@ -15,6 +15,7 @@ function BaseButton({
   hoverColor,
   color,
   size,
+  fullWidth,
 }) {
   const ref = useRef(null)
   const { isMobile } = useScreenSize()
@@ -25,7 +26,7 @@ function BaseButton({
       variant='contained'
       color='secondary'
       size={size || (isMobile ? 'medium' : 'large')}
-      fullWidth={isMobile}
+      fullWidth={fullWidth || isMobile}
       startIcon={Icon ? <Icon /> : null}
       onClick={onClick}
       className={className}
