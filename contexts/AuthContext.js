@@ -113,7 +113,13 @@ export function AuthProvider({ children }) {
     setLoading(true)
 
     try {
-      await axios.post(`/api/account/mint-wallet/${walletAddress}?discordToken=${token}`)
+      await axios.post(
+        `/api/account/mint-wallet/${walletAddress}?${token ? `discordToken=${token}` : `discordUserId=${userId}`}`,
+        {},
+        {
+          headers: { admin_code: ADMIN_CODE },
+        }
+      )
 
       clearError()
     } catch (e) {
@@ -136,7 +142,15 @@ export function AuthProvider({ children }) {
     setLoading(true)
 
     try {
-      await axios.post(`/api/account/portfolio-wallets/${walletAddressOrStakeKey}?discordToken=${token}`)
+      await axios.post(
+        `/api/account/portfolio-wallets/${walletAddressOrStakeKey}?${
+          token ? `discordToken=${token}` : `discordUserId=${userId}`
+        }`,
+        {},
+        {
+          headers: { admin_code: ADMIN_CODE },
+        }
+      )
 
       clearError()
     } catch (e) {
@@ -151,7 +165,9 @@ export function AuthProvider({ children }) {
     setLoading(true)
 
     try {
-      await axios.delete(`/api/account/portfolio-wallets/${stakeKey}?discordToken=${token}`)
+      await axios.delete(
+        `/api/account/portfolio-wallets/${stakeKey}?${token ? `discordToken=${token}` : `discordUserId=${userId}`}`
+      )
 
       clearError()
     } catch (e) {
@@ -166,7 +182,12 @@ export function AuthProvider({ children }) {
     setLoading(true)
 
     try {
-      await axios.delete(`/api/account/portfolio-wallets/sync?discordToken=${token}`)
+      await axios.get(
+        `/api/account/portfolio-wallets/sync?${token ? `discordToken=${token}` : `discordUserId=${userId}`}`,
+        {
+          headers: { admin_code: ADMIN_CODE },
+        }
+      )
 
       clearError()
     } catch (e) {
