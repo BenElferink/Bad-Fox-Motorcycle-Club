@@ -26,24 +26,24 @@ export default function CheckWallet() {
 
   return (
     <Section>
-      <h2>Welcome {account.username}!</h2>
+      <h2>Welcome {account?.username}!</h2>
       <p>
         You have the following (mint) roles:
         <br />
         <strong>
-          {account.roles?.isOG ? 'OG, ' : null}
-          {!account.roles?.isOG ? 'None' : null}
+          {account?.roles?.isOG ? 'OG, ' : null}
+          {!account?.roles?.isOG ? 'None' : null}
         </strong>
       </p>
       <p className={styles.addr}>
         Your (registered) wallet address:
         <br />
-        <span>{account.mintWallet?.address || 'Not submitted'}</span>
+        <span>{account?.mintWallet?.address || 'Not submitted'}</span>
       </p>
       <p className={styles.addr}>
         Your (collected) stake key:
         <br />
-        <span>{account.mintWallet?.stakeKey || 'Not submitted'}</span>
+        <span>{account?.mintWallet?.stakeKey || 'Not submitted'}</span>
       </p>
     </Section>
   )

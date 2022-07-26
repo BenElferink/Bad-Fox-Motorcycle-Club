@@ -15,7 +15,7 @@ export default function SubmitWallet() {
   const [forceEdit, setForceEdit] = useState(false)
 
   useEffect(() => {
-    const v = account.mintWallet.address
+    const v = account?.mintWallet.address
 
     if (v) {
       setWalletAddress(v)
@@ -80,7 +80,7 @@ export default function SubmitWallet() {
     )
   }
 
-  if (!account.roles?.isOG) {
+  if (!account?.roles?.isOG) {
     return (
       <Section>
         <h2>You are not eligible to submit a wallet address.</h2>
@@ -93,16 +93,16 @@ export default function SubmitWallet() {
     )
   }
 
-  if (!account.mintWallet?.address || forceEdit) {
+  if (!account?.mintWallet?.address || forceEdit) {
     return (
       <Section>
-        <h2>Welcome {account.username}!</h2>
+        <h2>Welcome {account?.username}!</h2>
         <p>
           You have the following (mint) roles:
           <br />
           <strong>
-            {account.roles?.isOG ? 'OG, ' : null}
-            {!account.roles?.isOG ? 'None' : null}
+            {account?.roles?.isOG ? 'OG, ' : null}
+            {!account?.roles?.isOG ? 'None' : null}
           </strong>
         </p>
         <p>Please submit your wallet address, this will be the wallet you'll be minting from!</p>
@@ -124,12 +124,12 @@ export default function SubmitWallet() {
       <p className={styles.addr}>
         Your (registered) wallet address:
         <br />
-        <span>{account.mintWallet?.address || 'Not submitted'}</span>
+        <span>{account?.mintWallet?.address || 'Not submitted'}</span>
       </p>
       <p className={styles.addr}>
         Your (collected) stake key:
         <br />
-        <span>{account.mintWallet?.stakeKey || 'Not submitted'}</span>
+        <span>{account?.mintWallet?.stakeKey || 'Not submitted'}</span>
       </p>
       <BaseButton label='Change Address' onClick={clickEdit} backgroundColor='var(--discord-purple)' />
     </Section>

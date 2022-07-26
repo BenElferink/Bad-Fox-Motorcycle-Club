@@ -22,7 +22,7 @@ export function AuthProvider({ children }) {
   const [error, setError] = useState({})
   const [token, setToken] = useState('')
   const [userId, setUserId] = useState('')
-  const [account, setAccount] = useState({})
+  const [account, setAccount] = useState(null)
   const [myAssets, setMyAssets] = useState([])
 
   const handleError = (e) => {
@@ -178,7 +178,7 @@ export function AuthProvider({ children }) {
   }
 
   useEffect(() => {
-    account.portfolioWallets?.forEach((wallet) => {
+    account?.portfolioWallets?.forEach((wallet) => {
       wallet.assets[FOX_POLICY_ID]?.forEach((assetId) => {
         setMyAssets((prev) => [...prev, blockfrostJsonFile.assets.find(({ asset }) => asset === assetId)])
       })

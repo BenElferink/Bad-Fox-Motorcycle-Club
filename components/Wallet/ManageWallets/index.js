@@ -16,7 +16,7 @@ const ManageWallets = () => {
     syncAccountPortfolioWallets,
   } = useAuth()
 
-  const wallets = account.portfolioWallets ?? []
+  const wallets = account?.portfolioWallets ?? []
 
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)

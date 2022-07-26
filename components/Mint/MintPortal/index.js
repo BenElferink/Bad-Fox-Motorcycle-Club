@@ -104,7 +104,7 @@ export default function MintPortal() {
     )
   }
 
-  if (!account.roles?.isOG) {
+  if (!account?.roles?.isOG) {
     return (
       <Section>
         <h2>You are not eligible to mint.</h2>
@@ -117,7 +117,7 @@ export default function MintPortal() {
     )
   }
 
-  if (!account.mintWallet?.address || !account.mintWallet?.stakeKey) {
+  if (!account?.mintWallet?.address || !account?.mintWallet?.stakeKey) {
     return (
       <Section>
         <h2>You are not eligible to mint.</h2>
@@ -132,26 +132,26 @@ export default function MintPortal() {
 
   return (
     <Section>
-      <h2>Welcome {account.username}!</h2>
+      <h2>Welcome {account?.username}!</h2>
 
       <p>
         You have the following roles:
         <br />
         <strong>
-          {account.roles?.isOG ? 'OG, ' : null}
-          {!account.roles?.isOG ? 'None' : null}
+          {account?.roles?.isOG ? 'OG, ' : null}
+          {!account?.roles?.isOG ? 'None' : null}
         </strong>
       </p>
 
       <p className={styles.addr}>
         Your (registered) wallet address:
         <br />
-        <span>{account.mintWallet?.address || 'Not submitted'}</span>
+        <span>{account?.mintWallet?.address || 'Not submitted'}</span>
       </p>
       <p className={styles.addr}>
         Your (collected) stake key:
         <br />
-        <span>{account.mintWallet?.stakeKey || 'Not submitted'}</span>
+        <span>{account?.mintWallet?.stakeKey || 'Not submitted'}</span>
       </p>
 
       <BaseButton label='MINT NOW' onClick={() => setOpenModal(true)} backgroundColor='var(--discord-purple)' />
@@ -159,10 +159,10 @@ export default function MintPortal() {
       <Modal
         open={openModal}
         onClose={() => setOpenModal(false)}
-        title={`${account.roles.isOG ? 'OG' : 'Error'} Mint`}
+        title={`${account?.roles.isOG ? 'OG' : 'Error'} Mint`}
         style={{ background: 'var(--brown)' }}
       >
-        {account.roles.isOG ? (
+        {account?.roles.isOG ? (
           <MintScreen
             role='OG'
             maxMints={mintObj.og?.amount}
