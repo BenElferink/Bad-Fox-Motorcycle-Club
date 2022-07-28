@@ -10,7 +10,7 @@ import DiscordNotAuthorized from '../../../components/DiscordAuth/NotAuthorized'
 import SubmitWallet from '../../../components/Mint/SubmitWallet'
 
 export default function Page() {
-  const { loading, token, account, getAccount } = useAuth()
+  const { loading, account, getAccount } = useAuth()
   const { isRegisterOnline } = useMint()
 
   useEffect(() => {

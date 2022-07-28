@@ -7,7 +7,7 @@ import DiscordFetchingAccount from '../../../components/DiscordAuth/FetchingAcco
 import ManageWallets from '../../../components/Wallet/ManageWallets'
 
 export default function Page() {
-  const { loading, token, account, getAccount } = useAuth()
+  const { loading, account, getAccount } = useAuth()
 
   useEffect(() => {
     ;(async () => {

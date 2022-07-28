@@ -7,7 +7,7 @@ import DiscordNotAuthorized from '../../../components/DiscordAuth/NotAuthorized'
 import MyWalletTraits from '../../../components/Wallet/MyTraits'
 
 export default function Page() {
-  const { loading, token, account, getAccount } = useAuth()
+  const { loading, account, getAccount } = useAuth()
 
   useEffect(() => {
     ;(async () => {
