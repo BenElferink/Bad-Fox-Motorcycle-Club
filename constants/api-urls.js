@@ -4,5 +4,6 @@ module.exports = {
   JPG_IMAGE_API: 'https://images.jpgstoreapis.com',
   CNFT_TOOLS_API: 'https://cnft.tools/api',
   CNFT_TOOLS_IMAGE_API: 'https://cnft.tools/static/assets/projectthumbs',
+  OPEN_CNFT_API: 'https://api.opencnft.io/1',
   BINANCE_API: 'https://www.binance.com',
 }

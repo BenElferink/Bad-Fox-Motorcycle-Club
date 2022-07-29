@@ -2,9 +2,9 @@ import { useEffect } from 'react'
 import { useAuth } from '../../../contexts/AuthContext'
 import Header from '../../../components/Header'
 import Footer from '../../../components/Footer'
-import DiscordFetchingAccount from '../../../components/DiscordAuth/FetchingAccount'
 import DiscordNotAuthorized from '../../../components/DiscordAuth/NotAuthorized'
-import MyWalletAssets from '../../../components/Wallet/MyAssets'
+import DiscordFetchingAccount from '../../../components/DiscordAuth/FetchingAccount'
+import MyPortfolio from '../../../components/Wallet/MyPortfolio'
 
 export default function Page() {
   const { loading, account, getAccount } = useAuth()
@@ -20,7 +20,7 @@ export default function Page() {
   return (
     <div className='App flex-col'>
       <Header />
-      {loading ? <DiscordFetchingAccount /> : account ? <MyWalletAssets /> : <DiscordNotAuthorized />}
+      {loading ? <DiscordFetchingAccount /> : account ? <MyPortfolio /> : <DiscordNotAuthorized />}
       <Footer />
     </div>
   )

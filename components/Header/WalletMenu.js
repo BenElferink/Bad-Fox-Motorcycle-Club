@@ -1,11 +1,9 @@
 import { useRouter } from 'next/router'
 import { Fragment, useState } from 'react'
-import toast from 'react-hot-toast'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import { Menu, MenuItem } from '@mui/material'
 import Split from './Split'
 import BaseButton from '../BaseButton'
-import OnlineIndicator from '../OnlineIndicator'
 
 const WalletMenu = ({ btnStyle = {}, closeMenu = () => {} }) => {
   const router = useRouter()
@@ -36,8 +34,7 @@ const WalletMenu = ({ btnStyle = {}, closeMenu = () => {} }) => {
   }
 
   const clickMyPortfolio = () => {
-    // router.push('/wallet/portfolio')
-    toast.error('This feature is coming soon')
+    router.push('/wallet/portfolio')
 
     setAnchorEl(null)
     closeMenu()
@@ -51,9 +48,7 @@ const WalletMenu = ({ btnStyle = {}, closeMenu = () => {} }) => {
         <BaseButton label='Manage Wallets' onClick={clickManageWallets} transparent style={btnStyle} />
         <BaseButton label='My Assets' onClick={clickMyAssets} transparent style={btnStyle} />
         <BaseButton label='My Traits' onClick={clickMyTraits} transparent style={btnStyle} />
-        <OnlineIndicator online={false}>
-          <BaseButton label='My Portfolio' onClick={clickMyPortfolio} transparent style={btnStyle} />
-        </OnlineIndicator>
+        <BaseButton label='My Portfolio' onClick={clickMyPortfolio} transparent style={btnStyle} />
       </Fragment>
     )
   }
@@ -79,11 +74,9 @@ const WalletMenu = ({ btnStyle = {}, closeMenu = () => {} }) => {
           </MenuItem>
         </div>
         <div>
-          <OnlineIndicator online={false}>
-            <MenuItem onClick={clickMyPortfolio} sx={{ width: 200, height: 50 }}>
-              My Portfolio
-            </MenuItem>
-          </OnlineIndicator>
+          <MenuItem onClick={clickMyPortfolio} sx={{ width: 200, height: 50 }}>
+            My Portfolio
+          </MenuItem>
         </div>
       </Menu>
     </div>

@@ -5,7 +5,7 @@ import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import Loader from '../Loader'
 import styles from './AssetCard.module.css'
 
-const LoadingImage = ({ src, alt, color }) => {
+const LoadingImage = ({ desktopSize, mobileSize, src, alt, color }) => {
   const { isMobile } = useScreenSize()
   const [loading, setLoading] = useState(true)
 
@@ -15,8 +15,8 @@ const LoadingImage = ({ src, alt, color }) => {
         className={styles.cardImage}
         src={src}
         alt={alt}
-        width={isMobile ? 270 : 300}
-        height={isMobile ? 270 : 300}
+        width={isMobile ? mobileSize : desktopSize}
+        height={isMobile ? mobileSize : desktopSize}
         onLoadingComplete={() => setLoading(false)}
       />
       {loading ? <Loader className={styles.cardLoader} color={color} /> : null}
@@ -28,11 +28,14 @@ function AssetCard({
   mainTitles = [],
   subTitles = [],
   imageSrc,
+  imageSizeDesktop = 300,
+  imageSizeMobile = 270,
   tableRows,
   onClick,
   itemUrl = 'https://jpg.store',
   backgroundColor = 'var(--charcoal)',
   color = 'var(--white)',
+  style = {},
 }) {
   return (
     <Card
@@ -43,13 +46,22 @@ function AssetCard({
         overflow: 'visible',
         background: backgroundColor,
         color,
+        ...style,
       }}
     >
       <CardActionArea
         style={{ display: 'flex', flexDirection: 'column' }}
         onClick={() => (onClick ? onClick() : window.open(itemUrl, '_blank'))}
       >
-        <LoadingImage src={imageSrc} alt='' color={color} />
+        {imageSrc ? (
+          <LoadingImage
+            desktopSize={imageSizeDesktop}
+            mobileSize={imageSizeMobile}
+            src={imageSrc}
+            alt=''
+            color={color}
+          />
+        ) : null}
         <CardContent style={{ maxWidth: 'unset', width: '100%' }}>
           <Typography variant='h5' fontSize='big'>
             {mainTitles.map((str, idx) => (
@@ -76,7 +88,7 @@ function AssetCard({
                     <tr key={`${mainTitles[0]}-table-row-${idx}`}>
                       {row.map((str) => (
                         <td key={`${mainTitles[0]}-table-row-${idx}-item-${str}`}>
-                          <Typography variant='body2' color={color ?? 'text.secondary'} fontSize='smaller'>
+                          <Typography variant='div' color={color ?? 'text.secondary'} fontSize='smaller'>
                             {str}
                           </Typography>
                         </td>

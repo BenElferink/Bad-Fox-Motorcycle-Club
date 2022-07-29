@@ -14,12 +14,12 @@ export default function Page() {
   const { isRegisterOnline } = useMint()
 
   useEffect(() => {
-    ;(async () => {
-      if (isRegisterOnline) {
+    if (!account && isRegisterOnline) {
+      ;(async () => {
         await getAccount()
-      }
-    })()
-  }, [isRegisterOnline])
+      })()
+    }
+  }, [account, isRegisterOnline])
 
   return (
     <div className='App flex-col'>

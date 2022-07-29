@@ -11,10 +11,12 @@ export default function Page() {
   const { loading, account, getAccount } = useAuth()
 
   useEffect(() => {
-    ;(async () => {
-      await getAccount()
-    })()
-  }, [])
+    if (!account) {
+      ;(async () => {
+        await getAccount()
+      })()
+    }
+  }, [account])
 
   return (
     <div className='App flex-col'>

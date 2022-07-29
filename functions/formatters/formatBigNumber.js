@@ -1,5 +1,5 @@
 const formatBigNumber = (num) => {
-  const strNum = String(num)
+  const strNum = String(num).split('.')[0]
 
   // thousands (k)
   if ((num >= 1000 && num <= 999999) || (num <= -1000 && num >= -999999)) {

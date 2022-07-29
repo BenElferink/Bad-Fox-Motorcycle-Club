@@ -3,15 +3,11 @@ const fs = require('fs')
 const assetsFile = require('../data/assets/fox')
 const getWalletAddressOfAsset = require('../functions/blockfrost/getWalletAddressOfAsset')
 const getStakeKeyFromWalletAddress = require('../functions/blockfrost/getStakeKeyFromWalletAddress')
+const { BAD_FOX_WALLET, JPG_STORE_WALLET, CNFT_IO_WALLET, EPOCH_ART_WALLET } = require('../constants/addresses')
 
 const ROYALTY_SHARE = 56000
 
-const EXCLUDE_ADDRESSES = [
-  'addr1qy4nxzwlrszx2f9mnyl6wsn40qkjvtvq5jv98c75sfc28f6v0ekuq5fz4p0ffw5fk0vdm7762xt2cjmafe0upfhnuf5s3ymguq', // $badfoxmc
-  'addr1zxj47sy4qxlktqzmkrw8dahe46gtv8seakrshsqz26qnvzypw288a4x0xf8pxgcntelxmyclq83s0ykeehchz2wtspksr3q9nx', // jpg.store
-  'addr1w89s3lfv7gkugker5llecq6x3k2vjvfnvp4692laeqe6w6s93vj3j', // cnft.io
-  'addr1wyd3phmr5lhv3zssawqjdpnqrm5r5kgppmmf7864p3dvdrqwuutk4', // epoch.art
-]
+const EXCLUDE_ADDRESSES = [BAD_FOX_WALLET, JPG_STORE_WALLET, CNFT_IO_WALLET, EPOCH_ART_WALLET]
 
 const run = async () => {
   const assets = assetsFile.assets
