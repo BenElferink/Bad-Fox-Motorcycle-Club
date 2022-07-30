@@ -30,158 +30,133 @@ const HoldersChart = ({ chartWidth }) => {
 
   const biggestHolders = holdersData.filter((item, idx) => idx < BIGGEST_HOLDERS_COUNT)
 
-  // const amountPerHolders = (() => {
-  //   const payload = new Array(7).fill(null)
+  const [amountPerSmallHolders, amountPerBigHolders] = (() => {
+    const smallPayload = [
+      { label: '1', wallets: 0 },
+      { label: '2', wallets: 0 },
+      { label: '3', wallets: 0 },
+      { label: '4', wallets: 0 },
+      { label: '5', wallets: 0 },
+      { label: '6', wallets: 0 },
+      { label: '7', wallets: 0 },
+      { label: '8', wallets: 0 },
+      { label: '9', wallets: 0 },
+    ]
 
-  //   const addToPayload = (str, idx) => {
-  //     if (payload[idx]) {
-  //       payload[idx].wallets += 1
-  //     } else {
-  //       payload[idx] = {
-  //         label: str,
-  //         wallets: 1,
-  //       }
-  //     }
-  //   }
+    const bigPayload = [
+      { label: '10-19', wallets: 0 },
+      { label: '20-29', wallets: 0 },
+      { label: '30-39', wallets: 0 },
+      { label: '40-49', wallets: 0 },
+      { label: '50-99', wallets: 0 },
+      { label: '100+', wallets: 0 },
+    ]
 
-  //   holdersData.forEach((item) => {
-  //     if (item.count < 10) {
-  //       addToPayload('1-9', 0)
-  //     } else if (item.count < 20) {
-  //       addToPayload('10-19', 1)
-  //     } else if (item.count < 30) {
-  //       addToPayload('20-29', 2)
-  //     } else if (item.count < 40) {
-  //       addToPayload('30-39', 3)
-  //     } else if (item.count < 50) {
-  //       addToPayload('40-49', 4)
-  //     } else if (item.count < 100) {
-  //       addToPayload('50-99', 5)
-  //     } else {
-  //       addToPayload('100+', 6)
-  //     }
-  //   })
+    const addToPayload = (str, size) => {
+      if (size === 'small') {
+        const idx = smallPayload.findIndex((item) => item.label === str)
 
-  //   return payload
-  // })()
+        smallPayload[idx] = {
+          label: str,
+          wallets: (smallPayload[idx].wallets += 1),
+        }
+      } else if (size === 'big') {
+        const idx = bigPayload.findIndex((item) => item.label === str)
 
-  // const amountPerSmallHolders = (() => {
-  //   const payload = new Array(9).fill(null)
+        bigPayload[idx] = {
+          label: str,
+          wallets: (bigPayload[idx].wallets += 1),
+        }
+      }
+    }
 
-  //   const addToPayload = (str, idx) => {
-  //     if (payload[idx]) {
-  //       payload[idx].wallets += 1
-  //     } else {
-  //       payload[idx] = {
-  //         label: str,
-  //         wallets: 1,
-  //       }
-  //     }
-  //   }
+    holdersData.forEach((item) => {
+      if (item.count === 1) {
+        addToPayload('1', 'small')
+      } else if (item.count === 2) {
+        addToPayload('2', 'small')
+      } else if (item.count === 3) {
+        addToPayload('3', 'small')
+      } else if (item.count === 4) {
+        addToPayload('4', 'small')
+      } else if (item.count === 5) {
+        addToPayload('5', 'small')
+      } else if (item.count === 6) {
+        addToPayload('6', 'small')
+      } else if (item.count === 7) {
+        addToPayload('7', 'small')
+      } else if (item.count === 8) {
+        addToPayload('8', 'small')
+      } else if (item.count === 9) {
+        addToPayload('9', 'small')
+      } else if (item.count < 20) {
+        addToPayload('10-19', 'big')
+      } else if (item.count < 30) {
+        addToPayload('20-29', 'big')
+      } else if (item.count < 40) {
+        addToPayload('30-39', 'big')
+      } else if (item.count < 50) {
+        addToPayload('40-49', 'big')
+      } else if (item.count < 100) {
+        addToPayload('50-99', 'big')
+      } else {
+        addToPayload('100+', 'big')
+      }
+    })
 
-  //   holdersData.forEach((item) => {
-  //     if (item.count === 1) {
-  //       addToPayload('1', 0)
-  //     } else if (item.count === 2) {
-  //       addToPayload('2', 1)
-  //     } else if (item.count === 3) {
-  //       addToPayload('3', 2)
-  //     } else if (item.count === 4) {
-  //       addToPayload('4', 3)
-  //     } else if (item.count === 5) {
-  //       addToPayload('5', 4)
-  //     } else if (item.count === 6) {
-  //       addToPayload('6', 5)
-  //     } else if (item.count === 7) {
-  //       addToPayload('7', 6)
-  //     } else if (item.count === 8) {
-  //       addToPayload('8', 7)
-  //     } else if (item.count === 9) {
-  //       addToPayload('9', 8)
-  //     }
-  //   })
+    return [smallPayload, bigPayload]
+  })()
 
-  //   return payload
-  // })()
+  const smallChartWidth = chartWidth / 2.1
 
   return (
-    // <div className='flex-col'>
-    <div className={styles.chartWrapper}>
-      <div className='flex-row'>
-        <h3 style={{ margin: '0 42px 0 auto' }}>{BIGGEST_HOLDERS_COUNT} Biggest Holders</h3>
-      </div>
-
-      {loading ? (
-        <Loader />
-      ) : (
-        <ApexChart
-          type='donut'
-          width={chartWidth}
-          series={biggestHolders.map((item) => item.count)}
-          options={{
-            chart: {
-              id: 'biggest-holders-chart-donut',
-              type: 'donut',
-              stacked: false,
-              toolbar: { show: true },
-              zoom: { enabled: false },
-            },
-            labels: biggestHolders.map((item) =>
-              isMobile ? `${item.stakeKey.substring(0, 15)}...` : `${item.stakeKey.substring(0, 25)}...`
-            ),
-            dataLabels: { enabled: false },
-            theme: {
-              mode: 'dark',
-              // monochrome: {
-              //   enabled: true,
-              // },
-            },
-          }}
-        />
-      )}
-    </div>
-
-    /* <div className='flex-row'>
-        <div className={styles.chartWrapper}>
-          <div className='flex-row'>
-            <h3 style={{ margin: '0 42px 0 auto' }}>Amount per Holder</h3>
-          </div>
-
-          {loading ? (
-            <Loader />
-          ) : (
-            <ApexChart
-              type='pie'
-              width={(() => {
-                const val = windowWidth && isMobile ? windowWidth - 50 : windowWidth && !isMobile ? windowWidth : 0
-                if (val >= 350) return 350
-                return val
-              })()}
-              series={amountPerHolders.map((item) => item?.wallets)}
-              options={{
-                chart: {
-                  id: 'amount-per-holder-chart-pie',
-                  type: 'pie',
-                  stacked: false,
-                  toolbar: { show: true },
-                  zoom: { enabled: false },
-                },
-                labels: amountPerHolders.map((item) => item?.label),
-                dataLabels: { enabled: true },
-                theme: {
-                  mode: 'dark',
-                  // monochrome: {
-                  //   enabled: true,
-                  // },
-                },
-              }}
-            />
-          )}
+    <div className='flex-col'>
+      <div className={styles.chartWrapper}>
+        <div className='flex-row'>
+          <h3 style={{ margin: '0 42px 0 auto' }}>{BIGGEST_HOLDERS_COUNT} Biggest Holders</h3>
         </div>
 
-        <div className={styles.chartWrapper}>
+        {loading ? (
+          <Loader />
+        ) : (
+          <ApexChart
+            type='donut'
+            width={chartWidth}
+            series={biggestHolders.map((item) => item.count)}
+            options={{
+              chart: {
+                id: 'biggest-holders-chart-donut',
+                type: 'donut',
+                stacked: false,
+                toolbar: { show: true },
+                zoom: { enabled: false },
+              },
+              labels: biggestHolders.map((item) =>
+                isMobile ? `${item.stakeKey.substring(0, 15)}...` : `${item.stakeKey.substring(0, 25)}...`
+              ),
+              dataLabels: { enabled: false },
+              theme: {
+                mode: 'dark',
+                // monochrome: {
+                //   enabled: true,
+                // },
+              },
+            }}
+          />
+        )}
+      </div>
+
+      <div
+        className={isMobile ? 'flex-col' : 'flex-row'}
+        style={
+          isMobile
+            ? { width: '100vw', alignItems: 'center' }
+            : { width: '100%', alignItems: 'flex-start', justifyContent: 'space-evenly' }
+        }
+      >
+        <div className={styles.chartWrapper} style={isMobile ? {} : { margin: '0' }}>
           <div className='flex-row'>
-            <h3 style={{ margin: '0 42px 0 auto' }}>Amount per Small Holder</h3>
+            <h3 style={{ margin: '0 42px 0 auto' }}>Amount per Holder (1-9)</h3>
           </div>
 
           {loading ? (
@@ -189,15 +164,11 @@ const HoldersChart = ({ chartWidth }) => {
           ) : (
             <ApexChart
               type='pie'
-              width={(() => {
-                const val = windowWidth && isMobile ? windowWidth - 50 : windowWidth && !isMobile ? windowWidth : 0
-                if (val >= 350) return 350
-                return val
-              })()}
+              width={isMobile ? chartWidth : smallChartWidth}
               series={amountPerSmallHolders.map((item) => item?.wallets)}
               options={{
                 chart: {
-                  id: 'amount-per-holder-chart-pie',
+                  id: 'amount-per-small-holder-chart-pie',
                   type: 'pie',
                   stacked: false,
                   toolbar: { show: true },
@@ -205,18 +176,41 @@ const HoldersChart = ({ chartWidth }) => {
                 },
                 labels: amountPerSmallHolders.map((item) => item?.label),
                 dataLabels: { enabled: true },
-                theme: {
-                  mode: 'dark',
-                  // monochrome: {
-                  //   enabled: true,
-                  // },
+                theme: { mode: 'dark' },
+              }}
+            />
+          )}
+        </div>
+
+        <div className={styles.chartWrapper} style={isMobile ? {} : { margin: '0' }}>
+          <div className='flex-row'>
+            <h3 style={{ margin: '0 42px 0 auto' }}>Amount per Holder (10+)</h3>
+          </div>
+
+          {loading ? (
+            <Loader />
+          ) : (
+            <ApexChart
+              type='pie'
+              width={isMobile ? chartWidth : smallChartWidth}
+              series={amountPerBigHolders.map((item) => item?.wallets)}
+              options={{
+                chart: {
+                  id: 'amount-per-big-holder-chart-pie',
+                  type: 'pie',
+                  stacked: false,
+                  toolbar: { show: true },
+                  zoom: { enabled: false },
                 },
+                labels: amountPerBigHolders.map((item) => item?.label),
+                dataLabels: { enabled: true },
+                theme: { mode: 'dark' },
               }}
             />
           )}
         </div>
       </div>
-    </div> */
+    </div>
   )
 }
 

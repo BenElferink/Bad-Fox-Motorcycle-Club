@@ -39,7 +39,7 @@ const OnChainData = () => {
           `Total Transactions: ${onChainData.total_tx}`,
         ],
       ]}
-      itemUrl='https://opencnft.io/bad-fox-motorcycle-club-fox-collection'
+      noClick
       backgroundColor='var(--apex-charcoal)'
       color='var(--white)'
       style={{ margin: '0.5rem' }}

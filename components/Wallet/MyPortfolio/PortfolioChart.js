@@ -1,10 +1,15 @@
 import dynamic from 'next/dynamic'
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../../contexts/AuthContext'
-import Modal from '../../Modal'
+import foxAssetsData from '../../../data/assets/fox'
+import getDatesFromFloorData from '../../../functions/charts/getDatesFromFloorData'
+import getPortfolioSeries from '../../../functions/charts/getPortfolioSeries'
+import formatBigNumber from '../../../functions/formatters/formatBigNumber'
 import Toggle from '../../Toggle'
 import BaseButton from '../../BaseButton'
+import Modal from '../../Modal'
 import AssetCard from '../../AssetCard'
+import { ADA_SYMBOL } from '../../../constants/ada'
 import styles from './MyPortfolio.module.css'
 const ApexChart = dynamic(() => import('react-apexcharts'), { ssr: false })
 
@@ -15,95 +20,109 @@ const PortfolioChart = ({ chartWidth, floorData }) => {
 
   const [isMonth, setIsMonth] = useState(false)
   const [isOpenModal, setIsOpenModal] = useState(false)
-  const [assetPrices, setAssetPrices] = useState({})
+  const [pricedAssets, setPricedAssets] = useState({})
+  const pricedAssetsArr = Object.values(pricedAssets)
 
   useEffect(() => {
     if (window) {
       const stored = JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY))
 
       if (stored) {
-        setAssetPrices(stored)
+        let toSet = {}
+
+        Object.entries(stored).forEach(([assetId, item]) => {
+          if (item.gender) {
+            toSet[assetId] = item
+          } else {
+            toSet[assetId] = {
+              ...item,
+              gender: foxAssetsData.assets
+                .find((blockfrostAsset) => blockfrostAsset.asset === assetId)
+                .onchain_metadata.attributes.Gender.toLowerCase(),
+            }
+          }
+        })
+
+        setPricedAssets(toSet)
       }
     }
   }, [])
 
   useEffect(() => {
-    if (window && JSON.stringify(assetPrices) !== JSON.stringify({})) {
-      window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(assetPrices))
+    if (window && JSON.stringify(pricedAssets) !== JSON.stringify({})) {
+      window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(pricedAssets))
     }
-  }, [assetPrices])
+  }, [pricedAssets])
+
+  const series = getPortfolioSeries(pricedAssets, floorData, isMonth)
+  const categories = getDatesFromFloorData(floorData, isMonth)
+
+  const [totalPayed, totalBalance] = (() => {
+    let payedVal = 0
+    let balanceVal = 0
+
+    pricedAssetsArr.forEach(({ gender, price }) => {
+      payedVal += price
+      balanceVal += floorData[gender][floorData[gender].length - 1]?.price ?? 0
+    })
+
+    return [payedVal, balanceVal]
+  })()
 
   return (
-    <div className='flex-col'>
-      <h1>👇🏼 COMING SOON ! 👇🏼</h1>
+    <div>
+      <AssetCard
+        mainTitles={[`Total Balance: ${ADA_SYMBOL}${formatBigNumber(totalBalance)}`]}
+        subTitles={[`Total Investement: ${ADA_SYMBOL}${formatBigNumber(totalPayed)}`]}
+        tableRows={[[`Total Assets: ${myAssets.length}`, `Total Priced Assets: ${pricedAssetsArr.length}`]]}
+        noClick
+        backgroundColor='var(--apex-charcoal)'
+        color='var(--white)'
+        style={{ margin: '0.5rem' }}
+      />
 
       <div className={styles.chartWrapper}>
-        <div className='flex-row'>
+        <div className='flex-row' style={{ minHeight: '50px' }}>
           <Toggle
             labelLeft='7d'
             labelRight='30d'
             showIcons={false}
             state={{ value: isMonth, setValue: setIsMonth }}
-            style={{ margin: '0 auto 0 42px' }}
+            style={{ margin: '0 auto 0 1rem' }}
           />
 
-          <h3 style={{ margin: '0 42px 0 auto' }}>My Portfolio</h3>
+          <div style={{ width: '40%', margin: '0rem 1rem 0rem auto' }}>
+            <BaseButton
+              label='Manage Priced Assets'
+              onClick={() => setIsOpenModal(true)}
+              backgroundColor='var(--brown)'
+              hoverColor='var(--orange)'
+              fullWidth
+            />
+          </div>
         </div>
 
         <ApexChart
-          type='line'
+          type='area'
           width={chartWidth}
-          series={
-            [] /* Object.entries(floorData).map(([type, arr]) => {
-            const payload = {
-              name: type,
-              data: arr.map((obj) => obj.price),
-            }
-
-            if (isMonth) {
-              while (payload.data.length < 30) payload.data.unshift(null)
-              while (payload.data.length > 30) payload.data.shift()
-            } else {
-              while (payload.data.length < 7) payload.data.unshift(null)
-              while (payload.data.length > 7) payload.data.shift()
-            }
-
-            return payload
-          }) */
-          }
+          series={series}
           options={{
             chart: {
-              id: 'floor-chart-lines',
-              type: 'line',
+              id: 'portfolio-chart-area',
+              type: 'area',
               stacked: false,
               toolbar: { show: true },
               zoom: { enabled: false },
             },
-            xaxis: {
-              categories: [] /* (() => {
-                const dates = Object.values(floorData)[0].map((obj) => {
-                  if (obj.timestamp === 'LIVE') return obj.timestamp
-
-                  const timestamp = new Date(obj.timestamp)
-                  const month = timestamp.getMonth()
-                  const day = timestamp.getDate()
-
-                  return `${month + 1}/${day}`
-                })
-
-                if (isMonth) {
-                  while (dates.length < 30) dates.unshift(0)
-                  while (dates.length > 30) dates.shift()
-                } else {
-                  while (dates.length < 7) dates.unshift(0)
-                  while (dates.length > 7) dates.shift()
-                }
-
-                return dates
-              })(), */,
-            },
+            xaxis: { categories },
             theme: { mode: 'dark' },
-            colors: ['#ffb6e7', '#b6dbff'],
+            colors: [
+              series[0].data[series[0].data.findIndex((num) => num !== null)] <
+              series[0].data[series[0].data.length - 1]
+                ? 'var(--online)'
+                : 'var(--offline)',
+              'var(--discord-purple)',
+            ],
             grid: {
               show: false,
               row: { colors: ['rgba(255, 255, 255, 0.2)', 'rgba(255, 255, 255, 0.4)'] },
@@ -112,23 +131,10 @@ const PortfolioChart = ({ chartWidth, floorData }) => {
         />
       </div>
 
-      <div style={{ width: '90%' }}>
-        <BaseButton
-          label='Manage Asset Prices'
-          onClick={() => setIsOpenModal(true)}
-          backgroundColor='var(--brown)'
-          hoverColor='var(--orange)'
-          fullWidth
-          style={{ margin: '0 auto 0.5rem auto' }}
-        />
-      </div>
-
-      <h1>👆🏼 COMING SOON ! 👆🏼</h1>
-
-      <Modal title='Manage Asset Prices' open={isOpenModal} onClose={() => setIsOpenModal(false)}>
+      <Modal title='Manage Priced Assets' open={isOpenModal} onClose={() => setIsOpenModal(false)}>
         <div className={`scroll ${styles.listOfAssets}`}>
           {myAssets.map((item) => {
-            const thisPrice = assetPrices[item.asset]?.price
+            const thisPrice = pricedAssets[item.asset]?.price
 
             const thisFloor =
               item.onchain_metadata.attributes.Gender === 'Female'
@@ -147,7 +153,7 @@ const PortfolioChart = ({ chartWidth, floorData }) => {
                 imageSrc={item.onchain_metadata.image.cnftTools}
                 imageSizeDesktop={270}
                 imageSizeMobile={250}
-                onClick={() => {}}
+                noClick
                 style={{ boxShadow }}
                 tableRows={[
                   [
@@ -156,7 +162,7 @@ const PortfolioChart = ({ chartWidth, floorData }) => {
                       placeholder='0'
                       value={thisPrice || ''}
                       onChange={(e) =>
-                        setAssetPrices((prev) => ({
+                        setPricedAssets((prev) => ({
                           ...prev,
                           [item.asset]: {
                             timestamp: (() => {
@@ -167,6 +173,7 @@ const PortfolioChart = ({ chartWidth, floorData }) => {
                               newDate.setMilliseconds(0)
                               return newDate.getTime()
                             })(),
+                            gender: item.onchain_metadata.attributes.Gender.toLowerCase(),
                             ...(prev[item.asset] || {}),
                             price: Number(e.target.value),
                           },

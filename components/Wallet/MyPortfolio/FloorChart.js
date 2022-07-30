@@ -1,5 +1,7 @@
 import dynamic from 'next/dynamic'
 import React, { useState } from 'react'
+import getDatesFromFloorData from '../../../functions/charts/getDatesFromFloorData'
+import getFloorSeries from '../../../functions/charts/getFloorSeries'
 import Toggle from '../../Toggle'
 import styles from './MyPortfolio.module.css'
 const ApexChart = dynamic(() => import('react-apexcharts'), { ssr: false })
@@ -9,37 +11,22 @@ const FloorChart = ({ chartWidth, floorData }) => {
 
   return (
     <div className={styles.chartWrapper}>
-      <div className='flex-row'>
+      <div className='flex-row' style={{ minHeight: '50px' }}>
         <Toggle
           labelLeft='7d'
           labelRight='30d'
           showIcons={false}
           state={{ value: isMonth, setValue: setIsMonth }}
-          style={{ margin: '0 auto 0 42px' }}
+          style={{ margin: '0 auto 0 1rem' }}
         />
 
-        <h3 style={{ margin: '0 42px 0 auto' }}>Floor Prices</h3>
+        <h3 style={{ margin: '0 1rem 0 auto' }}>Floor Prices</h3>
       </div>
 
       <ApexChart
         type='line'
         width={chartWidth}
-        series={Object.entries(floorData).map(([type, arr]) => {
-          const payload = {
-            name: type,
-            data: arr.map((obj) => obj.price),
-          }
-
-          if (isMonth) {
-            while (payload.data.length < 30) payload.data.unshift(null)
-            while (payload.data.length > 30) payload.data.shift()
-          } else {
-            while (payload.data.length < 7) payload.data.unshift(null)
-            while (payload.data.length > 7) payload.data.shift()
-          }
-
-          return payload
-        })}
+        series={getFloorSeries(floorData, isMonth)}
         options={{
           chart: {
             id: 'floor-chart-lines',
@@ -49,27 +36,7 @@ const FloorChart = ({ chartWidth, floorData }) => {
             zoom: { enabled: false },
           },
           xaxis: {
-            categories: (() => {
-              const dates = Object.values(floorData)[0].map((obj) => {
-                if (obj.timestamp === 'LIVE') return obj.timestamp
-
-                const timestamp = new Date(obj.timestamp)
-                const month = timestamp.getMonth()
-                const day = timestamp.getDate()
-
-                return `${month + 1}/${day}`
-              })
-
-              if (isMonth) {
-                while (dates.length < 30) dates.unshift(0)
-                while (dates.length > 30) dates.shift()
-              } else {
-                while (dates.length < 7) dates.unshift(0)
-                while (dates.length > 7) dates.shift()
-              }
-
-              return dates
-            })(),
+            categories: getDatesFromFloorData(floorData, isMonth),
           },
           theme: { mode: 'dark' },
           colors: ['#ffb6e7', '#b6dbff'],

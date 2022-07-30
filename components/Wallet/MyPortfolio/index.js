@@ -53,6 +53,9 @@ const MyPortfolio = () => {
       <div>
         <OnChainData />
         <FloorChart chartWidth={chartWidth} floorData={floorData} />
+      </div>
+
+      <div>
         <HoldersChart chartWidth={chartWidth} />
       </div>
     </div>
