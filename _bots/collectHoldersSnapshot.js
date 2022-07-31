@@ -78,7 +78,7 @@ const getFoxHolders = (timestamp) =>
           const adaForTraits = obj.cryptoCount * 10 + obj.cashBagCount * 10
 
           return {
-            satekKey: sKey,
+            stakeKey: sKey,
             addresses: obj.addresses,
             counts: {
               foxCount: obj.foxCount,
