@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useScreenSize } from '../../../contexts/ScreenSizeContext'
+import PortfolioChart from './PortfolioChart'
 import OnChainData from './OnChainData'
 import FloorChart from './FloorChart'
-import HoldersChart from './HoldersChart'
-import PortfolioChart from './PortfolioChart'
+import Holders from './Holders'
 import { FOX_POLICY_ID } from '../../../constants/policy-ids'
 import styles from './MyPortfolio.module.css'
 
@@ -17,24 +17,30 @@ const MyPortfolio = () => {
   })
 
   useEffect(() => {
-    const getFloorForType = (type) =>
-      axios
-        .get(`/api/floor/${FOX_POLICY_ID}?type=${type}`)
-        .then(({ data }) =>
-          setFloorData((prev) => {
-            const newState = { ...prev }
+    const getFloorForType = async (type, isLive) => {
+      try {
+        const { data } = await axios.get(`/api/floor/${FOX_POLICY_ID}${isLive ? '/live' : ''}?type=${type}`)
 
-            data.floors.forEach(({ type, price, timestamp }) => {
-              newState[type].push({ price, timestamp })
-            })
+        setFloorData((prev) => {
+          const newState = { ...prev }
 
-            return newState
+          data.floors.forEach(({ type, price, timestamp }) => {
+            newState[type].push({ price, timestamp })
           })
-        )
-        .catch((error) => console.error(error))
 
-    getFloorForType('female')
-    getFloorForType('male')
+          return newState
+        })
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    ;(async () => {
+      await getFloorForType('female')
+      await getFloorForType('male')
+      await getFloorForType('female', 'LIVE')
+      await getFloorForType('male', 'LIVE')
+    })()
   }, []) // eslint-disable-line
 
   const chartWidth = (() => {
@@ -46,17 +52,19 @@ const MyPortfolio = () => {
 
   return (
     <div className={styles.root}>
-      <div>
-        <PortfolioChart chartWidth={chartWidth} floorData={floorData} />
+      <div className={styles.wrap}>
+        <div>
+          <PortfolioChart chartWidth={chartWidth} floorData={floorData} />
+        </div>
+
+        <div>
+          <OnChainData />
+          <FloorChart chartWidth={chartWidth} floorData={floorData} />
+        </div>
       </div>
 
       <div>
-        <OnChainData />
-        <FloorChart chartWidth={chartWidth} floorData={floorData} />
-      </div>
-
-      <div>
-        <HoldersChart chartWidth={chartWidth} />
+        <Holders chartWidth={chartWidth} />
       </div>
     </div>
   )

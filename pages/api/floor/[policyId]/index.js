@@ -1,8 +1,7 @@
-import connectDB from '../../../utils/mongo'
-import Floor from '../../../models/Floor'
-import POLICY_IDS from '../../../constants/policy-ids'
-import { ADMIN_CODE } from '../../../constants/api-keys'
-import getFoxFloor from '../../../functions/markets/getFoxFloor'
+import connectDB from '../../../../utils/mongo'
+import Floor from '../../../../models/Floor'
+import POLICY_IDS from '../../../../constants/policy-ids'
+import { ADMIN_CODE } from '../../../../constants/api-keys'
 
 export default async (req, res) => {
   try {
@@ -45,19 +44,6 @@ export default async (req, res) => {
 
         const count = await Floor.countDocuments(filters)
         const foundFloors = await Floor.find(filters).sort({ timestamp: 1 })
-
-        ;(await getFoxFloor()).forEach((obj) => {
-          const liveType = obj.type.toLowerCase()
-
-          if (liveType === typeFromQuery.toLowerCase()) {
-            foundFloors.push({
-              policyId,
-              type: liveType,
-              price: obj.price,
-              timestamp: 'LIVE',
-            })
-          }
-        })
 
         return res.status(200).json({
           count,
