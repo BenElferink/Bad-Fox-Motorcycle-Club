@@ -166,7 +166,12 @@ export function AuthProvider({ children }) {
 
     try {
       await axios.delete(
-        `/api/account/portfolio-wallets/${stakeKey}?${token ? `discordToken=${token}` : `discordUserId=${userId}`}`
+        `/api/account/portfolio-wallets/${stakeKey}?${
+          token ? `discordToken=${token}` : `discordUserId=${userId}`
+        }`,
+        {
+          headers: { admin_code: ADMIN_CODE },
+        }
       )
 
       clearError()
