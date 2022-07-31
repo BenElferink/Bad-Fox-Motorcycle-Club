@@ -99,7 +99,7 @@ export default function Header({ scrollTo = () => null }) {
         onlyChildren={!isMobile}
         open={!isMobile || openMobileMenu}
         onClose={closeMenu}
-        style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
+        style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }}
       >
         <nav className={isMobile ? 'flex-col' : 'flex-row'} style={jsStyles.nav}>
           <BaseButton label='Home' onClick={clickHome} transparent style={jsStyles.btn} />

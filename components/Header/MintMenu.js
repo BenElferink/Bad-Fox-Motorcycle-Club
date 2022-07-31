@@ -50,7 +50,7 @@ const MintMenu = ({ btnStyle = {}, closeMenu = () => {} }) => {
       <Fragment>
         <Split />
 
-        <BaseButton label='Check Wallet' onClick={clickCheckWallet} style={btnStyle} />
+        <BaseButton label='Check Wallet' onClick={clickCheckWallet} transparent style={btnStyle} />
         <OnlineIndicator online={isRegisterOnline}>
           <BaseButton label='Register Wallet' onClick={clickRegisterWallet} transparent />
         </OnlineIndicator>

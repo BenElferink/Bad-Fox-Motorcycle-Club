@@ -21,15 +21,9 @@ export default function Page() {
   return (
     <div className='App flex-col'>
       <Header />
-      {loading ? (
-        <DiscordFetchingAccount />
-      ) : account ? (
-        <Landing>
-          <CheckWallet />
-        </Landing>
-      ) : (
-        <DiscordNotAuthorized />
-      )}
+      <Landing>
+        {loading ? <DiscordFetchingAccount /> : account ? <CheckWallet /> : <DiscordNotAuthorized />}
+      </Landing>
       <Footer />
     </div>
   )

@@ -6,6 +6,8 @@ import blockfrostJsonFile from '../data/assets/fox'
 import { ADMIN_CODE } from '../constants/api-keys'
 import { FOX_POLICY_ID } from '../constants/policy-ids'
 
+const USER_ID_KEY = 'BadFoxMC_DiscordUserID'
+
 // init context
 const AuthContext = createContext()
 
@@ -24,6 +26,15 @@ export function AuthProvider({ children }) {
   const [userId, setUserId] = useState('')
   const [account, setAccount] = useState(null)
   const [myAssets, setMyAssets] = useState([])
+
+  const logout = () => {
+    setToken('')
+    setUserId('')
+    setAccount(null)
+    setMyAssets([])
+    window.localStorage.removeItem(USER_ID_KEY)
+    router.push('/')
+  }
 
   const handleError = (e) => {
     setError({
@@ -82,7 +93,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     // once window is loaded, get Discord user ID from local storage
     if (window) {
-      const stored = window.localStorage.getItem('BadFoxMC_DiscordUserID')
+      const stored = window.localStorage.getItem(USER_ID_KEY)
 
       if (stored) {
         setUserId(stored)
@@ -93,7 +104,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     // once the account changes, set Discord user ID to local storage
     if (window && userId) {
-      window.localStorage.setItem('BadFoxMC_DiscordUserID', userId)
+      window.localStorage.setItem(USER_ID_KEY, userId)
     }
 
     if (userId) {
@@ -216,6 +227,7 @@ export function AuthProvider({ children }) {
       value={{
         loading,
         error,
+        userId,
         account,
         myAssets,
         getAccount,
@@ -223,6 +235,7 @@ export function AuthProvider({ children }) {
         addAccountPortfolioWallet,
         deleteAccountPortfolioWallet,
         syncAccountPortfolioWallets,
+        logout,
       }}
     >
       {children}

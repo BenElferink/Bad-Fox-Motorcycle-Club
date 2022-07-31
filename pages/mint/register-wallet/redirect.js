@@ -24,21 +24,19 @@ export default function Page() {
   return (
     <div className='App flex-col'>
       <Header />
-      {isRegisterOnline ? (
-        loading ? (
-          <DiscordFetchingAccount />
-        ) : account ? (
-          <Landing>
+      <Landing>
+        {isRegisterOnline ? (
+          loading ? (
+            <DiscordFetchingAccount />
+          ) : account ? (
             <SubmitWallet />
-          </Landing>
+          ) : (
+            <DiscordNotAuthorized />
+          )
         ) : (
-          <DiscordNotAuthorized />
-        )
-      ) : (
-        <Landing>
           <Section>Wallet registration is closed!</Section>
-        </Landing>
-      )}
+        )}
+      </Landing>
       <Footer />
     </div>
   )

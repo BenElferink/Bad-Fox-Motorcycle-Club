@@ -31,8 +31,8 @@ const CatalogMenu = ({ btnStyle = {}, closeMenu = () => {} }) => {
       <Fragment>
         <Split />
 
-        <BaseButton label='Fox Collection' onClick={clickFoxCollection} style={btnStyle} />
-        <BaseButton label='Fox Traits' onClick={clickFoxTraits} transparent />
+        <BaseButton label='Fox Collection' onClick={clickFoxCollection} transparent style={btnStyle} />
+        <BaseButton label='Fox Traits' onClick={clickFoxTraits} transparent style={btnStyle} />
       </Fragment>
     )
   }

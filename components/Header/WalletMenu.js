@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import { Fragment, useState } from 'react'
+import { useAuth } from '../../contexts/AuthContext'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import { Menu, MenuItem } from '@mui/material'
 import Split from './Split'
@@ -7,6 +8,7 @@ import BaseButton from '../BaseButton'
 
 const WalletMenu = ({ btnStyle = {}, closeMenu = () => {} }) => {
   const router = useRouter()
+  const { logout, userId, account } = useAuth()
   const { isMobile } = useScreenSize()
 
   const [anchorEl, setAnchorEl] = useState(null)
@@ -49,6 +51,7 @@ const WalletMenu = ({ btnStyle = {}, closeMenu = () => {} }) => {
         <BaseButton label='My Assets' onClick={clickMyAssets} transparent style={btnStyle} />
         <BaseButton label='My Traits' onClick={clickMyTraits} transparent style={btnStyle} />
         <BaseButton label='My Portfolio' onClick={clickMyPortfolio} transparent style={btnStyle} />
+        {userId || account ? <BaseButton label='Logout' onClick={logout} transparent style={btnStyle} /> : null}
       </Fragment>
     )
   }
@@ -78,6 +81,13 @@ const WalletMenu = ({ btnStyle = {}, closeMenu = () => {} }) => {
             My Portfolio
           </MenuItem>
         </div>
+        {userId || account ? (
+          <div>
+            <MenuItem onClick={logout} sx={{ width: 200, height: 50 }}>
+              Logout
+            </MenuItem>
+          </div>
+        ) : null}
       </Menu>
     </div>
   )

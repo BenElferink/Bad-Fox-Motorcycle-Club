@@ -24,21 +24,19 @@ export default function Page() {
   return (
     <div className='App flex-col'>
       <Header />
-      {isPreSaleOnline || isPublicSaleOnline ? (
-        loading ? (
-          <DiscordFetchingAccount />
-        ) : (isPreSaleOnline && account) || isPublicSaleOnline ? (
-          <Landing>
+      <Landing>
+        {isPreSaleOnline || isPublicSaleOnline ? (
+          loading ? (
+            <DiscordFetchingAccount />
+          ) : (isPreSaleOnline && account) || isPublicSaleOnline ? (
             <MintPortal />
-          </Landing>
+          ) : (
+            <DiscordNotAuthorized />
+          )
         ) : (
-          <DiscordNotAuthorized />
-        )
-      ) : (
-        <Landing>
           <Section>Mint is offline!</Section>
-        </Landing>
-      )}
+        )}
+      </Landing>
       <Footer />
     </div>
   )
