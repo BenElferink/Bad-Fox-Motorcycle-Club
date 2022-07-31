@@ -1,5 +1,4 @@
 require('dotenv').config()
-const cron = require('node-cron')
 const fs = require('fs')
 const { exec } = require('child_process')
 const assetsFile = require('../data/assets/fox')
@@ -10,7 +9,7 @@ const { BAD_FOX_WALLET, JPG_STORE_WALLET, CNFT_IO_WALLET, EPOCH_ART_WALLET } = r
 const ROYALTY_SHARE = 56000 // 1000000 * 0.07 * 0.8
 const EXCLUDE_ADDRESSES = [BAD_FOX_WALLET, JPG_STORE_WALLET, CNFT_IO_WALLET, EPOCH_ART_WALLET]
 
-const getFoxHolders = (timestamp) =>
+const getHolders = (timestamp) =>
   new Promise((resolve, reject) => {
     // manage git pull
     exec('git fetch && git pull --no-rebase', async (gitPullError, gitPullStdout, gitPullStderr) => {
@@ -119,26 +118,4 @@ const getFoxHolders = (timestamp) =>
     })
   })
 
-const runCronJob = async () => {
-  console.log('Running cron job')
-
-  const newDate = new Date()
-  newDate.setHours(0)
-  newDate.setMinutes(0)
-  newDate.setSeconds(0)
-  newDate.setMilliseconds(0)
-  const timestamp = newDate.getTime()
-
-  try {
-    await getFoxHolders(timestamp)
-  } catch (error) {
-    console.error(error)
-  }
-
-  console.log('Cron job finished')
-}
-
-cron.schedule('0 0 * * *', runCronJob, {
-  scheduled: true,
-  timezone: 'Asia/Jerusalem',
-})
+module.exports = getHolders
