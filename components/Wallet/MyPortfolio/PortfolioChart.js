@@ -135,65 +135,71 @@ const PortfolioChart = ({ chartWidth, floorData }) => {
 
       <Modal title='Manage Priced Assets' open={isOpenModal} onClose={() => setIsOpenModal(false)}>
         <div className={`scroll ${styles.listOfAssets}`}>
-          {myAssets.map((item) => {
-            const thisPrice = pricedAssets[item.asset]?.price
-
-            const thisFloor =
-              item.onchain_metadata.attributes.Gender === 'Female'
-                ? floorData.female[floorData.female.length - 1]?.price
-                : floorData.male[floorData.male.length - 1]?.price
-
-            const gainOrLoss = thisFloor - (thisPrice || thisFloor)
-
-            const boxShadow = thisPrice ? 'unset' : '0 0 5px 1px var(--orange)'
-
-            return (
-              <AssetCard
-                key={`asset-${item.asset}`}
-                mainTitles={[item.onchain_metadata.name]}
-                subTitles={[`Rank ${item.onchain_metadata.rank}`]}
-                imageSrc={item.onchain_metadata.image.cnftTools}
-                imageSizeDesktop={270}
-                imageSizeMobile={250}
-                noClick
-                style={{ boxShadow }}
-                tableRows={[
-                  [
-                    'Bought for:',
-                    <input
-                      placeholder='0'
-                      value={thisPrice || ''}
-                      onChange={(e) =>
-                        setPricedAssets((prev) => ({
-                          ...prev,
-                          [item.asset]: {
-                            timestamp: (() => {
-                              const newDate = new Date()
-                              newDate.setHours(0)
-                              newDate.setMinutes(0)
-                              newDate.setSeconds(0)
-                              newDate.setMilliseconds(0)
-                              return newDate.getTime()
-                            })(),
-                            gender: item.onchain_metadata.attributes.Gender.toLowerCase(),
-                            ...(prev[item.asset] || {}),
-                            price: Number(e.target.value),
-                          },
-                        }))
-                      }
-                      className={styles.amount}
-                      style={{ backgroundColor: 'var(--apex-charcoal)', boxShadow }}
-                    />,
-                  ],
-                  ['Floor price:', <p className={styles.amount}>{thisFloor}</p>],
-                  [
-                    gainOrLoss > 0 ? 'Gain:' : gainOrLoss < 0 ? 'Loss:' : 'Gain/Loss:',
-                    <p className={styles.amount}>{gainOrLoss}</p>,
-                  ],
-                ]}
-              />
+          {myAssets
+            .sort(
+              (a, b) =>
+                Number(a.onchain_metadata.name.replace('Bad Fox #', '')) -
+                Number(b.onchain_metadata.name.replace('Bad Fox #', ''))
             )
-          })}
+            .map((item) => {
+              const thisPrice = pricedAssets[item.asset]?.price
+
+              const thisFloor =
+                item.onchain_metadata.attributes.Gender === 'Female'
+                  ? floorData.female[floorData.female.length - 1]?.price
+                  : floorData.male[floorData.male.length - 1]?.price
+
+              const gainOrLoss = thisFloor - (thisPrice || thisFloor)
+
+              const boxShadow = thisPrice ? 'unset' : '0 0 5px 1px var(--orange)'
+
+              return (
+                <AssetCard
+                  key={`asset-${item.asset}`}
+                  mainTitles={[item.onchain_metadata.name]}
+                  subTitles={[`Rank ${item.onchain_metadata.rank}`]}
+                  imageSrc={item.onchain_metadata.image.cnftTools}
+                  imageSizeDesktop={270}
+                  imageSizeMobile={250}
+                  noClick
+                  style={{ boxShadow }}
+                  tableRows={[
+                    [
+                      'Bought for:',
+                      <input
+                        placeholder='0'
+                        value={thisPrice || ''}
+                        onChange={(e) =>
+                          setPricedAssets((prev) => ({
+                            ...prev,
+                            [item.asset]: {
+                              timestamp: (() => {
+                                const newDate = new Date()
+                                newDate.setHours(0)
+                                newDate.setMinutes(0)
+                                newDate.setSeconds(0)
+                                newDate.setMilliseconds(0)
+                                return newDate.getTime()
+                              })(),
+                              gender: item.onchain_metadata.attributes.Gender.toLowerCase(),
+                              ...(prev[item.asset] || {}),
+                              price: Number(e.target.value),
+                            },
+                          }))
+                        }
+                        className={styles.amount}
+                        style={{ backgroundColor: 'var(--apex-charcoal)', boxShadow }}
+                      />,
+                    ],
+                    ['Floor price:', <p className={styles.amount}>{thisFloor}</p>],
+                    [
+                      gainOrLoss > 0 ? 'Gain:' : gainOrLoss < 0 ? 'Loss:' : 'Gain/Loss:',
+                      <p className={styles.amount}>{gainOrLoss}</p>,
+                    ],
+                  ]}
+                />
+              )
+            })}
         </div>
       </Modal>
     </div>
