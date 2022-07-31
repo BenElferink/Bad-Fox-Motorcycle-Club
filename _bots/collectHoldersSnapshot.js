@@ -79,7 +79,7 @@ const getFoxHolders = (timestamp) =>
 
           return {
             satekKey: sKey,
-            address: obj.addresses,
+            addresses: obj.addresses,
             counts: {
               foxCount: obj.foxCount,
               cryptoCount: obj.cryptoCount,
