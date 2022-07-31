@@ -31,14 +31,16 @@ const PortfolioChart = ({ chartWidth, floorData }) => {
         let toSet = {}
 
         Object.entries(stored).forEach(([assetId, item]) => {
-          if (item.gender) {
-            toSet[assetId] = item
-          } else {
-            toSet[assetId] = {
-              ...item,
-              gender: foxAssetsData.assets
-                .find((blockfrostAsset) => blockfrostAsset.asset === assetId)
-                .onchain_metadata.attributes.Gender.toLowerCase(),
+          if (myAssets.find((item) => item.asset === assetId)) {
+            if (item.gender) {
+              toSet[assetId] = item
+            } else {
+              toSet[assetId] = {
+                ...item,
+                gender: foxAssetsData.assets
+                  .find((blockfrostAsset) => blockfrostAsset.asset === assetId)
+                  .onchain_metadata.attributes.Gender.toLowerCase(),
+              }
             }
           }
         })
