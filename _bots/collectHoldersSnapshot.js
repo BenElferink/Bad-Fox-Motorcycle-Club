@@ -6,7 +6,11 @@ const getWalletAddressOfAsset = require('../functions/blockfrost/getWalletAddres
 const getStakeKeyFromWalletAddress = require('../functions/blockfrost/getStakeKeyFromWalletAddress')
 const { BAD_FOX_WALLET, JPG_STORE_WALLET, CNFT_IO_WALLET, EPOCH_ART_WALLET } = require('../constants/addresses')
 
-const ROYALTY_SHARE = 56000 // 1000000 * 0.07 * 0.8
+const VOLUME = 1000000
+const ROYALTY_FEE = 0.07
+const ROYALTY_TO_GIVE = 0.8
+const ROYALTY_SHARE = VOLUME * ROYALTY_FEE * ROYALTY_TO_GIVE
+
 const EXCLUDE_ADDRESSES = [BAD_FOX_WALLET, JPG_STORE_WALLET, CNFT_IO_WALLET, EPOCH_ART_WALLET]
 
 const getHolders = (timestamp) =>
@@ -27,7 +31,7 @@ const getHolders = (timestamp) =>
           console.log('\nProcessing index:', idx)
           console.log('Asset:', asset)
 
-          const { address } = await getWalletAddressOfAsset(asset)
+          const address = await getWalletAddressOfAsset(asset)
 
           if (EXCLUDE_ADDRESSES.includes(address)) {
             console.log('This wallet address is excluded!')
@@ -72,32 +76,40 @@ const getHolders = (timestamp) =>
 
         const adaPerFox = ROYALTY_SHARE / totalFoxCount
 
-        const wallets = Object.entries(stakeAddresses).map(([sKey, obj]) => {
-          const adaForFoxes = obj.foxCount * adaPerFox
-          const adaForTraits = obj.cryptoCount * 10 + obj.cashBagCount * 10
+        const wallets = Object.entries(stakeAddresses)
+          .map(([sKey, obj]) => {
+            const foxCount = obj.foxCount
+            const adaForFoxes = foxCount * adaPerFox
 
-          return {
-            stakeKey: sKey,
-            addresses: obj.addresses,
-            counts: {
-              foxCount: obj.foxCount,
-              cryptoCount: obj.cryptoCount,
-              cashBagCount: obj.cashBagCount,
-            },
-            payout: {
-              adaForFoxes,
-              adaForTraits,
-              total: adaForFoxes + adaForTraits,
-            },
-          }
-        })
+            const bonusTraitsCount = obj.cryptoCount + obj.cashBagCount
+            const adaForBonusTraits = bonusTraitsCount * 10
+
+            const totalAda = adaForFoxes + adaForBonusTraits
+            const totalLovelace = totalAda * 1000000
+
+            return {
+              stakeKey: sKey,
+              addresses: obj.addresses,
+              count: {
+                foxCount,
+                bonusTraitsCount,
+              },
+              payout: {
+                adaForFoxes,
+                adaForBonusTraits,
+                totalAda,
+                totalLovelace,
+              },
+            }
+          })
+          .sort((a, b) => b.count.foxCount - a.count.foxCount)
 
         fs.writeFileSync(
           './data/snapshots/holders.json',
           JSON.stringify({
             _wen: timestamp,
             totalFoxCount,
-            totalAdaPayout: wallets.reduce((prev, curr) => prev + curr.payout.total, 0),
+            totalAdaPayout: wallets.reduce((prev, curr) => prev + curr.payout.totalAda, 0),
             wallets,
           }),
           'utf8'
