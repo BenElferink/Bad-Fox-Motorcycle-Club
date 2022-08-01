@@ -8,7 +8,7 @@ const Holders = ({ chartWidth }) => {
 
   const holdersData = holdersSnapshotData.wallets
     .map((item) => ({
-      stakeKey: item.satekKey,
+      stakeKey: item.stakeKey,
       count: item.counts.foxCount,
     }))
     .sort((a, b) => b.count - a.count)
