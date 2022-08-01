@@ -33,13 +33,11 @@ const getPortfolioSeries = (pricedAssets, floorData, isMonth) => {
       }
 
       totalFloorSeries.data = totalFloorSeries.data.map((num, i) => {
-        return num + floorForThisGender[i].price
-        // if (isTimestampValid(i)) return num + floorForThisGender[i].price
-        // return num
+        return Math.round(num + floorForThisGender[i].price)
       })
 
       totalBoughtSeries.data = totalBoughtSeries.data.map((num, i) => {
-        if (isTimestampValid(i)) return num + price
+        if (isTimestampValid(i)) return Math.round(num + price)
         return num
       })
     }

@@ -2,7 +2,7 @@ const getFloorSeries = (floorData, isMonth) => {
   const series = Object.entries(floorData).map(([gender, arr]) => {
     const payload = {
       name: gender,
-      data: arr.map(({ price }) => price),
+      data: arr.map(({ price }) => Math.round(price)),
     }
 
     if (isMonth) {
