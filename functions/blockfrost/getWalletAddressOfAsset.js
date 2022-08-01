@@ -2,10 +2,13 @@ const blockfrost = require('../../utils/blockfrost')
 
 const getWalletAddressOfAsset = (assetId) => {
   return new Promise(async (resolve, reject) => {
-    try {
-      const data = await blockfrost.assetsAddresses(assetId)
+    console.log(`Fetching wallet address of asset ID: ${assetId}`)
 
-      return resolve(data[0])
+    try {
+      const [{ address }] = await blockfrost.assetsAddresses(assetId)
+
+      console.log(`Wallet address found: ${address}`)
+      return resolve(address)
     } catch (error) {
       return reject(error)
     }
