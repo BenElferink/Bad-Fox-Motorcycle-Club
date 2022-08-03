@@ -3,7 +3,6 @@ import { Box, Chip, FormControl, InputLabel, MenuItem, OutlinedInput, Select, Te
 import { TuneRounded as FilterIcon } from '@mui/icons-material'
 import { useScreenSize } from '../../../../contexts/ScreenSizeContext'
 import traitsData from '../../../../data/traits/fox'
-import Modal from '../../../Modal'
 import Toggle from '../../../Toggle'
 import BaseButton from '../../../BaseButton'
 import styles from './FoxAssetsOptions.module.css'
@@ -102,7 +101,7 @@ const FoxAssetsOptions = ({
         </div>
       </div>
 
-      <Modal title='Filter Attributes' open={openFilters} onClose={() => setOpenFilters((prev) => !prev)}>
+      {openFilters ? (
         <div className={styles.listOfFilters}>
           {TRAITS_MATRIX.map(([category, traits], idx1) => (
             <div key={`market-category-${category}-${idx1}`}>
@@ -159,7 +158,7 @@ const FoxAssetsOptions = ({
             </div>
           ))}
         </div>
-      </Modal>
+      ) : null}
     </Fragment>
   )
 }

@@ -29,4 +29,9 @@
   .togglesWrapper {
     width: fit-content;
   }
+
+  .listOfFilters {
+    flex-flow: row wrap;
+    justify-content: center;
+  }
 }
