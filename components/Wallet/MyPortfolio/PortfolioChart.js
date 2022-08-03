@@ -75,7 +75,7 @@ const PortfolioChart = ({ chartWidth, floorData }) => {
     <div>
       <AssetCard
         mainTitles={[`Total Balance: ${ADA_SYMBOL}${formatBigNumber(totalBalance)}`]}
-        subTitles={[`Total Investement: ${ADA_SYMBOL}${formatBigNumber(totalPayed)}`]}
+        subTitles={[`Total Investment: ${ADA_SYMBOL}${formatBigNumber(totalPayed)}`]}
         tableRows={[[`Total Assets: ${myAssets.length}`, `Total Priced Assets: ${pricedAssetsArr.length}`]]}
         noClick
         backgroundColor='var(--apex-charcoal)'
