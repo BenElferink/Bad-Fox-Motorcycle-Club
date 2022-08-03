@@ -1,22 +1,21 @@
 const assetsFile = require('../../data/assets/fox')
 
 const formatJpgItem = (item) => {
-  const { asset_id } = item
-  const asset = assetsFile.assets.find(({ asset }) => asset === asset_id)
+  const { asset_id, display_name, price_lovelace, listing_lovelace, confirmed_at, listed_at } = item
 
   const {
-    onchain_metadata: { name, rank, image, attributes },
-  } = asset
+    onchain_metadata: { rank, image, attributes },
+  } = assetsFile.assets.find(({ asset }) => asset === asset_id)
 
   return {
     assetId: asset_id,
-    name,
+    name: display_name,
     rank,
-    price: Number(item.price_lovelace ?? item.listing_lovelace) / 1000000,
-    imageUrl: image.cnftTools,
-    itemUrl: `https://jpg.store/asset/${asset_id}`,
     attributes,
-    date: new Date(item.confirmed_at ?? item.listed_at),
+    itemUrl: `https://jpg.store/asset/${asset_id}`,
+    imageUrl: image.cnftTools,
+    price: Number(price_lovelace ?? listing_lovelace) / 1000000,
+    date: new Date(confirmed_at ?? listed_at),
   }
 }
 

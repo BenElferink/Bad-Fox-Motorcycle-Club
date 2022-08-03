@@ -1,5 +1,6 @@
 const cron = require('node-cron')
 const getFloor = require('./collectFloorPrices')
+const collectFloorSnapshot = require('./collectFloorSnapshot')
 const getHolders = require('./collectHoldersSnapshot')
 
 const runCronJob = async () => {
@@ -14,6 +15,12 @@ const runCronJob = async () => {
 
   try {
     await getFloor(timestamp)
+  } catch (error) {
+    console.error(error)
+  }
+
+  try {
+    await collectFloorSnapshot(timestamp)
   } catch (error) {
     console.error(error)
   }
