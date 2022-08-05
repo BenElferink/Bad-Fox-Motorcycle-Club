@@ -46,7 +46,7 @@ const run = async () => {
       if (isOG && wallet?.address) {
         const foundIdx = wallets.findIndex((arr) => arr[3].value === wallet.stakeKey)
 
-        if (foundIdx != null) {
+        if (foundIdx != -1) {
           wallets[foundIdx][0].value = username
           wallets[foundIdx][1].value = String(Number(wallets[foundIdx][1].value) + 1)
         } else {
