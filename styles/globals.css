@@ -68,6 +68,11 @@ body {
   border-color: var(--brown) !important;
 }
 
+.apexchartsfloor-chart-lines > svg > foreignObject,
+.apexchartsportfolio-chart-area > svg > foreignObject {
+  display: none;
+}
+
 /* .scroll::-webkit-scrollbar {
   display: none;
 } */

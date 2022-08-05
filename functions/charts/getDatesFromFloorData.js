@@ -1,5 +1,5 @@
-const getDatesFromFloorData = (floorData, isMonth) => {
-  const dates = Object.values(floorData)[0].map(({ timestamp }) => {
+const getDatesFromFloorData = (floorSnapshots, isMonth) => {
+  const dates = floorSnapshots.map(({ timestamp }) => {
     if (timestamp === 'LIVE') return timestamp
 
     const t = new Date(timestamp)

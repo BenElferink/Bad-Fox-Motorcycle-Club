@@ -11,38 +11,6 @@ import styles from './MyPortfolio.module.css'
 const MyPortfolio = () => {
   const { width: windowWidth, isMobile } = useScreenSize()
 
-  const [floorData, setFloorData] = useState({
-    female: [],
-    male: [],
-  })
-
-  useEffect(() => {
-    const getFloorForType = async (type, isLive) => {
-      try {
-        const { data } = await axios.get(`/api/floor/${FOX_POLICY_ID}${isLive ? '/live' : ''}?type=${type}`)
-
-        setFloorData((prev) => {
-          const newState = { ...prev }
-
-          data.floors.forEach(({ type, price, timestamp }) => {
-            newState[type].push({ price, timestamp })
-          })
-
-          return newState
-        })
-      } catch (error) {
-        console.error(error)
-      }
-    }
-
-    ;(async () => {
-      await getFloorForType('female')
-      await getFloorForType('male')
-      await getFloorForType('female', 'LIVE')
-      await getFloorForType('male', 'LIVE')
-    })()
-  }, []) // eslint-disable-line
-
   const chartWidth = (() => {
     const maxWidth = 550
     const val = windowWidth && isMobile ? windowWidth - 30 : windowWidth && !isMobile ? windowWidth : 0
@@ -50,16 +18,30 @@ const MyPortfolio = () => {
     return val
   })()
 
+  const [floorSnapshots, setFloorSnapshots] = useState([])
+
+  useEffect(() => {
+    ;(async () => {
+      try {
+        const { data } = await axios.get(`/api/floor/${FOX_POLICY_ID}/snapshots`)
+
+        setFloorSnapshots(data.snapshots)
+      } catch (error) {
+        console.error(error)
+      }
+    })()
+  }, []) // eslint-disable-line
+
   return (
     <div className={styles.root}>
       <div className={styles.wrap}>
         <div>
-          <PortfolioChart chartWidth={chartWidth} floorData={floorData} />
+          <PortfolioChart chartWidth={chartWidth} floorSnapshots={floorSnapshots} />
         </div>
 
         <div>
           <OnChainData />
-          <FloorChart chartWidth={chartWidth} floorData={floorData} />
+          <FloorChart chartWidth={chartWidth} floorSnapshots={floorSnapshots} />
         </div>
       </div>
 

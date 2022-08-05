@@ -15,13 +15,32 @@ const ApexChart = dynamic(() => import('react-apexcharts'), { ssr: false })
 
 const LOCAL_STORAGE_KEY = 'BadFoxMC_AssetsPrices'
 
-const PortfolioChart = ({ chartWidth, floorData }) => {
+const PortfolioChart = ({ chartWidth, floorSnapshots }) => {
   const { myAssets } = useAuth()
 
   const [isMonth, setIsMonth] = useState(false)
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [pricedAssets, setPricedAssets] = useState({})
   const pricedAssetsArr = Object.values(pricedAssets)
+
+  const getValuesForAttributes = (itemAttributes) => {
+    let floor = 0
+    let highestTrait = 0
+
+    Object.entries(floorSnapshots[floorSnapshots.length - 1]?.attributes ?? {}).forEach(([category, traits]) => {
+      const v = traits[itemAttributes[category]]
+
+      if (highestTrait < v) {
+        highestTrait = v
+      }
+
+      if (floor === 0 || floor > v) {
+        floor = v
+      }
+    })
+
+    return [floor, highestTrait]
+  }
 
   useEffect(() => {
     if (window) {
@@ -32,15 +51,12 @@ const PortfolioChart = ({ chartWidth, floorData }) => {
 
         Object.entries(stored).forEach(([assetId, item]) => {
           if (myAssets.find((item) => item.asset === assetId)) {
-            if (item.gender) {
-              toSet[assetId] = item
-            } else {
-              toSet[assetId] = {
-                ...item,
-                gender: foxAssetsData.assets
-                  .find((blockfrostAsset) => blockfrostAsset.asset === assetId)
-                  .onchain_metadata.attributes.Gender.toLowerCase(),
-              }
+            const foundAsset = foxAssetsData.assets.find((blockfrostAsset) => blockfrostAsset.asset === assetId)
+
+            toSet[assetId] = {
+              price: item.price,
+              timestamp: item.timestamp,
+              attributes: foundAsset.onchain_metadata.attributes,
             }
           }
         })
@@ -56,26 +72,33 @@ const PortfolioChart = ({ chartWidth, floorData }) => {
     }
   }, [pricedAssets])
 
-  const series = getPortfolioSeries(pricedAssets, floorData, isMonth)
-  const categories = getDatesFromFloorData(floorData, isMonth)
+  const series = getPortfolioSeries(pricedAssets, floorSnapshots, isMonth)
+  const categories = getDatesFromFloorData(floorSnapshots, isMonth)
 
-  const [totalPayed, totalBalance] = (() => {
+  const [totalPayed, totalFloorBalance, totalHighestTraitBalance] = (() => {
     let payedVal = 0
-    let balanceVal = 0
+    let floorBalanceVal = 0
+    let highestTraitBalanceVal = 0
 
-    pricedAssetsArr.forEach(({ gender, price }) => {
+    pricedAssetsArr.forEach(({ price, attributes }) => {
+      const [thisFloor, thisHighestTraitValue] = getValuesForAttributes(attributes)
+
       payedVal += price
-      balanceVal += floorData[gender][floorData[gender].length - 1]?.price ?? 0
+      floorBalanceVal += thisFloor
+      highestTraitBalanceVal += thisHighestTraitValue
     })
 
-    return [payedVal, balanceVal]
+    return [payedVal, floorBalanceVal, highestTraitBalanceVal]
   })()
 
   return (
     <div>
       <AssetCard
-        mainTitles={[`Total Balance: ${ADA_SYMBOL}${formatBigNumber(totalBalance)}`]}
-        subTitles={[`Total Investment: ${ADA_SYMBOL}${formatBigNumber(totalPayed)}`]}
+        mainTitles={[`Total Investment: ${ADA_SYMBOL}${formatBigNumber(totalPayed)}`]}
+        subTitles={[
+          `Total Balance by Floor: ${ADA_SYMBOL}${formatBigNumber(totalFloorBalance)}`,
+          `Total Balance by Highest Trait: ${ADA_SYMBOL}${formatBigNumber(totalHighestTraitBalance)}`,
+        ]}
         tableRows={[[`Total Assets: ${myAssets.length}`, `Total Priced Assets: ${pricedAssetsArr.length}`]]}
         noClick
         backgroundColor='var(--apex-charcoal)'
@@ -83,7 +106,7 @@ const PortfolioChart = ({ chartWidth, floorData }) => {
         style={{ margin: '0.5rem' }}
       />
 
-      <div className={styles.chartWrapper}>
+      <div className={styles.chartWrapper} style={{ minHeight: chartWidth - 100 }}>
         <div className='flex-row' style={{ minHeight: '50px' }}>
           <Toggle
             labelLeft='7d'
@@ -119,11 +142,15 @@ const PortfolioChart = ({ chartWidth, floorData }) => {
             xaxis: { categories },
             theme: { mode: 'dark' },
             colors: [
-              series[0].data[series[0].data.findIndex((num) => num !== null)] <
-              series[0].data[series[0].data.length - 1]
+              'var(--discord-purple)',
+              series[1].data[series[1].data.findIndex((num) => num !== null)] <
+              series[1].data[series[1].data.length - 1]
                 ? 'var(--online)'
                 : 'var(--offline)',
-              'var(--discord-purple)',
+              series[2].data[series[2].data.findIndex((num) => num !== null)] <
+              series[2].data[series[2].data.length - 1]
+                ? 'var(--online)'
+                : 'var(--offline)',
             ],
             grid: {
               show: false,
@@ -144,12 +171,10 @@ const PortfolioChart = ({ chartWidth, floorData }) => {
             .map((item) => {
               const thisPrice = pricedAssets[item.asset]?.price
 
-              const thisFloor =
-                item.onchain_metadata.attributes.Gender === 'Female'
-                  ? floorData.female[floorData.female.length - 1]?.price
-                  : floorData.male[floorData.male.length - 1]?.price
+              const [thisFloor, thisHighestTraitValue] = getValuesForAttributes(item.onchain_metadata.attributes)
 
-              const gainOrLoss = thisFloor - (thisPrice || thisFloor)
+              const floorGainOrLoss = thisFloor - (thisPrice || thisFloor)
+              const highestTraitGainOrLoss = thisHighestTraitValue - (thisPrice || thisHighestTraitValue)
 
               const boxShadow = thisPrice ? 'unset' : '0 0 5px 1px var(--orange)'
 
@@ -181,7 +206,7 @@ const PortfolioChart = ({ chartWidth, floorData }) => {
                                 newDate.setMilliseconds(0)
                                 return newDate.getTime()
                               })(),
-                              gender: item.onchain_metadata.attributes.Gender.toLowerCase(),
+                              attributes: item.onchain_metadata.attributes,
                               ...(prev[item.asset] || {}),
                               price: Number(e.target.value),
                             },
@@ -191,10 +216,17 @@ const PortfolioChart = ({ chartWidth, floorData }) => {
                         style={{ backgroundColor: 'var(--apex-charcoal)', boxShadow }}
                       />,
                     ],
-                    ['Floor price:', <p className={styles.amount}>{thisFloor}</p>],
+                    ['Floor:', <p className={styles.amount}>{thisFloor}</p>],
                     [
-                      gainOrLoss > 0 ? 'Gain:' : gainOrLoss < 0 ? 'Loss:' : 'Gain/Loss:',
-                      <p className={styles.amount}>{gainOrLoss}</p>,
+                      `Floor ${floorGainOrLoss > 0 ? 'Gain' : floorGainOrLoss < 0 ? 'Loss' : 'Gain/Loss'}:`,
+                      <p className={styles.amount}>{floorGainOrLoss}</p>,
+                    ],
+                    ['Highest Trait:', <p className={styles.amount}>{thisHighestTraitValue}</p>],
+                    [
+                      `Highest Trait ${
+                        highestTraitGainOrLoss > 0 ? 'Gain' : highestTraitGainOrLoss < 0 ? 'Loss' : 'Gain/Loss'
+                      }:`,
+                      <p className={styles.amount}>{highestTraitGainOrLoss}</p>,
                     ],
                   ]}
                 />

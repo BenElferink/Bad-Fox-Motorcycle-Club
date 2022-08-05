@@ -1,49 +1,82 @@
-const getPortfolioSeries = (pricedAssets, floorData, isMonth) => {
+const getPortfolioSeries = (pricedAssets, floorSnapshots, isMonth) => {
+  const days = isMonth ? 30 : 7
   const pricedAssetsArr = Object.values(pricedAssets)
+  const snapshots = [...floorSnapshots]
 
-  const totalFloorSeries = {
-    name: `Total Floors for ${pricedAssetsArr.length} Assets`,
-    data: new Array(isMonth ? 30 : 7).fill(null),
-  }
   const totalBoughtSeries = {
     name: `Total Expenses for ${pricedAssetsArr.length} Assets`,
-    data: new Array(isMonth ? 30 : 7).fill(null),
+    data: new Array(days).fill(null),
+  }
+  const totalHighestTraitSeries = {
+    name: 'Highest Trait Value',
+    data: new Array(days).fill(null),
+  }
+  const totalFloorSeries = {
+    name: 'Floor Value',
+    data: new Array(days).fill(null),
   }
 
-  pricedAssetsArr.forEach(({ gender, price, timestamp }) => {
-    if (gender) {
-      const floorForThisGender = floorData[gender]
+  if (isMonth) {
+    while (snapshots.length < 30) snapshots.unshift({})
+    while (snapshots.length > 30) snapshots.shift()
+  } else {
+    while (snapshots.length < 7) snapshots.unshift({})
+    while (snapshots.length > 7) snapshots.shift()
+  }
 
-      if (isMonth) {
-        while (floorForThisGender.length < 30) floorForThisGender.unshift({ price: 0 })
-        while (floorForThisGender.length > 30) floorForThisGender.shift()
-      } else {
-        while (floorForThisGender.length < 7) floorForThisGender.unshift({ price: 0 })
-        while (floorForThisGender.length > 7) floorForThisGender.shift()
-      }
+  const isTimestampValid = (idx, timestamp) => {
+    const thisStamp = snapshots[snapshots.length - (days - idx)]?.timestamp
 
-      const isTimestampValid = (idx) => {
-        const thisStamp = floorForThisGender[floorForThisGender.length - ((isMonth ? 30 : 7) - idx)]?.timestamp
+    if (thisStamp >= timestamp || thisStamp === 'LIVE') {
+      return true
+    }
 
-        if (thisStamp === 'LIVE' || thisStamp >= timestamp) {
-          return true
+    return false
+  }
+
+  const getTotalValuesForAttributesAtThisDate = (itemAttributes, idx) => {
+    let floor = 0
+    let highestTrait = 0
+
+    Object.entries(snapshots[idx]?.attributes ?? {}).forEach(([category, traits]) => {
+      const v = traits[itemAttributes[category]]
+
+      if (v) {
+        if (highestTrait < v) {
+          highestTrait = v
         }
 
-        return false
+        if (floor === 0 || floor > v) {
+          floor = v
+        }
       }
+    })
 
-      totalFloorSeries.data = totalFloorSeries.data.map((num, i) => {
-        return Math.round(num + floorForThisGender[i].price)
+    return { floor, highestTrait }
+  }
+
+  pricedAssetsArr.forEach(({ attributes, price, timestamp }) => {
+    if (attributes) {
+      totalBoughtSeries.data = totalBoughtSeries.data.map((num, i) => {
+        if (isTimestampValid(i, timestamp)) return Math.round(num + price)
+        return num
       })
 
-      totalBoughtSeries.data = totalBoughtSeries.data.map((num, i) => {
-        if (isTimestampValid(i)) return Math.round(num + price)
+      totalHighestTraitSeries.data = totalHighestTraitSeries.data.map((num, i) => {
+        if (isTimestampValid(i, timestamp))
+          return Math.round(num + getTotalValuesForAttributesAtThisDate(attributes, i).highestTrait)
+        return num
+      })
+
+      totalFloorSeries.data = totalFloorSeries.data.map((num, i) => {
+        if (isTimestampValid(i, timestamp))
+          return Math.round(num + getTotalValuesForAttributesAtThisDate(attributes, i).floor)
         return num
       })
     }
   })
 
-  return [totalFloorSeries, totalBoughtSeries]
+  return [totalBoughtSeries, totalHighestTraitSeries, totalFloorSeries]
 }
 
 module.exports = getPortfolioSeries

@@ -1,16 +1,23 @@
 import dynamic from 'next/dynamic'
 import React, { useState } from 'react'
+import { FormControl, MenuItem, Select } from '@mui/material'
+import traitsData from '../../../data/traits/fox'
 import getDatesFromFloorData from '../../../functions/charts/getDatesFromFloorData'
 import getFloorSeries from '../../../functions/charts/getFloorSeries'
 import Toggle from '../../Toggle'
 import styles from './MyPortfolio.module.css'
 const ApexChart = dynamic(() => import('react-apexcharts'), { ssr: false })
 
-const FloorChart = ({ chartWidth, floorData }) => {
+const TRAIT_CATEGORIES = Object.keys(traitsData)
+  .map((cat) => cat)
+  .sort((a, b) => a.localeCompare(b))
+
+const FloorChart = ({ chartWidth, floorSnapshots }) => {
   const [isMonth, setIsMonth] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState('Gender')
 
   return (
-    <div className={styles.chartWrapper}>
+    <div className={styles.chartWrapper} style={{ minHeight: chartWidth - 100 }}>
       <div className='flex-row' style={{ minHeight: '50px' }}>
         <Toggle
           labelLeft='7d'
@@ -20,13 +27,21 @@ const FloorChart = ({ chartWidth, floorData }) => {
           style={{ margin: '0 auto 0 1rem' }}
         />
 
-        <h3 style={{ margin: '0 1rem 0 auto' }}>Floor Prices</h3>
+        <FormControl sx={{ margin: '0 1rem 0 auto', width: 150 }}>
+          <Select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+            {TRAIT_CATEGORIES.map((cat) => (
+              <MenuItem key={`category-${cat}`} value={cat} sx={{ justifyContent: 'space-between' }}>
+                {cat}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
       </div>
 
       <ApexChart
         type='line'
         width={chartWidth}
-        series={getFloorSeries(floorData, isMonth)}
+        series={getFloorSeries(floorSnapshots, isMonth, selectedCategory)}
         options={{
           chart: {
             id: 'floor-chart-lines',
@@ -36,10 +51,10 @@ const FloorChart = ({ chartWidth, floorData }) => {
             zoom: { enabled: false },
           },
           xaxis: {
-            categories: getDatesFromFloorData(floorData, isMonth),
+            categories: getDatesFromFloorData(floorSnapshots, isMonth),
           },
           theme: { mode: 'dark' },
-          colors: ['#ffb6e7', '#b6dbff'],
+          colors: selectedCategory === 'Gender' ? ['#ffb6e7', '#b6dbff'] : undefined,
           grid: {
             show: false,
             row: { colors: ['rgba(255, 255, 255, 0.2)', 'rgba(255, 255, 255, 0.4)'] },

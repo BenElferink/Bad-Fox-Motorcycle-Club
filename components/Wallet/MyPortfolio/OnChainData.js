@@ -30,7 +30,7 @@ const OnChainData = () => {
   return (
     <AssetCard
       mainTitles={[`Total Volume: ${formatBigNumber((onChainData.total_volume || 1000000) / 1000000)}`]}
-      subTitles={[`ADA $${adaUsdTicker} (${adaUsdChange24h}% 24h change)`]}
+      subTitles={[`ADA Price: $${adaUsdTicker}`, `ADA 24h Change: ${adaUsdChange24h}%`]}
       tableRows={[
         [
           `Supply: ${onChainData.asset_minted}`,

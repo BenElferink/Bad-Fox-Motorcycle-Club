@@ -1,7 +1,8 @@
-import connectDB from '../../../../../utils/mongo'
-import FloorSnapshot from '../../../../../models/FloorSnapshot'
-import POLICY_IDS from '../../../../../constants/policy-ids'
-import { ADMIN_CODE } from '../../../../../constants/api-keys'
+import connectDB from '../../../../utils/mongo'
+import FloorSnapshot from '../../../../models/FloorSnapshot'
+import POLICY_IDS from '../../../../constants/policy-ids'
+import { ADMIN_CODE } from '../../../../constants/api-keys'
+import getFoxFloorV2 from '../../../../functions/markets/getFoxFloorV2'
 
 export default async (req, res) => {
   try {
@@ -32,7 +33,15 @@ export default async (req, res) => {
       case 'GET': {
         const filters = { policyId }
         const count = await FloorSnapshot.countDocuments(filters)
-        const snapshots = await FloorSnapshot.find(filters).sort({ timestamp: 1 })
+        const snapshots = await FloorSnapshot.find(filters).sort({ timestamp: 1 }).select('-_id')
+
+        const liveFloorAttributes = await getFoxFloorV2()
+
+        snapshots.push({
+          policyId,
+          timestamp: 'LIVE',
+          attributes: liveFloorAttributes,
+        })
 
         return res.status(200).json({
           count,
