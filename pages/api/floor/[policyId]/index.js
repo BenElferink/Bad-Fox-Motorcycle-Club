@@ -1,6 +1,6 @@
 import connectDB from '../../../../utils/mongo'
 import POLICY_IDS from '../../../../constants/policy-ids'
-import getFoxFloorV2 from '../../../../functions/markets/getFoxFloorV2'
+import getFoxFloor from '../../../../functions/markets/getFoxFloor'
 
 export default async (req, res) => {
   try {
@@ -27,7 +27,7 @@ export default async (req, res) => {
 
     switch (method) {
       case 'GET': {
-        const attributes = await getFoxFloorV2()
+        const attributes = await getFoxFloor()
 
         return res.status(200).json({
           policyId,

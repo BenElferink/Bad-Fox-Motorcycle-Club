@@ -1,27 +1,47 @@
+const foxTraitsJsonFile = require('../../data/traits/fox')
 const fetchJpgListedItems = require('./fetchJpgListedItems')
 const { FOX_POLICY_ID } = require('../../constants/policy-ids')
 
-const genders = ['Male', 'Female']
+const traitsData = (() => {
+  const payload = {}
+
+  Object.entries(foxTraitsJsonFile).forEach(([cat, traits]) => {
+    payload[cat] = traits.map(({ gender, label }) =>
+      cat === 'Gender' ? label : `${gender === 'Male' ? '(M)' : gender === 'Female' ? '(F)' : '(U)'} ${label}`
+    )
+  })
+
+  return payload
+})()
 
 const getFoxFloor = async () => {
-  const floorData = []
-  const fetchedData = await fetchJpgListedItems({ policyId: FOX_POLICY_ID })
+  const floorData = {}
+  const listings = await fetchJpgListedItems({ policyId: FOX_POLICY_ID })
 
   console.log('Searching for floor prices')
-  for (const gender of genders) {
-    let thisFloor = null
+  for (const category in traitsData) {
+    // console.log('Looping through category', category)
+    const traits = traitsData[category]
+    for (const trait of traits) {
+      // console.log('Searching floor for trait', trait)
 
-    for (const listing of fetchedData) {
-      if (listing.attributes['Gender'] === gender) {
-        thisFloor = listing.price
-        break
+      for (const { attributes, price } of listings) {
+        if (attributes[category] === trait) {
+          // console.log('Found floor', price)
+
+          if (!floorData[category]) {
+            floorData[category] = { [trait]: price }
+          } else {
+            floorData[category][trait] = price
+          }
+
+          break
+        }
       }
     }
-
-    console.log(`Found floor for ${gender} - ${thisFloor}`)
-    floorData.push({ type: gender, price: thisFloor })
   }
 
+  // console.log('Found all floor prices', floorData)
   console.log('Found all floor prices')
   return floorData
 }

@@ -1,6 +1,6 @@
 require('dotenv').config()
 const axios = require('axios')
-const getFoxFloorV2 = require('../functions/markets/getFoxFloorV2')
+const getFoxFloor = require('../functions/markets/getFoxFloor')
 const { ADMIN_CODE } = require('../constants/api-keys')
 const { FOX_POLICY_ID } = require('../constants/policy-ids')
 
@@ -8,7 +8,7 @@ const BFMC_API = 'https://badfoxmc.com/api'
 
 const collectFloorSnapshot = async (timestamp) =>
   new Promise(async (resolve, reject) => {
-    const attributes = await getFoxFloorV2()
+    const attributes = await getFoxFloor()
 
     try {
       console.log('Writing floor prices to DB')
