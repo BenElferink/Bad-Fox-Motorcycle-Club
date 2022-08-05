@@ -6,8 +6,8 @@ const traitsData = (() => {
   const payload = {}
 
   Object.entries(foxTraitsJsonFile).forEach(([cat, traits]) => {
-    payload[cat] = traits.map(
-      ({ gender, label }) => `${gender === 'Male' ? '(M)' : gender === 'Female' ? '(F)' : '(U)'} ${label}`
+    payload[cat] = traits.map(({ gender, label }) =>
+      cat === 'Gender' ? label : `${gender === 'Male' ? '(M)' : gender === 'Female' ? '(F)' : '(U)'} ${label}`
     )
   })
 
