@@ -27,6 +27,12 @@ export function AuthProvider({ children }) {
   const [account, setAccount] = useState(null)
   const [myAssets, setMyAssets] = useState([])
 
+  useEffect(() => {
+    if (error.message) {
+      toast.error(error.message)
+    }
+  }, [error])
+
   const logout = () => {
     setToken('')
     setUserId('')
