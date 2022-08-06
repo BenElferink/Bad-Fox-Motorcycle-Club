@@ -13,9 +13,9 @@ const collectFloorSnapshot = async (timestamp) =>
     try {
       console.log('Writing floor prices to DB')
       await axios.post(
-        `${BFMC_API}/floor/snapshot/${FOX_POLICY_ID}`,
+        `${BFMC_API}/floor/${FOX_POLICY_ID}/snapshots`,
         { timestamp, attributes },
-        { headers: { admin_code: ADMIN_CODE } }
+        { headers: { admin_code: 'KeepCalmAndQueryOn' } }
       )
       return resolve(true)
     } catch (error) {
