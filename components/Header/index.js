@@ -5,6 +5,7 @@ import { AppBar, Avatar, IconButton } from '@mui/material'
 import { MenuRounded } from '@mui/icons-material'
 import Modal from '../Modal'
 import BaseButton from '../BaseButton'
+import MarketMenu from './MarketMenu'
 import CatalogMenu from './CatalogMenu'
 import WalletMenu from './WalletMenu'
 // import MintMenu from './MintMenu'
@@ -44,11 +45,6 @@ export default function Header({ scrollTo = () => null }) {
 
   const clickTeam = () => {
     scrollTo(TEAM)
-    setOpenMobileMenu(false)
-  }
-
-  const clickMarket = () => {
-    router.push('/market')
     setOpenMobileMenu(false)
   }
 
@@ -107,8 +103,7 @@ export default function Header({ scrollTo = () => null }) {
           {isHome ? <BaseButton label='Roadmap' onClick={clickRoadmap} transparent style={jsStyles.btn} /> : null}
           {isHome ? <BaseButton label='Team' onClick={clickTeam} transparent style={jsStyles.btn} /> : null}
 
-          <BaseButton label='Market' onClick={clickMarket} transparent style={jsStyles.btn} />
-
+          <MarketMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
           <CatalogMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
           <WalletMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
           {/* <MintMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} /> */}
