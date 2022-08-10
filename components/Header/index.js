@@ -5,10 +5,11 @@ import { AppBar, Avatar, IconButton } from '@mui/material'
 import { MenuRounded } from '@mui/icons-material'
 import Modal from '../Modal'
 import BaseButton from '../BaseButton'
+// import MintMenu from './MintMenu'
 import MarketMenu from './MarketMenu'
 import CatalogMenu from './CatalogMenu'
+// import UtilityMenu from './UtilityMenu'
 import WalletMenu from './WalletMenu'
-// import MintMenu from './MintMenu'
 import Socials from './Socials'
 import { HOME, MAP, TEAM } from '../../constants/scroll-nav'
 import styles from './Header.module.css'
@@ -17,7 +18,7 @@ export default function Header({ scrollTo = () => null }) {
   const { isMobile } = useScreenSize()
 
   const router = useRouter()
-  const isHome = router.asPath === '/'
+  const isHome = router.route === '/'
 
   const [openMobileMenu, setOpenMobileMenu] = useState(false)
 
@@ -47,6 +48,23 @@ export default function Header({ scrollTo = () => null }) {
     scrollTo(TEAM)
     setOpenMobileMenu(false)
   }
+
+  useEffect(() => {
+    if (isHome) {
+      switch (router.query.jumpTo) {
+        case 'roadmap':
+          clickRoadmap()
+          break
+
+        case 'team':
+          clickTeam()
+          break
+
+        default:
+          break
+      }
+    }
+  }, [isHome, router.query])
 
   const jsStyles = {
     nav: {
@@ -103,10 +121,11 @@ export default function Header({ scrollTo = () => null }) {
           {isHome ? <BaseButton label='Roadmap' onClick={clickRoadmap} transparent style={jsStyles.btn} /> : null}
           {isHome ? <BaseButton label='Team' onClick={clickTeam} transparent style={jsStyles.btn} /> : null}
 
+          {/* <MintMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} /> */}
           <MarketMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
           <CatalogMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
+          {/* <UtilityMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} /> */}
           <WalletMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
-          {/* <MintMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} /> */}
           <Socials closeMenu={closeMenu} />
         </nav>
       </Modal>
