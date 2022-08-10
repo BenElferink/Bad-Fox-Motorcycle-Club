@@ -98,6 +98,7 @@ export default async (req, res) => {
 
     switch (method) {
       case 'POST': {
+        // create or update wallet
         let wallet = await Wallet.findOne({
           stakeKey: finalStakeKey,
         })
@@ -125,6 +126,30 @@ export default async (req, res) => {
 
         await account.save()
 
+        // sync wallets
+        await Promise.all(
+          account.portfolioWallets.map(async (walletId) => {
+            if (walletId.toString() !== wallet._id.toString()) {
+              try {
+                const wallet = await Wallet.findOne({
+                  _id: walletId,
+                })
+
+                const assets = await getAssetsFromStakeKey(wallet.stakeKey, FOX_POLICY_ID)
+
+                wallet.assets[FOX_POLICY_ID] = assets
+                await wallet.save()
+
+                return true
+              } catch (error) {
+                console.error(error.message)
+
+                return false
+              }
+            }
+          })
+        )
+
         return res.status(204).end()
       }
 
@@ -147,6 +172,30 @@ export default async (req, res) => {
         )
 
         await account.save()
+
+        // sync wallets
+        await Promise.all(
+          account.portfolioWallets.map(async (walletId) => {
+            if (walletId.toString() !== wallet._id.toString()) {
+              try {
+                const wallet = await Wallet.findOne({
+                  _id: walletId,
+                })
+
+                const assets = await getAssetsFromStakeKey(wallet.stakeKey, FOX_POLICY_ID)
+
+                wallet.assets[FOX_POLICY_ID] = assets
+                await wallet.save()
+
+                return true
+              } catch (error) {
+                console.error(error.message)
+
+                return false
+              }
+            }
+          })
+        )
 
         return res.status(204).end()
       }
