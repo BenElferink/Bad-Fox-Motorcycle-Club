@@ -51,18 +51,20 @@ export default function Header({ scrollTo = () => null }) {
 
   useEffect(() => {
     if (isHome) {
-      switch (router.query.jumpTo) {
-        case 'roadmap':
-          clickRoadmap()
-          break
+      setTimeout(() => {
+        switch (router.query.scrollTo) {
+          case 'roadmap':
+            scrollTo(MAP)
+            break
 
-        case 'team':
-          clickTeam()
-          break
+          case 'team':
+            scrollTo(TEAM)
+            break
 
-        default:
-          break
-      }
+          default:
+            break
+        }
+      }, 100)
     }
   }, [isHome, router.query])
 
