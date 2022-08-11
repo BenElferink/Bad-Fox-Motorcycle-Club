@@ -4,12 +4,15 @@ export default function About() {
   return (
     <section className={styles.root}>
       <h2>About Bad Fox MC</h2>
+      <p>Bad Fox Motorcycle Club is a NFT project on the Cardano Blockchain.</p>
       <p>
-        Bad Fox Motorcycle Club is a <strong>community driven</strong> NFT Project. The team comes from some of the <strong>best projects on Cardano</strong> and the <strong>core of the community</strong> is comprised of close friends we've met along the way.
+        We're focused on rewarding 100% of holders. There will be no raffle to top rare ranks, or any of that
+        bullsh*t. You hold, you earn, simple as that.
       </p>
       <p>
-        In terms of utility, BFMC will be <strong>rewarding all holders passively</strong> with ADA, and will (later on) have{' '}
-        <strong>a burn event</strong> allowing participants to get <strong>lifetime access to metaverse content and assets</strong>.
+        At the beginning of our roadmap, holders will be earning ADA through royalty distributions, and
+        through other events. Later on we'll have a burn event allowing participants to get lifetime access to metaverse
+        content and assets through airdrops.
       </p>
     </section>
   )
