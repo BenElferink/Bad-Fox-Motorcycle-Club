@@ -1,5 +1,6 @@
 require('dotenv').config()
 const fs = require('fs')
+const writeXlsxFile = require('write-excel-file/node')
 const foxAssets = require('../data/assets/fox')
 const getWalletAddressOfAsset = require('../functions/blockfrost/getWalletAddressOfAsset')
 const getStakeKeyFromWalletAddress = require('../functions/blockfrost/getStakeKeyFromWalletAddress')
@@ -194,6 +195,37 @@ const run = async () => {
     }),
     'utf8'
   )
+
+  const COLUMN_SIZE = [{ width: 60 }, { width: 100 }, { width: 25 }, { width: 25 }, { width: 50 }]
+  const HEADER_ROW = [
+    { value: 'Stake Key' },
+    { value: 'Wallet Address' },
+    { value: 'Total ADA' },
+    { value: 'Total NFTs' },
+    { value: 'Winning Foxes' },
+  ]
+
+  const excelRows = [HEADER_ROW]
+
+  wallets.forEach(({ stakeKey, addresses, rareTraits, commonTraits, payout }) => {
+    excelRows.push([
+      { type: String, value: stakeKey },
+      { type: String, value: addresses[0] },
+      { type: String, value: String(payout.totalAda) },
+      { type: String, value: String(payout.totalNfts) },
+      {
+        type: String,
+        value: `${rareTraits.assets.map((str) => `${str} `)}${commonTraits.assets.map(
+          (str) => `${str} `
+        )}`.replace(',', ''),
+      },
+    ])
+  })
+
+  await writeXlsxFile(excelRows, {
+    columns: COLUMN_SIZE,
+    filePath: './_temp/winning-traits.xlsx',
+  })
 
   console.log('Done!')
 }
