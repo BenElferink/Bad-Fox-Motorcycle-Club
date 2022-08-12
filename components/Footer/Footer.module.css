@@ -20,6 +20,7 @@
 
 .cardano {
   height: 90px;
+  margin-top: 1rem;
 
   display: flex;
   flex-direction: column;
