@@ -24,7 +24,7 @@ const MarketMenu = ({ btnStyle = {}, closeMenu = () => {} }) => {
       <Fragment>
         <Split />
 
-        <BaseButton label='Fox Market' onClick={clickFoxMarket} transparent style={jsStyles.btn} />
+        <BaseButton label='Fox Market' onClick={clickFoxMarket} transparent style={btnStyle} />
       </Fragment>
     )
   }
