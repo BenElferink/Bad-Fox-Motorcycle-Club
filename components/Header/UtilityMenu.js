@@ -41,11 +41,11 @@ const UtilityMenu = ({ btnStyle = {}, closeMenu = () => {} }) => {
       <Fragment>
         <Split />
 
-        <BaseButton label='80% Royalties' onClick={clickRoyalties} transparent style={jsStyles.btn} />
+        <BaseButton label='80% Royalties' onClick={clickRoyalties} transparent style={btnStyle} />
         <OnlineIndicator online={false}>
-          <BaseButton label='$CLAY Tokens' onClick={clickClayTokens} transparent style={jsStyles.btn} />
+          <BaseButton label='$CLAY Tokens' onClick={clickClayTokens} transparent style={btnStyle} />
         </OnlineIndicator>
-        <BaseButton label='Burn Event (+Airdrops)' onClick={clickBurnEvent} transparent style={jsStyles.btn} />
+        <BaseButton label='Burn Event (+Airdrops)' onClick={clickBurnEvent} transparent style={btnStyle} />
       </Fragment>
     )
   }
