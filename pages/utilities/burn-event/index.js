@@ -35,7 +35,7 @@ export default function Page() {
             <Image src='/media/utilities/flame.png' alt='' width={77} height={110} />
           </div>
 
-          <h1>Burn Event + Airdrops</h1>
+          <h1 style={{ textAlign: 'center' }}>Burn Event + Airdrops</h1>
           <p>The burn event is going to be an important changing factor in our roadmap and in market dynamics.</p>
           <p>
             If you choose to participate in the burn event, you will be required to burn:
@@ -63,7 +63,7 @@ export default function Page() {
         </Section>
 
         <div className='flex-col' style={styles.dropWrap}>
-          <h2>1st Airdrop: 3D Fox Collection</h2>
+          <h2 style={{ textAlign: 'center' }}>1st Airdrop: 3D Fox Collection</h2>
           <p style={styles.dropTxt}>
             We're making 5,000 3D Fox avatars, and they will serve as metaverse compatible avatars.
             <br />
@@ -98,6 +98,7 @@ export default function Page() {
               autoPlay
               loop
               muted
+              playsInline // for mobile devices (will not auto-fullscreen on page-load)
               src='/media/utilities/3d-fox.mp4'
               alt=''
               width={mediaSize}
@@ -108,7 +109,7 @@ export default function Page() {
         </div>
 
         <div className='flex-col' style={styles.dropWrap}>
-          <h2>2nd Airdrop: Vox Fox Collection</h2>
+          <h2 style={{ textAlign: 'center' }}>2nd Airdrop: Vox Fox Collection</h2>
           <p style={styles.dropTxt}>
             We've partnered with Dot Dot Labs to develop 5,000 Vox Fox avatars.
             <br />
@@ -159,7 +160,7 @@ export default function Page() {
         </div>
 
         <div className='flex-col' style={styles.dropWrap}>
-          <h2>Stay tuned for more...</h2>
+          <h2 style={{ textAlign: 'center' }}>Stay tuned for more...</h2>
         </div>
       </div>
       <Footer />

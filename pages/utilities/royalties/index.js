@@ -43,7 +43,7 @@ export default function Page() {
             <Image src='/media/utilities/ada-token.png' alt='' width={150} height={150} />
           </div>
 
-          <h1>80% Royalties to 100% Holders</h1>
+          <h1 style={{ textAlign: 'center' }}>80% Royalties to 100% Holders</h1>
           <p>
             We're focused on rewarding 100% of holders.
             <br />
