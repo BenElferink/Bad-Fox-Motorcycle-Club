@@ -31,7 +31,7 @@ export default function Page() {
       <Header />
       <div>
         <Section style={{ maxWidth: '95vw', padding: '1rem 0.5rem', marginTop: '100px', position: 'relative' }}>
-          <div style={{ position: 'absolute', top: '-80px', left: '42px' }}>
+          <div style={{ position: 'absolute', top: '-80px', left: '11px' }}>
             <Image src='/media/utilities/flame.png' alt='' width={77} height={110} />
           </div>
 
