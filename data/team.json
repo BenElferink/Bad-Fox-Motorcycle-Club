@@ -1,9 +1,9 @@
 [
   {
     "name": "Ben Elferink",
-    "title": "Lead Developer / Marketing / Brains",
+    "title": "Fullstack Developer / Marketing",
     "description": "I'm a Fullstack Developer with several years of experience, and have been involved in the CNFT space since mid-summer 2021. Aside from my personal portfolio, I have also helped build several communities at their early stages.",
-    "profilePicture": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/images/team/ben.jpg",
+    "profilePicture": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/team/Ben.jpg",
     "socials": [
       {
         "type": "LINKEDIN",
@@ -12,6 +12,10 @@
       {
         "type": "TWITTER",
         "url": "https://twitter.com/BenElferink"
+      },
+      {
+        "type": "DISCORD",
+        "url": "https://discord.com/users/791763515554922507"
       }
     ]
   },
@@ -19,7 +23,7 @@
     "name": "David Minkov",
     "title": "Lead Artist",
     "description": "I have 2 years of experience in graphic design, and am an artist from a very young age. I just dived into the CNFT space, and am very excited to work on Bad Fox MC!",
-    "profilePicture": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/images/team/david.jpg",
+    "profilePicture": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/team/David.jpg",
     "socials": [
       {
         "type": "LINKEDIN",
@@ -28,6 +32,10 @@
       {
         "type": "INSTAGRAM",
         "url": "https://instagram.com/david_minkov"
+      },
+      {
+        "type": "DISCORD",
+        "url": "https://discord.com/users/958536998140907550"
       }
     ]
   },
@@ -35,7 +43,7 @@
     "name": "Christian Mitrev",
     "title": "Artist",
     "description": "I'm an artist with 2 years of experience, and am a stock/crypto trader with 3 years of experience. I helped form the team behind Bad Fox MC, and have invested in the tools required to produce our product!",
-    "profilePicture": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/images/team/chris.jpg",
+    "profilePicture": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/team/Chris.jpg",
     "socials": [
       {
         "type": "INSTAGRAM",
@@ -44,14 +52,18 @@
       {
         "type": "TWITTER",
         "url": "https://twitter.com/ChrisMitrev"
+      },
+      {
+        "type": "DISCORD",
+        "url": "https://discord.com/users/906518144108101642"
       }
     ]
   },
   {
     "name": "Franco Martin (aka Leap)",
-    "title": "Community Manager / Collab Mananger",
+    "title": "Community & Collab Mananger",
     "description": "I'm in college studying multimedia arts and I do crypto/nfts for fun and as extra income. I am new in the CNFT space and this is among the first projects that I joined. Love the team and the community! Really grateful for this experience and opportunity.",
-    "profilePicture": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/images/team/franco.jpeg",
+    "profilePicture": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/team/Franco.jpg",
     "socials": [
       {
         "type": "INSTAGRAM",
@@ -60,6 +72,22 @@
       {
         "type": "TWITTER",
         "url": "https://twitter.com/NFTLeap_"
+      },
+      {
+        "type": "DISCORD",
+        "url": "https://discord.com/users/335043549248618499"
+      }
+    ]
+  },
+  {
+    "name": "Uberman",
+    "title": "Blockchain & Fullstack Developer",
+    "description": "I'm a programmer who has been minting NFT projects on cardano since September 2021. Over that time, I have been a part of many successful teams such as OGBears and Filthy Rich Horses. I love everyone who is part of the cardano community and now it feels like a small family to me.",
+    "profilePicture": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/team/Uberman.jpg",
+    "socials": [
+      {
+        "type": "DISCORD",
+        "url": "https://discord.com/users/458201578571038740"
       }
     ]
   }

@@ -1,4 +1,5 @@
 module.exports = {
+  DISCORD: 'DISCORD',
   TWITTER: 'TWITTER',
   LINKEDIN: 'LINKEDIN',
   INSTAGRAM: 'INSTAGRAM',

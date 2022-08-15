@@ -1,10 +1,11 @@
 import { forwardRef } from 'react'
 import { Avatar, IconButton } from '@mui/material'
+import Discord from '../../icons/Discord'
 import Twitter from '../../icons/Twitter'
 import LinkedIn from '../../icons/LinkedIn'
 import Instagram from '../../icons/Instagram'
 import { TEAM } from '../../constants/scroll-nav'
-import { INSTAGRAM, LINKEDIN, TWITTER } from '../../constants/socials'
+import { DISCORD, INSTAGRAM, LINKEDIN, TWITTER } from '../../constants/socials'
 import data from '../../data/team.json'
 import styles from './Team.module.css'
 
@@ -30,6 +31,8 @@ const Team = forwardRef((props, ref) => {
               <IconButton key={`${name}-${social.type}`} onClick={() => clickSocial(social.url)}>
                 {(() => {
                   switch (social.type) {
+                    case DISCORD:
+                      return <Discord />
                     case TWITTER:
                       return <Twitter />
                     case LINKEDIN:
