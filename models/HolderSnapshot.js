@@ -3,25 +3,25 @@ import mongoose from 'mongoose'
 const HolderSnapshot = new mongoose.Schema(
   {
     policyId: {
-      type: String,
+      type: mongoose.Schema.Types.String,
       required: true,
     },
     timestamp: {
-      type: Number,
+      type: mongoose.Schema.Types.Number,
       default: Date.now(),
     },
-    totalAssetCount: Number,
-    totalAdaPayout: Number,
+    totalAssetCount: mongoose.Schema.Types.Number,
+    totalAdaPayout: mongoose.Schema.Types.Number,
     wallets: [
       {
-        stakeKey: String,
-        addresses: [String],
-        assets: [String],
+        stakeKey: mongoose.Schema.Types.String,
+        addresses: [mongoose.Schema.Types.String],
+        assets: [mongoose.Schema.Types.String],
         payout: {
-          adaForAssets: Number,
-          adaForTraits: Number,
-          totalAda: Number,
-          totalLovelace: Number,
+          adaForAssets: mongoose.Schema.Types.Number,
+          adaForTraits: mongoose.Schema.Types.Number,
+          totalAda: mongoose.Schema.Types.Number,
+          totalLovelace: mongoose.Schema.Types.Number,
         },
       },
     ],

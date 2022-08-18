@@ -3,17 +3,17 @@ import mongoose from 'mongoose'
 const FloorSnapshot = new mongoose.Schema(
   {
     policyId: {
-      type: String,
+      type: mongoose.Schema.Types.String,
       required: true,
     },
     timestamp: {
-      type: Number,
+      type: mongoose.Schema.Types.Number,
       default: Date.now(),
     },
     attributes: {
-      type: Object,
+      type: mongoose.Schema.Types.Object,
       // [CategoryName]: {
-      //   [TraitName]: number | null,
+      //   [TraitName]: Number | null,
       // },
       // ...
     },
