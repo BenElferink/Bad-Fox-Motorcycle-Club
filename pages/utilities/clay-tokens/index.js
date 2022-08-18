@@ -83,7 +83,7 @@ export default function Page() {
           <p>
             We're all familiar with the outstanding success of Clay Nation, right?
             <br />
-            As of mid August 2022, Clay have officialy launched their $CLAY token.
+            Clay have officially launched their $CLAY token during mid August 2022.
             <br />
             The $CLAY token can be obtained by trading, staking, baking, or holding.
           </p>
@@ -95,15 +95,11 @@ export default function Page() {
           <p>
             We're going to distribute all of the $CLAY tokens from the treasury to Bad Fox holders.
             <br />
-            To be eligible for the token drop, holders will be required to collect sets of traits.
+            To be eligible for the token drop, you'll be required to collect traits sets.
             <br />
             Sets can stack if you have multiples of the entire set (each trait is required).
           </p>
-          <p>
-            The token distribution will occur towards the end of Q4 2022.
-            <br />
-            Tokens per share = "Total tokens" / "Total shares"
-          </p>
+          <p>The token distribution will occur towards the end of Q4 2022.</p>
           <p>
             Total tokens = STILL ACCUMULATING
             <br />
