@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-import { FOX_POLICY_ID } from '../constants/policy-ids'
 
 const Account = new mongoose.Schema(
   {
@@ -34,6 +33,7 @@ const Account = new mongoose.Schema(
         ref: 'Wallet',
       },
     ],
+    stakeKeys: [mongoose.Schema.Types.String],
   },
   {
     versionKey: false,

@@ -1,6 +1,5 @@
 import connectDB from '../../../utils/mongo'
 import Account from '../../../models/Account'
-import Wallet from '../../../models/Wallet'
 import getDiscordMember from '../../../functions/getDiscordMember'
 import { DISCORD_ROLE_ID_OG } from '../../../constants/discord'
 import { ADMIN_CODE } from '../../../constants/api-keys'
@@ -45,9 +44,7 @@ export default async (req, res) => {
 
     switch (method) {
       case 'GET': {
-        let account = await Account.findOne({
-          userId,
-        }).populate({ path: 'portfolioWallets', model: 'Wallet' })
+        let account = await Account.findOne({ userId })
 
         if (!account) {
           account = new Account({

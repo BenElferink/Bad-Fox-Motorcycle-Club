@@ -1,22 +1,21 @@
 import { useState } from 'react'
 import { TextField } from '@mui/material'
-import { CloudSync as SyncIcon, DeleteForever as DeleteIcon } from '@mui/icons-material'
+import { DeleteForever as DeleteIcon } from '@mui/icons-material'
 import { useAuth } from '../../../contexts/AuthContext'
 import BaseButton from '../../BaseButton'
 import Loader from '../../Loader'
 import styles from './ManageWallets.module.css'
-import { FOX_POLICY_ID } from '../../../constants/policy-ids'
 
 const ManageWallets = () => {
   const {
     loading: authLoading,
     account,
-    addAccountPortfolioWallet,
-    deleteAccountPortfolioWallet,
-    syncAccountPortfolioWallets,
+    lastHolderSnapshotTimestamp,
+    addAccountStakeKey,
+    deleteAccountStakeKey,
   } = useAuth()
 
-  const wallets = account?.portfolioWallets ?? []
+  const stakeKeys = account?.stakeKeys ?? []
 
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
@@ -26,17 +25,9 @@ const ManageWallets = () => {
 
     if (!loading) {
       setLoading(true)
-      await addAccountPortfolioWallet(input)
+      await addAccountStakeKey(input)
       setLoading(false)
       setInput('')
-    }
-  }
-
-  const handleClickSync = async () => {
-    if (!loading) {
-      setLoading(true)
-      await syncAccountPortfolioWallets()
-      setLoading(false)
     }
   }
 
@@ -44,7 +35,7 @@ const ManageWallets = () => {
     if (!loading) {
       if (window.confirm('Are you sure you want to delete this wallet?')) {
         setLoading(true)
-        await deleteAccountPortfolioWallet(stakeKey)
+        await deleteAccountStakeKey(stakeKey)
         setLoading(false)
       }
     }
@@ -77,32 +68,30 @@ const ManageWallets = () => {
         />
       </form>
 
-      {wallets.length ? (
+      {stakeKeys.length ? (
         <div className={styles.syncWrapper}>
           <p>
-            Note: if you buy/sell/trade your assets, these records are not processed automatically. To get accurate
-            data on your holdings please click the "sync" button!
+            Note: if you buy/sell/trade your assets, these records may be processed at a later time,
+            holder-snapshots run once every 24 hours, please see the reference below.
           </p>
-          <BaseButton
-            label='Sync'
-            icon={SyncIcon}
-            backgroundColor='var(--grey)'
-            hoverColor='var(--orange)'
-            disabled={loading}
-            onClick={handleClickSync}
-          />
+          <div
+            style={{
+              padding: '0.4rem 0.8rem',
+              backgroundColor: 'var(--grey)',
+              color: 'var(--white)',
+              textAlign: 'center',
+            }}
+          >
+            {`Last snapshot: ${new Date(lastHolderSnapshotTimestamp).toLocaleString()}`}
+          </div>
         </div>
       ) : null}
 
       <div>
-        {wallets.length ? (
-          wallets.map(({ stakeKey, assets }) => (
+        {stakeKeys.length ? (
+          stakeKeys.map((stakeKey) => (
             <div key={`wallet-${stakeKey}`} className={styles.walletItem}>
-              <p>
-                {stakeKey}
-                <br />
-                Fox count: {assets[FOX_POLICY_ID]?.length || 0}
-              </p>
+              <p>{stakeKey}</p>
               <button onClick={() => handleClickDelete(stakeKey)}>
                 <DeleteIcon />
               </button>

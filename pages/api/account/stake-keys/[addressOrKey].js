@@ -1,10 +1,8 @@
 import connectDB from '../../../../utils/mongo'
 import Account from '../../../../models/Account'
-import Wallet from '../../../../models/Wallet'
 import getDiscordMember from '../../../../functions/getDiscordMember'
-import getAssetsFromStakeKey from '../../../../functions/blockfrost/getAssetsFromStakeKey'
+import getStakeKeyFromWalletAddress from '../../../../functions/blockfrost/getStakeKeyFromWalletAddress'
 import { ADMIN_CODE } from '../../../../constants/api-keys'
-import { FOX_POLICY_ID } from '../../../../constants/policy-ids'
 import { DISCORD_ROLE_ID_OG } from '../../../../constants/discord'
 
 export default async (req, res) => {
@@ -14,7 +12,7 @@ export default async (req, res) => {
     const {
       method,
       headers: { admin_code },
-      query: { discordUserId, discordToken },
+      query: { discordUserId, discordToken, addressOrKey },
     } = req
 
     if (!discordToken && !discordUserId) {
@@ -28,6 +26,16 @@ export default async (req, res) => {
       return res.status(401).json({
         type: 'UNAUTHORIZED',
         message: 'Admin code is invalid',
+      })
+    }
+
+    const stakeKey = addressOrKey.indexOf('stake1') === 0 ? addressOrKey : null
+    const walletAddress = addressOrKey.indexOf('addr1') === 0 ? addressOrKey : null
+
+    if (!stakeKey && !walletAddress) {
+      return res.status(400).json({
+        type: 'BAD_REQUEST',
+        message: 'Please provide a valid wallet address or stake key',
       })
     }
 
@@ -56,33 +64,54 @@ export default async (req, res) => {
       })
     }
 
-    account.username = username
-    account.roles = roles
+    let finalStakeKey = stakeKey || ''
 
-    await account.save()
+    if (!finalStakeKey) {
+      try {
+        finalStakeKey = await getStakeKeyFromWalletAddress(walletAddress)
+      } catch (error) {
+        console.error(error.message)
+
+        let c = 500
+        let e = {}
+
+        if (error?.response?.status == 403) {
+          c = 403
+          e = {
+            type: 'WALLET_ERROR',
+            message: 'Blockfrost API key maxed out',
+          }
+        } else {
+          c = 404
+          e = {
+            type: 'WALLET_ERROR',
+            message: 'Could not retrieve stake key',
+          }
+        }
+
+        return res.status(c).json(e)
+      }
+    }
 
     switch (method) {
-      case 'GET': {
-        await Promise.all(
-          account.portfolioWallets.map(async (walletId) => {
-            try {
-              const wallet = await Wallet.findOne({
-                _id: walletId,
-              })
+      case 'POST': {
+        account.username = username
+        account.roles = roles
+        if (!account.stakeKeys.find((str) => str === finalStakeKey)) {
+          account.stakeKeys.push(finalStakeKey)
+        }
 
-              const assets = await getAssetsFromStakeKey(wallet.stakeKey, FOX_POLICY_ID)
+        await account.save()
 
-              wallet.assets[FOX_POLICY_ID] = assets
-              await wallet.save()
+        return res.status(204).end()
+      }
 
-              return true
-            } catch (error) {
-              console.error(error.message)
+      case 'DELETE': {
+        account.username = username
+        account.roles = roles
+        account.stakeKeys = account.stakeKeys.filter((str) => str !== finalStakeKey)
 
-              return false
-            }
-          })
-        )
+        await account.save()
 
         return res.status(204).end()
       }
@@ -95,7 +124,7 @@ export default async (req, res) => {
       }
     }
   } catch (error) {
-    console.error(error)
+    console.error(error.message)
 
     return res.status(500).json({})
   }

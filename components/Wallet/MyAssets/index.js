@@ -10,7 +10,6 @@ const INITIAL_DISPLAY_AMOUNT = 50
 
 const MyWalletAssets = () => {
   const { loading: authLoading, myAssets } = useAuth()
-  const assets = myAssets
 
   const [ascending, setAscending] = useState(true)
   const [sortByRank, setSortByRank] = useState(true)
@@ -26,7 +25,7 @@ const MyWalletAssets = () => {
       }
     })
 
-    return assets
+    return myAssets
       .filter((item) => {
         const matchingCategories = []
 
