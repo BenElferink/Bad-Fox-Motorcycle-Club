@@ -27,12 +27,6 @@ const Account = new mongoose.Schema(
         default: '',
       },
     },
-    portfolioWallets: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Wallet',
-      },
-    ],
     stakeKeys: [mongoose.Schema.Types.String],
   },
   {
