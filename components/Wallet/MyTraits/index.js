@@ -2,17 +2,22 @@ import { useState } from 'react'
 import { useScreenSize } from '../../../contexts/ScreenSizeContext'
 import { useAuth } from '../../../contexts/AuthContext'
 import traitsData from '../../../data/traits/fox'
+import traitSetsData from '../../../data/clay-trait-sets'
 import Loader from '../../Loader'
 import Toggle from '../../Toggle'
 import AssetCard from '../../AssetCard'
 import FoxTraitsOptions from '../../FilterOptions/Traits/Fox'
+import Modal from '../../Modal'
+import BaseButton from '../../BaseButton'
+import { GITHUB_MEDIA_URL } from '../../../constants/api-urls'
 import styles from './MyWalletTraits.module.css'
+import ClayTraitSet from '../../ClayTraitSet'
 
 const MyWalletTraits = () => {
   const { isMobile } = useScreenSize()
   const { loading: authLoading, myAssets } = useAuth()
-  const assets = myAssets
 
+  const [showClayTraitSets, setShowClayTraitSets] = useState(false)
   const [showAll, setShowAll] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState('')
 
@@ -25,7 +30,7 @@ const MyWalletTraits = () => {
         const gender = attributeObj.gender
         const prefix = gender === 'Male' ? '(M) ' : gender === 'Female' ? '(F) ' : '(U) '
 
-        const labelCount = assets.filter(
+        const labelCount = myAssets.filter(
           (item) => label === item.onchain_metadata.attributes[category].replace(prefix, '')
         ).length
 
@@ -47,19 +52,78 @@ const MyWalletTraits = () => {
     return traits
   }
 
+  const renderClayTraits = () => {
+    const mappedTraitSets = {}
+
+    for (const roleName in traitSetsData) {
+      const { share, possibilities, set } = traitSetsData[roleName]
+      const thisSet = []
+      let ownsThisSet = true
+      let leastHeldTrait = 0
+
+      for (const { traitCategory, traitLabel, traitCount, traitPercent, traitImage } of set) {
+        let ownedTraitCount = 0
+
+        myAssets.forEach((asset) => {
+          if (asset.onchain_metadata.attributes[traitCategory] === traitLabel) {
+            ownedTraitCount++
+          }
+        })
+
+        thisSet.push({
+          traitCategory,
+          traitLabel,
+          traitCount,
+          traitPercent,
+          traitImage,
+          ownedTraitCount,
+        })
+
+        if (ownedTraitCount === 0) {
+          ownsThisSet = false
+        }
+
+        if (ownedTraitCount < leastHeldTrait || leastHeldTrait === 0) {
+          leastHeldTrait = ownedTraitCount
+        }
+      }
+
+      mappedTraitSets[roleName] = {
+        share,
+        possibilities,
+        set: thisSet,
+        ownsThisSet,
+        ownedSetCount: ownsThisSet ? leastHeldTrait : 0,
+      }
+    }
+
+    return mappedTraitSets
+  }
+
   return (
     <div className='flex-col'>
-      <FoxTraitsOptions callbackSelectedCategory={(str) => setSelectedCategory(str)}>
-        <div className='flex-col' style={{ margin: '0.5rem' }}>
-          {!isMobile ? (showAll ? 'All Traits' : 'Owned Traits') : null}
-          <Toggle
-            labelLeft={!isMobile ? '' : 'Owned Traits'}
-            labelRight={!isMobile ? '' : 'All Traits'}
-            showIcons={false}
-            state={{ value: showAll, setValue: setShowAll }}
-          />
-        </div>
-      </FoxTraitsOptions>
+      <div>
+        <FoxTraitsOptions callbackSelectedCategory={(str) => setSelectedCategory(str)}>
+          <div className='flex-col' style={{ margin: '0.5rem' }}>
+            {!isMobile ? (showAll ? 'All Traits' : 'Owned Traits') : null}
+            <Toggle
+              labelLeft={!isMobile ? '' : 'Owned Traits'}
+              labelRight={!isMobile ? '' : 'All Traits'}
+              showIcons={false}
+              state={{ value: showAll, setValue: setShowAll }}
+            />
+          </div>
+        </FoxTraitsOptions>
+        <BaseButton
+          label='My $CLAY Trait Sets'
+          onClick={() => setShowClayTraitSets(true)}
+          imageIcon={`${GITHUB_MEDIA_URL}/utilities/clay-token.png`}
+          style={{ margin: '0' }}
+          backgroundColor='var(--brown)'
+          hoverColor='var(--cardano-blue)'
+          fullWidth
+        />
+      </div>
 
       <div className={styles.traitCatalog}>
         {renderTraits()[selectedCategory]?.map((trait) =>
@@ -80,6 +144,21 @@ const MyWalletTraits = () => {
       </div>
 
       {authLoading ? <Loader /> : null}
+
+      <Modal title='My $CLAY Trait Sets' open={showClayTraitSets} onClose={() => setShowClayTraitSets(false)}>
+        {Object.entries(renderClayTraits())
+          .filter((item) => item[1].ownsThisSet)
+          .sort((a, b) => b[1].share - a[1].share)
+          .sort((a, b) => b[1].ownedSetCount - a[1].ownedSetCount)
+          .map(([roleName, { share, possibilities, set, ownedSetCount }]) => (
+            <ClayTraitSet
+              key={roleName}
+              title={roleName}
+              textRows={[`Token Share: ${share}`, `Possibilities: ${possibilities}`, `Owned: ${ownedSetCount}`]}
+              set={set}
+            />
+          ))}
+      </Modal>
     </div>
   )
 }

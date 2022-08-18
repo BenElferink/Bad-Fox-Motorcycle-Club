@@ -6,6 +6,7 @@ function BaseButton({
   label = 'Button',
   onClick = () => console.log('click'),
   icon: Icon,
+  imageIcon,
   selected = false,
   disabled = false,
   transparent = false,
@@ -27,7 +28,7 @@ function BaseButton({
       color='secondary'
       size={size || (isMobile ? 'medium' : 'large')}
       fullWidth={fullWidth || isMobile}
-      startIcon={Icon ? <Icon /> : null}
+      startIcon={Icon ? <Icon /> : imageIcon ? <img src={imageIcon} alt='' width='42' height='42' /> : null}
       onClick={onClick}
       className={className}
       style={{

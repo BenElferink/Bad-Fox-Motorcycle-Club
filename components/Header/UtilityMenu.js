@@ -1,11 +1,9 @@
 import { useRouter } from 'next/router'
 import { Fragment, useState } from 'react'
-import toast from 'react-hot-toast'
 import { Menu, MenuItem } from '@mui/material'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import Split from './Split'
 import BaseButton from '../BaseButton'
-import OnlineIndicator from '../OnlineIndicator'
 
 const UtilityMenu = ({ btnStyle = {}, closeMenu = () => {} }) => {
   const router = useRouter()
@@ -22,8 +20,7 @@ const UtilityMenu = ({ btnStyle = {}, closeMenu = () => {} }) => {
   }
 
   const clickClayTokens = () => {
-    toast.error('This page is coming soon')
-    // router.push('/utilities/clay-tokens')
+    router.push('/utilities/clay-tokens')
 
     setAnchorEl(null)
     closeMenu()
@@ -42,9 +39,7 @@ const UtilityMenu = ({ btnStyle = {}, closeMenu = () => {} }) => {
         <Split />
 
         <BaseButton label='80% Royalties' onClick={clickRoyalties} transparent style={btnStyle} />
-        <OnlineIndicator online={false}>
-          <BaseButton label='$CLAY Tokens' onClick={clickClayTokens} transparent style={btnStyle} />
-        </OnlineIndicator>
+        <BaseButton label='$CLAY Tokens' onClick={clickClayTokens} transparent style={btnStyle} />
         <BaseButton label='Burn Event (+Airdrops)' onClick={clickBurnEvent} transparent style={btnStyle} />
       </Fragment>
     )
@@ -61,11 +56,9 @@ const UtilityMenu = ({ btnStyle = {}, closeMenu = () => {} }) => {
           </MenuItem>
         </div>
         <div>
-          <OnlineIndicator online={false}>
-            <MenuItem onClick={clickClayTokens} sx={{ width: 200, height: 50 }}>
-              $CLAY Tokens
-            </MenuItem>
-          </OnlineIndicator>
+          <MenuItem onClick={clickClayTokens} sx={{ width: 200, height: 50 }}>
+            $CLAY Tokens
+          </MenuItem>
         </div>
         <div>
           <MenuItem onClick={clickBurnEvent} sx={{ width: 200, height: 50 }}>
