@@ -1,8 +1,8 @@
 import connectDB from '../../../../utils/mongo'
 import FloorSnapshot from '../../../../models/FloorSnapshot'
+import getFoxFloor from '../../../../functions/markets/getFoxFloor'
 import POLICY_IDS from '../../../../constants/policy-ids'
 import { ADMIN_CODE } from '../../../../constants/api-keys'
-import getFoxFloor from '../../../../functions/markets/getFoxFloor'
 
 export default async (req, res) => {
   try {
@@ -12,7 +12,6 @@ export default async (req, res) => {
       method,
       headers: { admin_code },
       query: { policyId },
-      body: { timestamp = 0, attributes = {} },
     } = req
 
     if (!policyId) {
@@ -31,25 +30,23 @@ export default async (req, res) => {
 
     switch (method) {
       case 'GET': {
-        const filters = { policyId }
-        const count = await FloorSnapshot.countDocuments(filters)
-        const snapshots = await FloorSnapshot.find(filters).sort({ timestamp: 1 }).select('-_id')
+        const dbSnapshots = await FloorSnapshot.find({ policyId }).sort({ timestamp: 1 })
 
         const liveFloorAttributes = await getFoxFloor()
 
-        snapshots.push({
+        dbSnapshots.push({
           policyId,
           timestamp: 'LIVE',
           attributes: liveFloorAttributes,
         })
 
         return res.status(200).json({
-          count,
-          snapshots,
+          count: dbSnapshots.length,
+          snapshots: dbSnapshots,
         })
       }
 
-      case 'POST': {
+      case 'HEAD': {
         if (admin_code !== ADMIN_CODE) {
           return res.status(401).json({
             type: 'UNAUTHORIZED',
@@ -57,15 +54,36 @@ export default async (req, res) => {
           })
         }
 
-        const snapshot = new FloorSnapshot({
+        res.status(202).end()
+
+        const newDate = new Date()
+        newDate.setHours(0)
+        newDate.setMinutes(0)
+        newDate.setSeconds(0)
+        newDate.setMilliseconds(0)
+        const timestamp = newDate.getTime()
+
+        const floorAttributes = await getFoxFloor()
+
+        const newSnapshot = new FloorSnapshot({
           policyId,
           timestamp,
-          attributes,
+          attributes: floorAttributes,
         })
 
-        await snapshot.save()
+        await newSnapshot.save()
 
-        return res.status(204).end()
+        // delete all snapshots greater than 30 days old
+        const dbSnapshots = await FloorSnapshot.find({ policyId }).sort({ timestamp: 1 })
+        const toDelete = []
+
+        while (dbSnapshots.length > 30) {
+          toDelete.push(dbSnapshots.shift())
+        }
+
+        await Promise.all(toDelete.map((item) => FloorSnapshot.deleteOne({ _id: item._id })))
+
+        break
       }
 
       default: {

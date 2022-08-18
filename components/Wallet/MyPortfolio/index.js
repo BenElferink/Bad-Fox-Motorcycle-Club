@@ -19,13 +19,26 @@ const MyPortfolio = () => {
   })()
 
   const [floorSnapshots, setFloorSnapshots] = useState([])
+  const [holdersSnapshot, setHoldersSnapshot] = useState({})
 
   useEffect(() => {
     ;(async () => {
       try {
-        const { data } = await axios.get(`/api/floor/${FOX_POLICY_ID}/snapshots`)
+        const { data } = await axios.get(`/api/snapshot/floor-prices/${FOX_POLICY_ID}`)
 
         setFloorSnapshots(data.snapshots)
+      } catch (error) {
+        console.error(error)
+      }
+    })()
+  }, []) // eslint-disable-line
+
+  useEffect(() => {
+    ;(async () => {
+      try {
+        const { data } = await axios.get(`/api/snapshot/holders/${FOX_POLICY_ID}`)
+
+        setHoldersSnapshot(data.snapshots[0] ?? {})
       } catch (error) {
         console.error(error)
       }
@@ -46,7 +59,7 @@ const MyPortfolio = () => {
       </div>
 
       <div>
-        <Holders chartWidth={chartWidth} />
+        <Holders chartWidth={chartWidth} holdersSnapshot={holdersSnapshot} />
       </div>
     </div>
   )

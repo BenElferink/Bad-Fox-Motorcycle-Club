@@ -12,6 +12,10 @@ const FloorSnapshot = new mongoose.Schema(
     },
     attributes: {
       type: Object,
+      // [CategoryName]: {
+      //   [TraitName]: number | null,
+      // },
+      // ...
     },
   },
   {

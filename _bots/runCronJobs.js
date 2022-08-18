@@ -1,30 +1,25 @@
 const cron = require('node-cron')
-const snapshotFloor = require('./collectFloorSnapshot')
-const snapshotHolders = require('./collectHoldersSnapshot')
+const { default: axios } = require('axios')
+const { ADMIN_CODE } = require('../constants/api-keys')
+const { FOX_POLICY_ID } = require('../constants/policy-ids')
 
 const runCronJob = async () => {
-  console.log('Running cron job')
-
-  const newDate = new Date()
-  newDate.setHours(0)
-  newDate.setMinutes(0)
-  newDate.setSeconds(0)
-  newDate.setMilliseconds(0)
-  const timestamp = newDate.getTime()
+  console.log('running cron job')
+  const config = { headers: { admin_code: ADMIN_CODE } }
 
   try {
-    await snapshotFloor(timestamp)
+    await axios.head(`/api/snapshot/floor-prices/${FOX_POLICY_ID}`, config)
   } catch (error) {
     console.error(error)
   }
 
   try {
-    await snapshotHolders(timestamp)
+    await axios.head(`/api/snapshot/holders/${FOX_POLICY_ID}`, config)
   } catch (error) {
     console.error(error)
   }
 
-  console.log('Cron job finished')
+  console.log('finished cron job')
 }
 
 cron.schedule('0 0 * * *', runCronJob, {

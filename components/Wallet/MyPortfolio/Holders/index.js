@@ -1,17 +1,17 @@
 import { useScreenSize } from '../../../../contexts/ScreenSizeContext'
-import holdersSnapshotData from '../../../../data/snapshots/holders'
 import BiggestHolders from './BiggestHolders'
 import AmountPerHolder from './AmountPerHolder'
 
-const Holders = ({ chartWidth }) => {
+const Holders = ({ chartWidth, holdersSnapshot }) => {
   const { isMobile } = useScreenSize()
 
-  const holdersData = holdersSnapshotData.wallets
-    .map((item) => ({
-      stakeKey: item.stakeKey,
-      count: item.count.foxCount,
-    }))
-    .sort((a, b) => b.count - a.count)
+  const holdersData =
+    holdersSnapshot.wallets
+      ?.map((item) => ({
+        stakeKey: item.stakeKey,
+        count: item.assets.length,
+      }))
+      .sort((a, b) => b.count - a.count) ?? []
 
   return (
     <div className={isMobile ? 'flex-col' : 'flex-row'} style={{ alignItems: 'flex-start' }}>
