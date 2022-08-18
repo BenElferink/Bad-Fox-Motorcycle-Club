@@ -12,7 +12,7 @@ import {
   JPG_STORE_WALLET,
 } from '../../../../constants/addresses'
 
-const VOLUME = 1000000
+const VOLUME = 500000 // 1000000
 const ROYALTY_FEE = 0.07
 const ROYALTY_TO_GIVE = 0.8
 const ROYALTY_SHARE = VOLUME * ROYALTY_FEE * ROYALTY_TO_GIVE
