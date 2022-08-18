@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import About from '../About'
+import { GITHUB_MEDIA_URL } from '../../constants/api-urls'
 import styles from './Landing.module.css'
 
 const Landing = ({ isHome = false, children }) => {
@@ -13,13 +14,7 @@ const Landing = ({ isHome = false, children }) => {
       {isHome ? (
         <div className={styles.content}>
           <div className={`${styles.fox} animate__animated animate__slow animate__infinite animate__bounce`}>
-            {/* <Image src='/images/landing/fox.png' alt='fox' width={imageSize} height={imageSize} /> */}
-            <Image
-              src='https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/images/landing/fox.png'
-              alt='fox'
-              width={imageSize}
-              height={imageSize}
-            />
+            <Image src={`${GITHUB_MEDIA_URL}/landing/fox.png`} alt='fox' width={imageSize} height={imageSize} />
           </div>
           {!isMobile ? <About /> : null}
         </div>

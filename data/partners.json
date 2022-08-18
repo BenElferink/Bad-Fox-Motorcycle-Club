@@ -2,21 +2,21 @@
   {
     "name": "CardaStacks",
     "url": "https://www.cardastacks.com",
-    "logo": "/images/partners/cardastacks.png",
+    "logo": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/partner-logos/cardastacks.png",
     "logoHeight": "80px",
     "logoWidth": "100px"
   },
   {
     "name": "OGBears",
     "url": "https://www.ogbears.com",
-    "logo": "/images/partners/ogbears.png",
+    "logo": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/partner-logos/ogbears.png",
     "logoHeight": "80px",
     "logoWidth": "55px"
   },
   {
     "name": "Dot Dot Labs",
     "url": "https://dotdotlabs.io",
-    "logo": "/images/partners/dotdotlabs.png",
+    "logo": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/partner-logos/dotdotlabs.png",
     "logoHeight": "80px",
     "logoWidth": "100px"
   }

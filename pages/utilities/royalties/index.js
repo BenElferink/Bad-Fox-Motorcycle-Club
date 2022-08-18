@@ -8,6 +8,7 @@ import AssetCard from '../../../components/AssetCard'
 import formatBigNumber from '../../../functions/formatters/formatBigNumber'
 import { FOX_ROYALTY_WALLET, MOTORCYCLE_ROYALTY_WALLET } from '../../../constants/addresses'
 import { useScreenSize } from '../../../contexts/ScreenSizeContext'
+import { GITHUB_MEDIA_URL } from '../../../constants/api-urls'
 
 export default function Page() {
   const { isMobile } = useScreenSize()
@@ -40,7 +41,7 @@ export default function Page() {
       <div>
         <Section style={{ maxWidth: '95vw', padding: '1rem 0.5rem', marginTop: '111px', position: 'relative' }}>
           <div style={{ position: 'absolute', top: '-111px', left: '11px', transform: 'rotate(180deg)' }}>
-            <Image src='/media/utilities/ada-token.png' alt='' width={150} height={150} />
+            <Image src={`${GITHUB_MEDIA_URL}/utilities/ada-token.png`} alt='' width={150} height={150} />
           </div>
 
           <h1 style={{ textAlign: 'center' }}>80% Royalties to 100% Holders</h1>
@@ -82,7 +83,7 @@ export default function Page() {
                 right: isMobile ? '11px' : '42px',
               }}
             >
-              <Image src='/media/utilities/2d-fox.png' alt='' width={250} height={250} />
+              <Image src={`${GITHUB_MEDIA_URL}/previews/2d-fox.png`} alt='' width={250} height={250} />
             </div>
           </div>
 
@@ -105,7 +106,7 @@ export default function Page() {
                 right: isMobile ? '11px' : '42px',
               }}
             >
-              <Image src='/media/utilities/2d-motorbike.png' alt='' width={300} height={300} />
+              <Image src={`${GITHUB_MEDIA_URL}/previews/2d-motorbike.png`} alt='' width={300} height={300} />
             </div>
           </div>
         </div>

@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { useScreenSize } from '../../../contexts/ScreenSizeContext'
 import { useAuth } from '../../../contexts/AuthContext'
 import Section from '../../Section'
 import Loader from '../../Loader'
@@ -8,7 +7,6 @@ import BaseButton from '../../BaseButton'
 import styles from './SubmitWallet.module.css'
 
 export default function SubmitWallet() {
-  const { width } = useScreenSize()
   const { loading, error, account, updateAccountMintWallet } = useAuth()
 
   const [walletAddress, setWalletAddress] = useState('')
@@ -61,17 +59,10 @@ export default function SubmitWallet() {
               </li>
               <br />
               <li>
-                Are you using <strong>Eternl (CCVault)</strong>? If yes, you will have to sumbit a "used" address,
-                see the example below!
+                Please make sure you are sumbitting a "used" address, this issue is common with{' '}
+                <strong>Eternl (CCVault)</strong> wallets, or new wallets.
               </li>
             </ol>
-            <Image
-              src='/images/docs/ccvault_address_issue.png'
-              alt='ccvault'
-              width={width > 1196 ? 1196 : 1196 / (1196 / width)}
-              height={width > 1196 ? 586 : 586 / (1196 / width)}
-              style={{ borderRadius: '1rem' }}
-            />
             <br />
             <BaseButton label='Try Again' onClick={clickEdit} backgroundColor='var(--discord-purple)' />
           </>

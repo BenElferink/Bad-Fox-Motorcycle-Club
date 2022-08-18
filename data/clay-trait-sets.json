@@ -1,0 +1,942 @@
+{
+  "Gara": {
+    "share": 27,
+    "possibilities": 30,
+    "set": [
+      {
+        "traitCategory": "Back",
+        "traitLabel": "(M) Gara",
+        "traitCount": 30,
+        "traitPercent": "0.50%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Back/M_Gara.png"
+      },
+      {
+        "traitCategory": "Skin",
+        "traitLabel": "(M) Gara",
+        "traitCount": 91,
+        "traitPercent": "1.52%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/SkinAndTail/M_Gara.png"
+      }
+    ]
+  },
+  "Kurama": {
+    "share": 27,
+    "possibilities": 29,
+    "set": [
+      {
+        "traitCategory": "Skin",
+        "traitLabel": "(F) Kurama",
+        "traitCount": 29,
+        "traitPercent": "0.48%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/SkinAndTail/F_Kurama.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(F) Lace Bra",
+        "traitCount": 94,
+        "traitPercent": "1.57%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/F_Lace_Bra.png"
+      }
+    ]
+  },
+  "Snoop Dogg": {
+    "share": 32,
+    "possibilities": 51,
+    "set": [
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(M) Snoop",
+        "traitCount": 51,
+        "traitPercent": "0.85%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/M_Snoop.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(M) Snoop",
+        "traitCount": 74,
+        "traitPercent": "1.23%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/M_Snoop.png"
+      },
+      {
+        "traitCategory": "Mouth",
+        "traitLabel": "(M) Joint",
+        "traitCount": 123,
+        "traitPercent": "2.05%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Mouth/M_Joint.png"
+      },
+      {
+        "traitCategory": "Ear",
+        "traitLabel": "(U) Diamond Stud",
+        "traitCount": 126,
+        "traitPercent": "2.10%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Ear/U_Diamond_Stud.png"
+      },
+      {
+        "traitCategory": "Skin",
+        "traitLabel": "(M) Dark Tone",
+        "traitCount": 246,
+        "traitPercent": "4.10%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/SkinAndTail/M_Dark_Tone.png"
+      }
+    ]
+  },
+  "Aqua Woman": {
+    "share": 30,
+    "possibilities": 46,
+    "set": [
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(F) Aqua Crown",
+        "traitCount": 46,
+        "traitPercent": "0.77%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/F_Aqua_Crown.png"
+      },
+      {
+        "traitCategory": "Back",
+        "traitLabel": "(F) Trident",
+        "traitCount": 86,
+        "traitPercent": "1.43%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Back/F_Trident.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(F) Netted Bra",
+        "traitCount": 102,
+        "traitPercent": "1.70%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/F_Netted_Bra.png"
+      },
+      {
+        "traitCategory": "Skin",
+        "traitLabel": "(F) Aqua",
+        "traitCount": 144,
+        "traitPercent": "2.40%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/SkinAndTail/F_Aqua.png"
+      }
+    ]
+  },
+  "Freddy Krueger": {
+    "share": 25,
+    "possibilities": 54,
+    "set": [
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(M) Freddy Fedora",
+        "traitCount": 54,
+        "traitPercent": "0.90%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/M_Freddy_Fedora.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(M) Freddy",
+        "traitCount": 73,
+        "traitPercent": "1.22%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/M_Freddy.png"
+      },
+      {
+        "traitCategory": "Skin",
+        "traitLabel": "(M) Freddy",
+        "traitCount": 104,
+        "traitPercent": "1.73%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/SkinAndTail/M_Freddy.png"
+      }
+    ]
+  },
+  "Jason Vorehees": {
+    "share": 18,
+    "possibilities": 88,
+    "set": [
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(M) Jason",
+        "traitCount": 88,
+        "traitPercent": "1.47%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/M_Jason.png"
+      },
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(U) Jason Mask",
+        "traitCount": 110,
+        "traitPercent": "1.83%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/U_Jason_Mask.png"
+      },
+      {
+        "traitCategory": "Back",
+        "traitLabel": "(U) Machete",
+        "traitCount": 209,
+        "traitPercent": "3.48%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Back/U_Machete.png"
+      },
+      {
+        "traitCategory": "Skin",
+        "traitLabel": "(M) Scratched",
+        "traitCount": 237,
+        "traitPercent": "3.95%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/SkinAndTail/M_Scratched.png"
+      }
+    ]
+  },
+  "Wonder Woman": {
+    "share": 61,
+    "possibilities": 19,
+    "set": [
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(F) Wonder Woman",
+        "traitCount": 19,
+        "traitPercent": "0.32%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/F_Wonder_Woman.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(F) Wonder Woman",
+        "traitCount": 22,
+        "traitPercent": "0.37%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/F_Wonder_Woman.png"
+      },
+      {
+        "traitCategory": "Skin",
+        "traitLabel": "(F) Wonder Woman",
+        "traitCount": 193,
+        "traitPercent": "3.22%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/SkinAndTail/F_Wonder_Woman.png"
+      }
+    ]
+  },
+  "Khaleesi": {
+    "share": 24,
+    "possibilities": 40,
+    "set": [
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(F) Khaleesi",
+        "traitCount": 40,
+        "traitPercent": "0.67%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/F_Khaleesi.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(F) Khaleesi",
+        "traitCount": 93,
+        "traitPercent": "1.55%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/F_Khaleesi.png"
+      },
+      {
+        "traitCategory": "Skin",
+        "traitLabel": "(F) Khaleesi",
+        "traitCount": 188,
+        "traitPercent": "3.13%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/SkinAndTail/F_Khaleesi.png"
+      }
+    ]
+  },
+  "One of One": {
+    "share": 77,
+    "possibilities": 8,
+    "set": [
+      {
+        "traitCategory": "Background",
+        "traitLabel": "(U) Limited Edition",
+        "traitCount": 8,
+        "traitPercent": "0.13%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Background/U_Limited_Edition.png"
+      }
+    ]
+  },
+  "Lavatron": {
+    "share": 51,
+    "possibilities": 23,
+    "set": [
+      {
+        "traitCategory": "Skin",
+        "traitLabel": "(F) Tron",
+        "traitCount": 23,
+        "traitPercent": "0.38%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/SkinAndTail/F_Tron.png"
+      },
+      {
+        "traitCategory": "Skin",
+        "traitLabel": "(F) Lava",
+        "traitCount": 24,
+        "traitPercent": "0.40%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/SkinAndTail/F_Lava.png"
+      }
+    ]
+  },
+  "Astronaut": {
+    "share": 38,
+    "possibilities": 27,
+    "set": [
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(F) Space Suit",
+        "traitCount": 27,
+        "traitPercent": "0.45%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/F_Space_Suit.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(M) Space Suit",
+        "traitCount": 38,
+        "traitPercent": "0.63%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/M_Space_Suit.png"
+      }
+    ]
+  },
+  "Male Devil": {
+    "share": 44,
+    "possibilities": 25,
+    "set": [
+      {
+        "traitCategory": "Back",
+        "traitLabel": "(M) Devil Wings",
+        "traitCount": 25,
+        "traitPercent": "0.42%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Back/M_Devil_Wings.png"
+      },
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(M) Devil Horns",
+        "traitCount": 42,
+        "traitPercent": "0.70%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/M_Devil_Horns.png"
+      },
+      {
+        "traitCategory": "Skin",
+        "traitLabel": "(M) Devil",
+        "traitCount": 104,
+        "traitPercent": "1.73%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/SkinAndTail/M_Devil.png"
+      }
+    ]
+  },
+  "Female Devil": {
+    "share": 42,
+    "possibilities": 33,
+    "set": [
+      {
+        "traitCategory": "Back",
+        "traitLabel": "(F) Devil Wings",
+        "traitCount": 33,
+        "traitPercent": "0.55%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Back/F_Devil_Wings.png"
+      },
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(F) Devil Horns",
+        "traitCount": 41,
+        "traitPercent": "0.68%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/F_Devil_Horns.png"
+      },
+      {
+        "traitCategory": "Skin",
+        "traitLabel": "(F) Devil",
+        "traitCount": 64,
+        "traitPercent": "1.07%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/SkinAndTail/F_Devil.png"
+      }
+    ]
+  },
+  "Male Angel": {
+    "share": 28,
+    "possibilities": 43,
+    "set": [
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(M) Angel Halo",
+        "traitCount": 43,
+        "traitPercent": "0.72%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/M_Angel_Halo.png"
+      },
+      {
+        "traitCategory": "Back",
+        "traitLabel": "(M) Angel Wings",
+        "traitCount": 44,
+        "traitPercent": "0.73%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Back/M_Angel_Wings.png"
+      }
+    ]
+  },
+  "Female Angel": {
+    "share": 32,
+    "possibilities": 36,
+    "set": [
+      {
+        "traitCategory": "Back",
+        "traitLabel": "(F) Angel Wings",
+        "traitCount": 36,
+        "traitPercent": "0.60%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Back/F_Angel_Wings.png"
+      },
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(F) Angel Halo",
+        "traitCount": 39,
+        "traitPercent": "0.65%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/F_Angel_Halo.png"
+      }
+    ]
+  },
+  "Bling Bling": {
+    "share": 40,
+    "possibilities": 46,
+    "set": [
+      {
+        "traitCategory": "Skin",
+        "traitLabel": "(F) Gold",
+        "traitCount": 46,
+        "traitPercent": "0.77%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/SkinAndTail/F_Gold.png"
+      },
+      {
+        "traitCategory": "Skin",
+        "traitLabel": "(F) Platinum",
+        "traitCount": 55,
+        "traitPercent": "0.92%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/SkinAndTail/F_Platinum.png"
+      },
+      {
+        "traitCategory": "Skin",
+        "traitLabel": "(M) Gold",
+        "traitCount": 65,
+        "traitPercent": "1.08%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/SkinAndTail/M_Gold.png"
+      },
+      {
+        "traitCategory": "Skin",
+        "traitLabel": "(M) Platinum",
+        "traitCount": 81,
+        "traitPercent": "1.35%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/SkinAndTail/M_Platinum.png"
+      }
+    ]
+  },
+  "Leon": {
+    "share": 26,
+    "possibilities": 62,
+    "set": [
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(M) Leon Beanie",
+        "traitCount": 62,
+        "traitPercent": "1.03%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/M_Leon_Beanie.png"
+      },
+      {
+        "traitCategory": "Eyewear",
+        "traitLabel": "(M) Leon",
+        "traitCount": 64,
+        "traitPercent": "1.07%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Eyewear/M_Leon.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(M) Leon",
+        "traitCount": 123,
+        "traitPercent": "2.05%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/M_Leon.png"
+      },
+      {
+        "traitCategory": "Back",
+        "traitLabel": "(U) Rifle",
+        "traitCount": 263,
+        "traitPercent": "4.38%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Back/U_Rifle.png"
+      }
+    ]
+  },
+  "Roman Warrior": {
+    "share": 38,
+    "possibilities": 27,
+    "set": [
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(M) Warrior Helmet",
+        "traitCount": 27,
+        "traitPercent": "0.45%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/M_Warrior_Helmet.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(M) Toga",
+        "traitCount": 69,
+        "traitPercent": "1.15%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/M_Toga.png"
+      },
+      {
+        "traitCategory": "Back",
+        "traitLabel": "(M) Big Sword",
+        "traitCount": 137,
+        "traitPercent": "2.28%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Back/M_Big_Sword.png"
+      },
+      {
+        "traitCategory": "Mouth",
+        "traitLabel": "(M) Steak",
+        "traitCount": 188,
+        "traitPercent": "3.13%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Mouth/M_Steak.png"
+      }
+    ]
+  },
+  "Lasers": {
+    "share": 72,
+    "possibilities": 22,
+    "set": [
+      {
+        "traitCategory": "Eyewear",
+        "traitLabel": "(U) Red Laser Shades",
+        "traitCount": 22,
+        "traitPercent": "0.37%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Eyewear/U_Red_Laser_Shades.png"
+      },
+      {
+        "traitCategory": "Eyewear",
+        "traitLabel": "(U) Red Laser Particles",
+        "traitCount": 25,
+        "traitPercent": "0.42%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Eyewear/U_Red_Laser_Particles.png"
+      },
+      {
+        "traitCategory": "Eyewear",
+        "traitLabel": "(U) Pink Laser Shades",
+        "traitCount": 29,
+        "traitPercent": "0.48%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Eyewear/U_Pink_Laser_Shades.png"
+      }
+    ]
+  },
+  "Robotics": {
+    "share": 40,
+    "possibilities": 24,
+    "set": [
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(F) Iron Suit",
+        "traitCount": 24,
+        "traitPercent": "0.40%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/F_Iron_Suit.png"
+      },
+      {
+        "traitCategory": "Eyewear",
+        "traitLabel": "(U) VR Headset",
+        "traitCount": 40,
+        "traitPercent": "0.67%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Eyewear/U_VR_Headset.png"
+      }
+    ]
+  },
+  "Degen Biker": {
+    "share": 14,
+    "possibilities": 134,
+    "set": [
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(U) Light Helmet",
+        "traitCount": 134,
+        "traitPercent": "2.23%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/U_Light_Helmet.png"
+      },
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(U) Heavy Helmet",
+        "traitCount": 150,
+        "traitPercent": "2.50%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/U_Heavy_Helmet.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(M) Biker",
+        "traitCount": 192,
+        "traitPercent": "3.20%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/M_Biker.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(F) Biker",
+        "traitCount": 193,
+        "traitPercent": "3.22%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/F_Biker.png"
+      }
+    ]
+  },
+  "Fancy Suits": {
+    "share": 38,
+    "possibilities": 31,
+    "set": [
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(M) Secret Agent",
+        "traitCount": 31,
+        "traitPercent": "0.52%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/M_Secret_Agent.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(M) Luxury Vest",
+        "traitCount": 63,
+        "traitPercent": "1.05%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/M_Luxury_Vest.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(M) Purple Suit",
+        "traitCount": 65,
+        "traitPercent": "1.08%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/M_Purple_Suit.png"
+      }
+    ]
+  },
+  "Pink Floyd": {
+    "share": 31,
+    "possibilities": 48,
+    "set": [
+      {
+        "traitCategory": "Eyewear",
+        "traitLabel": "(M) Floyd",
+        "traitCount": 48,
+        "traitPercent": "0.80%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Eyewear/M_Floyd.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(M) Floyd",
+        "traitCount": 64,
+        "traitPercent": "1.07%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/M_Floyd.png"
+      },
+      {
+        "traitCategory": "Skin",
+        "traitLabel": "(M) Floyd",
+        "traitCount": 97,
+        "traitPercent": "1.62%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/SkinAndTail/M_Floyd.png"
+      },
+      {
+        "traitCategory": "Ear",
+        "traitLabel": "(U) Gold Death Arrow",
+        "traitCount": 187,
+        "traitPercent": "3.12%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Ear/U_Gold_Death_Arrow.png"
+      }
+    ]
+  },
+  "Masked Fox": {
+    "share": 20,
+    "possibilities": 109,
+    "set": [
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(U) Tengu Mask",
+        "traitCount": 109,
+        "traitPercent": "1.82%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/U_Tengu_Mask.png"
+      },
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(U) Jason Mask",
+        "traitCount": 110,
+        "traitPercent": "1.83%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/U_Jason_Mask.png"
+      },
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(U) Kitsune Mask",
+        "traitCount": 121,
+        "traitPercent": "2.02%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/U_Kitsune_Mask.png"
+      },
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(U) Opera Mask",
+        "traitCount": 122,
+        "traitPercent": "2.03%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/U_Opera_Mask.png"
+      }
+    ]
+  },
+  "Fancy Smoker": {
+    "share": 16,
+    "possibilities": 115,
+    "set": [
+      {
+        "traitCategory": "Mouth",
+        "traitLabel": "(M) Cigar",
+        "traitCount": 115,
+        "traitPercent": "1.92%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Mouth/M_Cigar.png"
+      },
+      {
+        "traitCategory": "Mouth",
+        "traitLabel": "(F) Pipe",
+        "traitCount": 142,
+        "traitPercent": "2.37%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Mouth/F_Pipe.png"
+      },
+      {
+        "traitCategory": "Mouth",
+        "traitLabel": "(F) Luxury Cigarette",
+        "traitCount": 165,
+        "traitPercent": "2.75%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Mouth/F_Luxury_Cigarette.png"
+      },
+      {
+        "traitCategory": "Mouth",
+        "traitLabel": "(F) Cigar",
+        "traitCount": 173,
+        "traitPercent": "2.88%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Mouth/F_Cigar.png"
+      }
+    ]
+  },
+  "Samurai": {
+    "share": 26,
+    "possibilities": 62,
+    "set": [
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(M) Japanese Robe",
+        "traitCount": 62,
+        "traitPercent": "1.03%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/M_Japanese_Robe.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(F) Japanese Robe",
+        "traitCount": 79,
+        "traitPercent": "1.32%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/F_Japanese_Robe.png"
+      },
+      {
+        "traitCategory": "Back",
+        "traitLabel": "(F) Samurai Swords",
+        "traitCount": 129,
+        "traitPercent": "2.15%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Back/F_Samurai_Swords.png"
+      },
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(U) Straw Hat",
+        "traitCount": 172,
+        "traitPercent": "2.87%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/U_Straw_Hat.png"
+      }
+    ]
+  },
+  "Sporty": {
+    "share": 29,
+    "possibilities": 79,
+    "set": [
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(M) Sport Jacket",
+        "traitCount": 79,
+        "traitPercent": "1.32%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/M_Sport_Jacket.png"
+      },
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(M) Sweat Band",
+        "traitCount": 84,
+        "traitPercent": "1.40%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/M_Sweat_Band.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(F) Sport Vest",
+        "traitCount": 124,
+        "traitPercent": "2.07%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/F_Sport_Vest.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(M) Green Jacket",
+        "traitCount": 126,
+        "traitPercent": "2.10%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/M_Green_Jacket.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(F) Sport Jacket",
+        "traitCount": 134,
+        "traitPercent": "2.23%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/F_Sport_Jacket.png"
+      }
+    ]
+  },
+  "At Your Service": {
+    "share": 33,
+    "possibilities": 44,
+    "set": [
+      {
+        "traitCategory": "Eyewear",
+        "traitLabel": "(F) Carnival Mask",
+        "traitCount": 44,
+        "traitPercent": "0.73%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Eyewear/F_Carnival_Mask.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(F) Stripper",
+        "traitCount": 102,
+        "traitPercent": "1.70%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/F_Stripper.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(F) Stripper Spiked",
+        "traitCount": 107,
+        "traitPercent": "1.78%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/F_Stripper_Spiked.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(F) Hooters",
+        "traitCount": 162,
+        "traitPercent": "2.70%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/F_Hooters.png"
+      },
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(U) Small Top Hat",
+        "traitCount": 174,
+        "traitPercent": "2.90%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/U_Small_Top_Hat.png"
+      }
+    ]
+  },
+  "Goddess": {
+    "share": 19,
+    "possibilities": 61,
+    "set": [
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(F) Gold Toga",
+        "traitCount": 61,
+        "traitPercent": "1.02%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/F_Gold_Toga.png"
+      },
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(U) Leaf Crown",
+        "traitCount": 69,
+        "traitPercent": "1.15%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/U_Leaf_Crown.png"
+      }
+    ]
+  },
+  "Master of Jedi": {
+    "share": 29,
+    "possibilities": 38,
+    "set": [
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(M) Luxury Robe",
+        "traitCount": 38,
+        "traitPercent": "0.63%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/M_Luxury_Robe.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(F) Cape",
+        "traitCount": 87,
+        "traitPercent": "1.45%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/F_Cape.png"
+      },
+      {
+        "traitCategory": "Back",
+        "traitLabel": "(U) Lightsabers",
+        "traitCount": 107,
+        "traitPercent": "1.78%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Back/U_Lightsabers.png"
+      }
+    ]
+  },
+  "Man of Profession": {
+    "share": 15,
+    "possibilities": 94,
+    "set": [
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(M) Lab Coat",
+        "traitCount": 94,
+        "traitPercent": "1.57%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/M_Lab_Coat.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(M) Janitor",
+        "traitCount": 120,
+        "traitPercent": "2.00%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/M_Janitor.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(M) Farmer",
+        "traitCount": 149,
+        "traitPercent": "2.48%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/M_Farmer.png"
+      }
+    ]
+  },
+  "Steampunk": {
+    "share": 14,
+    "possibilities": 99,
+    "set": [
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(M) Steampunk",
+        "traitCount": 99,
+        "traitPercent": "1.65%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/M_Steampunk.png"
+      },
+      {
+        "traitCategory": "Eyewear",
+        "traitLabel": "(U) Steampunk Glasses Spiked",
+        "traitCount": 137,
+        "traitPercent": "2.28%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Eyewear/U_Steampunk_Glasses_Spiked.png"
+      },
+      {
+        "traitCategory": "Eyewear",
+        "traitLabel": "(U) Steampunk Glasses Round",
+        "traitCount": 143,
+        "traitPercent": "2.38%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Eyewear/U_Steampunk_Glasses_Round.png"
+      }
+    ]
+  },
+  "Arrr Pirate": {
+    "share": 21,
+    "possibilities": 99,
+    "set": [
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(F) Mustard Stripes",
+        "traitCount": 99,
+        "traitPercent": "1.65%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/F_Mustard_Stripes.png"
+      },
+      {
+        "traitCategory": "Eyewear",
+        "traitLabel": "(U) Eye Plaster",
+        "traitCount": 101,
+        "traitPercent": "1.68%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Eyewear/U_Eye_Plaster.png"
+      },
+      {
+        "traitCategory": "Clothes",
+        "traitLabel": "(F) White Stripes",
+        "traitCount": 127,
+        "traitPercent": "2.12%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/F_White_Stripes.png"
+      },
+      {
+        "traitCategory": "Headwear",
+        "traitLabel": "(U) Pirate",
+        "traitCount": 157,
+        "traitPercent": "2.62%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Headwear/U_Pirate.png"
+      }
+    ]
+  }
+}

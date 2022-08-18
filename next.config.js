@@ -1,5 +1,5 @@
 module.exports = {
   images: {
-    domains: ['ipfs.io', 'images.jpgstoreapis.com', 'cnft.tools', 'raw.githubusercontent.com'],
+    domains: ['cnft.tools', 'raw.githubusercontent.com'],
   },
 }

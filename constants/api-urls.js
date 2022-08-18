@@ -6,4 +6,5 @@ module.exports = {
   CNFT_TOOLS_IMAGE_API: 'https://cnft.tools/static/assets/projectthumbs',
   OPEN_CNFT_API: 'https://api.opencnft.io/1',
   BINANCE_API: 'https://www.binance.com',
+  GITHUB_MEDIA_URL: 'https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media',
 }

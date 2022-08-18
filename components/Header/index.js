@@ -12,6 +12,7 @@ import UtilityMenu from './UtilityMenu'
 import WalletMenu from './WalletMenu'
 import Socials from './Socials'
 import { HOME, MAP, TEAM } from '../../constants/scroll-nav'
+import { GITHUB_MEDIA_URL } from '../../constants/api-urls'
 import styles from './Header.module.css'
 
 export default function Header({ scrollTo = () => null }) {
@@ -97,7 +98,7 @@ export default function Header({ scrollTo = () => null }) {
         <IconButton onClick={clickHome} sx={{ margin: '1rem 1rem 1rem 0.5rem' }}>
           <Avatar
             alt=''
-            src='/images/logo/white_alpha.png'
+            src={`${GITHUB_MEDIA_URL}/logo/white_alpha.png`}
             sx={{ width: isMobile ? 55 : 69, height: isMobile ? 55 : 69 }}
           />
         </IconButton>

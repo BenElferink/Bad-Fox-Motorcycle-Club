@@ -3,6 +3,7 @@ import { useScreenSize } from '../../../contexts/ScreenSizeContext'
 import Header from '../../../components/Header'
 import Footer from '../../../components/Footer'
 import Section from '../../../components/Section'
+import { GITHUB_MEDIA_URL } from '../../../constants/api-urls'
 
 export default function Page() {
   const { isMobile } = useScreenSize()
@@ -32,13 +33,13 @@ export default function Page() {
       <div>
         <Section style={{ maxWidth: '95vw', padding: '1rem 0.5rem', marginTop: '100px', position: 'relative' }}>
           <div style={{ position: 'absolute', top: '-80px', left: '11px' }}>
-            <Image src='/media/utilities/flame.png' alt='' width={77} height={110} />
+            <Image src={`${GITHUB_MEDIA_URL}/utilities/flame.png`} alt='' width={77} height={110} />
           </div>
 
           <h1 style={{ textAlign: 'center' }}>Burn Event + Airdrops</h1>
           <p>The burn event is going to be an important changing factor in our roadmap and in market dynamics.</p>
           <p>
-            If you choose to participate in the burn event, you will be required to burn:
+            If you choose to participate in the burn event, you'll be required to burn:
             <br />
             1x Male Fox, 1x Female Fox, 1x Motorcycle,
             <br />
@@ -55,7 +56,7 @@ export default function Page() {
             So if you burn your NFTs, you do not lose the artwork.
           </p>
           <p>
-            Burning the NFTs redcues the supply for both collections, thereby increasing their value (floor prices
+            Burning the NFTs reduces the supply for both collections, thereby increasing their value (floor prices
             and volume).
             <br />A decrease in supply also means more royalty shares for holders that choose not to burn their
             NFTs.
@@ -87,7 +88,7 @@ export default function Page() {
               }}
             >
               <Image
-                src='/media/utilities/3d-fox.png'
+                src={`${GITHUB_MEDIA_URL}/previews/3d-foxes.png`}
                 alt=''
                 width={mediaSize}
                 height={mediaSize}
@@ -99,7 +100,7 @@ export default function Page() {
               loop
               muted
               playsInline // for mobile devices (will not auto-fullscreen on page-load)
-              src='/media/utilities/3d-fox.mp4'
+              src={`${GITHUB_MEDIA_URL}/previews/3d-fox.mp4`}
               alt=''
               width={mediaSize}
               height={mediaSize}
@@ -134,7 +135,7 @@ export default function Page() {
               }}
             >
               <Image
-                src='/media/utilities/dot-dot-labs.jpg'
+                src={`${GITHUB_MEDIA_URL}/utilities/dot-dot-labs.jpg`}
                 alt=''
                 width={mediaSize}
                 height={mediaSize}
@@ -149,7 +150,7 @@ export default function Page() {
               }}
             >
               <Image
-                src='/media/utilities/boss-planet.jpg'
+                src={`${GITHUB_MEDIA_URL}/utilities/boss-planet.jpg`}
                 alt=''
                 width={mediaSize}
                 height={mediaSize}
