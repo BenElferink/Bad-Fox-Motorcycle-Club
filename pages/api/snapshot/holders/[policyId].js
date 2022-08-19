@@ -150,6 +150,8 @@ export default async (req, res) => {
           })
           .sort((a, b) => b.assets.length - a.assets.length)
 
+        console.log('Writing snapshot to DB')
+
         const newSnapshot = new HolderSnapshot({
           policyId,
           timestamp: Date.now(),

@@ -13,6 +13,7 @@ const connectDB = async () => {
     console.log('✅ MongoDB connected:', connection.isConnected)
   } catch (error) {
     console.log('❌ MongoDB connection error:', error.message)
+    throw error
   }
 }
 
