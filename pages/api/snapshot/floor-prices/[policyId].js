@@ -87,10 +87,9 @@ export default async (req, res) => {
       }
 
       default: {
-        return res.status(404).json({
-          type: 'NOT_FOUND',
-          message: 'Method does not exist for this route',
-        })
+        res.setHeader('Allow', 'GET')
+        res.setHeader('Allow', 'HEAD')
+        return res.status(405).end('Method Not Allowed')
       }
     }
   } catch (error) {
