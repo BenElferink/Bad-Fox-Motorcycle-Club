@@ -71,13 +71,14 @@ const ManageWallets = () => {
       {stakeKeys.length ? (
         <div className={styles.syncWrapper}>
           <p>
-            Note: if you buy/sell/trade your assets, these records may be processed at a later time,
+            Note: if you buy/sell/trade your assets, these records will be processed at a later time,
             holder-snapshots run once every 24 hours, please see the reference below.
           </p>
           <div
             style={{
               padding: '0.4rem 0.8rem',
               backgroundColor: 'var(--grey)',
+              borderRadius: '0 0 0.5rem 0.5rem',
               color: 'var(--white)',
               textAlign: 'center',
             }}
