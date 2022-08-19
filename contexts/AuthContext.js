@@ -93,8 +93,8 @@ export function AuthProvider({ children }) {
 
       try {
         const holdersRes = await axios.get(`/api/snapshot/holders/${FOX_POLICY_ID}`)
-        const holdersSnapshot = holdersRes.data.snapshots[0] ?? {}
-        setLastHolderSnapshotTimestamp(holdersRes.data.snapshots[0].timestamp ?? 0)
+        const holdersSnapshot = holdersRes.data.snapshots[holdersRes.data.count - 1] ?? {}
+        setLastHolderSnapshotTimestamp(holdersSnapshot.timestamp ?? 0)
 
         accountRes.data?.stakeKeys?.forEach((stakeKey) => {
           const foundHoldingWallet = holdersSnapshot.wallets?.find((item) => item.stakeKey === stakeKey)

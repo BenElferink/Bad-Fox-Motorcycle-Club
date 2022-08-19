@@ -45,7 +45,7 @@ export default async (req, res) => {
 
     switch (method) {
       case 'GET': {
-        const dbSnapshots = await HolderSnapshot.find({ policyId })
+        const dbSnapshots = await HolderSnapshot.find({ policyId }).sort({ timestamp: 1 })
 
         return res.status(200).json({
           count: dbSnapshots.length,
@@ -150,7 +150,7 @@ export default async (req, res) => {
           })
           .sort((a, b) => b.assets.length - a.assets.length)
 
-        console.log('Writing snapshot to DB')
+        console.log('\nWriting snapshot to DB')
 
         const newSnapshot = new HolderSnapshot({
           policyId,
@@ -162,25 +162,24 @@ export default async (req, res) => {
 
         await newSnapshot.save()
 
-        console.log('\nDone!')
+        console.log('Done!')
 
         // delete all other snapshots except for the recent one
-        const dbSnapshots = await HolderSnapshot.find({ policyId })
+        // const dbSnapshots = await HolderSnapshot.find({ policyId })
 
-        await Promise.all(
-          dbSnapshots
-            .filter((item) => item._id.toString() !== newSnapshot._id.toString())
-            .map((item) => HolderSnapshot.deleteOne({ _id: item._id }))
-        )
+        // await Promise.all(
+        //   dbSnapshots
+        //     .filter((item) => item._id.toString() !== newSnapshot._id.toString())
+        //     .map((item) => HolderSnapshot.deleteOne({ _id: item._id }))
+        // )
 
         break
       }
 
       default: {
-        return res.status(404).json({
-          type: 'NOT_FOUND',
-          message: 'Method does not exist for this route',
-        })
+        res.setHeader('Allow', 'GET')
+        res.setHeader('Allow', 'HEAD')
+        return res.status(405).end('Method Not Allowed')
       }
     }
   } catch (error) {

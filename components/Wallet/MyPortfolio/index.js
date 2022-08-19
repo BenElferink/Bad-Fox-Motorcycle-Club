@@ -38,7 +38,7 @@ const MyPortfolio = () => {
       try {
         const { data } = await axios.get(`/api/snapshot/holders/${FOX_POLICY_ID}`)
 
-        setHoldersSnapshot(data.snapshots[0] ?? {})
+        setHoldersSnapshot(data.snapshots[data.count - 1] ?? {})
       } catch (error) {
         console.error(error)
       }
