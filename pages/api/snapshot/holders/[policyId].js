@@ -165,13 +165,13 @@ export default async (req, res) => {
         console.log('Done!')
 
         // delete all other snapshots except for the recent one
-        // const dbSnapshots = await HolderSnapshot.find({ policyId })
+        const dbSnapshots = await HolderSnapshot.find({ policyId })
 
-        // await Promise.all(
-        //   dbSnapshots
-        //     .filter((item) => item._id.toString() !== newSnapshot._id.toString())
-        //     .map((item) => HolderSnapshot.deleteOne({ _id: item._id }))
-        // )
+        await Promise.all(
+          dbSnapshots
+            .filter((item) => item._id.toString() !== newSnapshot._id.toString())
+            .map((item) => HolderSnapshot.deleteOne({ _id: item._id }))
+        )
 
         break
       }
