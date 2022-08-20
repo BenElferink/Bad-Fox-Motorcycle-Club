@@ -109,10 +109,14 @@ export default async (req, res) => {
                     (str) => str !== assetId
                   )
                 }
+
+                await fromWallet.save()
               } else {
                 fromWallet.assets[FOX_POLICY_ID] = fromWallet.assets[FOX_POLICY_ID].filter(
                   (str) => str !== assetId
                 )
+
+                await fromWallet.save()
               }
             }
 
@@ -127,7 +131,6 @@ export default async (req, res) => {
 
                 if (!toWallet) {
                   const assets = await getAssetsFromStakeKey(sKey, FOX_POLICY_ID)
-
                   const newWallet = new Wallet({
                     stakeKey: sKey,
                     addresses: [to],
@@ -144,11 +147,15 @@ export default async (req, res) => {
                   toWallet.assets[FOX_POLICY_ID] = toWallet.assets[FOX_POLICY_ID].includes(assetId)
                     ? toWallet.assets[FOX_POLICY_ID]
                     : [...toWallet.assets[FOX_POLICY_ID], assetId]
+
+                  await toWallet.save()
                 }
               } else {
                 toWallet.assets[FOX_POLICY_ID] = toWallet.assets[FOX_POLICY_ID].includes(assetId)
                   ? toWallet.assets[FOX_POLICY_ID]
                   : [...toWallet.assets[FOX_POLICY_ID], assetId]
+
+                await toWallet.save()
               }
             }
           }
