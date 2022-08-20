@@ -83,25 +83,32 @@ export default async (req, res) => {
             if (EXCLUDE_ADDRESSES.includes(from)) {
               console.log(`Skipping "from address" as it's excluded`)
             } else {
-              const fromWallet = await Wallet.findOne({ addresses: { $in: [from] } })
+              let fromWallet = await Wallet.findOne({ addresses: { $in: [from] } })
 
               if (!fromWallet) {
                 const sKey = await getStakeKeyFromWalletAddress(from)
-                const assets = await getAssetsFromStakeKey(sKey, FOX_POLICY_ID)
+                fromWallet = await Wallet.findOne({ stakeKey: sKey })
 
-                const newWallet = new Wallet({
-                  stakeKey: sKey,
-                  addresses: [from],
-                  assets: {
-                    [FOX_POLICY_ID]: assets.filter((str) => str !== assetId),
-                  },
-                })
+                if (!fromWallet) {
+                  const assets = await getAssetsFromStakeKey(sKey, FOX_POLICY_ID)
+                  const newWallet = new Wallet({
+                    stakeKey: sKey,
+                    addresses: [from],
+                    assets: {
+                      [FOX_POLICY_ID]: assets.filter((str) => str !== assetId),
+                    },
+                  })
 
-                await newWallet.save()
+                  await newWallet.save()
+                } else {
+                  fromWallet.addresses == fromWallet.addresses.includes(from)
+                    ? fromWallet.addresses
+                    : [...fromWallet.addresses, from]
+                  fromWallet.assets[FOX_POLICY_ID] = fromWallet.assets[FOX_POLICY_ID].filter(
+                    (str) => str !== assetId
+                  )
+                }
               } else {
-                fromWallet.addresses == fromWallet.addresses.includes(from)
-                  ? fromWallet.addresses
-                  : [...fromWallet.addresses, from]
                 fromWallet.assets[FOX_POLICY_ID] = fromWallet.assets[FOX_POLICY_ID].filter(
                   (str) => str !== assetId
                 )
@@ -111,26 +118,36 @@ export default async (req, res) => {
             if (EXCLUDE_ADDRESSES.includes(to)) {
               console.log(`Skipping "to address" as it's excluded`)
             } else {
-              const toWallet = await Wallet.findOne({ addresses: { $in: [to] } })
+              let toWallet = await Wallet.findOne({ addresses: { $in: [to] } })
 
               if (!toWallet) {
                 const sKey = await getStakeKeyFromWalletAddress(to)
-                const assets = await getAssetsFromStakeKey(sKey, FOX_POLICY_ID)
+                toWallet = await Wallet.findOne({ addresses: { $in: [to] } })
 
-                const newWallet = new Wallet({
-                  stakeKey: sKey,
-                  addresses: [to],
-                  assets: {
-                    [FOX_POLICY_ID]: assets.filter((str) => str !== assetId),
-                  },
-                })
+                if (!toWallet) {
+                  const assets = await getAssetsFromStakeKey(sKey, FOX_POLICY_ID)
 
-                await newWallet.save()
+                  const newWallet = new Wallet({
+                    stakeKey: sKey,
+                    addresses: [to],
+                    assets: {
+                      [FOX_POLICY_ID]: assets,
+                    },
+                  })
+
+                  await newWallet.save()
+                } else {
+                  toWallet.addresses == toWallet.addresses.includes(to)
+                    ? toWallet.addresses
+                    : [...toWallet.addresses, to]
+                  toWallet.assets[FOX_POLICY_ID] = toWallet.assets[FOX_POLICY_ID].includes(assetId)
+                    ? toWallet.assets[FOX_POLICY_ID]
+                    : [...toWallet.assets[FOX_POLICY_ID], assetId]
+                }
               } else {
-                toWallet.addresses == toWallet.addresses.includes(to)
-                  ? toWallet.addresses
-                  : [...toWallet.addresses, to]
-                toWallet.assets[FOX_POLICY_ID] = toWallet.assets[FOX_POLICY_ID].filter((str) => str !== assetId)
+                toWallet.assets[FOX_POLICY_ID] = toWallet.assets[FOX_POLICY_ID].includes(assetId)
+                  ? toWallet.assets[FOX_POLICY_ID]
+                  : [...toWallet.assets[FOX_POLICY_ID], assetId]
               }
             }
           }
