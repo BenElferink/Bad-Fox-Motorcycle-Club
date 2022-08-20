@@ -4,9 +4,7 @@ const writeXlsxFile = require('write-excel-file/node')
 const foxAssets = require('../data/assets/fox')
 const getWalletAddressOfAsset = require('../functions/blockfrost/getWalletAddressOfAsset')
 const getStakeKeyFromWalletAddress = require('../functions/blockfrost/getStakeKeyFromWalletAddress')
-const { BAD_FOX_WALLET, JPG_STORE_WALLET, CNFT_IO_WALLET, EPOCH_ART_WALLET } = require('../constants/addresses')
-
-const EXCLUDE_ADDRESSES = [BAD_FOX_WALLET, JPG_STORE_WALLET, CNFT_IO_WALLET, EPOCH_ART_WALLET]
+const { EXCLUDE_ADDRESSES } = require('../constants/addresses')
 
 const ADA_PER_WIN = 50
 const NFT_PER_WIN = 1

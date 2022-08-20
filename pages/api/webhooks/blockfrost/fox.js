@@ -80,48 +80,58 @@ export default async (req, res) => {
             const [assetId, { from, to }] = assetTxMatrix[i]
             console.log(`Updating DB for asset ID ${assetId}, from address ${from}, to address ${to}`)
 
-            const fromWallet = await Wallet.findOne({ addresses: { $in: [from] } })
-
-            if (!fromWallet) {
-              const sKey = await getStakeKeyFromWalletAddress(from)
-              const assets = await getAssetsFromStakeKey(sKey, FOX_POLICY_ID)
-
-              const newWallet = new Wallet({
-                stakeKey: sKey || `contract_${from}`,
-                addresses: [from],
-                assets: {
-                  [FOX_POLICY_ID]: assets.filter((str) => str !== assetId),
-                },
-              })
-
-              await newWallet.save()
+            if (EXCLUDE_ADDRESSES.includes(from)) {
+              console.log(`Skipping "from address" as it's excluded`)
             } else {
-              fromWallet.addresses == fromWallet.addresses.includes(from)
-                ? fromWallet.addresses
-                : [...fromWallet.addresses, from]
-              fromWallet.assets[FOX_POLICY_ID] = fromWallet.assets[FOX_POLICY_ID].filter((str) => str !== assetId)
+              const fromWallet = await Wallet.findOne({ addresses: { $in: [from] } })
+
+              if (!fromWallet) {
+                const sKey = await getStakeKeyFromWalletAddress(from)
+                const assets = await getAssetsFromStakeKey(sKey, FOX_POLICY_ID)
+
+                const newWallet = new Wallet({
+                  stakeKey: sKey,
+                  addresses: [from],
+                  assets: {
+                    [FOX_POLICY_ID]: assets.filter((str) => str !== assetId),
+                  },
+                })
+
+                await newWallet.save()
+              } else {
+                fromWallet.addresses == fromWallet.addresses.includes(from)
+                  ? fromWallet.addresses
+                  : [...fromWallet.addresses, from]
+                fromWallet.assets[FOX_POLICY_ID] = fromWallet.assets[FOX_POLICY_ID].filter(
+                  (str) => str !== assetId
+                )
+              }
             }
 
-            const toWallet = await Wallet.findOne({ addresses: { $in: [to] } })
-
-            if (!toWallet) {
-              const sKey = await getStakeKeyFromWalletAddress(to)
-              const assets = await getAssetsFromStakeKey(sKey, FOX_POLICY_ID)
-
-              const newWallet = new Wallet({
-                stakeKey: sKey || `contract_${to}`,
-                addresses: [to],
-                assets: {
-                  [FOX_POLICY_ID]: assets.filter((str) => str !== assetId),
-                },
-              })
-
-              await newWallet.save()
+            if (EXCLUDE_ADDRESSES.includes(to)) {
+              console.log(`Skipping "to address" as it's excluded`)
             } else {
-              toWallet.addresses == toWallet.addresses.includes(to)
-                ? toWallet.addresses
-                : [...toWallet.addresses, to]
-              toWallet.assets[FOX_POLICY_ID] = toWallet.assets[FOX_POLICY_ID].filter((str) => str !== assetId)
+              const toWallet = await Wallet.findOne({ addresses: { $in: [to] } })
+
+              if (!toWallet) {
+                const sKey = await getStakeKeyFromWalletAddress(to)
+                const assets = await getAssetsFromStakeKey(sKey, FOX_POLICY_ID)
+
+                const newWallet = new Wallet({
+                  stakeKey: sKey,
+                  addresses: [to],
+                  assets: {
+                    [FOX_POLICY_ID]: assets.filter((str) => str !== assetId),
+                  },
+                })
+
+                await newWallet.save()
+              } else {
+                toWallet.addresses == toWallet.addresses.includes(to)
+                  ? toWallet.addresses
+                  : [...toWallet.addresses, to]
+                toWallet.assets[FOX_POLICY_ID] = toWallet.assets[FOX_POLICY_ID].filter((str) => str !== assetId)
+              }
             }
           }
         })

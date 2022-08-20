@@ -4,14 +4,12 @@ const foxAssets = require('../data/assets/fox')
 const getWalletAddressOfAsset = require('../functions/blockfrost/getWalletAddressOfAsset')
 const getStakeKeyFromWalletAddress = require('../functions/blockfrost/getStakeKeyFromWalletAddress')
 const POLICY_IDS = require('../constants/policy-ids')
-const { BAD_FOX_WALLET, CNFT_IO_WALLET, EPOCH_ART_WALLET, JPG_STORE_WALLET } = require('../constants/addresses')
+const { EXCLUDE_ADDRESSES } = require('../constants/addresses')
 
 const VOLUME = 500000 // 1000000
 const ROYALTY_FEE = 0.07
 const ROYALTY_TO_GIVE = 0.8
 const ROYALTY_SHARE = VOLUME * ROYALTY_FEE * ROYALTY_TO_GIVE
-
-const EXCLUDE_ADDRESSES = [BAD_FOX_WALLET, JPG_STORE_WALLET, CNFT_IO_WALLET, EPOCH_ART_WALLET]
 
 const run = async (req, res) => {
   let unlistedAssetsCount = 0

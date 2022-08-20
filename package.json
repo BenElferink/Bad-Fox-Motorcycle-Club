@@ -23,7 +23,7 @@
     "cron-jobs": "node ./_bots/runCronJobs.js"
   },
   "dependencies": {
-    "@blockfrost/blockfrost-js": "^4.1.0",
+    "@blockfrost/blockfrost-js": "^4.2.1",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@fontsource/roboto": "^4.5.5",
