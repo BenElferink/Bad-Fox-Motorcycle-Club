@@ -14,16 +14,16 @@ export default async (req, res) => {
 
     switch (method) {
       case 'POST': {
-        try {
-          blockfrost.verifyWebhookSignature(
-            JSON.stringify(body),
-            headers['blockfrost-signature'],
-            BLOCKFROST_WEBHOOK_AUTH_TOKEN
-          )
-        } catch (error) {
-          console.error(error)
-          return res.status(400).send('Signature is invalid!')
-        }
+        // try {
+        //   blockfrost.verifyWebhookSignature(
+        //     JSON.stringify(body),
+        //     headers['blockfrost-signature'],
+        //     BLOCKFROST_WEBHOOK_AUTH_TOKEN
+        //   )
+        // } catch (error) {
+        //   console.error(error)
+        //   return res.status(400).send('Signature is invalid!')
+        // }
 
         console.log(`Webhook triggered with ${body.payload.length} payloads`)
 
@@ -120,7 +120,7 @@ export default async (req, res) => {
           }
         })
 
-        return res.status(201).end()
+        return res.status(204).end()
       }
 
       default: {
