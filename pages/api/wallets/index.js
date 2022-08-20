@@ -43,7 +43,7 @@ export default async (req, res) => {
         let wallet = await Wallet.findOne({ stakeKey })
 
         if (wallet) {
-          wallet.addresses = addresses.filter((str) => !wallet.addresses.includes(str))
+          wallet.addresses = [...wallet.addresses, ...addresses.filter((str) => !wallet.addresses.includes(str))]
           wallet.assets = {
             ...wallet.assets,
             [policyId]: assets,

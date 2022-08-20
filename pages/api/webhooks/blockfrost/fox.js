@@ -96,6 +96,9 @@ export default async (req, res) => {
 
               await newWallet.save()
             } else {
+              fromWallet.addresses == fromWallet.addresses.includes(from)
+                ? fromWallet.addresses
+                : [...fromWallet.addresses, from]
               fromWallet.assets[FOX_POLICY_ID] = fromWallet.assets[FOX_POLICY_ID].filter((str) => str !== assetId)
             }
 
@@ -115,6 +118,9 @@ export default async (req, res) => {
 
               await newWallet.save()
             } else {
+              toWallet.addresses == toWallet.addresses.includes(to)
+                ? toWallet.addresses
+                : [...toWallet.addresses, to]
               toWallet.assets[FOX_POLICY_ID] = toWallet.assets[FOX_POLICY_ID].filter((str) => str !== assetId)
             }
           }
