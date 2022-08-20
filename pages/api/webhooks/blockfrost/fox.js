@@ -2,16 +2,29 @@ import connectDB from '../../../../utils/mongo'
 import Wallet from '../../../../models/Wallet'
 import getStakeKeyFromWalletAddress from '../../../../functions/blockfrost/getStakeKeyFromWalletAddress'
 import getAssetsFromStakeKey from '../../../../functions/blockfrost/getAssetsFromStakeKey'
+import blockfrost from '../../../../utils/blockfrost'
+import { BLOCKFROST_WEBHOOK_AUTH_TOKEN } from '../../../../constants/api-keys'
 import { FOX_POLICY_ID } from '../../../../constants/policy-ids'
 
 export default async (req, res) => {
   try {
     await connectDB()
 
-    const { method, body } = req
+    const { method, headers, body } = req
 
     switch (method) {
       case 'POST': {
+        try {
+          blockfrost.verifyWebhookSignature(
+            JSON.stringify(body),
+            headers['blockfrost-signature'],
+            BLOCKFROST_WEBHOOK_AUTH_TOKEN
+          )
+        } catch (error) {
+          console.error(error)
+          return res.status(400).send('Signature is invalid!')
+        }
+
         console.log(`Webhook triggered with ${body.payload.length} payloads`)
 
         body.payload.forEach(async (payloadItem, idx) => {
