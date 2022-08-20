@@ -1,7 +1,7 @@
 require('dotenv').config()
 const axios = require('axios')
 const writeXlsxFile = require('write-excel-file/node')
-const holdersSnapshot = require('../data/snapshots/holders')
+const holdersSnapshot = require('../_temp/badfox-royalty-payouts.json')
 const { ADMIN_CODE } = require('../constants/api-keys')
 
 const URL = 'http://localhost:3000' // 'https://badfoxmc.com'
@@ -18,10 +18,10 @@ const run = async () => {
   const wallets = [HEADER_ROW]
   let mints = 0
 
-  holdersSnapshot.wallets.forEach(({ stakeKey, addresses, counts: { foxCount } }, idx) => {
+  holdersSnapshot.wallets.forEach(({ stakeKey, addresses, assets }, idx) => {
     console.log(`holders snapshot - processing index ${idx} of ${holdersSnapshot.wallets.length - 1}`)
 
-    const allowedToMint = Math.floor(foxCount / 3)
+    const allowedToMint = Math.floor(assets.length / 3)
 
     if (allowedToMint) {
       wallets.push([
@@ -38,7 +38,7 @@ const run = async () => {
   try {
     const {
       data: { accounts },
-    } = await axios.get(`${URL}/api/account/all`, { headers: { admin_code: ADMIN_CODE } })
+    } = await axios.get(`${URL}/api/accounts`, { headers: { admin_code: ADMIN_CODE } })
 
     accounts.forEach(({ username, roles: { isOG }, wallet }, idx) => {
       console.log(`registered account - processing index ${idx} of ${accounts.length - 1}`)
@@ -70,7 +70,7 @@ const run = async () => {
 
   await writeXlsxFile(wallets, {
     columns: COLUMN_SIZE,
-    filePath: './_scripts/minting-list.xlsx',
+    filePath: './_temp/minting-list.xlsx',
   })
 
   console.log('done!')

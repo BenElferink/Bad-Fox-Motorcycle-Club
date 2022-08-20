@@ -26,7 +26,6 @@ export function AuthProvider({ children }) {
   const [userId, setUserId] = useState('')
   const [account, setAccount] = useState(null)
   const [myAssets, setMyAssets] = useState([])
-  const [lastHolderSnapshotTimestamp, setLastHolderSnapshotTimestamp] = useState(0)
 
   useEffect(() => {
     if (error.message) {
@@ -82,7 +81,7 @@ export function AuthProvider({ children }) {
     setLoading(true)
 
     try {
-      const accountRes = await axios.get(`/api/account?${t ? `discordToken=${t}` : `discordUserId=${id}`}`, {
+      const accountRes = await axios.get(`/api/accounts/me?${t ? `discordToken=${t}` : `discordUserId=${id}`}`, {
         headers: { admin_code: ADMIN_CODE },
       })
 
@@ -92,19 +91,20 @@ export function AuthProvider({ children }) {
       clearError()
 
       try {
-        const holdersRes = await axios.get(`/api/snapshot/holders/${FOX_POLICY_ID}`)
-        const holdersSnapshot = holdersRes.data.snapshots[holdersRes.data.count - 1] ?? {}
-        setLastHolderSnapshotTimestamp(holdersSnapshot.timestamp ?? 0)
+        if (accountRes.data?.stakeKeys?.length) {
+          for (let sIdx = 0; sIdx < accountRes.data.stakeKeys.length; sIdx++) {
+            const stakeKey = accountRes.data.stakeKeys[sIdx]
+            const walletsRes = await axios.get(`/api/wallets/${stakeKey}`)
 
-        accountRes.data?.stakeKeys?.forEach((stakeKey) => {
-          const foundHoldingWallet = holdersSnapshot.wallets?.find((item) => item.stakeKey === stakeKey)
+            if (walletsRes.data?.assets[FOX_POLICY_ID]?.length) {
+              for (let aIdx = 0; aIdx < walletsRes.data.assets[FOX_POLICY_ID].length; aIdx++) {
+                const assetId = walletsRes.data.assets[FOX_POLICY_ID][aIdx]
 
-          if (foundHoldingWallet) {
-            foundHoldingWallet.assets?.forEach((assetId) => {
-              setMyAssets((prev) => [...prev, blockfrostJsonFile.assets.find(({ asset }) => asset === assetId)])
-            })
+                setMyAssets((prev) => [...prev, blockfrostJsonFile.assets.find(({ asset }) => asset === assetId)])
+              }
+            }
           }
-        })
+        }
       } catch (error) {
         console.error(error)
       }
@@ -150,7 +150,7 @@ export function AuthProvider({ children }) {
 
     try {
       await axios.post(
-        `/api/account/mint-wallet/${walletAddress}?${token ? `discordToken=${token}` : `discordUserId=${userId}`}`,
+        `/api/accounts/me/mint-wallet/${walletAddress}?${token ? `discordToken=${token}` : `discordUserId=${userId}`}`,
         {},
         {
           headers: { admin_code: ADMIN_CODE },
@@ -179,7 +179,7 @@ export function AuthProvider({ children }) {
 
     try {
       await axios.post(
-        `/api/account/stake-keys/${walletAddressOrStakeKey}?${
+        `/api/accounts/me/stake-keys/${walletAddressOrStakeKey}?${
           token ? `discordToken=${token}` : `discordUserId=${userId}`
         }`,
         {},
@@ -202,7 +202,27 @@ export function AuthProvider({ children }) {
 
     try {
       await axios.delete(
-        `/api/account/stake-keys/${stakeKey}?${token ? `discordToken=${token}` : `discordUserId=${userId}`}`,
+        `/api/accounts/me/stake-keys/${stakeKey}?${token ? `discordToken=${token}` : `discordUserId=${userId}`}`,
+        {
+          headers: { admin_code: ADMIN_CODE },
+        }
+      )
+
+      clearError()
+    } catch (e) {
+      handleError(e)
+    }
+
+    setLoading(false)
+    await getAccount()
+  }
+
+  const syncAccountPortfolioWallets = async () => {
+    setLoading(true)
+
+    try {
+      await axios.head(
+        `/api/accounts/me/stake-keys/sync?${token ? `discordToken=${token}` : `discordUserId=${userId}`}`,
         {
           headers: { admin_code: ADMIN_CODE },
         }
@@ -225,11 +245,11 @@ export function AuthProvider({ children }) {
         userId,
         account,
         myAssets,
-        lastHolderSnapshotTimestamp,
         getAccount,
         updateAccountMintWallet,
         addAccountStakeKey,
         deleteAccountStakeKey,
+        syncAccountPortfolioWallets,
         logout,
       }}
     >

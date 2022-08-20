@@ -19,7 +19,7 @@ const MyPortfolio = () => {
   })()
 
   const [floorSnapshots, setFloorSnapshots] = useState([])
-  const [holdersSnapshot, setHoldersSnapshot] = useState({})
+  const [wallets, setWallets] = useState([])
 
   useEffect(() => {
     ;(async () => {
@@ -36,9 +36,9 @@ const MyPortfolio = () => {
   useEffect(() => {
     ;(async () => {
       try {
-        const { data } = await axios.get(`/api/snapshot/holders/${FOX_POLICY_ID}`)
+        const { data } = await axios.get('/api/wallets')
 
-        setHoldersSnapshot(data.snapshots[data.count - 1] ?? {})
+        setWallets(data.wallets)
       } catch (error) {
         console.error(error)
       }
@@ -59,7 +59,7 @@ const MyPortfolio = () => {
       </div>
 
       <div>
-        <Holders chartWidth={chartWidth} holdersSnapshot={holdersSnapshot} />
+        <Holders chartWidth={chartWidth} wallets={wallets} />
       </div>
     </div>
   )

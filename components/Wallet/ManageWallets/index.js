@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { TextField } from '@mui/material'
-import { DeleteForever as DeleteIcon } from '@mui/icons-material'
+import { CloudSync as SyncIcon, DeleteForever as DeleteIcon } from '@mui/icons-material'
 import { useAuth } from '../../../contexts/AuthContext'
 import BaseButton from '../../BaseButton'
 import Loader from '../../Loader'
@@ -10,8 +10,8 @@ const ManageWallets = () => {
   const {
     loading: authLoading,
     account,
-    lastHolderSnapshotTimestamp,
     addAccountStakeKey,
+    syncAccountPortfolioWallets,
     deleteAccountStakeKey,
   } = useAuth()
 
@@ -28,6 +28,14 @@ const ManageWallets = () => {
       await addAccountStakeKey(input)
       setLoading(false)
       setInput('')
+    }
+  }
+
+  const handleClickSync = async () => {
+    if (!loading) {
+      setLoading(true)
+      await syncAccountPortfolioWallets()
+      setLoading(false)
     }
   }
 
@@ -71,20 +79,18 @@ const ManageWallets = () => {
       {stakeKeys.length ? (
         <div className={styles.syncWrapper}>
           <p>
-            Note: if you buy/sell/trade your assets, these records will be processed at a later time,
-            holder-snapshots run once every 24 hours, please see the reference below.
+            Note: we're using a BETA feature from Blockfrost in an attempt to get real-time TXs. If you
+            buy/sell/trade your assets and these records did not process automatically, please click the "sync"
+            button!
           </p>
-          <div
-            style={{
-              padding: '0.4rem 0.8rem',
-              backgroundColor: 'var(--grey)',
-              borderRadius: '0 0 0.5rem 0.5rem',
-              color: 'var(--white)',
-              textAlign: 'center',
-            }}
-          >
-            {`Last snapshot: ${new Date(lastHolderSnapshotTimestamp).toLocaleString()}`}
-          </div>
+          <BaseButton
+            label='Sync'
+            icon={SyncIcon}
+            backgroundColor='var(--grey)'
+            hoverColor='var(--orange)'
+            disabled={loading}
+            onClick={handleClickSync}
+          />
         </div>
       ) : null}
 
