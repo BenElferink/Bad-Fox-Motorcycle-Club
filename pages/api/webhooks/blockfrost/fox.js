@@ -77,6 +77,8 @@ export default async (req, res) => {
           const assetTxMatrix = Object.entries(assetTxs)
           console.log(`Detected ${assetTxMatrix.length} asset TXs`)
 
+          res.status(202).end()
+
           for (let i = 0; i < assetTxMatrix.length; i++) {
             const [assetId, { from, to }] = assetTxMatrix[i]
             console.log(`Updating DB for asset ID ${assetId}, from address ${from}, to address ${to}`)
@@ -161,7 +163,8 @@ export default async (req, res) => {
           }
         })
 
-        return res.status(204).end()
+        // return res.status(204).end()
+        break
       }
 
       default: {
