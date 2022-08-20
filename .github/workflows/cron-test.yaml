@@ -1,7 +1,7 @@
 name: cron-test
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '*/5 * * * *'
 jobs:
   cron:
     runs-on: ubuntu-latest
@@ -9,5 +9,4 @@ jobs:
       - name: Call API route
         run: |
           curl --request POST \
-          --url 'https://bad-fox-mc-git-main-badfoxmc.vercel.app/api/test-cron' \
-          --header 'admin_code: ${{ secrets.ADMIN_CODE }}'
+          --url 'https://bad-fox-e5xgwr41e-badfoxmc.vercel.app/api/test-cron'
