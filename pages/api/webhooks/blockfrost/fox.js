@@ -84,7 +84,7 @@ export default async (req, res) => {
 
             if (!fromWallet) {
               const sKey = await getStakeKeyFromWalletAddress(from)
-              const assets = await getAssetsFromStakeKey(sKey)
+              const assets = await getAssetsFromStakeKey(sKey, FOX_POLICY_ID)
 
               const newWallet = new Wallet({
                 stakeKey: sKey || `contract_${from}`,
@@ -103,7 +103,7 @@ export default async (req, res) => {
 
             if (!toWallet) {
               const sKey = await getStakeKeyFromWalletAddress(to)
-              const assets = await getAssetsFromStakeKey(sKey)
+              const assets = await getAssetsFromStakeKey(sKey, FOX_POLICY_ID)
 
               const newWallet = new Wallet({
                 stakeKey: sKey || `contract_${to}`,
