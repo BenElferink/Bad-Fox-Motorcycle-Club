@@ -150,7 +150,7 @@ export function AuthProvider({ children }) {
 
     try {
       await axios.post(
-        `/api/accounts/me/mint-wallet/${walletAddress}?${token ? `discordToken=${token}` : `discordUserId=${userId}`}`,
+        `/api/accounts/mint-wallet/${walletAddress}?${token ? `discordToken=${token}` : `discordUserId=${userId}`}`,
         {},
         {
           headers: { admin_code: ADMIN_CODE },
@@ -179,7 +179,7 @@ export function AuthProvider({ children }) {
 
     try {
       await axios.post(
-        `/api/accounts/me/stake-keys/${walletAddressOrStakeKey}?${
+        `/api/accounts/stake-keys/${walletAddressOrStakeKey}?${
           token ? `discordToken=${token}` : `discordUserId=${userId}`
         }`,
         {},
@@ -202,7 +202,7 @@ export function AuthProvider({ children }) {
 
     try {
       await axios.delete(
-        `/api/accounts/me/stake-keys/${stakeKey}?${token ? `discordToken=${token}` : `discordUserId=${userId}`}`,
+        `/api/accounts/stake-keys/${stakeKey}?${token ? `discordToken=${token}` : `discordUserId=${userId}`}`,
         {
           headers: { admin_code: ADMIN_CODE },
         }
@@ -222,7 +222,7 @@ export function AuthProvider({ children }) {
 
     try {
       await axios.head(
-        `/api/accounts/me/stake-keys/sync?${token ? `discordToken=${token}` : `discordUserId=${userId}`}`,
+        `/api/accounts/stake-keys/sync?${token ? `discordToken=${token}` : `discordUserId=${userId}`}`,
         {
           headers: { admin_code: ADMIN_CODE },
         }
