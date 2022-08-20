@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const { FOX_POLICY_ID } = require('../constants/policy-ids')
+import mongoose from 'mongoose'
+import { FOX_POLICY_ID } from '../constants/policy-ids'
 
 const Wallet = new mongoose.Schema(
   {
@@ -23,4 +23,4 @@ const Wallet = new mongoose.Schema(
   }
 )
 
-module.exports = mongoose.models.Wallet ?? mongoose.model('Wallet', Wallet)
+export default mongoose.models.Wallet ?? mongoose.model('Wallet', Wallet)
