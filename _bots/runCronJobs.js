@@ -16,12 +16,6 @@ const runCronJob = async () => {
     console.error(error)
   }
 
-  try {
-    await axios.head(`${URI}/holders/${FOX_POLICY_ID}`, config)
-  } catch (error) {
-    console.error(error)
-  }
-
   console.log('finished cron job')
 }
 

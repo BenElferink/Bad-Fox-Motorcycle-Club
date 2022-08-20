@@ -8,47 +8,35 @@ const { BAD_FOX_WALLET, JPG_STORE_WALLET, CNFT_IO_WALLET, EPOCH_ART_WALLET } = r
 
 const EXCLUDE_ADDRESSES = [BAD_FOX_WALLET, JPG_STORE_WALLET, CNFT_IO_WALLET, EPOCH_ART_WALLET]
 
-const RARE_WIN_COUNT = 2
-const COMMON_WIN_COUNT = 30
+const ADA_PER_WIN = 50
+const NFT_PER_WIN = 1
+const WINNERS_COUNT = 30
 
-const RARE_TRAITS = [{ Clothes: '(M) Space Suit' }, { Clothes: '(F) Space Suit' }]
-const COMMON_TRAITS = [{ Back: '(U) Blue Flag' }, { Back: '(U) White Flag' }]
+const INCLUDED_TRAITS = [
+  { Headwear: '(F) Beanie' },
+  { Headwear: '(M) Leon Beanie' },
+  { Clothes: '(F) Scarf' },
+  { Clothes: '(M) Scarf' },
+]
 
 const run = async () => {
   const stakeAddresses = {}
-  const assets = foxAssets.assets
+  const foundAssetsWithIncludedTraits = []
 
-  const foundAssetsWithRareTraits = []
-  const foundAssetsWithCommonTraits = []
-
-  const usedRareIndexes = []
-  const usedCommonIndexes = []
-
-  let totalRareCount = 0
-  let totalCommonCount = 0
-
-  assets.forEach((item) => {
-    RARE_TRAITS.forEach((rareItem) => {
-      Object.entries(rareItem).forEach(([key, val]) => {
+  foxAssets.assets.forEach((item) => {
+    INCLUDED_TRAITS.forEach((traitItem) => {
+      Object.entries(traitItem).forEach(([key, val]) => {
         if (item.onchain_metadata.attributes[key] === val) {
-          foundAssetsWithRareTraits.push(item)
-        }
-      })
-    })
-
-    COMMON_TRAITS.forEach((commonItem) => {
-      Object.entries(commonItem).forEach(([key, val]) => {
-        if (item.onchain_metadata.attributes[key] === val) {
-          foundAssetsWithCommonTraits.push(item)
+          foundAssetsWithIncludedTraits.push(item)
         }
       })
     })
   })
 
-  console.log('Found assets with common traits:', foundAssetsWithCommonTraits.length)
-  console.log('Found assets with rare traits:', foundAssetsWithRareTraits.length)
+  console.log('Found assets with included traits:', foundAssetsWithIncludedTraits.length)
 
-  const getIndex = (max, usedIndexes) => {
+  const usedIndexes = []
+  const getIndex = (max) => {
     const idx = Math.floor(Math.random() * max)
     const alreadyUsedIndex = usedIndexes.find((num) => num === idx) != null
 
@@ -73,16 +61,17 @@ const run = async () => {
     }
   }
 
-  const raffleRareTraits = async () => {
-    if (totalRareCount === RARE_WIN_COUNT) {
+  let raffledCount = 0
+  const raffleTraits = async () => {
+    if (raffledCount === WINNERS_COUNT) {
       return
     }
 
-    const [idx, alreadyUsedIndex] = getIndex(foundAssetsWithRareTraits.length, usedRareIndexes)
+    const [idx, alreadyUsedIndex] = getIndex(foundAssetsWithIncludedTraits.length)
 
     if (!alreadyUsedIndex) {
-      usedRareIndexes.push(idx)
-      const [address, stakeKey] = await getKeysForAssetId(foundAssetsWithRareTraits[idx].asset)
+      usedIndexes.push(idx)
+      const [address, stakeKey] = await getKeysForAssetId(foundAssetsWithIncludedTraits[idx].asset)
 
       if (stakeKey) {
         if (stakeAddresses[stakeKey]) {
@@ -91,101 +80,35 @@ const run = async () => {
             stakeAddresses[stakeKey].addresses.push(address)
           }
 
-          stakeAddresses[stakeKey].rareCount += 1
-          stakeAddresses[stakeKey].rareIds.push(foundAssetsWithRareTraits[idx].onchain_metadata.name)
+          stakeAddresses[stakeKey].traitCount += 1
+          stakeAddresses[stakeKey].assetNames.push(foundAssetsWithIncludedTraits[idx].onchain_metadata.name)
         } else {
           stakeAddresses[stakeKey] = {
             addresses: [address],
-            commonCount: 0,
-            commonIds: [],
-            rareCount: 1,
-            rareIds: [foundAssetsWithRareTraits[idx].onchain_metadata.name],
+            traitCount: 1,
+            assetNames: [foundAssetsWithIncludedTraits[idx].onchain_metadata.name],
           }
         }
 
-        totalRareCount++
+        raffledCount++
       }
     }
 
-    return await raffleRareTraits()
+    return await raffleTraits()
   }
 
-  const raffleCommonTraits = async () => {
-    if (totalCommonCount === COMMON_WIN_COUNT) {
-      return
-    }
+  await raffleTraits()
+  console.log('Raffled assets with included traits:', raffledCount)
 
-    const [idx, alreadyUsedIndex] = getIndex(foundAssetsWithCommonTraits.length, usedCommonIndexes)
-
-    if (!alreadyUsedIndex) {
-      usedCommonIndexes.push(idx)
-      const [address, stakeKey] = await getKeysForAssetId(foundAssetsWithCommonTraits[idx].asset)
-
-      if (stakeKey) {
-        if (stakeAddresses[stakeKey]) {
-          const addressAlreadyExists = stakeAddresses[stakeKey].addresses.find((str) => str === address)
-          if (!addressAlreadyExists) {
-            stakeAddresses[stakeKey].addresses.push(address)
-          }
-
-          stakeAddresses[stakeKey].commonCount += 1
-          stakeAddresses[stakeKey].commonIds.push(foundAssetsWithCommonTraits[idx].onchain_metadata.name)
-        } else {
-          stakeAddresses[stakeKey] = {
-            addresses: [address],
-            commonCount: 1,
-            commonIds: [foundAssetsWithCommonTraits[idx].onchain_metadata.name],
-            rareCount: 0,
-            rareIds: [],
-          }
-        }
-
-        totalCommonCount++
-      }
-    }
-
-    return await raffleCommonTraits()
-  }
-
-  await raffleRareTraits()
-  console.log('Raffle assets with rare traits:', totalRareCount)
-
-  await raffleCommonTraits()
-  console.log('Raffle assets with common traits:', totalCommonCount)
-
-  const wallets = Object.entries(stakeAddresses).map(([sKey, obj]) => {
-    const rareCount = obj.rareCount
-    const adaForRares = rareCount * 80
-
-    const commonCount = obj.commonCount
-    const adaForCommons = commonCount * 25
-
-    const totalNfts = rareCount + commonCount
-    const totalAda = adaForRares + adaForCommons
-    const totalLovelace = totalAda * 1000000
-
-    return {
-      stakeKey: sKey,
-      addresses: obj.addresses,
-      rareTraits: {
-        count: rareCount,
-        assets: obj.rareIds,
-        nftRewards: rareCount,
-        adaRewards: adaForRares,
-      },
-      commonTraits: {
-        count: commonCount,
-        assets: obj.commonIds,
-        nftRewards: commonCount,
-        adaRewards: adaForCommons,
-      },
-      payout: {
-        totalNfts,
-        totalAda,
-        totalLovelace,
-      },
-    }
-  })
+  const wallets = Object.entries(stakeAddresses).map(([sKey, obj]) => ({
+    stakeKey: sKey,
+    addresses: obj.addresses,
+    winningNfts: obj.assetNames,
+    payout: {
+      ada: obj.traitCount * ADA_PER_WIN,
+      nft: obj.traitCount * NFT_PER_WIN,
+    },
+  }))
 
   fs.writeFileSync(
     './_temp/winning-traits.json',
@@ -207,24 +130,22 @@ const run = async () => {
 
   const excelRows = [HEADER_ROW]
 
-  wallets.forEach(({ stakeKey, addresses, rareTraits, commonTraits, payout }) => {
+  wallets.forEach(({ stakeKey, addresses, winningNfts, payout }) => {
     excelRows.push([
       { type: String, value: stakeKey },
       { type: String, value: addresses[0] },
-      { type: String, value: String(payout.totalAda) },
-      { type: String, value: String(payout.totalNfts) },
+      { type: String, value: String(payout.ada) },
+      { type: String, value: String(payout.nft) },
       {
         type: String,
-        value: `${rareTraits.assets.map((str) => `${str} `)}${commonTraits.assets.map(
-          (str) => `${str} `
-        )}`.replace(',', ''),
+        value: `${winningNfts.map((str) => `${str} `)}`.replace(',', ''),
       },
     ])
   })
 
   await writeXlsxFile(excelRows, {
     columns: COLUMN_SIZE,
-    filePath: './_temp/winning-traits.xlsx',
+    filePath: './_temp/winning-traits-week4.xlsx',
   })
 
   console.log('Done!')
