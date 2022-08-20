@@ -56,9 +56,9 @@ export default async (req, res) => {
               [policyId]: assets,
             },
           })
-
-          await wallet.save()
         }
+
+        await wallet.save()
 
         return res.status(201).json({})
       }

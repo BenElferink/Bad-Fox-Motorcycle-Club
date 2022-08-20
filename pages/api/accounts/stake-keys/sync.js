@@ -71,7 +71,6 @@ export default async (req, res) => {
 
           if (wallet) {
             const assetIds = await getAssetsFromStakeKey(stakeKey, FOX_POLICY_ID)
-
             console.log(`Found ${assetIds.length} assets`)
 
             wallet.assets[FOX_POLICY_ID] = assetIds
