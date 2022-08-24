@@ -1,16 +1,88 @@
 require('dotenv').config()
 const fs = require('fs')
+const axios = require('axios')
 const assetsFile = require('../data/assets/fox')
-const getAllAssetIdsFromPolicyId = require('../functions/blockfrost/getAllAssetIdsFromPolicyId')
+const { blockfrost } = require('../utils/blockfrost')
 const populateAssetFromAssetId = require('../functions/blockfrost/populateAssetFromAssetId')
 const { FOX_POLICY_ID } = require('../constants/policy-ids')
+const { JPG_API, JPG_IMAGE_API, CNFT_TOOLS_API, CNFT_TOOLS_IMAGE_API } = require('../constants/api-urls')
 
 const POLICY_ID = FOX_POLICY_ID
 const ASSET_NAME_PREFIX = 'Bad Fox #'
 
+let cnftToolsAssets = []
+
+const fetchAssetsFromCnftTools = async (policyId) => {
+  console.log(`Fetching assets from cnft.tools with policy ID ${policyId}`)
+
+  try {
+    const { data } = await axios.get(`${CNFT_TOOLS_API}/external/${policyId}`)
+
+    return data
+  } catch (error) {
+    console.error(`Error fetching assets from cnft.tools with policy ID ${policyId}`)
+
+    return await fetchAssetsFromCnftTools(policyId)
+  }
+}
+
+const fetchAssetFromJpgStore = async (policyId, assetNumber) => {
+  console.log(`Fetching asset from jpg.store with serial #${assetNumber}`)
+
+  try {
+    const { data } = await axios.get(
+      `${JPG_API}/search/tokens?policyIds=["${policyId}"]&saleType=default&verified=default&sortBy=price-low-to-high&size=1&nameQuery=${assetNumber}`
+    )
+
+    return data
+  } catch (error) {
+    console.error(`Error fetching asset from jpg.store with serial #${assetNumber}`)
+
+    return await fetchAssetFromJpgStore(policyId, assetNumber)
+  }
+}
+
+const populateAssetFromAssetId = async (assetId) => {
+  console.log(`Populating asset with ID ${assetId}`)
+
+  try {
+    const data = await blockfrost.getAssetWithAssetId(assetId)
+
+    if (!cnftToolsAssets.length) {
+      cnftToolsAssets = await fetchAssetsFromCnftTools(data.policy_id)
+    }
+
+    const jpgData = await fetchAssetFromJpgStore(data.policy_id, data.onchain_metadata.name.split('#')[1])
+    const cnftToolsData = cnftToolsAssets.find((item) => item.name === data.onchain_metadata.name)
+
+    const ipfsImageUrl = data.onchain_metadata.image[0]
+    const jpgImageUrl = `${JPG_IMAGE_API}/${jpgData.tokens[0].optimized_source}1200x`
+    const cnftToolsImageUrl = `${CNFT_TOOLS_IMAGE_API}/badfoxmotorcycleclub/${cnftToolsData.iconurl}`
+
+    const rank = Number(cnftToolsData.rarityRank)
+
+    return {
+      ...data,
+      onchain_metadata: {
+        ...data.onchain_metadata,
+        rank,
+        image: {
+          ipfs: ipfsImageUrl,
+          jpgStore: jpgImageUrl,
+          cnftTools: cnftToolsImageUrl,
+        },
+      },
+    }
+  } catch (error) {
+    console.error(`Error populating asset with ID ${assetId}`)
+
+    return await populateAssetFromAssetId(assetId)
+  }
+}
+
 const run = async () => {
   try {
-    const policyAssetIds = await getAllAssetIdsFromPolicyId(POLICY_ID)
+    const policyAssetIds = await blockfrost.getAssetIdsWithPolicyId(POLICY_ID)
     const populatedAssets = assetsFile?.assets ?? []
 
     for (let idx = 0; idx < policyAssetIds.length; idx++) {

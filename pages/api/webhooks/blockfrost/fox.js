@@ -1,8 +1,7 @@
 import connectDB from '../../../../utils/mongo'
+import { blockfrost } from '../../../../utils/blockfrost'
 import Wallet from '../../../../models/Wallet'
-import getStakeKeyFromWalletAddress from '../../../../functions/blockfrost/getStakeKeyFromWalletAddress'
-import getAssetsFromStakeKey from '../../../../functions/blockfrost/getAssetsFromStakeKey'
-// import blockfrost from '../../../../utils/blockfrost'
+// import { blockfrost } from '../../../../utils/blockfrost'
 // import { BLOCKFROST_WEBHOOK_AUTH_TOKEN } from '../../../../constants/api-keys'
 import { FOX_POLICY_ID } from '../../../../constants/policy-ids'
 import { EXCLUDE_ADDRESSES } from '../../../../constants/addresses'
@@ -38,7 +37,7 @@ export default async (req, res) => {
     switch (method) {
       case 'POST': {
         // try {
-        //   blockfrost.verifyWebhookSignature(
+        //   blockfrost.api.verifyWebhookSignature(
         //     JSON.stringify(body),
         //     headers['blockfrost-signature'],
         //     BLOCKFROST_WEBHOOK_AUTH_TOKEN
@@ -112,11 +111,11 @@ export default async (req, res) => {
               let fromWallet = await findOneWithRetry(Wallet, { addresses: { $in: [from] } })
 
               if (!fromWallet) {
-                const sKey = await getStakeKeyFromWalletAddress(from)
+                const sKey = await blockfrost.getStakeKeyWithWalletAddress(from)
                 fromWallet = await findOneWithRetry(Wallet, { stakeKey: sKey })
 
                 if (!fromWallet) {
-                  const assets = await getAssetsFromStakeKey(sKey, FOX_POLICY_ID)
+                  const assets = await blockfrost.getAssetIdsWithStakeKey(sKey, FOX_POLICY_ID)
                   const newWallet = new Wallet({
                     stakeKey: sKey,
                     addresses: [from],
@@ -151,11 +150,11 @@ export default async (req, res) => {
               let toWallet = await findOneWithRetry(Wallet, { addresses: { $in: [to] } })
 
               if (!toWallet) {
-                const sKey = await getStakeKeyFromWalletAddress(to)
+                const sKey = await blockfrost.getStakeKeyWithWalletAddress(to)
                 toWallet = await findOneWithRetry(Wallet, { stakeKey: sKey })
 
                 if (!toWallet) {
-                  const assets = await getAssetsFromStakeKey(sKey, FOX_POLICY_ID)
+                  const assets = await blockfrost.getAssetIdsWithStakeKey(sKey, FOX_POLICY_ID)
                   const newWallet = new Wallet({
                     stakeKey: sKey,
                     addresses: [to],

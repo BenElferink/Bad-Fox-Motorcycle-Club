@@ -1,9 +1,8 @@
 require('dotenv').config()
 const fs = require('fs')
 const writeXlsxFile = require('write-excel-file/node')
+const { blockfrost } = require('../utils/blockfrost')
 const foxAssets = require('../data/assets/fox')
-const getWalletAddressOfAsset = require('../functions/blockfrost/getWalletAddressOfAsset')
-const getStakeKeyFromWalletAddress = require('../functions/blockfrost/getStakeKeyFromWalletAddress')
 const { EXCLUDE_ADDRESSES } = require('../constants/addresses')
 
 const ADA_PER_WIN = 50
@@ -42,7 +41,7 @@ const run = async () => {
   }
 
   const getKeysForAssetId = async (assetId) => {
-    const address = await getWalletAddressOfAsset(assetId)
+    const address = await blockfrost.getWalletAddressWithAssetId(assetId)
 
     if (!EXCLUDE_ADDRESSES.includes(address)) {
       const existingStakeKeyArr = Object.entries(stakeAddresses).filter(([sKey, obj]) =>
@@ -52,7 +51,7 @@ const run = async () => {
       if (existingStakeKeyArr.length) {
         return [address, existingStakeKeyArr[0][0]]
       } else {
-        return [address, await getStakeKeyFromWalletAddress(address)]
+        return [address, await blockfrost.getStakeKeyWithWalletAddress(address)]
       }
     } else {
       return [address, null]

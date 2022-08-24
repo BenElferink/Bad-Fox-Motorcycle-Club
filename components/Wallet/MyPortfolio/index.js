@@ -24,7 +24,7 @@ const MyPortfolio = () => {
   useEffect(() => {
     ;(async () => {
       try {
-        const { data } = await axios.get(`/api/snapshot/floor-prices/${FOX_POLICY_ID}`)
+        const { data } = await axios.get(`/api/snapshots/floor-prices/${FOX_POLICY_ID}`)
 
         setFloorSnapshots(data.snapshots)
       } catch (error) {

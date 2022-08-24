@@ -1,7 +1,7 @@
 import connectDB from '../../../../utils/mongo'
+import { blockfrost } from '../../../../utils/blockfrost'
 import Account from '../../../../models/Account'
 import getDiscordMember from '../../../../functions/getDiscordMember'
-import getStakeKeyFromWalletAddress from '../../../../functions/blockfrost/getStakeKeyFromWalletAddress'
 import { ADMIN_CODE } from '../../../../constants/api-keys'
 import { DISCORD_ROLE_ID_OG } from '../../../../constants/discord'
 
@@ -68,7 +68,7 @@ export default async (req, res) => {
 
     if (!finalStakeKey) {
       try {
-        finalStakeKey = await getStakeKeyFromWalletAddress(walletAddress)
+        finalStakeKey = await blockfrost.getStakeKeyWithWalletAddress(walletAddress)
       } catch (error) {
         console.error(error.message)
 

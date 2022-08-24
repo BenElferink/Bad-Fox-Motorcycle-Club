@@ -1,8 +1,7 @@
 require('dotenv').config()
 const fs = require('fs')
+const { blockfrost } = require('../utils/blockfrost')
 const foxAssets = require('../data/assets/fox')
-const getWalletAddressOfAsset = require('../functions/blockfrost/getWalletAddressOfAsset')
-const getStakeKeyFromWalletAddress = require('../functions/blockfrost/getStakeKeyFromWalletAddress')
 const POLICY_IDS = require('../constants/policy-ids')
 const { EXCLUDE_ADDRESSES } = require('../constants/addresses')
 
@@ -23,7 +22,7 @@ const run = async (req, res) => {
   for (const { asset: assetId } of assets) {
     console.log('\nProcessing asset:', assetId)
 
-    const walletAddress = await getWalletAddressOfAsset(assetId)
+    const walletAddress = await blockfrost.getWalletAddressWithAssetId(assetId)
 
     if (EXCLUDE_ADDRESSES.includes(walletAddress)) {
       console.log('This wallet is excluded!')
@@ -31,7 +30,7 @@ const run = async (req, res) => {
       const holderWithIncludedWalletAddress = holders.find((item) => item.addresses.includes(walletAddress))
 
       const stakeKey =
-        holderWithIncludedWalletAddress?.stakeKey || (await getStakeKeyFromWalletAddress(walletAddress))
+        holderWithIncludedWalletAddress?.stakeKey || (await blockfrost.getStakeKeyWithWalletAddress(walletAddress))
 
       const holderIndex = holders.findIndex((item) => item.stakeKey === stakeKey)
 

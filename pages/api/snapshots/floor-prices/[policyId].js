@@ -54,8 +54,6 @@ export default async (req, res) => {
           })
         }
 
-        res.status(202).end()
-
         const newDate = new Date()
         newDate.setHours(0)
         newDate.setMinutes(0)
@@ -83,7 +81,7 @@ export default async (req, res) => {
 
         await Promise.all(toDelete.map((item) => FloorSnapshot.deleteOne({ _id: item._id })))
 
-        break
+        return res.status(204).end()
       }
 
       default: {

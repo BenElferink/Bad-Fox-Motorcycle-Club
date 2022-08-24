@@ -1,8 +1,8 @@
 import connectDB from '../../../../utils/mongo'
+import { blockfrost } from '../../../../utils/blockfrost'
 import Account from '../../../../models/Account'
 import Wallet from '../../../../models/Wallet'
 import getDiscordMember from '../../../../functions/getDiscordMember'
-import getAssetsFromStakeKey from '../../../../functions/blockfrost/getAssetsFromStakeKey'
 import { ADMIN_CODE } from '../../../../constants/api-keys'
 import { FOX_POLICY_ID } from '../../../../constants/policy-ids'
 import { DISCORD_ROLE_ID_OG } from '../../../../constants/discord'
@@ -70,7 +70,7 @@ export default async (req, res) => {
           const wallet = await Wallet.findOne({ stakeKey })
 
           if (wallet) {
-            const assetIds = await getAssetsFromStakeKey(stakeKey, FOX_POLICY_ID)
+            const assetIds = await blockfrost.getAssetIdsWithStakeKey(stakeKey, FOX_POLICY_ID)
             console.log(`Found ${assetIds.length} assets`)
 
             wallet.assets[FOX_POLICY_ID] = assetIds
