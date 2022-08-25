@@ -56,7 +56,7 @@ const populateAssetFromAssetId = async (assetId) => {
     const cnftToolsData = cnftToolsAssets.find((item) => item.name === data.onchain_metadata.name)
 
     const ipfsImageUrl = data.onchain_metadata.image[0]
-    const jpgImageUrl = `${JPG_IMAGE_API}/${jpgData.tokens[0].optimized_source}1200x`
+    const jpgImageUrl = `${JPG_IMAGE_API}/${jpgData.tokens[0].optimized_source}?width=1200`
     const cnftToolsImageUrl = `${CNFT_TOOLS_IMAGE_API}/badfoxmotorcycleclub/${cnftToolsData.iconurl}`
 
     const rank = Number(cnftToolsData.rarityRank)
