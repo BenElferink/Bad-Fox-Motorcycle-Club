@@ -1,8 +1,9 @@
 require('dotenv').config()
 const fs = require('fs')
-const axios = require('axios')
-const assetsFile = require('../data/assets/fox')
+const { default: axios } = require('axios')
 const { blockfrost } = require('../utils/blockfrost')
+const assetsFile = require('../data/assets/fox')
+const traitsFile = require('../data/traits/fox')
 const populateAssetFromAssetId = require('../functions/blockfrost/populateAssetFromAssetId')
 const { FOX_POLICY_ID } = require('../constants/policy-ids')
 const { JPG_API, JPG_IMAGE_API, CNFT_TOOLS_API, CNFT_TOOLS_IMAGE_API } = require('../constants/api-urls')
@@ -80,6 +81,41 @@ const populateAssetFromAssetId = async (assetId) => {
   }
 }
 
+const countTraits = (assets) => {
+  const traits = {}
+  const numOfAssets = assets.length
+
+  Object.entries(traitsFile).forEach(([category, attributes]) => {
+    attributes.forEach((attributeObj) => {
+      const label = attributeObj.label
+      const gender = attributeObj.gender
+      const prefix = gender === 'Male' ? '(M) ' : gender === 'Female' ? '(F) ' : '(U) '
+
+      const labelCount = assets.filter(
+        (item) => label === item.onchain_metadata.attributes[category].replace(prefix, '')
+      ).length
+
+      const payload = {
+        ...attributeObj,
+        count: labelCount,
+        percent: `${(labelCount / (numOfAssets / 100)).toFixed(2)}%`,
+      }
+
+      if (traits[category]) {
+        traits[category].push(payload)
+      } else {
+        traits[category] = [payload]
+      }
+    })
+  })
+
+  Object.entries(traits).forEach(([key, val]) => {
+    traits[key] = val.sort((a, b) => a.count - b.count)
+  })
+
+  fs.writeFileSync('./data/traits/fox.json', JSON.stringify(traits), 'utf8')
+}
+
 const run = async () => {
   try {
     const policyAssetIds = await blockfrost.getAssetIdsWithPolicyId(POLICY_ID)
@@ -113,6 +149,8 @@ const run = async () => {
       }),
       'utf8'
     )
+
+    countTraits(populatedAssets)
 
     console.log('Done!')
   } catch (error) {

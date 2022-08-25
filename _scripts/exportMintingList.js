@@ -1,6 +1,6 @@
 require('dotenv').config()
-const axios = require('axios')
 const writeXlsxFile = require('write-excel-file/node')
+const { default: axios } = require('axios')
 const holdersSnapshot = require('../_temp/badfox-royalty-payouts.json')
 const { ADMIN_CODE } = require('../constants/api-keys')
 

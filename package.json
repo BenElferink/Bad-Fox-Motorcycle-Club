@@ -15,12 +15,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "count-traits": "node ./_scripts/countTraits.js",
-    "fetch-assets": "node ./_scripts/fetchAssetsFromBlockfrost.js",
-    "postfetch-assets": "npm run count-traits",
-    "ssh": "cd ./_ssh && ssh -i \"BadFoxMC_bots.pem\" ubuntu@ec2-3-138-109-118.us-east-2.compute.amazonaws.com",
-    "cron-jobs": "node ./_bots/runCronJobs.js"
+    "start": "next start"
   },
   "dependencies": {
     "@blockfrost/blockfrost-js": "^4.2.1",
@@ -44,7 +39,6 @@
   },
   "devDependencies": {
     "dotenv": "^16.0.1",
-    "node-cron": "^3.0.1",
     "uuid": "^8.3.2",
     "write-excel-file": "^1.4.8"
   }
