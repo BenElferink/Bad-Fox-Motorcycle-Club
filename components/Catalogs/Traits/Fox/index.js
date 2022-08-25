@@ -14,8 +14,8 @@ const FoxTraitsCatalog = () => {
       <div className={styles.traitCatalog}>
         {traitsData[selectedCategory]?.map((trait) => (
           <AssetCard
-            key={`trait-catalog-list-item-${trait.label}-${trait.gender}`}
-            mainTitles={[trait.label]}
+            key={`trait-catalog-list-item-${trait.displayName}-${trait.gender}`}
+            mainTitles={[trait.displayName]}
             imageSrc={trait.image}
             itemUrl={trait.image}
             tableRows={[

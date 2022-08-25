@@ -3,7 +3,7 @@ import { useMarket } from '../../../contexts/MarketContext'
 import Loader from '../../Loader'
 import AssetCard from '../../AssetCard'
 import SideDrawer from '../../SideDrawer'
-import foxTraitsJsonFile from '../../../data/traits/fox'
+import traitsData from '../../../data/traits/fox'
 import styles from './RecentlySold.module.css'
 import { ADA_SYMBOL } from '../../../constants/ada'
 import BaseButton from '../../BaseButton'
@@ -42,11 +42,7 @@ function RecentlySold() {
               .map(([cat, attr]) => [
                 `${cat}:`,
                 attr,
-                cat === 'Gender'
-                  ? '50%'
-                  : foxTraitsJsonFile[cat].find(
-                      (obj) => obj.label === attr.replace('(F) ', '').replace('(M) ', '').replace('(U) ', '')
-                    )?.percent,
+                cat === 'Gender' ? '50%' : traitsData[cat].find((obj) => obj.onChainName === attr)?.percent,
               ])}
           />
         ))}

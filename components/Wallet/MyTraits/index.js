@@ -26,17 +26,13 @@ const MyWalletTraits = () => {
 
     Object.entries(traitsData).forEach(([category, attributes]) => {
       attributes.forEach((attributeObj) => {
-        const label = attributeObj.label
-        const gender = attributeObj.gender
-        const prefix = gender === 'Male' ? '(M) ' : gender === 'Female' ? '(F) ' : '(U) '
-
-        const labelCount = myAssets.filter(
-          (item) => label === item.onchain_metadata.attributes[category].replace(prefix, '')
+        const ownedCount = myAssets.filter(
+          (item) => item.onchain_metadata.attributes[category] === attributeObj.onChainName
         ).length
 
         const payload = {
           ...attributeObj,
-          owned: labelCount,
+          owned: ownedCount,
           count: attributeObj.count,
           percent: attributeObj.percent,
         }
@@ -129,8 +125,8 @@ const MyWalletTraits = () => {
         {renderTraits()[selectedCategory]?.map((trait) =>
           showAll || trait.owned !== 0 ? (
             <AssetCard
-              key={`trait-catalog-list-item-${trait.label}-${trait.gender}`}
-              mainTitles={[trait.label]}
+              key={`trait-catalog-list-item-${trait.displayName}-${trait.gender}`}
+              mainTitles={[trait.displayName]}
               subTitles={[`Owned: ${trait.owned}`]}
               imageSrc={trait.image}
               itemUrl={trait.image}

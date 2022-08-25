@@ -104,11 +104,7 @@ const MyWalletAssets = () => {
                   .map(([cat, attr]) => [
                     `${cat}:`,
                     attr,
-                    cat === 'Gender'
-                      ? '50%'
-                      : traitsData[cat].find(
-                          (obj) => obj.label === attr.replace('(F) ', '').replace('(M) ', '').replace('(U) ', '')
-                        )?.percent,
+                    cat === 'Gender' ? '50%' : traitsData[cat].find((obj) => obj.onChainName === attr)?.percent,
                   ])}
               />
             ) : null

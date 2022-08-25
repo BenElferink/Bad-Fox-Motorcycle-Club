@@ -30,20 +30,16 @@ let totalPossibilities = 0
 //   let possibilities = 0
 
 //   set.forEach((obj, setIdx) => {
-//     const traitPrefix = obj.traitLabel.substring(0, 3)
-//     const traitName = obj.traitLabel.substring(4)
-
-//     const foundTrait = traitsData[obj.traitCategory].find(
-//       ({ gender, label }) =>
-//         ((gender === 'Male' && traitPrefix === '(M)') ||
-//           (gender === 'Female' && traitPrefix === '(F)') ||
-//           (gender === 'Unisex' && traitPrefix === '(U)')) &&
-//         label === traitName
-//     )
+//     const traitName = obj.traitLabel
+//     const foundTrait = traitsData[obj.traitCategory].find(({ onChainName }) => onChainName === traitName)
 
 //     if (!foundTrait) {
-//       console.warn('no trait', traitPrefix, traitName)
+//       console.warn('no trait', traitName)
 //     } else {
+//       if (setIdx === 0) {
+//         data[roleName].share = 0
+//       }
+
 //       data[roleName].share += Math.round(10 / Number(foundTrait.percent.replace('%', '')))
 //       data[roleName].set[setIdx] = {
 //         ...obj,

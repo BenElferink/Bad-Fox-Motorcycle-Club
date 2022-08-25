@@ -4,7 +4,6 @@ const { default: axios } = require('axios')
 const { blockfrost } = require('../utils/blockfrost')
 const assetsFile = require('../data/assets/fox')
 const traitsFile = require('../data/traits/fox')
-const populateAssetFromAssetId = require('../functions/blockfrost/populateAssetFromAssetId')
 const { FOX_POLICY_ID } = require('../constants/policy-ids')
 const { JPG_API, JPG_IMAGE_API, CNFT_TOOLS_API, CNFT_TOOLS_IMAGE_API } = require('../constants/api-urls')
 
@@ -87,12 +86,8 @@ const countTraits = (assets) => {
 
   Object.entries(traitsFile).forEach(([category, attributes]) => {
     attributes.forEach((attributeObj) => {
-      const label = attributeObj.label
-      const gender = attributeObj.gender
-      const prefix = gender === 'Male' ? '(M) ' : gender === 'Female' ? '(F) ' : '(U) '
-
       const labelCount = assets.filter(
-        (item) => label === item.onchain_metadata.attributes[category].replace(prefix, '')
+        (item) => item.onchain_metadata.attributes[category] === attributeObj.onChainName
       ).length
 
       const payload = {

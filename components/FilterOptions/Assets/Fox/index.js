@@ -103,13 +103,13 @@ const FoxAssetsOptions = ({
 
       {openFilters ? (
         <div className={styles.listOfFilters}>
-          {TRAITS_MATRIX.map(([category, traits], idx1) => (
-            <div key={`market-category-${category}-${idx1}`}>
+          {TRAITS_MATRIX.map(([category, traits]) => (
+            <div key={`market-category-${category}`}>
               <FormControl sx={{ m: 1, width: 300 }}>
-                <InputLabel id={`select-category-items-${category}-label`}>{category}</InputLabel>
+                <InputLabel id={`select-category-items-${category}`}>{category}</InputLabel>
                 <Select
                   id={`select-category-items-${category}`}
-                  labelId={`select-category-items-${category}-label`}
+                  labelId={`select-category-items-${category}`}
                   multiple
                   value={filters[category]}
                   onChange={(e) => {
@@ -128,23 +128,12 @@ const FoxAssetsOptions = ({
                     </Box>
                   )}
                 >
-                  {traits.map((obj, idx2) => {
-                    const trait =
-                      category === 'Gender'
-                        ? obj.label
-                        : `${
-                            obj.gender === 'Male'
-                              ? '(M) '
-                              : obj.gender === 'Female'
-                              ? '(F) '
-                              : obj.gender === 'Unisex'
-                              ? '(U) '
-                              : ''
-                          }${obj.label}`
+                  {traits.map((obj) => {
+                    const trait = obj.onChainName
 
                     return (
                       <MenuItem
-                        key={`market-category-attribute-${obj.label}-${idx2}`}
+                        key={`category-item-${category}-${trait}`}
                         value={trait}
                         sx={{ justifyContent: 'space-between' }}
                       >

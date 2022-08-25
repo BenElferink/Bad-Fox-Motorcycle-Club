@@ -40,7 +40,7 @@
     ]
   },
   "Snoop Dogg": {
-    "share": 32,
+    "share": 38,
     "possibilities": 51,
     "set": [
       {
@@ -56,6 +56,13 @@
         "traitCount": 74,
         "traitPercent": "1.23%",
         "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Clothes/M_Snoop.png"
+      },
+      {
+        "traitCategory": "Eyewear",
+        "traitLabel": "(U) Snoop",
+        "traitCount": 100,
+        "traitPercent": "1.67%",
+        "traitImage": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/Eyewear/U_Snoop.png"
       },
       {
         "traitCategory": "Mouth",
