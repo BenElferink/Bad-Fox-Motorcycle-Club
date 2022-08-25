@@ -17,9 +17,10 @@ const MyWalletTraits = () => {
   const { isMobile } = useScreenSize()
   const { loading: authLoading, myAssets } = useAuth()
 
-  const [showClayTraitSets, setShowClayTraitSets] = useState(false)
-  const [showAll, setShowAll] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState('')
+  const [showAllTraits, setShowAllTraits] = useState(false)
+  const [showClayTraitSets, setShowClayTraitSets] = useState(false)
+  const [showAllClayTraitSets, setShowAllClayTraitSets] = useState(false)
 
   const renderTraits = () => {
     const traits = {}
@@ -101,12 +102,12 @@ const MyWalletTraits = () => {
       <div>
         <FoxTraitsOptions callbackSelectedCategory={(str) => setSelectedCategory(str)}>
           <div className='flex-col' style={{ margin: '0.5rem' }}>
-            {!isMobile ? (showAll ? 'All Traits' : 'Owned Traits') : null}
+            {!isMobile ? (showAllTraits ? 'All Traits' : 'Owned Traits') : null}
             <Toggle
               labelLeft={!isMobile ? '' : 'Owned Traits'}
               labelRight={!isMobile ? '' : 'All Traits'}
               showIcons={false}
-              state={{ value: showAll, setValue: setShowAll }}
+              state={{ value: showAllTraits, setValue: setShowAllTraits }}
             />
           </div>
         </FoxTraitsOptions>
@@ -123,7 +124,7 @@ const MyWalletTraits = () => {
 
       <div className={styles.traitCatalog}>
         {renderTraits()[selectedCategory]?.map((trait) =>
-          showAll || trait.owned !== 0 ? (
+          showAllTraits || trait.owned !== 0 ? (
             <AssetCard
               key={`trait-catalog-list-item-${trait.displayName}-${trait.gender}`}
               mainTitles={[trait.displayName]}
@@ -142,10 +143,19 @@ const MyWalletTraits = () => {
       {authLoading ? <Loader /> : null}
 
       <Modal title='My $CLAY Trait Sets' open={showClayTraitSets} onClose={() => setShowClayTraitSets(false)}>
+        <div className='flex-col' style={{ margin: '0.5rem' }}>
+          {!isMobile ? (showAllClayTraitSets ? 'All Sets' : 'Owned Sets') : null}
+          <Toggle
+            labelLeft={!isMobile ? '' : 'Owned Sets'}
+            labelRight={!isMobile ? '' : 'All Sets'}
+            showIcons={false}
+            state={{ value: showAllClayTraitSets, setValue: setShowAllClayTraitSets }}
+          />
+        </div>
         {Object.entries(renderClayTraits())
-          .filter((item) => item[1].ownsThisSet)
+          .filter((item) => showAllClayTraitSets || item[1].ownsThisSet)
           .sort((a, b) => b[1].share - a[1].share)
-          .sort((a, b) => b[1].ownedSetCount - a[1].ownedSetCount)
+          .sort((a, b) => (showAllClayTraitSets ? 0 : b[1].ownedSetCount - a[1].ownedSetCount))
           .map(([roleName, { share, possibilities, set, ownedSetCount }]) => (
             <ClayTraitSet
               key={roleName}
