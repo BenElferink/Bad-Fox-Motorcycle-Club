@@ -1,4 +1,4 @@
-import fetchJpgListedItems from '../../../../functions/markets/fetchJpgListedItems'
+import { jpgStore } from '../../../../utils/jpgStore'
 import POLICY_IDS from '../../../../constants/policy-ids'
 
 export default async (req, res) => {
@@ -31,7 +31,7 @@ export default async (req, res) => {
           return isNaN(num) ? max : num <= max ? num : max
         })()
 
-        const data = await fetchJpgListedItems({ policyId, size: s })
+        const data = await jpgStore.getListings({ policyId, size: s })
 
         return res.status(200).json(data)
       }

@@ -2,28 +2,28 @@ require('dotenv').config()
 const fs = require('fs')
 const writeXlsxFile = require('write-excel-file/node')
 const { blockfrost } = require('../utils/blockfrost')
-const foxAssets = require('../data/assets/fox')
+const foxAssetsFile = require('../data/assets/fox')
 const { EXCLUDE_ADDRESSES } = require('../constants/addresses')
 
+const WINNERS_COUNT = 30
 const ADA_PER_WIN = 50
 const NFT_PER_WIN = 1
-const WINNERS_COUNT = 30
 
 const INCLUDED_TRAITS = [
-  { Headwear: '(F) Beanie' },
-  { Headwear: '(M) Leon Beanie' },
-  { Clothes: '(F) Scarf' },
-  { Clothes: '(M) Scarf' },
+  { Eyewear: '(F) Fire Shades' },
+  { Eyewear: '(M) Pink Luxury Shades' },
+  { Skin: '(F) Zombie' },
+  { Skin: '(M) Zombie' },
 ]
 
 const run = async () => {
   const stakeAddresses = {}
   const foundAssetsWithIncludedTraits = []
 
-  foxAssets.assets.forEach((item) => {
+  foxAssetsFile.assets.forEach((item) => {
     INCLUDED_TRAITS.forEach((traitItem) => {
       Object.entries(traitItem).forEach(([key, val]) => {
-        if (item.onchain_metadata.attributes[key] === val) {
+        if (item.attributes[key] === val) {
           foundAssetsWithIncludedTraits.push(item)
         }
       })
@@ -68,7 +68,7 @@ const run = async () => {
 
     if (!alreadyUsedIndex) {
       usedIndexes.push(idx)
-      const [address, stakeKey] = await getKeysForAssetId(foundAssetsWithIncludedTraits[idx].asset)
+      const [address, stakeKey] = await getKeysForAssetId(foundAssetsWithIncludedTraits[idx].assetId)
 
       if (stakeKey) {
         if (stakeAddresses[stakeKey]) {
@@ -78,12 +78,12 @@ const run = async () => {
           }
 
           stakeAddresses[stakeKey].traitCount += 1
-          stakeAddresses[stakeKey].assetNames.push(foundAssetsWithIncludedTraits[idx].onchain_metadata.name)
+          stakeAddresses[stakeKey].assetNames.push(foundAssetsWithIncludedTraits[idx].displayName)
         } else {
           stakeAddresses[stakeKey] = {
             addresses: [address],
             traitCount: 1,
-            assetNames: [foundAssetsWithIncludedTraits[idx].onchain_metadata.name],
+            assetNames: [foundAssetsWithIncludedTraits[idx].displayName],
           }
         }
 
@@ -142,7 +142,7 @@ const run = async () => {
 
   await writeXlsxFile(excelRows, {
     columns: COLUMN_SIZE,
-    filePath: './_temp/winning-traits-week4.xlsx',
+    filePath: './_temp/winning-traits-week5.xlsx',
   })
 
   console.log('Done!')

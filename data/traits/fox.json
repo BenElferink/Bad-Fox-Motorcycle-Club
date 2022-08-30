@@ -5,16 +5,16 @@
       "displayName": "Female",
       "gender": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/None.png",
-      "count": 0,
-      "percent": "0.00%"
+      "count": 3000,
+      "percent": "50.00%"
     },
     {
       "onChainName": "Male",
       "displayName": "Male",
       "gender": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/fox/None.png",
-      "count": 0,
-      "percent": "0.00%"
+      "count": 3000,
+      "percent": "50.00%"
     }
   ],
   "Back": [

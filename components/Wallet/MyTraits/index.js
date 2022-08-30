@@ -27,9 +27,7 @@ const MyWalletTraits = () => {
 
     Object.entries(traitsData).forEach(([category, attributes]) => {
       attributes.forEach((attributeObj) => {
-        const ownedCount = myAssets.filter(
-          (item) => item.onchain_metadata.attributes[category] === attributeObj.onChainName
-        ).length
+        const ownedCount = myAssets.filter((item) => item.attributes[category] === attributeObj.onChainName).length
 
         const payload = {
           ...attributeObj,
@@ -62,7 +60,7 @@ const MyWalletTraits = () => {
         let ownedTraitCount = 0
 
         myAssets.forEach((asset) => {
-          if (asset.onchain_metadata.attributes[traitCategory] === traitLabel) {
+          if (asset.attributes[traitCategory] === traitLabel) {
             ownedTraitCount++
           }
         })

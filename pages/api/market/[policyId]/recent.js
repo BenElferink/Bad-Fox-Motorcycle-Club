@@ -1,4 +1,4 @@
-import fetchJpgRecentItems from '../../../../functions/markets/fetchJpgRecentItems'
+import { jpgStore } from '../../../../utils/jpgStore'
 import POLICY_IDS from '../../../../constants/policy-ids'
 
 export default async (req, res) => {
@@ -32,7 +32,7 @@ export default async (req, res) => {
           return isNaN(num) ? min : num >= min ? num : min
         })()
 
-        const data = await fetchJpgRecentItems({ policyId, sold: s, page: p })
+        const data = await jpgStore.getRecents({ policyId, sold: s, page: p })
 
         return res.status(200).json(data)
       }

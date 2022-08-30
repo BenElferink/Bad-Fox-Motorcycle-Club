@@ -112,7 +112,7 @@ function Listings() {
                   .map(([cat, attr]) => [
                     `${cat}:`,
                     attr,
-                    cat === 'Gender' ? '50%' : traitsData[cat].find((obj) => obj.onChainName === attr)?.percent,
+                    traitsData[cat].find((obj) => obj.onChainName === attr)?.percent,
                   ])}
               />
             ) : null

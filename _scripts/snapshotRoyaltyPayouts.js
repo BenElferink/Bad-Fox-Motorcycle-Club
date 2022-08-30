@@ -1,7 +1,7 @@
 require('dotenv').config()
 const fs = require('fs')
 const { blockfrost } = require('../utils/blockfrost')
-const foxAssets = require('../data/assets/fox')
+const foxAssetsFile = require('../data/assets/fox')
 const POLICY_IDS = require('../constants/policy-ids')
 const { EXCLUDE_ADDRESSES } = require('../constants/addresses')
 
@@ -10,16 +10,16 @@ const ROYALTY_FEE = 0.07
 const ROYALTY_TO_GIVE = 0.8
 const ROYALTY_SHARE = VOLUME * ROYALTY_FEE * ROYALTY_TO_GIVE
 
-const run = async (req, res) => {
+const run = async () => {
   let unlistedAssetsCount = 0
 
   const policyId = POLICY_IDS.FOX_POLICY_ID
-  const assets = foxAssets.assets
+  const assets = foxAssetsFile.assets
   const holders = []
 
   // associate all asset IDs to their wallets (collect stake key and wallet addresses)
 
-  for (const { asset: assetId } of assets) {
+  for (const { assetId } of assets) {
     console.log('\nProcessing asset:', assetId)
 
     const walletAddress = await blockfrost.getWalletAddressWithAssetId(assetId)
@@ -58,8 +58,8 @@ const run = async (req, res) => {
   const adaPerAsset = ROYALTY_SHARE / unlistedAssetsCount
 
   const wallets = holders
-    .map((item) => {
-      const assetCount = item.assets.length
+    .map((wallet) => {
+      const assetCount = wallet.assets.length
       const adaForAssets = Math.floor(assetCount * adaPerAsset)
 
       let traitCount = 0
@@ -68,12 +68,12 @@ const run = async (req, res) => {
       if (policyId === POLICY_IDS.FOX_POLICY_ID) {
         traitPayout = 10
 
-        for (const assetId of item.assets) {
+        for (const assetId of wallet.assets) {
           const {
             onchain_metadata: {
               attributes: { Mouth },
             },
-          } = assets.find(({ asset }) => asset === assetId)
+          } = assets.find((asset) => asset.assetId === assetId)
 
           if (Mouth === '(F) Crypto' || Mouth === '(F) Cash Bag') {
             traitCount++
@@ -89,7 +89,7 @@ const run = async (req, res) => {
       totalAdaPayout += totalAda
 
       return {
-        ...item,
+        ...wallet,
         payout: {
           adaForAssets,
           adaForTraits,

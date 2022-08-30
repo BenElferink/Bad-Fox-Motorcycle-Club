@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../../contexts/AuthContext'
-import foxAssetsData from '../../../data/assets/fox'
+import foxAssetsFile from '../../../data/assets/fox'
 import getDatesFromFloorData from '../../../functions/charts/getDatesFromFloorData'
 import getPortfolioSeries from '../../../functions/charts/getPortfolioSeries'
 import formatBigNumber from '../../../functions/formatters/formatBigNumber'
@@ -49,14 +49,14 @@ const PortfolioChart = ({ chartWidth, floorSnapshots }) => {
       if (stored) {
         let toSet = {}
 
-        Object.entries(stored).forEach(([assetId, item]) => {
-          if (myAssets.find((item) => item.asset === assetId)) {
-            const foundAsset = foxAssetsData.assets.find((blockfrostAsset) => blockfrostAsset.asset === assetId)
+        Object.entries(stored).forEach(([assetId, storedAsset]) => {
+          if (myAssets.find((myAsset) => myAsset.assetId === assetId)) {
+            const foundAsset = foxAssetsFile.assets.find((asset) => asset.assetId === assetId)
 
             toSet[assetId] = {
-              price: item.price,
-              timestamp: item.timestamp,
-              attributes: foundAsset.onchain_metadata.attributes,
+              price: storedAsset.price,
+              timestamp: storedAsset.timestamp,
+              attributes: foundAsset.attributes,
             }
           }
         })
@@ -163,15 +163,11 @@ const PortfolioChart = ({ chartWidth, floorSnapshots }) => {
       <Modal title='Manage Priced Assets' open={isOpenModal} onClose={() => setIsOpenModal(false)}>
         <div className={`scroll ${styles.listOfAssets}`}>
           {myAssets
-            .sort(
-              (a, b) =>
-                Number(a.onchain_metadata.name.replace('Bad Fox #', '')) -
-                Number(b.onchain_metadata.name.replace('Bad Fox #', ''))
-            )
+            .sort((a, b) => a.serialNumber - b.serialNumber)
             .map((item) => {
-              const thisPrice = pricedAssets[item.asset]?.price
+              const thisPrice = pricedAssets[item.assetId]?.price
 
-              const [thisFloor, thisHighestTraitValue] = getValuesForAttributes(item.onchain_metadata.attributes)
+              const [thisFloor, thisHighestTraitValue] = getValuesForAttributes(item.attributes)
 
               const floorGainOrLoss = thisFloor - (thisPrice || thisFloor)
               const highestTraitGainOrLoss = thisHighestTraitValue - (thisPrice || thisHighestTraitValue)
@@ -180,10 +176,10 @@ const PortfolioChart = ({ chartWidth, floorSnapshots }) => {
 
               return (
                 <AssetCard
-                  key={`asset-${item.asset}`}
-                  mainTitles={[item.onchain_metadata.name]}
-                  subTitles={[`Rank ${item.onchain_metadata.rank}`]}
-                  imageSrc={item.onchain_metadata.image.cnftTools}
+                  key={`asset-${item.assetId}`}
+                  mainTitles={[item.displayName]}
+                  subTitles={[`Rank ${item.rarityRank}`]}
+                  imageSrc={item.image.cnftTools}
                   imageSizeDesktop={270}
                   imageSizeMobile={250}
                   noClick
@@ -197,7 +193,7 @@ const PortfolioChart = ({ chartWidth, floorSnapshots }) => {
                         onChange={(e) =>
                           setPricedAssets((prev) => ({
                             ...prev,
-                            [item.asset]: {
+                            [item.assetId]: {
                               timestamp: (() => {
                                 const newDate = new Date()
                                 newDate.setHours(0)
@@ -206,8 +202,8 @@ const PortfolioChart = ({ chartWidth, floorSnapshots }) => {
                                 newDate.setMilliseconds(0)
                                 return newDate.getTime()
                               })(),
-                              attributes: item.onchain_metadata.attributes,
-                              ...(prev[item.asset] || {}),
+                              attributes: item.attributes,
+                              ...(prev[item.assetId] || {}),
                               price: Number(e.target.value),
                             },
                           }))

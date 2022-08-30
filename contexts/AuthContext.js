@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { createContext, useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
-import blockfrostJsonFile from '../data/assets/fox'
+import foxAssetsFile from '../data/assets/fox'
 import { ADMIN_CODE } from '../constants/api-keys'
 import { FOX_POLICY_ID } from '../constants/policy-ids'
 
@@ -100,7 +100,7 @@ export function AuthProvider({ children }) {
               for (let aIdx = 0; aIdx < walletsRes.data.assets[FOX_POLICY_ID].length; aIdx++) {
                 const assetId = walletsRes.data.assets[FOX_POLICY_ID][aIdx]
 
-                setMyAssets((prev) => [...prev, blockfrostJsonFile.assets.find(({ asset }) => asset === assetId)])
+                setMyAssets((prev) => [...prev, foxAssetsFile.assets.find((asset) => asset.assetId === assetId)])
               }
             }
           }
@@ -150,7 +150,9 @@ export function AuthProvider({ children }) {
 
     try {
       await axios.post(
-        `/api/accounts/mint-wallet/${walletAddress}?${token ? `discordToken=${token}` : `discordUserId=${userId}`}`,
+        `/api/accounts/mint-wallet/${walletAddress}?${
+          token ? `discordToken=${token}` : `discordUserId=${userId}`
+        }`,
         {},
         {
           headers: { admin_code: ADMIN_CODE },

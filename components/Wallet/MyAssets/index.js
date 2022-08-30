@@ -32,7 +32,7 @@ const MyWalletAssets = () => {
         selected.forEach(([cat, selections]) => {
           let categoryMatch = false
 
-          if (selections.includes(item.onchain_metadata.attributes[cat])) {
+          if (selections.includes(item.attributes[cat])) {
             categoryMatch = true
           }
 
@@ -43,18 +43,16 @@ const MyWalletAssets = () => {
 
         return matchingCategories.length === selected.length
       })
-      .filter((item) => !search || (search && item.onchain_metadata.name.indexOf(search) !== -1))
+      .filter((item) => !search || (search && item.displayName.indexOf(search) !== -1))
       .sort((a, b) =>
         ascending && !sortByRank
-          ? Number(a.onchain_metadata.name.replace('Bad Fox #', '')) -
-            Number(b.onchain_metadata.name.replace('Bad Fox #', ''))
+          ? a.serialNumber - b.serialNumber
           : !ascending && !sortByRank
-          ? Number(b.onchain_metadata.name.replace('Bad Fox #', '')) -
-            Number(a.onchain_metadata.name.replace('Bad Fox #', ''))
+          ? b.serialNumber - a.serialNumber
           : ascending && sortByRank
-          ? a.onchain_metadata.rank - b.onchain_metadata.rank
+          ? a.rarityRank - b.rarityRank
           : !ascending && sortByRank
-          ? b.onchain_metadata.rank - a.onchain_metadata.rank
+          ? b.rarityRank - a.rarityRank
           : 0
       )
   }
@@ -94,17 +92,17 @@ const MyWalletAssets = () => {
           filteredAssets.map((item, idx) =>
             idx < displayNum ? (
               <AssetCard
-                key={`fox-collection-${item.asset}-${idx}`}
-                mainTitles={[item.onchain_metadata.name]}
-                subTitles={[`Rank ${item.onchain_metadata.rank}`]}
-                imageSrc={item.onchain_metadata.image.cnftTools}
-                itemUrl={`https://jpg.store/asset/${item.asset}`}
-                tableRows={Object.entries(item.onchain_metadata.attributes)
+                key={`fox-collection-${item.assetId}-${idx}`}
+                mainTitles={[item.displayName]}
+                subTitles={[`Rank ${item.rarityRank}`]}
+                imageSrc={item.image.cnftTools}
+                itemUrl={`https://jpg.store/asset/${item.assetId}`}
+                tableRows={Object.entries(item.attributes)
                   .sort((a, b) => a[0].localeCompare(b[0]))
                   .map(([cat, attr]) => [
                     `${cat}:`,
                     attr,
-                    cat === 'Gender' ? '50%' : traitsData[cat].find((obj) => obj.onChainName === attr)?.percent,
+                    traitsData[cat].find((trait) => trait.onChainName === attr)?.percent,
                   ])}
               />
             ) : null

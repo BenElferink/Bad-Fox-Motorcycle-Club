@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import collectionData from '../../../../data/assets/fox'
+import foxAssetsFile from '../../../../data/assets/fox'
 import traitsData from '../../../../data/traits/fox'
 import AssetCard from '../../../AssetCard'
 import FoxAssetsOptions from '../../../FilterOptions/Assets/Fox'
@@ -8,7 +8,7 @@ import styles from './FoxCollectionCatalog.module.css'
 const INITIAL_DISPLAY_AMOUNT = 50
 
 const FoxCollectionCatalog = () => {
-  const assets = collectionData.assets
+  const assets = foxAssetsFile.assets
 
   const [ascending, setAscending] = useState(true)
   const [sortByRank, setSortByRank] = useState(true)
@@ -25,13 +25,13 @@ const FoxCollectionCatalog = () => {
     })
 
     return assets
-      .filter((item) => {
+      .filter((asset) => {
         const matchingCategories = []
 
         selected.forEach(([cat, selections]) => {
           let categoryMatch = false
 
-          if (selections.includes(item.onchain_metadata.attributes[cat])) {
+          if (selections.includes(asset.attributes[cat])) {
             categoryMatch = true
           }
 
@@ -42,18 +42,16 @@ const FoxCollectionCatalog = () => {
 
         return matchingCategories.length === selected.length
       })
-      .filter((item) => !search || (search && item.onchain_metadata.name.indexOf(search) !== -1))
+      .filter((asset) => !search || (search && asset.displayName.indexOf(search) !== -1))
       .sort((a, b) =>
         ascending && !sortByRank
-          ? Number(a.onchain_metadata.name.replace('Bad Fox #', '')) -
-            Number(b.onchain_metadata.name.replace('Bad Fox #', ''))
+          ? a.serialNumber - b.serialNumber
           : !ascending && !sortByRank
-          ? Number(b.onchain_metadata.name.replace('Bad Fox #', '')) -
-            Number(a.onchain_metadata.name.replace('Bad Fox #', ''))
+          ? b.serialNumber - a.serialNumber
           : ascending && sortByRank
-          ? a.onchain_metadata.rank - b.onchain_metadata.rank
+          ? a.rarityRank - b.rarityRank
           : !ascending && sortByRank
-          ? b.onchain_metadata.rank - a.onchain_metadata.rank
+          ? b.rarityRank - a.rarityRank
           : 0
       )
   }
@@ -90,20 +88,20 @@ const FoxCollectionCatalog = () => {
 
       <div className={`scroll ${styles.listOfAssets}`}>
         {filteredAssets.length ? (
-          filteredAssets.map((item, idx) =>
+          filteredAssets.map((asset, idx) =>
             idx < displayNum ? (
               <AssetCard
-                key={`fox-collection-${item.asset}-${idx}`}
-                mainTitles={[item.onchain_metadata.name]}
-                subTitles={[`Rank ${item.onchain_metadata.rank}`]}
-                imageSrc={item.onchain_metadata.image.cnftTools}
-                itemUrl={`https://jpg.store/asset/${item.asset}`}
-                tableRows={Object.entries(item.onchain_metadata.attributes)
+                key={`fox-collection-${asset.assetId}-${idx}`}
+                mainTitles={[asset.displayName]}
+                subTitles={[`Rank ${asset.rarityRank}`]}
+                imageSrc={asset.image.cnftTools}
+                itemUrl={`https://jpg.store/asset/${asset.assetId}`}
+                tableRows={Object.entries(asset.attributes)
                   .sort((a, b) => a[0].localeCompare(b[0]))
                   .map(([cat, attr]) => [
                     `${cat}:`,
                     attr,
-                    cat === 'Gender' ? '50%' : traitsData[cat].find((obj) => obj.onChainName === attr)?.percent,
+                    traitsData[cat].find((trait) => trait.onChainName === attr)?.percent,
                   ])}
               />
             ) : null
