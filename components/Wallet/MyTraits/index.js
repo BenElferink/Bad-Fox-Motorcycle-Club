@@ -176,7 +176,7 @@ const MyWalletTraits = () => {
                   `Shares: ${shares}`,
                   `Token Value: ${tokens.toFixed(2)}`,
                   `Possibilities: ${occupied} / ${possibilities}`,
-                  `Owned: ${ownedSetCount} shares || ${(ownedSetCount * tokens).toFixed(2)} tokens`,
+                  `Owned: ${ownedSetCount} sets || ${ownedSetCount * shares} shares || ${(ownedSetCount * tokens).toFixed(2)} tokens`,
                 ]}
                 set={set}
               />
