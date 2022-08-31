@@ -61,23 +61,10 @@ export default async (req, res) => {
   try {
     await connectDB()
 
-    const { method, query } = req
-
-    let stakeKeys = query.stakeKeys
+    const { method } = req
 
     switch (method) {
       case 'GET': {
-        if (stakeKeys) {
-          stakeKeys = stakeKeys.split(',')
-
-          if (!Array.isArray(stakeKeys) || stakeKeys.filter((val) => typeof val !== 'string').length) {
-            return res.status(400).json({
-              type: 'BAD_REQUEST',
-              message: `Query param "stakeKeys" must be of type string[]`,
-            })
-          }
-        }
-
         const traitSets = {}
         const wallets = await Wallet.find()
 
@@ -88,8 +75,6 @@ export default async (req, res) => {
 
           for (const setName in clayTraitSetsFile) {
             const { shares, possibilities, set } = clayTraitSetsFile[setName]
-
-            const modifiedSet = []
 
             let ownsThisSet = true
             let leastHeldTrait = 0
@@ -104,14 +89,10 @@ export default async (req, res) => {
                 }
               })
 
-              modifiedSet.push({ ownedTraitCount: null, ...setItem })
-              if (stakeKeys && stakeKeys.includes(wallet.stakeKey)) {
-                modifiedSet[modifiedSet.length - 1].ownedTraitCount = ownedTraitCount
-              }
-
               if (ownedTraitCount === 0) {
                 ownsThisSet = false
               }
+
               if (ownedTraitCount < leastHeldTrait || leastHeldTrait === 0) {
                 leastHeldTrait = ownedTraitCount
               }
@@ -125,9 +106,7 @@ export default async (req, res) => {
                 tokens: 0,
                 possibilities,
                 occupied: 0,
-                ownsThisSet: null,
-                ownedSetCount: null,
-                set: modifiedSet,
+                set,
                 wallets: [],
               }
             }
@@ -138,10 +117,6 @@ export default async (req, res) => {
                 stakeKey: wallet.stakeKey,
                 owned: ownedCount,
               })
-            }
-            if (stakeKeys && stakeKeys.includes(wallet.stakeKey)) {
-              traitSets[setName].ownsThisSet = ownsThisSet
-              traitSets[setName].ownedSetCount = ownedCount
             }
           }
         }

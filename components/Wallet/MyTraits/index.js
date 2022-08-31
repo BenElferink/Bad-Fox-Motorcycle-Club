@@ -54,7 +54,7 @@ const MyWalletTraits = () => {
     ;(async () => {
       setClayLoading(true)
       try {
-        const { data } = await axios.get(`/api/utilities/clay?stakeKeys=${encodeURIComponent(account.stakeKeys)}`)
+        const { data } = await axios.get('/api/utilities/clay')
         setClayData(data)
       } catch (error) {
         console.error(error)
@@ -62,6 +62,50 @@ const MyWalletTraits = () => {
       setClayLoading(false)
     })()
   }, [])
+
+  const renderClayTraits = () => {
+    const mappedTraitSets = {}
+
+    for (const roleName in clayData.traitSets ?? {}) {
+      const { set } = clayData.traitSets[roleName]
+      const thisSet = []
+      let ownsThisSet = true
+      let leastHeldTrait = 0
+
+      for (const setItem of set) {
+        const { traitCategory, traitLabel } = setItem
+        let ownedTraitCount = 0
+
+        myAssets.forEach((asset) => {
+          if (asset.attributes[traitCategory] === traitLabel) {
+            ownedTraitCount++
+          }
+        })
+
+        thisSet.push({
+          ...setItem,
+          ownedTraitCount,
+        })
+
+        if (ownedTraitCount === 0) {
+          ownsThisSet = false
+        }
+
+        if (ownedTraitCount < leastHeldTrait || leastHeldTrait === 0) {
+          leastHeldTrait = ownedTraitCount
+        }
+      }
+
+      mappedTraitSets[roleName] = {
+        ...clayData.traitSets[roleName],
+        set: thisSet,
+        ownsThisSet,
+        ownedSetCount: ownsThisSet ? leastHeldTrait : 0,
+      }
+    }
+
+    return mappedTraitSets
+  }
 
   return (
     <div className='flex-col'>
@@ -120,7 +164,7 @@ const MyWalletTraits = () => {
         {clayLoading ? (
           <Loader color='var(--white)' />
         ) : (
-          Object.entries(clayData.traitSets ?? {})
+          Object.entries(renderClayTraits())
             .filter((item) => showAllClayTraitSets || item[1].ownsThisSet)
             .sort((a, b) => b[1].shares - a[1].shares)
             .sort((a, b) => (showAllClayTraitSets ? 0 : b[1].ownedSetCount - a[1].ownedSetCount))
