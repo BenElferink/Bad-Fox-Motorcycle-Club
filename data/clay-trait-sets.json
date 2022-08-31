@@ -1,6 +1,6 @@
 {
   "Gara": {
-    "share": 27,
+    "shares": 27,
     "possibilities": 30,
     "set": [
       {
@@ -20,7 +20,7 @@
     ]
   },
   "Kurama": {
-    "share": 27,
+    "shares": 27,
     "possibilities": 29,
     "set": [
       {
@@ -40,7 +40,7 @@
     ]
   },
   "Snoop Dogg": {
-    "share": 38,
+    "shares": 38,
     "possibilities": 51,
     "set": [
       {
@@ -88,7 +88,7 @@
     ]
   },
   "Aqua Woman": {
-    "share": 30,
+    "shares": 30,
     "possibilities": 46,
     "set": [
       {
@@ -122,7 +122,7 @@
     ]
   },
   "Freddy Krueger": {
-    "share": 25,
+    "shares": 25,
     "possibilities": 54,
     "set": [
       {
@@ -149,7 +149,7 @@
     ]
   },
   "Jason Vorehees": {
-    "share": 18,
+    "shares": 18,
     "possibilities": 88,
     "set": [
       {
@@ -183,7 +183,7 @@
     ]
   },
   "Wonder Woman": {
-    "share": 61,
+    "shares": 61,
     "possibilities": 19,
     "set": [
       {
@@ -210,7 +210,7 @@
     ]
   },
   "Khaleesi": {
-    "share": 24,
+    "shares": 24,
     "possibilities": 40,
     "set": [
       {
@@ -237,7 +237,7 @@
     ]
   },
   "One of One": {
-    "share": 77,
+    "shares": 77,
     "possibilities": 8,
     "set": [
       {
@@ -250,7 +250,7 @@
     ]
   },
   "Lavatron": {
-    "share": 51,
+    "shares": 51,
     "possibilities": 23,
     "set": [
       {
@@ -270,7 +270,7 @@
     ]
   },
   "Astronaut": {
-    "share": 38,
+    "shares": 38,
     "possibilities": 27,
     "set": [
       {
@@ -290,7 +290,7 @@
     ]
   },
   "Male Devil": {
-    "share": 44,
+    "shares": 44,
     "possibilities": 25,
     "set": [
       {
@@ -317,7 +317,7 @@
     ]
   },
   "Female Devil": {
-    "share": 42,
+    "shares": 42,
     "possibilities": 33,
     "set": [
       {
@@ -344,7 +344,7 @@
     ]
   },
   "Male Angel": {
-    "share": 28,
+    "shares": 28,
     "possibilities": 43,
     "set": [
       {
@@ -364,7 +364,7 @@
     ]
   },
   "Female Angel": {
-    "share": 32,
+    "shares": 32,
     "possibilities": 36,
     "set": [
       {
@@ -384,7 +384,7 @@
     ]
   },
   "Bling Bling": {
-    "share": 40,
+    "shares": 40,
     "possibilities": 46,
     "set": [
       {
@@ -418,7 +418,7 @@
     ]
   },
   "Leon": {
-    "share": 26,
+    "shares": 26,
     "possibilities": 62,
     "set": [
       {
@@ -452,7 +452,7 @@
     ]
   },
   "Roman Warrior": {
-    "share": 38,
+    "shares": 38,
     "possibilities": 27,
     "set": [
       {
@@ -486,7 +486,7 @@
     ]
   },
   "Lasers": {
-    "share": 72,
+    "shares": 72,
     "possibilities": 22,
     "set": [
       {
@@ -513,7 +513,7 @@
     ]
   },
   "Robotics": {
-    "share": 40,
+    "shares": 40,
     "possibilities": 24,
     "set": [
       {
@@ -533,7 +533,7 @@
     ]
   },
   "Degen Biker": {
-    "share": 14,
+    "shares": 14,
     "possibilities": 134,
     "set": [
       {
@@ -567,7 +567,7 @@
     ]
   },
   "Fancy Suits": {
-    "share": 38,
+    "shares": 38,
     "possibilities": 31,
     "set": [
       {
@@ -594,7 +594,7 @@
     ]
   },
   "Pink Floyd": {
-    "share": 31,
+    "shares": 31,
     "possibilities": 48,
     "set": [
       {
@@ -628,7 +628,7 @@
     ]
   },
   "Masked Fox": {
-    "share": 20,
+    "shares": 20,
     "possibilities": 109,
     "set": [
       {
@@ -662,7 +662,7 @@
     ]
   },
   "Fancy Smoker": {
-    "share": 16,
+    "shares": 16,
     "possibilities": 115,
     "set": [
       {
@@ -696,7 +696,7 @@
     ]
   },
   "Samurai": {
-    "share": 26,
+    "shares": 26,
     "possibilities": 62,
     "set": [
       {
@@ -730,7 +730,7 @@
     ]
   },
   "Sporty": {
-    "share": 29,
+    "shares": 29,
     "possibilities": 79,
     "set": [
       {
@@ -771,7 +771,7 @@
     ]
   },
   "At Your Service": {
-    "share": 33,
+    "shares": 33,
     "possibilities": 44,
     "set": [
       {
@@ -812,7 +812,7 @@
     ]
   },
   "Goddess": {
-    "share": 19,
+    "shares": 19,
     "possibilities": 61,
     "set": [
       {
@@ -832,7 +832,7 @@
     ]
   },
   "Master of Jedi": {
-    "share": 29,
+    "shares": 29,
     "possibilities": 38,
     "set": [
       {
@@ -859,7 +859,7 @@
     ]
   },
   "Man of Profession": {
-    "share": 15,
+    "shares": 15,
     "possibilities": 94,
     "set": [
       {
@@ -886,7 +886,7 @@
     ]
   },
   "Steampunk": {
-    "share": 14,
+    "shares": 14,
     "possibilities": 99,
     "set": [
       {
@@ -913,7 +913,7 @@
     ]
   },
   "Arrr Pirate": {
-    "share": 21,
+    "shares": 21,
     "possibilities": 99,
     "set": [
       {

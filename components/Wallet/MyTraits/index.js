@@ -1,31 +1,29 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 import { useScreenSize } from '../../../contexts/ScreenSizeContext'
 import { useAuth } from '../../../contexts/AuthContext'
-import traitsData from '../../../data/traits/fox'
-import traitSetsData from '../../../data/clay-trait-sets'
+import foxTraitsFile from '../../../data/traits/fox'
 import Loader from '../../Loader'
 import Toggle from '../../Toggle'
 import AssetCard from '../../AssetCard'
 import FoxTraitsOptions from '../../FilterOptions/Traits/Fox'
 import Modal from '../../Modal'
 import BaseButton from '../../BaseButton'
+import ClayTraitSet from '../../ClayTraitSet'
 import { GITHUB_MEDIA_URL } from '../../../constants/api-urls'
 import styles from './MyWalletTraits.module.css'
-import ClayTraitSet from '../../ClayTraitSet'
 
 const MyWalletTraits = () => {
   const { isMobile } = useScreenSize()
-  const { loading: authLoading, myAssets } = useAuth()
+  const { myAssets, account } = useAuth()
 
   const [selectedCategory, setSelectedCategory] = useState('')
   const [showAllTraits, setShowAllTraits] = useState(false)
-  const [showClayTraitSets, setShowClayTraitSets] = useState(false)
-  const [showAllClayTraitSets, setShowAllClayTraitSets] = useState(false)
 
   const renderTraits = () => {
     const traits = {}
 
-    Object.entries(traitsData).forEach(([category, attributes]) => {
+    Object.entries(foxTraitsFile).forEach(([category, attributes]) => {
       attributes.forEach((attributeObj) => {
         const ownedCount = myAssets.filter((item) => item.attributes[category] === attributeObj.onChainName).length
 
@@ -47,53 +45,23 @@ const MyWalletTraits = () => {
     return traits
   }
 
-  const renderClayTraits = () => {
-    const mappedTraitSets = {}
+  const [showClayTraitSets, setShowClayTraitSets] = useState(false)
+  const [showAllClayTraitSets, setShowAllClayTraitSets] = useState(false)
+  const [clayData, setClayData] = useState({})
+  const [clayLoading, setClayLoading] = useState(false)
 
-    for (const roleName in traitSetsData) {
-      const { share, possibilities, set } = traitSetsData[roleName]
-      const thisSet = []
-      let ownsThisSet = true
-      let leastHeldTrait = 0
-
-      for (const { traitCategory, traitLabel, traitCount, traitPercent, traitImage } of set) {
-        let ownedTraitCount = 0
-
-        myAssets.forEach((asset) => {
-          if (asset.attributes[traitCategory] === traitLabel) {
-            ownedTraitCount++
-          }
-        })
-
-        thisSet.push({
-          traitCategory,
-          traitLabel,
-          traitCount,
-          traitPercent,
-          traitImage,
-          ownedTraitCount,
-        })
-
-        if (ownedTraitCount === 0) {
-          ownsThisSet = false
-        }
-
-        if (ownedTraitCount < leastHeldTrait || leastHeldTrait === 0) {
-          leastHeldTrait = ownedTraitCount
-        }
+  useEffect(() => {
+    ;(async () => {
+      setClayLoading(true)
+      try {
+        const { data } = await axios.get(`/api/utilities/clay?stakeKeys=${encodeURIComponent(account.stakeKeys)}`)
+        setClayData(data)
+      } catch (error) {
+        console.error(error)
       }
-
-      mappedTraitSets[roleName] = {
-        share,
-        possibilities,
-        set: thisSet,
-        ownsThisSet,
-        ownedSetCount: ownsThisSet ? leastHeldTrait : 0,
-      }
-    }
-
-    return mappedTraitSets
-  }
+      setClayLoading(false)
+    })()
+  }, [])
 
   return (
     <div className='flex-col'>
@@ -138,8 +106,6 @@ const MyWalletTraits = () => {
         )}
       </div>
 
-      {authLoading ? <Loader /> : null}
-
       <Modal title='My $CLAY Trait Sets' open={showClayTraitSets} onClose={() => setShowClayTraitSets(false)}>
         <div className='flex-col' style={{ margin: '0.5rem' }}>
           {!isMobile ? (showAllClayTraitSets ? 'All Sets' : 'Owned Sets') : null}
@@ -150,18 +116,28 @@ const MyWalletTraits = () => {
             state={{ value: showAllClayTraitSets, setValue: setShowAllClayTraitSets }}
           />
         </div>
-        {Object.entries(renderClayTraits())
-          .filter((item) => showAllClayTraitSets || item[1].ownsThisSet)
-          .sort((a, b) => b[1].share - a[1].share)
-          .sort((a, b) => (showAllClayTraitSets ? 0 : b[1].ownedSetCount - a[1].ownedSetCount))
-          .map(([roleName, { share, possibilities, set, ownedSetCount }]) => (
-            <ClayTraitSet
-              key={roleName}
-              title={roleName}
-              textRows={[`Token Share: ${share}`, `Possibilities: ${possibilities}`, `Owned: ${ownedSetCount}`]}
-              set={set}
-            />
-          ))}
+
+        {clayLoading ? (
+          <Loader color='var(--white)' />
+        ) : (
+          Object.entries(clayData.traitSets ?? {})
+            .filter((item) => showAllClayTraitSets || item[1].ownsThisSet)
+            .sort((a, b) => b[1].shares - a[1].shares)
+            .sort((a, b) => (showAllClayTraitSets ? 0 : b[1].ownedSetCount - a[1].ownedSetCount))
+            .map(([roleName, { shares, tokens, possibilities, occupied, set, ownedSetCount }]) => (
+              <ClayTraitSet
+                key={roleName}
+                title={roleName}
+                textRows={[
+                  `Shares: ${shares}`,
+                  `Token Value: ${tokens.toFixed(2)}`,
+                  `Possibilities: ${occupied} / ${possibilities}`,
+                  `Owned: ${ownedSetCount} shares || ${(ownedSetCount * tokens).toFixed(2)} tokens`,
+                ]}
+                set={set}
+              />
+            ))
+        )}
       </Modal>
     </div>
   )

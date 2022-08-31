@@ -26,7 +26,7 @@ export default function Page() {
   useEffect(() => {
     ;(async () => {
       try {
-        const res = await axios.get('/api/royalty-wallet/fox')
+        const res = await axios.get('/api/utilities/royalties/fox')
 
         setFoxData(res.data)
       } catch (error) {

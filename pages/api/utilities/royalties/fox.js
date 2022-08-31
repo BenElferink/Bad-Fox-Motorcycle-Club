@@ -1,8 +1,8 @@
 import axios from 'axios'
-import { blockfrost } from '../../../utils/blockfrost'
-import { FOX_ROYALTY_WALLET } from '../../../constants/addresses'
-import { FOX_POLICY_ID } from '../../../constants/policy-ids'
-import { OPEN_CNFT_API } from '../../../constants/api-urls'
+import { blockfrost } from '../../../../utils/blockfrost'
+import { FOX_ROYALTY_WALLET } from '../../../../constants/addresses'
+import { FOX_POLICY_ID } from '../../../../constants/policy-ids'
+import { OPEN_CNFT_API } from '../../../../constants/api-urls'
 
 const ONE_MILLION = 1000000
 

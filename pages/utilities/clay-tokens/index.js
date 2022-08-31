@@ -1,71 +1,30 @@
 import Image from 'next/image'
-import traitSetsData from '../../../data/clay-trait-sets'
-// import traitsData from '../../../data/traits/fox'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 import Header from '../../../components/Header'
 import Footer from '../../../components/Footer'
 import Section from '../../../components/Section'
 import ClayTraitSet from '../../../components/ClayTraitSet'
 import { GITHUB_MEDIA_URL } from '../../../constants/api-urls'
+import Loader from '../../../components/Loader'
 
-// const data = {
-//   'Role Name': {
-//     share: 0,
-//     possibilities: 0,
-//     set: [
-//       {
-//         traitCategory: '',
-//         traitLabel: '',
-//         traitCount: 0,
-//         traitPercent: '0.0%',
-//         traitImage: '',
-//       },
-//     ],
-//   },
-// }
+export default function Page({}) {
+  const [clayData, setClayData] = useState({})
+  const [loading, setLoading] = useState(false)
 
-let totalShares = 0
-let totalPossibilities = 0
+  useEffect(() => {
+    ;(async () => {
+      setLoading(true)
+      try {
+        const { data } = await axios.get('/api/utilities/clay')
+        setClayData(data)
+      } catch (error) {
+        console.error(error)
+      }
+      setLoading(false)
+    })()
+  }, [])
 
-// Object.entries(data).forEach(([roleName, { set }]) => {
-//   let possibilities = 0
-
-//   set.forEach((obj, setIdx) => {
-//     const traitName = obj.traitLabel
-//     const foundTrait = traitsData[obj.traitCategory].find(({ onChainName }) => onChainName === traitName)
-
-//     if (!foundTrait) {
-//       console.warn('no trait', traitName)
-//     } else {
-//       if (setIdx === 0) {
-//         data[roleName].share = 0
-//       }
-
-//       data[roleName].share += Math.round(10 / Number(foundTrait.percent.replace('%', '')))
-//       data[roleName].set[setIdx] = {
-//         ...obj,
-//         traitCount: foundTrait.count,
-//         traitPercent: foundTrait.percent,
-//         traitImage: foundTrait.image,
-//       }
-
-//       if (foundTrait.count < possibilities || possibilities === 0) {
-//         possibilities = foundTrait.count
-//       }
-//     }
-//   })
-
-//   data[roleName].possibilities = possibilities
-
-//   totalShares += data[roleName].share * data[roleName].possibilities
-//   totalPossibilities += data[roleName].possibilities
-// })
-
-Object.values(traitSetsData).forEach(({ share, possibilities }) => {
-  totalShares += share * possibilities
-  totalPossibilities += possibilities
-})
-
-export default function Page() {
   return (
     <div className='App flex-col'>
       <Header />
@@ -97,25 +56,35 @@ export default function Page() {
           </p>
           <p>The token distribution will occur towards the end of Q4 2022.</p>
           <p>
-            Total tokens = STILL ACCUMULATING
+            Total tokens = {Math.floor(clayData.clayBalance ?? 0)} (accumulating)
             <br />
-            Maximum shares = {totalShares}
+            Total shares = {clayData.ownedShares ?? 0} / {clayData.maxShares ?? 0}
             <br />
-            Maximum possibilities = {totalPossibilities}
+            Tokens per share = {(clayData.tokensPerShare ?? 0).toFixed(2)}
+            <br />
+            Total possibilities = {clayData.ownedPossibilities ?? 0} / {clayData.maxPossibilities ?? 0}
           </p>
         </Section>
 
         <div className='flex-col' style={{ margin: '2rem auto' }}>
-          {Object.entries(traitSetsData)
-            .sort((a, b) => b[1].share - a[1].share)
-            .map(([roleName, { share, possibilities, set }]) => (
-              <ClayTraitSet
-                key={roleName}
-                title={roleName}
-                textRows={[`Token Share: ${share}`, `Possibilities: ${possibilities}`]}
-                set={set}
-              />
-            ))}
+          {loading ? (
+            <Loader color='var(--white)' />
+          ) : (
+            Object.entries(clayData.traitSets ?? {})
+              .sort((a, b) => b[1].shares - a[1].shares)
+              .map(([roleName, { shares, tokens, possibilities, occupied, set }]) => (
+                <ClayTraitSet
+                  key={roleName}
+                  title={roleName}
+                  textRows={[
+                    `Shares: ${shares}`,
+                    `Token Value: ${tokens.toFixed(2)}`,
+                    `Possibilities: ${occupied} / ${possibilities}`,
+                  ]}
+                  set={set}
+                />
+              ))
+          )}
         </div>
       </div>
       <Footer />
