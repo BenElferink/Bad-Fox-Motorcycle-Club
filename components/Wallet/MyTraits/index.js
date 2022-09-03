@@ -168,7 +168,7 @@ const MyWalletTraits = () => {
           <p style={{ textAlign: 'center' }}>
             Total shares: {totalShares}
             <br />
-            Total tokens: {Math.floor(totalTokens)}
+            Total tokens: {totalTokens.toFixed(2)}
           </p>
         </div>
 
