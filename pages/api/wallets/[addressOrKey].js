@@ -1,5 +1,7 @@
 import connectDB from '../../../utils/mongo'
+import { blockfrost } from '../../../utils/blockfrost'
 import Wallet from '../../../models/Wallet'
+import { FOX_POLICY_ID } from '../../../constants/policy-ids'
 
 export default async (req, res) => {
   try {
@@ -12,7 +14,7 @@ export default async (req, res) => {
 
     switch (method) {
       case 'GET': {
-        const stakeKey = addressOrKey.indexOf('stake1') === 0 ? addressOrKey : null
+        let stakeKey = addressOrKey.indexOf('stake1') === 0 ? addressOrKey : null
         const walletAddress = addressOrKey.indexOf('addr1') === 0 ? addressOrKey : null
 
         if (!stakeKey && !walletAddress) {
@@ -22,13 +24,25 @@ export default async (req, res) => {
           })
         }
 
-        const wallet = await Wallet.findOne(stakeKey ? { stakeKey } : { addresses: { $in: [walletAddress] } })
+        let wallet = await Wallet.findOne(stakeKey ? { stakeKey } : { addresses: { $in: [walletAddress] } })
 
         if (!wallet) {
-          return res.status(404).end({
-            type: 'NOT_FOUND',
-            message: 'Wallet not found',
+          if (!stakeKey) {
+            stakeKey = await blockfrost.getStakeKeyWithWalletAddress(walletAddress)
+          }
+
+          const assets = await blockfrost.getAssetIdsWithStakeKey(stakeKey, FOX_POLICY_ID)
+          const addresses = await blockfrost.getWalletAddressesWithStakeKey(stakeKey)
+
+          wallet = new Wallet({
+            stakeKey,
+            addresses,
+            assets: {
+              [FOX_POLICY_ID]: assets,
+            },
           })
+
+          await wallet.save()
         }
 
         return res.status(200).json(wallet)

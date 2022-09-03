@@ -37,6 +37,22 @@ class Blockfrost {
     })
   }
 
+  getAssetWithAssetId = (assetId) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        console.log('Fetching asset with asset ID:', assetId)
+
+        const data = await this.api.assetsById(assetId)
+
+        console.log('Fetched asset:', data)
+
+        return resolve(data)
+      } catch (e) {
+        return reject(e)
+      }
+    })
+  }
+
   getAssetIdsWithStakeKey = (stakeKey, policyId) => {
     return new Promise(async (resolve, reject) => {
       try {
@@ -54,22 +70,6 @@ class Blockfrost {
         console.log(`Fetched ${assetIds.length} asset IDs`)
 
         return resolve(assetIds)
-      } catch (e) {
-        return reject(e)
-      }
-    })
-  }
-
-  getAssetWithAssetId = (assetId) => {
-    return new Promise(async (resolve, reject) => {
-      try {
-        console.log('Fetching asset with asset ID:', assetId)
-
-        const data = await this.api.assetsById(assetId)
-
-        console.log('Fetched asset:', data)
-
-        return resolve(data)
       } catch (e) {
         return reject(e)
       }
@@ -102,6 +102,22 @@ class Blockfrost {
 
         console.log('Fetched stake key:', stakeKey)
         return resolve(stakeKey)
+      } catch (error) {
+        return reject(error)
+      }
+    })
+  }
+
+  getWalletAddressesWithStakeKey = (stakeKey) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        console.log('Fetching wallet addresses with stakey key:', stakeKey)
+
+        const data = await this.api.accountsAddressesAll(stakeKey)
+        const payload = data.map(({ address }) => address)
+
+        console.log(`Fetched ${payload.length} addresses`)
+        return resolve(payload)
       } catch (error) {
         return reject(error)
       }

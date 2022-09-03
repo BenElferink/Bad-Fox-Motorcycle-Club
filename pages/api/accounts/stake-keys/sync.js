@@ -69,10 +69,24 @@ export default async (req, res) => {
 
           const wallet = await Wallet.findOne({ stakeKey })
 
-          if (wallet) {
-            const assetIds = await blockfrost.getAssetIdsWithStakeKey(stakeKey, FOX_POLICY_ID)
-            console.log(`Found ${assetIds.length} assets`)
+          if (!wallet) {
+            const assets = await blockfrost.getAssetIdsWithStakeKey(stakeKey, FOX_POLICY_ID)
+            const addresses = await blockfrost.getWalletAddressesWithStakeKey(stakeKey)
 
+            const newWallet = new Wallet({
+              stakeKey,
+              addresses,
+              assets: {
+                [FOX_POLICY_ID]: assets,
+              },
+            })
+
+            await newWallet.save()
+          } else {
+            const assetIds = await blockfrost.getAssetIdsWithStakeKey(stakeKey, FOX_POLICY_ID)
+            const addresses = await blockfrost.getWalletAddressesWithStakeKey(stakeKey)
+
+            wallet.addresses = addresses
             wallet.assets[FOX_POLICY_ID] = assetIds
 
             await wallet.save()
