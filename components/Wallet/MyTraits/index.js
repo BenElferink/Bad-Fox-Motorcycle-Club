@@ -15,7 +15,7 @@ import styles from './MyWalletTraits.module.css'
 
 const MyWalletTraits = () => {
   const { isMobile } = useScreenSize()
-  const { myAssets, account } = useAuth()
+  const { myAssets } = useAuth()
 
   const [selectedCategory, setSelectedCategory] = useState('')
   const [showAllTraits, setShowAllTraits] = useState(false)
@@ -47,65 +47,71 @@ const MyWalletTraits = () => {
 
   const [showClayTraitSets, setShowClayTraitSets] = useState(false)
   const [showAllClayTraitSets, setShowAllClayTraitSets] = useState(false)
-  const [clayData, setClayData] = useState({})
+  const [sets, setSets] = useState({})
+  const [totalShares, setTotalShares] = useState(0)
+  const [totalTokens, setTotalTokens] = useState(0)
   const [clayLoading, setClayLoading] = useState(false)
 
   useEffect(() => {
     ;(async () => {
       setClayLoading(true)
       try {
+        setTotalShares(0)
+        setTotalTokens(0)
+
         const { data } = await axios.get('/api/utilities/clay')
-        setClayData(data)
+        const mappedSets = {}
+
+        for (const roleName in data.traitSets ?? {}) {
+          const { set, shares, tokens } = data.traitSets[roleName]
+          const thisSet = []
+          let ownsThisSet = true
+          let leastHeldTrait = 0
+
+          for (const setItem of set) {
+            const { traitCategory, traitLabel } = setItem
+            let ownedTraitCount = 0
+
+            myAssets.forEach((asset) => {
+              if (asset.attributes[traitCategory] === traitLabel) {
+                ownedTraitCount++
+              }
+            })
+
+            thisSet.push({
+              ...setItem,
+              ownedTraitCount,
+            })
+
+            if (ownedTraitCount === 0) {
+              ownsThisSet = false
+            }
+
+            if (ownedTraitCount < leastHeldTrait || leastHeldTrait === 0) {
+              leastHeldTrait = ownedTraitCount
+            }
+          }
+
+          mappedSets[roleName] = {
+            ...data.traitSets[roleName],
+            set: thisSet,
+            ownsThisSet,
+            ownedSetCount: ownsThisSet ? leastHeldTrait : 0,
+          }
+
+          if (ownsThisSet) {
+            setTotalShares((prev) => prev + leastHeldTrait * shares)
+            setTotalTokens((prev) => prev + Math.floor(leastHeldTrait * tokens))
+          }
+        }
+
+        setSets(mappedSets)
       } catch (error) {
         console.error(error)
       }
       setClayLoading(false)
     })()
   }, [])
-
-  const renderClayTraits = () => {
-    const mappedTraitSets = {}
-
-    for (const roleName in clayData.traitSets ?? {}) {
-      const { set } = clayData.traitSets[roleName]
-      const thisSet = []
-      let ownsThisSet = true
-      let leastHeldTrait = 0
-
-      for (const setItem of set) {
-        const { traitCategory, traitLabel } = setItem
-        let ownedTraitCount = 0
-
-        myAssets.forEach((asset) => {
-          if (asset.attributes[traitCategory] === traitLabel) {
-            ownedTraitCount++
-          }
-        })
-
-        thisSet.push({
-          ...setItem,
-          ownedTraitCount,
-        })
-
-        if (ownedTraitCount === 0) {
-          ownsThisSet = false
-        }
-
-        if (ownedTraitCount < leastHeldTrait || leastHeldTrait === 0) {
-          leastHeldTrait = ownedTraitCount
-        }
-      }
-
-      mappedTraitSets[roleName] = {
-        ...clayData.traitSets[roleName],
-        set: thisSet,
-        ownsThisSet,
-        ownedSetCount: ownsThisSet ? leastHeldTrait : 0,
-      }
-    }
-
-    return mappedTraitSets
-  }
 
   return (
     <div className='flex-col'>
@@ -159,12 +165,17 @@ const MyWalletTraits = () => {
             showIcons={false}
             state={{ value: showAllClayTraitSets, setValue: setShowAllClayTraitSets }}
           />
+          <p style={{ textAlign: 'center' }}>
+            Total shares: {totalShares}
+            <br />
+            Total tokens: {totalTokens}
+          </p>
         </div>
 
         {clayLoading ? (
           <Loader color='var(--white)' />
         ) : (
-          Object.entries(renderClayTraits())
+          Object.entries(sets)
             .filter((item) => showAllClayTraitSets || item[1].ownsThisSet)
             .sort((a, b) => b[1].shares - a[1].shares)
             .sort((a, b) => (showAllClayTraitSets ? 0 : b[1].ownedSetCount - a[1].ownedSetCount))
@@ -176,7 +187,9 @@ const MyWalletTraits = () => {
                   `Shares: ${shares}`,
                   `Token Value: ${tokens.toFixed(2)}`,
                   `Possibilities: ${occupied} / ${possibilities}`,
-                  `Owned: ${ownedSetCount} sets || ${ownedSetCount * shares} shares || ${(ownedSetCount * tokens).toFixed(2)} tokens`,
+                  `Owned: ${ownedSetCount} sets || ${ownedSetCount * shares} shares || ${(
+                    ownedSetCount * tokens
+                  ).toFixed(2)} tokens`,
                 ]}
                 set={set}
               />
