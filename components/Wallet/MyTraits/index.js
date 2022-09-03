@@ -101,7 +101,7 @@ const MyWalletTraits = () => {
 
           if (ownsThisSet) {
             setTotalShares((prev) => prev + leastHeldTrait * shares)
-            setTotalTokens((prev) => prev + Math.floor(leastHeldTrait * tokens))
+            setTotalTokens((prev) => prev + leastHeldTrait * tokens)
           }
         }
 
@@ -168,7 +168,7 @@ const MyWalletTraits = () => {
           <p style={{ textAlign: 'center' }}>
             Total shares: {totalShares}
             <br />
-            Total tokens: {totalTokens}
+            Total tokens: {Math.floor(totalTokens)}
           </p>
         </div>
 
