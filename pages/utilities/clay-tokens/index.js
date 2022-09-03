@@ -61,8 +61,6 @@ export default function Page({}) {
             Total shares = {clayData.ownedShares ?? 0} / {clayData.maxShares ?? 0}
             <br />
             Tokens per share = {(clayData.tokensPerShare ?? 0).toFixed(2)}
-            <br />
-            Total possibilities = {clayData.ownedPossibilities ?? 0} / {clayData.maxPossibilities ?? 0}
           </p>
         </Section>
 
