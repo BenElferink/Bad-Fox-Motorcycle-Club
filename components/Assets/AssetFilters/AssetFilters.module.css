@@ -22,9 +22,9 @@
   .optionsWrapper {
     width: 300px !important;
     height: calc(100vh - 7.5rem);
-    top: 7.5rem;
-    padding: 0.5rem 0;
+    top: 7.5rem !important;
 
+    padding: 0.5rem 0;
     background-color: var(--charcoal);
     border-radius: 0 1rem 1rem 0;
 
