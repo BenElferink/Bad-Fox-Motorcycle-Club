@@ -20,7 +20,7 @@
 
 @media only screen and (min-width: 768px) {
   .optionsWrapper {
-    width: 300px;
+    width: 300px !important;
     height: calc(100vh - 7.5rem);
     top: 7.5rem;
     padding: 0.5rem 0;
