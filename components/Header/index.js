@@ -6,9 +6,9 @@ import { MenuRounded } from '@mui/icons-material'
 import Modal from '../Modal'
 import BaseButton from '../BaseButton'
 // import MintMenu from './MintMenu'
-import MarketMenu from './MarketMenu'
-import CatalogMenu from './CatalogMenu'
-import UtilityMenu from './UtilityMenu'
+import UtilitiesMenu from './UtilitiesMenu'
+import CollectionsMenu from './CollectionsMenu'
+import TraitsMenu from './TraitsMenu'
 import WalletMenu from './WalletMenu'
 import Socials from './Socials'
 import { HOME, MAP, TEAM } from '../../constants/scroll-nav'
@@ -125,9 +125,9 @@ export default function Header({ scrollTo = () => null }) {
           {isHome ? <BaseButton label='Team' onClick={clickTeam} transparent style={jsStyles.btn} /> : null}
 
           {/* <MintMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} /> */}
-          <MarketMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
-          <CatalogMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
-          <UtilityMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
+          <UtilitiesMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
+          <CollectionsMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
+          <TraitsMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
           <WalletMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
           <Socials closeMenu={closeMenu} />
         </nav>

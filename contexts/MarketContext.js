@@ -1,6 +1,5 @@
 import { createContext, useContext, useState } from 'react'
 import axios from 'axios'
-import { FOX_POLICY_ID } from '../constants/policy-ids'
 
 // init context
 const MarketContext = createContext()
@@ -11,35 +10,35 @@ export function useMarket() {
 }
 
 // export the provider (handle all the logic here)
-export function MarketProvider({ children }) {
-  const [allListedFoxes, setAllListedFoxes] = useState([])
-  const [recentlyListedFoxes, setRecentlyListedFoxes] = useState([])
-  const [recentlySoldFoxes, setRecentlySoldFoxes] = useState([])
+export function MarketProvider({ children, policyId }) {
+  const [allListed, setAllListed] = useState([])
+  const [recentlyListed, setRecentlyListed] = useState([])
+  const [recentlySold, setRecentlySold] = useState([])
 
-  const fetchAndSetAllFoxes = async () => {
+  const fetchAndSetAllListed = async () => {
     try {
-      const res = await axios.get(`/api/market/${FOX_POLICY_ID}`)
-      setAllListedFoxes(res.data)
+      const res = await axios.get(`/api/market/${policyId}`)
+      setAllListed(res.data)
     } catch (error) {
       console.error(error)
-      setAllListedFoxes([])
+      setAllListed([])
     }
   }
 
-  const fetchAndSetRecentFoxes = async ({ sold = false, page = 1 }) => {
+  const fetchAndSetRecents = async ({ sold = false, page = 1 }) => {
     try {
-      const { data } = await axios.get(`/api/market/${FOX_POLICY_ID}/recent?sold=${sold}&page=${page}`)
+      const { data } = await axios.get(`/api/market/${policyId}/recent?sold=${sold}&page=${page}`)
       if (sold) {
-        setRecentlySoldFoxes((prev) => [...prev, ...data])
+        setRecentlySold((prev) => [...prev, ...data])
       } else {
-        setRecentlyListedFoxes((prev) => [...prev, ...data])
+        setRecentlyListed((prev) => [...prev, ...data])
       }
     } catch (error) {
       console.error(error)
       if (sold) {
-        setRecentlySoldFoxes([])
+        setRecentlySold([])
       } else {
-        setRecentlyListedFoxes([])
+        setRecentlyListed([])
       }
     }
   }
@@ -47,11 +46,12 @@ export function MarketProvider({ children }) {
   return (
     <MarketContext.Provider
       value={{
-        fetchAndSetAllFoxes,
-        fetchAndSetRecentFoxes,
-        allListedFoxes,
-        recentlySoldFoxes,
-        recentlyListedFoxes,
+        policyId,
+        allListed,
+        recentlySold,
+        recentlyListed,
+        fetchAndSetRecents,
+        fetchAndSetAllListed,
       }}
     >
       {children}

@@ -4,7 +4,7 @@ import Account from '../../../../models/Account'
 import Wallet from '../../../../models/Wallet'
 import getDiscordMember from '../../../../functions/getDiscordMember'
 import { ADMIN_CODE } from '../../../../constants/api-keys'
-import { FOX_POLICY_ID } from '../../../../constants/policy-ids'
+import { BAD_FOX_POLICY_ID } from '../../../../constants/policy-ids'
 import { DISCORD_ROLE_ID_OG } from '../../../../constants/discord'
 
 export default async (req, res) => {
@@ -70,24 +70,24 @@ export default async (req, res) => {
           const wallet = await Wallet.findOne({ stakeKey })
 
           if (!wallet) {
-            const assets = await blockfrost.getAssetIdsWithStakeKey(stakeKey, FOX_POLICY_ID)
+            const assets = await blockfrost.getAssetIdsWithStakeKey(stakeKey, BAD_FOX_POLICY_ID)
             const addresses = await blockfrost.getWalletAddressesWithStakeKey(stakeKey)
 
             const newWallet = new Wallet({
               stakeKey,
               addresses,
               assets: {
-                [FOX_POLICY_ID]: assets,
+                [BAD_FOX_POLICY_ID]: assets,
               },
             })
 
             await newWallet.save()
           } else {
-            const assetIds = await blockfrost.getAssetIdsWithStakeKey(stakeKey, FOX_POLICY_ID)
+            const assetIds = await blockfrost.getAssetIdsWithStakeKey(stakeKey, BAD_FOX_POLICY_ID)
             const addresses = await blockfrost.getWalletAddressesWithStakeKey(stakeKey)
 
             wallet.addresses = addresses
-            wallet.assets[FOX_POLICY_ID] = assetIds
+            wallet.assets[BAD_FOX_POLICY_ID] = assetIds
 
             await wallet.save()
           }

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { FOX_POLICY_ID } from '../../constants/policy-ids'
+import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
 import { GITHUB_MEDIA_URL } from '../../constants/api-urls'
 import styles from './Footer.module.css'
 
@@ -14,7 +14,7 @@ export default function Footer() {
       <p>
         Fox Policy ID:
         <br />
-        {FOX_POLICY_ID}
+        {BAD_FOX_POLICY_ID}
       </p>
     </div>
   )

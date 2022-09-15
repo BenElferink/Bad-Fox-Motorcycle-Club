@@ -6,7 +6,7 @@ import Section from '../../Section'
 import Modal from '../../Modal'
 import Loader from '../../Loader'
 import BaseButton from '../../BaseButton'
-import { FOX_POLICY_ID } from '../../../constants/policy-ids'
+import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
 import styles from './MintPortal.module.css'
 
 const MintScreen = ({ role = 'None', maxMints = 0, mintPrice = 0, mintAddress = 'None', loading = false }) => {
@@ -59,7 +59,7 @@ export default function MintPortal() {
       setFetching(true)
 
       try {
-        const res = await axios.get(`/api/mint-address/${FOX_POLICY_ID}`)
+        const res = await axios.get(`/api/mint-address/${BAD_FOX_POLICY_ID}`)
 
         setMintObj(res.data)
       } catch (error) {

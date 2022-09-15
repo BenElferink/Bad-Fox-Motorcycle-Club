@@ -1,6 +1,6 @@
 const foxTraitsJsonFile = require('../../data/traits/fox')
 const { jpgStore } = require('../../utils/jpgStore')
-const { FOX_POLICY_ID } = require('../../constants/policy-ids')
+const { BAD_FOX_POLICY_ID } = require('../../constants/policy-ids')
 
 const traitsData = (() => {
   const payload = {}
@@ -14,7 +14,7 @@ const traitsData = (() => {
 
 const getFoxFloor = async () => {
   const floorData = {}
-  const listings = await jpgStore.getListings({ policyId: FOX_POLICY_ID })
+  const listings = await jpgStore.getListings({ policyId: BAD_FOX_POLICY_ID })
 
   console.log('Searching for floor prices')
   for (const category in traitsData) {

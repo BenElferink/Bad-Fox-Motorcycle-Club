@@ -3,7 +3,7 @@ import { blockfrost } from '../../../../utils/blockfrost'
 import Wallet from '../../../../models/Wallet'
 // import { blockfrost } from '../../../../utils/blockfrost'
 // import { BLOCKFROST_WEBHOOK_AUTH_TOKEN } from '../../../../constants/api-keys'
-import { FOX_POLICY_ID } from '../../../../constants/policy-ids'
+import { BAD_FOX_POLICY_ID } from '../../../../constants/policy-ids'
 import { EXCLUDE_ADDRESSES } from '../../../../constants/addresses'
 
 const connectWithRetry = async () => {
@@ -56,7 +56,7 @@ export default async (req, res) => {
           console.log(`Scanning payload #${idx + 1} with TX hash: ${payloadItem.tx.hash}`)
 
           payloadItem.tx.output_amount.forEach((outputAmountItem) => {
-            if (outputAmountItem.unit.indexOf(FOX_POLICY_ID) === 0) {
+            if (outputAmountItem.unit.indexOf(BAD_FOX_POLICY_ID) === 0) {
               assetIds.push(outputAmountItem.unit)
             }
           })
@@ -115,12 +115,12 @@ export default async (req, res) => {
                 fromWallet = await findOneWithRetry(Wallet, { stakeKey: sKey })
 
                 if (!fromWallet) {
-                  const assets = await blockfrost.getAssetIdsWithStakeKey(sKey, FOX_POLICY_ID)
+                  const assets = await blockfrost.getAssetIdsWithStakeKey(sKey, BAD_FOX_POLICY_ID)
                   const newWallet = new Wallet({
                     stakeKey: sKey,
                     addresses: [from],
                     assets: {
-                      [FOX_POLICY_ID]: assets.filter((str) => str !== assetId),
+                      [BAD_FOX_POLICY_ID]: assets.filter((str) => str !== assetId),
                     },
                   })
 
@@ -129,14 +129,14 @@ export default async (req, res) => {
                   fromWallet.addresses == fromWallet.addresses.includes(from)
                     ? fromWallet.addresses
                     : [...fromWallet.addresses, from]
-                  fromWallet.assets[FOX_POLICY_ID] = fromWallet.assets[FOX_POLICY_ID].filter(
+                  fromWallet.assets[BAD_FOX_POLICY_ID] = fromWallet.assets[BAD_FOX_POLICY_ID].filter(
                     (str) => str !== assetId
                   )
                 }
 
                 await saveWithRetry(fromWallet)
               } else {
-                fromWallet.assets[FOX_POLICY_ID] = fromWallet.assets[FOX_POLICY_ID].filter(
+                fromWallet.assets[BAD_FOX_POLICY_ID] = fromWallet.assets[BAD_FOX_POLICY_ID].filter(
                   (str) => str !== assetId
                 )
 
@@ -154,12 +154,12 @@ export default async (req, res) => {
                 toWallet = await findOneWithRetry(Wallet, { stakeKey: sKey })
 
                 if (!toWallet) {
-                  const assets = await blockfrost.getAssetIdsWithStakeKey(sKey, FOX_POLICY_ID)
+                  const assets = await blockfrost.getAssetIdsWithStakeKey(sKey, BAD_FOX_POLICY_ID)
                   const newWallet = new Wallet({
                     stakeKey: sKey,
                     addresses: [to],
                     assets: {
-                      [FOX_POLICY_ID]: assets,
+                      [BAD_FOX_POLICY_ID]: assets,
                     },
                   })
 
@@ -168,16 +168,16 @@ export default async (req, res) => {
                   toWallet.addresses == toWallet.addresses.includes(to)
                     ? toWallet.addresses
                     : [...toWallet.addresses, to]
-                  toWallet.assets[FOX_POLICY_ID] = toWallet.assets[FOX_POLICY_ID].includes(assetId)
-                    ? toWallet.assets[FOX_POLICY_ID]
-                    : [...toWallet.assets[FOX_POLICY_ID], assetId]
+                  toWallet.assets[BAD_FOX_POLICY_ID] = toWallet.assets[BAD_FOX_POLICY_ID].includes(assetId)
+                    ? toWallet.assets[BAD_FOX_POLICY_ID]
+                    : [...toWallet.assets[BAD_FOX_POLICY_ID], assetId]
 
                   await saveWithRetry(toWallet)
                 }
               } else {
-                toWallet.assets[FOX_POLICY_ID] = toWallet.assets[FOX_POLICY_ID].includes(assetId)
-                  ? toWallet.assets[FOX_POLICY_ID]
-                  : [...toWallet.assets[FOX_POLICY_ID], assetId]
+                toWallet.assets[BAD_FOX_POLICY_ID] = toWallet.assets[BAD_FOX_POLICY_ID].includes(assetId)
+                  ? toWallet.assets[BAD_FOX_POLICY_ID]
+                  : [...toWallet.assets[BAD_FOX_POLICY_ID], assetId]
 
                 await saveWithRetry(toWallet)
               }

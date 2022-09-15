@@ -1,7 +1,7 @@
 import { useScreenSize } from '../../../../contexts/ScreenSizeContext'
 import BiggestHolders from './BiggestHolders'
 import AmountPerHolder from './AmountPerHolder'
-import { FOX_POLICY_ID } from '../../../../constants/policy-ids'
+import { BAD_FOX_POLICY_ID } from '../../../../constants/policy-ids'
 import { EXCLUDE_ADDRESSES } from '../../../../constants/addresses'
 
 const Holders = ({ chartWidth, wallets }) => {
@@ -12,7 +12,7 @@ const Holders = ({ chartWidth, wallets }) => {
       ?.filter((item) => !item.addresses.some((addr) => EXCLUDE_ADDRESSES.includes(addr)))
       ?.map((item) => ({
         stakeKey: item.stakeKey,
-        count: item.assets[FOX_POLICY_ID]?.length,
+        count: item.assets[BAD_FOX_POLICY_ID]?.length,
       }))
       .sort((a, b) => b.count - a.count) ?? []
 

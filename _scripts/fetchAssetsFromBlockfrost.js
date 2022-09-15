@@ -5,10 +5,10 @@ const { blockfrost } = require('../utils/blockfrost')
 const foxAssetsFile = require('../data/assets/fox')
 const traitsFile = require('../data/traits/fox')
 const fromHex = require('../functions/formatters/hex/fromHex')
-const { FOX_POLICY_ID } = require('../constants/policy-ids')
+const { BAD_FOX_POLICY_ID } = require('../constants/policy-ids')
 const { CNFT_TOOLS_API } = require('../constants/api-urls')
 
-const POLICY_ID = FOX_POLICY_ID
+const POLICY_ID = BAD_FOX_POLICY_ID
 const JSON_FILE_NAME = 'fox.json'
 const ASSET_DISPLAY_NAME_PREFIX = 'Bad Fox #'
 

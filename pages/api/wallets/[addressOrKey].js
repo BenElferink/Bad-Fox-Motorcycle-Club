@@ -1,7 +1,7 @@
 import connectDB from '../../../utils/mongo'
 import { blockfrost } from '../../../utils/blockfrost'
 import Wallet from '../../../models/Wallet'
-import { FOX_POLICY_ID } from '../../../constants/policy-ids'
+import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
 
 export default async (req, res) => {
   try {
@@ -31,14 +31,14 @@ export default async (req, res) => {
             stakeKey = await blockfrost.getStakeKeyWithWalletAddress(walletAddress)
           }
 
-          const assets = await blockfrost.getAssetIdsWithStakeKey(stakeKey, FOX_POLICY_ID)
+          const assets = await blockfrost.getAssetIdsWithStakeKey(stakeKey, BAD_FOX_POLICY_ID)
           const addresses = await blockfrost.getWalletAddressesWithStakeKey(stakeKey)
 
           wallet = new Wallet({
             stakeKey,
             addresses,
             assets: {
-              [FOX_POLICY_ID]: assets,
+              [BAD_FOX_POLICY_ID]: assets,
             },
           })
 

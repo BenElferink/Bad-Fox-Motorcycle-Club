@@ -1,27 +1,33 @@
 import dynamic from 'next/dynamic'
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../../contexts/AuthContext'
-import foxAssetsFile from '../../../data/assets/fox'
-import getDatesFromFloorData from '../../../functions/charts/getDatesFromFloorData'
-import getPortfolioSeries from '../../../functions/charts/getPortfolioSeries'
+import { useScreenSize } from '../../../contexts/ScreenSizeContext'
 import formatBigNumber from '../../../functions/formatters/formatBigNumber'
+import getPortfolioSeries from '../../../functions/charts/getPortfolioSeries'
+import getDatesFromFloorData from '../../../functions/charts/getDatesFromFloorData'
+import Modal from '../../Modal'
 import Toggle from '../../Toggle'
 import BaseButton from '../../BaseButton'
-import Modal from '../../Modal'
-import AssetCard from '../../AssetCard'
+import AssetCard from '../../Assets/AssetCard'
 import { ADA_SYMBOL } from '../../../constants/ada'
 import styles from './MyPortfolio.module.css'
+import foxAssetsFile from '../../../data/assets/fox'
 const ApexChart = dynamic(() => import('react-apexcharts'), { ssr: false })
 
 const LOCAL_STORAGE_KEY = 'BadFoxMC_AssetsPrices'
 
 const PortfolioChart = ({ chartWidth, floorSnapshots }) => {
   const { myAssets } = useAuth()
+  const { isMobile } = useScreenSize()
 
-  const [isMonth, setIsMonth] = useState(false)
+  const [isMonth, setIsMonth] = useState(!isMobile)
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [pricedAssets, setPricedAssets] = useState({})
   const pricedAssetsArr = Object.values(pricedAssets)
+
+  useEffect(() => {
+    setIsMonth(!isMobile)
+  }, [isMobile])
 
   const getValuesForAttributes = (itemAttributes) => {
     let floor = 0

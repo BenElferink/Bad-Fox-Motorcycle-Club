@@ -5,7 +5,7 @@ import PortfolioChart from './PortfolioChart'
 import OnChainData from './OnChainData'
 import FloorChart from './FloorChart'
 import Holders from './Holders'
-import { FOX_POLICY_ID } from '../../../constants/policy-ids'
+import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
 import styles from './MyPortfolio.module.css'
 
 const MyPortfolio = () => {
@@ -24,7 +24,7 @@ const MyPortfolio = () => {
   useEffect(() => {
     ;(async () => {
       try {
-        const { data } = await axios.get(`/api/snapshots/floor-prices/${FOX_POLICY_ID}`)
+        const { data } = await axios.get(`/api/snapshots/floor-prices/${BAD_FOX_POLICY_ID}`)
 
         setFloorSnapshots(data.snapshots)
       } catch (error) {

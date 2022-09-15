@@ -13,7 +13,7 @@ const ROYALTY_SHARE = VOLUME * ROYALTY_FEE * ROYALTY_TO_GIVE
 const run = async () => {
   let unlistedAssetsCount = 0
 
-  const policyId = POLICY_IDS.FOX_POLICY_ID
+  const policyId = POLICY_IDS.BAD_FOX_POLICY_ID
   const assets = foxAssetsFile.assets
   const holders = []
 
@@ -65,7 +65,7 @@ const run = async () => {
       let traitCount = 0
       let traitPayout = 0
 
-      if (policyId === POLICY_IDS.FOX_POLICY_ID) {
+      if (policyId === POLICY_IDS.BAD_FOX_POLICY_ID) {
         traitPayout = 10
 
         for (const assetId of wallet.assets) {

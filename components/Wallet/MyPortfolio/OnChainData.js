@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import AssetCard from '../../AssetCard'
+import AssetCard from '../../Assets/AssetCard'
 import formatBigNumber from '../../../functions/formatters/formatBigNumber'
 import { BINANCE_API, OPEN_CNFT_API } from '../../../constants/api-urls'
-import { FOX_POLICY_ID } from '../../../constants/policy-ids'
+import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
 
 const OnChainData = () => {
   const [onChainData, setOnChainData] = useState({})
@@ -12,7 +12,7 @@ const OnChainData = () => {
 
   useEffect(() => {
     axios
-      .get(`${OPEN_CNFT_API}/policy/${FOX_POLICY_ID}`)
+      .get(`${OPEN_CNFT_API}/policy/${BAD_FOX_POLICY_ID}`)
       .then(({ data }) => setOnChainData(data))
       .catch((error) => console.error(error))
 

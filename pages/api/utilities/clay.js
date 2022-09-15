@@ -3,7 +3,7 @@ import Wallet from '../../../models/Wallet'
 import foxAssetsFile from '../../../data/assets/fox'
 // import traitsData from '../../../data/traits/fox'
 import clayTraitSetsFile from '../../../data/clay-trait-sets'
-import { FOX_POLICY_ID } from '../../../constants/policy-ids'
+import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
 import { BAD_FOX_WALLET } from '../../../constants/addresses'
 import { blockfrost } from '../../../utils/blockfrost'
 
@@ -69,7 +69,7 @@ export default async (req, res) => {
         const wallets = await Wallet.find()
 
         for (const wallet of wallets) {
-          const assetsOfThisWallet = wallet.assets[FOX_POLICY_ID].map((assetId) =>
+          const assetsOfThisWallet = wallet.assets[BAD_FOX_POLICY_ID].map((assetId) =>
             foxAssetsFile.assets.find((asset) => asset.assetId === assetId)
           )
 

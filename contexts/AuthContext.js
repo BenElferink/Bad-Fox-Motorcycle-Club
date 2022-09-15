@@ -4,7 +4,7 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import foxAssetsFile from '../data/assets/fox'
 import { ADMIN_CODE } from '../constants/api-keys'
-import { FOX_POLICY_ID } from '../constants/policy-ids'
+import { BAD_FOX_POLICY_ID } from '../constants/policy-ids'
 
 const USER_ID_KEY = 'BadFoxMC_DiscordUserID'
 
@@ -96,9 +96,9 @@ export function AuthProvider({ children }) {
             const stakeKey = accountRes.data.stakeKeys[sIdx]
             const walletsRes = await axios.get(`/api/wallets/${stakeKey}`)
 
-            if (walletsRes.data?.assets[FOX_POLICY_ID]?.length) {
-              for (let aIdx = 0; aIdx < walletsRes.data.assets[FOX_POLICY_ID].length; aIdx++) {
-                const assetId = walletsRes.data.assets[FOX_POLICY_ID][aIdx]
+            if (walletsRes.data?.assets[BAD_FOX_POLICY_ID]?.length) {
+              for (let aIdx = 0; aIdx < walletsRes.data.assets[BAD_FOX_POLICY_ID].length; aIdx++) {
+                const assetId = walletsRes.data.assets[BAD_FOX_POLICY_ID][aIdx]
 
                 setMyAssets((prev) => [...prev, foxAssetsFile.assets.find((asset) => asset.assetId === assetId)])
               }

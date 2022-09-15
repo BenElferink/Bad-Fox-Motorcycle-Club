@@ -1,7 +1,7 @@
 import connectDB from '../../utils/mongo'
 import { blockfrost } from '../../utils/blockfrost'
 import Transaction from '../../models/Transaction'
-import { FOX_POLICY_ID } from '../../constants/policy-ids'
+import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
 import { JPG_STORE_WALLET } from '../../constants/addresses'
 
 export default async (req, res) => {
@@ -65,7 +65,7 @@ export default async (req, res) => {
         utxos.inputs.forEach(({ address, amount }) => {
           if (address === JPG_STORE_WALLET) {
             amount.forEach(({ unit }) => {
-              if (unit.indexOf(FOX_POLICY_ID) === 0) {
+              if (unit.indexOf(BAD_FOX_POLICY_ID) === 0) {
                 boughtAsset = unit
               }
             })

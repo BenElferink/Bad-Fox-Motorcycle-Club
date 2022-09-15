@@ -1,13 +1,13 @@
 const axios = require('axios')
 const foxAssetsFile = require('../data/assets/fox')
 const { JPG_API } = require('../constants/api-urls')
-const { FOX_POLICY_ID } = require('../constants/policy-ids')
+const { BAD_FOX_POLICY_ID } = require('../constants/policy-ids')
 
 class JpgStore {
   constructor() {}
 
   getRecents = (options = {}) => {
-    const policyId = options.policyId ?? FOX_POLICY_ID
+    const policyId = options.policyId ?? BAD_FOX_POLICY_ID
     const sold = options.sold ?? false
     const page = options.page ?? 1
     const uri = `${JPG_API}/policy/${policyId}/${sold ? 'sales' : 'listings'}?page=${page}`
@@ -68,7 +68,7 @@ class JpgStore {
   }
 
   getListings = (options = {}) => {
-    const policyId = options.policyId ?? FOX_POLICY_ID
+    const policyId = options.policyId ?? BAD_FOX_POLICY_ID
     const size = options.size ?? 6000
     const uri = `${JPG_API}/search/tokens?policyIds=["${policyId}"]&saleType=buy-now&sortBy=price-low-to-high&verified=default&size=${size}`
     // &saleType=default

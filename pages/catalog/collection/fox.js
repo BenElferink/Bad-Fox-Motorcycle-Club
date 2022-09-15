@@ -1,13 +1,13 @@
-import Header from '../../../components/Header'
-import Footer from '../../../components/Footer'
-import FoxCollectionCatalog from '../../../components/Catalogs/Collection/Fox'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
 
 export default function Page() {
-  return (
-    <div className='App flex-col'>
-      <Header />
-      <FoxCollectionCatalog />
-      <Footer />
-    </div>
-  )
+  const router = useRouter()
+
+  useEffect(() => {
+    router.push(`/collections/${BAD_FOX_POLICY_ID}`)
+  }, [])
+
+  return <div className='App' />
 }

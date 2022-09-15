@@ -5,7 +5,8 @@ import Footer from '../../../components/Footer'
 import Landing from '../../../components/Landing'
 import DiscordFetchingAccount from '../../../components/DiscordAuth/FetchingAccount'
 import DiscordNotAuthorized from '../../../components/DiscordAuth/NotAuthorized'
-import MyWalletTraits from '../../../components/Wallet/MyTraits'
+import MyTraits from '../../../components/Traits/MyTraits'
+import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
 
 export default function Page() {
   const { loading, account, getAccount } = useAuth()
@@ -26,7 +27,7 @@ export default function Page() {
           <DiscordFetchingAccount />
         </Landing>
       ) : account ? (
-        <MyWalletTraits />
+        <MyTraits policyId={BAD_FOX_POLICY_ID} />
       ) : (
         <Landing>
           <DiscordNotAuthorized />

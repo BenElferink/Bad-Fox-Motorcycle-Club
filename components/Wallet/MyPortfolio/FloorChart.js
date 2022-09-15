@@ -1,11 +1,12 @@
 import dynamic from 'next/dynamic'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FormControl, MenuItem, Select } from '@mui/material'
-import traitsData from '../../../data/traits/fox'
-import getDatesFromFloorData from '../../../functions/charts/getDatesFromFloorData'
+import { useScreenSize } from '../../../contexts/ScreenSizeContext'
 import getFloorSeries from '../../../functions/charts/getFloorSeries'
+import getDatesFromFloorData from '../../../functions/charts/getDatesFromFloorData'
 import Toggle from '../../Toggle'
 import styles from './MyPortfolio.module.css'
+import traitsData from '../../../data/traits/fox'
 const ApexChart = dynamic(() => import('react-apexcharts'), { ssr: false })
 
 const TRAIT_CATEGORIES = Object.keys(traitsData)
@@ -13,8 +14,14 @@ const TRAIT_CATEGORIES = Object.keys(traitsData)
   .sort((a, b) => a.localeCompare(b))
 
 const FloorChart = ({ chartWidth, floorSnapshots }) => {
-  const [isMonth, setIsMonth] = useState(false)
+  const { isMobile } = useScreenSize()
+
+  const [isMonth, setIsMonth] = useState(!isMobile)
   const [selectedCategory, setSelectedCategory] = useState('Gender')
+
+  useEffect(() => {
+    setIsMonth(!isMobile)
+  }, [isMobile])
 
   return (
     <div className={styles.chartWrapper} style={{ minHeight: chartWidth - 100 }}>

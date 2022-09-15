@@ -4,7 +4,7 @@ import Account from '../../../../models/Account'
 import Wallet from '../../../../models/Wallet'
 import getDiscordMember from '../../../../functions/getDiscordMember'
 import { ADMIN_CODE } from '../../../../constants/api-keys'
-import { FOX_POLICY_ID } from '../../../../constants/policy-ids'
+import { BAD_FOX_POLICY_ID } from '../../../../constants/policy-ids'
 import { DISCORD_ROLE_ID_OG } from '../../../../constants/discord'
 
 export default async (req, res) => {
@@ -100,14 +100,14 @@ export default async (req, res) => {
         const wallet = await Wallet.findOne({ stakeKey: finalStakeKey })
 
         if (!wallet) {
-          const assets = await blockfrost.getAssetIdsWithStakeKey(finalStakeKey, FOX_POLICY_ID)
+          const assets = await blockfrost.getAssetIdsWithStakeKey(finalStakeKey, BAD_FOX_POLICY_ID)
           const addresses = await blockfrost.getWalletAddressesWithStakeKey(finalStakeKey)
 
           const newWallet = new Wallet({
             stakeKey: finalStakeKey,
             addresses,
             assets: {
-              [FOX_POLICY_ID]: assets,
+              [BAD_FOX_POLICY_ID]: assets,
             },
           })
 
