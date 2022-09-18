@@ -1,9 +1,9 @@
 const BAD_FOX_WALLET =
-  'addr1qy4nxzwlrszx2f9mnyl6wsn40qkjvtvq5jv98c75sfc28f6v0ekuq5fz4p0ffw5fk0vdm7762xt2cjmafe0upfhnuf5s3ymguq'
-const FOX_ROYALTY_WALLET =
-  'addr1q8w9urs982cqumsf8jduljp4x9n7fhdxsv040tfd2grh7xqt56vrsv6ydka57mltwrknh4deemxwax2xjytx5kvc8wtqdkmamz'
-const MOTORCYCLE_ROYALTY_WALLET =
-  'addr1q8jjrgm79a7957geyv5m9vyr7uxhg55g3q0mk9f8c79jxsyag8ncc5s08e9x02v6quczrczr4lsq8agncr8ktv0szquqptguxa'
+  'addr1q9p9yq4lz834729chxsdwa7utfp5wr754zkn6hltxz42m594guty04nldwlxnhw8xcgd5pndaaqzzu5qzyvnc8tlgdsqtazkyh'
+const BAD_FOX_ROYALTY_WALLET =
+  'addr1q9p9yq4lz834729chxsdwa7utfp5wr754zkn6hltxz42m594guty04nldwlxnhw8xcgd5pndaaqzzu5qzyvnc8tlgdsqtazkyh'
+const BAD_MOTORCYCLE_ROYALTY_WALLET =
+  'addr1qy3lxlrp726amewszc3rcs44h8rmm33vwj5ras8ya0g5t2rldmc2xmvksm8ec5z6w9rwzy5pnguk5dldfg43jalywges0jmdm5'
 
 const JPG_STORE_WALLET =
   'addr1zxj47sy4qxlktqzmkrw8dahe46gtv8seakrshsqz26qnvzypw288a4x0xf8pxgcntelxmyclq83s0ykeehchz2wtspksr3q9nx'
@@ -15,12 +15,12 @@ module.exports = {
   JPG_STORE_WALLET,
   CNFT_IO_WALLET,
   EPOCH_ART_WALLET,
-  FOX_ROYALTY_WALLET,
-  MOTORCYCLE_ROYALTY_WALLET,
+  BAD_FOX_ROYALTY_WALLET,
+  BAD_MOTORCYCLE_ROYALTY_WALLET,
   EXCLUDE_ADDRESSES: [
     BAD_FOX_WALLET,
-    FOX_ROYALTY_WALLET,
-    MOTORCYCLE_ROYALTY_WALLET,
+    BAD_FOX_ROYALTY_WALLET,
+    BAD_MOTORCYCLE_ROYALTY_WALLET,
     JPG_STORE_WALLET,
     CNFT_IO_WALLET,
     EPOCH_ART_WALLET,

@@ -6,7 +6,7 @@ import Footer from '../../../components/Footer'
 import Section from '../../../components/Section'
 import AssetCard from '../../../components/Assets/AssetCard'
 import formatBigNumber from '../../../functions/formatters/formatBigNumber'
-import { FOX_ROYALTY_WALLET, MOTORCYCLE_ROYALTY_WALLET } from '../../../constants/addresses'
+import { BAD_FOX_ROYALTY_WALLET, BAD_MOTORCYCLE_ROYALTY_WALLET } from '../../../constants/addresses'
 import { useScreenSize } from '../../../contexts/ScreenSizeContext'
 import { GITHUB_MEDIA_URL } from '../../../constants/api-urls'
 
@@ -73,7 +73,7 @@ export default function Page() {
                 `Total Volume: ${formatBigNumber(foxData.adaInVolume)}`,
                 `Royalties in Wallet: ${formatBigNumber(foxData.adaInWallet)}`,
               ]}
-              itemUrl={`https://pool.pm/${FOX_ROYALTY_WALLET}`}
+              itemUrl={`https://pool.pm/${BAD_FOX_ROYALTY_WALLET}`}
             />
 
             <div
@@ -96,7 +96,7 @@ export default function Page() {
                 `Total Volume: ${formatBigNumber(motorcycleData.adaInVolume)}`,
                 `Royalties in Wallet: ${formatBigNumber(motorcycleData.adaInWallet)}`,
               ]}
-              itemUrl={`https://pool.pm/${MOTORCYCLE_ROYALTY_WALLET}`}
+              itemUrl={`https://pool.pm/${BAD_MOTORCYCLE_ROYALTY_WALLET}`}
             />
 
             <div
