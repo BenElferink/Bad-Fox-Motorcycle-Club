@@ -156,9 +156,9 @@ const Wallet = () => {
     topRow: {
       width: '100vw',
       display: 'flex',
-      flexDirection: 'row-reverse',
+      flexDirection: 'row',
       flexWrap: 'wrap',
-      justifyContent: !isMobile && selectedPolicyId ? 'flex-end' : 'center',
+      justifyContent: !isMobile && selectedPolicyId ? 'flex-start' : 'center',
     },
     walletSummary: {
       width: selectedPolicyId ? 'unset' : '100%',
@@ -229,9 +229,11 @@ const Wallet = () => {
                         name={proj.name}
                         image={proj.image}
                         onClick={() => {
-                          setSelectedPolicyId(policyId)
-                          setPricedItems({})
-                          setFloorSnapshots([])
+                          if (selectedPolicyId !== policyId) {
+                            setSelectedPolicyId(policyId)
+                            setPricedItems({})
+                            setFloorSnapshots([])
+                          }
                         }}
                       />
                     ) : null
