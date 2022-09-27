@@ -1,8 +1,9 @@
 import React, { createContext, useState, useContext, useMemo, useEffect } from 'react'
 import { BrowserWallet } from '@martifylabs/mesh'
 import axios from 'axios'
-import { BAD_FOX_POLICY_ID } from '../constants/policy-ids'
 import { toast } from 'react-hot-toast'
+import { BAD_FOX_POLICY_ID } from '../constants/policy-ids'
+import foxAssetsFile from '../data/assets/fox.json'
 
 // https://mesh.martify.io/apis/browserwallet
 
