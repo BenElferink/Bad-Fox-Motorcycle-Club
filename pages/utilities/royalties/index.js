@@ -74,6 +74,7 @@ export default function Page() {
                 `Royalties in Wallet: ${formatBigNumber(foxData.adaInWallet)}`,
               ]}
               itemUrl={`https://pool.pm/${BAD_FOX_ROYALTY_WALLET}`}
+              style={{ width: 'unset' }}
             />
 
             <div
@@ -97,6 +98,7 @@ export default function Page() {
                 `Royalties in Wallet: ${formatBigNumber(motorcycleData.adaInWallet)}`,
               ]}
               itemUrl={`https://pool.pm/${BAD_MOTORCYCLE_ROYALTY_WALLET}`}
+              style={{ width: 'unset' }}
             />
 
             <div

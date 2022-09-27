@@ -10,7 +10,11 @@ function Modal({ open, onClose, style = {}, title = 'Title', children, onlyChild
   }
 
   return (
-    <MuiModal open={open} onClose={onClose} sx={{ display: 'grid', placeItems: 'center' }}>
+    <MuiModal
+      open={open}
+      onClose={onClose}
+      sx={{ display: 'grid', placeItems: 'center', backdropFilter: 'blur(1rem)' }}
+    >
       <Fade in={open}>
         <div
           className='scroll'
@@ -19,7 +23,7 @@ function Modal({ open, onClose, style = {}, title = 'Title', children, onlyChild
             maxWidth: '100vw',
             minWidth: isMobile ? '100vw' : '420px',
             width: isMobile ? '100%' : 'fit-content',
-            minHeight: isMobile ? '100vh' : '420px',
+            minHeight: isMobile ? '100vh' : 'fit-content',
             maxHeight: isMobile ? '100vh' : '90vh',
             padding: '1rem',
             borderRadius: isMobile ? '0' : '1rem',
@@ -31,9 +35,14 @@ function Modal({ open, onClose, style = {}, title = 'Title', children, onlyChild
             ...style,
           }}
         >
-          <IconButton sx={{ margin: '0.5rem', position: 'absolute', top: '0', right: '0', zIndex: '9' }} onClick={onClose}>
-            <CloseRounded color='error' />
-          </IconButton>
+          {onClose ? (
+            <IconButton
+              sx={{ margin: '0.5rem', position: 'absolute', top: '0', right: '0', zIndex: '9' }}
+              onClick={onClose}
+            >
+              <CloseRounded color='error' />
+            </IconButton>
+          ) : null}
           {title && <Typography variant='h5'>{title}</Typography>}
           {children}
         </div>

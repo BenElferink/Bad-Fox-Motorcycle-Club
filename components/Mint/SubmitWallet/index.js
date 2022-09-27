@@ -1,13 +1,13 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { useAuth } from '../../../contexts/AuthContext'
+import { useDiscord } from '../../../contexts/DiscordContext'
 import Section from '../../Section'
 import Loader from '../../Loader'
 import BaseButton from '../../BaseButton'
 import styles from './SubmitWallet.module.css'
 
 export default function SubmitWallet() {
-  const { loading, error, account, updateAccountMintWallet } = useAuth()
+  const { loading, error, account, updateAccountMintWallet } = useDiscord()
 
   const [walletAddress, setWalletAddress] = useState('')
   const [forceEdit, setForceEdit] = useState(false)

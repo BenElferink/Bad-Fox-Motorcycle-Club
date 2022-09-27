@@ -3,10 +3,11 @@ const getDatesFromFloorData = (floorSnapshots, isMonth) => {
     if (timestamp === 'LIVE') return timestamp
 
     const t = new Date(timestamp)
-    const month = t.getMonth()
+    // const month = t.getMonth()
     const day = t.getDate()
 
-    return `${month + 1}/${day}`
+    // return `${month + 1}/${day}`
+    return day
   })
 
   if (isMonth) {

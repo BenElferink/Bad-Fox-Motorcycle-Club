@@ -1,8 +1,18 @@
-module.exports = {
+/** @type {import('next').NextConfig} */
+
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
   images: {
     domains: ['images.cnft.tools', 'raw.githubusercontent.com'],
   },
-  api: {
-    responseLimit: false,
+  webpack: function (config, options) {
+    config.experiments = {
+      asyncWebAssembly: true,
+      layers: true,
+    }
+    return config
   },
 }
+
+module.exports = nextConfig

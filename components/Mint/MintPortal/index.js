@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useAuth } from '../../../contexts/AuthContext'
+import { useDiscord } from '../../../contexts/DiscordContext'
 import { useMint } from '../../../contexts/MintContext'
 import Section from '../../Section'
 import Modal from '../../Modal'
@@ -47,7 +47,7 @@ const MintScreen = ({ role = 'None', maxMints = 0, mintPrice = 0, mintAddress = 
 }
 
 export default function MintPortal() {
-  const { loading, error, account } = useAuth()
+  const { loading, error, account } = useDiscord()
   const { isPublicSaleOnline } = useMint()
 
   const [openModal, setOpenModal] = useState(false)

@@ -4,7 +4,7 @@ const getPortfolioSeries = (pricedAssets, floorSnapshots, isMonth) => {
   const snapshots = [...floorSnapshots]
 
   const totalBoughtSeries = {
-    name: `Total Expenses for ${pricedAssetsArr.length} Assets`,
+    name: 'Investment Value',
     data: new Array(days).fill(null),
   }
   const totalHighestTraitSeries = {

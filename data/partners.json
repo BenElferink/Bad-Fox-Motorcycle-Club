@@ -1,22 +1,36 @@
 [
   {
-    "name": "CardaStacks",
-    "url": "https://www.cardastacks.com",
-    "logo": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/partner-logos/cardastacks.png",
-    "logoHeight": "80px",
-    "logoWidth": "100px"
-  },
-  {
     "name": "OGBears",
     "url": "https://www.ogbears.com",
-    "logo": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/partner-logos/ogbears.png",
+    "logo": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/logo/other/ogbears.png",
     "logoHeight": "80px",
     "logoWidth": "55px"
   },
   {
+    "name": "CardaStacks",
+    "url": "https://www.cardastacks.com",
+    "logo": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/logo/other/cardastacks.png",
+    "logoHeight": "80px",
+    "logoWidth": "100px"
+  },
+  {
     "name": "Dot Dot Labs",
     "url": "https://dotdotlabs.io",
-    "logo": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/partner-logos/dotdotlabs.png",
+    "logo": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/logo/other/dotdotlabs.png",
+    "logoHeight": "80px",
+    "logoWidth": "100px"
+  },
+  {
+    "name": "Cardano Villa",
+    "url": "https://cardanovilla.io",
+    "logo": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/logo/other/cardanovilla.webp",
+    "logoHeight": "80px",
+    "logoWidth": "80px"
+  },
+  {
+    "name": "SoundRig",
+    "url": "https://www.soundrig.io",
+    "logo": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/logo/other/soundrig.png",
     "logoHeight": "80px",
     "logoWidth": "100px"
   }

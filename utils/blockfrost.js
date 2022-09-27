@@ -6,11 +6,11 @@ class Blockfrost {
     // https://github.com/blockfrost/blockfrost-js
     this.api = new BlockFrostAPI({
       projectId: BLOCKFROST_API_KEY,
-      version: 0,
-      debug: false,
-      isTestnet: false,
-      rateLimiter: true,
-      requestTimeout: 20000,
+      // version: 0,
+      // debug: false,
+      // isTestnet: false,
+      // rateLimiter: true,
+      // requestTimeout: 20000,
     })
   }
 

@@ -1,11 +1,11 @@
-import { useAuth } from '../../../contexts/AuthContext'
+import { useDiscord } from '../../../contexts/DiscordContext'
 import Section from '../../Section'
 import BaseButton from '../../BaseButton'
 import DiscordFetchingAccount from '../FetchingAccount'
 import Discord from '../../../icons/Discord'
 
 export default function DiscordLogin({ title = '', text = '', onClick = () => console.log('click') }) {
-  const { loading, account } = useAuth()
+  const { loading, account } = useDiscord()
 
   if (loading && !account) {
     return <DiscordFetchingAccount />

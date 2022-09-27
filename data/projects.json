@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Bad Fox",
+    "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/projects/bad-fox.png",
+    "policyId": "fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967",
+    "catalogCollections": true,
+    "catalogTraits": true,
+    "walletPortfolio": true
+  }
+]

@@ -7,8 +7,8 @@ function AssetCard({
   mainTitles = [],
   subTitles = [],
   imageSrc,
-  imageSizeDesktop = 330,
-  imageSizeMobile = 280,
+  imageSizeDesktop = 300,
+  imageSizeMobile = 250,
   tableRows,
   noClick = false,
   onClick,
@@ -23,6 +23,7 @@ function AssetCard({
   return (
     <Card
       sx={{
+        width: imgSize,
         margin: '0.5rem',
         border: '1px solid var(--black)',
         borderRadius: '1rem',

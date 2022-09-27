@@ -5,7 +5,7 @@ import AssetFilters from '../AssetFilters'
 import AssetCard from '../AssetCard'
 import Loader from '../../Loader'
 import { ADA_SYMBOL } from '../../../constants/ada'
-import foxAssetsData from '../../../data/assets/fox'
+import foxAssetsFile from '../../../data/assets/fox'
 import foxTraitsData from '../../../data/traits/fox'
 import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
 
@@ -53,7 +53,7 @@ const CollectionAssets = ({ policyId }) => {
       }}
     >
       <AssetFilters
-        assetsArr={policyId === BAD_FOX_POLICY_ID ? foxAssetsData.assets : []}
+        assetsArr={policyId === BAD_FOX_POLICY_ID ? foxAssetsFile.assets : []}
         traitsMatrix={Object.entries(policyId === BAD_FOX_POLICY_ID ? foxTraitsData : {}).sort((a, b) =>
           a[0].localeCompare(b[0])
         )}
@@ -62,9 +62,7 @@ const CollectionAssets = ({ policyId }) => {
 
       <section className='flex-col' style={{ width: isMobile ? '100vw' : 'calc(100vw - 300px)' }}>
         <div style={{ display: 'flex', flexFlow: 'row wrap', alignItems: 'center', justifyContent: 'center' }}>
-          {loading ? (
-            <Loader />
-          ) : !rendered.length ? (
+          {!rendered.length ? (
             <div style={{ fontSize: '3rem' }}>None exist...</div>
           ) : (
             rendered.map((asset, idx) =>
@@ -89,6 +87,8 @@ const CollectionAssets = ({ policyId }) => {
               ) : null
             )
           )}
+
+          {loading ? <Loader /> : null}
         </div>
 
         <div ref={bottomRef} />

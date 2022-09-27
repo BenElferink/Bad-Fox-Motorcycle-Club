@@ -7,9 +7,7 @@ import Modal from '../Modal'
 import BaseButton from '../BaseButton'
 // import MintMenu from './MintMenu'
 import UtilitiesMenu from './UtilitiesMenu'
-import CollectionsMenu from './CollectionsMenu'
-import TraitsMenu from './TraitsMenu'
-import WalletMenu from './WalletMenu'
+import ConnectWallet from '../ConnectWallet'
 import Socials from './Socials'
 import { HOME, MAP, TEAM } from '../../constants/scroll-nav'
 import { GITHUB_MEDIA_URL } from '../../constants/api-urls'
@@ -48,6 +46,10 @@ export default function Header({ scrollTo = () => null }) {
   const clickTeam = () => {
     scrollTo(TEAM)
     setOpenMobileMenu(false)
+  }
+
+  const clickCatalogs = () => {
+    router.push('/catalogs')
   }
 
   useEffect(() => {
@@ -124,11 +126,11 @@ export default function Header({ scrollTo = () => null }) {
           {isHome ? <BaseButton label='Roadmap' onClick={clickRoadmap} transparent style={jsStyles.btn} /> : null}
           {isHome ? <BaseButton label='Team' onClick={clickTeam} transparent style={jsStyles.btn} /> : null}
 
-          {/* <MintMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} /> */}
+          <BaseButton label='Catalogs' onClick={clickCatalogs} transparent style={jsStyles.btn} />
           <UtilitiesMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
-          <CollectionsMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
-          <TraitsMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
-          <WalletMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
+          {router.route !== '/wallet' ? <ConnectWallet /> : null}
+
+          {/* <MintMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} /> */}
           <Socials closeMenu={closeMenu} />
         </nav>
       </Modal>

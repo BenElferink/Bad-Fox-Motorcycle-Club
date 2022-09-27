@@ -1,9 +1,10 @@
 import Head from 'next/head'
 import { Fragment } from 'react'
 import { Toaster } from 'react-hot-toast'
-import { AuthProvider } from '../contexts/AuthContext'
-import { MintProvider } from '../contexts/MintContext'
+import { WalletProvider } from '../contexts/WalletContext'
 import { ScreenSizeProvider } from '../contexts/ScreenSizeContext'
+import { DiscordProvider } from '../contexts/DiscordContext'
+import { MintProvider } from '../contexts/MintContext'
 import { createTheme, ThemeProvider } from '@mui/material'
 import CssBaseline from '@mui/material/CssBaseline'
 import '@fontsource/roboto'
@@ -41,16 +42,18 @@ function App({ Component, pageProps }) {
 
       <Toaster />
 
-      <AuthProvider>
-        <MintProvider>
-          <ScreenSizeProvider>
-            <ThemeProvider theme={theme}>
-              <CssBaseline />
-              <Component {...pageProps} />
-            </ThemeProvider>
-          </ScreenSizeProvider>
-        </MintProvider>
-      </AuthProvider>
+      <WalletProvider>
+        <ScreenSizeProvider>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <DiscordProvider>
+              <MintProvider>
+                <Component {...pageProps} />
+              </MintProvider>
+            </DiscordProvider>
+          </ThemeProvider>
+        </ScreenSizeProvider>
+      </WalletProvider>
     </Fragment>
   )
 }

@@ -6,10 +6,10 @@ import data from '../../data/sneaks.json'
 import styles from './Sneaks.module.css'
 
 const Sneaks = () => {
-  const { isMobile, width } = useScreenSize()
+  const { isMobile, screenWidth } = useScreenSize()
 
   const imageSize = isMobile ? 300 : 350
-  const slidesPerView = Math.floor((width * 0.9) / imageSize)
+  const slidesPerView = Math.floor((screenWidth * 0.9) / imageSize)
 
   return (
     <div className={styles.root}>

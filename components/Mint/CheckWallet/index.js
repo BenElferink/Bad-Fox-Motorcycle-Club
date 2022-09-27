@@ -1,10 +1,10 @@
-import { useAuth } from '../../../contexts/AuthContext'
+import { useDiscord } from '../../../contexts/DiscordContext'
 import Section from '../../Section'
 import Loader from '../../Loader'
 import styles from './CheckWallet.module.css'
 
 export default function CheckWallet() {
-  const { loading, error, account } = useAuth()
+  const { loading, error, account } = useDiscord()
 
   if (loading) {
     return (

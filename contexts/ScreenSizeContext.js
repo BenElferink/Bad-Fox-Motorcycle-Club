@@ -15,5 +15,9 @@ export function ScreenSizeProvider({ children }) {
 
   const isMobile = width ? width < 768 : true
 
-  return <ScreenSizeContext.Provider value={{ width, height, isMobile }}>{children}</ScreenSizeContext.Provider>
+  return (
+    <ScreenSizeContext.Provider value={{ screenWidth: width, screenHeight: height, isMobile }}>
+      {children}
+    </ScreenSizeContext.Provider>
+  )
 }

@@ -129,7 +129,10 @@ const AssetFilters = ({ traitsMatrix = [], assetsArr = [], callbackRendered = ()
 
           <BaseButton
             label='Filters'
-            onClick={() => setOpenOnMobile((prev) => !prev)}
+            onClick={() => {
+              setOpenOnMobile((prev) => !prev)
+              window.scrollTo({ top: 0 })
+            }}
             icon={FilterIcon}
             backgroundColor='var(--brown)'
             hoverColor='var(--orange)'

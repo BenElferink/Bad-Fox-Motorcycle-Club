@@ -3,6 +3,8 @@ const foxAssetsFile = require('../data/assets/fox')
 const { JPG_API } = require('../constants/api-urls')
 const { BAD_FOX_POLICY_ID } = require('../constants/policy-ids')
 
+const ONE_MILLION = 1000000
+
 class JpgStore {
   constructor() {}
 
@@ -20,20 +22,22 @@ class JpgStore {
       try {
         const { data } = await axios.get(uri)
 
-        const payload = data.map((item) => {
-          const asset = foxAssetsFile.assets.find((asset) => asset.assetId === item.asset_id)
+        const payload = data
+          .map((item) => {
+            const asset = foxAssetsFile.assets.find((asset) => asset.assetId === item.asset_id)
 
-          return {
-            assetId: item.asset_id,
-            name: item.display_name,
-            price: Number(item.price_lovelace) / 1000000,
-            rank: asset.rarityRank,
-            attributes: asset.attributes,
-            imageUrl: asset.image.cnftTools,
-            itemUrl: `https://jpg.store/asset/${item.asset_id}`,
-            date: new Date(sold ? item.confirmed_at : item.listed_at),
-          }
-        })
+            return {
+              assetId: item.asset_id,
+              name: item.display_name,
+              price: item.price_lovelace / ONE_MILLION,
+              rank: asset.rarityRank,
+              attributes: asset.attributes,
+              imageUrl: asset.image.cnftTools,
+              itemUrl: `https://jpg.store/asset/${item.asset_id}`,
+              date: new Date(sold ? item.confirmed_at : item.listed_at),
+            }
+          })
+          .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
         console.log(`Fetched ${payload.length} items from jpg.store`)
 
@@ -87,7 +91,7 @@ class JpgStore {
             return {
               assetId: item.asset_id,
               name: item.display_name,
-              price: Number(item.listing_lovelace) / 1000000,
+              price: Number(item.listing_lovelace) / ONE_MILLION,
               rank: asset.rarityRank,
               attributes: asset.attributes,
               imageUrl: asset.image.cnftTools,
@@ -157,6 +161,68 @@ class JpgStore {
         //     views: '0'
         //   }
         // ]
+      } catch (e) {
+        return reject(e)
+      }
+    })
+  }
+
+  getAssetPurchasePrice = (assetId, walletAddress) => {
+    const uri = `${JPG_API}/token/${assetId}/tx-history?limit=50&offset=0`
+
+    return new Promise(async (resolve, reject) => {
+      console.log(
+        `Fetching tx history from jpg.store for asset ID ${assetId}${
+          walletAddress ? ` strictly for signing wallet address ${walletAddress}` : ''
+        }`
+      )
+
+      try {
+        const { data } = await axios.get(uri)
+        let boughtAtPrice = 0
+        let boughtAtTimestamp = 0
+
+        for (let i = 0; i < data.txs.length; i++) {
+          const tx = data.txs[i]
+
+          if (tx.action === 'BUY' && (!walletAddress || walletAddress === tx.signer_address)) {
+            boughtAtPrice = tx.amount_lovelace / ONE_MILLION
+            boughtAtTimestamp = new Date(tx.created_at).getTime()
+            break
+          }
+        }
+
+        console.log(`Fetched price ${boughtAtPrice} with timestamp ${boughtAtTimestamp} from jpg.store`)
+
+        return resolve({
+          price: boughtAtPrice,
+          timestamp: boughtAtTimestamp,
+        })
+        // {
+        //   count: 2,
+        //   txs: [
+        //     {
+        //       action: 'BUY',
+        //       tx_hash: '29486423c7a8d2ece5303be3ffb504bfc6f37e0a312146797568daaea954c840',
+        //       seller_address:
+        //         'addr1qx60vuyqv2v9s4awht5j87pay0r4en4pulgxgntp6uvd84are4kugkwh2cqx2hn7gqna5nels93tlh6r6zmf0xucdjkqzt8tfv',
+        //       signer_address:
+        //         'addr1q9rqqcwlfnt07l7064vrrkgzvxjea0cfrkv48vqsx4qektcxa5ln8dq3l2wj597622s2qwqy88jry3xh9xqy2ka7cqgs67tgvu',
+        //       created_at: '2022-07-21T20:53:17.347+00:00',
+        //       amount_lovelace: 180000000,
+        //     },
+        //     {
+        //       action: 'SELL',
+        //       tx_hash: 'd1ef4e3b6296cd84e47f1e2758e0833d9f05987e50c375b2476506e3eaed7828',
+        //       seller_address:
+        //         'addr1qx60vuyqv2v9s4awht5j87pay0r4en4pulgxgntp6uvd84are4kugkwh2cqx2hn7gqna5nels93tlh6r6zmf0xucdjkqzt8tfv',
+        //       signer_address:
+        //         'addr1qx60vuyqv2v9s4awht5j87pay0r4en4pulgxgntp6uvd84are4kugkwh2cqx2hn7gqna5nels93tlh6r6zmf0xucdjkqzt8tfv',
+        //       created_at: '2022-07-20T01:16:56.263+00:00',
+        //       amount_lovelace: 180000000,
+        //     },
+        //   ],
+        // }
       } catch (e) {
         return reject(e)
       }

@@ -11,7 +11,7 @@ import { ADA_SYMBOL } from '../../constants/ada'
 import styles from './RecentlySold.module.css'
 
 function RecentlySold() {
-  const { width } = useScreenSize()
+  const { screenWidth } = useScreenSize()
   const { recentlySold, fetchAndSetRecents } = useMarket()
   const [loading, setLoading] = useState(false)
 
@@ -26,7 +26,7 @@ function RecentlySold() {
   }, [])
 
   const imageSize = 250
-  const slidesPerView = Math.floor((width * 0.9) / imageSize)
+  const slidesPerView = Math.floor((screenWidth * 0.9) / imageSize)
 
   const imageWidth = imageSize
   const imageHeight = imageSize * 0.8

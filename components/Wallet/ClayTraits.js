@@ -1,52 +1,18 @@
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import axios from 'axios'
-import { useScreenSize } from '../../../contexts/ScreenSizeContext'
-import { useAuth } from '../../../contexts/AuthContext'
-import Modal from '../../Modal'
-import Loader from '../../Loader'
-import Toggle from '../../Toggle'
-import BaseButton from '../../BaseButton'
-import TraitFilters from '../TraitFilters'
-import AssetCard from '../../Assets/AssetCard'
-import ClayTraitSet from '../../ClayTraitSet'
-import { GITHUB_MEDIA_URL } from '../../../constants/api-urls'
-import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
-import styles from './MyTraits.module.css'
-import foxTraitsFile from '../../../data/traits/fox'
+import useWallet from '../../contexts/WalletContext'
+import { useScreenSize } from '../../contexts/ScreenSizeContext'
+import Modal from '../Modal'
+import Loader from '../Loader'
+import Toggle from '../Toggle'
+import BaseButton from '../BaseButton'
+import ClayTraitSet from '../ClayTraitSet'
+import { GITHUB_MEDIA_URL } from '../../constants/api-urls'
+import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
 
-const MyTraits = ({ policyId }) => {
+const ClayTraits = () => {
   const { isMobile } = useScreenSize()
-  const { myAssets } = useAuth()
-
-  const [selectedCategory, setSelectedCategory] = useState('')
-  const [showAllTraits, setShowAllTraits] = useState(false)
-
-  const traitsFile = policyId === BAD_FOX_POLICY_ID ? foxTraitsFile : {}
-
-  const renderTraits = () => {
-    const traits = {}
-
-    Object.entries(traitsFile).forEach(([category, attributes]) => {
-      attributes.forEach((attributeObj) => {
-        const ownedCount = myAssets.filter((item) => item.attributes[category] === attributeObj.onChainName).length
-
-        const payload = {
-          ...attributeObj,
-          owned: ownedCount,
-          count: attributeObj.count,
-          percent: attributeObj.percent,
-        }
-
-        if (traits[category]) {
-          traits[category].push(payload)
-        } else {
-          traits[category] = [payload]
-        }
-      })
-    })
-
-    return traits
-  }
+  const { populatedWallet } = useWallet()
 
   const [showClayTraitSets, setShowClayTraitSets] = useState(false)
   const [showAllClayTraitSets, setShowAllClayTraitSets] = useState(false)
@@ -75,7 +41,7 @@ const MyTraits = ({ policyId }) => {
             const { traitCategory, traitLabel } = setItem
             let ownedTraitCount = 0
 
-            myAssets.forEach((asset) => {
+            populatedWallet.assets[BAD_FOX_POLICY_ID].forEach((asset) => {
               if (asset.attributes[traitCategory] === traitLabel) {
                 ownedTraitCount++
               }
@@ -117,50 +83,18 @@ const MyTraits = ({ policyId }) => {
   }, [])
 
   return (
-    <div className='flex-col'>
-      <div>
-        <TraitFilters traitsData={traitsFile} callbackSelectedCategory={(str) => setSelectedCategory(str)}>
-          <div className='flex-col' style={{ margin: '0.5rem' }}>
-            {!isMobile ? (showAllTraits ? 'All Traits' : 'Owned Traits') : null}
-            <Toggle
-              labelLeft={!isMobile ? '' : 'Owned Traits'}
-              labelRight={!isMobile ? '' : 'All Traits'}
-              showIcons={false}
-              state={{ value: showAllTraits, setValue: setShowAllTraits }}
-            />
-          </div>
-        </TraitFilters>
+    <Fragment>
+      <BaseButton
+        label='$CLAY Trait Sets'
+        onClick={() => setShowClayTraitSets(true)}
+        imageIcon={`${GITHUB_MEDIA_URL}/utilities/clay-token.png`}
+        fullWidth
+        backgroundColor='var(--brown)'
+        hoverColor='var(--cardano-blue)'
+        style={{ margin: '0' }}
+      />
 
-        <BaseButton
-          label='My $CLAY Trait Sets'
-          onClick={() => setShowClayTraitSets(true)}
-          imageIcon={`${GITHUB_MEDIA_URL}/utilities/clay-token.png`}
-          style={{ margin: '0' }}
-          backgroundColor='var(--brown)'
-          hoverColor='var(--cardano-blue)'
-          fullWidth
-        />
-      </div>
-
-      <div className={styles.traitCatalog}>
-        {renderTraits()[selectedCategory]?.map((trait) =>
-          showAllTraits || trait.owned !== 0 ? (
-            <AssetCard
-              key={`trait-catalog-list-item-${trait.displayName}-${trait.gender}`}
-              mainTitles={[trait.displayName]}
-              subTitles={[`Owned: ${trait.owned}`]}
-              imageSrc={trait.image}
-              itemUrl={trait.image}
-              tableRows={[
-                ['Gender:', 'Count:', 'Percent:'],
-                [trait.gender, trait.count, trait.percent],
-              ]}
-            />
-          ) : null
-        )}
-      </div>
-
-      <Modal title='My $CLAY Trait Sets' open={showClayTraitSets} onClose={() => setShowClayTraitSets(false)}>
+      <Modal title='$CLAY Trait Sets' open={showClayTraitSets} onClose={() => setShowClayTraitSets(false)}>
         <div className='flex-col' style={{ margin: '0.5rem' }}>
           {!isMobile ? (showAllClayTraitSets ? 'All Sets' : 'Owned Sets') : null}
           <Toggle
@@ -200,8 +134,8 @@ const MyTraits = ({ policyId }) => {
             ))
         )}
       </Modal>
-    </div>
+    </Fragment>
   )
 }
 
-export default MyTraits
+export default ClayTraits

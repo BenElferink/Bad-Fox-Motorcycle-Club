@@ -1,35 +1,12 @@
 import { useRouter } from 'next/router'
-import { MarketProvider } from '../../contexts/MarketContext'
-import isPolicyIdAllowed from '../../functions/isPolicyIdAllowed'
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
-import RecentlySold from '../../components/RecentlySold'
-import CollectionAssets from '../../components/Assets/CollectionAssets'
+import { useEffect } from 'react'
 
 export default function Page() {
-  const { query } = useRouter()
-  const policyOk = isPolicyIdAllowed(query.policyId)
+  const router = useRouter()
 
-  if (!policyOk) {
-    return (
-      <div className='App flex-col'>
-        <Header />
-        <h1>That policy ID is not allowed 🤡</h1>
-        <Footer />
-      </div>
-    )
-  }
+  useEffect(() => {
+    router.push('/catalogs')
+  }, [])
 
-  return (
-    <div className='App flex-col'>
-      <Header />
-
-      <MarketProvider policyId={query.policyId}>
-        <RecentlySold />
-        <CollectionAssets policyId={query.policyId} />
-      </MarketProvider>
-
-      <Footer />
-    </div>
-  )
+  return <div className='App' />
 }

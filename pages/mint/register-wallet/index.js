@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { useAuth } from '../../../contexts/AuthContext'
+import { useDiscord } from '../../../contexts/DiscordContext'
 import { useMint } from '../../../contexts/MintContext'
 import Header from '../../../components/Header'
 import Footer from '../../../components/Footer'
@@ -12,7 +12,7 @@ import { DISCORD_AUTH_URL_REGISTER_MINT_WALLET } from '../../../constants/discor
 export default function Page() {
   const router = useRouter()
   const { isRegisterOnline } = useMint()
-  const { account } = useAuth()
+  const { account } = useDiscord()
 
   const clickLogin = () => {
     router.push(DISCORD_AUTH_URL_REGISTER_MINT_WALLET)
@@ -22,7 +22,7 @@ export default function Page() {
 
   useEffect(() => {
     if (isOkToSkipAuth) {
-      router.push(`${router.asPath}/redirect`)
+      router.push(`${router.route}/redirect`)
     }
   }, [isOkToSkipAuth])
 

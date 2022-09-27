@@ -4,7 +4,7 @@ import { useRef } from 'react'
 
 function BaseButton({
   label = 'Button',
-  onClick = () => console.log('click'),
+  onClick = (e) => console.log('click', e),
   icon: Icon,
   imageIcon,
   selected = false,
@@ -26,10 +26,10 @@ function BaseButton({
       ref={ref}
       variant='contained'
       color='secondary'
-      size={size || (isMobile ? 'medium' : 'large')}
-      fullWidth={fullWidth || isMobile}
+      size={size ?? (isMobile ? 'medium' : 'large')}
+      fullWidth={fullWidth ?? isMobile}
       startIcon={Icon ? <Icon /> : imageIcon ? <img src={imageIcon} alt='' width='42' height='42' /> : null}
-      onClick={onClick}
+      onClick={(e) => (disabled ? null : onClick(e))}
       className={className}
       style={{
         padding: '0.4rem 0.8rem',

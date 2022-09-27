@@ -57,7 +57,7 @@
     ]
   },
   {
-    "complete": false,
+    "complete": true,
     "chapter": "Q3 2022",
     "events": [
       {
@@ -66,7 +66,7 @@
         "description": "There will be 6,000 foxes minted. Half female and half male. Mint prices will range from 42-62 ADA, dependent on your role (OG, WL, or Public)."
       },
       {
-        "complete": false,
+        "complete": true,
         "title": "ADA Payouts to Fox Holders",
         "description": "We're going to distribute 80% of our royalties to each fox holder, for every 1m in secondary volume."
       },

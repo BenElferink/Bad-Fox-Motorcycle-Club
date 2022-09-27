@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useAuth } from '../../contexts/AuthContext'
+import { useDiscord } from '../../contexts/DiscordContext'
 import { useMint } from '../../contexts/MintContext'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
@@ -10,7 +10,7 @@ import DiscordNotAuthorized from '../../components/DiscordAuth/NotAuthorized'
 import MintPortal from '../../components/Mint/MintPortal'
 
 export default function Page() {
-  const { loading, account, getAccount } = useAuth()
+  const { loading, account, getAccount } = useDiscord()
   const { isPreSaleOnline, isPublicSaleOnline } = useMint()
 
   useEffect(() => {

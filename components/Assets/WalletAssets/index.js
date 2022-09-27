@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useAuth } from '../../../contexts/AuthContext'
+import useWallet from '../../../contexts/WalletContext'
 import { useScreenSize } from '../../../contexts/ScreenSizeContext'
 import AssetFilters from '../AssetFilters'
 import AssetCard from '../AssetCard'
@@ -8,9 +8,9 @@ import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
 
 const INITIAL_DISPLAY_AMOUNT = 20
 
-const MyAssets = ({ policyId }) => {
+const WalletAssets = ({ policyId }) => {
   const { isMobile } = useScreenSize()
-  const { myAssets } = useAuth()
+  const { populatedWallet } = useWallet()
 
   const [rendered, setRendered] = useState([])
   const [displayNum, setDisplayNum] = useState(INITIAL_DISPLAY_AMOUNT)
@@ -39,7 +39,7 @@ const MyAssets = ({ policyId }) => {
       }}
     >
       <AssetFilters
-        assetsArr={myAssets}
+        assetsArr={populatedWallet.assets[policyId]}
         traitsMatrix={Object.entries(policyId === BAD_FOX_POLICY_ID ? foxTraitsData : {}).sort((a, b) =>
           a[0].localeCompare(b[0])
         )}
@@ -78,4 +78,4 @@ const MyAssets = ({ policyId }) => {
   )
 }
 
-export default MyAssets
+export default WalletAssets

@@ -5,9 +5,9 @@ import { GITHUB_MEDIA_URL } from '../../constants/api-urls'
 import styles from './Landing.module.css'
 
 const Landing = ({ isHome = false, children }) => {
-  const { width, isMobile } = useScreenSize()
+  const { screenWidth, isMobile } = useScreenSize()
 
-  const imageSize = (width / 100) * 60
+  const imageSize = (screenWidth / 100) * 60
 
   return (
     <div className={styles.root}>
