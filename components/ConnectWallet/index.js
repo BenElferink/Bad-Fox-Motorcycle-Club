@@ -4,7 +4,6 @@ import Modal from '../Modal'
 import BaseButton from '../BaseButton'
 import GlobalLoader from '../Loader/GlobalLoader'
 import { TextField } from '@mui/material'
-import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
 import { useRouter } from 'next/router'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
 
@@ -69,9 +68,7 @@ export default function ConnectWallet({ modalOnly = false }) {
         {connected ? (
           <p style={{ textAlign: 'center' }}>
             You've succesfully connected your wallet with {connectedName}:<br />
-            <span style={{ fontSize: '0.9rem', color: 'var(--discord-purple)' }}>{populatedWallet.stakeKey}</span>
-            <br />
-            <span>Bad Fox : {populatedWallet.assets[BAD_FOX_POLICY_ID].length}</span>
+            <span style={{ fontSize: '0.9rem', color: 'var(--orange)' }}>{populatedWallet.stakeKey}</span>
           </p>
         ) : (
           <Fragment>

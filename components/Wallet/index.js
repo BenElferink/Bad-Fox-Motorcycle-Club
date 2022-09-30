@@ -154,11 +154,17 @@ const Wallet = () => {
 
   const styles = {
     topRow: {
-      width: '100vw',
+      // width: '100vw',
       display: 'flex',
       flexDirection: 'row',
       flexWrap: 'wrap',
-      justifyContent: !isMobile && selectedPolicyId ? 'flex-start' : 'center',
+      justifyContent: !isMobile && selectedPolicyId ? 'space-between' : 'center',
+    },
+    topRowInner: {
+      display: 'flex',
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: !isMobile && selectedPolicyId ? 'flex-end' : 'center',
     },
     walletSummary: {
       width: selectedPolicyId ? 'unset' : '100%',
@@ -244,7 +250,7 @@ const Wallet = () => {
         </div>
 
         {selectedPolicyId ? (
-          <Fragment>
+          <div style={styles.topRowInner}>
             <Chart
               policyId={selectedPolicyId}
               pricedItems={pricedItems}
@@ -302,7 +308,7 @@ const Wallet = () => {
                 </table>
               </div>
             </div>
-          </Fragment>
+          </div>
         ) : null}
       </div>
 
