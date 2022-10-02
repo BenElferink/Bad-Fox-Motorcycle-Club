@@ -1,7 +1,7 @@
 require('dotenv').config()
 const writeXlsxFile = require('write-excel-file/node')
 const { blockfrost } = require('../utils/blockfrost')
-const foxAssetsFile = require('../data/assets/fox')
+const foxAssetsFile = require('../data/assets/bad-fox.json')
 const { EXCLUDE_ADDRESSES } = require('../constants/addresses')
 
 const COLUMN_SIZE = [{ width: 25 }, { width: 100 }]

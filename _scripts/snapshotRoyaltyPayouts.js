@@ -2,7 +2,7 @@ require('dotenv').config()
 const fs = require('fs')
 const writeXlsxFile = require('write-excel-file/node')
 const { blockfrost } = require('../utils/blockfrost')
-const foxAssetsFile = require('../data/assets/fox.json')
+const foxAssetsFile = require('../data/assets/bad-fox.json')
 const POLICY_IDS = require('../constants/policy-ids')
 const { EXCLUDE_ADDRESSES } = require('../constants/addresses')
 

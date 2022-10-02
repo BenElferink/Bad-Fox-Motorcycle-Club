@@ -10,7 +10,7 @@ import ProjectListItem from '../../components/ProjectListItem'
 import { ADA_SYMBOL } from '../../constants/ada'
 import { BINANCE_API } from '../../constants/api-urls'
 import projectsFile from '../../data/projects.json'
-import foxAssetsFile from '../../data/assets/fox.json'
+import foxAssetsFile from '../../data/assets/bad-fox.json'
 import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
 

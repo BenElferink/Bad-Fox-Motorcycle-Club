@@ -2,7 +2,7 @@ require('dotenv').config()
 const fs = require('fs')
 const writeXlsxFile = require('write-excel-file/node')
 const { blockfrost } = require('../utils/blockfrost')
-const foxAssetsFile = require('../data/assets/fox')
+const foxAssetsFile = require('../data/assets/bad-fox.json')
 const { EXCLUDE_ADDRESSES } = require('../constants/addresses')
 
 const WINNERS_COUNT = 30

@@ -5,8 +5,8 @@ import AssetFilters from '../AssetFilters'
 import AssetCard from '../AssetCard'
 import Loader from '../../Loader'
 import { ADA_SYMBOL } from '../../../constants/ada'
-import foxAssetsFile from '../../../data/assets/fox'
-import foxTraitsData from '../../../data/traits/fox'
+import foxAssetsFile from '../../../data/assets/bad-fox.json'
+import foxTraitsData from '../../../data/traits/bad-fox.json'
 import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
 
 const INITIAL_DISPLAY_AMOUNT = 20

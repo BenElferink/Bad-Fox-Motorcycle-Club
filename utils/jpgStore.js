@@ -1,5 +1,5 @@
 const axios = require('axios')
-const foxAssetsFile = require('../data/assets/fox')
+const foxAssetsFile = require('../data/assets/bad-fox.json')
 const { JPG_API } = require('../constants/api-urls')
 const { BAD_FOX_POLICY_ID } = require('../constants/policy-ids')
 

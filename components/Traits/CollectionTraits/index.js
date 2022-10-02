@@ -3,7 +3,7 @@ import AssetCard from '../../Assets/AssetCard'
 import TraitFilters from '../TraitFilters'
 import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
 import styles from './CollectionTraits.module.css'
-import foxTraitsFile from '../../../data/traits/fox'
+import foxTraitsFile from '../../../data/traits/bad-fox.json'
 
 const CollectionTraits = ({ policyId }) => {
   const [selectedCategory, setSelectedCategory] = useState('')

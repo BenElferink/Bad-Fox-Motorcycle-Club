@@ -3,7 +3,7 @@ import useWallet from '../../../contexts/WalletContext'
 import { useScreenSize } from '../../../contexts/ScreenSizeContext'
 import AssetFilters from '../AssetFilters'
 import AssetCard from '../AssetCard'
-import foxTraitsData from '../../../data/traits/fox'
+import foxTraitsData from '../../../data/traits/bad-fox.json'
 import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
 
 const INITIAL_DISPLAY_AMOUNT = 20

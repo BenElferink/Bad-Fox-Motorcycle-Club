@@ -3,7 +3,7 @@ import { BrowserWallet } from '@martifylabs/mesh'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { BAD_FOX_POLICY_ID } from '../constants/policy-ids'
-import foxAssetsFile from '../data/assets/fox.json'
+import foxAssetsFile from '../data/assets/bad-fox.json'
 
 // https://mesh.martify.io/apis/browserwallet
 

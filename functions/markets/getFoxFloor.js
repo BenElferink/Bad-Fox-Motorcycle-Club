@@ -1,4 +1,4 @@
-const foxTraitsJsonFile = require('../../data/traits/fox')
+const foxTraitsJsonFile = require('../../data/traits/bad-fox.json')
 const { jpgStore } = require('../../utils/jpgStore')
 const { BAD_FOX_POLICY_ID } = require('../../constants/policy-ids')
 

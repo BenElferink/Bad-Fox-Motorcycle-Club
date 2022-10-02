@@ -1,7 +1,7 @@
 import { blockfrost } from '../../../utils/blockfrost'
 import toHex from '../../../functions/formatters/hex/toHex'
 import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
-import foxAssetsFile from '../../../data/assets/fox'
+import foxAssetsFile from '../../../data/assets/bad-fox.json'
 
 export default async (req, res) => {
   try {

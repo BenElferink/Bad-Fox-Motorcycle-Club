@@ -9,7 +9,7 @@ import AssetCard from '../Assets/AssetCard'
 import getPortfolioSeries from '../../functions/charts/getPortfolioSeries'
 import getDatesFromFloorData from '../../functions/charts/getDatesFromFloorData'
 import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
-import foxAssetsFile from '../../data/assets/fox.json'
+import foxAssetsFile from '../../data/assets/bad-fox.json'
 
 const ApexChart = dynamic(() => import('react-apexcharts'), { ssr: false })
 
