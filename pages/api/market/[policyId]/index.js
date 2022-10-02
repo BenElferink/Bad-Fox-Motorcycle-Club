@@ -1,5 +1,5 @@
 import { jpgStore } from '../../../../utils/jpgStore'
-import POLICY_IDS from '../../../../constants/policy-ids'
+import isPolicyIdAllowed from '../../../../functions/isPolicyIdAllowed'
 
 export default async (req, res) => {
   try {
@@ -15,7 +15,7 @@ export default async (req, res) => {
       })
     }
 
-    if (!Object.values(POLICY_IDS).includes(policyId)) {
+    if (!isPolicyIdAllowed(policyId)) {
       return res.status(400).json({
         type: 'BAD_REQUEST',
         message: `This policy ID is not allowed: ${policyId}`,

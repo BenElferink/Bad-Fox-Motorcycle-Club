@@ -1,15 +1,19 @@
-import POLICY_IDS from '../constants/policy-ids'
+import projects from '../data/projects.json'
 
 const isPolicyIdAllowed = (policyId) => {
   if (!policyId) {
     return false
   }
 
-  if (!Object.values(POLICY_IDS).includes(policyId)) {
-    return false
+  let isAllowed = false
+
+  for (const proj of projects) {
+    if (proj.policyId === policyId) {
+      isAllowed = true
+    }
   }
 
-  return true
+  return isAllowed
 }
 
 export default isPolicyIdAllowed

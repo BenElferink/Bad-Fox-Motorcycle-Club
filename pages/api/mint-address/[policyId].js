@@ -1,6 +1,6 @@
 import connectDB from '../../../utils/mongo'
 import MintAddress from '../../../models/MintAddress'
-import POLICY_IDS from '../../../constants/policy-ids'
+import isPolicyIdAllowed from '../../../functions/isPolicyIdAllowed'
 import { ADMIN_CODE } from '../../../constants/api-keys'
 
 export default async (req, res) => {
@@ -21,7 +21,7 @@ export default async (req, res) => {
       })
     }
 
-    if (!Object.values(POLICY_IDS).includes(policyId)) {
+    if (!isPolicyIdAllowed(policyId)) {
       return res.status(400).json({
         type: 'BAD_REQUEST',
         message: `This policy ID is not allowed: ${policyId}`,
