@@ -1,21 +1,69 @@
-import Image from 'next/image'
-import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
 import { GITHUB_MEDIA_URL } from '../../constants/api-urls'
-import styles from './Footer.module.css'
+import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
 
 export default function Footer() {
   return (
-    <div className={styles.root}>
-      <div className={styles.cardano}>
-        <Image src={`${GITHUB_MEDIA_URL}/cardano-logo.png`} alt='cardano' width={55} height={55} />
-        Powered by Cardano
+    <footer
+      className='flex-col'
+      style={{
+        width: '100%',
+        padding: '0 1rem',
+        color: 'var(--grey)',
+        textAlign: 'center',
+        position: 'static',
+        zIndex: 0,
+      }}
+    >
+      <div style={{ width: '100%' }}>
+        <h4 style={{ margin: 0 }}>Powered By</h4>
+        <div className='flex-row' style={{ flexWrap: 'wrap', justifyContent: 'center' }}>
+          {[
+            {
+              name: 'Cardano',
+              url: 'https://cardano.org',
+              logo: `${GITHUB_MEDIA_URL}/logo/other/cardano.png`,
+              logoHeight: '70px',
+              logoWidth: '70px',
+            },
+            {
+              name: 'Mesh',
+              url: 'https://mesh.martify.io',
+              logo: `${GITHUB_MEDIA_URL}/logo/other/mesh-white.png`,
+              logoHeight: '70px',
+              logoWidth: '70px',
+            },
+          ].map((obj) => (
+            <div
+              key={`powered-by-${obj.name}`}
+              onClick={() => window.open(obj.url, '_blank')}
+              style={{
+                margin: '0.5rem 1rem',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                cursor: 'pointer',
+              }}
+            >
+              <div
+                style={{
+                  height: obj.logoHeight,
+                  width: obj.logoWidth,
+                  marginBottom: '0.5rem',
+                  background: `url(${obj.logo}) no-repeat center`,
+                  backgroundSize: 'contain',
+                }}
+              />
+              <h5 style={{ margin: 0, textAlign: 'center', userSelect: 'none' }}>{obj.name}</h5>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <p>
-        Fox Policy ID:
+      <p style={{ fontSize: '0.69rem' }}>
+        Bad Fox Policy ID:
         <br />
         {BAD_FOX_POLICY_ID}
       </p>
-    </div>
+    </footer>
   )
 }
