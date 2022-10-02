@@ -1,18 +1,18 @@
-import { Fragment, useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import axios from 'axios'
 import useWallet from '../../contexts/WalletContext'
+import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import { jpgStore } from '../../utils/jpgStore'
+import getFileForPolicyId from '../../functions/getFileForPolicyId'
 import formatBigNumber from '../../functions/formatters/formatBigNumber'
-import Chart from './Chart'
+import ProjectListItem from '../ProjectListItem'
 import ClayTraits from './ClayTraits'
+import Chart from './Chart'
 import WalletAssets from '../Assets/WalletAssets'
-import ProjectListItem from '../../components/ProjectListItem'
 import { ADA_SYMBOL } from '../../constants/ada'
 import { BINANCE_API } from '../../constants/api-urls'
-import projectsFile from '../../data/projects.json'
-import foxAssetsFile from '../../data/assets/bad-fox.json'
 import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
-import { useScreenSize } from '../../contexts/ScreenSizeContext'
+import projectsFile from '../../data/projects.json'
 
 const Wallet = () => {
   const { populatedWallet } = useWallet()
@@ -26,7 +26,7 @@ const Wallet = () => {
     )
 
     for await (const { assetId } of populatedWallet.assets[policyId]) {
-      const asset = foxAssetsFile.assets.find((asset) => asset.assetId === assetId)
+      const asset = getFileForPolicyId(policyId, 'assets').find((asset) => asset.assetId === assetId)
 
       if (stored) {
         const storedAsset = stored[assetId]

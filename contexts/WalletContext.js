@@ -2,8 +2,8 @@ import React, { createContext, useState, useContext, useMemo, useEffect } from '
 import { BrowserWallet } from '@martifylabs/mesh'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
+import getFileForPolicyId from '../functions/getFileForPolicyId'
 import { BAD_FOX_POLICY_ID } from '../constants/policy-ids'
-import foxAssetsFile from '../data/assets/bad-fox.json'
 
 // https://mesh.martify.io/apis/browserwallet
 
@@ -44,7 +44,7 @@ export const WalletProvider = ({ children }) => {
 
         const badFoxAssets =
           (await _wallet.getPolicyIdAssets(BAD_FOX_POLICY_ID))?.map(({ unit }) =>
-            foxAssetsFile.assets.find((asset) => asset.assetId === unit)
+            getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets').find((asset) => asset.assetId === unit)
           ) || []
 
         setPopulatedWallet({

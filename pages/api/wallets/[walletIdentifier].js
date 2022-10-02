@@ -1,7 +1,7 @@
 import { blockfrost } from '../../../utils/blockfrost'
 import toHex from '../../../functions/formatters/hex/toHex'
+import getFileForPolicyId from '../../../functions/getFileForPolicyId'
 import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
-import foxAssetsFile from '../../../data/assets/bad-fox.json'
 
 export default async (req, res) => {
   try {
@@ -35,7 +35,7 @@ export default async (req, res) => {
 
         const badFoxAssets =
           (await blockfrost.getAssetIdsWithStakeKey(stakeKey, BAD_FOX_POLICY_ID))?.map((assetId) =>
-            foxAssetsFile.assets.find((asset) => asset.assetId === assetId)
+            getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets').find((asset) => asset.assetId === assetId)
           ) || []
 
         const wallet = {

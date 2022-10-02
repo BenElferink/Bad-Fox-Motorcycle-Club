@@ -1,11 +1,11 @@
-const foxTraitsJsonFile = require('../../data/traits/bad-fox.json')
 const { jpgStore } = require('../../utils/jpgStore')
+const getFileForPolicyId = require('../getFileForPolicyId')
 const { BAD_FOX_POLICY_ID } = require('../../constants/policy-ids')
 
 const traitsData = (() => {
   const payload = {}
 
-  Object.entries(foxTraitsJsonFile).forEach(([cat, traits]) => {
+  Object.entries(getFileForPolicyId(BAD_FOX_POLICY_ID, 'traits')).forEach(([cat, traits]) => {
     payload[cat] = traits.map(({ onChainName }) => onChainName)
   })
 

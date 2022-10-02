@@ -1,22 +1,20 @@
-import { useState } from 'react'
-import AssetCard from '../../Assets/AssetCard'
+import { useMemo, useState } from 'react'
+import getFileForPolicyId from '../../../functions/getFileForPolicyId'
 import TraitFilters from '../TraitFilters'
-import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
+import AssetCard from '../../Assets/AssetCard'
 import styles from './CollectionTraits.module.css'
-import foxTraitsFile from '../../../data/traits/bad-fox.json'
 
 const CollectionTraits = ({ policyId }) => {
   const [selectedCategory, setSelectedCategory] = useState('')
 
+  const traitsObj = useMemo(() => getFileForPolicyId(policyId, 'traits'), [policyId])
+
   return (
     <div className='flex-col'>
-      <TraitFilters
-        traitsData={policyId === BAD_FOX_POLICY_ID ? foxTraitsFile : {}}
-        callbackSelectedCategory={(str) => setSelectedCategory(str)}
-      />
+      <TraitFilters traitsData={traitsObj} callbackSelectedCategory={(str) => setSelectedCategory(str)} />
 
       <div className={styles.traitCatalog}>
-        {(policyId === BAD_FOX_POLICY_ID ? foxTraitsFile : {})[selectedCategory]?.map((trait) => (
+        {traitsObj[selectedCategory]?.map((trait) => (
           <AssetCard
             key={`trait-catalog-list-item-${trait.displayName}-${trait.gender}`}
             mainTitles={[trait.displayName]}

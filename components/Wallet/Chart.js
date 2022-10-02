@@ -1,16 +1,15 @@
 import dynamic from 'next/dynamic'
-import React, { Fragment, useCallback, useEffect, useState } from 'react'
+import React, { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import fromHex from '../../functions/formatters/hex/fromHex'
+import getFileForPolicyId from '../../functions/getFileForPolicyId'
+import formatIpfsImageUrl from '../../functions/formatters/formatIpfsImageUrl'
+import getDatesFromFloorData from '../../functions/charts/getDatesFromFloorData'
+import getPortfolioSeries from '../../functions/charts/getPortfolioSeries'
 import Modal from '../Modal'
 import Toggle from '../Toggle'
 import BaseButton from '../BaseButton'
 import AssetCard from '../Assets/AssetCard'
-import getPortfolioSeries from '../../functions/charts/getPortfolioSeries'
-import getDatesFromFloorData from '../../functions/charts/getDatesFromFloorData'
-import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
-import foxAssetsFile from '../../data/assets/bad-fox.json'
-import formatIpfsImageUrl from '../../functions/formatters/formatIpfsImageUrl'
 
 const ApexChart = dynamic(() => import('react-apexcharts'), { ssr: false })
 
@@ -66,6 +65,8 @@ const Chart = ({
       textAlign: 'right',
     },
   }
+
+  const assetsArr = useMemo(() => getFileForPolicyId(policyId, 'assets'), [policyId])
 
   return (
     <Fragment>
@@ -135,10 +136,7 @@ const Chart = ({
                 Number(fromHex(b[0].replace(policyId, '')).split('#')[1])
             )
             .map(([assetId, priced]) => {
-              const thisAsset = (policyId === BAD_FOX_POLICY_ID ? foxAssetsFile.assets : []).find(
-                (asset) => asset.assetId === assetId
-              )
-
+              const thisAsset = assetsArr.find((asset) => asset.assetId === assetId)
               const thisPrice = priced.price
               const [thisFloor, thisHighestTraitValue] = getPricesFromAttributes(priced.attributes)
 

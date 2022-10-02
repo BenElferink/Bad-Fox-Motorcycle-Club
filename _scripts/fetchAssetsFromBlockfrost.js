@@ -2,27 +2,20 @@ require('dotenv').config()
 const fs = require('fs')
 const { default: axios } = require('axios')
 const { blockfrost } = require('../utils/blockfrost')
-const foxAssetsFile = require('../data/assets/bad-fox.json')
-const fourtyTwoCahinAssetsFile = require('../data/assets/42-chain.json')
-const foxTraitsFile = require('../data/traits/bad-fox.json')
+const getFileForPolicyId = require('../functions/getFileForPolicyId')
 const fromHex = require('../functions/formatters/hex/fromHex')
-const { BAD_FOX_POLICY_ID, FOURTY_TWO_CHAIN_POLICY_ID } = require('../constants/policy-ids')
+const { BAD_FOX_POLICY_ID } = require('../constants/policy-ids')
 const { CNFT_TOOLS_API } = require('../constants/api-urls')
 
-const POLICY_ID = FOURTY_TWO_CHAIN_POLICY_ID
-const ASSET_DISPLAY_NAME_PREFIX = '42 Chain #'
-const JSON_FILE_NAME = '42-chain.json'
-const SHOULD_COUNT_TRAITS = false
-const HAS_RANKS_ON_CNFT_TOOLS = false
+const POLICY_ID = BAD_FOX_POLICY_ID
+const ASSET_DISPLAY_NAME_PREFIX = 'Bad Fox #'
+const JSON_FILE_NAME = 'bad-fox.json'
+const SHOULD_COUNT_TRAITS = true
+const HAS_RANKS_ON_CNFT_TOOLS = true
 
 let cnftToolsAssets = []
-const traitsFile = POLICY_ID === BAD_FOX_POLICY_ID ? foxTraitsFile : {}
-const populatedAssets =
-  POLICY_ID === BAD_FOX_POLICY_ID
-    ? foxAssetsFile?.assets || []
-    : POLICY_ID === FOURTY_TWO_CHAIN_POLICY_ID
-    ? fourtyTwoCahinAssetsFile?.assets || []
-    : []
+const traitsFile = getFileForPolicyId(POLICY_ID, 'traits')
+const populatedAssets = getFileForPolicyId(POLICY_ID, 'assets')
 
 const populateNewAsset = async (assetId) => {
   let rarityRank = 0

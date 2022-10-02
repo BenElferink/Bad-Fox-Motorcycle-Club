@@ -1,14 +1,12 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useMarket } from '../../../contexts/MarketContext'
 import { useScreenSize } from '../../../contexts/ScreenSizeContext'
+import getFileForPolicyId from '../../../functions/getFileForPolicyId'
+import formatIpfsImageUrl from '../../../functions/formatters/formatIpfsImageUrl'
 import AssetFilters from '../AssetFilters'
 import AssetCard from '../AssetCard'
 import Loader from '../../Loader'
 import { ADA_SYMBOL } from '../../../constants/ada'
-import formatIpfsImageUrl from '../../../functions/formatters/formatIpfsImageUrl'
-import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
-import foxAssetsFile from '../../../data/assets/bad-fox.json'
-import foxTraitsFile from '../../../data/traits/bad-fox.json'
 
 const INITIAL_DISPLAY_AMOUNT = 20
 
@@ -45,6 +43,9 @@ const CollectionAssets = ({ policyId }) => {
     return () => window.removeEventListener('scroll', handleScroll)
   })
 
+  const assetsArr = useMemo(() => getFileForPolicyId(policyId, 'assets'), [policyId])
+  const traitsObj = useMemo(() => getFileForPolicyId(policyId, 'traits'), [policyId])
+
   return (
     <div
       style={{
@@ -54,10 +55,8 @@ const CollectionAssets = ({ policyId }) => {
       }}
     >
       <AssetFilters
-        assetsArr={policyId === BAD_FOX_POLICY_ID ? foxAssetsFile.assets : []}
-        traitsMatrix={Object.entries(policyId === BAD_FOX_POLICY_ID ? foxTraitsFile : {}).sort((a, b) =>
-          a[0].localeCompare(b[0])
-        )}
+        assetsArr={assetsArr}
+        traitsMatrix={Object.entries(traitsObj).sort((a, b) => a[0].localeCompare(b[0]))}
         callbackRendered={(arr) => setRendered(arr)}
       />
 
@@ -82,7 +81,7 @@ const CollectionAssets = ({ policyId }) => {
                     .map(([cat, attr]) => [
                       `${cat}:`,
                       attr,
-                      foxTraitsFile[cat].find((trait) => trait.onChainName === attr)?.percent,
+                      traitsObj[cat].find((trait) => trait.onChainName === attr)?.percent,
                     ])}
                 />
               ) : null

@@ -1,11 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import useWallet from '../../../contexts/WalletContext'
 import { useScreenSize } from '../../../contexts/ScreenSizeContext'
+import getFileForPolicyId from '../../../functions/getFileForPolicyId'
+import formatIpfsImageUrl from '../../../functions/formatters/formatIpfsImageUrl'
 import AssetFilters from '../AssetFilters'
 import AssetCard from '../AssetCard'
-import formatIpfsImageUrl from '../../../functions/formatters/formatIpfsImageUrl'
-import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
-import foxTraitsFile from '../../../data/traits/bad-fox.json'
 
 const INITIAL_DISPLAY_AMOUNT = 20
 
@@ -31,6 +30,8 @@ const WalletAssets = ({ policyId }) => {
     return () => window.removeEventListener('scroll', handleScroll)
   })
 
+  const traitsObj = useMemo(() => getFileForPolicyId(policyId, 'traits'), [policyId])
+
   return (
     <div
       style={{
@@ -41,9 +42,7 @@ const WalletAssets = ({ policyId }) => {
     >
       <AssetFilters
         assetsArr={populatedWallet.assets[policyId]}
-        traitsMatrix={Object.entries(policyId === BAD_FOX_POLICY_ID ? foxTraitsFile : {}).sort((a, b) =>
-          a[0].localeCompare(b[0])
-        )}
+        traitsMatrix={Object.entries(traitsObj).sort((a, b) => a[0].localeCompare(b[0]))}
         callbackRendered={(arr) => setRendered(arr)}
       />
 
@@ -65,7 +64,7 @@ const WalletAssets = ({ policyId }) => {
                     .map(([cat, attr]) => [
                       `${cat}:`,
                       attr,
-                      foxTraitsFile[cat].find((trait) => trait.onChainName === attr)?.percent,
+                      traitsObj[cat].find((trait) => trait.onChainName === attr)?.percent,
                     ])}
                 />
               ) : null

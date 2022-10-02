@@ -1,5 +1,5 @@
 const axios = require('axios')
-const foxAssetsFile = require('../data/assets/bad-fox.json')
+const getFileForPolicyId = require('../functions/getFileForPolicyId')
 const formatIpfsImageUrl = require('../functions/formatters/formatIpfsImageUrl')
 const { JPG_API } = require('../constants/api-urls')
 const { BAD_FOX_POLICY_ID } = require('../constants/policy-ids')
@@ -25,7 +25,7 @@ class JpgStore {
 
         const payload = data
           .map((item) => {
-            const asset = foxAssetsFile.assets.find((asset) => asset.assetId === item.asset_id)
+            const asset = getFileForPolicyId(policyId, 'assets').find((asset) => asset.assetId === item.asset_id)
 
             return {
               assetId: item.asset_id,
@@ -87,7 +87,7 @@ class JpgStore {
         const payload = data.tokens
           .filter((item) => item.listing_lovelace > 0)
           .map((item) => {
-            const asset = foxAssetsFile.assets.find((asset) => asset.assetId === item.asset_id)
+            const asset = getFileForPolicyId(policyId, 'assets').find((asset) => asset.assetId === item.asset_id)
 
             return {
               assetId: item.asset_id,

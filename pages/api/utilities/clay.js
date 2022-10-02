@@ -1,11 +1,11 @@
 import connectDB from '../../../utils/mongo'
 import Wallet from '../../../models/Wallet'
-import foxAssetsFile from '../../../data/assets/bad-fox.json'
-// import traitsData from '../../../data/traits/bad-fox.json'
-import clayTraitSetsFile from '../../../data/clay-trait-sets'
-import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
-import { BAD_FOX_WALLET } from '../../../constants/addresses'
 import { blockfrost } from '../../../utils/blockfrost'
+import getFileForPolicyId from '../../../functions/getFileForPolicyId'
+import { BAD_FOX_WALLET } from '../../../constants/addresses'
+import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
+import clayTraitSetsFile from '../../../data/clay-trait-sets'
+// import traitsData from '../../../data/traits/bad-fox.json'
 
 // const data = {
 //   'Role Name': {
@@ -70,7 +70,7 @@ export default async (req, res) => {
 
         for (const wallet of wallets) {
           const assetsOfThisWallet = wallet.assets[BAD_FOX_POLICY_ID].map((assetId) =>
-            foxAssetsFile.assets.find((asset) => asset.assetId === assetId)
+            getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets').find((asset) => asset.assetId === assetId)
           )
 
           for (const setName in clayTraitSetsFile) {
