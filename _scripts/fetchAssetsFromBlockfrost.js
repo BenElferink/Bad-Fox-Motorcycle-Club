@@ -3,30 +3,39 @@ const fs = require('fs')
 const { default: axios } = require('axios')
 const { blockfrost } = require('../utils/blockfrost')
 const foxAssetsFile = require('../data/assets/bad-fox.json')
+const fourtyTwoCahinAssetsFile = require('../data/assets/42-chain.json')
 const foxTraitsFile = require('../data/traits/bad-fox.json')
 const fromHex = require('../functions/formatters/hex/fromHex')
-const { BAD_FOX_POLICY_ID } = require('../constants/policy-ids')
+const { BAD_FOX_POLICY_ID, FOURTY_TWO_CHAIN_POLICY_ID } = require('../constants/policy-ids')
 const { CNFT_TOOLS_API } = require('../constants/api-urls')
 
-const POLICY_ID = BAD_FOX_POLICY_ID
-const JSON_FILE_NAME = 'bad-fox.json'
-const ASSET_DISPLAY_NAME_PREFIX = 'Bad Fox #'
-const SHOULD_COUNT_TRAITS = true
+const POLICY_ID = FOURTY_TWO_CHAIN_POLICY_ID
+const ASSET_DISPLAY_NAME_PREFIX = '42 Chain #'
+const JSON_FILE_NAME = '42-chain.json'
+const SHOULD_COUNT_TRAITS = false
+const HAS_RANKS_ON_CNFT_TOOLS = false
 
 let cnftToolsAssets = []
 const traitsFile = POLICY_ID === BAD_FOX_POLICY_ID ? foxTraitsFile : {}
-const populatedAssets = POLICY_ID === BAD_FOX_POLICY_ID ? foxAssetsFile?.assets || [] : []
+const populatedAssets =
+  POLICY_ID === BAD_FOX_POLICY_ID
+    ? foxAssetsFile?.assets || []
+    : POLICY_ID === FOURTY_TWO_CHAIN_POLICY_ID
+    ? fourtyTwoCahinAssetsFile?.assets || []
+    : []
 
 const populateNewAsset = async (assetId) => {
-  if (!cnftToolsAssets.length) {
+  let rarityRank = 0
+
+  if (HAS_RANKS_ON_CNFT_TOOLS && !cnftToolsAssets.length) {
     cnftToolsAssets = (await axios.get(`${CNFT_TOOLS_API}/external/${POLICY_ID}`)).data
+    rarityRank = Number(cnftToolsAssets.find((item) => item.name === data.onchain_metadata.name)?.rarityRank || 0)
   }
 
   console.log(`Populating asset with ID ${assetId}`)
 
   try {
     const data = await blockfrost.getAssetWithAssetId(assetId)
-    const { rarityRank } = cnftToolsAssets.find((item) => item.name === data.onchain_metadata.name)
 
     return {
       assetId: data.asset,
@@ -34,12 +43,12 @@ const populateNewAsset = async (assetId) => {
       onChainName: fromHex(data.asset_name),
       displayName: data.onchain_metadata.name,
       serialNumber: Number(data.onchain_metadata.name.replace(ASSET_DISPLAY_NAME_PREFIX, '')),
-      rarityRank: Number(rarityRank),
+      rarityRank,
       attributes: data.onchain_metadata.attributes,
       image: {
         ipfs: data.onchain_metadata.image[0],
-        cnftTools: data.onchain_metadata.image[0].replace('ipfs://', 'https://images.cnft.tools/ipfs/'),
       },
+      // files: data.onchain_metadata.files || [],
     }
   } catch (error) {
     console.error(`Error populating asset with ID ${assetId}`)

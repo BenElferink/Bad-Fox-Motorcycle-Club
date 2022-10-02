@@ -17,7 +17,7 @@ const run = async () => {
   const assets = foxAssetsFile.assets
   const holders = []
 
-  for (const { assetId } of assets) {
+  for await (const { assetId } of assets) {
     console.log('\nProcessing asset:', assetId)
 
     const walletAddress = await blockfrost.getWalletAddressWithAssetId(assetId)

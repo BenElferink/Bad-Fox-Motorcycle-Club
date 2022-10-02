@@ -10,7 +10,7 @@ function ProjectListItem({ name, image, onClick }) {
 
   const styles = {
     project: {
-      // margin: 5,
+      margin: 5,
       position: 'relative',
       cursor: 'pointer',
     },

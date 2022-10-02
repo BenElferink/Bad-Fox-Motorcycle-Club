@@ -1,5 +1,6 @@
 const axios = require('axios')
 const foxAssetsFile = require('../data/assets/bad-fox.json')
+const formatIpfsImageUrl = require('../functions/formatters/formatIpfsImageUrl')
 const { JPG_API } = require('../constants/api-urls')
 const { BAD_FOX_POLICY_ID } = require('../constants/policy-ids')
 
@@ -32,7 +33,7 @@ class JpgStore {
               price: item.price_lovelace / ONE_MILLION,
               rank: asset.rarityRank,
               attributes: asset.attributes,
-              imageUrl: asset.image.cnftTools,
+              imageUrl: formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank),
               itemUrl: `https://jpg.store/asset/${item.asset_id}`,
               date: new Date(sold ? item.confirmed_at : item.listed_at),
             }
@@ -94,7 +95,7 @@ class JpgStore {
               price: Number(item.listing_lovelace) / ONE_MILLION,
               rank: asset.rarityRank,
               attributes: asset.attributes,
-              imageUrl: asset.image.cnftTools,
+              imageUrl: formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank),
               itemUrl: `https://jpg.store/asset/${item.asset_id}`,
               date: new Date(item.listed_at),
             }

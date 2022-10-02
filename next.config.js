@@ -4,7 +4,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['images.cnft.tools', 'raw.githubusercontent.com'],
+    domains: ['raw.githubusercontent.com', 'images.cnft.tools', 'alwaysinvert.mypinata.cloud'],
   },
   webpack: function (config, options) {
     config.experiments = {

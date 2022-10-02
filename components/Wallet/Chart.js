@@ -10,6 +10,7 @@ import getPortfolioSeries from '../../functions/charts/getPortfolioSeries'
 import getDatesFromFloorData from '../../functions/charts/getDatesFromFloorData'
 import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
 import foxAssetsFile from '../../data/assets/bad-fox.json'
+import formatIpfsImageUrl from '../../functions/formatters/formatIpfsImageUrl'
 
 const ApexChart = dynamic(() => import('react-apexcharts'), { ssr: false })
 
@@ -151,7 +152,7 @@ const Chart = ({
                   key={`asset-${assetId}`}
                   mainTitles={[thisAsset.displayName]}
                   subTitles={[`Rank ${thisAsset.rarityRank}`]}
-                  imageSrc={thisAsset.image.cnftTools}
+                  imageSrc={formatIpfsImageUrl(thisAsset.image.ipfs, !!thisAsset.rarityRank)}
                   noClick
                   style={{ boxShadow }}
                   tableRows={[

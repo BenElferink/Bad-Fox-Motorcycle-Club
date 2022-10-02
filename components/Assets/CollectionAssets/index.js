@@ -5,9 +5,10 @@ import AssetFilters from '../AssetFilters'
 import AssetCard from '../AssetCard'
 import Loader from '../../Loader'
 import { ADA_SYMBOL } from '../../../constants/ada'
-import foxAssetsFile from '../../../data/assets/bad-fox.json'
-import foxTraitsData from '../../../data/traits/bad-fox.json'
+import formatIpfsImageUrl from '../../../functions/formatters/formatIpfsImageUrl'
 import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
+import foxAssetsFile from '../../../data/assets/bad-fox.json'
+import foxTraitsFile from '../../../data/traits/bad-fox.json'
 
 const INITIAL_DISPLAY_AMOUNT = 20
 
@@ -54,7 +55,7 @@ const CollectionAssets = ({ policyId }) => {
     >
       <AssetFilters
         assetsArr={policyId === BAD_FOX_POLICY_ID ? foxAssetsFile.assets : []}
-        traitsMatrix={Object.entries(policyId === BAD_FOX_POLICY_ID ? foxTraitsData : {}).sort((a, b) =>
+        traitsMatrix={Object.entries(policyId === BAD_FOX_POLICY_ID ? foxTraitsFile : {}).sort((a, b) =>
           a[0].localeCompare(b[0])
         )}
         callbackRendered={(arr) => setRendered(arr)}
@@ -74,14 +75,14 @@ const CollectionAssets = ({ policyId }) => {
                     `Rank: ${asset.rarityRank}`,
                     asset.price ? `Listed: ${ADA_SYMBOL}${asset.price}` : 'Not listed',
                   ]}
-                  imageSrc={asset.image.cnftTools}
+                  imageSrc={formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank)}
                   itemUrl={`https://jpg.store/asset/${asset.assetId}`}
                   tableRows={Object.entries(asset.attributes)
                     .sort((a, b) => a[0].localeCompare(b[0]))
                     .map(([cat, attr]) => [
                       `${cat}:`,
                       attr,
-                      foxTraitsData[cat].find((trait) => trait.onChainName === attr)?.percent,
+                      foxTraitsFile[cat].find((trait) => trait.onChainName === attr)?.percent,
                     ])}
                 />
               ) : null

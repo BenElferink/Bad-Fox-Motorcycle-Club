@@ -3,8 +3,9 @@ import useWallet from '../../../contexts/WalletContext'
 import { useScreenSize } from '../../../contexts/ScreenSizeContext'
 import AssetFilters from '../AssetFilters'
 import AssetCard from '../AssetCard'
-import foxTraitsData from '../../../data/traits/bad-fox.json'
+import formatIpfsImageUrl from '../../../functions/formatters/formatIpfsImageUrl'
 import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
+import foxTraitsFile from '../../../data/traits/bad-fox.json'
 
 const INITIAL_DISPLAY_AMOUNT = 20
 
@@ -40,7 +41,7 @@ const WalletAssets = ({ policyId }) => {
     >
       <AssetFilters
         assetsArr={populatedWallet.assets[policyId]}
-        traitsMatrix={Object.entries(policyId === BAD_FOX_POLICY_ID ? foxTraitsData : {}).sort((a, b) =>
+        traitsMatrix={Object.entries(policyId === BAD_FOX_POLICY_ID ? foxTraitsFile : {}).sort((a, b) =>
           a[0].localeCompare(b[0])
         )}
         callbackRendered={(arr) => setRendered(arr)}
@@ -57,14 +58,14 @@ const WalletAssets = ({ policyId }) => {
                   key={`collection-asset-${asset.assetId}-${idx}`}
                   mainTitles={[asset.displayName]}
                   subTitles={[`Rank: ${asset.rarityRank}`]}
-                  imageSrc={asset.image.cnftTools}
+                  imageSrc={formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank)}
                   itemUrl={`https://jpg.store/asset/${asset.assetId}`}
                   tableRows={Object.entries(asset.attributes)
                     .sort((a, b) => a[0].localeCompare(b[0]))
                     .map(([cat, attr]) => [
                       `${cat}:`,
                       attr,
-                      foxTraitsData[cat].find((trait) => trait.onChainName === attr)?.percent,
+                      foxTraitsFile[cat].find((trait) => trait.onChainName === attr)?.percent,
                     ])}
                 />
               ) : null
