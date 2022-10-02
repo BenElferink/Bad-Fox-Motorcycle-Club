@@ -45,16 +45,16 @@ export default function Footer() {
                 cursor: 'pointer',
               }}
             >
+              <h5 style={{ margin: 0, textAlign: 'center', userSelect: 'none' }}>{obj.name}</h5>
               <div
                 style={{
                   height: obj.logoHeight,
                   width: obj.logoWidth,
-                  marginBottom: '0.5rem',
+                  marginTop: '0.5rem',
                   background: `url(${obj.logo}) no-repeat center`,
                   backgroundSize: 'contain',
                 }}
               />
-              <h5 style={{ margin: 0, textAlign: 'center', userSelect: 'none' }}>{obj.name}</h5>
             </div>
           ))}
         </div>

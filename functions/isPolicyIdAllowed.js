@@ -1,4 +1,4 @@
-import projects from '../data/projects.json'
+const projects = require('../data/projects.json')
 
 const isPolicyIdAllowed = (policyId) => {
   if (!policyId) {
@@ -16,4 +16,4 @@ const isPolicyIdAllowed = (policyId) => {
   return isAllowed
 }
 
-export default isPolicyIdAllowed
+module.exports = isPolicyIdAllowed

@@ -25,7 +25,7 @@ const Wallet = () => {
       window.localStorage.getItem(`wallet-portfolio-${populatedWallet.stakeKey}-${policyId}`)
     )
 
-    for (const { assetId } of populatedWallet.assets[policyId]) {
+    for await (const { assetId } of populatedWallet.assets[policyId]) {
       const asset = foxAssetsFile.assets.find((asset) => asset.assetId === assetId)
 
       if (stored) {
