@@ -9,12 +9,7 @@ const WINNERS_COUNT = 30
 const ADA_PER_WIN = 50
 const NFT_PER_WIN = 1
 
-const INCLUDED_TRAITS = [
-  { Eyewear: '(F) Fire Shades' },
-  { Eyewear: '(M) Pink Luxury Shades' },
-  { Skin: '(F) Zombie' },
-  { Skin: '(M) Zombie' },
-]
+const INCLUDED_TRAITS = [{ Eyewear: '(M) Big Shades' }, { Clothes: '(M) Sport Jacket' }]
 
 const run = async () => {
   const stakeAddresses = {}
@@ -32,14 +27,6 @@ const run = async () => {
 
   console.log('Found assets with included traits:', foundAssetsWithIncludedTraits.length)
 
-  const usedIndexes = []
-  const getIndex = (max) => {
-    const idx = Math.floor(Math.random() * max)
-    const alreadyUsedIndex = usedIndexes.find((num) => num === idx) != null
-
-    return [idx, alreadyUsedIndex]
-  }
-
   const getKeysForAssetId = async (assetId) => {
     const address = await blockfrost.getWalletAddressWithAssetId(assetId)
 
@@ -56,6 +43,14 @@ const run = async () => {
     } else {
       return [address, null]
     }
+  }
+
+  const usedIndexes = []
+  const getIndex = (max) => {
+    const idx = Math.floor(Math.random() * max)
+    const alreadyUsedIndex = usedIndexes.find((num) => num === idx) != null
+
+    return [idx, alreadyUsedIndex]
   }
 
   let raffledCount = 0
@@ -108,7 +103,7 @@ const run = async () => {
   }))
 
   fs.writeFileSync(
-    './_temp/winning-traits.json',
+    './_temp/raffled-traits.json',
     JSON.stringify({
       _wen: Date.now(),
       wallets,
@@ -142,7 +137,7 @@ const run = async () => {
 
   await writeXlsxFile(excelRows, {
     columns: COLUMN_SIZE,
-    filePath: './_temp/winning-traits-week5.xlsx',
+    filePath: './_temp/raffled-traits.xlsx',
   })
 
   console.log('Done!')
