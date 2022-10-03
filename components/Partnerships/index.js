@@ -26,14 +26,14 @@ export default function Partnerships() {
             url: 'https://dotdotlabs.io',
             logo: `${GITHUB_MEDIA_URL}/logo/other/dotdotlabs.png`,
             logoHeight: '80px',
-            logoWidth: '110px',
+            logoWidth: '80px',
           },
           {
-            name: 'Bearmarket Doxxing',
-            url: 'https://doxxing.bearmarket.io/bad-fox-motorcycle-club',
-            logo: `${GITHUB_MEDIA_URL}/logo/other/bearmarket-doxxing.png`,
+            name: 'Cardano Villa',
+            url: 'https://spatial.io/s/cardanovillas-BFMC-632abbcb959f2400013ec9a5?share=4838127040499173286',
+            logo: `${GITHUB_MEDIA_URL}/logo/other/cardanovilla.png`,
             logoHeight: '80px',
-            logoWidth: '120px',
+            logoWidth: '80px',
           },
           {
             name: 'SoundRig',
@@ -43,11 +43,11 @@ export default function Partnerships() {
             logoWidth: '110px',
           },
           {
-            name: 'Cardano Villa',
-            url: 'https://spatial.io/s/cardanovillas-BFMC-632abbcb959f2400013ec9a5?share=4838127040499173286',
-            logo: `${GITHUB_MEDIA_URL}/logo/other/cardanovilla.png`,
+            name: 'Bearmarket Doxxing',
+            url: 'https://doxxing.bearmarket.io/bad-fox-motorcycle-club',
+            logo: `${GITHUB_MEDIA_URL}/logo/other/bearmarket-doxxing.png`,
             logoHeight: '80px',
-            logoWidth: '70px',
+            logoWidth: '120px',
           },
         ].map((obj) => (
           <div
@@ -55,7 +55,7 @@ export default function Partnerships() {
             onClick={() => window.open(obj.url, '_blank')}
             style={{
               width: '130px',
-              margin: '1rem',
+              margin: '0.5rem',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
