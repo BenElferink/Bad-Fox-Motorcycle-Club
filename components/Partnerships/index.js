@@ -45,7 +45,7 @@ export default function Partnerships() {
           {
             name: 'Cardano Villa',
             url: 'https://spatial.io/s/cardanovillas-BFMC-632abbcb959f2400013ec9a5?share=4838127040499173286',
-            logo: `${GITHUB_MEDIA_URL}/logo/other/cardanovilla.webp`,
+            logo: `${GITHUB_MEDIA_URL}/logo/other/cardanovilla.png`,
             logoHeight: '80px',
             logoWidth: '70px',
           },
