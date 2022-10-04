@@ -20,7 +20,7 @@ const Landing = ({ isHome = false, children }) => {
       <div className={styles.content}>
         {isHome && !displayGraphics ? (
           <video
-            src='/media/landing/landing.mp4'
+            src={`${GITHUB_MEDIA_URL}/landing/landing.mp4`}
             autoPlay
             muted
             playsInline // for mobile devices (will not auto-fullscreen on page-load)
@@ -47,7 +47,7 @@ const Landing = ({ isHome = false, children }) => {
           }`}
         >
           <Image
-            src={`/media/landing/${showFemale ? 'f_bike.png' : 'm_bike.png'}`}
+            src={`${GITHUB_MEDIA_URL}/landing/${showFemale ? 'f_bike.png' : 'm_bike.png'}`}
             width={bikeSize}
             height={bikeSize / 1.7647}
           />
@@ -59,7 +59,7 @@ const Landing = ({ isHome = false, children }) => {
           }`}
         >
           <Image
-            src={`/media/landing/${showFemale ? 'f_fox.png' : 'm_fox.png'}`}
+            src={`${GITHUB_MEDIA_URL}/landing/${showFemale ? 'f_fox.png' : 'm_fox.png'}`}
             width={foxSize}
             height={foxSize}
           />
