@@ -2,17 +2,17 @@ import { useRef } from 'react'
 import { useScreenSize } from '../contexts/ScreenSizeContext'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import Landing from '../components/Landing'
+import Landing from '../components/Home/Landing'
 // import CountDown from '../components/CountDown'
-import About from '../components/About'
-import Sneaks from '../components/Sneaks'
-import Partnerships from '../components/Partnerships'
-import Roadmap from '../components/Roadmap'
-import Team from '../components/Team'
+import About from '../components/Home/About'
+import Sneaks from '../components/Home/Sneaks'
+import Partnerships from '../components/Home/Partnerships'
+import Roadmap from '../components/Home/Roadmap'
+import Team from '../components/Home/Team'
 import { HOME } from '../constants/scroll-nav'
 
 export default function Page() {
-  const { isMobile } = useScreenSize()
+  const { isTablet } = useScreenSize()
   const mapRef = useRef(null)
   const teamRef = useRef(null)
 
@@ -39,7 +39,7 @@ export default function Page() {
       <Header scrollTo={scrollTo} />
       <Landing isHome />
       {/* <CountDown /> */}
-      {isMobile ? <About /> : null}
+      {isTablet ? <About /> : null}
       <Sneaks />
       <Partnerships />
       <Roadmap ref={mapRef} />

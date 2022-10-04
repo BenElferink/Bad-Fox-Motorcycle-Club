@@ -14,9 +14,10 @@ export function ScreenSizeProvider({ children }) {
   const { width, height } = useWindowDimensions()
 
   const isMobile = width ? width < 768 : true
+  const isTablet = width ? width < 992 : true
 
   return (
-    <ScreenSizeContext.Provider value={{ screenWidth: width, screenHeight: height, isMobile }}>
+    <ScreenSizeContext.Provider value={{ screenWidth: width, screenHeight: height, isMobile, isTablet }}>
       {children}
     </ScreenSizeContext.Provider>
   )

@@ -68,7 +68,7 @@ export default function ConnectWallet({ modalOnly = false }) {
         {connected ? (
           <p style={{ textAlign: 'center' }}>
             You've succesfully connected your wallet with {connectedName}:<br />
-            <span style={{ fontSize: '0.9rem', color: 'var(--orange)' }}>{populatedWallet.stakeKey}</span>
+            <span style={{ fontSize: '0.9rem', color: 'var(--online)' }}>{populatedWallet.stakeKey}</span>
           </p>
         ) : (
           <Fragment>

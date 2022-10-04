@@ -4,7 +4,7 @@ import { useDiscord } from '../../../contexts/DiscordContext'
 import { useMint } from '../../../contexts/MintContext'
 import Header from '../../../components/Header'
 import Footer from '../../../components/Footer'
-import Landing from '../../../components/Landing'
+import Landing from '../../../components/Home/Landing'
 import DiscordLogin from '../../../components/DiscordAuth/Login'
 import { DISCORD_AUTH_URL_CHECK_MINT_WALLET } from '../../../constants/discord'
 

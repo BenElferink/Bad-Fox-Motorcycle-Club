@@ -1,0 +1,32 @@
+.root {
+  width: 100%;
+  margin: 1rem auto;
+  padding: 0 1rem;
+}
+
+.root h1 {
+  font-size: 1.4rem;
+}
+
+.root p {
+  text-align: justify;
+  font-size: 0.9rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .root {
+    width: 90vw;
+    padding: 0 1rem;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .root {
+    width: 30vw;
+    margin: 0;
+    /* padding: 0.1rem 1rem;
+    background-color: var(--charcoal);
+    border-radius: 1rem;
+    box-shadow: 0 0 1.5rem 0.1rem var(--apex-charcoal); */
+  }
+}
