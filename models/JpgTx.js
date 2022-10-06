@@ -1,18 +1,20 @@
 import mongoose from 'mongoose'
 
-const Transaction = new mongoose.Schema(
+const JpgTx = new mongoose.Schema(
   {
-    hash: {
-      type: mongoose.Schema.Types.String,
-      required: true,
-    },
     timestamp: {
       type: mongoose.Schema.Types.Number,
     },
-    asset: {
+    txHash: {
       type: mongoose.Schema.Types.String,
     },
-    address: {
+    policyId: {
+      type: mongoose.Schema.Types.String,
+    },
+    assetId: {
+      type: mongoose.Schema.Types.String,
+    },
+    boughtByAddress: {
       type: mongoose.Schema.Types.String,
     },
   },
@@ -27,4 +29,4 @@ const Transaction = new mongoose.Schema(
   }
 )
 
-export default mongoose.models.Transaction ?? mongoose.model('Transaction', Transaction)
+export default mongoose.models.JpgTx ?? mongoose.model('JpgTx', JpgTx)
