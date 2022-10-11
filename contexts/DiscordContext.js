@@ -22,7 +22,6 @@ export function DiscordProvider({ children }) {
   const [token, setToken] = useState('')
   const [userId, setUserId] = useState('')
   const [account, setAccount] = useState(null)
-  const [myAssets, setMyAssets] = useState([])
 
   useEffect(() => {
     if (error.message) {
@@ -34,7 +33,6 @@ export function DiscordProvider({ children }) {
     setToken('')
     setUserId('')
     setAccount(null)
-    setMyAssets([])
     router.push(redirectTo)
   }
 
@@ -84,23 +82,9 @@ export function DiscordProvider({ children }) {
         }
       )
 
-      setMyAssets([])
       setAccount(accountRes.data)
       setUserId(accountRes.data.userId)
       clearError()
-
-      try {
-        if (accountRes.data?.stakeKeys?.length) {
-          for (let sIdx = 0; sIdx < accountRes.data.stakeKeys.length; sIdx++) {
-            const stakeKey = accountRes.data.stakeKeys[sIdx]
-            const walletsRes = await axios.get(`/api/wallets/${stakeKey}`)
-
-            setMyAssets(walletsRes.data.assets[BAD_FOX_POLICY_ID])
-          }
-        }
-      } catch (error) {
-        console.error(error)
-      }
     } catch (e) {
       handleError(e)
     }
@@ -144,9 +128,7 @@ export function DiscordProvider({ children }) {
       value={{
         loading,
         error,
-        userId,
         account,
-        myAssets,
         getAccount,
         updateAccountMintWallet,
         logout,
