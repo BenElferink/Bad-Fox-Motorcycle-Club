@@ -41,6 +41,7 @@ export const WalletProvider = ({ children }) => {
       const _wallet = await BrowserWallet.enable(_walletName)
       if (_wallet) {
         const stakeKeys = await _wallet.getRewardAddresses()
+        const walletAddress = await wallet.getChangeAddress()
 
         const badFoxAssets =
           (await _wallet.getPolicyIdAssets(BAD_FOX_POLICY_ID))?.map(({ unit }) =>
@@ -49,6 +50,7 @@ export const WalletProvider = ({ children }) => {
 
         setPopulatedWallet({
           stakeKey: stakeKeys[0],
+          walletAddress,
           assets: {
             [BAD_FOX_POLICY_ID]: badFoxAssets,
           },

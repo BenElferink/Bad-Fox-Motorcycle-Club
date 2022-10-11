@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useDiscord } from '../../../contexts/DiscordContext'
 import Section from '../../Section'
@@ -7,33 +6,31 @@ import BaseButton from '../../BaseButton'
 import styles from './SubmitWallet.module.css'
 
 export default function SubmitWallet() {
-  const { loading, error, account, updateAccountMintWallet } = useDiscord()
+  const { loading, error, account, updateAccountMintWallet, logout } = useDiscord()
 
-  const [walletAddress, setWalletAddress] = useState('')
+  const [inp, setInp] = useState('')
   const [forceEdit, setForceEdit] = useState(false)
 
-  useEffect(() => {
-    const v = account?.mintWallet.address
-
-    if (v) {
-      setWalletAddress(v)
-    }
-  }, [account])
+  const clickEdit = () => {
+    setInp('')
+    setForceEdit(true)
+  }
 
   const clickSubmit = async () => {
-    if (!walletAddress) {
+    if (!inp) {
       return alert('Please enter a wallet address')
-    } else if (walletAddress.indexOf('addr1') !== 0) {
+    } else if (inp.indexOf('addr1') !== 0) {
       return alert('Please enter a valid wallet address (starts with addr1)')
     }
 
-    await updateAccountMintWallet(walletAddress)
+    await updateAccountMintWallet(inp)
     setForceEdit(false)
   }
 
-  const clickEdit = () => {
-    setForceEdit(true)
-  }
+  useEffect(() => {
+    const v = account?.mintWallet.address
+    if (v) setInp(v)
+  }, [account])
 
   if (loading) {
     return (
@@ -55,12 +52,12 @@ export default function SubmitWallet() {
               <li>
                 Is your wallet address correct?
                 <br />
-                <p className={styles.addr}>{walletAddress}</p>
+                <p className={styles.addr}>{inp}</p>
               </li>
               <br />
               <li>
                 Please make sure you are sumbitting a "used" address, this issue is common with{' '}
-                <strong>Eternl (CCVault)</strong> wallets, or new wallets.
+                <strong>Eternl (CCVault)</strong> wallets, or wallets that had no input/output transactions yet.
               </li>
             </ol>
             <br />
@@ -74,12 +71,15 @@ export default function SubmitWallet() {
   if (!account?.roles?.isOG) {
     return (
       <Section>
-        <h2>You are not eligible to submit a wallet address.</h2>
+        <h2>Hey {account?.username}!</h2>
         <p>
+          You aren't eligible to submit a wallet address.
+          <br />
           Please make sure you have one of the following roles:
           <br />
-          <strong>OG</strong>
+          <strong>OG,</strong>
         </p>
+        <BaseButton label='Logout' onClick={() => logout('/mint')} backgroundColor='var(--discord-purple)' />
       </Section>
     )
   }
@@ -87,7 +87,7 @@ export default function SubmitWallet() {
   if (!account?.mintWallet?.address || forceEdit) {
     return (
       <Section>
-        <h2>Welcome {account?.username}!</h2>
+        <h2>Hey {account?.username}!</h2>
         <p>
           You have the following (mint) roles:
           <br />
@@ -99,8 +99,8 @@ export default function SubmitWallet() {
         <p>Please submit your wallet address, this will be the wallet you'll be minting from!</p>
         <input
           placeholder='Your addr1...'
-          value={walletAddress}
-          onChange={(e) => setWalletAddress(e.target.value)}
+          value={inp}
+          onChange={(e) => setInp(e.target.value)}
           className={styles.inp}
         />
         <BaseButton label='Submit' onClick={clickSubmit} backgroundColor='var(--discord-purple)' />
@@ -111,7 +111,7 @@ export default function SubmitWallet() {
   return (
     <Section>
       <h2>Done!</h2>
-      <p>You have successfully submitted your wallet address.</p>
+      <p>You have successfully submitted your wallet address</p>
       <p className={styles.addr}>
         Your (registered) wallet address:
         <br />
@@ -122,7 +122,19 @@ export default function SubmitWallet() {
         <br />
         <span>{account?.mintWallet?.stakeKey || 'Not submitted'}</span>
       </p>
-      <BaseButton label='Change Address' onClick={clickEdit} backgroundColor='var(--discord-purple)' />
+
+      <BaseButton
+        label='Change Address'
+        onClick={clickEdit}
+        backgroundColor='var(--discord-purple)'
+        style={{ margin: '0.2rem' }}
+      />
+      <BaseButton
+        label='Logout'
+        onClick={() => logout()}
+        backgroundColor='var(--discord-purple)'
+        style={{ margin: '0.2rem' }}
+      />
     </Section>
   )
 }

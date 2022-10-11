@@ -33,6 +33,10 @@ export default async (req, res) => {
           stakeKey = await blockfrost.getStakeKeyWithWalletAddress(walletAddress)
         }
 
+        if (!walletAddress) {
+          walletAddress = (await blockfrost.getWalletAddressesWithStakeKey(stakeKey))[0]
+        }
+
         const badFoxAssets =
           (await blockfrost.getAssetIdsWithStakeKey(stakeKey, BAD_FOX_POLICY_ID))?.map((assetId) =>
             getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets').find((asset) => asset.assetId === assetId)
@@ -40,6 +44,7 @@ export default async (req, res) => {
 
         const wallet = {
           stakeKey,
+          walletAddress,
           assets: {
             [BAD_FOX_POLICY_ID]: badFoxAssets,
           },

@@ -27,7 +27,6 @@ const Account = new mongoose.Schema(
         default: '',
       },
     },
-    stakeKeys: [mongoose.Schema.Types.String],
   },
   {
     versionKey: false,

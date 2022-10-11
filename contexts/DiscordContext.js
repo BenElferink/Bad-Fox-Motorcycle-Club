@@ -5,8 +5,6 @@ import toast from 'react-hot-toast'
 import { ADMIN_CODE } from '../constants/api-keys'
 import { BAD_FOX_POLICY_ID } from '../constants/policy-ids'
 
-const USER_ID_KEY = 'BadFoxMC_DiscordUserID'
-
 // init context
 const DiscordContext = createContext()
 
@@ -32,13 +30,12 @@ export function DiscordProvider({ children }) {
     }
   }, [error])
 
-  const logout = () => {
+  const logout = (redirectTo = '/') => {
     setToken('')
     setUserId('')
     setAccount(null)
     setMyAssets([])
-    window.localStorage.removeItem(USER_ID_KEY)
-    router.push('/')
+    router.push(redirectTo)
   }
 
   const handleError = (e) => {
@@ -80,9 +77,12 @@ export function DiscordProvider({ children }) {
     setLoading(true)
 
     try {
-      const accountRes = await axios.get(`/api/accounts/me?${t ? `discordToken=${t}` : `discordUserId=${id}`}`, {
-        headers: { admin_code: ADMIN_CODE },
-      })
+      const accountRes = await axios.get(
+        `/api/discord-accounts/me?${t ? `discordToken=${t}` : `discordUserId=${id}`}`,
+        {
+          headers: { admin_code: ADMIN_CODE },
+        }
+      )
 
       setMyAssets([])
       setAccount(accountRes.data)
@@ -121,7 +121,7 @@ export function DiscordProvider({ children }) {
 
     try {
       await axios.post(
-        `/api/accounts/mint-wallet/${walletAddress}?${
+        `/api/discord-accounts/mint-wallet/${walletAddress}?${
           token ? `discordToken=${token}` : `discordUserId=${userId}`
         }`,
         {},

@@ -1,11 +1,26 @@
 import mongoose from 'mongoose'
 
+const addressObject = {
+  address: {
+    type: mongoose.Schema.Types.String,
+    default: 'none',
+  },
+  price: {
+    type: mongoose.Schema.Types.Number,
+    default: 0,
+  },
+}
+
 const Setting = new mongoose.Schema(
   {
     policyId: {
       type: mongoose.Schema.Types.String,
       required: true,
       unique: true,
+    },
+    mint: {
+      preSale: addressObject,
+      publicSale: addressObject,
     },
     submitTx: {
       startDate: {

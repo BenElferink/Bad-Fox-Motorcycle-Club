@@ -1,13 +1,15 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { toast } from 'react-hot-toast'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
+import { useMint } from '../../contexts/MintContext'
 import { AppBar, Avatar, IconButton } from '@mui/material'
 import { MenuRounded } from '@mui/icons-material'
 import Modal from '../Modal'
 import BaseButton from '../BaseButton'
-// import MintMenu from './MintMenu'
 import UtilitiesMenu from './UtilitiesMenu'
 import ConnectWallet from '../ConnectWallet'
+import OnlineIndicator from '../OnlineIndicator'
 import Socials from './Socials'
 import { HOME, MAP, TEAM } from '../../constants/scroll-nav'
 import { GITHUB_MEDIA_URL } from '../../constants/api-urls'
@@ -15,6 +17,7 @@ import styles from './Header.module.css'
 
 export default function Header({ scrollTo = () => null }) {
   const { isMobile } = useScreenSize()
+  const { isRegisterOnline, isPreSaleOnline, isPublicSaleOnline } = useMint()
 
   const router = useRouter()
   const isHome = router.route === '/'
@@ -50,6 +53,14 @@ export default function Header({ scrollTo = () => null }) {
 
   const clickCatalogs = () => {
     router.push('/catalogs')
+  }
+
+  const clickMint = () => {
+    if (isRegisterOnline || isPreSaleOnline || isPublicSaleOnline) {
+      router.push('/mint')
+    } else {
+      toast.error('Currently offline')
+    }
   }
 
   useEffect(() => {
@@ -128,9 +139,17 @@ export default function Header({ scrollTo = () => null }) {
 
           <BaseButton label='Catalogs' onClick={clickCatalogs} transparent style={jsStyles.btn} />
           <UtilitiesMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
-          {router.route !== '/wallet' ? <ConnectWallet /> : null}
 
-          {/* <MintMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} /> */}
+          <OnlineIndicator online={isRegisterOnline || isPreSaleOnline || isPublicSaleOnline}>
+            <BaseButton
+              label={isRegisterOnline ? 'Register' : 'Mint'}
+              onClick={clickMint}
+              transparent
+              style={jsStyles.btn}
+            />
+          </OnlineIndicator>
+
+          {router.route !== '/wallet' && router.route !== '/mint' ? <ConnectWallet redirectOnSuccess /> : null}
           <Socials closeMenu={closeMenu} />
         </nav>
       </Modal>

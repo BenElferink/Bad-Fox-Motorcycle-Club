@@ -7,7 +7,14 @@ import { TextField } from '@mui/material'
 import { useRouter } from 'next/router'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
 
-export default function ConnectWallet({ modalOnly = false }) {
+const DISCLAIMER =
+  "Connecting your wallet does not require a password/signature or any contracts, it's a read-only process, your balance/assets are safe."
+
+export default function ConnectWallet({
+  modalOnly = false,
+  redirectOnSuccess = false,
+  introText = 'Connect a wallet to view your assets, traits, and other features such as your personal portfolio etc.',
+}) {
   const {
     availableWallets,
     connectWallet,
@@ -23,7 +30,7 @@ export default function ConnectWallet({ modalOnly = false }) {
   const [openModal, setOpenModal] = useState(modalOnly)
   const [input, setInput] = useState('')
 
-  const clickMainButton = () => {
+  const clickConnectButton = () => {
     if (connected) {
       router.push('/wallet')
     } else {
@@ -34,7 +41,7 @@ export default function ConnectWallet({ modalOnly = false }) {
   const clickCloseModal = () => {
     setOpenModal(false)
 
-    if (connected) {
+    if (connected && redirectOnSuccess) {
       router.push('/wallet')
     } else if (modalOnly) {
       router.push('/')
@@ -52,8 +59,8 @@ export default function ConnectWallet({ modalOnly = false }) {
     <Fragment>
       {!modalOnly ? (
         <BaseButton
-          label={connected ? 'My Wallet' : 'Connect'}
-          onClick={clickMainButton}
+          label={connected ? 'Wallet' : 'Connect'}
+          onClick={clickConnectButton}
           backgroundColor='var(--brown)'
           hoverColor='orange'
         />
@@ -73,9 +80,7 @@ export default function ConnectWallet({ modalOnly = false }) {
         ) : (
           <Fragment>
             <p>
-              Connect a wallet to view your assets, traits, and other features such as your personal portfolio etc.
-              Connecting your wallet does not require a password/signature or any contracts, it's a read-only
-              process, your balance/assets are safe.
+              {introText} {DISCLAIMER}
             </p>
 
             {availableWallets.length == 0 ? (

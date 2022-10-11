@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useDiscord } from '../../../contexts/DiscordContext'
+import { toast } from 'react-hot-toast'
 import { useMint } from '../../../contexts/MintContext'
 import Section from '../../Section'
-import Modal from '../../Modal'
-import Loader from '../../Loader'
 import BaseButton from '../../BaseButton'
+import GlobalLoader from '../../Loader/GlobalLoader'
 import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
 import styles from './MintPortal.module.css'
+import mintingListFile from '../../../data/minting-list.json'
 
-const MintScreen = ({ role = 'None', maxMints = 0, mintPrice = 0, mintAddress = 'None', loading = false }) => {
+const MintScreen = ({ maxMints = 0, mintPrice = 0, mintAddress = 'None' }) => {
   const [isCopied, setIsCopied] = useState(false)
 
   const clickCopy = (value) => {
@@ -26,15 +26,15 @@ const MintScreen = ({ role = 'None', maxMints = 0, mintPrice = 0, mintAddress = 
     <div className={styles.mintModal}>
       <div className={styles.mintModalDevision}>
         <h4>
-          {role} can mint up to {maxMints} NFTs for ₳{mintPrice} each.
+          You can mint up to {maxMints} NFTs for ₳{mintPrice} each.
         </h4>
-        <ul>
+        <p className='flex-col'>
           {new Array(maxMints).fill(null).map((v, i) => (
-            <li key={`mint-option-${i}`}>
-              Mint {i + 1} NFTs - send ₳{mintPrice * (i + 1)}
-            </li>
+            <span key={`mint-option-${i}`}>
+              {i + 1}x cNFT = ₳{mintPrice * (i + 1)}
+            </span>
           ))}
-        </ul>
+        </p>
       </div>
 
       <BaseButton
@@ -46,11 +46,9 @@ const MintScreen = ({ role = 'None', maxMints = 0, mintPrice = 0, mintAddress = 
   )
 }
 
-export default function MintPortal() {
-  const { loading, error, account } = useDiscord()
+export default function MintPortal({ populatedWallet }) {
   const { isPublicSaleOnline } = useMint()
 
-  const [openModal, setOpenModal] = useState(false)
   const [fetching, setFetching] = useState(false)
   const [mintObj, setMintObj] = useState({})
 
@@ -59,72 +57,47 @@ export default function MintPortal() {
       setFetching(true)
 
       try {
-        const res = await axios.get(`/api/mint-address/${BAD_FOX_POLICY_ID}`)
+        const res = await axios.get(`/api/setting/${BAD_FOX_POLICY_ID}`)
 
-        setMintObj(res.data)
+        setMintObj(res.data.mint)
       } catch (error) {
         console.error(error)
+        toast.error(error.message)
       }
 
       setFetching(false)
     })()
   }, [])
 
-  if (loading) {
-    return (
-      <Section>
-        <h2>Please wait a moment...</h2>
-        <Loader />
-      </Section>
-    )
-  }
-
-  if (error.type && error.message) {
-    return (
-      <Section>
-        <h2>An error occurred:</h2>
-        <p>{error.message}</p>
-      </Section>
-    )
+  if (fetching) {
+    return <GlobalLoader />
   }
 
   if (isPublicSaleOnline) {
     return (
       <Section>
-        <h2>Public Mint</h2>
+        <h2>Welcome to the Public Mint!</h2>
 
-        <MintScreen
-          role='Public'
-          maxMints={mintObj.pub?.amount}
-          mintPrice={mintObj.pub?.price}
-          mintAddress={mintObj.pub?.address}
-          loading={fetching}
-        />
+        <MintScreen maxMints={5} mintPrice={mintObj.publicSale?.price} mintAddress={mintObj.publicSale?.address} />
       </Section>
     )
   }
 
-  if (!account?.roles?.isOG) {
+  if (!mintingListFile.wallets.find(({ stakeKey }) => stakeKey === populatedWallet.stakeKey)) {
     return (
       <Section>
-        <h2>You are not eligible to mint.</h2>
+        <h2>Woopsies!</h2>
+
         <p>
-          Please make sure you have one of the following roles:
+          Looks like you aren't eligbile to participate in the pre sale!
           <br />
-          <strong>OG</strong>
+          Please try with a different wallet, or wait for the public mint.
         </p>
-      </Section>
-    )
-  }
 
-  if (!account?.mintWallet?.address || !account?.mintWallet?.stakeKey) {
-    return (
-      <Section>
-        <h2>You are not eligible to mint.</h2>
-        <p>
-          You did not submit your wallet address.
+        <p className={styles.addr}>
+          You are connected with:
           <br />
-          You can try your luck during the public sale.
+          <span>{populatedWallet.stakeKey || 'none'}</span>
         </p>
       </Section>
     )
@@ -132,48 +105,21 @@ export default function MintPortal() {
 
   return (
     <Section>
-      <h2>Welcome {account?.username}!</h2>
-
-      <p>
-        You have the following roles:
-        <br />
-        <strong>
-          {account?.roles?.isOG ? 'OG, ' : null}
-          {!account?.roles?.isOG ? 'None' : null}
-        </strong>
-      </p>
+      <h2>Welcome to the Pre Sale!</h2>
 
       <p className={styles.addr}>
-        Your (registered) wallet address:
+        You are connected with:
         <br />
-        <span>{account?.mintWallet?.address || 'Not submitted'}</span>
-      </p>
-      <p className={styles.addr}>
-        Your (collected) stake key:
-        <br />
-        <span>{account?.mintWallet?.stakeKey || 'Not submitted'}</span>
+        <span>{populatedWallet.stakeKey || 'none'}</span>
       </p>
 
-      <BaseButton label='MINT NOW' onClick={() => setOpenModal(true)} backgroundColor='var(--discord-purple)' />
-
-      <Modal
-        open={openModal}
-        onClose={() => setOpenModal(false)}
-        title={`${account?.roles.isOG ? 'OG' : 'Error'} Mint`}
-        style={{ background: 'var(--brown)' }}
-      >
-        {account?.roles.isOG ? (
-          <MintScreen
-            role='OG'
-            maxMints={mintObj.og?.amount}
-            mintPrice={mintObj.og?.price}
-            mintAddress={mintObj.og?.address}
-            loading={fetching}
-          />
-        ) : (
-          <div className={styles.mintModal}>You're not supposed to be here.</div>
-        )}
-      </Modal>
+      <MintScreen
+        maxMints={
+          mintingListFile.wallets.find(({ stakeKey }) => stakeKey === populatedWallet.stakeKey)?.amount || 0
+        }
+        mintPrice={mintObj.preSale?.price}
+        mintAddress={mintObj.preSale?.address}
+      />
     </Section>
   )
 }
