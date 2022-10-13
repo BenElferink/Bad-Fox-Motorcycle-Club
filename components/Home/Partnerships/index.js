@@ -26,7 +26,7 @@ export default function Partnerships() {
             url: 'https://dotdotlabs.io',
             logo: `${GITHUB_MEDIA_URL}/logo/other/dotdotlabs.png`,
             logoHeight: '80px',
-            logoWidth: '80px',
+            logoWidth: '65px',
           },
           {
             name: 'Cardano Villa',
@@ -34,6 +34,13 @@ export default function Partnerships() {
             logo: `${GITHUB_MEDIA_URL}/logo/other/cardanovilla.png`,
             logoHeight: '80px',
             logoWidth: '80px',
+          },
+          {
+            name: 'Cardano Lands',
+            url: 'https://cardanolands.com',
+            logo: `${GITHUB_MEDIA_URL}/logo/other/cardanolands.png`,
+            logoHeight: '80px',
+            logoWidth: '100px',
           },
           {
             name: 'SoundRig',
@@ -48,6 +55,13 @@ export default function Partnerships() {
             logo: `${GITHUB_MEDIA_URL}/logo/other/bearmarket-doxxing.png`,
             logoHeight: '80px',
             logoWidth: '120px',
+          },
+          {
+            name: 'The Ape Society',
+            url: 'https://www.theapesociety.io',
+            logo: `${GITHUB_MEDIA_URL}/logo/other/theapesociety.png`,
+            logoHeight: '80px',
+            logoWidth: '65px',
           },
         ].map((obj) => (
           <div
