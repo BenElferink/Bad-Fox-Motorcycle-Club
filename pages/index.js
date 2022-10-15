@@ -7,13 +7,13 @@ import Landing from '../components/Home/Landing'
 import About from '../components/Home/About'
 import Sneaks from '../components/Home/Sneaks'
 import Partnerships from '../components/Home/Partnerships'
-import Roadmap from '../components/Home/Roadmap'
+import Utilities from '../components/Home/Utilities'
 import Team from '../components/Home/Team'
 import { HOME } from '../constants/scroll-nav'
 
 export default function Page() {
   const { isTablet } = useScreenSize()
-  const mapRef = useRef(null)
+  const utilsRef = useRef(null)
   const teamRef = useRef(null)
 
   const loopRefs = (type, value, ...args) => {
@@ -31,7 +31,7 @@ export default function Page() {
   }
 
   const scrollTo = (elemId) => {
-    loopRefs('scrollTo', elemId, mapRef.current, teamRef.current)
+    loopRefs('scrollTo', elemId, utilsRef.current, teamRef.current)
   }
 
   return (
@@ -42,7 +42,7 @@ export default function Page() {
       {isTablet ? <About /> : null}
       <Sneaks />
       <Partnerships />
-      <Roadmap ref={mapRef} />
+      <Utilities ref={utilsRef} />
       <Team ref={teamRef} />
       <Footer />
     </div>

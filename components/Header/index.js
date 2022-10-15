@@ -7,11 +7,10 @@ import { AppBar, Avatar, IconButton } from '@mui/material'
 import { MenuRounded } from '@mui/icons-material'
 import Modal from '../Modal'
 import BaseButton from '../BaseButton'
-import UtilitiesMenu from './UtilitiesMenu'
 import ConnectWallet from '../ConnectWallet'
 import OnlineIndicator from '../OnlineIndicator'
 import Socials from './Socials'
-import { HOME, MAP, TEAM } from '../../constants/scroll-nav'
+import { HOME, UTILITIES, TEAM } from '../../constants/scroll-nav'
 import { GITHUB_MEDIA_URL } from '../../constants/api-urls'
 import styles from './Header.module.css'
 
@@ -41,8 +40,8 @@ export default function Header({ scrollTo = () => null }) {
     setOpenMobileMenu(false)
   }
 
-  const clickRoadmap = () => {
-    scrollTo(MAP)
+  const clickUtilities = () => {
+    scrollTo(UTILITIES)
     setOpenMobileMenu(false)
   }
 
@@ -67,10 +66,6 @@ export default function Header({ scrollTo = () => null }) {
     if (isHome) {
       setTimeout(() => {
         switch (router.query.scrollTo) {
-          case 'roadmap':
-            scrollTo(MAP)
-            break
-
           case 'team':
             scrollTo(TEAM)
             break
@@ -134,11 +129,12 @@ export default function Header({ scrollTo = () => null }) {
         <nav className={isMobile ? 'flex-col' : 'flex-row'} style={jsStyles.nav}>
           <BaseButton label='Home' onClick={clickHome} transparent style={jsStyles.btn} />
 
-          {isHome ? <BaseButton label='Roadmap' onClick={clickRoadmap} transparent style={jsStyles.btn} /> : null}
+          {isHome ? (
+            <BaseButton label='Utilities' onClick={clickUtilities} transparent style={jsStyles.btn} />
+          ) : null}
           {isHome ? <BaseButton label='Team' onClick={clickTeam} transparent style={jsStyles.btn} /> : null}
 
           <BaseButton label='Catalogs' onClick={clickCatalogs} transparent style={jsStyles.btn} />
-          <UtilitiesMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
 
           <OnlineIndicator online={isRegisterOnline || isPreSaleOnline || isPublicSaleOnline}>
             <BaseButton

@@ -1,5 +1,5 @@
 module.exports = {
   HOME: 'HOME',
-  MAP: 'MAP',
+  UTILITIES: 'UTILITIES',
   TEAM: 'TEAM',
 }

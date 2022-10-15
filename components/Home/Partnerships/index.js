@@ -8,8 +8,8 @@ export default function Partnerships() {
       <div className='flex-row' style={{ flexWrap: 'wrap', justifyContent: 'center' }}>
         {[
           {
-            name: 'OGBears (OGVerse)',
-            url: 'https://ogverse.io',
+            name: 'OGBears',
+            url: 'https://www.ogbears.com',
             logo: `${GITHUB_MEDIA_URL}/logo/other/ogbears.png`,
             logoHeight: '80px',
             logoWidth: '55px',
@@ -62,6 +62,13 @@ export default function Partnerships() {
             logo: `${GITHUB_MEDIA_URL}/logo/other/theapesociety.png`,
             logoHeight: '80px',
             logoWidth: '65px',
+          },
+          {
+            name: 'Mad Dog Car Club',
+            url: 'https://mdtoken.io',
+            logo: `${GITHUB_MEDIA_URL}/logo/other/maddogcarclub.png`,
+            logoHeight: '80px',
+            logoWidth: '80px',
           },
         ].map((obj) => (
           <div

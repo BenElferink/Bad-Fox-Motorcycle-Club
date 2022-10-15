@@ -34,8 +34,6 @@ export default async (req, res) => {
       }
 
       case 'PATCH': {
-        console.log('admin_code',admin_code);
-        console.log('ADMIN_CODE',ADMIN_CODE);
         if (admin_code !== ADMIN_CODE) {
           return res.status(401).json({
             type: 'UNAUTHORIZED',

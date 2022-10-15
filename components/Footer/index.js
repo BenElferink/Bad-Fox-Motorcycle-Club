@@ -29,7 +29,7 @@ export default function Footer() {
             {
               name: 'Mesh',
               url: 'https://mesh.martify.io',
-              logo: `${GITHUB_MEDIA_URL}/logo/other/mesh-white.png`,
+              logo: `${GITHUB_MEDIA_URL}/logo/other/mesh.png`,
               logoHeight: '70px',
               logoWidth: '70px',
             },
@@ -60,7 +60,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <p style={{ fontSize: '0.69rem' }}>
+      <p style={{ fontSize: '0.7rem' }}>
         Bad Fox Policy ID:
         <br />
         {BAD_FOX_POLICY_ID}

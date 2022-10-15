@@ -6,7 +6,7 @@ import Modal from '../Modal'
 import Loader from '../Loader'
 import Toggle from '../Toggle'
 import BaseButton from '../BaseButton'
-import ClayTraitSet from '../ClayTraitSet'
+import ClayTraitSet from './ClayTraitSet'
 import { GITHUB_MEDIA_URL } from '../../constants/api-urls'
 import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
 
@@ -16,17 +16,23 @@ const ClayTraits = () => {
 
   const [showClayTraitSets, setShowClayTraitSets] = useState(false)
   const [showAllClayTraitSets, setShowAllClayTraitSets] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  const [clayBalance, setClayBalance] = useState(0)
+  const [tokensPerShare, setTokensPerShare] = useState(0)
+  const [maxShares, setMaxShares] = useState(0)
+  const [occupiedShares, setOccupiedShares] = useState(0)
+
+  const [myShares, setMyShares] = useState(0)
+  const [myTokens, setMyTokens] = useState(0)
   const [sets, setSets] = useState({})
-  const [totalShares, setTotalShares] = useState(0)
-  const [totalTokens, setTotalTokens] = useState(0)
-  const [clayLoading, setClayLoading] = useState(false)
 
   useEffect(() => {
     ;(async () => {
-      setClayLoading(true)
+      setLoading(true)
       try {
-        setTotalShares(0)
-        setTotalTokens(0)
+        setMyShares(0)
+        setMyTokens(0)
 
         const { data } = await axios.get('/api/utilities/clay')
         const mappedSets = {}
@@ -69,16 +75,21 @@ const ClayTraits = () => {
           }
 
           if (ownsThisSet) {
-            setTotalShares((prev) => prev + leastHeldTrait * shares)
-            setTotalTokens((prev) => prev + leastHeldTrait * tokens)
+            setMyShares((prev) => prev + leastHeldTrait * shares)
+            setMyTokens((prev) => prev + leastHeldTrait * tokens)
           }
         }
+
+        setClayBalance(data.clayBalance)
+        setTokensPerShare(data.tokensPerShare)
+        setMaxShares(data.maxShares)
+        setOccupiedShares(data.ownedShares)
 
         setSets(mappedSets)
       } catch (error) {
         console.error(error)
       }
-      setClayLoading(false)
+      setLoading(false)
     })()
   }, [])
 
@@ -103,14 +114,23 @@ const ClayTraits = () => {
             showIcons={false}
             state={{ value: showAllClayTraitSets, setValue: setShowAllClayTraitSets }}
           />
+
           <p style={{ textAlign: 'center' }}>
-            Total shares: {totalShares}
+            Tokens in treasury = {Math.floor(clayBalance)} (accumulating)
             <br />
-            Total tokens: {totalTokens.toFixed(2)}
+            Global shares = {occupiedShares} / {maxShares}
+            <br />
+            Tokens per share = {tokensPerShare.toFixed(2)}
+          </p>
+
+          <p style={{ textAlign: 'center' }}>
+            My shares: {myShares}
+            <br />
+            My tokens: {myTokens.toFixed(2)}
           </p>
         </div>
 
-        {clayLoading ? (
+        {loading ? (
           <Loader color='var(--white)' />
         ) : (
           Object.entries(sets)
