@@ -98,7 +98,7 @@ const ClayTraits = () => {
       <BaseButton
         label='$CLAY Trait Sets'
         onClick={() => setShowClayTraitSets(true)}
-        imageIcon={`${GITHUB_MEDIA_URL}/utilities/clay-token.png`}
+        imageIcon={`${GITHUB_MEDIA_URL}/tokens/clay.png`}
         fullWidth
         backgroundColor='var(--brown)'
         hoverColor='var(--cardano-blue)'
