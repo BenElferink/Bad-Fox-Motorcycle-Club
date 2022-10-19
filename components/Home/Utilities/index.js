@@ -38,7 +38,7 @@ const data = [
         description: 'Non custodial staking with The Ape Society',
       },
       {
-        complete: false,
+        complete: true,
         title: 'Mad Dog Token',
         description: 'Non custodial staking with Mad Dog Cur Club',
       },
