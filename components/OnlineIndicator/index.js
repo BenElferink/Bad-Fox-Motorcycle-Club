@@ -44,9 +44,15 @@ const OfflineBadge = styled(StyledBadge)(() => ({
   },
 }))
 
-export default function OnlineIndicator({ online = false, children = <Avatar src='' alt='' /> }) {
+export default function OnlineIndicator({
+  online = false,
+  title = '',
+  style = {},
+  placement = 'top',
+  children = <Avatar src='' alt='' />,
+}) {
   return (
-    <Tooltip title={online ? 'online' : 'offline'} placement='top'>
+    <Tooltip title={title || (online ? 'online' : 'offline')} placement={placement} style={style}>
       {online ? (
         <OnlineBadge variant='dot' overlap='circular' anchorOrigin={{ vertical: 'top', horizontal: 'left' }}>
           {children}
