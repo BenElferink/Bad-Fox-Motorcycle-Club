@@ -6,30 +6,6 @@ import Wallet from '../../../../models/Wallet'
 import { BAD_FOX_POLICY_ID } from '../../../../constants/policy-ids'
 import { EXCLUDE_ADDRESSES } from '../../../../constants/addresses'
 
-const connectWithRetry = async () => {
-  try {
-    return await connectDB()
-  } catch (error) {
-    return connectWithRetry()
-  }
-}
-
-const findOneWithRetry = async (Model, filters) => {
-  try {
-    return await Model.findOne(filters)
-  } catch (error) {
-    return findOneWithRetry()
-  }
-}
-
-const saveWithRetry = async (instance) => {
-  try {
-    return await instance.save()
-  } catch (error) {
-    return saveWithRetry()
-  }
-}
-
 export default async (req, res) => {
   try {
     const { method, headers, body } = req
@@ -99,7 +75,7 @@ export default async (req, res) => {
           console.log(`Detected ${assetTxMatrix.length} asset TXs`)
 
           res.status(202).end()
-          await connectWithRetry()
+          await connectDB()
 
           for (let i = 0; i < assetTxMatrix.length; i++) {
             const [assetId, { from, to }] = assetTxMatrix[i]
@@ -108,11 +84,11 @@ export default async (req, res) => {
             if (EXCLUDE_ADDRESSES.includes(from)) {
               console.log(`Skipping "from address" as it's excluded`)
             } else {
-              let fromWallet = await findOneWithRetry(Wallet, { addresses: { $in: [from] } })
+              let fromWallet = await Wallet.findOne({ addresses: { $in: [from] } })
 
               if (!fromWallet) {
                 const sKey = await blockfrost.getStakeKeyWithWalletAddress(from)
-                fromWallet = await findOneWithRetry(Wallet, { stakeKey: sKey })
+                fromWallet = await Wallet.findOne({ stakeKey: sKey })
 
                 if (!fromWallet) {
                   const assets = await blockfrost.getAssetIdsWithStakeKey(sKey, BAD_FOX_POLICY_ID)
@@ -124,7 +100,7 @@ export default async (req, res) => {
                     },
                   })
 
-                  await saveWithRetry(newWallet)
+                  await newWallet.save()
                 } else {
                   fromWallet.addresses == fromWallet.addresses.includes(from)
                     ? fromWallet.addresses
@@ -134,24 +110,24 @@ export default async (req, res) => {
                   )
                 }
 
-                await saveWithRetry(fromWallet)
+                await fromWallet.save()
               } else {
                 fromWallet.assets[BAD_FOX_POLICY_ID] = fromWallet.assets[BAD_FOX_POLICY_ID].filter(
                   (str) => str !== assetId
                 )
 
-                await saveWithRetry(fromWallet)
+                await fromWallet.save()
               }
             }
 
             if (EXCLUDE_ADDRESSES.includes(to)) {
               console.log(`Skipping "to address" as it's excluded`)
             } else {
-              let toWallet = await findOneWithRetry(Wallet, { addresses: { $in: [to] } })
+              let toWallet = await Wallet.findOne({ addresses: { $in: [to] } })
 
               if (!toWallet) {
                 const sKey = await blockfrost.getStakeKeyWithWalletAddress(to)
-                toWallet = await findOneWithRetry(Wallet, { stakeKey: sKey })
+                toWallet = await Wallet.findOne({ stakeKey: sKey })
 
                 if (!toWallet) {
                   const assets = await blockfrost.getAssetIdsWithStakeKey(sKey, BAD_FOX_POLICY_ID)
@@ -163,7 +139,7 @@ export default async (req, res) => {
                     },
                   })
 
-                  await saveWithRetry(newWallet)
+                  await newWallet.save()
                 } else {
                   toWallet.addresses == toWallet.addresses.includes(to)
                     ? toWallet.addresses
@@ -172,14 +148,14 @@ export default async (req, res) => {
                     ? toWallet.assets[BAD_FOX_POLICY_ID]
                     : [...toWallet.assets[BAD_FOX_POLICY_ID], assetId]
 
-                  await saveWithRetry(toWallet)
+                  await toWallet.save()
                 }
               } else {
                 toWallet.assets[BAD_FOX_POLICY_ID] = toWallet.assets[BAD_FOX_POLICY_ID].includes(assetId)
                   ? toWallet.assets[BAD_FOX_POLICY_ID]
                   : [...toWallet.assets[BAD_FOX_POLICY_ID], assetId]
 
-                await saveWithRetry(toWallet)
+                await toWallet.save()
               }
             }
           }
