@@ -11,7 +11,11 @@ export default async (req, res) => {
     switch (method) {
       case 'GET': {
         const walletAddress = await blockfrost.getWalletAddressWithAssetId(assetId)
-        const stakeKey = resolveStakeAddress(walletAddress)
+
+        let stakeKey = ''
+        try {
+          stakeKey = resolveStakeAddress(walletAddress)
+        } catch (error) {}
 
         return res.status(200).json({
           assetId,
