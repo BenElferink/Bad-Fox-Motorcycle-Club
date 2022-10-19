@@ -1,17 +1,35 @@
-import { Fragment, useCallback, useState } from 'react'
+import { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
 import axios from 'axios'
 import BaseButton from '../BaseButton'
 import OnlineIndicator from '../OnlineIndicator'
 import { EXCLUDE_ADDRESSES } from '../../constants/addresses'
 import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
 import foxAssetsFile from '../../data/assets/bad-fox.json'
+import useWallet from '../../contexts/WalletContext'
+
+const MILLION = 1000000
 
 const AdminDashboard = () => {
+  const { wallet } = useWallet()
+  const [balance, setBalance] = useState(0)
+
+  useEffect(() => {
+    ;(async () => {
+      const lovelace = await wallet?.getLovelace()
+
+      if (lovelace) {
+        setBalance(Number(lovelace) / MILLION)
+      }
+    })()
+  }, [wallet])
+
   const [transcripts, setTranscripts] = useState([{ timestamp: new Date().getTime(), msg: 'Welcome Admin' }])
   const [listedCount, setListedCount] = useState(0)
   const [unlistedCount, setUnlistedCount] = useState(0)
   const [snapshotDone, setSnapshotDone] = useState(false)
   const [payoutWallets, setPayoutWallets] = useState([])
+
+  console.log('payoutWallets', payoutWallets)
 
   const addTranscript = (msg, key) => {
     setTranscripts((prev) => {
@@ -75,10 +93,8 @@ const AdminDashboard = () => {
       }
     }
 
-    const ADA_IN_POOL = 30000
-    const PERCENT_TO_GIVE = 0.8
-    const HOLDERS_SHARE = ADA_IN_POOL * PERCENT_TO_GIVE
-    const adaPerAsset = HOLDERS_SHARE / unlistedCountForPayoutCalculation
+    const holdersShare = balance * 0.8
+    const adaPerAsset = holdersShare / unlistedCountForPayoutCalculation
 
     setPayoutWallets(
       holders
@@ -114,10 +130,14 @@ const AdminDashboard = () => {
     )
 
     setSnapshotDone(true)
-  }, [])
+  }, [balance])
 
   return (
     <div>
+      <div className='flex-row' style={{ justifyContent: 'center' }}>
+        <p>Balance: {balance}</p>
+      </div>
+
       <div
         style={{
           width: '69vw',

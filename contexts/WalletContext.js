@@ -110,8 +110,9 @@ export const WalletProvider = ({ children }) => {
       connected,
       connectedName,
       populatedWallet,
+      wallet,
     }),
-    [availableWallets, connecting, connected, populatedWallet]
+    [availableWallets, connecting, connected, populatedWallet, wallet]
   )
 
   return <WalletContext.Provider value={memoedValue}>{children}</WalletContext.Provider>
