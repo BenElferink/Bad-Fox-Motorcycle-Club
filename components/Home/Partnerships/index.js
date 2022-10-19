@@ -70,6 +70,13 @@ export default function Partnerships() {
             logoHeight: '80px',
             logoWidth: '80px',
           },
+          {
+            name: 'Winged Warriors',
+            url: 'https://wingedwarriors.xyz',
+            logo: `${GITHUB_MEDIA_URL}/logo/other/wingedwarriors.png`,
+            logoHeight: '80px',
+            logoWidth: '110px',
+          },
         ].map((obj) => (
           <div
             key={`partner-${obj.name}`}
