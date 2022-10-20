@@ -1,11 +1,13 @@
-import { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
+import { Fragment, useCallback, useEffect, useState } from 'react'
 import axios from 'axios'
+import { Transaction } from '@martifylabs/mesh'
+import useWallet from '../../contexts/WalletContext'
 import BaseButton from '../BaseButton'
 import OnlineIndicator from '../OnlineIndicator'
+import { ADA_SYMBOL } from '../../constants/ada'
 import { EXCLUDE_ADDRESSES } from '../../constants/addresses'
 import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
 import foxAssetsFile from '../../data/assets/bad-fox.json'
-import useWallet from '../../contexts/WalletContext'
 
 const MILLION = 1000000
 
@@ -18,18 +20,19 @@ const AdminDashboard = () => {
       const lovelace = await wallet?.getLovelace()
 
       if (lovelace) {
-        setBalance(Number(lovelace) / MILLION)
+        setBalance(Math.floor(Number(lovelace) / MILLION))
       }
     })()
   }, [wallet])
 
   const [transcripts, setTranscripts] = useState([{ timestamp: new Date().getTime(), msg: 'Welcome Admin' }])
+  const [loading, setLoading] = useState(false)
+  const [snapshotDone, setSnapshotDone] = useState(false)
+  const [payoutDone, setPayoutDone] = useState(false)
   const [listedCount, setListedCount] = useState(0)
   const [unlistedCount, setUnlistedCount] = useState(0)
-  const [snapshotDone, setSnapshotDone] = useState(false)
   const [payoutWallets, setPayoutWallets] = useState([])
-
-  console.log('payoutWallets', payoutWallets)
+  const [payoutTxHash, setPayoutTxHash] = useState('')
 
   const addTranscript = (msg, key) => {
     setTranscripts((prev) => {
@@ -59,11 +62,15 @@ const AdminDashboard = () => {
   }, [])
 
   const runSnapshot = useCallback(async () => {
+    setLoading(true)
     let unlistedCountForPayoutCalculation = 0
     const collectionAssets = foxAssetsFile.assets
     const holders = []
 
     for (let i = 0; i < collectionAssets.length; i++) {
+      if (i == 10) {
+        break
+      }
       const { assetId } = collectionAssets[i]
       addTranscript(`Processing ${i + 1} / ${collectionAssets.length}`, assetId)
 
@@ -99,7 +106,7 @@ const AdminDashboard = () => {
     setPayoutWallets(
       holders
         .map(({ stakeKey, addresses, assets }) => {
-          const adaForAssets = Math.floor(assets.length * adaPerAsset)
+          const adaForAssets = assets.length * adaPerAsset
           let adaForTraits = 0
 
           for (const assetId of assets) {
@@ -130,12 +137,47 @@ const AdminDashboard = () => {
     )
 
     setSnapshotDone(true)
+    setLoading(false)
   }, [balance])
+
+  const payEveryone = async () => {
+    setLoading(true)
+
+    try {
+      const tx = new Transaction({ initiator: wallet })
+      console.log('tx1', tx)
+
+      for await (const { address, payout } of payoutWallets) {
+        tx.sendLovelace({ address }, String(payout * MILLION))
+      }
+      console.log('tx2', tx)
+
+      const unsignedTx = await tx.build()
+      console.log('unsignedTx', unsignedTx)
+
+      const signedTx = await wallet.signTx(unsignedTx)
+      console.log('signedTx', signedTx)
+
+      const txHash = await wallet.submitTx(signedTx)
+      console.log('txHash', txHash)
+
+      setPayoutTxHash(txHash)
+      setPayoutDone(true)
+    } catch (error) {
+      console.error(error)
+      console.error(error.message)
+    }
+
+    setLoading(false)
+  }
 
   return (
     <div>
       <div className='flex-row' style={{ justifyContent: 'center' }}>
-        <p>Balance: {balance}</p>
+        <p>
+          Balance: {ADA_SYMBOL}
+          {balance}
+        </p>
       </div>
 
       <div
@@ -166,26 +208,51 @@ const AdminDashboard = () => {
       </div>
 
       <div className='flex-row' style={{ justifyContent: 'space-evenly' }}>
-        <BaseButton
-          label='Run Snapshot'
-          onClick={runSnapshot}
-          backgroundColor='var(--apex-charcoal)'
-          hoverColor='var(--brown)'
-          style={{ width: '42%' }}
-        />
         <OnlineIndicator
-          online={snapshotDone}
-          title={snapshotDone ? 'snapshot ready' : 'wait for snapshot'}
+          online={!snapshotDone && !payoutDone && !loading}
+          title={loading ? 'processing' : !snapshotDone && !payoutDone ? 'run snapshot' : 'snapshot done'}
           placement='bottom'
-          style={{ width: '42%' }}
+          style={{ width: '30%' }}
         >
           <BaseButton
-            label='Pay All'
-            onClick={() => alert('To be developed')}
+            label='Run Snapshot'
+            onClick={runSnapshot}
             backgroundColor='var(--apex-charcoal)'
             hoverColor='var(--brown)'
             fullWidth
-            disabled={!snapshotDone}
+            disabled={snapshotDone || payoutDone || loading}
+          />
+        </OnlineIndicator>
+
+        <OnlineIndicator
+          online={snapshotDone && !payoutDone && !loading}
+          title={loading ? 'processing' : snapshotDone ? 'pay everyone' : 'wait for snapshot'}
+          placement='bottom'
+          style={{ width: '30%' }}
+        >
+          <BaseButton
+            label='Pay Everyone'
+            onClick={payEveryone}
+            backgroundColor='var(--apex-charcoal)'
+            hoverColor='var(--brown)'
+            fullWidth
+            disabled={!snapshotDone || loading}
+          />
+        </OnlineIndicator>
+
+        <OnlineIndicator
+          online={snapshotDone && payoutDone && !loading}
+          title={loading ? 'processing' : payoutDone ? 'download receipt' : 'wait for payout'}
+          placement='bottom'
+          style={{ width: '30%' }}
+        >
+          <BaseButton
+            label='Download Receipt'
+            onClick={() => alert('to do')}
+            backgroundColor='var(--apex-charcoal)'
+            hoverColor='var(--brown)'
+            fullWidth
+            disabled={!payoutDone || loading}
           />
         </OnlineIndicator>
       </div>
@@ -194,6 +261,28 @@ const AdminDashboard = () => {
         <p style={{ margin: 11 }}>Listed: {listedCount}</p>
         <p style={{ margin: 11 }}>Unlisted: {unlistedCount}</p>
       </div>
+
+      {payoutWallets.length ? (
+        <table style={{ margin: '0 auto' }}>
+          <thead>
+            <tr>
+              <th style={{ width: 100 }}>Payout</th>
+              <th>Stake Key</th>
+            </tr>
+          </thead>
+          <tbody>
+            {payoutWallets.map(({ stakeKey, payout }) => (
+              <tr key={stakeKey}>
+                <td>
+                  {ADA_SYMBOL}
+                  {payout}
+                </td>
+                <td>{stakeKey}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : null}
     </div>
   )
 }
