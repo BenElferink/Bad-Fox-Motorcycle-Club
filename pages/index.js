@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic'
 import { useRef } from 'react'
 import { useScreenSize } from '../contexts/ScreenSizeContext'
 import Header from '../components/Header'
@@ -10,6 +11,8 @@ import Partnerships from '../components/Home/Partnerships'
 import Utilities from '../components/Home/Utilities'
 import Team from '../components/Home/Team'
 import { HOME } from '../constants/scroll-nav'
+
+const CountDown = dynamic(() => import('../components/CountDown'), { ssr: false })
 
 export default function Page() {
   const { isTablet } = useScreenSize()
@@ -38,7 +41,7 @@ export default function Page() {
     <div className='App flex-col'>
       <Header scrollTo={scrollTo} />
       <Landing isHome />
-      {/* <CountDown /> */}
+      <CountDown />
       {isTablet ? <About /> : null}
       <Sneaks />
       <Partnerships />
