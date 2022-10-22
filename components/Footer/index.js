@@ -1,5 +1,5 @@
 import { GITHUB_MEDIA_URL } from '../../constants/api-urls'
-import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
+import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants/policy-ids'
 
 export default function Footer() {
   return (
@@ -64,6 +64,11 @@ export default function Footer() {
         Bad Fox Policy ID:
         <br />
         {BAD_FOX_POLICY_ID}
+      </p>
+      <p style={{ fontSize: '0.7rem' }}>
+        Bad Motorcycle Policy ID:
+        <br />
+        {BAD_MOTORCYCLE_POLICY_ID}
       </p>
     </footer>
   )
