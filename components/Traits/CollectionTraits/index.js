@@ -16,13 +16,13 @@ const CollectionTraits = ({ policyId }) => {
       <div className={styles.traitCatalog}>
         {traitsObj[selectedCategory]?.map((trait) => (
           <AssetCard
-            key={`trait-catalog-list-item-${trait.displayName}-${trait.gender}`}
+            key={`trait-catalog-list-item-${trait.displayName}-${trait.model}`}
             mainTitles={[trait.displayName]}
             imageSrc={trait.image}
             itemUrl={trait.image}
             tableRows={[
               ['Gender:', 'Count:', 'Percent:'],
-              [trait.gender, trait.count, trait.percent],
+              [trait.model, trait.count, trait.percent],
             ]}
           />
         ))}

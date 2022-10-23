@@ -3,16 +3,16 @@
     {
       "onChainName": "Female",
       "displayName": "Female",
-      "gender": "Female",
-      "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/None.png",
+      "model": "Female",
+      "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/None.png",
       "count": 3000,
       "percent": "50.00%"
     },
     {
       "onChainName": "Male",
       "displayName": "Male",
-      "gender": "Male",
-      "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/None.png",
+      "model": "Male",
+      "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/None.png",
       "count": 3000,
       "percent": "50.00%"
     }
@@ -21,7 +21,7 @@
     {
       "onChainName": "(M) Devil Wings",
       "displayName": "Devil Wings",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Back/M_Devil_Wings.png",
       "count": 25,
       "percent": "0.42%"
@@ -29,7 +29,7 @@
     {
       "onChainName": "(M) Gara",
       "displayName": "Gara",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Back/M_Gara.png",
       "count": 30,
       "percent": "0.50%"
@@ -37,7 +37,7 @@
     {
       "onChainName": "(F) Devil Wings",
       "displayName": "Devil Wings",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Back/F_Devil_Wings.png",
       "count": 33,
       "percent": "0.55%"
@@ -45,7 +45,7 @@
     {
       "onChainName": "(F) Angel Wings",
       "displayName": "Angel Wings",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Back/F_Angel_Wings.png",
       "count": 36,
       "percent": "0.60%"
@@ -53,7 +53,7 @@
     {
       "onChainName": "(M) Angel Wings",
       "displayName": "Angel Wings",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Back/M_Angel_Wings.png",
       "count": 44,
       "percent": "0.73%"
@@ -61,7 +61,7 @@
     {
       "onChainName": "(F) Trident",
       "displayName": "Trident",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Back/F_Trident.png",
       "count": 86,
       "percent": "1.43%"
@@ -69,7 +69,7 @@
     {
       "onChainName": "(U) Lightsabers",
       "displayName": "Lightsabers",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Back/U_Lightsabers.png",
       "count": 107,
       "percent": "1.78%"
@@ -77,7 +77,7 @@
     {
       "onChainName": "(F) Samurai Swords",
       "displayName": "Samurai Swords",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Back/F_Samurai_Swords.png",
       "count": 129,
       "percent": "2.15%"
@@ -85,7 +85,7 @@
     {
       "onChainName": "(M) Big Sword",
       "displayName": "Big Sword",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Back/M_Big_Sword.png",
       "count": 137,
       "percent": "2.28%"
@@ -93,7 +93,7 @@
     {
       "onChainName": "(U) White Flag",
       "displayName": "White Flag",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Back/U_White_Flag.png",
       "count": 159,
       "percent": "2.65%"
@@ -101,7 +101,7 @@
     {
       "onChainName": "(U) Scythe",
       "displayName": "Scythe",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Back/U_Scythe.png",
       "count": 183,
       "percent": "3.05%"
@@ -109,7 +109,7 @@
     {
       "onChainName": "(U) Nail Bat",
       "displayName": "Nail Bat",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Back/U_Nail_Bat.png",
       "count": 194,
       "percent": "3.23%"
@@ -117,7 +117,7 @@
     {
       "onChainName": "(U) Machete",
       "displayName": "Machete",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Back/U_Machete.png",
       "count": 209,
       "percent": "3.48%"
@@ -125,7 +125,7 @@
     {
       "onChainName": "(U) Blue Flag",
       "displayName": "Blue Flag",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Back/U_Blue_Flag.png",
       "count": 216,
       "percent": "3.60%"
@@ -133,7 +133,7 @@
     {
       "onChainName": "(U) Rifle",
       "displayName": "Rifle",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Back/U_Rifle.png",
       "count": 263,
       "percent": "4.38%"
@@ -141,7 +141,7 @@
     {
       "onChainName": "(U) Baseball Bat",
       "displayName": "Baseball Bat",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Back/U_Baseball_Bat.png",
       "count": 379,
       "percent": "6.32%"
@@ -149,7 +149,7 @@
     {
       "onChainName": "(U) Hockey Stick",
       "displayName": "Hockey Stick",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Back/U_Hockey_Stick.png",
       "count": 387,
       "percent": "6.45%"
@@ -157,8 +157,8 @@
     {
       "onChainName": "(U) None",
       "displayName": "None",
-      "gender": "Unisex",
-      "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/None.png",
+      "model": "Unisex",
+      "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/None.png",
       "count": 3383,
       "percent": "56.38%"
     }
@@ -167,7 +167,7 @@
     {
       "onChainName": "(U) Limited Edition",
       "displayName": "Limited Edition",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Limited_Edition.png",
       "count": 8,
       "percent": "0.13%"
@@ -175,7 +175,7 @@
     {
       "onChainName": "(U) Mars Red",
       "displayName": "Mars Red",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Mars_Red.png",
       "count": 135,
       "percent": "2.25%"
@@ -183,7 +183,7 @@
     {
       "onChainName": "(U) Grey Glare",
       "displayName": "Grey Glare",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Grey_Glare.png",
       "count": 141,
       "percent": "2.35%"
@@ -191,7 +191,7 @@
     {
       "onChainName": "(U) Stardust",
       "displayName": "Stardust",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Stardust.png",
       "count": 149,
       "percent": "2.48%"
@@ -199,7 +199,7 @@
     {
       "onChainName": "(U) Paint Ball Pink",
       "displayName": "Paint Ball Pink",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Paint_Ball_Pink.png",
       "count": 158,
       "percent": "2.63%"
@@ -207,7 +207,7 @@
     {
       "onChainName": "(U) Clear Sky",
       "displayName": "Clear Sky",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Clear_Sky.png",
       "count": 164,
       "percent": "2.73%"
@@ -215,7 +215,7 @@
     {
       "onChainName": "(U) Light Grey",
       "displayName": "Light Grey",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Light_Grey.png",
       "count": 169,
       "percent": "2.82%"
@@ -223,7 +223,7 @@
     {
       "onChainName": "(U) Plain Reflected",
       "displayName": "Plain Reflected",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Plain_Reflected.png",
       "count": 172,
       "percent": "2.87%"
@@ -231,7 +231,7 @@
     {
       "onChainName": "(U) Cold Evening",
       "displayName": "Cold Evening",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Cold_Evening.png",
       "count": 176,
       "percent": "2.93%"
@@ -239,7 +239,7 @@
     {
       "onChainName": "(U) Grey Faded",
       "displayName": "Grey Faded",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Grey_Faded.png",
       "count": 176,
       "percent": "2.93%"
@@ -247,7 +247,7 @@
     {
       "onChainName": "(U) Plain",
       "displayName": "Plain",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Plain.png",
       "count": 178,
       "percent": "2.97%"
@@ -255,7 +255,7 @@
     {
       "onChainName": "(U) Dark Grey",
       "displayName": "Dark Grey",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Dark_Grey.png",
       "count": 179,
       "percent": "2.98%"
@@ -263,7 +263,7 @@
     {
       "onChainName": "(U) Tourquise with Halo",
       "displayName": "Tourquise with Halo",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Tourquise_with_Halo.png",
       "count": 179,
       "percent": "2.98%"
@@ -271,7 +271,7 @@
     {
       "onChainName": "(U) Dark Night",
       "displayName": "Dark Night",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Dark_Night.png",
       "count": 180,
       "percent": "3.00%"
@@ -279,7 +279,7 @@
     {
       "onChainName": "(U) Desert",
       "displayName": "Desert",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Desert.png",
       "count": 182,
       "percent": "3.03%"
@@ -287,7 +287,7 @@
     {
       "onChainName": "(U) Pink with Halo",
       "displayName": "Pink with Halo",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Pink_with_Halo.png",
       "count": 183,
       "percent": "3.05%"
@@ -295,7 +295,7 @@
     {
       "onChainName": "(U) Green Faded",
       "displayName": "Green Faded",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Green_Faded.png",
       "count": 184,
       "percent": "3.07%"
@@ -303,7 +303,7 @@
     {
       "onChainName": "(U) Yellow with Halo",
       "displayName": "Yellow with Halo",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Yellow_with_Halo.png",
       "count": 184,
       "percent": "3.07%"
@@ -311,7 +311,7 @@
     {
       "onChainName": "(U) Bourdeaux with Halo",
       "displayName": "Bourdeaux with Halo",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Bourdeaux_with_Halo.png",
       "count": 185,
       "percent": "3.08%"
@@ -319,7 +319,7 @@
     {
       "onChainName": "(U) Off White",
       "displayName": "Off White",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Off_White.png",
       "count": 185,
       "percent": "3.08%"
@@ -327,7 +327,7 @@
     {
       "onChainName": "(U) Soft Pink",
       "displayName": "Soft Pink",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Soft_Pink.png",
       "count": 185,
       "percent": "3.08%"
@@ -335,7 +335,7 @@
     {
       "onChainName": "(U) Olive Green",
       "displayName": "Olive Green",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Olive_Green.png",
       "count": 186,
       "percent": "3.10%"
@@ -343,7 +343,7 @@
     {
       "onChainName": "(U) Salmon",
       "displayName": "Salmon",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Salmon.png",
       "count": 186,
       "percent": "3.10%"
@@ -351,7 +351,7 @@
     {
       "onChainName": "(U) Smokey",
       "displayName": "Smokey",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Smokey.png",
       "count": 188,
       "percent": "3.13%"
@@ -359,7 +359,7 @@
     {
       "onChainName": "(U) Spring Morning",
       "displayName": "Spring Morning",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Spring_Morning.png",
       "count": 192,
       "percent": "3.20%"
@@ -367,7 +367,7 @@
     {
       "onChainName": "(U) Blue with Halo",
       "displayName": "Blue with Halo",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Blue_with_Halo.png",
       "count": 193,
       "percent": "3.22%"
@@ -375,7 +375,7 @@
     {
       "onChainName": "(U) Snowy",
       "displayName": "Snowy",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Snowy.png",
       "count": 195,
       "percent": "3.25%"
@@ -383,7 +383,7 @@
     {
       "onChainName": "(U) Soft Purple",
       "displayName": "Soft Purple",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Soft_Purple.png",
       "count": 195,
       "percent": "3.25%"
@@ -391,7 +391,7 @@
     {
       "onChainName": "(U) Dark Purple with Halo",
       "displayName": "Dark Purple with Halo",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Dark_Purple_with_Halo.png",
       "count": 199,
       "percent": "3.32%"
@@ -399,7 +399,7 @@
     {
       "onChainName": "(U) Light Purple with Halo",
       "displayName": "Light Purple with Halo",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Light_Purple_with_Halo.png",
       "count": 200,
       "percent": "3.33%"
@@ -407,7 +407,7 @@
     {
       "onChainName": "(U) Early Morning",
       "displayName": "Early Morning",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Early_Morning.png",
       "count": 201,
       "percent": "3.35%"
@@ -415,7 +415,7 @@
     {
       "onChainName": "(U) Grey Abstract",
       "displayName": "Grey Abstract",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Grey_Abstract.png",
       "count": 202,
       "percent": "3.37%"
@@ -423,7 +423,7 @@
     {
       "onChainName": "(U) Warm Evening",
       "displayName": "Warm Evening",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Warm_Evening.png",
       "count": 202,
       "percent": "3.37%"
@@ -431,7 +431,7 @@
     {
       "onChainName": "(U) Blue Faded",
       "displayName": "Blue Faded",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Background/U_Blue_Faded.png",
       "count": 209,
       "percent": "3.48%"
@@ -441,7 +441,7 @@
     {
       "onChainName": "(F) Wonder Woman",
       "displayName": "Wonder Woman",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Wonder_Woman.png",
       "count": 22,
       "percent": "0.37%"
@@ -449,7 +449,7 @@
     {
       "onChainName": "(F) Iron Suit",
       "displayName": "Iron Suit",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Iron_Suit.png",
       "count": 24,
       "percent": "0.40%"
@@ -457,7 +457,7 @@
     {
       "onChainName": "(F) Space Suit",
       "displayName": "Space Suit",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Space_Suit.png",
       "count": 27,
       "percent": "0.45%"
@@ -465,7 +465,7 @@
     {
       "onChainName": "(M) Secret Agent",
       "displayName": "Secret Agent",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Secret_Agent.png",
       "count": 31,
       "percent": "0.52%"
@@ -473,7 +473,7 @@
     {
       "onChainName": "(M) Luxury Robe",
       "displayName": "Luxury Robe",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Luxury_Robe.png",
       "count": 38,
       "percent": "0.63%"
@@ -481,7 +481,7 @@
     {
       "onChainName": "(M) Space Suit",
       "displayName": "Space Suit",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Space_Suit.png",
       "count": 38,
       "percent": "0.63%"
@@ -489,7 +489,7 @@
     {
       "onChainName": "(F) Camper",
       "displayName": "Camper",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Camper.png",
       "count": 51,
       "percent": "0.85%"
@@ -497,7 +497,7 @@
     {
       "onChainName": "(F) Gold Toga",
       "displayName": "Gold Toga",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Gold_Toga.png",
       "count": 61,
       "percent": "1.02%"
@@ -505,7 +505,7 @@
     {
       "onChainName": "(M) Japanese Robe",
       "displayName": "Japanese Robe",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Japanese_Robe.png",
       "count": 62,
       "percent": "1.03%"
@@ -513,7 +513,7 @@
     {
       "onChainName": "(M) Luxury Vest",
       "displayName": "Luxury Vest",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Luxury_Vest.png",
       "count": 63,
       "percent": "1.05%"
@@ -521,7 +521,7 @@
     {
       "onChainName": "(M) Floyd",
       "displayName": "Floyd",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Floyd.png",
       "count": 64,
       "percent": "1.07%"
@@ -529,7 +529,7 @@
     {
       "onChainName": "(M) Purple Suit",
       "displayName": "Purple Suit",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Purple_Suit.png",
       "count": 65,
       "percent": "1.08%"
@@ -537,7 +537,7 @@
     {
       "onChainName": "(M) Toga",
       "displayName": "Toga",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Toga.png",
       "count": 69,
       "percent": "1.15%"
@@ -545,7 +545,7 @@
     {
       "onChainName": "(M) None",
       "displayName": "None",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_None.png",
       "count": 71,
       "percent": "1.18%"
@@ -553,7 +553,7 @@
     {
       "onChainName": "(M) Freddy",
       "displayName": "Freddy",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Freddy.png",
       "count": 73,
       "percent": "1.22%"
@@ -561,7 +561,7 @@
     {
       "onChainName": "(M) Snoop",
       "displayName": "Snoop",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Snoop.png",
       "count": 74,
       "percent": "1.23%"
@@ -569,7 +569,7 @@
     {
       "onChainName": "(F) Japanese Robe",
       "displayName": "Japanese Robe",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Japanese_Robe.png",
       "count": 79,
       "percent": "1.32%"
@@ -577,7 +577,7 @@
     {
       "onChainName": "(M) Sport Jacket",
       "displayName": "Sport Jacket",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Sport_Jacket.png",
       "count": 79,
       "percent": "1.32%"
@@ -585,7 +585,7 @@
     {
       "onChainName": "(F) None",
       "displayName": "None",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_None.png",
       "count": 83,
       "percent": "1.38%"
@@ -593,7 +593,7 @@
     {
       "onChainName": "(M) Armor",
       "displayName": "Armor",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Armor.png",
       "count": 85,
       "percent": "1.42%"
@@ -601,7 +601,7 @@
     {
       "onChainName": "(F) Cape",
       "displayName": "Cape",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Cape.png",
       "count": 87,
       "percent": "1.45%"
@@ -609,7 +609,7 @@
     {
       "onChainName": "(M) Jason",
       "displayName": "Jason",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Jason.png",
       "count": 88,
       "percent": "1.47%"
@@ -617,7 +617,7 @@
     {
       "onChainName": "(M) Archery",
       "displayName": "Archery",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Archery.png",
       "count": 89,
       "percent": "1.48%"
@@ -625,7 +625,7 @@
     {
       "onChainName": "(F) Scarf",
       "displayName": "Scarf",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Scarf.png",
       "count": 90,
       "percent": "1.50%"
@@ -633,7 +633,7 @@
     {
       "onChainName": "(F) Khaleesi",
       "displayName": "Khaleesi",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Khaleesi.png",
       "count": 93,
       "percent": "1.55%"
@@ -641,7 +641,7 @@
     {
       "onChainName": "(M) Chain",
       "displayName": "Chain",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Chain.png",
       "count": 93,
       "percent": "1.55%"
@@ -649,7 +649,7 @@
     {
       "onChainName": "(M) Tank Top",
       "displayName": "Tank Top",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Tank_Top.png",
       "count": 93,
       "percent": "1.55%"
@@ -657,7 +657,7 @@
     {
       "onChainName": "(M) Scarf",
       "displayName": "Scarf",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Scarf.png",
       "count": 93,
       "percent": "1.55%"
@@ -665,7 +665,7 @@
     {
       "onChainName": "(F) Lace Bra",
       "displayName": "Lace Bra",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Lace_Bra.png",
       "count": 94,
       "percent": "1.57%"
@@ -673,7 +673,7 @@
     {
       "onChainName": "(M) Lab Coat",
       "displayName": "Lab Coat",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Lab_Coat.png",
       "count": 94,
       "percent": "1.57%"
@@ -681,7 +681,7 @@
     {
       "onChainName": "(M) Pouch",
       "displayName": "Pouch",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Pouch.png",
       "count": 98,
       "percent": "1.63%"
@@ -689,7 +689,7 @@
     {
       "onChainName": "(M) Purple Beads",
       "displayName": "Purple Beads",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Purple_Beads.png",
       "count": 98,
       "percent": "1.63%"
@@ -697,7 +697,7 @@
     {
       "onChainName": "(F) Mustard Stripes",
       "displayName": "Mustard Stripes",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Mustard_Stripes.png",
       "count": 99,
       "percent": "1.65%"
@@ -705,7 +705,7 @@
     {
       "onChainName": "(M) Steampunk",
       "displayName": "Steampunk",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Steampunk.png",
       "count": 99,
       "percent": "1.65%"
@@ -713,7 +713,7 @@
     {
       "onChainName": "(F) Stripper",
       "displayName": "Stripper",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Stripper.png",
       "count": 102,
       "percent": "1.70%"
@@ -721,7 +721,7 @@
     {
       "onChainName": "(F) Netted Bra",
       "displayName": "Netted Bra",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Netted_Bra.png",
       "count": 102,
       "percent": "1.70%"
@@ -729,7 +729,7 @@
     {
       "onChainName": "(F) Shoulder Strap",
       "displayName": "Shoulder Strap",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Shoulder_Strap.png",
       "count": 104,
       "percent": "1.73%"
@@ -737,7 +737,7 @@
     {
       "onChainName": "(F) Stripper Spiked",
       "displayName": "Stripper Spiked",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Stripper_Spiked.png",
       "count": 107,
       "percent": "1.78%"
@@ -745,7 +745,7 @@
     {
       "onChainName": "(F) Green Bandana",
       "displayName": "Green Bandana",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Green_Bandana.png",
       "count": 108,
       "percent": "1.80%"
@@ -753,7 +753,7 @@
     {
       "onChainName": "(M) Torn",
       "displayName": "Torn",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Torn.png",
       "count": 108,
       "percent": "1.80%"
@@ -761,7 +761,7 @@
     {
       "onChainName": "(M) Robot Arm",
       "displayName": "Robot Arm",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Robot_Arm.png",
       "count": 109,
       "percent": "1.82%"
@@ -769,7 +769,7 @@
     {
       "onChainName": "(F) Fur Coat",
       "displayName": "Fur Coat",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Fur_Coat.png",
       "count": 111,
       "percent": "1.85%"
@@ -777,7 +777,7 @@
     {
       "onChainName": "(M) Stripes",
       "displayName": "Stripes",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Stripes.png",
       "count": 112,
       "percent": "1.87%"
@@ -785,7 +785,7 @@
     {
       "onChainName": "(F) Red Dress",
       "displayName": "Red Dress",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Red_Dress.png",
       "count": 117,
       "percent": "1.95%"
@@ -793,7 +793,7 @@
     {
       "onChainName": "(M) Janitor",
       "displayName": "Janitor",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Janitor.png",
       "count": 120,
       "percent": "2.00%"
@@ -801,7 +801,7 @@
     {
       "onChainName": "(F) Black Dress",
       "displayName": "Black Dress",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Black_Dress.png",
       "count": 122,
       "percent": "2.03%"
@@ -809,7 +809,7 @@
     {
       "onChainName": "(M) Leon",
       "displayName": "Leon",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Leon.png",
       "count": 123,
       "percent": "2.05%"
@@ -817,7 +817,7 @@
     {
       "onChainName": "(F) Sport Vest",
       "displayName": "Sport Vest",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Sport_Vest.png",
       "count": 124,
       "percent": "2.07%"
@@ -825,7 +825,7 @@
     {
       "onChainName": "(F) Leather Jacket",
       "displayName": "Leather Jacket",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Leather_Jacket.png",
       "count": 125,
       "percent": "2.08%"
@@ -833,7 +833,7 @@
     {
       "onChainName": "(F) Torn",
       "displayName": "Torn",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Torn.png",
       "count": 125,
       "percent": "2.08%"
@@ -841,7 +841,7 @@
     {
       "onChainName": "(M) Green Jacket",
       "displayName": "Green Jacket",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Green_Jacket.png",
       "count": 126,
       "percent": "2.10%"
@@ -849,7 +849,7 @@
     {
       "onChainName": "(F) White Stripes",
       "displayName": "White Stripes",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_White_Stripes.png",
       "count": 127,
       "percent": "2.12%"
@@ -857,7 +857,7 @@
     {
       "onChainName": "(F) Sport Jacket",
       "displayName": "Sport Jacket",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Sport_Jacket.png",
       "count": 134,
       "percent": "2.23%"
@@ -865,7 +865,7 @@
     {
       "onChainName": "(M) Bath Robe",
       "displayName": "Bath Robe",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Bath_Robe.png",
       "count": 149,
       "percent": "2.48%"
@@ -873,7 +873,7 @@
     {
       "onChainName": "(M) Farmer",
       "displayName": "Farmer",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Farmer.png",
       "count": 149,
       "percent": "2.48%"
@@ -881,7 +881,7 @@
     {
       "onChainName": "(F) Hoodie",
       "displayName": "Hoodie",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Hoodie.png",
       "count": 152,
       "percent": "2.53%"
@@ -889,7 +889,7 @@
     {
       "onChainName": "(M) Prisoner",
       "displayName": "Prisoner",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Prisoner.png",
       "count": 155,
       "percent": "2.58%"
@@ -897,7 +897,7 @@
     {
       "onChainName": "(F) Hooters",
       "displayName": "Hooters",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Hooters.png",
       "count": 162,
       "percent": "2.70%"
@@ -905,7 +905,7 @@
     {
       "onChainName": "(F) Jeans Jacket",
       "displayName": "Jeans Jacket",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Jeans_Jacket.png",
       "count": 175,
       "percent": "2.92%"
@@ -913,7 +913,7 @@
     {
       "onChainName": "(M) Biker",
       "displayName": "Biker",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/M_Biker.png",
       "count": 192,
       "percent": "3.20%"
@@ -921,7 +921,7 @@
     {
       "onChainName": "(F) Biker",
       "displayName": "Biker",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Clothes/F_Biker.png",
       "count": 193,
       "percent": "3.22%"
@@ -931,7 +931,7 @@
     {
       "onChainName": "(U) Diamond Stud",
       "displayName": "Diamond Stud",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Ear/U_Diamond_Stud.png",
       "count": 126,
       "percent": "2.10%"
@@ -939,7 +939,7 @@
     {
       "onChainName": "(U) Double Gold Rings",
       "displayName": "Double Gold Rings",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Ear/U_Double_Gold_Rings.png",
       "count": 175,
       "percent": "2.92%"
@@ -947,7 +947,7 @@
     {
       "onChainName": "(U) Gold Wing",
       "displayName": "Gold Wing",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Ear/U_Gold_Wing.png",
       "count": 177,
       "percent": "2.95%"
@@ -955,7 +955,7 @@
     {
       "onChainName": "(U) Gold Death Arrow",
       "displayName": "Gold Death Arrow",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Ear/U_Gold_Death_Arrow.png",
       "count": 187,
       "percent": "3.12%"
@@ -963,7 +963,7 @@
     {
       "onChainName": "(U) Double Silver Rings",
       "displayName": "Double Silver Rings",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Ear/U_Double_Silver_Rings.png",
       "count": 308,
       "percent": "5.13%"
@@ -971,7 +971,7 @@
     {
       "onChainName": "(U) Quadriple Silver Rings",
       "displayName": "Quadriple Silver Rings",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Ear/U_Quadriple_Silver_Rings.png",
       "count": 359,
       "percent": "5.98%"
@@ -979,7 +979,7 @@
     {
       "onChainName": "(U) Silver Bull",
       "displayName": "Silver Bull",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Ear/U_Silver_Bull.png",
       "count": 377,
       "percent": "6.28%"
@@ -987,7 +987,7 @@
     {
       "onChainName": "(U) Bone",
       "displayName": "Bone",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Ear/U_Bone.png",
       "count": 429,
       "percent": "7.15%"
@@ -995,8 +995,8 @@
     {
       "onChainName": "(U) None",
       "displayName": "None",
-      "gender": "Unisex",
-      "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/None.png",
+      "model": "Unisex",
+      "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/None.png",
       "count": 3862,
       "percent": "64.37%"
     }
@@ -1005,7 +1005,7 @@
     {
       "onChainName": "(U) Red Laser Shades",
       "displayName": "Red Laser Shades",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/U_Red_Laser_Shades.png",
       "count": 22,
       "percent": "0.37%"
@@ -1013,7 +1013,7 @@
     {
       "onChainName": "(U) Red Laser Particles",
       "displayName": "Red Laser Particles",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/U_Red_Laser_Particles.png",
       "count": 25,
       "percent": "0.42%"
@@ -1021,7 +1021,7 @@
     {
       "onChainName": "(U) Pink Laser Shades",
       "displayName": "Pink Laser Shades",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/U_Pink_Laser_Shades.png",
       "count": 29,
       "percent": "0.48%"
@@ -1029,7 +1029,7 @@
     {
       "onChainName": "(F) Pink Visor",
       "displayName": "Pink Visor",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/F_Pink_Visor.png",
       "count": 38,
       "percent": "0.63%"
@@ -1037,7 +1037,7 @@
     {
       "onChainName": "(U) VR Headset",
       "displayName": "VR Headset",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/U_VR_Headset.png",
       "count": 40,
       "percent": "0.67%"
@@ -1045,7 +1045,7 @@
     {
       "onChainName": "(M) Ski Goggles",
       "displayName": "Ski Goggles",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/M_Ski_Goggles.png",
       "count": 43,
       "percent": "0.72%"
@@ -1053,7 +1053,7 @@
     {
       "onChainName": "(F) Carnival Mask",
       "displayName": "Carnival Mask",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/F_Carnival_Mask.png",
       "count": 44,
       "percent": "0.73%"
@@ -1061,7 +1061,7 @@
     {
       "onChainName": "(F) Neon Glasses",
       "displayName": "Neon Glasses",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/F_Neon_Glasses.png",
       "count": 44,
       "percent": "0.73%"
@@ -1069,7 +1069,7 @@
     {
       "onChainName": "(F) Big Shades",
       "displayName": "Big Shades",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/F_Big_Shades.png",
       "count": 44,
       "percent": "0.73%"
@@ -1077,7 +1077,7 @@
     {
       "onChainName": "(M) Floyd",
       "displayName": "Floyd",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/M_Floyd.png",
       "count": 48,
       "percent": "0.80%"
@@ -1085,7 +1085,7 @@
     {
       "onChainName": "(M) Pink Luxury Shades",
       "displayName": "Pink Luxury Shades",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/M_Pink_Luxury_Shades.png",
       "count": 52,
       "percent": "0.87%"
@@ -1093,7 +1093,7 @@
     {
       "onChainName": "(M) Aviators",
       "displayName": "Aviators",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/M_Aviators.png",
       "count": 59,
       "percent": "0.98%"
@@ -1101,7 +1101,7 @@
     {
       "onChainName": "(F) Pixels",
       "displayName": "Pixels",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/F_Pixels.png",
       "count": 60,
       "percent": "1.00%"
@@ -1109,7 +1109,7 @@
     {
       "onChainName": "(F) Fire Shades",
       "displayName": "Fire Shades",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/F_Fire_Shades.png",
       "count": 63,
       "percent": "1.05%"
@@ -1117,7 +1117,7 @@
     {
       "onChainName": "(M) Leon",
       "displayName": "Leon",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/M_Leon.png",
       "count": 64,
       "percent": "1.07%"
@@ -1125,7 +1125,7 @@
     {
       "onChainName": "(M) Big Shades",
       "displayName": "Big Shades",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/M_Big_Shades.png",
       "count": 65,
       "percent": "1.08%"
@@ -1133,7 +1133,7 @@
     {
       "onChainName": "(M) Scouter",
       "displayName": "Scouter",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/M_Scouter.png",
       "count": 74,
       "percent": "1.23%"
@@ -1141,7 +1141,7 @@
     {
       "onChainName": "(F) Scouter",
       "displayName": "Scouter",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/F_Scouter.png",
       "count": 75,
       "percent": "1.25%"
@@ -1149,7 +1149,7 @@
     {
       "onChainName": "(U) Snoop",
       "displayName": "Snoop",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/U_Snoop.png",
       "count": 100,
       "percent": "1.67%"
@@ -1157,7 +1157,7 @@
     {
       "onChainName": "(U) Eye Plaster",
       "displayName": "Eye Plaster",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/U_Eye_Plaster.png",
       "count": 101,
       "percent": "1.68%"
@@ -1165,7 +1165,7 @@
     {
       "onChainName": "(U) Hotiego",
       "displayName": "Hotiego",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/U_Hotiego.png",
       "count": 113,
       "percent": "1.88%"
@@ -1173,7 +1173,7 @@
     {
       "onChainName": "(U) Nose Plaster",
       "displayName": "Nose Plaster",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/U_Nose_Plaster.png",
       "count": 119,
       "percent": "1.98%"
@@ -1181,7 +1181,7 @@
     {
       "onChainName": "(U) Steampunk Glasses Spiked",
       "displayName": "Steampunk Glasses Spiked",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/U_Steampunk_Glasses_Spiked.png",
       "count": 137,
       "percent": "2.28%"
@@ -1189,7 +1189,7 @@
     {
       "onChainName": "(U) Cheek Plaster",
       "displayName": "Cheek Plaster",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/U_Cheek_Plaster.png",
       "count": 141,
       "percent": "2.35%"
@@ -1197,7 +1197,7 @@
     {
       "onChainName": "(U) Steampunk Glasses Round",
       "displayName": "Steampunk Glasses Round",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/U_Steampunk_Glasses_Round.png",
       "count": 143,
       "percent": "2.38%"
@@ -1205,7 +1205,7 @@
     {
       "onChainName": "(U) Broken Visor",
       "displayName": "Broken Visor",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/U_Broken_Visor.png",
       "count": 150,
       "percent": "2.50%"
@@ -1213,7 +1213,7 @@
     {
       "onChainName": "(U) 3D Glasses",
       "displayName": "3D Glasses",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/U_3D_Glasses.png",
       "count": 160,
       "percent": "2.67%"
@@ -1221,7 +1221,7 @@
     {
       "onChainName": "(U) Retro Shades",
       "displayName": "Retro Shades",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Eyewear/U_Retro_Shades.png",
       "count": 207,
       "percent": "3.45%"
@@ -1229,8 +1229,8 @@
     {
       "onChainName": "(U) None",
       "displayName": "None",
-      "gender": "Unisex",
-      "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/None.png",
+      "model": "Unisex",
+      "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/None.png",
       "count": 3740,
       "percent": "62.33%"
     }
@@ -1239,7 +1239,7 @@
     {
       "onChainName": "(F) Wonder Woman",
       "displayName": "Wonder Woman",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/F_Wonder_Woman.png",
       "count": 19,
       "percent": "0.32%"
@@ -1247,7 +1247,7 @@
     {
       "onChainName": "(M) Warrior Helmet",
       "displayName": "Warrior Helmet",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/M_Warrior_Helmet.png",
       "count": 27,
       "percent": "0.45%"
@@ -1255,7 +1255,7 @@
     {
       "onChainName": "(F) Angel Halo",
       "displayName": "Angel Halo",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/F_Angel_Halo.png",
       "count": 39,
       "percent": "0.65%"
@@ -1263,7 +1263,7 @@
     {
       "onChainName": "(F) Khaleesi",
       "displayName": "Khaleesi",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/F_Khaleesi.png",
       "count": 40,
       "percent": "0.67%"
@@ -1271,7 +1271,7 @@
     {
       "onChainName": "(F) Devil Horns",
       "displayName": "Devil Horns",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/F_Devil_Horns.png",
       "count": 41,
       "percent": "0.68%"
@@ -1279,7 +1279,7 @@
     {
       "onChainName": "(M) Devil Horns",
       "displayName": "Devil Horns",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/M_Devil_Horns.png",
       "count": 42,
       "percent": "0.70%"
@@ -1287,7 +1287,7 @@
     {
       "onChainName": "(M) Angel Halo",
       "displayName": "Angel Halo",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/M_Angel_Halo.png",
       "count": 43,
       "percent": "0.72%"
@@ -1295,7 +1295,7 @@
     {
       "onChainName": "(M) Rapper",
       "displayName": "Rapper",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/M_Rapper.png",
       "count": 44,
       "percent": "0.73%"
@@ -1303,7 +1303,7 @@
     {
       "onChainName": "(F) Aqua Crown",
       "displayName": "Aqua Crown",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/F_Aqua_Crown.png",
       "count": 46,
       "percent": "0.77%"
@@ -1311,7 +1311,7 @@
     {
       "onChainName": "(M) Spiked Hair",
       "displayName": "Spiked Hair",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/M_Spiked_Hair.png",
       "count": 49,
       "percent": "0.82%"
@@ -1319,7 +1319,7 @@
     {
       "onChainName": "(M) Snoop",
       "displayName": "Snoop",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/M_Snoop.png",
       "count": 51,
       "percent": "0.85%"
@@ -1327,7 +1327,7 @@
     {
       "onChainName": "(F) Sheikh Bear",
       "displayName": "Sheikh Bear",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/F_Sheikh_Bear.png",
       "count": 53,
       "percent": "0.88%"
@@ -1335,7 +1335,7 @@
     {
       "onChainName": "(F) Skrillex Hair",
       "displayName": "Skrillex Hair",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/F_Skrillex_Hair.png",
       "count": 53,
       "percent": "0.88%"
@@ -1343,7 +1343,7 @@
     {
       "onChainName": "(M) Grey Snapback",
       "displayName": "Grey Snapback",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/M_Grey_Snapback.png",
       "count": 53,
       "percent": "0.88%"
@@ -1351,7 +1351,7 @@
     {
       "onChainName": "(M) Freddy Fedora",
       "displayName": "Freddy Fedora",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/M_Freddy_Fedora.png",
       "count": 54,
       "percent": "0.90%"
@@ -1359,7 +1359,7 @@
     {
       "onChainName": "(M) Green Snapback",
       "displayName": "Green Snapback",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/M_Green_Snapback.png",
       "count": 59,
       "percent": "0.98%"
@@ -1367,7 +1367,7 @@
     {
       "onChainName": "(M) Santa Hat",
       "displayName": "Santa Hat",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/M_Santa_Hat.png",
       "count": 59,
       "percent": "0.98%"
@@ -1375,7 +1375,7 @@
     {
       "onChainName": "(F) Medusa",
       "displayName": "Medusa",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/F_Medusa.png",
       "count": 60,
       "percent": "1.00%"
@@ -1383,7 +1383,7 @@
     {
       "onChainName": "(M) Leon Beanie",
       "displayName": "Leon Beanie",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/M_Leon_Beanie.png",
       "count": 62,
       "percent": "1.03%"
@@ -1391,7 +1391,7 @@
     {
       "onChainName": "(F) Queen Crown",
       "displayName": "Queen Crown",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/F_Queen_Crown.png",
       "count": 65,
       "percent": "1.08%"
@@ -1399,7 +1399,7 @@
     {
       "onChainName": "(U) Leaf Crown",
       "displayName": "Leaf Crown",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/U_Leaf_Crown.png",
       "count": 69,
       "percent": "1.15%"
@@ -1407,7 +1407,7 @@
     {
       "onChainName": "(F) Spiked Hair",
       "displayName": "Spiked Hair",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/F_Spiked_Hair.png",
       "count": 70,
       "percent": "1.17%"
@@ -1415,7 +1415,7 @@
     {
       "onChainName": "(M) Blonde Undercut",
       "displayName": "Blonde Undercut",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/M_Blonde_Undercut.png",
       "count": 74,
       "percent": "1.23%"
@@ -1423,7 +1423,7 @@
     {
       "onChainName": "(U) Thorn Crown",
       "displayName": "Thorn Crown",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/U_Thorn_Crown.png",
       "count": 75,
       "percent": "1.25%"
@@ -1431,7 +1431,7 @@
     {
       "onChainName": "(F) Beanie",
       "displayName": "Beanie",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/F_Beanie.png",
       "count": 80,
       "percent": "1.33%"
@@ -1439,7 +1439,7 @@
     {
       "onChainName": "(F) Pink Undercut",
       "displayName": "Pink Undercut",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/F_Pink_Undercut.png",
       "count": 80,
       "percent": "1.33%"
@@ -1447,7 +1447,7 @@
     {
       "onChainName": "(M) Sweat Band",
       "displayName": "Sweat Band",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/M_Sweat_Band.png",
       "count": 84,
       "percent": "1.40%"
@@ -1455,7 +1455,7 @@
     {
       "onChainName": "(U) Dragon Ball Crystal",
       "displayName": "Dragon Ball Crystal",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/U_Dragon_Ball_Crystal.png",
       "count": 85,
       "percent": "1.42%"
@@ -1463,7 +1463,7 @@
     {
       "onChainName": "(F) Red Mohawk",
       "displayName": "Red Mohawk",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/F_Red_Mohawk.png",
       "count": 88,
       "percent": "1.47%"
@@ -1471,7 +1471,7 @@
     {
       "onChainName": "(M) Green Marine",
       "displayName": "Green Marine",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/M_Green_Marine.png",
       "count": 93,
       "percent": "1.55%"
@@ -1479,7 +1479,7 @@
     {
       "onChainName": "(M) Orange Undercut",
       "displayName": "Orange Undercut",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/M_Orange_Undercut.png",
       "count": 98,
       "percent": "1.63%"
@@ -1487,7 +1487,7 @@
     {
       "onChainName": "(F) Unicorn",
       "displayName": "Unicorn",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/F_Unicorn.png",
       "count": 99,
       "percent": "1.65%"
@@ -1495,7 +1495,7 @@
     {
       "onChainName": "(U) Camouflage",
       "displayName": "Camouflage",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/U_Camouflage.png",
       "count": 109,
       "percent": "1.82%"
@@ -1503,7 +1503,7 @@
     {
       "onChainName": "(U) Tengu Mask",
       "displayName": "Tengu Mask",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/U_Tengu_Mask.png",
       "count": 109,
       "percent": "1.82%"
@@ -1511,7 +1511,7 @@
     {
       "onChainName": "(U) Jason Mask",
       "displayName": "Jason Mask",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/U_Jason_Mask.png",
       "count": 110,
       "percent": "1.83%"
@@ -1519,7 +1519,7 @@
     {
       "onChainName": "(U) Cheese",
       "displayName": "Cheese",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/U_Cheese.png",
       "count": 113,
       "percent": "1.88%"
@@ -1527,7 +1527,7 @@
     {
       "onChainName": "(F) Bandana",
       "displayName": "Bandana",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/F_Bandana.png",
       "count": 118,
       "percent": "1.97%"
@@ -1535,7 +1535,7 @@
     {
       "onChainName": "(U) Kitsune Mask",
       "displayName": "Kitsune Mask",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/U_Kitsune_Mask.png",
       "count": 121,
       "percent": "2.02%"
@@ -1543,7 +1543,7 @@
     {
       "onChainName": "(U) Opera Mask",
       "displayName": "Opera Mask",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/U_Opera_Mask.png",
       "count": 122,
       "percent": "2.03%"
@@ -1551,7 +1551,7 @@
     {
       "onChainName": "(U) Light Helmet",
       "displayName": "Light Helmet",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/U_Light_Helmet.png",
       "count": 134,
       "percent": "2.23%"
@@ -1559,7 +1559,7 @@
     {
       "onChainName": "(U) Heavy Helmet",
       "displayName": "Heavy Helmet",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/U_Heavy_Helmet.png",
       "count": 150,
       "percent": "2.50%"
@@ -1567,7 +1567,7 @@
     {
       "onChainName": "(U) Pirate",
       "displayName": "Pirate",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/U_Pirate.png",
       "count": 157,
       "percent": "2.62%"
@@ -1575,7 +1575,7 @@
     {
       "onChainName": "(U) Straw Hat",
       "displayName": "Straw Hat",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/U_Straw_Hat.png",
       "count": 172,
       "percent": "2.87%"
@@ -1583,7 +1583,7 @@
     {
       "onChainName": "(U) Small Top Hat",
       "displayName": "Small Top Hat",
-      "gender": "Unisex",
+      "model": "Unisex",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Headwear/U_Small_Top_Hat.png",
       "count": 174,
       "percent": "2.90%"
@@ -1591,8 +1591,8 @@
     {
       "onChainName": "(U) None",
       "displayName": "None",
-      "gender": "Unisex",
-      "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/None.png",
+      "model": "Unisex",
+      "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/None.png",
       "count": 2457,
       "percent": "40.95%"
     }
@@ -1601,7 +1601,7 @@
     {
       "onChainName": "(M) Gold Bottom",
       "displayName": "Gold Bottom",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/M_Gold_Bottom.png",
       "count": 26,
       "percent": "0.43%"
@@ -1609,7 +1609,7 @@
     {
       "onChainName": "(M) Gold Top",
       "displayName": "Gold Top",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/M_Gold_Top.png",
       "count": 34,
       "percent": "0.57%"
@@ -1617,7 +1617,7 @@
     {
       "onChainName": "(M) Cash Bag",
       "displayName": "Cash Bag",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/M_Cash_Bag.png",
       "count": 50,
       "percent": "0.83%"
@@ -1625,7 +1625,7 @@
     {
       "onChainName": "(M) Clover",
       "displayName": "Clover",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/M_Clover.png",
       "count": 50,
       "percent": "0.83%"
@@ -1633,7 +1633,7 @@
     {
       "onChainName": "(F) Crypto",
       "displayName": "Crypto",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/F_Crypto.png",
       "count": 114,
       "percent": "1.90%"
@@ -1641,7 +1641,7 @@
     {
       "onChainName": "(M) Cigar",
       "displayName": "Cigar",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/M_Cigar.png",
       "count": 115,
       "percent": "1.92%"
@@ -1649,7 +1649,7 @@
     {
       "onChainName": "(M) Joint",
       "displayName": "Joint",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/M_Joint.png",
       "count": 123,
       "percent": "2.05%"
@@ -1657,7 +1657,7 @@
     {
       "onChainName": "(M) Weed Pipe",
       "displayName": "Weed Pipe",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/M_Weed_Pipe.png",
       "count": 125,
       "percent": "2.08%"
@@ -1665,7 +1665,7 @@
     {
       "onChainName": "(F) Pipe",
       "displayName": "Pipe",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/F_Pipe.png",
       "count": 142,
       "percent": "2.37%"
@@ -1673,7 +1673,7 @@
     {
       "onChainName": "(M) Ninja Star",
       "displayName": "Ninja Star",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/M_Ninja_Star.png",
       "count": 145,
       "percent": "2.42%"
@@ -1681,7 +1681,7 @@
     {
       "onChainName": "(M) Knife",
       "displayName": "Knife",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/M_Knife.png",
       "count": 148,
       "percent": "2.47%"
@@ -1689,7 +1689,7 @@
     {
       "onChainName": "(F) Tongue",
       "displayName": "Tongue",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/F_Tongue.png",
       "count": 156,
       "percent": "2.60%"
@@ -1697,7 +1697,7 @@
     {
       "onChainName": "(F) Luxury Cigarette",
       "displayName": "Luxury Cigarette",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/F_Luxury_Cigarette.png",
       "count": 165,
       "percent": "2.75%"
@@ -1705,7 +1705,7 @@
     {
       "onChainName": "(F) Cigarette",
       "displayName": "Cigarette",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/F_Cigarette.png",
       "count": 168,
       "percent": "2.80%"
@@ -1713,7 +1713,7 @@
     {
       "onChainName": "(F) Tongue Cute",
       "displayName": "Tongue Cute",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/F_Tongue_Cute.png",
       "count": 172,
       "percent": "2.87%"
@@ -1721,7 +1721,7 @@
     {
       "onChainName": "(F) Cigar",
       "displayName": "Cigar",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/F_Cigar.png",
       "count": 173,
       "percent": "2.88%"
@@ -1729,7 +1729,7 @@
     {
       "onChainName": "(M) Lollipop",
       "displayName": "Lollipop",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/M_Lollipop.png",
       "count": 187,
       "percent": "3.12%"
@@ -1737,7 +1737,7 @@
     {
       "onChainName": "(M) Steak",
       "displayName": "Steak",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/M_Steak.png",
       "count": 188,
       "percent": "3.13%"
@@ -1745,7 +1745,7 @@
     {
       "onChainName": "(F) Knife",
       "displayName": "Knife",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/F_Knife.png",
       "count": 199,
       "percent": "3.32%"
@@ -1753,7 +1753,7 @@
     {
       "onChainName": "(M) Wheat",
       "displayName": "Wheat",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/M_Wheat.png",
       "count": 214,
       "percent": "3.57%"
@@ -1761,7 +1761,7 @@
     {
       "onChainName": "(M) Toothpick",
       "displayName": "Toothpick",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/M_Toothpick.png",
       "count": 220,
       "percent": "3.67%"
@@ -1769,7 +1769,7 @@
     {
       "onChainName": "(M) Septum",
       "displayName": "Septum",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/M_Septum.png",
       "count": 238,
       "percent": "3.97%"
@@ -1777,7 +1777,7 @@
     {
       "onChainName": "(M) Grawl",
       "displayName": "Grawl",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/M_Grawl.png",
       "count": 239,
       "percent": "3.98%"
@@ -1785,7 +1785,7 @@
     {
       "onChainName": "(F) Octopus",
       "displayName": "Octopus",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/F_Octopus.png",
       "count": 242,
       "percent": "4.03%"
@@ -1793,7 +1793,7 @@
     {
       "onChainName": "(F) Grawl",
       "displayName": "Grawl",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/F_Grawl.png",
       "count": 257,
       "percent": "4.28%"
@@ -1801,7 +1801,7 @@
     {
       "onChainName": "(M) Rose",
       "displayName": "Rose",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/M_Rose.png",
       "count": 264,
       "percent": "4.40%"
@@ -1809,7 +1809,7 @@
     {
       "onChainName": "(F) Lipstick",
       "displayName": "Lipstick",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/F_Lipstick.png",
       "count": 283,
       "percent": "4.72%"
@@ -1817,7 +1817,7 @@
     {
       "onChainName": "(F) Frown",
       "displayName": "Frown",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/F_Frown.png",
       "count": 294,
       "percent": "4.90%"
@@ -1825,7 +1825,7 @@
     {
       "onChainName": "(F) Septum",
       "displayName": "Septum",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/F_Septum.png",
       "count": 296,
       "percent": "4.93%"
@@ -1833,7 +1833,7 @@
     {
       "onChainName": "(M) None",
       "displayName": "None",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/M_None.png",
       "count": 310,
       "percent": "5.17%"
@@ -1841,7 +1841,7 @@
     {
       "onChainName": "(M) Goatee",
       "displayName": "Goatee",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/M_Goatee.png",
       "count": 324,
       "percent": "5.40%"
@@ -1849,7 +1849,7 @@
     {
       "onChainName": "(F) None",
       "displayName": "None",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/Mouth/F_None.png",
       "count": 339,
       "percent": "5.65%"
@@ -1859,7 +1859,7 @@
     {
       "onChainName": "(F) Tron",
       "displayName": "Tron",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/F_Tron.png",
       "count": 23,
       "percent": "0.38%"
@@ -1867,7 +1867,7 @@
     {
       "onChainName": "(F) Lava",
       "displayName": "Lava",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/F_Lava.png",
       "count": 24,
       "percent": "0.40%"
@@ -1875,7 +1875,7 @@
     {
       "onChainName": "(F) Kurama",
       "displayName": "Kurama",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/F_Kurama.png",
       "count": 29,
       "percent": "0.48%"
@@ -1883,7 +1883,7 @@
     {
       "onChainName": "(F) Gold",
       "displayName": "Gold",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/F_Gold.png",
       "count": 46,
       "percent": "0.77%"
@@ -1891,7 +1891,7 @@
     {
       "onChainName": "(F) Platinum",
       "displayName": "Platinum",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/F_Platinum.png",
       "count": 55,
       "percent": "0.92%"
@@ -1899,7 +1899,7 @@
     {
       "onChainName": "(M) Pink Panther",
       "displayName": "Pink Panther",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/M_Pink_Panther.png",
       "count": 59,
       "percent": "0.98%"
@@ -1907,7 +1907,7 @@
     {
       "onChainName": "(F) Devil",
       "displayName": "Devil",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/F_Devil.png",
       "count": 64,
       "percent": "1.07%"
@@ -1915,7 +1915,7 @@
     {
       "onChainName": "(M) Zombie",
       "displayName": "Zombie",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/M_Zombie.png",
       "count": 64,
       "percent": "1.07%"
@@ -1923,7 +1923,7 @@
     {
       "onChainName": "(M) Gold",
       "displayName": "Gold",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/M_Gold.png",
       "count": 65,
       "percent": "1.08%"
@@ -1931,7 +1931,7 @@
     {
       "onChainName": "(M) Platinum",
       "displayName": "Platinum",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/M_Platinum.png",
       "count": 81,
       "percent": "1.35%"
@@ -1939,7 +1939,7 @@
     {
       "onChainName": "(M) Gara",
       "displayName": "Gara",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/M_Gara.png",
       "count": 91,
       "percent": "1.52%"
@@ -1947,7 +1947,7 @@
     {
       "onChainName": "(M) Floyd",
       "displayName": "Floyd",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/M_Floyd.png",
       "count": 97,
       "percent": "1.62%"
@@ -1955,7 +1955,7 @@
     {
       "onChainName": "(M) Freddy",
       "displayName": "Freddy",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/M_Freddy.png",
       "count": 104,
       "percent": "1.73%"
@@ -1963,7 +1963,7 @@
     {
       "onChainName": "(M) Devil",
       "displayName": "Devil",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/M_Devil.png",
       "count": 104,
       "percent": "1.73%"
@@ -1971,7 +1971,7 @@
     {
       "onChainName": "(F) Huntress",
       "displayName": "Huntress",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/F_Huntress.png",
       "count": 116,
       "percent": "1.93%"
@@ -1979,7 +1979,7 @@
     {
       "onChainName": "(F) Zombie",
       "displayName": "Zombie",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/F_Zombie.png",
       "count": 116,
       "percent": "1.93%"
@@ -1987,7 +1987,7 @@
     {
       "onChainName": "(M) Cyborg",
       "displayName": "Cyborg",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/M_Cyborg.png",
       "count": 128,
       "percent": "2.13%"
@@ -1995,7 +1995,7 @@
     {
       "onChainName": "(M) Green Scales",
       "displayName": "Green Scales",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/M_Green_Scales.png",
       "count": 144,
       "percent": "2.40%"
@@ -2003,7 +2003,7 @@
     {
       "onChainName": "(F) Aqua",
       "displayName": "Aqua",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/F_Aqua.png",
       "count": 144,
       "percent": "2.40%"
@@ -2011,7 +2011,7 @@
     {
       "onChainName": "(F) Scratched Cute",
       "displayName": "Scratched Cute",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/F_Scratched_Cute.png",
       "count": 151,
       "percent": "2.52%"
@@ -2019,7 +2019,7 @@
     {
       "onChainName": "(M) Yakuza",
       "displayName": "Yakuza",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/M_Yakuza.png",
       "count": 159,
       "percent": "2.65%"
@@ -2027,7 +2027,7 @@
     {
       "onChainName": "(M) Sky Blue",
       "displayName": "Sky Blue",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/M_Sky_Blue.png",
       "count": 180,
       "percent": "3.00%"
@@ -2035,7 +2035,7 @@
     {
       "onChainName": "(F) Khaleesi",
       "displayName": "Khaleesi",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/F_Khaleesi.png",
       "count": 188,
       "percent": "3.13%"
@@ -2043,7 +2043,7 @@
     {
       "onChainName": "(F) Wonder Woman",
       "displayName": "Wonder Woman",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/F_Wonder_Woman.png",
       "count": 193,
       "percent": "3.22%"
@@ -2051,7 +2051,7 @@
     {
       "onChainName": "(F) Scratched Rough",
       "displayName": "Scratched Rough",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/F_Scratched_Rough.png",
       "count": 202,
       "percent": "3.37%"
@@ -2059,7 +2059,7 @@
     {
       "onChainName": "(M) Olive",
       "displayName": "Olive",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/M_Olive.png",
       "count": 207,
       "percent": "3.45%"
@@ -2067,7 +2067,7 @@
     {
       "onChainName": "(F) Pink",
       "displayName": "Pink",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/F_Pink.png",
       "count": 228,
       "percent": "3.80%"
@@ -2075,7 +2075,7 @@
     {
       "onChainName": "(M) Vanilla",
       "displayName": "Vanilla",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/M_Vanilla.png",
       "count": 236,
       "percent": "3.93%"
@@ -2083,7 +2083,7 @@
     {
       "onChainName": "(M) Scratched",
       "displayName": "Scratched",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/M_Scratched.png",
       "count": 237,
       "percent": "3.95%"
@@ -2091,7 +2091,7 @@
     {
       "onChainName": "(M) Tanned",
       "displayName": "Tanned",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/M_Tanned.png",
       "count": 237,
       "percent": "3.95%"
@@ -2099,7 +2099,7 @@
     {
       "onChainName": "(M) Pale",
       "displayName": "Pale",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/M_Pale.png",
       "count": 239,
       "percent": "3.98%"
@@ -2107,7 +2107,7 @@
     {
       "onChainName": "(M) Dark Tone",
       "displayName": "Dark Tone",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/M_Dark_Tone.png",
       "count": 246,
       "percent": "4.10%"
@@ -2115,7 +2115,7 @@
     {
       "onChainName": "(F) Dark Tone",
       "displayName": "Dark Tone",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/F_Dark_Tone.png",
       "count": 311,
       "percent": "5.18%"
@@ -2123,7 +2123,7 @@
     {
       "onChainName": "(M) Fox",
       "displayName": "Fox",
-      "gender": "Male",
+      "model": "Male",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/M_Fox.png",
       "count": 322,
       "percent": "5.37%"
@@ -2131,7 +2131,7 @@
     {
       "onChainName": "(F) Tanned",
       "displayName": "Tanned",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/F_Tanned.png",
       "count": 323,
       "percent": "5.38%"
@@ -2139,7 +2139,7 @@
     {
       "onChainName": "(F) Vanilla",
       "displayName": "Vanilla",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/F_Vanilla.png",
       "count": 329,
       "percent": "5.48%"
@@ -2147,7 +2147,7 @@
     {
       "onChainName": "(F) Fox",
       "displayName": "Fox",
-      "gender": "Female",
+      "model": "Female",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-fox/SkinAndTail/F_Fox.png",
       "count": 458,
       "percent": "7.63%"
