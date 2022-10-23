@@ -21,7 +21,7 @@ const CollectionTraits = ({ policyId }) => {
             imageSrc={trait.image}
             itemUrl={trait.image}
             tableRows={[
-              ['Gender:', 'Count:', 'Percent:'],
+              ['Model:', 'Count:', 'Percent:'],
               [trait.model, trait.count, trait.percent],
             ]}
           />
