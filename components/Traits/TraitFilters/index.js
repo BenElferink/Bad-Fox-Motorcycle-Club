@@ -22,20 +22,22 @@ const TraitFilters = ({ traitsData = {}, callbackSelectedCategory = () => {}, ch
           onChange={(e) => setSelectedCategory(e.target.value)}
           sx={{ width: 300 }}
         >
-          {Object.keys(traitsData).map((category) => (
-            <MenuItem key={`category-option-${category}`} value={category}>
-              {category}
-            </MenuItem>
-          ))}
+          {Object.entries(traitsData)
+            .sort((a, b) => a[0][0].localeCompare(b[0][0]))
+            .map(([category, traits]) => (
+              <MenuItem key={`category-option-${category}`} value={category}>
+                {category} ({traits.length})
+              </MenuItem>
+            ))}
         </TextField>
       ) : (
-        Object.keys(traitsData)
-          .sort((a, b) => a[0].localeCompare(b[0]))
-          .map((category) =>
+        Object.entries(traitsData)
+          .sort((a, b) => a[0][0].localeCompare(b[0][0]))
+          .map(([category, traits]) =>
             category !== 'Gender' ? (
               <BaseButton
                 key={`category-button-${category}`}
-                label={category}
+                label={`${category} (${traits.length})`}
                 onClick={() => setSelectedCategory(category)}
                 backgroundColor='var(--brown)'
                 hoverColor='var(--orange)'
