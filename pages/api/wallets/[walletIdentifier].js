@@ -1,7 +1,7 @@
 import { blockfrost } from '../../../utils/blockfrost'
 import toHex from '../../../functions/formatters/hex/toHex'
 import getFileForPolicyId from '../../../functions/getFileForPolicyId'
-import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
+import { ADA_HANDLE_POLICY_ID, BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
 
 export default async (req, res) => {
   try {
@@ -26,8 +26,7 @@ export default async (req, res) => {
         if (!stakeKey) {
           if (!walletAddress) {
             walletAddress = await blockfrost.getWalletAddressWithAssetId(
-              // ADA Handle Policy ID
-              `f0ff48bbb7bbe9d59a40f1ce90e9e9d0ff5002ec48f232b49ca0fb9a${toHex(adaHandle.replace('$', ''))}`
+              `${ADA_HANDLE_POLICY_ID}${toHex(adaHandle.replace('$', ''))}`
             )
           }
           stakeKey = await blockfrost.getStakeKeyWithWalletAddress(walletAddress)
