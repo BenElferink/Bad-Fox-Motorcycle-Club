@@ -1,6 +1,7 @@
 import { Fragment, useCallback, useEffect, useState } from 'react'
 import axios from 'axios'
 import { Transaction } from '@martifylabs/mesh'
+import writeXlsxFile from 'write-excel-file'
 import useWallet from '../../contexts/WalletContext'
 import BaseButton from '../BaseButton'
 import OnlineIndicator from '../OnlineIndicator'
@@ -31,6 +32,7 @@ const AdminDashboard = () => {
   const [payoutDone, setPayoutDone] = useState(false)
   const [listedCount, setListedCount] = useState(0)
   const [unlistedCount, setUnlistedCount] = useState(0)
+  const [holdingWallets, setHoldingWallets] = useState([])
   const [payoutWallets, setPayoutWallets] = useState([])
   const [payoutTxHash, setPayoutTxHash] = useState('')
 
@@ -68,9 +70,6 @@ const AdminDashboard = () => {
     const holders = []
 
     for (let i = 0; i < collectionAssets.length; i++) {
-      if (i == 10) {
-        break
-      }
       const { assetId } = collectionAssets[i]
       addTranscript(`Processing ${i + 1} / ${collectionAssets.length}`, assetId)
 
@@ -100,6 +99,8 @@ const AdminDashboard = () => {
       }
     }
 
+    setHoldingWallets(holders)
+
     const holdersShare = balance * 0.8
     const adaPerAsset = holdersShare / unlistedCountForPayoutCalculation
 
@@ -125,7 +126,7 @@ const AdminDashboard = () => {
             }
           }
 
-          const payout = adaForAssets + adaForTraits
+          const payout = Math.floor(adaForAssets + adaForTraits)
 
           return {
             stakeKey,
@@ -136,40 +137,103 @@ const AdminDashboard = () => {
         .sort((a, b) => b.payout - a.payout)
     )
 
+    addTranscript('Done!')
     setSnapshotDone(true)
     setLoading(false)
   }, [balance])
 
-  const payEveryone = async () => {
+  const payEveryone = useCallback(async () => {
     setLoading(true)
 
     try {
       const tx = new Transaction({ initiator: wallet })
-      console.log('tx1', tx)
 
-      for await (const { address, payout } of payoutWallets) {
-        tx.sendLovelace({ address }, String(payout * MILLION))
+      for (const { address, payout } of payoutWallets) {
+        tx.sendLovelace(address, String(payout * MILLION))
       }
-      console.log('tx2', tx)
 
+      addTranscript('Building TX')
       const unsignedTx = await tx.build()
-      console.log('unsignedTx', unsignedTx)
-
+      addTranscript('Awaiting signature')
       const signedTx = await wallet.signTx(unsignedTx)
-      console.log('signedTx', signedTx)
-
+      addTranscript('Submitting TX')
       const txHash = await wallet.submitTx(signedTx)
-      console.log('txHash', txHash)
 
+      addTranscript('Done!', txHash)
       setPayoutTxHash(txHash)
       setPayoutDone(true)
     } catch (error) {
+      addTranscript('ERROR', error.message)
       console.error(error)
-      console.error(error.message)
     }
 
     setLoading(false)
-  }
+  }, [wallet, payoutWallets])
+
+  const downloadReceipt = useCallback(async () => {
+    setLoading(true)
+
+    const data = [
+      [
+        {
+          value: 'Wallet Address',
+          fontWeight: 'bold',
+        },
+        {
+          value: 'Stake Key',
+          fontWeight: 'bold',
+        },
+        {
+          value: 'Payout',
+          fontWeight: 'bold',
+        },
+      ],
+    ]
+
+    for (const { address, stakeKey, payout } of payoutWallets) {
+      data.push([
+        {
+          type: String,
+          value: address,
+        },
+        {
+          type: String,
+          value: stakeKey,
+        },
+        {
+          type: Number,
+          value: payout,
+        },
+      ])
+    }
+
+    try {
+      await writeXlsxFile(data, {
+        fileName: `BadFoxMC Royalty Distribution (${new Date().toLocaleString()}) TX[${payoutTxHash}].xlsx`,
+        columns: [{ width: 100 }, { width: 60 }, { width: 25 }],
+      })
+    } catch (error) {
+      addTranscript('ERROR', error.message)
+      console.error(error)
+    }
+
+    setLoading(false)
+  }, [payoutWallets, payoutTxHash])
+
+  const syncDb = useCallback(async () => {
+    setLoading(true)
+
+    try {
+      addTranscript(`Syncing ${payoutWallets.length} wallets`)
+      await axios.post('/api/syncDbWallets', { wallets: holdingWallets })
+      addTranscript('Done!')
+    } catch (error) {
+      addTranscript('ERROR', error.message)
+      console.error(error)
+    }
+
+    setLoading(false)
+  }, [holdingWallets])
 
   return (
     <div>
@@ -212,7 +276,7 @@ const AdminDashboard = () => {
           online={!snapshotDone && !payoutDone && !loading}
           title={loading ? 'processing' : !snapshotDone && !payoutDone ? 'run snapshot' : 'snapshot done'}
           placement='bottom'
-          style={{ width: '30%' }}
+          style={{ width: '20%' }}
         >
           <BaseButton
             label='Run Snapshot'
@@ -225,14 +289,14 @@ const AdminDashboard = () => {
         </OnlineIndicator>
 
         <OnlineIndicator
-          online={snapshotDone && !payoutDone && !loading}
-          title={loading ? 'processing' : snapshotDone ? 'pay everyone' : 'wait for snapshot'}
+          online={snapshotDone && !loading}
+          title={loading ? 'processing' : snapshotDone ? 'sync db' : 'wait for snapshot'}
           placement='bottom'
-          style={{ width: '30%' }}
+          style={{ width: '20%' }}
         >
           <BaseButton
-            label='Pay Everyone'
-            onClick={payEveryone}
+            label='Sync DB'
+            onClick={syncDb}
             backgroundColor='var(--apex-charcoal)'
             hoverColor='var(--brown)'
             fullWidth
@@ -241,14 +305,30 @@ const AdminDashboard = () => {
         </OnlineIndicator>
 
         <OnlineIndicator
+          online={snapshotDone && !payoutDone && !loading}
+          title={loading ? 'processing' : snapshotDone ? 'pay everyone' : 'wait for snapshot'}
+          placement='bottom'
+          style={{ width: '20%' }}
+        >
+          <BaseButton
+            label='Pay Everyone'
+            onClick={payEveryone}
+            backgroundColor='var(--apex-charcoal)'
+            hoverColor='var(--brown)'
+            fullWidth
+            disabled={!snapshotDone || payoutDone || loading}
+          />
+        </OnlineIndicator>
+
+        <OnlineIndicator
           online={snapshotDone && payoutDone && !loading}
           title={loading ? 'processing' : payoutDone ? 'download receipt' : 'wait for payout'}
           placement='bottom'
-          style={{ width: '30%' }}
+          style={{ width: '20%' }}
         >
           <BaseButton
             label='Download Receipt'
-            onClick={() => alert('to do')}
+            onClick={downloadReceipt}
             backgroundColor='var(--apex-charcoal)'
             hoverColor='var(--brown)'
             fullWidth
