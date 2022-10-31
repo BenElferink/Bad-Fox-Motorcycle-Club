@@ -225,7 +225,7 @@ const AdminDashboard = () => {
 
     try {
       addTranscript(`Syncing ${payoutWallets.length} wallets`)
-      await axios.post('/api/syncDbWallets', { wallets: holdingWallets })
+      await axios.post('/api/admin/syncDbWallets', { wallets: holdingWallets })
       addTranscript('Done!')
     } catch (error) {
       addTranscript('ERROR', error.message)
