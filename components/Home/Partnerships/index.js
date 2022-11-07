@@ -77,6 +77,13 @@ export default function Partnerships() {
             logoHeight: '80px',
             logoWidth: '110px',
           },
+          {
+            name: 'Unbounded Earth',
+            url: 'https://unbounded.earth',
+            logo: `${GITHUB_MEDIA_URL}/logo/other/unboundedearth.png`,
+            logoHeight: '80px',
+            logoWidth: '80px',
+          },
         ].map((obj) => (
           <div
             key={`partner-${obj.name}`}
