@@ -40,7 +40,7 @@ const Team = forwardRef((props, ref) => {
         },
         {
           name: 'David Minkov',
-          title: 'Lead Artist',
+          title: 'Co-Founder / Lead Artist',
           description:
             "I'm an artist from a very young age, and a graphic designer since 2020. I just dived into the cNFT space, and am very excited to work on Bad Fox MC!",
           profilePicture: `${GITHUB_MEDIA_URL}/team/David.jpg`,
