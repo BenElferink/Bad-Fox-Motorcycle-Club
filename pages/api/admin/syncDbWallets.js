@@ -1,5 +1,5 @@
 import Wallet from '../../../models/Wallet'
-import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
+import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../../constants/policy-ids'
 
 export default async (req, res) => {
   try {
@@ -19,6 +19,7 @@ export default async (req, res) => {
               addresses,
               assets: {
                 [BAD_FOX_POLICY_ID]: assets,
+                [BAD_MOTORCYCLE_POLICY_ID]: [],
               },
             }).save()
           )

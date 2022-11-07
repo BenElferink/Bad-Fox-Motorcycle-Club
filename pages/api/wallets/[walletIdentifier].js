@@ -1,7 +1,7 @@
 import { blockfrost } from '../../../utils/blockfrost'
 import toHex from '../../../functions/formatters/hex/toHex'
 import getFileForPolicyId from '../../../functions/getFileForPolicyId'
-import { ADA_HANDLE_POLICY_ID, BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
+import { ADA_HANDLE_POLICY_ID, BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../../constants/policy-ids'
 
 export default async (req, res) => {
   try {
@@ -36,16 +36,26 @@ export default async (req, res) => {
           walletAddress = (await blockfrost.getWalletAddressesWithStakeKey(stakeKey))[0]
         }
 
+        const walletAssetIds = await blockfrost.getAssetIdsWithStakeKey(stakeKey, BAD_FOX_POLICY_ID)
+
+        const badFoxAssetsFile = getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets')
         const badFoxAssets =
-          (await blockfrost.getAssetIdsWithStakeKey(stakeKey, BAD_FOX_POLICY_ID))?.map((assetId) =>
-            getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets').find((asset) => asset.assetId === assetId)
-          ) || []
+          walletAssetIds
+            ?.filter((assetId) => assetId.indexOf(BAD_FOX_POLICY_ID) === 0)
+            ?.map((assetId) => badFoxAssetsFile.find((asset) => asset.assetId === assetId)) || []
+
+        const badMotorcycleAssetsFile = getFileForPolicyId(BAD_MOTORCYCLE_POLICY_ID, 'assets')
+        const badMotorcycleAssets =
+          walletAssetIds
+            ?.filter((assetId) => assetId.indexOf(BAD_MOTORCYCLE_POLICY_ID) === 0)
+            ?.map((assetId) => badMotorcycleAssetsFile.find((asset) => asset.assetId === assetId)) || []
 
         const wallet = {
           stakeKey,
           walletAddress,
           assets: {
             [BAD_FOX_POLICY_ID]: badFoxAssets,
+            [BAD_MOTORCYCLE_POLICY_ID]: badMotorcycleAssets,
           },
         }
 

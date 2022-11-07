@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { BAD_FOX_POLICY_ID } from '../constants/policy-ids'
+import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../constants/policy-ids'
 
 const Wallet = new mongoose.Schema(
   {
@@ -10,6 +10,7 @@ const Wallet = new mongoose.Schema(
     addresses: [mongoose.Schema.Types.String],
     assets: {
       [BAD_FOX_POLICY_ID]: [mongoose.Schema.Types.String],
+      [BAD_MOTORCYCLE_POLICY_ID]: [mongoose.Schema.Types.String],
     },
   },
   {

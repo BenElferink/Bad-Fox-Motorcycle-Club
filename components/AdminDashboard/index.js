@@ -3,14 +3,15 @@ import axios from 'axios'
 import { Transaction } from '@martifylabs/mesh'
 import writeXlsxFile from 'write-excel-file'
 import useWallet from '../../contexts/WalletContext'
+import getFileForPolicyId from '../../functions/getFileForPolicyId'
 import BaseButton from '../BaseButton'
 import OnlineIndicator from '../OnlineIndicator'
 import { ADA_SYMBOL } from '../../constants/ada'
 import { EXCLUDE_ADDRESSES } from '../../constants/addresses'
-import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
-import foxAssetsFile from '../../data/assets/bad-fox.json'
+import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants/policy-ids'
 
 const MILLION = 1000000
+const COLLECTIONS = [{ policyId: BAD_FOX_POLICY_ID, assets: getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets') }]
 
 const AdminDashboard = () => {
   const { wallet } = useWallet()
@@ -65,73 +66,102 @@ const AdminDashboard = () => {
 
   const runSnapshot = useCallback(async () => {
     setLoading(true)
-    let unlistedCountForPayoutCalculation = 0
-    const collectionAssets = foxAssetsFile.assets
+
     const holders = []
+    let unlistedFoxes = 0
+    let unlistedMotorcycles = 0
 
-    for (let i = 0; i < collectionAssets.length; i++) {
-      const { assetId } = collectionAssets[i]
-      addTranscript(`Processing ${i + 1} / ${collectionAssets.length}`, assetId)
+    for (const { policyId, policyAssets } of COLLECTIONS) {
+      for (let i = 0; i < policyAssets.length; i++) {
+        const { assetId } = policyAssets[i]
+        addTranscript(`Processing ${i + 1} / ${policyAssets.length}`, assetId)
 
-      const { stakeKey, walletAddress } = await fetchOwningWallet(assetId)
+        const { stakeKey, walletAddress } = await fetchOwningWallet(assetId)
 
-      if (!EXCLUDE_ADDRESSES.includes(walletAddress)) {
-        const holderIndex = holders.findIndex((item) => item.stakeKey === stakeKey)
+        if (!EXCLUDE_ADDRESSES.includes(walletAddress)) {
+          const holderIndex = holders.findIndex((item) => item.stakeKey === stakeKey)
 
-        if (holderIndex === -1) {
-          holders.push({
-            stakeKey,
-            addresses: [walletAddress],
-            assets: [assetId],
-          })
-        } else {
-          if (!holders.find((item) => item.addresses.includes(walletAddress))) {
-            holders[holderIndex].addresses.push(walletAddress)
+          if (holderIndex === -1) {
+            holders.push({
+              stakeKey,
+              addresses: [walletAddress],
+              assets: {
+                [policyId]: [assetId],
+              },
+            })
+          } else {
+            if (!holders.find((item) => item.addresses.includes(walletAddress))) {
+              holders[holderIndex].addresses.push(walletAddress)
+            }
+
+            if (holders[holderIndex].assets[policyId]) {
+              holders[holderIndex].assets[policyId].push(assetId)
+            } else {
+              holders[holderIndex].assets[policyId] = [assetId]
+            }
           }
 
-          holders[holderIndex].assets.push(assetId)
-        }
+          setUnlistedCount((prev) => prev + 1)
 
-        setUnlistedCount((prev) => prev + 1)
-        unlistedCountForPayoutCalculation++
-      } else {
-        setListedCount((prev) => prev + 1)
+          if (policyId === BAD_FOX_POLICY_ID) {
+            unlistedFoxes++
+          } else if (policyId === BAD_MOTORCYCLE_POLICY_ID) {
+            unlistedMotorcycles++
+          }
+        } else {
+          setListedCount((prev) => prev + 1)
+        }
       }
     }
 
     setHoldingWallets(holders)
 
-    const holdersShare = balance * 0.8
-    const adaPerAsset = holdersShare / unlistedCountForPayoutCalculation
+    const holdersPoolShare = balance * 0.8
 
     setPayoutWallets(
       holders
         .map(({ stakeKey, addresses, assets }) => {
-          const adaForAssets = assets.length * adaPerAsset
+          let adaForAssets = 0
           let adaForTraits = 0
 
-          for (const assetId of assets) {
-            if (assetId.indexOf(BAD_FOX_POLICY_ID) !== -1) {
-              const {
-                attributes: { Mouth },
-              } = collectionAssets.find((asset) => asset.assetId === assetId)
+          Object.entries(assets).forEach(([policyId, policyAssets]) => {
+            const collectionAssets = COLLECTIONS.find((collection) => collection.policyId === policyId)
 
-              if (Mouth === '(F) Crypto') {
-                adaForTraits += 10
-              } else if (Mouth === '(M) Cash Bag') {
-                adaForTraits += 10
-              } else if (Mouth === '(M) Clover') {
-                adaForTraits += 50
+            adaForAssets +=
+              policyAssets.length *
+              (holdersPoolShare /
+                (policyId === BAD_FOX_POLICY_ID
+                  ? unlistedFoxes
+                  : policyId === BAD_MOTORCYCLE_POLICY_ID
+                  ? unlistedMotorcycles
+                  : holdersPoolShare))
+
+            if (policyId === BAD_FOX_POLICY_ID) {
+              for (const assetId of policyAssets) {
+                const { attributes } = collectionAssets.find((asset) => asset.assetId === assetId)
+
+                if (attributes['Mouth'] === '(F) Crypto') {
+                  adaForTraits += 10
+                } else if (attributes['Mouth'] === '(M) Cash Bag') {
+                  adaForTraits += 10
+                } else if (attributes['Mouth'] === '(M) Clover') {
+                  adaForTraits += 50
+                }
               }
+            } else if (policyId === BAD_MOTORCYCLE_POLICY_ID) {
+              // for (const assetId of policyAssets) {
+              //   const { attributes } = collectionAssets.find((asset) => asset.assetId === assetId)
+              //   if (attributes['Rear'] === '(M) Ada Bag') {
+              //     adaForTraits += 0
+              //   }
+              // }
             }
-          }
-
-          const payout = Math.floor(adaForAssets + adaForTraits)
+          })
 
           return {
             stakeKey,
             address: addresses[0],
-            payout,
+            payout: Math.round(adaForAssets + adaForTraits),
           }
         })
         .sort((a, b) => b.payout - a.payout)
@@ -184,6 +214,14 @@ const AdminDashboard = () => {
           fontWeight: 'bold',
         },
         {
+          value: 'Fox Count',
+          fontWeight: 'bold',
+        },
+        {
+          value: 'Motorcycle Count',
+          fontWeight: 'bold',
+        },
+        {
           value: 'Payout',
           fontWeight: 'bold',
         },
@@ -191,6 +229,8 @@ const AdminDashboard = () => {
     ]
 
     for (const { address, stakeKey, payout } of payoutWallets) {
+      const holder = holdingWallets.find((holder) => holder.stakeKey === stakeKey)
+
       data.push([
         {
           type: String,
@@ -202,6 +242,14 @@ const AdminDashboard = () => {
         },
         {
           type: Number,
+          value: holder.assets[BAD_FOX_POLICY_ID]?.length || 0,
+        },
+        {
+          type: Number,
+          value: holder.assets[BAD_MOTORCYCLE_POLICY_ID]?.length || 0,
+        },
+        {
+          type: Number,
           value: payout,
         },
       ])
@@ -210,7 +258,7 @@ const AdminDashboard = () => {
     try {
       await writeXlsxFile(data, {
         fileName: `BadFoxMC Royalty Distribution (${new Date().toLocaleString()}) TX[${payoutTxHash}].xlsx`,
-        columns: [{ width: 100 }, { width: 60 }, { width: 25 }],
+        columns: [{ width: 100 }, { width: 60 }, { width: 25 }, { width: 25 }, { width: 25 }],
       })
     } catch (error) {
       addTranscript('ERROR', error.message)

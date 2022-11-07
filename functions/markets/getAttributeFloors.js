@@ -1,20 +1,20 @@
 const { jpgStore } = require('../../utils/jpgStore')
 const getFileForPolicyId = require('../getFileForPolicyId')
-const { BAD_FOX_POLICY_ID } = require('../../constants/policy-ids')
 
-const traitsData = (() => {
+const getAttributes = (policyId) => {
   const payload = {}
 
-  Object.entries(getFileForPolicyId(BAD_FOX_POLICY_ID, 'traits')).forEach(([cat, traits]) => {
+  Object.entries(getFileForPolicyId(policyId, 'traits')).forEach(([cat, traits]) => {
     payload[cat] = traits.map(({ onChainName }) => onChainName)
   })
 
   return payload
-})()
+}
 
-const getFoxFloor = async () => {
+const getAttributeFloors = async (policyId) => {
   const floorData = {}
-  const listings = await jpgStore.getListings({ policyId: BAD_FOX_POLICY_ID })
+  const traitsData = getAttributes(policyId)
+  const listings = await jpgStore.getListings({ policyId })
 
   console.log('Searching for floor prices')
   for (const category in traitsData) {
@@ -44,4 +44,4 @@ const getFoxFloor = async () => {
   return floorData
 }
 
-module.exports = getFoxFloor
+module.exports = getAttributeFloors

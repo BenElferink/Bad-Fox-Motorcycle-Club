@@ -1,6 +1,6 @@
 import connectDB from '../../../../utils/mongo'
 import FloorSnapshot from '../../../../models/FloorSnapshot'
-import getFoxFloor from '../../../../functions/markets/getFoxFloor'
+import getAttributeFloors from '../../../../functions/markets/getAttributeFloors'
 import isPolicyIdAllowed from '../../../../functions/isPolicyIdAllowed'
 import { ADMIN_CODE } from '../../../../constants/api-keys'
 
@@ -31,13 +31,12 @@ export default async (req, res) => {
     switch (method) {
       case 'GET': {
         const dbSnapshots = await FloorSnapshot.find({ policyId }).sort({ timestamp: 1 })
-
-        const liveFloorAttributes = await getFoxFloor()
+        const liveAttributeFloors = await getAttributeFloors(policyId)
 
         dbSnapshots.push({
           policyId,
           timestamp: 'LIVE',
-          attributes: liveFloorAttributes,
+          attributes: liveAttributeFloors,
         })
 
         return res.status(200).json({
@@ -61,12 +60,12 @@ export default async (req, res) => {
         newDate.setMilliseconds(0)
         const timestamp = newDate.getTime()
 
-        const floorAttributes = await getFoxFloor()
+        const liveAttributeFloors = await getAttributeFloors(policyId)
 
         const newSnapshot = new FloorSnapshot({
           policyId,
           timestamp,
-          attributes: floorAttributes,
+          attributes: liveAttributeFloors,
         })
 
         await newSnapshot.save()

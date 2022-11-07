@@ -3,7 +3,7 @@ import { BrowserWallet } from '@martifylabs/mesh'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import getFileForPolicyId from '../functions/getFileForPolicyId'
-import { BAD_FOX_POLICY_ID } from '../constants/policy-ids'
+import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../constants/policy-ids'
 
 // https://mesh.martify.io/apis/browserwallet
 
@@ -48,11 +48,17 @@ export const WalletProvider = ({ children }) => {
             getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets').find((asset) => asset.assetId === unit)
           ) || []
 
+        const badMotorcycleAssets =
+          (await _wallet.getPolicyIdAssets(BAD_MOTORCYCLE_POLICY_ID))?.map(({ unit }) =>
+            getFileForPolicyId(BAD_MOTORCYCLE_POLICY_ID, 'assets').find((asset) => asset.assetId === unit)
+          ) || []
+
         setPopulatedWallet({
           stakeKey: stakeKeys[0],
           walletAddress,
           assets: {
             [BAD_FOX_POLICY_ID]: badFoxAssets,
+            [BAD_MOTORCYCLE_POLICY_ID]: badMotorcycleAssets,
           },
           ownsAssets: !!badFoxAssets.length,
         })
