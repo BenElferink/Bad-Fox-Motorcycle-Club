@@ -7,12 +7,10 @@ export default function Footer() {
       className='flex-col'
       style={{
         width: '100%',
-        marginTop: 200,
+        marginTop: 'auto',
         padding: '0 1rem',
         color: 'var(--grey)',
         textAlign: 'center',
-        position: 'static',
-        zIndex: 0,
       }}
     >
       <div style={{ width: '100%' }}>
