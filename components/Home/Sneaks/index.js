@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { useScreenSize } from '../../../contexts/ScreenSizeContext'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper'
-import data from '../../../data/sneaks.json'
+import { GITHUB_MEDIA_URL } from '../../../constants/api-urls'
 import styles from './Sneaks.module.css'
 
 const Sneaks = () => {
@@ -20,7 +20,20 @@ const Sneaks = () => {
         pagination={{ type: 'bullets' }}
         slidesPerView={slidesPerView}
       >
-        {data.map((str) => (
+        {[
+          `${GITHUB_MEDIA_URL}/previews/2119.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/1774.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/4087.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/0960.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/4157.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/1482.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/0895.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/0258.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/1813.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/1780.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/0461.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/4946.jpg`,
+        ].map((str) => (
           <SwiperSlide key={str}>
             <Image src={str} alt='' width={imageSize} height={imageSize} className={styles.img} />
           </SwiperSlide>
