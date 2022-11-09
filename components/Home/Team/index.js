@@ -61,7 +61,7 @@ const Team = forwardRef((props, ref) => {
         },
         {
           name: 'Chris Mitrev',
-          title: 'Artist',
+          title: 'Co-Founder / Artist',
           description:
             "I'm an aspiring artist, and was previously a stock/crypto trader. I helped form the team behind Bad Fox MC, and have invested in the tools required to produce our product.",
           profilePicture: `${GITHUB_MEDIA_URL}/team/Chris.jpg`,
