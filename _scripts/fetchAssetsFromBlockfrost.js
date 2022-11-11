@@ -1,6 +1,6 @@
 require('dotenv').config()
 const fs = require('fs')
-const { default: axios } = require('axios')
+const axios = require('axios')
 const { blockfrost } = require('../utils/blockfrost')
 const getFileForPolicyId = require('../functions/getFileForPolicyId')
 const fromHex = require('../functions/formatters/hex/fromHex')
