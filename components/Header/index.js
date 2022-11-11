@@ -16,7 +16,7 @@ import styles from './Header.module.css'
 
 export default function Header({ scrollTo = () => null }) {
   const { isMobile } = useScreenSize()
-  const { isRegisterOnline, isPreSaleOnline, isPublicSaleOnline } = useMint()
+  const { isPreSaleOnline, isPublicSaleOnline } = useMint()
 
   const router = useRouter()
   const isHome = router.route === '/'
@@ -55,7 +55,7 @@ export default function Header({ scrollTo = () => null }) {
   }
 
   const clickMint = () => {
-    if (isRegisterOnline || isPreSaleOnline || isPublicSaleOnline) {
+    if (isPreSaleOnline || isPublicSaleOnline) {
       router.push('/mint')
     } else {
       toast.error('Currently offline')
@@ -136,16 +136,11 @@ export default function Header({ scrollTo = () => null }) {
 
           <BaseButton label='Catalogs' onClick={clickCatalogs} transparent style={jsStyles.btn} />
 
-          <OnlineIndicator online={isRegisterOnline || isPreSaleOnline || isPublicSaleOnline}>
-            <BaseButton
-              label={isRegisterOnline ? 'Register' : 'Mint'}
-              onClick={clickMint}
-              transparent
-              style={jsStyles.btn}
-            />
+          <OnlineIndicator online={isPreSaleOnline || isPublicSaleOnline}>
+            <BaseButton label='Mint' onClick={clickMint} transparent style={jsStyles.btn} />
           </OnlineIndicator>
 
-          {router.route !== '/wallet' && router.route !== '/mint' ? <ConnectWallet redirectOnSuccess /> : null}
+          {router.route !== '/wallet' ? <ConnectWallet redirectOnSuccess /> : null}
           <Socials closeMenu={closeMenu} />
         </nav>
       </Modal>
