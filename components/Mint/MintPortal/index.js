@@ -5,7 +5,7 @@ import { useMint } from '../../../contexts/MintContext'
 import Section from '../../Section'
 import BaseButton from '../../BaseButton'
 import GlobalLoader from '../../Loader/GlobalLoader'
-import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
+import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../../constants/policy-ids'
 import styles from './MintPortal.module.css'
 import mintingListFile from '../../../data/minting-list.json'
 
@@ -57,7 +57,7 @@ export default function MintPortal({ populatedWallet }) {
       setFetching(true)
 
       try {
-        const res = await axios.get(`/api/setting/${BAD_FOX_POLICY_ID}`)
+        const res = await axios.get(`/api/setting/${BAD_MOTORCYCLE_POLICY_ID}`)
 
         setMintObj(res.data.mint)
       } catch (error) {
