@@ -33,6 +33,7 @@ const populateNewAsset = async (assetId) => {
     return {
       assetId: data.asset,
       fingerprint: data.fingerprint,
+      isBurned: data.quantity === '0',
       onChainName: fromHex(data.asset_name),
       displayName: data.onchain_metadata.name,
       serialNumber: Number(data.onchain_metadata.name.replace(ASSET_DISPLAY_NAME_PREFIX, '')),
