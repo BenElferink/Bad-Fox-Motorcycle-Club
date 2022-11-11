@@ -11,8 +11,8 @@
     "name": "Bad Motorcycle",
     "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/projects/bad-motorcycle.png",
     "policyId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba8",
-    "catalogCollections": false,
+    "catalogCollections": true,
     "catalogTraits": true,
-    "walletPortfolio": false
+    "walletPortfolio": true
   }
 ]

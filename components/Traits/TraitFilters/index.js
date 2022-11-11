@@ -34,7 +34,7 @@ const TraitFilters = ({ traitsData = {}, callbackSelectedCategory = () => {}, ch
         Object.entries(traitsData)
           .sort((a, b) => a[0][0].localeCompare(b[0][0]))
           .map(([category, traits]) =>
-            category !== 'Gender' ? (
+            category !== 'Gender' && category !== 'Model' ? (
               <BaseButton
                 key={`category-button-${category}`}
                 label={`${category} (${traits.length})`}

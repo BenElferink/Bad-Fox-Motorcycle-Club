@@ -4,14 +4,14 @@ const { default: axios } = require('axios')
 const { blockfrost } = require('../utils/blockfrost')
 const getFileForPolicyId = require('../functions/getFileForPolicyId')
 const fromHex = require('../functions/formatters/hex/fromHex')
-const { BAD_FOX_POLICY_ID } = require('../constants/policy-ids')
+const { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } = require('../constants/policy-ids')
 const { CNFT_TOOLS_API } = require('../constants/api-urls')
 
-const POLICY_ID = BAD_FOX_POLICY_ID
-const ASSET_DISPLAY_NAME_PREFIX = 'Bad Fox #'
-const JSON_FILE_NAME = 'bad-fox.json'
+const POLICY_ID = BAD_MOTORCYCLE_POLICY_ID
+const ASSET_DISPLAY_NAME_PREFIX = 'Bad Motorcycle #'
+const JSON_FILE_NAME = 'bad-motorcycle.json'
 const SHOULD_COUNT_TRAITS = true
-const HAS_RANKS_ON_CNFT_TOOLS = true
+const HAS_RANKS_ON_CNFT_TOOLS = false
 
 let cnftToolsAssets = []
 const traitsFile = getFileForPolicyId(POLICY_ID, 'traits')

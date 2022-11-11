@@ -29,7 +29,7 @@ const Chart = ({
   }, [isMobile])
 
   const chartWidth = useCallback(() => {
-    const maxWidth = 700
+    const maxWidth = 640
     const val = screenWidth && isMobile ? screenWidth - 50 : screenWidth && !isMobile ? screenWidth : 0
     if (val >= maxWidth) return maxWidth
     return val

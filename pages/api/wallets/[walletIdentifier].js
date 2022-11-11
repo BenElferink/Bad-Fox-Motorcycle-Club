@@ -36,7 +36,7 @@ export default async (req, res) => {
           walletAddress = (await blockfrost.getWalletAddressesWithStakeKey(stakeKey))[0]
         }
 
-        const walletAssetIds = await blockfrost.getAssetIdsWithStakeKey(stakeKey, BAD_FOX_POLICY_ID)
+        const walletAssetIds = await blockfrost.getAssetIdsWithStakeKey(stakeKey)
 
         const badFoxAssetsFile = getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets')
         const badFoxAssets =
