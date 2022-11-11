@@ -1,5 +1,4 @@
 import Wallet from '../../../models/Wallet'
-import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../../constants/policy-ids'
 
 export default async (req, res) => {
   try {
@@ -13,16 +12,7 @@ export default async (req, res) => {
         await Wallet.deleteMany({})
 
         const result = await Promise.all(
-          wallets.map(({ stakeKey, addresses, assets }) =>
-            new Wallet({
-              stakeKey,
-              addresses,
-              assets: {
-                [BAD_FOX_POLICY_ID]: assets,
-                [BAD_MOTORCYCLE_POLICY_ID]: [],
-              },
-            }).save()
-          )
+          wallets.map(({ stakeKey, addresses, assets }) => new Wallet({ stakeKey, addresses, assets }).save())
         )
 
         return res.status(201).json({ result })

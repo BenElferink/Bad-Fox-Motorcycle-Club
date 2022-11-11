@@ -11,7 +11,12 @@ import { EXCLUDE_ADDRESSES } from '../../constants/addresses'
 import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants/policy-ids'
 
 const MILLION = 1000000
-const COLLECTIONS = [{ policyId: BAD_FOX_POLICY_ID, assets: getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets') }]
+const COLLECTIONS = [
+  { policyId: BAD_FOX_POLICY_ID, policyAssets: getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets') },
+  { policyId: BAD_MOTORCYCLE_POLICY_ID, policyAssets: getFileForPolicyId(BAD_MOTORCYCLE_POLICY_ID, 'assets') },
+]
+
+const sleep = (ms) => new Promise((resolve) => setTimeout(() => resolve(true), ms))
 
 const AdminDashboard = () => {
   const { wallet } = useWallet()
@@ -71,45 +76,51 @@ const AdminDashboard = () => {
     let unlistedFoxes = 0
     let unlistedMotorcycles = 0
 
-    for (const { policyId, policyAssets } of COLLECTIONS) {
+    for (let c = 0; c < COLLECTIONS.length; c++) {
+      const { policyId, policyAssets } = COLLECTIONS[c]
+      addTranscript(`Collection ${c + 1} / ${COLLECTIONS.length}`, policyId)
+      await sleep(500)
+
       for (let i = 0; i < policyAssets.length; i++) {
-        const { assetId } = policyAssets[i]
+        const { assetId, isBurned } = policyAssets[i]
         addTranscript(`Processing ${i + 1} / ${policyAssets.length}`, assetId)
 
-        const { stakeKey, walletAddress } = await fetchOwningWallet(assetId)
+        if (!isBurned) {
+          const { stakeKey, walletAddress } = await fetchOwningWallet(assetId)
 
-        if (!EXCLUDE_ADDRESSES.includes(walletAddress)) {
-          const holderIndex = holders.findIndex((item) => item.stakeKey === stakeKey)
+          if (!EXCLUDE_ADDRESSES.includes(walletAddress)) {
+            const holderIndex = holders.findIndex((item) => item.stakeKey === stakeKey)
 
-          if (holderIndex === -1) {
-            holders.push({
-              stakeKey,
-              addresses: [walletAddress],
-              assets: {
-                [policyId]: [assetId],
-              },
-            })
-          } else {
-            if (!holders.find((item) => item.addresses.includes(walletAddress))) {
-              holders[holderIndex].addresses.push(walletAddress)
-            }
-
-            if (holders[holderIndex].assets[policyId]) {
-              holders[holderIndex].assets[policyId].push(assetId)
+            if (holderIndex === -1) {
+              holders.push({
+                stakeKey,
+                addresses: [walletAddress],
+                assets: {
+                  [policyId]: [assetId],
+                },
+              })
             } else {
-              holders[holderIndex].assets[policyId] = [assetId]
+              if (!holders.find((item) => item.addresses.includes(walletAddress))) {
+                holders[holderIndex].addresses.push(walletAddress)
+              }
+
+              if (holders[holderIndex].assets[policyId]) {
+                holders[holderIndex].assets[policyId].push(assetId)
+              } else {
+                holders[holderIndex].assets[policyId] = [assetId]
+              }
             }
-          }
 
-          setUnlistedCount((prev) => prev + 1)
+            setUnlistedCount((prev) => prev + 1)
 
-          if (policyId === BAD_FOX_POLICY_ID) {
-            unlistedFoxes++
-          } else if (policyId === BAD_MOTORCYCLE_POLICY_ID) {
-            unlistedMotorcycles++
+            if (policyId === BAD_FOX_POLICY_ID) {
+              unlistedFoxes++
+            } else if (policyId === BAD_MOTORCYCLE_POLICY_ID) {
+              unlistedMotorcycles++
+            }
+          } else {
+            setListedCount((prev) => prev + 1)
           }
-        } else {
-          setListedCount((prev) => prev + 1)
         }
       }
     }
