@@ -1,7 +1,7 @@
 {
-  "_wen": 1668212951187,
+  "_wen": 1668250281139,
   "policyId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba8",
-  "count": 1576,
+  "count": 1627,
   "assets": [
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530303032",
@@ -1117,6 +1117,27 @@
       "image": { "ipfs": "ipfs://QmfSuxLJj54cTizHA9TatpXLyX2dwpwaZm1NuTdQZc5EDz" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530303837",
+      "fingerprint": "asset1gk3hmar7gyyyumjq08rtqnj963hh9hkjctws55",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle0087",
+      "displayName": "Bad Motorcycle #0087",
+      "serialNumber": 87,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(HB) Space Helmet",
+        "Skin": "(HB) Navy",
+        "Above": "(HB) UFO",
+        "Below": "None",
+        "Model": "(HB) Hover Bike",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "Tron Green"
+      },
+      "image": { "ipfs": "ipfs://QmRoEWGri9yFjQXX2MandePuk5epS15eaTiGQqRLL6st3s" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530303838",
       "fingerprint": "asset1ae0lzjvj4ndlyrl9hf5ltguvlrr2ucc4andmh2",
       "isBurned": false,
@@ -1390,6 +1411,27 @@
       "image": { "ipfs": "ipfs://QmVyoyXLBke4SEyxCmnFXoSM3ukSUvBo2JspUm9HPxR7ze" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530313037",
+      "fingerprint": "asset17x8g6rvydsal9pm4yqq9gm7pe45tlgv0ugqt7c",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle0107",
+      "displayName": "Bad Motorcycle #0107",
+      "serialNumber": 107,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(HO) Electric Guitar",
+        "Skin": "(HO) Black",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(HO) Hog",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "City Evening"
+      },
+      "image": { "ipfs": "ipfs://QmUWnJ569yYQNz1wpDrpsx1gJoFPxNgwGCGoCK8Q4bTczL" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530313038",
       "fingerprint": "asset1htgg43cmmhnz395fyh64568v5y03ctum93ezjm",
       "isBurned": false,
@@ -1642,6 +1684,27 @@
       "image": { "ipfs": "ipfs://QmUUKmJoYAWzNtFFg9QG1w48wgFJGSnFDqN7yvJ8PtNj7p" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530313238",
+      "fingerprint": "asset176wuxx008qgx4u8djnzgem75nr46jysyyslqkt",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle0128",
+      "displayName": "Bad Motorcycle #0128",
+      "serialNumber": 128,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(HO) Saddle Bag",
+        "Rear": "None",
+        "Skin": "(HO) Black and White",
+        "Above": "(HO) Rubber Fox",
+        "Below": "None",
+        "Model": "(HO) Hog",
+        "Right": "None",
+        "Anterior": "(HO) Dino Skull",
+        "Background": "Tron Green"
+      },
+      "image": { "ipfs": "ipfs://QmbAtWt76ruT9ienUYqrJpWwQ5uY4Qwsuj6wfCmAaCEJ5p" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530313332",
       "fingerprint": "asset1scf6594cdvh3nh3t0le3cq6n5tcnl97nads5at",
       "isBurned": false,
@@ -1745,6 +1808,27 @@
         "Background": "City"
       },
       "image": { "ipfs": "ipfs://QmNXkA7WDewcqQPjQvp1cLAFJSQ1wKGALS1SC8Hsgq8Rxm" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530313533",
+      "fingerprint": "asset1g6wmdvv85eger73q0a922cs749lmw0fe3n0d99",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle0153",
+      "displayName": "Bad Motorcycle #0153",
+      "serialNumber": 153,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "None",
+        "Skin": "(ST) White",
+        "Above": "(ST) Mad Scientist Goggles",
+        "Below": "None",
+        "Model": "(ST) Steampunk",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "Evening"
+      },
+      "image": { "ipfs": "ipfs://QmZhhmB7jaYCVY1gj6emGZ3DmWo5VCJ8yNqKycKkr4Ufxz" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530313534",
@@ -2314,6 +2398,27 @@
       "image": { "ipfs": "ipfs://QmZJMH6guGiJRjF2h8wKHLTCXbadqivugQrCMDz8T4X9tB" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530323036",
+      "fingerprint": "asset1cjsy33z4vy4pydghlyjwhr0tnkp2msrt4f9jjy",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle0206",
+      "displayName": "Bad Motorcycle #0206",
+      "serialNumber": 206,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(VE) Surfboard",
+        "Rear": "(VE) Spare Tire",
+        "Skin": "(VE) Floyd",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(VE) Vespa",
+        "Right": "None",
+        "Anterior": "(VE) R.I.P",
+        "Background": "City"
+      },
+      "image": { "ipfs": "ipfs://Qmf7S9rgx4m83z7mTcpyWXV9914SMHSg7LambcZk8HwnTQ" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530323037",
       "fingerprint": "asset187mw5ptecca5a43fty44wg2t2vhvclskz3v5zt",
       "isBurned": false,
@@ -2375,6 +2480,27 @@
         "Background": "Pastel Evening"
       },
       "image": { "ipfs": "ipfs://QmWUbSovF3JE1JQv2pykimxrcQ3iBbAV74r69UpMahdgSk" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530323130",
+      "fingerprint": "asset10p7l6wlqengmt9qscxckve36k4ekmsqyfchhu5",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle0210",
+      "displayName": "Bad Motorcycle #0210",
+      "serialNumber": 210,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(VE) Skateboard",
+        "Rear": "(VE) Spare Tire",
+        "Skin": "(VE) Teal",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(VE) Vespa",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "City Dark"
+      },
+      "image": { "ipfs": "ipfs://QmdtajZF9qntwGgDzMDUsYCEsX8hVjApNRhCmS6eH7S3JT" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530323131",
@@ -2501,6 +2627,27 @@
         "Background": "City After Sunset"
       },
       "image": { "ipfs": "ipfs://QmazLG4UdZnUA2G7skLjnRqtzpikXq8wDejyX6F7mcNJcu" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530323139",
+      "fingerprint": "asset19jy4esc7f4xy9p3s9ydxqv7ra65cw8ft0r0mgk",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle0219",
+      "displayName": "Bad Motorcycle #0219",
+      "serialNumber": 219,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(CH) Spikes",
+        "Skin": "(CH) Grey and Red Signed",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(CH) Chopper",
+        "Right": "None",
+        "Anterior": "(CH) Spikes",
+        "Background": "Tron Purple"
+      },
+      "image": { "ipfs": "ipfs://QmUv6Aj3HAZhys82cZFJdPTHz7hfDWce4kjjPkoEXhPzdW" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530323230",
@@ -5947,6 +6094,27 @@
       "image": { "ipfs": "ipfs://QmaQz91AUNFB8SBE6Wy4tBaRGDNFrUjKURFhXEFfKomepj" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530353234",
+      "fingerprint": "asset1xg3y7ccx8j4gwqhcdvgkc48z6n0mrxqazvhpf7",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle0524",
+      "displayName": "Bad Motorcycle #0524",
+      "serialNumber": 524,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(VE) Skateboard",
+        "Rear": "(VE) Ninja Turtle",
+        "Skin": "(VE) Pink",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(VE) Vespa",
+        "Right": "None",
+        "Anterior": "(VE) Pumpkin",
+        "Background": "Tron Blue"
+      },
+      "image": { "ipfs": "ipfs://QmNcpp8TZ18icjoPAL4sF4fezHYxesZKPCxDtq1xfiPejR" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530353236",
       "fingerprint": "asset1x53jelht4vva5vva4gz0lw34lmyj4jvl8wjw7u",
       "isBurned": false,
@@ -6386,6 +6554,27 @@
         "Background": "Plain Soft Navy"
       },
       "image": { "ipfs": "ipfs://QmZqikdgZFwF2yAYZ1QAmmifhuU4P1dve6mg2BE5mfzfVv" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530353632",
+      "fingerprint": "asset12k5khm96x8s8zx9tlf47gcq33wkffqexglc5qw",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle0562",
+      "displayName": "Bad Motorcycle #0562",
+      "serialNumber": 562,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(DB) Doll Antena",
+        "Skin": "(DB) Red",
+        "Above": "(DB) Ski Goggles",
+        "Below": "None",
+        "Model": "(DB) Dirt Bike",
+        "Right": "None",
+        "Anterior": "(DB) Axe",
+        "Background": "After Sunset"
+      },
+      "image": { "ipfs": "ipfs://QmRb2sJCircwzLiaPY59u3oAa9K1uFyqzS7xZ48EDpGcxS" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530353633",
@@ -7375,6 +7564,27 @@
       "image": { "ipfs": "ipfs://QmaX4XC2JtMZA1e5y2188CZPZ9ZTFfMHVA9e3dVpCKmTYz" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530363531",
+      "fingerprint": "asset1yhgrqqjmurh9mzqvq6r7my2t38r8m0x3h0pw9c",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle0651",
+      "displayName": "Bad Motorcycle #0651",
+      "serialNumber": 651,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "None",
+        "Skin": "(NI) Yellow",
+        "Above": "(NI) Helmet",
+        "Below": "None",
+        "Model": "(NI) Ninja",
+        "Right": "(NI) Samurai Swords",
+        "Anterior": "None",
+        "Background": "City"
+      },
+      "image": { "ipfs": "ipfs://QmQYEUKHCSEz1oTUxErVm1YgTb5773hM6euP8VVrFk7waX" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530363536",
       "fingerprint": "asset1erf9j3uq2tf0q0rjqnz9cgtmcsq7356lpu4z6s",
       "isBurned": false,
@@ -7583,6 +7793,27 @@
         "Background": "Plain White"
       },
       "image": { "ipfs": "ipfs://QmeX7JuNNVDUpvi5Uc2qFkmQqFiq9pSeiJjDkH1YLPcDer" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530363731",
+      "fingerprint": "asset1vqt6q5uff6t7m7vdkcfzrw3z5x5sakmplu07lr",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle0671",
+      "displayName": "Bad Motorcycle #0671",
+      "serialNumber": 671,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(SC) Rubber Duck",
+        "Skin": "(SC) White and Yellow",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(SC) Scrambler",
+        "Right": "None",
+        "Anterior": "(SC) Drill",
+        "Background": "City Dark"
+      },
+      "image": { "ipfs": "ipfs://QmadWrycELj5H3KVANUGcEydBbDocBT8Mbmr1QzENGTyFB" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530363732",
@@ -8047,6 +8278,27 @@
       "image": { "ipfs": "ipfs://QmVab57F7zmSAmu1n6uz3tKRFp49AiN12YGUc2W9qp4KhY" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530373130",
+      "fingerprint": "asset10chdlzq2lpz3ucp75mgh5rvzvme3kgkkv2deck",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle0710",
+      "displayName": "Bad Motorcycle #0710",
+      "serialNumber": 710,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(HO) Saddle Bag",
+        "Rear": "(HO) Helmet",
+        "Skin": "(HO) White and Black",
+        "Above": "(HO) Gas Mask",
+        "Below": "None",
+        "Model": "(HO) Hog",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "City Dark"
+      },
+      "image": { "ipfs": "ipfs://Qma6C2CVRGqSHXRiGgR6UM3NpFzeJCUpuWiKjpA2shw4Ws" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530373132",
       "fingerprint": "asset1d3jgzgqa8fje9ljhp65mjrhuwypf9s99evlxr8",
       "isBurned": false,
@@ -8171,6 +8423,27 @@
         "Background": "Dried Trees"
       },
       "image": { "ipfs": "ipfs://QmST9ao32rD8ED2uvJBSmkrcHddCM7eDmpr6FLRRVvupnQ" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530373231",
+      "fingerprint": "asset1pp7923444wuteaguweeemlmln95qp9ngnj3z6t",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle0721",
+      "displayName": "Bad Motorcycle #0721",
+      "serialNumber": 721,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(VE) Surfboard",
+        "Rear": "(VE) Ninja Turtle",
+        "Skin": "(VE) Medusa",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(VE) Vespa",
+        "Right": "None",
+        "Anterior": "(VE) Pumpkin",
+        "Background": "Desert Road"
+      },
+      "image": { "ipfs": "ipfs://QmXD9eSDxbThacLxbKfeaUemTPfShwzawbYJ3ComPESMsb" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530373232",
@@ -8950,6 +9223,27 @@
       "image": { "ipfs": "ipfs://Qmc5foSpoTUUKrbzfk6GRyWoN8n1FeNS2WBvGSLVSZRmPa" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530373930",
+      "fingerprint": "asset15uw7rr6w79v4w2svftd9gdrjasga5cvm4ltmad",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle0790",
+      "displayName": "Bad Motorcycle #0790",
+      "serialNumber": 790,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(HO) Saddle Bag",
+        "Rear": "None",
+        "Skin": "(HO) Lava",
+        "Above": "(HO) Gas Mask",
+        "Below": "None",
+        "Model": "(HO) Hog",
+        "Right": "None",
+        "Anterior": "(HO) Dino Skull",
+        "Background": "Dried Trees"
+      },
+      "image": { "ipfs": "ipfs://QmNoPkNHyuLEFA3oTh5rMZUMNKpXS4rh6ZbLi6RoARsiTr" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530373931",
       "fingerprint": "asset18mhszqt84mavpx79k9z2vyjtlanwqr5xasw0rm",
       "isBurned": false,
@@ -8969,6 +9263,27 @@
         "Background": "City Sunset"
       },
       "image": { "ipfs": "ipfs://QmRNA5uokf1gcT7fjWrttoeBXW7nahFq7ju4C2zyhLYAUo" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530373932",
+      "fingerprint": "asset1wpdf9stv3epmcrs3vyuqha22cdje9l9clwjt05",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle0792",
+      "displayName": "Bad Motorcycle #0792",
+      "serialNumber": 792,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "None",
+        "Skin": "(DB) Overheated",
+        "Above": "(DB) Skull Chain",
+        "Below": "None",
+        "Model": "(DB) Dirt Bike",
+        "Right": "None",
+        "Anterior": "(DB) Plague Doctor Mask",
+        "Background": "Tron Blue"
+      },
+      "image": { "ipfs": "ipfs://QmQGQifAtYBWhuNN3WzQWHikyh25FNrCtStffYFs6MtL1j" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530373935",
@@ -9179,6 +9494,27 @@
         "Background": "Tron Green"
       },
       "image": { "ipfs": "ipfs://QmSCtwTcrcH4cnQSPWutw4T4Zk5vUhmfSHsDounA3Aptit" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530383135",
+      "fingerprint": "asset1wlqfch2r3s283ts9tf0g3quhmfhun8mxnzemd4",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle0815",
+      "displayName": "Bad Motorcycle #0815",
+      "serialNumber": 815,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(NI) Whip",
+        "Skin": "(NI) Yellow",
+        "Above": "(NI) Helmet",
+        "Below": "(NI) Spiked Wrecking Ball",
+        "Model": "(NI) Ninja",
+        "Right": "(NI) Hammer",
+        "Anterior": "None",
+        "Background": "Brick Wall"
+      },
+      "image": { "ipfs": "ipfs://QmQZfGkqx1c2RWpedQvWYxCeJ9AqvKuAUxFejfNvv7YNAC" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530383138",
@@ -11428,6 +11764,27 @@
       "image": { "ipfs": "ipfs://QmSsi99W7NBSr5BDYbPSKVFuwGRXpvPwV8EKotd6Ly7xXd" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531303034",
+      "fingerprint": "asset1n7uvgl83v0slzsk08lx5h3grpjkddqd3v3ays5",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1004",
+      "displayName": "Bad Motorcycle #1004",
+      "serialNumber": 1004,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(SC) Aviator Hat",
+        "Rear": "(SC) Candle",
+        "Skin": "(SC) Graffiti",
+        "Above": "(SC) Chef Knife",
+        "Below": "None",
+        "Model": "(SC) Scrambler",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "City Sunset"
+      },
+      "image": { "ipfs": "ipfs://QmT6pxT7nqoA6GxoQARkVvqKg7S4FEXMY47mdV1X2FVmdm" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531303035",
       "fingerprint": "asset12gaf6d9x777pvykt5t5asgnspcampqz5nsm22v",
       "isBurned": false,
@@ -11993,6 +12350,27 @@
         "Background": "City"
       },
       "image": { "ipfs": "ipfs://QmfEphFcnra1vyKbY6MLyohACua7AA9cTkYMCVeoMD7fJg" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531303634",
+      "fingerprint": "asset1agkwcn4q6kagqhwhgsfcqr4355fhq4aefutea4",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1064",
+      "displayName": "Bad Motorcycle #1064",
+      "serialNumber": 1064,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(VE) Skateboard",
+        "Rear": "(VE) Ninja Turtle",
+        "Skin": "(VE) Kraken Blue",
+        "Above": "(VE) Windsock",
+        "Below": "None",
+        "Model": "(VE) Vespa",
+        "Right": "None",
+        "Anterior": "(VE) R.I.P",
+        "Background": "City Cold Evening"
+      },
+      "image": { "ipfs": "ipfs://QmQRSvKMRjvqjQC6XKjRhXVU1fiPyGgjTyhmT4ddGGufQE" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531303638",
@@ -12562,6 +12940,27 @@
       "image": { "ipfs": "ipfs://QmR3diaCLEG6uYfTWg3V5HS9vThGjMSXs2jQA7AZUKzBhe" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531313135",
+      "fingerprint": "asset1pu3e5mle80zegyzj5nw6708l23krzctf7gudk4",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1115",
+      "displayName": "Bad Motorcycle #1115",
+      "serialNumber": 1115,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(CH) Spikes",
+        "Skin": "(CH) Orange Signed",
+        "Above": "(CH) Bandana",
+        "Below": "None",
+        "Model": "(CH) Chopper",
+        "Right": "None",
+        "Anterior": "(CH) Spikes",
+        "Background": "Tron Green"
+      },
+      "image": { "ipfs": "ipfs://QmYQKpECehd2h4WmyCE28217VthgNyvMTTf7yjFnPq5bvS" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531313137",
       "fingerprint": "asset1ksp4kfsnq3fp2nx5yj2gj25hg3wamk66teddvp",
       "isBurned": false,
@@ -12875,6 +13274,27 @@
         "Background": "Tron Red"
       },
       "image": { "ipfs": "ipfs://QmNWNhUxaCK2rs4RbhxiAa7UX3kWbMACZhG3UU7Zae86iV" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531313438",
+      "fingerprint": "asset18usnmmhtfg9c6ym7ns8gc4tldtzvsxcsgckl3h",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1148",
+      "displayName": "Bad Motorcycle #1148",
+      "serialNumber": 1148,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "None",
+        "Skin": "(DB) Overheated",
+        "Above": "(DB) Skull Chain",
+        "Below": "None",
+        "Model": "(DB) Dirt Bike",
+        "Right": "None",
+        "Anterior": "(DB) Bull Skull",
+        "Background": "Plain Orange"
+      },
+      "image": { "ipfs": "ipfs://QmWqor1EBa8Z2T6YQdxZhRMkL2XQqsY6eo8Vs2NYEXFSvy" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531313439",
@@ -14305,6 +14725,27 @@
       "image": { "ipfs": "ipfs://QmTWjBM8s1PfpDU4B2x1k11RvYmD2ka8ghPpLLvUro4UE4" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531323538",
+      "fingerprint": "asset10yjg53cmyqweg5fjvslzkcatkl9aup6yfhjmkg",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1258",
+      "displayName": "Bad Motorcycle #1258",
+      "serialNumber": 1258,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(HO) Saddle Bag",
+        "Rear": "(HO) Helmet",
+        "Skin": "(HO) Lava",
+        "Above": "(HO) Gas Mask",
+        "Below": "None",
+        "Model": "(HO) Hog",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "After Sunset"
+      },
+      "image": { "ipfs": "ipfs://QmWHAnYrc2sK1nH5wiY6iGKVwugokr2V9UU6bvB4rZRcqy" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531323630",
       "fingerprint": "asset1lwx83ngxqfzlxat2n0qzh3kfjzc567de3pzmv7",
       "isBurned": false,
@@ -14450,6 +14891,27 @@
         "Background": "Desert Road"
       },
       "image": { "ipfs": "ipfs://QmbeAEFvRrzGhHgXuq7ugw9rdSrAzZ3NhzfaeRTmQG4ETn" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531323735",
+      "fingerprint": "asset1zrl7g0ex7aj3ra8slsqy48qleuqnulm3yze8rc",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1275",
+      "displayName": "Bad Motorcycle #1275",
+      "serialNumber": 1275,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(ST) Flame Torch",
+        "Skin": "(ST) Teal",
+        "Above": "(ST) Scuba Helmet",
+        "Below": "None",
+        "Model": "(ST) Steampunk",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "City Dark"
+      },
+      "image": { "ipfs": "ipfs://Qma2bBdAuEYCvFatqXNrr94VHRCf7kVSDfUAkAJNhoqVfF" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531323736",
@@ -15208,6 +15670,27 @@
       "image": { "ipfs": "ipfs://Qmabzs92akdfkktL8NGsAYuRQ1EgHbsUij49WVrnxBmWKC" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531333339",
+      "fingerprint": "asset1w9tvwdhqf3ug7uutg2u2y6yc3f48jhlel0d0ua",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1339",
+      "displayName": "Bad Motorcycle #1339",
+      "serialNumber": 1339,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "None",
+        "Skin": "(ST) Teal",
+        "Above": "(ST) Scuba Helmet",
+        "Below": "None",
+        "Model": "(ST) Steampunk",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "After Sunset"
+      },
+      "image": { "ipfs": "ipfs://QmT6esyB9Xh4zmVge12yyyG9NLw1y1jqtN91h5JdmE43tz" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531333431",
       "fingerprint": "asset17q4nev8303anek6grtj7zmp9dlkyj0f5g4jrqq",
       "isBurned": false,
@@ -15332,6 +15815,27 @@
         "Background": "Brick Wall"
       },
       "image": { "ipfs": "ipfs://QmXRCRDfXuXnnwFHiUJyFm6R1nyv8TShxj9pzsZxDZgUrb" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531333531",
+      "fingerprint": "asset1m3nrsye6j5spkq8jgpnxluceamsd57x0l7ntc0",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1351",
+      "displayName": "Bad Motorcycle #1351",
+      "serialNumber": 1351,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(ST) Chainsaw",
+        "Rear": "(ST) Flame Torch",
+        "Skin": "(ST) Grey",
+        "Above": "(ST) Barb Wire",
+        "Below": "None",
+        "Model": "(ST) Steampunk",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "Tron Red"
+      },
+      "image": { "ipfs": "ipfs://QmS1WLznbUZtafpDf4ZGFGVqfonTsTSQPUBSvbHVgPfv3X" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531333532",
@@ -15584,6 +16088,27 @@
         "Background": "City After Sunset"
       },
       "image": { "ipfs": "ipfs://QmZZc9j9dsNZTFrU55XEHQfbRKmBAyu1K3Gyo9iveh77wr" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531333639",
+      "fingerprint": "asset124pwx634gg9n74q0dfs8ya3ep20kmqsy2aw78u",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1369",
+      "displayName": "Bad Motorcycle #1369",
+      "serialNumber": 1369,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(CH) Armor",
+        "Skin": "(CH) Flame Colorful",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(CH) Chopper",
+        "Right": "None",
+        "Anterior": "(CH) Armor",
+        "Background": "City Sunset"
+      },
+      "image": { "ipfs": "ipfs://QmbUoBVDZnMLSEKGYCTuHc7KavGZubkHLE112EbeHVr5Fi" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531333732",
@@ -16655,6 +17180,27 @@
         "Background": "Tron Blue"
       },
       "image": { "ipfs": "ipfs://QmRnS9CRVLMWjuzy32fhcx49fQzDmhPnGP5EWV7YC6A4Ga" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531343734",
+      "fingerprint": "asset16d2lglnzn62h8pytnkag640laa5pgahalrfjar",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1474",
+      "displayName": "Bad Motorcycle #1474",
+      "serialNumber": 1474,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(NI) Whip",
+        "Skin": "(NI) 4042",
+        "Above": "(NI) Helmet",
+        "Below": "None",
+        "Model": "(NI) Ninja",
+        "Right": "(NI) Hammer",
+        "Anterior": "None",
+        "Background": "City Sunset"
+      },
+      "image": { "ipfs": "ipfs://QmUsSJEmdrMtg46Dy5mYonnps81tJynZ7pUQagW2oaKNEr" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531343735",
@@ -18715,6 +19261,27 @@
       "image": { "ipfs": "ipfs://QmRT2xC3QdkEcih1TUJVwz9gnTQm3PjH7jDUvcSU4FyokG" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531363437",
+      "fingerprint": "asset1ujlzgff6jczrzz3efx4mrfyf65ldmarcs2w5jq",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1647",
+      "displayName": "Bad Motorcycle #1647",
+      "serialNumber": 1647,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(DB) Ada Backpack",
+        "Skin": "(DB) Rusty",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(DB) Dirt Bike",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "City Dark"
+      },
+      "image": { "ipfs": "ipfs://QmaqyrkFHdSbMkFRZmVAGTnkpcCG179HFKB2RKpHyjEJMp" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531363438",
       "fingerprint": "asset1mlfdcuk0mx8u2cjqyun85nf45rq3vupan6xame",
       "isBurned": false,
@@ -19177,6 +19744,48 @@
       "image": { "ipfs": "ipfs://QmNWS2YYPdygUi19N5y3nbkPE6pDBEwwa8iPwbeQhbZn67" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531363931",
+      "fingerprint": "asset1x9f8gga5zx6yynyg0xxwe6c8ayrt9y6t96e039",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1691",
+      "displayName": "Bad Motorcycle #1691",
+      "serialNumber": 1691,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(VE) Skateboard",
+        "Rear": "None",
+        "Skin": "(VE) Pastel",
+        "Above": "(VE) Windsock",
+        "Below": "None",
+        "Model": "(VE) Vespa",
+        "Right": "None",
+        "Anterior": "(VE) Piggy Savings",
+        "Background": "Plain Pink"
+      },
+      "image": { "ipfs": "ipfs://QmV1rzqNQWR1D8WZq6kXTQbBvs7X8HrpdZKzDFtSTn1YkH" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531363932",
+      "fingerprint": "asset1mgl5yyyc5qz3pk0qym8y0ew2cg0v5cuyg5kp8a",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1692",
+      "displayName": "Bad Motorcycle #1692",
+      "serialNumber": 1692,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(LO) Helmet",
+        "Skin": "(LO) Joker Ha Ha",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(LO) Lowrider",
+        "Right": "None",
+        "Anterior": "(LO) Assault Rifle",
+        "Background": "City After Sunset"
+      },
+      "image": { "ipfs": "ipfs://QmTYXXZ6ZhWQnNYqNYbwyZCtBZxj8cbW1tyxW1DSRCq2Dw" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531363933",
       "fingerprint": "asset1pxa3v0u8uwfk02fu77jh3247atz94vj0grv86f",
       "isBurned": false,
@@ -19322,6 +19931,27 @@
         "Background": "Pastel Evening"
       },
       "image": { "ipfs": "ipfs://QmQzrijyNJWuGxqdk2A15ndheierDEzWx4NMDKSfKDngr2" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531373035",
+      "fingerprint": "asset1fc3jgp9lmqp7mvnp8nwu0ru9g5gy68dlgtqcvx",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1705",
+      "displayName": "Bad Motorcycle #1705",
+      "serialNumber": 1705,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(VE) Surfboard",
+        "Rear": "(VE) Spare Tire",
+        "Skin": "(VE) Teal",
+        "Above": "(VE) Windsock",
+        "Below": "None",
+        "Model": "(VE) Vespa",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "After Sunset"
+      },
+      "image": { "ipfs": "ipfs://QmVUjfE6B6DJECvUzWbh6koLKoaj9bm6U8tdxM8XojyVrj" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531373036",
@@ -19658,6 +20288,27 @@
         "Background": "Dried Trees"
       },
       "image": { "ipfs": "ipfs://QmNi4WAWFu9ZsUFPKF7LwxSFL3dP7j3jmTenZ667HiV4BL" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531373437",
+      "fingerprint": "asset1fmqr8k3s39tp89egs5vtc28v4w4xwyay8etq8d",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1747",
+      "displayName": "Bad Motorcycle #1747",
+      "serialNumber": 1747,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "None",
+        "Skin": "(VE) Pastel",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(VE) Vespa",
+        "Right": "None",
+        "Anterior": "(VE) Pumpkin",
+        "Background": "Tron Red"
+      },
+      "image": { "ipfs": "ipfs://QmfV55Tx5iUh95Y6UDRYt8wTZLeKA8PJ47tXxtUG2529Z8" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531373439",
@@ -20080,6 +20731,27 @@
       "image": { "ipfs": "ipfs://QmXtSoYaLfWEk7FbPERnv6wGAUvL6HbsfmeMZgypPbbnH6" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531373938",
+      "fingerprint": "asset16a5wauqzznnh3kdc9grersxrjp4cqthega56nw",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1798",
+      "displayName": "Bad Motorcycle #1798",
+      "serialNumber": 1798,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "None",
+        "Skin": "(NI) Green",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(NI) Ninja",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "After Sunset"
+      },
+      "image": { "ipfs": "ipfs://QmcNKYM19NRW3XoDKmXdG5NYKDBd3AzsQTsJUv7ATqnTaL" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531383031",
       "fingerprint": "asset1dfv0prnx8fwe90ekfsg0apphry4qjwnje387cx",
       "isBurned": false,
@@ -20311,6 +20983,27 @@
       "image": { "ipfs": "ipfs://QmZAWvn12ez2KCNu2ocWM34Nf5ddG3Wa4E26R4UGipCC61" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531383239",
+      "fingerprint": "asset1cqx96q20kxl2frwmhmhhx23sxpe5l9z7eqmtjk",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1829",
+      "displayName": "Bad Motorcycle #1829",
+      "serialNumber": 1829,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(SC) Graffiti",
+        "Skin": "(SC) Red",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(SC) Scrambler",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "Desert Road"
+      },
+      "image": { "ipfs": "ipfs://QmYw936LCLe6G6bU1UMy5RjuVMG2o7jRTi8r5VUX9jM9NM" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531383330",
       "fingerprint": "asset1s7kq39mghrgk3uyn8wemgafahm62yje9sxf63k",
       "isBurned": false,
@@ -20393,6 +21086,27 @@
         "Background": "Smokey"
       },
       "image": { "ipfs": "ipfs://QmPDpwMU9jQEQASNfRcyntbT7Pm4ZbnocCTo8xbrZmNF7Z" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531383338",
+      "fingerprint": "asset1xn40m7xzfr2flhc4atkef2euxxhxln9wkns0zu",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1838",
+      "displayName": "Bad Motorcycle #1838",
+      "serialNumber": 1838,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "None",
+        "Skin": "(SC) Graffiti",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(SC) Scrambler",
+        "Right": "None",
+        "Anterior": "(SC) Drill",
+        "Background": "Dried Trees"
+      },
+      "image": { "ipfs": "ipfs://QmdxuRYKiBhmkRvS5voRor7LG2ufTfQBiDg6xpdWwYC5MX" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531383339",
@@ -21151,6 +21865,27 @@
       "image": { "ipfs": "ipfs://QmY4nA9DdNt17jCDikz4mrNnmf8BwqQ95NCpyoEU5fqp98" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531383939",
+      "fingerprint": "asset18avsl0qwze6e94j9pn3jr2jvs2g8zpkrsuvl0k",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1899",
+      "displayName": "Bad Motorcycle #1899",
+      "serialNumber": 1899,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(HO) Saddle Bag",
+        "Rear": "(HO) Electric Guitar",
+        "Skin": "(HO) Blue",
+        "Above": "(HO) Gas Mask",
+        "Below": "None",
+        "Model": "(HO) Hog",
+        "Right": "None",
+        "Anterior": "(HO) Dino Skull",
+        "Background": "Tron Green"
+      },
+      "image": { "ipfs": "ipfs://QmP36CuQSWRWG1zH3PDsADE4s7SfgRcDEbzq3eurbEq3Ww" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531393031",
       "fingerprint": "asset15emnw6mewnfe9ukugnsqnahuhsvdzu3kmhd5sn",
       "isBurned": false,
@@ -21191,6 +21926,27 @@
         "Background": "Tron Red"
       },
       "image": { "ipfs": "ipfs://QmRTdnERM6FMqTPp38th8Gcu8TuTN41Z8Sk2mjkCnjZLst" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531393037",
+      "fingerprint": "asset1mx7q3dxnhuvj70dwhrydd5m8tx58930yrql7a0",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1907",
+      "displayName": "Bad Motorcycle #1907",
+      "serialNumber": 1907,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(ST) Chainsaw",
+        "Rear": "(ST) Flame Torch",
+        "Skin": "(ST) Rusty",
+        "Above": "(ST) Barb Wire",
+        "Below": "None",
+        "Model": "(ST) Steampunk",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "Brick Wall"
+      },
+      "image": { "ipfs": "ipfs://QmPKDA7nJqK3kqngxp6TmyDPoZ4iJsxofFgEiJdnA2jxqy" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531393039",
@@ -23503,6 +24259,27 @@
       "image": { "ipfs": "ipfs://QmWJBTCmxrt56wUTq5H3CiFdB7vemLvW3MwU73d2Y3p2La" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532313137",
+      "fingerprint": "asset1rtn6cr2ldrgvrc366g7vcj8q4yyqaqwt8tugh0",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle2117",
+      "displayName": "Bad Motorcycle #2117",
+      "serialNumber": 2117,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "None",
+        "Skin": "(HB) Platinum",
+        "Above": "(HB) Dragon Ball Crystal",
+        "Below": "None",
+        "Model": "(HB) Hover Bike",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "Plain White"
+      },
+      "image": { "ipfs": "ipfs://QmWBF638W7VhKoSgte7bG6ytp3kGH17GDWXqeWXxRUNjbw" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532313138",
       "fingerprint": "asset1c8lmxxa9y252geakjysvgxyg4psxh4cfg2t4kr",
       "isBurned": false,
@@ -23944,6 +24721,27 @@
       "image": { "ipfs": "ipfs://QmPuC2vYaXtdCMMCJCZyjFDbvcFtQPapVxFjedzD1MjivS" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532313531",
+      "fingerprint": "asset1dj3y7w85lszrj560lmks6xxcf29tmrjjm4cp9w",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle2151",
+      "displayName": "Bad Motorcycle #2151",
+      "serialNumber": 2151,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(ST) Welding Mask",
+        "Rear": "None",
+        "Skin": "(ST) Red",
+        "Above": "(ST) Genie Fox",
+        "Below": "None",
+        "Model": "(ST) Steampunk",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "Light Bulb"
+      },
+      "image": { "ipfs": "ipfs://QmTFgyigEYEPUkWiM7tEMmvGyH7CRamGS2QEHybqEvCHuc" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532313535",
       "fingerprint": "asset1j8megjnt3fu909vvz7rtarym03h89hcujwp933",
       "isBurned": false,
@@ -24383,6 +25181,27 @@
         "Background": "City Dark"
       },
       "image": { "ipfs": "ipfs://QmPHMEq5RqiiMfASVKTgXu7rzwegmXmrGXpkna1gwgGAsy" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532313937",
+      "fingerprint": "asset1x30pr2afwh4v3pdc4xa2tq5askegf6emdszcf3",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle2197",
+      "displayName": "Bad Motorcycle #2197",
+      "serialNumber": 2197,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(VE) Skateboard",
+        "Rear": "(VE) Ninja Turtle",
+        "Skin": "(VE) Floyd",
+        "Above": "(VE) Windsock",
+        "Below": "None",
+        "Model": "(VE) Vespa",
+        "Right": "None",
+        "Anterior": "(VE) Pumpkin",
+        "Background": "Dried Trees"
+      },
+      "image": { "ipfs": "ipfs://QmNVXez5pCbvRVP9uMsnsuVRhCWp3hArWbbokxWfmijGKd" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532313939",
@@ -24994,6 +25813,27 @@
       "image": { "ipfs": "ipfs://QmYka3XyYuPWZPXC9MiRKbARXXNLfZwxyr8y6kWkAc7uhJ" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532323634",
+      "fingerprint": "asset1w0lnnjlj86sqszjr8qmt87xzl80kjpnyzrgz2q",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle2264",
+      "displayName": "Bad Motorcycle #2264",
+      "serialNumber": 2264,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(HO) Saddle Bag",
+        "Rear": "None",
+        "Skin": "(HO) Black and White",
+        "Above": "(HO) Rubber Fox",
+        "Below": "None",
+        "Model": "(HO) Hog",
+        "Right": "None",
+        "Anterior": "(HO) Dino Skull",
+        "Background": "Warm Evening"
+      },
+      "image": { "ipfs": "ipfs://QmewXoYmgmErZBT697PGqu7WmpSNhTqHrs5BQy5B5Jr22j" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532323731",
       "fingerprint": "asset1z937amy6nj42sn9l85v3l5cfykjrkkfppkadxx",
       "isBurned": false,
@@ -25181,6 +26021,27 @@
         "Background": "Smokey"
       },
       "image": { "ipfs": "ipfs://QmV9iCsNETAY8oJ2e91cdg5mnTxFLsVEB88TgsF4fCnUbv" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532323836",
+      "fingerprint": "asset1hfkvymwrgx6v3de3le69kyq87xhk0lclwwx9cc",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle2286",
+      "displayName": "Bad Motorcycle #2286",
+      "serialNumber": 2286,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(SC) Time Bomb",
+        "Rear": "(SC) Graffiti",
+        "Skin": "(SC) White and Red",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(SC) Scrambler",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "Warm Evening"
+      },
+      "image": { "ipfs": "ipfs://QmPuwnH7zqacucbJS14UeGvZBiSA2mjtGyZPLt55bJ1WBv" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532323838",
@@ -26588,6 +27449,27 @@
         "Background": "Desert Road"
       },
       "image": { "ipfs": "ipfs://QmT4MihdPsRL35zoNM1EsXKgES79HDwX6AYHrX6JAbDqeZ" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532343134",
+      "fingerprint": "asset1cl49c9zadzdd3wk9e3ysr74f5pdwru6qvrxszx",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle2414",
+      "displayName": "Bad Motorcycle #2414",
+      "serialNumber": 2414,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "None",
+        "Skin": "(NI) Orange",
+        "Above": "(NI) Cash Bag",
+        "Below": "(NI) Bear Trap",
+        "Model": "(NI) Ninja",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "After Sunset"
+      },
+      "image": { "ipfs": "ipfs://QmQBx3k2uokei7WBeumnqAitX3WAd33c3CcuXgGXdQXBnL" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532343136",
@@ -29341,6 +30223,27 @@
       "image": { "ipfs": "ipfs://QmUt6VHosVKp69whnvcvMjuPx36svppbRgRD5y5DvTvTcT" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532363338",
+      "fingerprint": "asset1el7d5s0eqk24rkz7pk5kl9a9zehdy4s2dx4wm4",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle2638",
+      "displayName": "Bad Motorcycle #2638",
+      "serialNumber": 2638,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(LO) Sleeping Bag",
+        "Rear": "(LO) Helmet",
+        "Skin": "(LO) Spiderweb",
+        "Above": "(LO) Human Skull",
+        "Below": "None",
+        "Model": "(LO) Lowrider",
+        "Right": "None",
+        "Anterior": "(LO) Assault Rifle",
+        "Background": "Brick Wall"
+      },
+      "image": { "ipfs": "ipfs://QmVNDBE8T3FDciBzhuP4KHCDszh6uP8LNkDqcSNJnQZDqs" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532363431",
       "fingerprint": "asset1mh8l0a8zdde5mzmafxm4svek750lussctnwjyj",
       "isBurned": false,
@@ -29360,6 +30263,27 @@
         "Background": "Tron Green"
       },
       "image": { "ipfs": "ipfs://QmVkVxBJD2GmFVEkWEtZGtLgf3JoDyGtk1E5N78ZHaymLg" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532363432",
+      "fingerprint": "asset1fvdjpnu4yy38l2gchfw7cc2quatzjm39pmqyg0",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle2642",
+      "displayName": "Bad Motorcycle #2642",
+      "serialNumber": 2642,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "None",
+        "Skin": "(SC) Soft Navy",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(SC) Scrambler",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "Tron Red"
+      },
+      "image": { "ipfs": "ipfs://QmT7NXCrFXaj9XyobLSCCiUNfkLrsNCFUUaXo6UvhwYk5P" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532363434",
@@ -30160,6 +31084,27 @@
       "image": { "ipfs": "ipfs://QmWAqgje5oLsfau3mjX5futHn3UUkrGYm1esYcmPWjwRJe" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532373038",
+      "fingerprint": "asset1j5j73vrtnzx2nptf0n09z8zsw89gmmx24zudk8",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle2708",
+      "displayName": "Bad Motorcycle #2708",
+      "serialNumber": 2708,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(SC) Time Bomb",
+        "Rear": "(SC) Candle",
+        "Skin": "(SC) Red",
+        "Above": "(SC) Chef Knife",
+        "Below": "None",
+        "Model": "(SC) Scrambler",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "City After Sunset"
+      },
+      "image": { "ipfs": "ipfs://QmaWZXTvPPT7h8Q6dTTGTitLteAM2fJfo4gwhVWyQgFCNW" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532373039",
       "fingerprint": "asset1pqtfefwe28m48waqt6q82ls0sxgl5l4cq4dsh3",
       "isBurned": false,
@@ -30328,6 +31273,27 @@
       "image": { "ipfs": "ipfs://QmTUTmbngwGouFgiVBe452LV2xL17GjZB1PmXo2Dykq7VH" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532373334",
+      "fingerprint": "asset1gkqjr2j8yrnw9qhym4js4ea9d2lqm20azva438",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle2734",
+      "displayName": "Bad Motorcycle #2734",
+      "serialNumber": 2734,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(HO) Helmet",
+        "Skin": "(HO) White and Black",
+        "Above": "(HO) Gas Mask",
+        "Below": "None",
+        "Model": "(HO) Hog",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "City Cold Evening"
+      },
+      "image": { "ipfs": "ipfs://Qma9EC67xC6s4uyyAm62bpMDL2AmiUuGhMSpErB8beU5cu" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532373338",
       "fingerprint": "asset12g3mf62uqulh5umyexzpm4zz24c88fwqdcqshw",
       "isBurned": false,
@@ -30454,6 +31420,27 @@
       "image": { "ipfs": "ipfs://QmUA4ZDiF3L3iGu78Z8bivj4DLuRqZ3XhvFJu66hUUAtTb" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532373435",
+      "fingerprint": "asset1dpudc782x2atvdfasvhcurtgdrfmgjp099tp5h",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle2745",
+      "displayName": "Bad Motorcycle #2745",
+      "serialNumber": 2745,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(NI) Whip",
+        "Skin": "(NI) Pink",
+        "Above": "(NI) Helmet",
+        "Below": "(NI) Bear Trap",
+        "Model": "(NI) Ninja",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "Smokey"
+      },
+      "image": { "ipfs": "ipfs://Qme7URuEFE6i9suwfYNXdLk4vCR5uSFiU4LAKUphhzQ6iF" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532373436",
       "fingerprint": "asset1gkvyw8h8gu0af04039gyd5cxqzeu8f6atw4fgy",
       "isBurned": false,
@@ -30538,6 +31525,27 @@
       "image": { "ipfs": "ipfs://QmUzK6zV1toSR2sQMd31ojEcukTnftWWzJCAHdYmznpaLn" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532373532",
+      "fingerprint": "asset1e3al2xxl552uan0wpgy7x68ry2ju5tmzwyrakh",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle2752",
+      "displayName": "Bad Motorcycle #2752",
+      "serialNumber": 2752,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(NI) Ninja Stars",
+        "Skin": "(NI) 4042",
+        "Above": "(NI) Helmet",
+        "Below": "None",
+        "Model": "(NI) Ninja",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "Tron Red"
+      },
+      "image": { "ipfs": "ipfs://QmeRLuR4uPf2HELMiL1ePdNdkbq1F5b3iY36qDA2CHVbzp" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532373534",
       "fingerprint": "asset1twjc88wpzcxem8nn7rnsqtta4cdwnqy4t3stdu",
       "isBurned": false,
@@ -30620,6 +31628,27 @@
         "Background": "Pastel Evening"
       },
       "image": { "ipfs": "ipfs://QmcPMcMDnVJH7FN4KtpDtcLe3mcfD7JZrMEE9TQpNvb7i9" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532373632",
+      "fingerprint": "asset1ruj4aycua0h83ydhckj5sp4c973czlua6u22af",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle2762",
+      "displayName": "Bad Motorcycle #2762",
+      "serialNumber": 2762,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(LO) Sleeping Bag",
+        "Rear": "(LO) Helmet",
+        "Skin": "(LO) Spiderweb",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(LO) Lowrider",
+        "Right": "None",
+        "Anterior": "(LO) Baseball Bat",
+        "Background": "Tron Red"
+      },
+      "image": { "ipfs": "ipfs://Qmaq3frQbTUF6LVabjM34SFU6bxdMGS4wPMit1GpADV6Db" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532373633",
@@ -31418,6 +32447,27 @@
         "Background": "Plain White"
       },
       "image": { "ipfs": "ipfs://QmaM3fo4vrXDQctjqPB29nAPyoKwRhuWcq9kpLy1Mgw6rf" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532383437",
+      "fingerprint": "asset1ld2tajctexnycck2kwz0wqxgrhxs4gpzmpfk52",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle2847",
+      "displayName": "Bad Motorcycle #2847",
+      "serialNumber": 2847,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(CH) Spikes",
+        "Skin": "(CH) Flame Colorful",
+        "Above": "(CH) Boxing Gloves",
+        "Below": "None",
+        "Model": "(CH) Chopper",
+        "Right": "None",
+        "Anterior": "(CH) Spikes",
+        "Background": "City"
+      },
+      "image": { "ipfs": "ipfs://QmaCsr1S6HxKEfStG7M9VdMrX4QYiXw8DYD1XtVeoE3EoZ" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532383531",
@@ -32699,6 +33749,27 @@
         "Background": "Pastel Evening"
       },
       "image": { "ipfs": "ipfs://QmVkLSTSKqxYscs4NgPWiGw9Eedow6pWi1cjieKsijU2D2" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532393733",
+      "fingerprint": "asset10jx3y99kl0xt2kf4ey05fnz2gh53lyvqvl43uj",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle2973",
+      "displayName": "Bad Motorcycle #2973",
+      "serialNumber": 2973,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(LO) Sleeping Bag",
+        "Rear": "(LO) Helmet",
+        "Skin": "(LO) Metal",
+        "Above": "(LO) Crow",
+        "Below": "None",
+        "Model": "(LO) Lowrider",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "Plain Orange"
+      },
+      "image": { "ipfs": "ipfs://QmVApLnhThji3YFcYVHqouQKpA8gSMguCcuiQemJJwzvGV" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532393735",
