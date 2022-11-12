@@ -13,6 +13,6 @@
     "policyId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba8",
     "catalogCollections": true,
     "catalogTraits": true,
-    "walletPortfolio": true
+    "walletPortfolio": false
   }
 ]
