@@ -32,6 +32,7 @@ export const WalletProvider = ({ children }) => {
   const [connecting, setConnecting] = useState(false)
   const [connected, setConnected] = useState(false)
   const [connectedName, setConnectedName] = useState('')
+  const [connectedManually, setConnectedManually] = useState(false)
 
   const connectWallet = async (_walletName) => {
     if (connecting) return
@@ -66,6 +67,7 @@ export const WalletProvider = ({ children }) => {
         setWallet(_wallet)
         setConnectedName(_walletName)
         setConnected(true)
+        setConnectedManually(false)
       }
     } catch (error) {
       console.error(error)
@@ -97,6 +99,7 @@ export const WalletProvider = ({ children }) => {
           })
           setConnectedName('Blockfrost')
           setConnected(true)
+          setConnectedManually(true)
         }
       }
     } catch (error) {
@@ -115,6 +118,7 @@ export const WalletProvider = ({ children }) => {
       connecting,
       connected,
       connectedName,
+      connectedManually,
       populatedWallet,
       wallet,
     }),

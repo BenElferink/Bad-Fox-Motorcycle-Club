@@ -140,7 +140,7 @@ export default function Header({ scrollTo = () => null }) {
             <BaseButton label='Mint' onClick={clickMint} transparent style={jsStyles.btn} />
           </OnlineIndicator>
 
-          {router.route !== '/wallet' ? <ConnectWallet redirectOnSuccess /> : null}
+          {router.route !== '/mint' ? <ConnectWallet redirectOnSuccess /> : null}
           <Socials closeMenu={closeMenu} />
         </nav>
       </Modal>

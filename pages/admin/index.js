@@ -17,7 +17,7 @@ export default function Page() {
     return (
       <div className='App flex-col'>
         <Header />
-        <ConnectWallet modalOnly />
+        <ConnectWallet modalOnly disableManual />
         <Footer />
       </div>
     )

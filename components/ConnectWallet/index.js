@@ -13,6 +13,7 @@ const DISCLAIMER =
 export default function ConnectWallet({
   modalOnly = false,
   redirectOnSuccess = false,
+  disableManual = false,
   introText = 'Connect a wallet to view your assets, traits, and other features such as your personal portfolio etc.',
 }) {
   const {
@@ -114,42 +115,46 @@ export default function ConnectWallet({
               ))
             )}
 
-            <h4 style={{ marginBottom: 0 }}>- OR -</h4>
-            <p style={{ marginTop: 0 }}>
-              Alternatively you can connect your wallet manually by pasting your ADA Handle / Wallet Address /
-              Stake Key
-            </p>
+            {!disableManual ? (
+              <Fragment>
+                <h4 style={{ marginBottom: 0 }}>- OR -</h4>
+                <p style={{ marginTop: 0 }}>
+                  Alternatively you can connect your wallet manually by pasting your ADA Handle / Wallet Address /
+                  Stake Key
+                </p>
 
-            <form
-              onSubmit={submitManualWallet}
-              style={{ width: isMobile ? '75%' : '60%', margin: '1rem', position: 'relative' }}
-            >
-              <TextField
-                label='Connect Manually'
-                placeholder='$handle / addr1... / stake1...'
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                sx={{ width: '100%' }}
-              />
-              <BaseButton
-                type='submit'
-                label='ADD'
-                onClick={submitManualWallet}
-                disabled={connecting}
-                backgroundColor='var(--grey)'
-                hoverColor='var(--orange)'
-                fullWidth={false}
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  right: '1%',
-                  transform: 'translate(0%, -50%)',
-                  border: 'none',
-                  fontSize: '1rem',
-                  display: input ? 'unset' : 'none',
-                }}
-              />
-            </form>
+                <form
+                  onSubmit={submitManualWallet}
+                  style={{ width: isMobile ? '75%' : '60%', margin: '1rem', position: 'relative' }}
+                >
+                  <TextField
+                    label='Connect Manually'
+                    placeholder='$handle / addr1... / stake1...'
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    sx={{ width: '100%' }}
+                  />
+                  <BaseButton
+                    type='submit'
+                    label='ADD'
+                    onClick={submitManualWallet}
+                    disabled={connecting}
+                    backgroundColor='var(--grey)'
+                    hoverColor='var(--orange)'
+                    fullWidth={false}
+                    style={{
+                      position: 'absolute',
+                      top: '50%',
+                      right: '1%',
+                      transform: 'translate(0%, -50%)',
+                      border: 'none',
+                      fontSize: '1rem',
+                      display: input ? 'unset' : 'none',
+                    }}
+                  />
+                </form>
+              </Fragment>
+            ) : null}
           </Fragment>
         )}
       </Modal>

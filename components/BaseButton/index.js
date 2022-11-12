@@ -32,6 +32,7 @@ function BaseButton({
       onClick={(e) => (disabled ? null : onClick(e))}
       className={className}
       style={{
+        margin: '0.1rem',
         padding: '0.4rem 0.8rem',
         backgroundColor:
           backgroundColor ?? (selected ? 'var(--white)' : transparent ? 'transparent' : 'var(--black)'),

@@ -127,7 +127,7 @@ const AdminDashboard = () => {
 
     setHoldingWallets(holders)
 
-    const holdersPoolShare = balance * 0.8
+    const adaPerShare = balance * 0.8
 
     setPayoutWallets(
       holders
@@ -138,16 +138,9 @@ const AdminDashboard = () => {
           Object.entries(assets).forEach(([policyId, policyAssets]) => {
             const collectionAssets = COLLECTIONS.find((collection) => collection.policyId === policyId)
 
-            adaForAssets +=
-              policyAssets.length *
-              (holdersPoolShare /
-                (policyId === BAD_FOX_POLICY_ID
-                  ? unlistedFoxes
-                  : policyId === BAD_MOTORCYCLE_POLICY_ID
-                  ? unlistedMotorcycles
-                  : holdersPoolShare))
-
             if (policyId === BAD_FOX_POLICY_ID) {
+              adaForAssets += policyAssets.length * (adaPerShare / unlistedFoxes) * 1
+
               for (const assetId of policyAssets) {
                 const { attributes } = collectionAssets.find((asset) => asset.assetId === assetId)
 
@@ -160,6 +153,8 @@ const AdminDashboard = () => {
                 }
               }
             } else if (policyId === BAD_MOTORCYCLE_POLICY_ID) {
+              adaForAssets += policyAssets.length * (adaPerShare / unlistedMotorcycles) * 2
+
               // for (const assetId of policyAssets) {
               //   const { attributes } = collectionAssets.find((asset) => asset.assetId === assetId)
               //   if (attributes['Rear'] === '(M) Ada Bag') {

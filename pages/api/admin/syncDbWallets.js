@@ -1,7 +1,10 @@
+import connectDB from '../../../utils/mongo'
 import Wallet from '../../../models/Wallet'
 
 export default async (req, res) => {
   try {
+    await connectDB()
+
     const {
       method,
       body: { wallets },
