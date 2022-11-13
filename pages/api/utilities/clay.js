@@ -2,7 +2,7 @@ import connectDB from '../../../utils/mongo'
 import Wallet from '../../../models/Wallet'
 import { blockfrost } from '../../../utils/blockfrost'
 import getFileForPolicyId from '../../../functions/getFileForPolicyId'
-import { BAD_FOX_WALLET } from '../../../constants/addresses'
+import { TREASURY_WALLET } from '../../../constants/addresses'
 import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
 import clayTraitSetsFile from '../../../data/clay-trait-sets'
 // import traitsData from '../../../data/traits/bad-fox.json'
@@ -121,7 +121,7 @@ export default async (req, res) => {
           }
         }
 
-        const badFoxWallet = await blockfrost.getWalletWithWalletAddress(BAD_FOX_WALLET)
+        const badFoxWallet = await blockfrost.getWalletWithWalletAddress(TREASURY_WALLET)
         const clayBalance =
           Number(
             badFoxWallet.amount.find(

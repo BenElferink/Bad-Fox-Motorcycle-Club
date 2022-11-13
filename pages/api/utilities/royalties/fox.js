@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { blockfrost } from '../../../../utils/blockfrost'
-import { BAD_FOX_ROYALTY_WALLET } from '../../../../constants/addresses'
+import { ROYALTY_WALLET } from '../../../../constants/addresses'
 import { BAD_FOX_POLICY_ID } from '../../../../constants/policy-ids'
 import { OPEN_CNFT_API } from '../../../../constants/api-urls'
 
@@ -12,7 +12,7 @@ export default async (req, res) => {
 
     switch (method) {
       case 'GET': {
-        const wallet = await blockfrost.getWalletWithWalletAddress(BAD_FOX_ROYALTY_WALLET)
+        const wallet = await blockfrost.getWalletWithWalletAddress(ROYALTY_WALLET)
         const balanceLovelace = Number(
           wallet.amount.find((item) => item.unit === 'lovelace')?.quantity || ONE_MILLION
         )

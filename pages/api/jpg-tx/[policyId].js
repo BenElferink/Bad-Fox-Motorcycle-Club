@@ -3,7 +3,7 @@ import { blockfrost } from '../../../utils/blockfrost'
 import Setting from '../../../models/Setting'
 import JpgTx from '../../../models/JpgTx'
 import isPolicyIdAllowed from '../../../functions/isPolicyIdAllowed'
-import { JPG_STORE_WALLET } from '../../../constants/addresses'
+import { JPG_STORE_WALLETS } from '../../../constants/addresses'
 
 export default async (req, res) => {
   try {
@@ -87,7 +87,7 @@ export default async (req, res) => {
         let assetId = ''
 
         utxos.inputs.forEach(({ address, amount }) => {
-          if (address === JPG_STORE_WALLET) {
+          if (JPG_STORE_WALLETS.includes(address)) {
             amount.forEach(({ unit }) => {
               if (unit.indexOf(policyId) === 0) {
                 assetId = unit
