@@ -13,16 +13,16 @@
       "displayName": "Chopper",
       "model": "Chopper",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/None.png",
-      "count": 153,
-      "percent": "8.88%"
+      "count": 154,
+      "percent": "8.92%"
     },
     {
       "onChainName": "(HB) Hover Bike",
       "displayName": "Hover Bike",
       "model": "Hover Bike",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/None.png",
-      "count": 162,
-      "percent": "9.40%"
+      "count": 163,
+      "percent": "9.44%"
     },
     {
       "onChainName": "(TR) Tron",
@@ -30,7 +30,7 @@
       "model": "Tron",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/None.png",
       "count": 163,
-      "percent": "9.46%"
+      "percent": "9.44%"
     },
     {
       "onChainName": "(SC) Scrambler",
@@ -38,7 +38,7 @@
       "model": "Scrambler",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/None.png",
       "count": 168,
-      "percent": "9.75%"
+      "percent": "9.73%"
     },
     {
       "onChainName": "(NI) Ninja",
@@ -46,7 +46,7 @@
       "model": "Ninja",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/None.png",
       "count": 170,
-      "percent": "9.87%"
+      "percent": "9.85%"
     },
     {
       "onChainName": "(LO) Lowrider",
@@ -54,15 +54,15 @@
       "model": "Lowrider",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/None.png",
       "count": 171,
-      "percent": "9.92%"
+      "percent": "9.91%"
     },
     {
       "onChainName": "(HO) Hog",
       "displayName": "Hog",
       "model": "Hog",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/None.png",
-      "count": 172,
-      "percent": "9.98%"
+      "count": 173,
+      "percent": "10.02%"
     },
     {
       "onChainName": "(ST) Steampunk",
@@ -70,7 +70,7 @@
       "model": "Steampunk",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/None.png",
       "count": 177,
-      "percent": "10.27%"
+      "percent": "10.25%"
     },
     {
       "onChainName": "(VE) Vespa",
@@ -78,7 +78,7 @@
       "model": "Vespa",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/None.png",
       "count": 179,
-      "percent": "10.39%"
+      "percent": "10.37%"
     },
     {
       "onChainName": "(DB) Dirt Bike",
@@ -86,7 +86,7 @@
       "model": "Dirt Bike",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/None.png",
       "count": 208,
-      "percent": "12.07%"
+      "percent": "12.05%"
     }
   ],
   "Right": [
@@ -112,7 +112,7 @@
       "model": "Ninja",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Right/NI_Hammer.png",
       "count": 62,
-      "percent": "3.60%"
+      "percent": "3.59%"
     }
   ],
   "Background": [
@@ -194,7 +194,7 @@
       "model": "All",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Background/Warm_Evening.png",
       "count": 71,
-      "percent": "4.12%"
+      "percent": "4.11%"
     },
     {
       "onChainName": "Tron Green",
@@ -202,7 +202,7 @@
       "model": "All",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Background/Tron_Green.png",
       "count": 73,
-      "percent": "4.24%"
+      "percent": "4.23%"
     },
     {
       "onChainName": "City Evening",
@@ -250,7 +250,7 @@
       "model": "All",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Background/City_Cold_Evening.png",
       "count": 76,
-      "percent": "4.41%"
+      "percent": "4.40%"
     },
     {
       "onChainName": "Pastel Evening",
@@ -258,23 +258,23 @@
       "model": "All",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Background/Pastel_Evening.png",
       "count": 78,
-      "percent": "4.53%"
+      "percent": "4.52%"
     },
     {
       "onChainName": "Dried Trees",
       "displayName": "Dried Trees",
       "model": "All",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Background/Dried_Trees.png",
-      "count": 80,
-      "percent": "4.64%"
+      "count": 81,
+      "percent": "4.69%"
     },
     {
       "onChainName": "Desert Road",
       "displayName": "Desert Road",
       "model": "All",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Background/Desert_Road.png",
-      "count": 81,
-      "percent": "4.70%"
+      "count": 82,
+      "percent": "4.75%"
     },
     {
       "onChainName": "Tron Blue",
@@ -282,7 +282,7 @@
       "model": "All",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Background/Tron_Blue.png",
       "count": 82,
-      "percent": "4.76%"
+      "percent": "4.75%"
     },
     {
       "onChainName": "Tron Purple",
@@ -290,7 +290,7 @@
       "model": "All",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Background/Tron_Purple.png",
       "count": 83,
-      "percent": "4.82%"
+      "percent": "4.81%"
     },
     {
       "onChainName": "After Sunset",
@@ -298,15 +298,15 @@
       "model": "All",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Background/After_Sunset.png",
       "count": 84,
-      "percent": "4.88%"
+      "percent": "4.87%"
     },
     {
       "onChainName": "Smokey",
       "displayName": "Smokey",
       "model": "All",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Background/Smokey.png",
-      "count": 87,
-      "percent": "5.05%"
+      "count": 88,
+      "percent": "5.10%"
     }
   ],
   "Skin": [
@@ -535,20 +535,20 @@
       "percent": "0.87%"
     },
     {
-      "onChainName": "(CH) Grey Signed",
-      "displayName": "Grey Signed",
-      "model": "Chopper",
-      "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/CH_Grey_Signed.png",
-      "count": 15,
-      "percent": "0.87%"
-    },
-    {
       "onChainName": "(HB) Pastel",
       "displayName": "Pastel",
       "model": "Hover Bike",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/HB_Pastel.png",
       "count": 15,
       "percent": "0.87%"
+    },
+    {
+      "onChainName": "(CH) Grey Signed",
+      "displayName": "Grey Signed",
+      "model": "Chopper",
+      "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/CH_Grey_Signed.png",
+      "count": 16,
+      "percent": "0.93%"
     },
     {
       "onChainName": "(CH) Flame OG",
@@ -636,15 +636,7 @@
       "model": "Scrambler",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/SC_Bullet_Holes.png",
       "count": 17,
-      "percent": "0.99%"
-    },
-    {
-      "onChainName": "(HO) Lava",
-      "displayName": "Lava",
-      "model": "Hog",
-      "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/HO_Lava.png",
-      "count": 17,
-      "percent": "0.99%"
+      "percent": "0.98%"
     },
     {
       "onChainName": "(HO) Black",
@@ -652,7 +644,7 @@
       "model": "Hog",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/HO_Black.png",
       "count": 17,
-      "percent": "0.99%"
+      "percent": "0.98%"
     },
     {
       "onChainName": "(ST) White",
@@ -660,7 +652,7 @@
       "model": "Steampunk",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/ST_White.png",
       "count": 17,
-      "percent": "0.99%"
+      "percent": "0.98%"
     },
     {
       "onChainName": "(VE) Medusa",
@@ -668,7 +660,7 @@
       "model": "Vespa",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/VE_Medusa.png",
       "count": 17,
-      "percent": "0.99%"
+      "percent": "0.98%"
     },
     {
       "onChainName": "(LO) Vanilla",
@@ -676,7 +668,7 @@
       "model": "Lowrider",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/LO_Vanilla.png",
       "count": 17,
-      "percent": "0.99%"
+      "percent": "0.98%"
     },
     {
       "onChainName": "(LO) Transparent Tank",
@@ -684,7 +676,7 @@
       "model": "Lowrider",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/LO_Transparent_Tank.png",
       "count": 17,
-      "percent": "0.99%"
+      "percent": "0.98%"
     },
     {
       "onChainName": "(VE) White",
@@ -692,7 +684,7 @@
       "model": "Vespa",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/VE_White.png",
       "count": 17,
-      "percent": "0.99%"
+      "percent": "0.98%"
     },
     {
       "onChainName": "(NI) 4042",
@@ -700,7 +692,7 @@
       "model": "Ninja",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/NI_4042.png",
       "count": 17,
-      "percent": "0.99%"
+      "percent": "0.98%"
     },
     {
       "onChainName": "(TR) Neon",
@@ -708,7 +700,7 @@
       "model": "Tron",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/TR_Neon.png",
       "count": 17,
-      "percent": "0.99%"
+      "percent": "0.98%"
     },
     {
       "onChainName": "(TR) Pink",
@@ -716,7 +708,7 @@
       "model": "Tron",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/TR_Pink.png",
       "count": 17,
-      "percent": "0.99%"
+      "percent": "0.98%"
     },
     {
       "onChainName": "(DB) Yellow",
@@ -724,7 +716,15 @@
       "model": "Dirt Bike",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/DB_Yellow.png",
       "count": 17,
-      "percent": "0.99%"
+      "percent": "0.98%"
+    },
+    {
+      "onChainName": "(HO) Lava",
+      "displayName": "Lava",
+      "model": "Hog",
+      "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/HO_Lava.png",
+      "count": 18,
+      "percent": "1.04%"
     },
     {
       "onChainName": "(HO) White and Red",
@@ -932,7 +932,7 @@
       "model": "Scrambler",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/SC_Red.png",
       "count": 22,
-      "percent": "1.28%"
+      "percent": "1.27%"
     },
     {
       "onChainName": "(DB) Yellow Wild",
@@ -940,7 +940,7 @@
       "model": "Dirt Bike",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/DB_Yellow_Wild.png",
       "count": 22,
-      "percent": "1.28%"
+      "percent": "1.27%"
     },
     {
       "onChainName": "(LO) Ocean Blue",
@@ -948,7 +948,7 @@
       "model": "Lowrider",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/LO_Ocean_Blue.png",
       "count": 22,
-      "percent": "1.28%"
+      "percent": "1.27%"
     },
     {
       "onChainName": "(ST) Rusty",
@@ -956,7 +956,7 @@
       "model": "Steampunk",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/ST_Rusty.png",
       "count": 22,
-      "percent": "1.28%"
+      "percent": "1.27%"
     },
     {
       "onChainName": "(HB) Red",
@@ -964,7 +964,7 @@
       "model": "Hover Bike",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/HB_Red.png",
       "count": 22,
-      "percent": "1.28%"
+      "percent": "1.27%"
     },
     {
       "onChainName": "(HO) White and Black",
@@ -1015,20 +1015,20 @@
       "percent": "1.39%"
     },
     {
-      "onChainName": "(HB) Orange",
-      "displayName": "Orange",
-      "model": "Hover Bike",
-      "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/HB_Orange.png",
-      "count": 24,
-      "percent": "1.39%"
-    },
-    {
       "onChainName": "(ST) Red",
       "displayName": "Red",
       "model": "Steampunk",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/ST_Red.png",
       "count": 24,
       "percent": "1.39%"
+    },
+    {
+      "onChainName": "(HB) Orange",
+      "displayName": "Orange",
+      "model": "Hover Bike",
+      "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/HB_Orange.png",
+      "count": 25,
+      "percent": "1.45%"
     },
     {
       "onChainName": "(TR) White and Red",
@@ -1060,7 +1060,7 @@
       "model": "Scrambler",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/SC_Black.png",
       "count": 27,
-      "percent": "1.57%"
+      "percent": "1.56%"
     },
     {
       "onChainName": "(ST) Teal",
@@ -1068,7 +1068,7 @@
       "model": "Steampunk",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Skin/ST_Teal.png",
       "count": 28,
-      "percent": "1.63%"
+      "percent": "1.62%"
     },
     {
       "onChainName": "(ST) Grey",
@@ -1126,7 +1126,7 @@
       "model": "Scrambler",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Left/SC_Net.png",
       "count": 38,
-      "percent": "2.21%"
+      "percent": "2.20%"
     },
     {
       "onChainName": "(ST) Wrapped Pipe",
@@ -1134,7 +1134,7 @@
       "model": "Steampunk",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Left/ST_Wrapped_Pipe.png",
       "count": 42,
-      "percent": "2.44%"
+      "percent": "2.43%"
     },
     {
       "onChainName": "(ST) Welding Mask",
@@ -1150,7 +1150,7 @@
       "model": "Steampunk",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Left/ST_Chainsaw.png",
       "count": 47,
-      "percent": "2.73%"
+      "percent": "2.72%"
     },
     {
       "onChainName": "(VE) Surfboard",
@@ -1166,7 +1166,7 @@
       "model": "Vespa",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Left/VE_Skateboard.png",
       "count": 61,
-      "percent": "3.54%"
+      "percent": "3.53%"
     },
     {
       "onChainName": "(LO) Sleeping Bag",
@@ -1174,7 +1174,7 @@
       "model": "Lowrider",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Left/LO_Sleeping_Bag.png",
       "count": 78,
-      "percent": "4.53%"
+      "percent": "4.52%"
     },
     {
       "onChainName": "(TR) 40mm Grenades",
@@ -1182,15 +1182,15 @@
       "model": "Tron",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Left/TR_40mm_Grenades.png",
       "count": 79,
-      "percent": "4.59%"
+      "percent": "4.58%"
     },
     {
       "onChainName": "(HO) Saddle Bag",
       "displayName": "Saddle Bag",
       "model": "Hog",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Left/HO_Saddle_Bag.png",
-      "count": 86,
-      "percent": "4.99%"
+      "count": 87,
+      "percent": "5.04%"
     }
   ],
   "Below": [
@@ -1200,7 +1200,7 @@
       "model": "Ninja",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Below/NI_Spiked_Wrecking_Ball.png",
       "count": 53,
-      "percent": "3.08%"
+      "percent": "3.07%"
     },
     {
       "onChainName": "(NI) Bear Trap",
@@ -1217,8 +1217,8 @@
       "displayName": "Rhino Horn",
       "model": "Chopper",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Anterior/CH_Rhino_Horn.png",
-      "count": 11,
-      "percent": "0.64%"
+      "count": 12,
+      "percent": "0.70%"
     },
     {
       "onChainName": "(CH) Moose Antler",
@@ -1242,7 +1242,7 @@
       "model": "Vespa",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Anterior/VE_Piggy_Savings.png",
       "count": 33,
-      "percent": "1.92%"
+      "percent": "1.91%"
     },
     {
       "onChainName": "(DB) Axe",
@@ -1258,7 +1258,7 @@
       "model": "Chopper",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Anterior/CH_Spikes.png",
       "count": 43,
-      "percent": "2.50%"
+      "percent": "2.49%"
     },
     {
       "onChainName": "(LO) Assault Rifle",
@@ -1266,7 +1266,7 @@
       "model": "Lowrider",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Anterior/LO_Assault_Rifle.png",
       "count": 48,
-      "percent": "2.79%"
+      "percent": "2.78%"
     },
     {
       "onChainName": "(DB) Bull Skull",
@@ -1274,7 +1274,7 @@
       "model": "Dirt Bike",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Anterior/DB_Bull_Skull.png",
       "count": 53,
-      "percent": "3.08%"
+      "percent": "3.07%"
     },
     {
       "onChainName": "(VE) R.I.P",
@@ -1282,7 +1282,7 @@
       "model": "Vespa",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Anterior/VE_R.I.P.png",
       "count": 53,
-      "percent": "3.08%"
+      "percent": "3.07%"
     },
     {
       "onChainName": "(VE) Pumpkin",
@@ -1290,7 +1290,7 @@
       "model": "Vespa",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Anterior/VE_Pumpkin.png",
       "count": 57,
-      "percent": "3.31%"
+      "percent": "3.30%"
     },
     {
       "onChainName": "(DB) Plague Doctor Mask",
@@ -1298,7 +1298,7 @@
       "model": "Dirt Bike",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Anterior/DB_Plague_Doctor_Mask.png",
       "count": 57,
-      "percent": "3.31%"
+      "percent": "3.30%"
     },
     {
       "onChainName": "(CH) Armor",
@@ -1314,7 +1314,7 @@
       "model": "Lowrider",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Anterior/LO_Baseball_Bat.png",
       "count": 62,
-      "percent": "3.60%"
+      "percent": "3.59%"
     },
     {
       "onChainName": "(SC) Drill",
@@ -1322,7 +1322,7 @@
       "model": "Scrambler",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Anterior/SC_Drill.png",
       "count": 87,
-      "percent": "5.05%"
+      "percent": "5.04%"
     },
     {
       "onChainName": "(HO) Dino Skull",
@@ -1330,7 +1330,7 @@
       "model": "Hog",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Anterior/HO_Dino_Skull.png",
       "count": 89,
-      "percent": "5.17%"
+      "percent": "5.16%"
     },
     {
       "onChainName": "(TR) Ray Blaster",
@@ -1338,7 +1338,7 @@
       "model": "Tron",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Anterior/TR_Ray_Blaster.png",
       "count": 90,
-      "percent": "5.22%"
+      "percent": "5.21%"
     }
   ],
   "Rear": [
@@ -1355,8 +1355,8 @@
       "displayName": "Ada Bag",
       "model": "Chopper",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Rear/CH_Ada_Bag.png",
-      "count": 22,
-      "percent": "1.28%"
+      "count": 23,
+      "percent": "1.33%"
     },
     {
       "onChainName": "(TR) Satelite Dish",
@@ -1388,7 +1388,7 @@
       "model": "Tron",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Rear/TR_Sniper_Rifle.png",
       "count": 32,
-      "percent": "1.86%"
+      "percent": "1.85%"
     },
     {
       "onChainName": "(SC) Rubber Duck",
@@ -1404,15 +1404,15 @@
       "model": "Hog",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Rear/HO_Sniper_Rifle.png",
       "count": 37,
-      "percent": "2.15%"
+      "percent": "2.14%"
     },
     {
       "onChainName": "(HO) Electric Guitar",
       "displayName": "Electric Guitar",
       "model": "Hog",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Rear/HO_Electric_Guitar.png",
-      "count": 37,
-      "percent": "2.15%"
+      "count": 38,
+      "percent": "2.20%"
     },
     {
       "onChainName": "(SC) Graffiti",
@@ -1420,7 +1420,7 @@
       "model": "Scrambler",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Rear/SC_Graffiti.png",
       "count": 42,
-      "percent": "2.44%"
+      "percent": "2.43%"
     },
     {
       "onChainName": "(CH) Spikes",
@@ -1428,7 +1428,7 @@
       "model": "Chopper",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Rear/CH_Spikes.png",
       "count": 43,
-      "percent": "2.50%"
+      "percent": "2.49%"
     },
     {
       "onChainName": "(NI) Ninja Stars",
@@ -1444,7 +1444,7 @@
       "model": "Scrambler",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Rear/SC_Candle.png",
       "count": 47,
-      "percent": "2.73%"
+      "percent": "2.72%"
     },
     {
       "onChainName": "(HO) Helmet",
@@ -1459,8 +1459,8 @@
       "displayName": "Space Helmet",
       "model": "Hover Bike",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Rear/HB_Space_Helmet.png",
-      "count": 54,
-      "percent": "3.13%"
+      "count": 55,
+      "percent": "3.19%"
     },
     {
       "onChainName": "(HB) Vault",
@@ -1468,7 +1468,7 @@
       "model": "Hover Bike",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Rear/HB_Vault.png",
       "count": 58,
-      "percent": "3.37%"
+      "percent": "3.36%"
     },
     {
       "onChainName": "(NI) Whip",
@@ -1500,7 +1500,7 @@
       "model": "Dirt Bike",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Rear/DB_Doll_Antena.png",
       "count": 66,
-      "percent": "3.83%"
+      "percent": "3.82%"
     },
     {
       "onChainName": "(VE) Spare Tire",
@@ -1508,7 +1508,7 @@
       "model": "Vespa",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Rear/VE_Spare_Tire.png",
       "count": 67,
-      "percent": "3.89%"
+      "percent": "3.88%"
     },
     {
       "onChainName": "(DB) Ada Backpack",
@@ -1516,7 +1516,7 @@
       "model": "Dirt Bike",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Rear/DB_Ada_Backpack.png",
       "count": 68,
-      "percent": "3.95%"
+      "percent": "3.94%"
     },
     {
       "onChainName": "(ST) Flame Torch",
@@ -1524,7 +1524,7 @@
       "model": "Steampunk",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Rear/ST_Flame_Torch.png",
       "count": 86,
-      "percent": "4.99%"
+      "percent": "4.98%"
     },
     {
       "onChainName": "(LO) Helmet",
@@ -1532,7 +1532,7 @@
       "model": "Lowrider",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Rear/LO_Helmet.png",
       "count": 99,
-      "percent": "5.75%"
+      "percent": "5.74%"
     }
   ],
   "Above": [
@@ -1582,7 +1582,7 @@
       "model": "Lowrider",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Above/LO_Human_Skull.png",
       "count": 27,
-      "percent": "1.57%"
+      "percent": "1.56%"
     },
     {
       "onChainName": "(CH) Sneakers",
@@ -1590,7 +1590,7 @@
       "model": "Chopper",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Above/CH_Sneakers.png",
       "count": 28,
-      "percent": "1.63%"
+      "percent": "1.62%"
     },
     {
       "onChainName": "(HB) Bomb",
@@ -1605,8 +1605,8 @@
       "displayName": "Fin",
       "model": "Hover Bike",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Above/HB_Fin.png",
-      "count": 29,
-      "percent": "1.68%"
+      "count": 30,
+      "percent": "1.74%"
     },
     {
       "onChainName": "(CH) Boxing Gloves",
@@ -1614,7 +1614,7 @@
       "model": "Chopper",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Above/CH_Boxing_Gloves.png",
       "count": 32,
-      "percent": "1.86%"
+      "percent": "1.85%"
     },
     {
       "onChainName": "(HB) UFO",
@@ -1622,7 +1622,7 @@
       "model": "Hover Bike",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Above/HB_UFO.png",
       "count": 33,
-      "percent": "1.92%"
+      "percent": "1.91%"
     },
     {
       "onChainName": "(ST) Genie Fox",
@@ -1685,8 +1685,8 @@
       "displayName": "Gas Mask",
       "model": "Hog",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Above/HO_Gas_Mask.png",
-      "count": 53,
-      "percent": "3.08%"
+      "count": 54,
+      "percent": "3.13%"
     },
     {
       "onChainName": "(NI) Cash Bag",
@@ -1694,7 +1694,7 @@
       "model": "Ninja",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Above/NI_Cash_Bag.png",
       "count": 58,
-      "percent": "3.37%"
+      "percent": "3.36%"
     },
     {
       "onChainName": "(NI) Helmet",
@@ -1718,7 +1718,7 @@
       "model": "Dirt Bike",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Above/DB_Skull_Chain.png",
       "count": 67,
-      "percent": "3.89%"
+      "percent": "3.88%"
     },
     {
       "onChainName": "(DB) Ski Goggles",
@@ -1726,7 +1726,7 @@
       "model": "Dirt Bike",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Above/DB_Ski_Goggles.png",
       "count": 68,
-      "percent": "3.95%"
+      "percent": "3.94%"
     },
     {
       "onChainName": "(SC) Chef Knife",
@@ -1734,7 +1734,7 @@
       "model": "Scrambler",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Above/SC_Chef_Knife.png",
       "count": 78,
-      "percent": "4.53%"
+      "percent": "4.52%"
     },
     {
       "onChainName": "(VE) Windsock",
@@ -1742,7 +1742,7 @@
       "model": "Vespa",
       "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/traits/bad-motorcycle/Above/VE_Windsock.png",
       "count": 83,
-      "percent": "4.82%"
+      "percent": "4.81%"
     }
   ]
 }

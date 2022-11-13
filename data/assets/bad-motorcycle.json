@@ -1,7 +1,7 @@
 {
-  "_wen": 1668333583990,
+  "_wen": 1668348962257,
   "policyId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba8",
-  "count": 1723,
+  "count": 1726,
   "assets": [
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530303032",
@@ -4456,6 +4456,27 @@
       "image": { "ipfs": "ipfs://QmZKveMoZ1hGibwrauKPubgSkFzAzaWpyrRPfvXvytxqbG" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530333439",
+      "fingerprint": "asset1zxupv7rk8338hjqf6a3v56jcwx9z6k6znxz9t2",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle0349",
+      "displayName": "Bad Motorcycle #0349",
+      "serialNumber": 349,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(HB) Space Helmet",
+        "Skin": "(HB) Orange",
+        "Above": "(HB) Fin",
+        "Below": "None",
+        "Model": "(HB) Hover Bike",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "Dried Trees"
+      },
+      "image": { "ipfs": "ipfs://QmS5Yxb28iLUiYFPGKwtVFcJghsJna8TJsWCg4L7rxfvZZ" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530333531",
       "fingerprint": "asset17lff7gtl2cch8kczzdvx8umvv5fl54pejtyjkm",
       "isBurned": false,
@@ -5126,6 +5147,27 @@
         "Background": "Dried Trees"
       },
       "image": { "ipfs": "ipfs://QmYLbKN4UizvJn68SeERb12tkasu9fhXmhdKTPij1ACMMT" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530333938",
+      "fingerprint": "asset18rc8vpgyyu5x7yeeyq9yvncpc92pptgvvh0grl",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle0398",
+      "displayName": "Bad Motorcycle #0398",
+      "serialNumber": 398,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(CH) Ada Bag",
+        "Skin": "(CH) Grey Signed",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(CH) Chopper",
+        "Right": "None",
+        "Anterior": "(CH) Rhino Horn",
+        "Background": "Smokey"
+      },
+      "image": { "ipfs": "ipfs://QmRVS9xEHTusEqAaYUwiZuAnkMsTHmQ9MFDFACbh3G9ff2" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530343030",
@@ -29234,6 +29276,27 @@
         "Background": "City Dark"
       },
       "image": { "ipfs": "ipfs://QmU51fRaJdp83wGGa1L3GXhijjsjZ5UM84DWZrZicHhKnW" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532343339",
+      "fingerprint": "asset1wkx7jkz7q9p0jdcuzvv4p23249cngnm5qujnpc",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle2439",
+      "displayName": "Bad Motorcycle #2439",
+      "serialNumber": 2439,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(HO) Saddle Bag",
+        "Rear": "(HO) Electric Guitar",
+        "Skin": "(HO) Lava",
+        "Above": "(HO) Gas Mask",
+        "Below": "None",
+        "Model": "(HO) Hog",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "Desert Road"
+      },
+      "image": { "ipfs": "ipfs://QmVwedGBdC88aeHoGX6QJd1iNKatj7bTrTJq4Vaf2xy8N9" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532343430",
