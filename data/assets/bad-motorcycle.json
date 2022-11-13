@@ -1,7 +1,7 @@
 {
-  "_wen": 1668348962257,
+  "_wen": 1668353781120,
   "policyId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba8",
-  "count": 1726,
+  "count": 1732,
   "assets": [
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530303032",
@@ -8255,6 +8255,27 @@
         "Background": "City Evening"
       },
       "image": { "ipfs": "ipfs://QmXZW1WaKYZG43QuyZvPkv9Nq13a8bY6s5M8kjgxXY1nsB" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530363636",
+      "fingerprint": "asset1nt7m3927cdc244rkpcqsshpe0k9w4ucef6qejk",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle0666",
+      "displayName": "Bad Motorcycle #0666",
+      "serialNumber": 666,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(TR) Satelite Dish",
+        "Skin": "(TR) Purple",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(TR) Tron",
+        "Right": "None",
+        "Anterior": "(TR) Ray Blaster",
+        "Background": "Plain Orange"
+      },
+      "image": { "ipfs": "ipfs://QmVd57n882HCuDrdCxepVU15inSBm7YH4vxRyY821x2Txz" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530363637",
@@ -20584,6 +20605,27 @@
       "image": { "ipfs": "ipfs://QmVGAh9GDnvuMEAXfd2WQsJnfem7bBLzGJFVLuukFbZNmq" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531363632",
+      "fingerprint": "asset1wjherjxx50vyt93taudle9agyyj6rmjpcw2gm4",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1662",
+      "displayName": "Bad Motorcycle #1662",
+      "serialNumber": 1662,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(SC) Net",
+        "Rear": "None",
+        "Skin": "(SC) Soft Navy",
+        "Above": "(SC) Chef Knife",
+        "Below": "None",
+        "Model": "(SC) Scrambler",
+        "Right": "None",
+        "Anterior": "(SC) Drill",
+        "Background": "Tron Red"
+      },
+      "image": { "ipfs": "ipfs://QmeAUQvUs9vVZKgm7Ct81kCvUyfwLGAZBkSQGHf5bYKBFA" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531363634",
       "fingerprint": "asset1r5uku5gp8j3amlx8pa33z60rctcqq4qmzu20p7",
       "isBurned": false,
@@ -21128,6 +21170,27 @@
         "Background": "Evening"
       },
       "image": { "ipfs": "ipfs://QmdvRgyHBWXj7rCyhZ2p6ywLenhtNYG8bCWXdu3yoJuYem" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531373138",
+      "fingerprint": "asset186l26lxg88433unfjxhcd3qh0fp3j28tj4pnfe",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1718",
+      "displayName": "Bad Motorcycle #1718",
+      "serialNumber": 1718,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(SC) Aviator Hat",
+        "Rear": "None",
+        "Skin": "(SC) Red",
+        "Above": "(SC) Chef Knife",
+        "Below": "None",
+        "Model": "(SC) Scrambler",
+        "Right": "None",
+        "Anterior": "(SC) Drill",
+        "Background": "Plain White"
+      },
+      "image": { "ipfs": "ipfs://QmYChcg8gXWq3V4st7v42uqRwuQ9QmoUKvn9AeJBvpQ22W" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531373230",
@@ -27997,6 +28060,27 @@
       "image": { "ipfs": "ipfs://QmYPgVbW5LoYQyBDod4XiaWrENW2Kbaw94Wwqohoq9fLH9" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532333332",
+      "fingerprint": "asset1560zee305kmmlz6sdvplds9kuat5hkmm2ze0xa",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle2332",
+      "displayName": "Bad Motorcycle #2332",
+      "serialNumber": 2332,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(HO) Saddle Bag",
+        "Rear": "None",
+        "Skin": "(HO) Black",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(HO) Hog",
+        "Right": "None",
+        "Anterior": "(HO) Dino Skull",
+        "Background": "City Dark"
+      },
+      "image": { "ipfs": "ipfs://QmTGa9QKwb4GRKErBbt9VyXWDEUt2NHqwCvneN3doELDmk" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532333333",
       "fingerprint": "asset1ejj7jgk73ts7awatcxsxtngnlf79y4qyxvay7e",
       "isBurned": false,
@@ -31019,6 +31103,27 @@
         "Background": "City Cold Evening"
       },
       "image": { "ipfs": "ipfs://QmSctvtQ2GdBWgQmCTyq873LCUpVvpSEpdF2DTqVPETSLw" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532353536",
+      "fingerprint": "asset1scn4ywwzc5l564dhafptqmpdwrex0wp3srj6hn",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle2556",
+      "displayName": "Bad Motorcycle #2556",
+      "serialNumber": 2556,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(HO) Sniper Rifle",
+        "Skin": "(HO) Dirty Teal",
+        "Above": "(HO) Gas Mask",
+        "Below": "None",
+        "Model": "(HO) Hog",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "City"
+      },
+      "image": { "ipfs": "ipfs://QmTicq9Y1GhyWb2GUXGbaH98VgroukzpCLoEVJKtyJQVf9" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532353538",
@@ -34442,6 +34547,27 @@
         "Background": "City"
       },
       "image": { "ipfs": "ipfs://QmaCsr1S6HxKEfStG7M9VdMrX4QYiXw8DYD1XtVeoE3EoZ" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532383438",
+      "fingerprint": "asset1kg463tc52lm553xmksyatgw6nvreap7kgmzmdn",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle2848",
+      "displayName": "Bad Motorcycle #2848",
+      "serialNumber": 2848,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "None",
+        "Skin": "(CH) Black",
+        "Above": "(CH) Boxing Gloves",
+        "Below": "None",
+        "Model": "(CH) Chopper",
+        "Right": "None",
+        "Anterior": "(CH) Rhino Horn",
+        "Background": "Plain White"
+      },
+      "image": { "ipfs": "ipfs://QmaAbeaF1KztZqwFcoB3xqNtH2b5NYeAmTXpZ1Nebdfz1x" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532383531",
