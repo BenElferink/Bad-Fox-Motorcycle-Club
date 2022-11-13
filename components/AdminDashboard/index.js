@@ -25,19 +25,21 @@ const AdminDashboard = () => {
   useEffect(() => {
     ;(async () => {
       const lovelace = await wallet?.getLovelace()
-
-      if (lovelace) {
-        setBalance(Math.floor(Number(lovelace) / MILLION))
-      }
+      if (lovelace) setBalance(Math.floor(Number(lovelace) / MILLION))
     })()
   }, [wallet])
 
   const [transcripts, setTranscripts] = useState([{ timestamp: new Date().getTime(), msg: 'Welcome Admin' }])
+
   const [loading, setLoading] = useState(false)
   const [snapshotDone, setSnapshotDone] = useState(false)
   const [payoutDone, setPayoutDone] = useState(false)
-  const [listedCount, setListedCount] = useState(0)
-  const [unlistedCount, setUnlistedCount] = useState(0)
+
+  const [unlistedFoxCount, setUnlistedFoxCount] = useState(0)
+  const [listedFoxCount, setListedFoxCount] = useState(0)
+  const [unlistedMotorcycleCount, setUnlistedMotorcycleCount] = useState(0)
+  const [listedMotorcycleCount, setListedMotorcycleCount] = useState(0)
+
   const [holdingWallets, setHoldingWallets] = useState([])
   const [payoutWallets, setPayoutWallets] = useState([])
   const [payoutTxHash, setPayoutTxHash] = useState('')
@@ -111,15 +113,19 @@ const AdminDashboard = () => {
               }
             }
 
-            setUnlistedCount((prev) => prev + 1)
-
             if (policyId === BAD_FOX_POLICY_ID) {
               unlistedFoxes++
+              setUnlistedFoxCount((prev) => prev + 1)
             } else if (policyId === BAD_MOTORCYCLE_POLICY_ID) {
               unlistedMotorcycles++
+              setUnlistedMotorcycleCount((prev) => prev + 1)
             }
           } else {
-            setListedCount((prev) => prev + 1)
+            if (policyId === BAD_FOX_POLICY_ID) {
+              setListedFoxCount((prev) => prev + 1)
+            } else if (policyId === BAD_MOTORCYCLE_POLICY_ID) {
+              setListedMotorcycleCount((prev) => prev + 1)
+            }
           }
         }
       }
@@ -127,7 +133,8 @@ const AdminDashboard = () => {
 
     setHoldingWallets(holders)
 
-    const adaPerShare = balance * 0.8
+    const adaPool = balance * 0.8
+    const adaPerShare = adaPool / (unlistedFoxes + unlistedMotorcycles * 2)
 
     setPayoutWallets(
       holders
@@ -136,13 +143,13 @@ const AdminDashboard = () => {
           let adaForTraits = 0
 
           Object.entries(assets).forEach(([policyId, policyAssets]) => {
-            const collectionAssets = COLLECTIONS.find((collection) => collection.policyId === policyId)
+            const collection = COLLECTIONS.find((collection) => collection.policyId === policyId)
 
             if (policyId === BAD_FOX_POLICY_ID) {
-              adaForAssets += policyAssets.length * (adaPerShare / unlistedFoxes) * 1
+              adaForAssets += policyAssets.length * adaPerShare
 
               for (const assetId of policyAssets) {
-                const { attributes } = collectionAssets.find((asset) => asset.assetId === assetId)
+                const { attributes } = collection.policyAssets.find((asset) => asset.assetId === assetId)
 
                 if (attributes['Mouth'] === '(F) Crypto') {
                   adaForTraits += 10
@@ -153,10 +160,10 @@ const AdminDashboard = () => {
                 }
               }
             } else if (policyId === BAD_MOTORCYCLE_POLICY_ID) {
-              adaForAssets += policyAssets.length * (adaPerShare / unlistedMotorcycles) * 2
+              adaForAssets += policyAssets.length * adaPerShare * 2
 
               // for (const assetId of policyAssets) {
-              //   const { attributes } = collectionAssets.find((asset) => asset.assetId === assetId)
+              //   const { attributes } = collection.policyAssets.find((asset) => asset.assetId === assetId)
               //   if (attributes['Rear'] === '(M) Ada Bag') {
               //     adaForTraits += 0
               //   }
@@ -327,7 +334,7 @@ const AdminDashboard = () => {
 
       <div className='flex-row' style={{ justifyContent: 'space-evenly' }}>
         <OnlineIndicator
-          online={!snapshotDone && !payoutDone && !loading}
+          online={!snapshotDone && !payoutDone && !loading && balance}
           title={loading ? 'processing' : !snapshotDone && !payoutDone ? 'run snapshot' : 'snapshot done'}
           placement='bottom'
           style={{ width: '20%' }}
@@ -338,7 +345,7 @@ const AdminDashboard = () => {
             backgroundColor='var(--apex-charcoal)'
             hoverColor='var(--brown)'
             fullWidth
-            disabled={snapshotDone || payoutDone || loading}
+            disabled={snapshotDone || payoutDone || loading || !balance}
           />
         </OnlineIndicator>
 
@@ -391,17 +398,31 @@ const AdminDashboard = () => {
         </OnlineIndicator>
       </div>
 
-      <div className='flex-row' style={{ justifyContent: 'center', margin: 11 }}>
-        <p style={{ margin: 11 }}>Listed: {listedCount}</p>
-        <p style={{ margin: 11 }}>Unlisted: {unlistedCount}</p>
-      </div>
+      <table style={{ margin: '1rem auto', textAlign: 'center' }}>
+        <thead>
+          <tr>
+            <th style={{ padding: '0 0.5rem' }}>Unlisted Foxes</th>
+            <th style={{ padding: '0 0.5rem' }}>Listed Foxes</th>
+            <th style={{ padding: '0 0.5rem' }}>Unlisted Motorcycles</th>
+            <th style={{ padding: '0 0.5rem' }}>Listed Motorcycles</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{unlistedFoxCount}</td>
+            <td>{listedFoxCount}</td>
+            <td>{unlistedMotorcycleCount}</td>
+            <td>{listedMotorcycleCount}</td>
+          </tr>
+        </tbody>
+      </table>
 
       {payoutWallets.length ? (
-        <table style={{ margin: '0 auto' }}>
+        <table style={{ margin: '1rem auto', textAlign: 'center' }}>
           <thead>
             <tr>
-              <th style={{ width: 100 }}>Payout</th>
-              <th>Stake Key</th>
+              <th style={{ padding: '0 0.5rem' }}>Payout</th>
+              <th style={{ padding: '0 0.5rem' }}>Stake Key</th>
             </tr>
           </thead>
           <tbody>
