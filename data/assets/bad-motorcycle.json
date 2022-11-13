@@ -1,7 +1,7 @@
 {
-  "_wen": 1668328184898,
+  "_wen": 1668333583990,
   "policyId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba8",
-  "count": 1719,
+  "count": 1723,
   "assets": [
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530303032",
@@ -7900,6 +7900,27 @@
       "image": { "ipfs": "ipfs://QmRpVCu5ZZd2ba2DdzDb1NFyp8iNouEiAMiHctLhN9AQaA" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530363430",
+      "fingerprint": "asset1sxan9m0e9frg4txlaqn2lskytpdzppq55hkxrk",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle0640",
+      "displayName": "Bad Motorcycle #0640",
+      "serialNumber": 640,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "(ST) Chainsaw",
+        "Rear": "(ST) Flame Torch",
+        "Skin": "(ST) Teal",
+        "Above": "(ST) Genie Fox",
+        "Below": "None",
+        "Model": "(ST) Steampunk",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "Tron Purple"
+      },
+      "image": { "ipfs": "ipfs://QmUKaiDrGijBMzzQKaWfjQVHBC2MywMFjnaZ44GNRQ6VpC" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6530363431",
       "fingerprint": "asset1neux2lt7g8dawhggxdu4ht7flgjgrnp3jdaepc",
       "isBurned": false,
@@ -12835,6 +12856,27 @@
       "image": { "ipfs": "ipfs://QmPDAafE3Q6FfycPkZakxQMFc2EkHFwU3g4dxXFQi2EBBK" }
     },
     {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531303533",
+      "fingerprint": "asset1kr4zag02er90ysn0twk9gydhgjyxftuw8kwwzd",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1053",
+      "displayName": "Bad Motorcycle #1053",
+      "serialNumber": 1053,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "None",
+        "Skin": "(HO) White and Red",
+        "Above": "(HO) Gas Mask",
+        "Below": "None",
+        "Model": "(HO) Hog",
+        "Right": "None",
+        "Anterior": "(HO) Dino Skull",
+        "Background": "After Sunset"
+      },
+      "image": { "ipfs": "ipfs://QmXoPcKCKfyYDcEWBNnDnf5UWyUjRS7C4eYvywTdtb4t1T" }
+    },
+    {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531303534",
       "fingerprint": "asset1dwvvek5hly3sst90z8mcq476uzpyfrjv0c6wvd",
       "isBurned": false,
@@ -13778,6 +13820,27 @@
         "Background": "Light Bulb"
       },
       "image": { "ipfs": "ipfs://QmViKsg24yTx8uGiupzzwVrUZVWJMrQG4LV9FDWQpnUV6y" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531313431",
+      "fingerprint": "asset1ew0qjnldlf6nmyk6llfdnm5p8x9ap3ydj5zpx4",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle1141",
+      "displayName": "Bad Motorcycle #1141",
+      "serialNumber": 1141,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(TR) Sniper Rifle",
+        "Skin": "(TR) White and Red",
+        "Above": "None",
+        "Below": "None",
+        "Model": "(TR) Tron",
+        "Right": "None",
+        "Anterior": "None",
+        "Background": "Warm Evening"
+      },
+      "image": { "ipfs": "ipfs://QmVagTtvhrFMmBYwyynTK18pjxYhaG3qU21551EEyTmjdt" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6531313433",
@@ -31838,6 +31901,27 @@
         "Background": "Tron Blue"
       },
       "image": { "ipfs": "ipfs://QmVfXNh2Df3Q4qaBwvboEtk8z271iXguPCH1TrFBxFktah" }
+    },
+    {
+      "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532363334",
+      "fingerprint": "asset1yv3aduzf5968pndr0a298x9sw2g3dcl2k9qszp",
+      "isBurned": false,
+      "onChainName": "BadMotorcycle2634",
+      "displayName": "Bad Motorcycle #2634",
+      "serialNumber": 2634,
+      "rarityRank": 0,
+      "attributes": {
+        "Left": "None",
+        "Rear": "(NI) Whip",
+        "Skin": "(NI) Black and Red",
+        "Above": "(NI) Helmet",
+        "Below": "(NI) Bear Trap",
+        "Model": "(NI) Ninja",
+        "Right": "(NI) Hammer",
+        "Anterior": "None",
+        "Background": "Dried Trees"
+      },
+      "image": { "ipfs": "ipfs://Qmbm6CN1BLrrktGFmyvVAcgRMA9obCMCeBt3omosobMshz" }
     },
     {
       "assetId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba84261644d6f746f726379636c6532363335",
