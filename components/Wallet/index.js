@@ -248,7 +248,7 @@ const Wallet = () => {
               {populatedWallet.ownsAssets
                 ? Object.entries(populatedWallet.assets).map(([policyId, assets]) => {
                     if (!assets.length) return null
-                    const proj = projectsFile.find((proj) => proj.policyId === policyId)
+                    const proj = projectsFile.find((proj) => proj.policyId === policyId && proj.walletPortfolio)
 
                     return proj ? (
                       <ProjectListItem
