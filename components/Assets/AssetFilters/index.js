@@ -113,7 +113,7 @@ const AssetFilters = ({ traitsMatrix = [], assetsArr = [], callbackRendered = ()
     const sorted = sortAssets(mapped)
 
     callbackRendered(sorted)
-  }, [search, filters, ascending, sortBy, withListed])
+  }, [assetsArr, traitsMatrix, search, filters, ascending, sortBy, withListed])
 
   return (
     <Fragment>

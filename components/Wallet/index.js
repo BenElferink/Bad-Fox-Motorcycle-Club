@@ -252,12 +252,12 @@ const Wallet = () => {
 
                     return proj ? (
                       <ProjectListItem
-                        key={`owned-collections-${policyId}`}
+                        key={`owned-collections-${proj.policyId}`}
                         name={proj.name}
                         image={proj.image}
                         onClick={() => {
-                          if (selectedPolicyId !== policyId) {
-                            setSelectedPolicyId(policyId)
+                          if (selectedPolicyId !== proj.policyId) {
+                            setSelectedPolicyId(proj.policyId)
                             setPricedItems({})
                             setFloorSnapshots([])
                           }
