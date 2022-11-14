@@ -150,24 +150,27 @@ const AdminDashboard = () => {
 
               for (const assetId of policyAssets) {
                 const { attributes } = collection.policyAssets.find((asset) => asset.assetId === assetId)
-
                 if (attributes['Mouth'] === '(F) Crypto') {
                   adaForTraits += 10
                 } else if (attributes['Mouth'] === '(M) Cash Bag') {
                   adaForTraits += 10
-                } else if (attributes['Mouth'] === '(M) Clover') {
-                  adaForTraits += 50
                 }
               }
             } else if (policyId === BAD_MOTORCYCLE_POLICY_ID) {
               adaForAssets += policyAssets.length * adaPerShare * 2
 
-              // for (const assetId of policyAssets) {
-              //   const { attributes } = collection.policyAssets.find((asset) => asset.assetId === assetId)
-              //   if (attributes['Rear'] === '(M) Ada Bag') {
-              //     adaForTraits += 0
-              //   }
-              // }
+              for (const assetId of policyAssets) {
+                const { attributes } = collection.policyAssets.find((asset) => asset.assetId === assetId)
+                if (attributes['Rear'] === '(CH) Ada Bag') {
+                  adaForTraits += 10
+                } else if (attributes['Rear'] === '(HB) Vault') {
+                  adaForTraits += 10
+                } else if (attributes['Above'] === '(NI) Cash Bag') {
+                  adaForTraits += 10
+                } else if (attributes['Anterior'] === '(VE) Piggy Savings') {
+                  adaForTraits += 10
+                }
+              }
             }
           })
 
