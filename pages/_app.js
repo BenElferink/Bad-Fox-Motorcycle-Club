@@ -39,18 +39,17 @@ function App({ Component, pageProps }) {
         <title>Bad Fox Motorcycle Club</title>
       </Head>
 
-      <Toaster />
-
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <Toaster />
 
-        <WalletProvider>
-          <ScreenSizeProvider>
-            <MintProvider>
+        <ScreenSizeProvider>
+          <MintProvider>
+            <WalletProvider>
               <Component {...pageProps} />
-            </MintProvider>
-          </ScreenSizeProvider>
-        </WalletProvider>
+            </WalletProvider>
+          </MintProvider>
+        </ScreenSizeProvider>
       </ThemeProvider>
     </Fragment>
   )

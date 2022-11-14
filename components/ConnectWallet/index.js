@@ -1,11 +1,10 @@
 import { Fragment, useState } from 'react'
+import { TextField } from '@mui/material'
+import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import useWallet from '../../contexts/WalletContext'
 import Modal from '../Modal'
 import BaseButton from '../BaseButton'
 import GlobalLoader from '../Loader/GlobalLoader'
-import { TextField } from '@mui/material'
-import { useRouter } from 'next/router'
-import { useScreenSize } from '../../contexts/ScreenSizeContext'
 
 const DISCLAIMER =
   "Connecting your wallet does not require a password/signature or any contracts, it's a read-only process, your balance/assets are safe."
@@ -26,14 +25,13 @@ export default function ConnectWallet({
     populatedWallet,
   } = useWallet()
   const { isMobile } = useScreenSize()
-  const router = useRouter()
 
   const [openModal, setOpenModal] = useState(modalOnly)
   const [input, setInput] = useState('')
 
   const clickConnectButton = () => {
     if (connected) {
-      router.push('/wallet')
+      window.location.href = '/wallet'
     } else {
       setOpenModal(true)
     }
@@ -42,10 +40,12 @@ export default function ConnectWallet({
   const clickCloseModal = () => {
     setOpenModal(false)
 
-    if (connected && redirectOnSuccess) {
-      router.push('/wallet')
-    } else if (modalOnly) {
-      router.push('/')
+    if (redirectOnSuccess) {
+      if (connected) {
+        window.location.href = '/wallet'
+      } else if (modalOnly) {
+        window.location.href = '/'
+      }
     }
   }
 

@@ -101,8 +101,8 @@ const ClayTraits = () => {
         imageIcon={`${GITHUB_MEDIA_URL}/tokens/clay.png`}
         fullWidth
         backgroundColor='var(--brown)'
-        hoverColor='var(--cardano-blue)'
-        style={{ margin: '0' }}
+        hoverColor='var(--orange)'
+        style={{ margin: 1 }}
       />
 
       <Modal title='$CLAY Trait Sets' open={showClayTraitSets} onClose={() => setShowClayTraitSets(false)}>

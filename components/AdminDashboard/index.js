@@ -19,7 +19,7 @@ const COLLECTIONS = [
 const sleep = (ms) => new Promise((resolve) => setTimeout(() => resolve(true), ms))
 
 const AdminDashboard = () => {
-  const { wallet } = useWallet()
+  const { wallet, connectedManually, disconnectWallet } = useWallet()
   const [balance, setBalance] = useState(0)
 
   useEffect(() => {
@@ -295,6 +295,23 @@ const AdminDashboard = () => {
 
     setLoading(false)
   }, [holdingWallets])
+
+  if (connectedManually) {
+    return (
+      <div className='flex-col'>
+        <p>
+          ERROR! You connected manually, if you wish to build & sign a TX please reconnect in a non-manual way.
+        </p>
+
+        <BaseButton
+          label='Disconnect Wallet'
+          onClick={disconnectWallet}
+          backgroundColor='var(--apex-charcoal)'
+          hoverColor='var(--brown)'
+        />
+      </div>
+    )
+  }
 
   return (
     <div>

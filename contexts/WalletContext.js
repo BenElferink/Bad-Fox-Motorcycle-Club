@@ -110,11 +110,45 @@ export const WalletProvider = ({ children }) => {
     setConnecting(false)
   }
 
+  const disconnectWallet = () => {
+    setWallet({})
+    setPopulatedWallet({})
+    setConnecting(false)
+    setConnected(false)
+    setConnectedName('')
+    setConnectedManually(false)
+    window.localStorage.removeItem('connected-wallet')
+  }
+
+  useEffect(() => {
+    if (connected) {
+      window.localStorage.setItem(
+        'connected-wallet',
+        JSON.stringify({
+          walletProvider: connectedName,
+          stakeKey: populatedWallet.stakeKey,
+        })
+      )
+    }
+  }, [connected])
+
+  useEffect(() => {
+    const connectedWallet = JSON.parse(window.localStorage.getItem('connected-wallet'))
+    if (connectedWallet) {
+      if (connectedWallet.walletProvider === 'Blockfrost') {
+        connectWalletManually(connectedWallet.stakeKey)
+      } else {
+        connectWallet(connectedWallet.walletProvider)
+      }
+    }
+  }, [])
+
   const memoedValue = useMemo(
     () => ({
       availableWallets,
       connectWallet,
       connectWalletManually,
+      disconnectWallet,
       connecting,
       connected,
       connectedName,

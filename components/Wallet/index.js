@@ -8,6 +8,7 @@ import formatBigNumber from '../../functions/formatters/formatBigNumber'
 import ProjectListItem from '../ProjectListItem'
 import ClayTraits from './ClayTraits'
 import Chart from './Chart'
+import BaseButton from '../BaseButton'
 import WalletAssets from '../Assets/WalletAssets'
 import { ADA_SYMBOL } from '../../constants/ada'
 import { BINANCE_API } from '../../constants/api-urls'
@@ -15,7 +16,7 @@ import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
 import projectsFile from '../../data/projects.json'
 
 const Wallet = () => {
-  const { populatedWallet } = useWallet()
+  const { populatedWallet, disconnectWallet } = useWallet()
   const { isMobile } = useScreenSize()
 
   const appendBuyPriceToAssets = useCallback(async (policyId) => {
@@ -199,6 +200,7 @@ const Wallet = () => {
     },
     stakeKey: {
       margin: '0 0 0.5rem 0',
+      textAlign: selectedPolicyId ? 'start' : 'center',
       fontSize: '1.1rem',
       fontWeight: 'bold',
     },
@@ -233,6 +235,15 @@ const Wallet = () => {
               {populatedWallet.stakeKey.substring(0, 15)}...
               {populatedWallet.stakeKey.substring(populatedWallet.stakeKey.length - 15)}
             </p>
+            <BaseButton
+              label='Disconnect Wallet'
+              onClick={disconnectWallet}
+              // imageIcon={`${GITHUB_MEDIA_URL}/tokens/clay.png`}
+              fullWidth
+              backgroundColor='var(--brown)'
+              hoverColor='var(--orange)'
+              style={{ margin: 1 }}
+            />
             {populatedWallet.assets[BAD_FOX_POLICY_ID].length ? <ClayTraits /> : null}
           </div>
 

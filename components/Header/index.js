@@ -18,8 +18,8 @@ export default function Header({ scrollTo = () => null }) {
   const { isMobile } = useScreenSize()
   const { isPreSaleOnline, isPublicSaleOnline } = useMint()
 
-  const router = useRouter()
-  const isHome = router.route === '/'
+  const { route, query } = useRouter()
+  const isHome = route === '/'
 
   const [openMobileMenu, setOpenMobileMenu] = useState(false)
 
@@ -35,7 +35,7 @@ export default function Header({ scrollTo = () => null }) {
     if (isHome) {
       scrollTo(HOME)
     } else {
-      router.push('/')
+      window.location.href = '/'
     }
     setOpenMobileMenu(false)
   }
@@ -51,12 +51,12 @@ export default function Header({ scrollTo = () => null }) {
   }
 
   const clickCatalogs = () => {
-    router.push('/catalogs')
+    window.location.href = '/catalogs'
   }
 
   const clickMint = () => {
     if (isPreSaleOnline || isPublicSaleOnline) {
-      router.push('/mint')
+      window.location.href = '/mint'
     } else {
       toast.error('Currently offline')
     }
@@ -65,7 +65,7 @@ export default function Header({ scrollTo = () => null }) {
   useEffect(() => {
     if (isHome) {
       setTimeout(() => {
-        switch (router.query.scrollTo) {
+        switch (query.scrollTo) {
           case 'team':
             scrollTo(TEAM)
             break
@@ -75,7 +75,7 @@ export default function Header({ scrollTo = () => null }) {
         }
       }, 100)
     }
-  }, [isHome, router.query])
+  }, [isHome, query])
 
   const jsStyles = {
     nav: {
@@ -140,7 +140,7 @@ export default function Header({ scrollTo = () => null }) {
             <BaseButton label='Mint' onClick={clickMint} transparent style={jsStyles.btn} />
           </OnlineIndicator>
 
-          {router.route !== '/mint' ? <ConnectWallet redirectOnSuccess /> : null}
+          {route !== '/mint' ? <ConnectWallet redirectOnSuccess /> : null}
           <Socials closeMenu={closeMenu} />
         </nav>
       </Modal>

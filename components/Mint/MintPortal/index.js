@@ -35,7 +35,7 @@ const ManualMint = ({ mintAddress }) => {
 }
 
 const SignMint = ({ maxMints, mintPrice, mintAddress }) => {
-  const { connected, connectedManually, wallet } = useWallet()
+  const { connected, connectedManually, disconnectWallet, wallet } = useWallet()
   const [building, setBuilding] = useState(false)
 
   const clickSign = async (amount) => {
@@ -80,6 +80,7 @@ const SignMint = ({ maxMints, mintPrice, mintAddress }) => {
       ) : (
         <div className={styles.mintModalDevision}>
           ERROR! You connected manually, if you wish to build & sign a TX please reconnect in a non-manual way.
+          <BaseButton label={'DISCONNECT'} onClick={disconnectWallet} backgroundColor='var(--discord-purple)' />
         </div>
       )}
     </Fragment>
