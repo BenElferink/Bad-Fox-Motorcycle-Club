@@ -88,7 +88,7 @@ const Wallet = () => {
         setPricedItems(priced)
       })()
     }
-  }, [selectedPolicyId, appendBuyPriceToAssets])
+  }, [selectedPolicyId])
 
   useEffect(() => {
     if (window && selectedPolicyId && JSON.stringify(pricedItems) !== JSON.stringify({})) {
@@ -97,7 +97,7 @@ const Wallet = () => {
         JSON.stringify(pricedItems)
       )
     }
-  }, [selectedPolicyId, pricedItems])
+  }, [pricedItems])
 
   const getPricesFromAttributes = useCallback(
     (assetAttributes) => {
@@ -139,16 +139,13 @@ const Wallet = () => {
 
   const [royaltyData, setRoyaltyData] = useState({
     adaInWallet: 0,
-    adaInVolume: 0,
   })
 
   useEffect(() => {
     if (selectedPolicyId) {
       ;(async () => {
         try {
-          const res = await axios.get(
-            `/api/utilities/royalties/${selectedPolicyId === BAD_FOX_POLICY_ID ? 'fox' : 'error'}`
-          )
+          const res = await axios.get('/api/utilities/royalties')
 
           setRoyaltyData(res.data)
         } catch (error) {
@@ -205,19 +202,22 @@ const Wallet = () => {
       fontSize: '1.1rem',
       fontWeight: 'bold',
     },
-    priceSummary: {
+    statsWrapper: {
       margin: '0.5rem 1rem',
       display: 'flex',
       flexDirection: 'column',
     },
-    priceSection: {
+    statsSection: {
       flex: 1,
       margin: '1rem 0',
       padding: '0 1.5rem 1rem',
       backgroundColor: 'var(--apex-charcoal)',
       borderRadius: '1rem',
     },
-    priceTable: {
+    statsTitle: {
+      marginBottom: '0.5rem',
+    },
+    statsTable: {
       margin: 0,
       borderCollapse: 'collapse',
     },
@@ -280,44 +280,10 @@ const Wallet = () => {
               getPricesFromAttributes={getPricesFromAttributes}
             />
 
-            <div style={styles.priceSummary}>
-              <div style={styles.priceSection}>
-                <h2>ADA Ticker</h2>
-                <table style={styles.priceTable}>
-                  <tbody>
-                    <tr>
-                      <td>Price in USD&nbsp;</td>
-                      <td>${adaUsdTicker}</td>
-                    </tr>
-                    <tr>
-                      <td>Change in 24h&nbsp;</td>
-                      <td>{adaUsdChange24h}%</td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                {royaltyData.adaInVolume && royaltyData.adaInWallet ? (
-                  <Fragment>
-                    <h2>Collection Royalties</h2>
-                    <table style={styles.priceTable}>
-                      <tbody>
-                        <tr>
-                          <td>Total Volume&nbsp;</td>
-                          <td>{formatBigNumber(royaltyData.adaInVolume)}</td>
-                        </tr>
-                        <tr>
-                          <td>Royalties in Wallet&nbsp;</td>
-                          <td>{formatBigNumber(royaltyData.adaInWallet)}</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </Fragment>
-                ) : null}
-              </div>
-
-              <div style={styles.priceSection}>
-                <h2>Portfolio Balance</h2>
-                <table style={styles.priceTable}>
+            <div style={styles.statsWrapper}>
+              <div style={styles.statsSection}>
+                <h2 style={styles.statsTitle}>Portfolio Balance</h2>
+                <table style={styles.statsTable}>
                   <tbody>
                     <tr>
                       <td>Investment&nbsp;</td>
@@ -342,6 +308,36 @@ const Wallet = () => {
                         {formatBigNumber(totalFloorBalance)}
                       </td>
                       <td>(${formatBigNumber(totalFloorBalance * adaUsdTicker)})</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div style={styles.statsSection}>
+                {royaltyData.adaInWallet ? (
+                  <Fragment>
+                    <h2 style={styles.statsTitle}>Royalties</h2>
+                    <table style={styles.statsTable}>
+                      <tbody>
+                        <tr>
+                          <td>Royalties in wallet&nbsp;</td>
+                          <td>{formatBigNumber(royaltyData.adaInWallet)}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </Fragment>
+                ) : null}
+
+                <h2 style={styles.statsTitle}>ADA Ticker</h2>
+                <table style={styles.statsTable}>
+                  <tbody>
+                    <tr>
+                      <td>Price in USD&nbsp;</td>
+                      <td>${adaUsdTicker}</td>
+                    </tr>
+                    <tr>
+                      <td>Change in 24h&nbsp;</td>
+                      <td>{adaUsdChange24h}%</td>
                     </tr>
                   </tbody>
                 </table>

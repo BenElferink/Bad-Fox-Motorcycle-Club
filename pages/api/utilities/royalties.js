@@ -1,8 +1,5 @@
-import axios from 'axios'
-import { blockfrost } from '../../../../utils/blockfrost'
-import { ROYALTY_WALLET } from '../../../../constants/addresses'
-import { BAD_FOX_POLICY_ID } from '../../../../constants/policy-ids'
-import { OPEN_CNFT_API } from '../../../../constants/api-urls'
+import { blockfrost } from '../../../utils/blockfrost'
+import { ROYALTY_WALLET } from '../../../constants/addresses'
 
 const ONE_MILLION = 1000000
 
@@ -17,12 +14,11 @@ export default async (req, res) => {
           wallet.amount.find((item) => item.unit === 'lovelace')?.quantity || ONE_MILLION
         )
 
-        const openCnftResponse = await axios.get(`${OPEN_CNFT_API}/policy/${BAD_FOX_POLICY_ID}`)
-        const volumeLovelace = Number(openCnftResponse.data?.total_volume || ONE_MILLION)
+        // const openCnftResponse = await axios.get(`${OPEN_CNFT_API}/policy/${BAD_FOX_POLICY_ID}`)
+        // const volumeLovelace = Number(openCnftResponse.data?.total_volume || ONE_MILLION)
 
         return res.status(200).json({
           adaInWallet: balanceLovelace / ONE_MILLION,
-          adaInVolume: volumeLovelace / ONE_MILLION,
         })
       }
 

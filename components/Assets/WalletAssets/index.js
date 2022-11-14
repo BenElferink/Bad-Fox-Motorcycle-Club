@@ -64,7 +64,7 @@ const WalletAssets = ({ policyId }) => {
                     .map(([cat, attr]) => [
                       `${cat}:`,
                       attr,
-                      traitsObj[cat].find((trait) => trait.onChainName === attr)?.percent,
+                      traitsObj[cat]?.find((trait) => trait.onChainName === attr)?.percent,
                     ])}
                 />
               ) : null
