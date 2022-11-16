@@ -1,14 +1,14 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { toast } from 'react-hot-toast'
+// import { toast } from 'react-hot-toast'
+// import { useMint } from '../../contexts/MintContext'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
-import { useMint } from '../../contexts/MintContext'
 import { AppBar, Avatar, IconButton } from '@mui/material'
 import { MenuRounded } from '@mui/icons-material'
 import Modal from '../Modal'
 import BaseButton from '../BaseButton'
 import ConnectWallet from '../ConnectWallet'
-import OnlineIndicator from '../OnlineIndicator'
+// import OnlineIndicator from '../OnlineIndicator'
 import Socials from './Socials'
 import { HOME, UTILITIES, TEAM } from '../../constants/scroll-nav'
 import { GITHUB_MEDIA_URL } from '../../constants/api-urls'
@@ -16,7 +16,7 @@ import styles from './Header.module.css'
 
 export default function Header({ scrollTo = () => null }) {
   const { isMobile } = useScreenSize()
-  const { isPreSaleOnline, isPublicSaleOnline } = useMint()
+  // const { isPreSaleOnline, isPublicSaleOnline } = useMint()
 
   const { route, query } = useRouter()
   const isHome = route === '/'
@@ -54,13 +54,13 @@ export default function Header({ scrollTo = () => null }) {
     window.location.href = '/catalogs'
   }
 
-  const clickMint = () => {
-    if (isPreSaleOnline || isPublicSaleOnline) {
-      window.location.href = '/mint'
-    } else {
-      toast.error('Currently offline')
-    }
-  }
+  // const clickMint = () => {
+  //   if (isPreSaleOnline || isPublicSaleOnline) {
+  //     window.location.href = '/mint'
+  //   } else {
+  //     toast.error('Currently offline')
+  //   }
+  // }
 
   useEffect(() => {
     if (isHome) {
@@ -136,9 +136,9 @@ export default function Header({ scrollTo = () => null }) {
 
           <BaseButton label='Catalogs' onClick={clickCatalogs} transparent style={jsStyles.btn} />
 
-          <OnlineIndicator online={isPreSaleOnline || isPublicSaleOnline}>
+          {/* <OnlineIndicator online={isPreSaleOnline || isPublicSaleOnline}>
             <BaseButton label='Mint' onClick={clickMint} transparent style={jsStyles.btn} />
-          </OnlineIndicator>
+          </OnlineIndicator> */}
 
           {route !== '/mint' ? <ConnectWallet redirectOnSuccess /> : null}
           <Socials closeMenu={closeMenu} />

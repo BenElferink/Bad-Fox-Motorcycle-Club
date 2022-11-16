@@ -12,7 +12,7 @@ export function useMint() {
 export function MintProvider({ children }) {
   const PRE_SALE_DATE_TIME = new Date('2022-11-11T07:00:00.000+00:00')
   const PUBLIC_SALE_DATE_TIME = new Date('2022-11-11T19:00:00.000+00:00')
-  const SOLD_OUT = false
+  const SOLD_OUT = true
 
   const isItPreSaleTime = (d) =>
     d.getTime() >= PRE_SALE_DATE_TIME.getTime() && d.getTime() < PUBLIC_SALE_DATE_TIME.getTime()

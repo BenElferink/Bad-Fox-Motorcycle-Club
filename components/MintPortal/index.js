@@ -48,7 +48,7 @@ export default function MintPortal() {
     return <GlobalLoader />
   }
 
-  if (mintCount.minted >= 2200) {
+  if (mintCount.minted === mintCount.supply) {
     return (
       <Section>
         <h2>Welcome to the Public Mint!</h2>

@@ -21,18 +21,18 @@ const Sneaks = () => {
         slidesPerView={slidesPerView}
       >
         {[
-          `${GITHUB_MEDIA_URL}/previews/2119.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/0258.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/5161.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/2597.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/1780.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/1813.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/1659.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/1482.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/0185.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/2060.jpg`,
           `${GITHUB_MEDIA_URL}/previews/1774.jpg`,
           `${GITHUB_MEDIA_URL}/previews/4087.jpg`,
-          `${GITHUB_MEDIA_URL}/previews/0960.jpg`,
-          `${GITHUB_MEDIA_URL}/previews/4157.jpg`,
-          `${GITHUB_MEDIA_URL}/previews/1482.jpg`,
-          `${GITHUB_MEDIA_URL}/previews/0895.jpg`,
-          `${GITHUB_MEDIA_URL}/previews/0258.jpg`,
-          `${GITHUB_MEDIA_URL}/previews/1813.jpg`,
-          `${GITHUB_MEDIA_URL}/previews/1780.jpg`,
-          `${GITHUB_MEDIA_URL}/previews/0461.jpg`,
-          `${GITHUB_MEDIA_URL}/previews/4946.jpg`,
+          `${GITHUB_MEDIA_URL}/previews/0912.jpg`,
         ].map((str) => (
           <SwiperSlide key={str}>
             <Image src={str} alt='' width={imageSize} height={imageSize} className={styles.img} />
