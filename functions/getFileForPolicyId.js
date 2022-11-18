@@ -8,9 +8,9 @@ const getFileForPolicyId = (policyId, fileType) => {
   switch (fileType) {
     case 'assets':
       return policyId === BAD_FOX_POLICY_ID
-        ? badFoxAssetsFile.assets
+        ? badFoxAssetsFile?.assets || []
         : policyId === BAD_MOTORCYCLE_POLICY_ID
-        ? badMotorcycleAssetsFile.assets
+        ? badMotorcycleAssetsFile?.assets || []
         : []
 
     case 'traits':

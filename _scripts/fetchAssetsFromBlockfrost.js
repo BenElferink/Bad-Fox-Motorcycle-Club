@@ -11,24 +11,29 @@ const POLICY_ID = BAD_MOTORCYCLE_POLICY_ID
 const ASSET_DISPLAY_NAME_PREFIX = 'Bad Motorcycle #'
 const JSON_FILE_NAME = 'bad-motorcycle.json'
 const SHOULD_COUNT_TRAITS = true
-const HAS_RANKS_ON_CNFT_TOOLS = false
+const HAS_RANKS_ON_CNFT_TOOLS = true
 
 let cnftToolsAssets = []
 const traitsFile = getFileForPolicyId(POLICY_ID, 'traits')
 const populatedAssets = getFileForPolicyId(POLICY_ID, 'assets')
 
 const populateNewAsset = async (assetId) => {
-  let rarityRank = 0
-
-  if (HAS_RANKS_ON_CNFT_TOOLS && !cnftToolsAssets.length) {
-    cnftToolsAssets = (await axios.get(`${CNFT_TOOLS_API}/external/${POLICY_ID}`)).data
-    rarityRank = Number(cnftToolsAssets.find((item) => item.name === data.onchain_metadata.name)?.rarityRank || 0)
-  }
-
   console.log(`Populating asset with ID ${assetId}`)
 
   try {
     const data = await blockfrost.getAssetWithAssetId(assetId)
+
+    let rarityRank = 0
+
+    if (HAS_RANKS_ON_CNFT_TOOLS) {
+      if (!cnftToolsAssets.length) {
+        cnftToolsAssets = (await axios.get(`${CNFT_TOOLS_API}/external/${POLICY_ID}`)).data
+      }
+
+      rarityRank = Number(
+        cnftToolsAssets.find((item) => item.name === data.onchain_metadata.name)?.rarityRank || 0
+      )
+    }
 
     return {
       assetId: data.asset,
