@@ -135,9 +135,13 @@ export const WalletProvider = ({ children }) => {
   useEffect(() => {
     const connectedWallet = JSON.parse(window.localStorage.getItem('connected-wallet'))
     if (connectedWallet) {
-      if (connectedWallet.walletProvider === 'Blockfrost') {
-        connectWalletManually(connectedWallet.stakeKey)
-      } else {
+      // if (connectedWallet.walletProvider === 'Blockfrost') {
+      //   connectWalletManually(connectedWallet.stakeKey)
+      // } else {
+      //   connectWallet(connectedWallet.walletProvider)
+      // }
+
+      if (connectedWallet.walletProvider !== 'Blockfrost') {
         connectWallet(connectedWallet.walletProvider)
       }
     }
