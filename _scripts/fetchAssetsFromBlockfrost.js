@@ -7,9 +7,9 @@ const fromHex = require('../functions/formatters/hex/fromHex')
 const { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } = require('../constants/policy-ids')
 const { CNFT_TOOLS_API } = require('../constants/api-urls')
 
-const POLICY_ID = BAD_MOTORCYCLE_POLICY_ID
-const ASSET_DISPLAY_NAME_PREFIX = 'Bad Motorcycle #'
-const JSON_FILE_NAME = 'bad-motorcycle.json'
+const POLICY_ID = BAD_FOX_POLICY_ID
+const ASSET_DISPLAY_NAME_PREFIX = 'Bad Fox #'
+const JSON_FILE_NAME = 'bad-fox.json'
 const SHOULD_COUNT_TRAITS = true
 const HAS_RANKS_ON_CNFT_TOOLS = true
 
@@ -35,6 +35,13 @@ const populateNewAsset = async (assetId) => {
       )
     }
 
+    const ipfsReference =
+      typeof data.onchain_metadata.image === 'string'
+        ? data.onchain_metadata.image
+        : typeof data.onchain_metadata.image === 'object'
+        ? data.onchain_metadata.image.join('')
+        : 'unknown'
+
     return {
       assetId: data.asset,
       fingerprint: data.fingerprint,
@@ -45,9 +52,9 @@ const populateNewAsset = async (assetId) => {
       rarityRank,
       attributes: data.onchain_metadata.attributes,
       image: {
-        ipfs: data.onchain_metadata.image[0],
+        ipfs: ipfsReference,
       },
-      // files: data.onchain_metadata.files || [],
+      files: data.onchain_metadata.files || [],
     }
   } catch (error) {
     console.error(`Error populating asset with ID ${assetId}`)
