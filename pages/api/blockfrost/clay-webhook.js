@@ -4,7 +4,7 @@ import Wallet from '../../../models/Wallet'
 // import { blockfrost } from '../../../../utils/blockfrost'
 // import { BLOCKFROST_WEBHOOK_AUTH_TOKEN } from '../../../../constants/api-keys'
 import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
-import { EXCLUDE_ADDRESSES } from '../../../constants/addresses'
+import { MARKETPLACE_ADDRESSES } from '../../../constants/addresses'
 
 export default async (req, res) => {
   try {
@@ -81,7 +81,7 @@ export default async (req, res) => {
             const [assetId, { from, to }] = assetTxMatrix[i]
             console.log(`Updating DB for asset ID ${assetId}, from address ${from}, to address ${to}`)
 
-            if (EXCLUDE_ADDRESSES.includes(from)) {
+            if (MARKETPLACE_ADDRESSES.includes(from)) {
               console.log(`Skipping "from address" as it's excluded`)
             } else {
               let fromWallet = await Wallet.findOne({ addresses: { $in: [from] } })
@@ -120,7 +120,7 @@ export default async (req, res) => {
               }
             }
 
-            if (EXCLUDE_ADDRESSES.includes(to)) {
+            if (MARKETPLACE_ADDRESSES.includes(to)) {
               console.log(`Skipping "to address" as it's excluded`)
             } else {
               let toWallet = await Wallet.findOne({ addresses: { $in: [to] } })
