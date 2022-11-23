@@ -3,6 +3,9 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  api: {
+    responseLimit: false,
+  },
   images: {
     domains: ['raw.githubusercontent.com', 'images.cnft.tools', 'alwaysinvert.mypinata.cloud'],
   },

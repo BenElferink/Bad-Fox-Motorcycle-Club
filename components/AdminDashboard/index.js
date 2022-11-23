@@ -7,7 +7,6 @@ import getFileForPolicyId from '../../functions/getFileForPolicyId'
 import BaseButton from '../BaseButton'
 import OnlineIndicator from '../OnlineIndicator'
 import { ADA_SYMBOL } from '../../constants/ada'
-import { EXCLUDE_ADDRESSES } from '../../constants/addresses'
 import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants/policy-ids'
 
 const MILLION = 1000000
@@ -18,6 +17,8 @@ const COLLECTIONS = [
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(() => resolve(true), ms))
 
+const displayBalance = (v) => (Number(v) / MILLION).toFixed(2)
+
 const AdminDashboard = () => {
   const { wallet, connectedManually, disconnectWallet } = useWallet()
   const [balance, setBalance] = useState(0)
@@ -25,16 +26,11 @@ const AdminDashboard = () => {
   useEffect(() => {
     ;(async () => {
       const lovelace = await wallet?.getLovelace()
-      if (lovelace) setBalance(Math.floor(Number(lovelace) / MILLION))
+      if (lovelace) setBalance(Number(lovelace))
     })()
   }, [wallet])
 
   const [transcripts, setTranscripts] = useState([{ timestamp: new Date().getTime(), msg: 'Welcome Admin' }])
-
-  const [loading, setLoading] = useState(false)
-  const [snapshotDone, setSnapshotDone] = useState(false)
-  const [payoutDone, setPayoutDone] = useState(false)
-
   const [unlistedFoxCount, setUnlistedFoxCount] = useState(0)
   const [listedFoxCount, setListedFoxCount] = useState(0)
   const [unlistedMotorcycleCount, setUnlistedMotorcycleCount] = useState(0)
@@ -43,6 +39,10 @@ const AdminDashboard = () => {
   const [holdingWallets, setHoldingWallets] = useState([])
   const [payoutWallets, setPayoutWallets] = useState([])
   const [payoutTxHash, setPayoutTxHash] = useState('')
+
+  const [loading, setLoading] = useState(false)
+  const [snapshotDone, setSnapshotDone] = useState(false)
+  const [payoutDone, setPayoutDone] = useState(false)
 
   const addTranscript = (msg, key) => {
     setTranscripts((prev) => {
@@ -62,10 +62,11 @@ const AdminDashboard = () => {
 
   const fetchOwningWallet = useCallback(async (assetId) => {
     try {
-      const { data } = await axios.get(`/api/admin/getWalletWithAssetId/${assetId}`)
+      const { data } = await axios.get(`/api/admin/owner?assetId=${assetId}`)
 
       return data
     } catch (error) {
+      console.error(error)
       addTranscript('ERROR', error.message)
       return await fetchOwningWallet(assetId)
     }
@@ -75,22 +76,44 @@ const AdminDashboard = () => {
     setLoading(true)
 
     const holders = []
+    const fetchedWallets = []
     let unlistedFoxes = 0
     let unlistedMotorcycles = 0
 
     for (let c = 0; c < COLLECTIONS.length; c++) {
       const { policyId, policyAssets } = COLLECTIONS[c]
-      addTranscript(`Collection ${c + 1} / ${COLLECTIONS.length}`, policyId)
-      await sleep(500)
+      addTranscript(`Processing collection ${c + 1} / ${COLLECTIONS.length}`, policyId)
+      await sleep(100)
 
       for (let i = 0; i < policyAssets.length; i++) {
         const { assetId, isBurned } = policyAssets[i]
-        addTranscript(`Processing ${i + 1} / ${policyAssets.length}`, assetId)
 
-        if (!isBurned) {
-          const { stakeKey, walletAddress } = await fetchOwningWallet(assetId)
+        if (isBurned) {
+          addTranscript(`Asset ${i + 1} / ${policyAssets.length} is burned`, assetId)
+        } else {
+          addTranscript(`Processing asset ${i + 1} / ${policyAssets.length}`, assetId)
 
-          if (!EXCLUDE_ADDRESSES.includes(walletAddress)) {
+          // this is to improve speed, reduce backend calls
+          const foundFetchedWallet = fetchedWallets.find(
+            ({ assets }) => !!assets[policyId]?.find(({ unit }) => unit === assetId)
+          )
+
+          const wallet = foundFetchedWallet || (await fetchOwningWallet(assetId))
+
+          // this is to improve speed, reduce backend calls
+          if (!foundFetchedWallet) {
+            fetchedWallets.push(wallet)
+          }
+
+          const { isContract, stakeKey, walletAddress, assets } = wallet
+
+          if (isContract) {
+            if (policyId === BAD_FOX_POLICY_ID) {
+              setListedFoxCount((prev) => prev + 1)
+            } else if (policyId === BAD_MOTORCYCLE_POLICY_ID) {
+              setListedMotorcycleCount((prev) => prev + 1)
+            }
+          } else {
             const holderIndex = holders.findIndex((item) => item.stakeKey === stakeKey)
 
             if (holderIndex === -1) {
@@ -120,12 +143,6 @@ const AdminDashboard = () => {
               unlistedMotorcycles++
               setUnlistedMotorcycleCount((prev) => prev + 1)
             }
-          } else {
-            if (policyId === BAD_FOX_POLICY_ID) {
-              setListedFoxCount((prev) => prev + 1)
-            } else if (policyId === BAD_MOTORCYCLE_POLICY_ID) {
-              setListedMotorcycleCount((prev) => prev + 1)
-            }
           }
         }
       }
@@ -133,88 +150,157 @@ const AdminDashboard = () => {
 
     setHoldingWallets(holders)
 
-    const adaPool = balance * 0.8
-    const adaPerShare = adaPool / (unlistedFoxes + unlistedMotorcycles * 2)
+    const lovelacePool = balance * 0.8
+    const lovelacePerShare = Math.floor(lovelacePool / (unlistedFoxes + unlistedMotorcycles * 2))
 
     setPayoutWallets(
       holders
         .map(({ stakeKey, addresses, assets }) => {
-          let adaForAssets = 0
-          let adaForTraits = 0
+          let lovelaceForAssets = 0
+          let lovelaceForTraits = 0
 
           Object.entries(assets).forEach(([policyId, policyAssets]) => {
             const collection = COLLECTIONS.find((collection) => collection.policyId === policyId)
 
             if (policyId === BAD_FOX_POLICY_ID) {
-              adaForAssets += policyAssets.length * adaPerShare
+              lovelaceForAssets += policyAssets.length * lovelacePerShare
 
               for (const assetId of policyAssets) {
                 const { attributes } = collection.policyAssets.find((asset) => asset.assetId === assetId)
                 if (attributes['Mouth'] === '(F) Crypto') {
-                  adaForTraits += 10
+                  lovelaceForTraits += 10 * MILLION
                 } else if (attributes['Mouth'] === '(M) Cash Bag') {
-                  adaForTraits += 10
+                  lovelaceForTraits += 10 * MILLION
                 }
               }
             } else if (policyId === BAD_MOTORCYCLE_POLICY_ID) {
-              adaForAssets += policyAssets.length * adaPerShare * 2
+              lovelaceForAssets += policyAssets.length * lovelacePerShare * 2
 
               for (const assetId of policyAssets) {
                 const { attributes } = collection.policyAssets.find((asset) => asset.assetId === assetId)
                 if (attributes['Rear'] === '(CH) Ada Bag') {
-                  adaForTraits += 10
+                  lovelaceForTraits += 10 * MILLION
                 } else if (attributes['Rear'] === '(HB) Vault') {
-                  adaForTraits += 10
+                  lovelaceForTraits += 10 * MILLION
                 } else if (attributes['Above'] === '(NI) Cash Bag') {
-                  adaForTraits += 10
+                  lovelaceForTraits += 10 * MILLION
                 } else if (attributes['Anterior'] === '(VE) Piggy Savings') {
-                  adaForTraits += 10
+                  lovelaceForTraits += 10 * MILLION
                 }
               }
             }
+            // else if (policyId === BAD_KEY_POLICY_ID) {
+            //   lovelaceForAssets += policyAssets.length * lovelacePerShare * 4
+            // }
           })
 
           return {
             stakeKey,
             address: addresses[0],
-            payout: Math.round(adaForAssets + adaForTraits),
+            payout: lovelaceForAssets + lovelaceForTraits,
           }
         })
         .sort((a, b) => b.payout - a.payout)
     )
 
-    addTranscript('Done!')
+    addTranscript('Snapshot done!')
     setSnapshotDone(true)
     setLoading(false)
   }, [balance])
 
-  const payEveryone = useCallback(async () => {
-    setLoading(true)
-
+  const txConfirmation = useCallback(async (txHash) => {
     try {
-      const tx = new Transaction({ initiator: wallet })
+      const { data } = await axios.get(`/api/admin/tx-status?txHash=${txHash}`)
 
-      for (const { address, payout } of payoutWallets) {
-        tx.sendLovelace(address, String(payout * MILLION))
+      if (data.submitted) {
+        return data
+      } else {
+        await sleep(1000)
+        return await txConfirmation(txHash)
       }
-
-      addTranscript('Building TX')
-      const unsignedTx = await tx.build()
-      addTranscript('Awaiting signature')
-      const signedTx = await wallet.signTx(unsignedTx)
-      addTranscript('Submitting TX')
-      const txHash = await wallet.submitTx(signedTx)
-
-      addTranscript('Done!', txHash)
-      setPayoutTxHash(txHash)
-      setPayoutDone(true)
     } catch (error) {
       addTranscript('ERROR', error.message)
-      console.error(error)
+      await sleep(1000)
+      return await txConfirmation(txHash)
     }
+  }, [])
 
-    setLoading(false)
-  }, [wallet, payoutWallets])
+  const payEveryone = useCallback(
+    async (difference) => {
+      setLoading(true)
+
+      if (!difference) {
+        addTranscript('Batching TXs', 'This may take a moment...')
+      }
+
+      const batchSize = difference ? Math.floor(difference * payoutWallets.length) : payoutWallets.length
+      const batches = []
+
+      for (let i = 0; i < payoutWallets.length; i += batchSize) {
+        batches.push(payoutWallets.slice(i, (i / batchSize + 1) * batchSize))
+      }
+
+      try {
+        for await (const [idx, batch] of batches.entries()) {
+          const tx = new Transaction({ initiator: wallet })
+
+          for (const { address, payout } of batch) {
+            if (payout < MILLION) {
+              const str1 = 'Cardano requires at least 1 ADA per TX.'
+              const str2 = `This wallet has only ${displayBalance(payout)} ADA assigned to it:\n${address}`
+              const str3 = 'Click OK if you want to increase the payout for this wallet to 1 ADA.'
+              const str4 = 'Click cancel to exclude this wallet from the airdrop.'
+              const str5 = 'Note: accepting will increase the total pool size.'
+
+              if (window.confirm(`${str1}\n\n${str2}\n\n${str3}\n${str4}\n\n${str5}`)) {
+                tx.sendLovelace(address, String(MILLION))
+              }
+            } else {
+              tx.sendLovelace(address, String(payout))
+            }
+          }
+
+          const unsignedTx = await tx.build()
+          addTranscript(`Building TX ${idx + 1} of ${batches.length}`)
+          const signedTx = await wallet.signTx(unsignedTx)
+          const txHash = await wallet.submitTx(signedTx)
+          addTranscript('Awaiting network confirmation', 'This may take a moment...')
+          await txConfirmation(txHash)
+          addTranscript('Confirmed!', txHash)
+
+          setPayoutWallets((prev) =>
+            prev.map((prevItem) =>
+              batch.some(({ stakeKey }) => stakeKey === prevItem.stakeKey)
+                ? {
+                    ...prevItem,
+                    txHash,
+                  }
+                : prevItem
+            )
+          )
+        }
+
+        addTranscript('Airdrop done!', "You can now leave the app, don't forget to download the receipt 👍")
+        setPayoutDone(true)
+      } catch (error) {
+        console.error(error)
+
+        if (error.message.indexOf('Maximum transaction size') !== -1) {
+          // [Transaction] An error occurred during build: Maximum transaction size of 16384 exceeded. Found: 21861.
+          const splitMessage = error.message.split(' ')
+          const [max, curr] = splitMessage.filter((str) => !isNaN(Number(str))).map((str) => Number(str))
+          // [16384, 21861]
+
+          return await payEveryone((difference || 1) * (max / curr))
+        } else {
+          addTranscript('ERROR', error.message)
+        }
+      }
+
+      setLoading(false)
+    },
+    [wallet, payoutWallets, txConfirmation]
+  )
 
   const downloadReceipt = useCallback(async () => {
     setLoading(true)
@@ -241,10 +327,14 @@ const AdminDashboard = () => {
           value: 'Payout',
           fontWeight: 'bold',
         },
+        {
+          value: 'TX Hash',
+          fontWeight: 'bold',
+        },
       ],
     ]
 
-    for (const { address, stakeKey, payout } of payoutWallets) {
+    for (const { address, stakeKey, payout, txHash } of payoutWallets) {
       const holder = holdingWallets.find((holder) => holder.stakeKey === stakeKey)
 
       data.push([
@@ -265,24 +355,28 @@ const AdminDashboard = () => {
           value: holder.assets[BAD_MOTORCYCLE_POLICY_ID]?.length || 0,
         },
         {
-          type: Number,
-          value: payout,
+          type: String,
+          value: displayBalance(payout),
+        },
+        {
+          type: String,
+          value: txHash,
         },
       ])
     }
 
     try {
       await writeXlsxFile(data, {
-        fileName: `BadFoxMC Royalty Distribution (${new Date().toLocaleString()}) TX[${payoutTxHash}].xlsx`,
-        columns: [{ width: 100 }, { width: 60 }, { width: 25 }, { width: 25 }, { width: 25 }],
+        fileName: `BadFoxMC Royalty Distribution (${new Date().toLocaleDateString()}).xlsx`,
+        columns: [{ width: 100 }, { width: 60 }, { width: 25 }, { width: 25 }, { width: 25 }, { width: 60 }],
       })
     } catch (error) {
-      addTranscript('ERROR', error.message)
       console.error(error)
+      addTranscript('ERROR', error.message)
     }
 
     setLoading(false)
-  }, [payoutWallets, payoutTxHash])
+  }, [payoutWallets])
 
   const syncDb = useCallback(async () => {
     setLoading(true)
@@ -292,8 +386,8 @@ const AdminDashboard = () => {
       await axios.post('/api/admin/syncDbWallets', { wallets: holdingWallets })
       addTranscript('Done!')
     } catch (error) {
-      addTranscript('ERROR', error.message)
       console.error(error)
+      addTranscript('ERROR', error.message)
     }
 
     setLoading(false)
@@ -321,7 +415,7 @@ const AdminDashboard = () => {
       <div className='flex-row' style={{ justifyContent: 'center' }}>
         <p>
           Balance: {ADA_SYMBOL}
-          {balance}
+          {displayBalance(balance)}
         </p>
       </div>
 
@@ -339,8 +433,8 @@ const AdminDashboard = () => {
           overflow: 'scroll',
         }}
       >
-        {transcripts.map(({ timestamp, msg, key }) => (
-          <p key={timestamp} style={{ margin: 0 }}>
+        {transcripts.map(({ timestamp, msg, key }, idx) => (
+          <p key={`transcript_${idx}_${timestamp}`} style={{ margin: 0 }}>
             {new Date(timestamp).toLocaleTimeString()} - {msg}
             {key ? (
               <Fragment>
@@ -441,18 +535,20 @@ const AdminDashboard = () => {
         <table style={{ margin: '1rem auto', textAlign: 'center' }}>
           <thead>
             <tr>
-              <th style={{ padding: '0 0.5rem' }}>Payout</th>
-              <th style={{ padding: '0 0.5rem' }}>Stake Key</th>
+              <th>Payout</th>
+              <th>Stake Key</th>
+              <th>TX Hash</th>
             </tr>
           </thead>
           <tbody>
-            {payoutWallets.map(({ stakeKey, payout }) => (
+            {payoutWallets.map(({ stakeKey, payout, txHash }) => (
               <tr key={stakeKey}>
                 <td>
                   {ADA_SYMBOL}
-                  {payout}
+                  {displayBalance(payout)}
                 </td>
-                <td>{stakeKey}</td>
+                <td style={{ padding: '0 1rem' }}>{stakeKey}</td>
+                <td>{txHash}</td>
               </tr>
             ))}
           </tbody>
