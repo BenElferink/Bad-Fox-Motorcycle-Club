@@ -87,7 +87,6 @@ export default function MintPortal() {
   if (isPreSaleOnline) {
     return !connected ? (
       <ConnectWallet
-        modalOnly
         disableManual
         introText='Connect a wallet to verify your whitelisted wallet address and participate in the pre-sale of this collection.'
       />

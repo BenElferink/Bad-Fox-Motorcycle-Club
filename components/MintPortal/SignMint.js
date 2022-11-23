@@ -34,7 +34,7 @@ const SignMint = ({ maxMints, mintPrice, mintAddress }) => {
   }
 
   return !connected ? (
-    <ConnectWallet modalOnly disableManual introText='Connect a wallet to mint your NFTs.' />
+    <ConnectWallet disableManual introText='Connect a wallet to mint your NFTs.' />
   ) : (
     <Fragment>
       {!connectedManually ? (

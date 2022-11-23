@@ -5,9 +5,8 @@ import Footer from '../../components/Footer'
 import AdminDashboard from '../../components/AdminDashboard'
 
 const ADMIN_STAKE_KEYS = [
-  'stake1u9psthdpkfklakeshj0dhxw7r2k98q32p7gzzrudgaw308c83u94y', // royalty wallet
-  'stake1uyrw60enksgl48f2zld99g9q8qzrnepjgntjnqz9twlvqygjv8kj9', // ben nami
-  'stake1u9x8umwq2y32sh55h2ym8kxal0d9r94vfd75uh7q5me7y6g4nc2q3', // club nami old
+  'stake1u9psthdpkfklakeshj0dhxw7r2k98q32p7gzzrudgaw308c83u94y', // club royalty wallet
+  'stake1u9x8umwq2y32sh55h2ym8kxal0d9r94vfd75uh7q5me7y6g4nc2q3', // club nami wallet old
 ]
 
 export default function Page() {
@@ -17,7 +16,7 @@ export default function Page() {
     return (
       <div className='App flex-col'>
         <Header />
-        <ConnectWallet modalOnly disableManual />
+        <ConnectWallet disableManual introText='Connect a wallet to view view the admin dashabord' />
         <Footer />
       </div>
     )

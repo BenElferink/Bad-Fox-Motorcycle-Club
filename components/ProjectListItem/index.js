@@ -43,7 +43,7 @@ function ProjectListItem({ name, image, onClick }) {
       onMouseEnter={() => (overlayRef.current.style.display = 'block')}
       onMouseLeave={() => (overlayRef.current.style.display = 'none')}
     >
-      <Image src={image} width={imageSize} height={imageSize} style={styles.projectImage} />
+      <Image src={image} alt={name} width={imageSize} height={imageSize} style={styles.projectImage} />
       <div ref={overlayRef} style={styles.projectOverlay}>
         <p style={styles.projectName}>{name}</p>
       </div>

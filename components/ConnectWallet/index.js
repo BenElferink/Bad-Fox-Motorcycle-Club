@@ -7,13 +7,11 @@ import BaseButton from '../BaseButton'
 import GlobalLoader from '../Loader/GlobalLoader'
 
 const DISCLAIMER =
-  "Connecting your wallet does not require a password/signature or any contracts, it's a read-only process, your balance/assets are safe."
+  "Connecting your wallet does not require a password, signature, or interaction with smart contracts of any kind. It's a read-only process, your balance & assets are safe."
 
 export default function ConnectWallet({
-  modalOnly = false,
-  redirectOnSuccess = false,
   disableManual = false,
-  introText = 'Connect a wallet to view your assets, traits, and other features such as your personal portfolio etc.',
+  introText = 'Connect a wallet to view personal data etc.',
 }) {
   const {
     availableWallets,
@@ -26,26 +24,14 @@ export default function ConnectWallet({
   } = useWallet()
   const { isMobile } = useScreenSize()
 
-  const [openModal, setOpenModal] = useState(modalOnly)
+  const [openModal, setOpenModal] = useState(true)
   const [input, setInput] = useState('')
 
-  const clickConnectButton = () => {
+  const onClose = () => {
     if (connected) {
-      window.location.href = '/wallet'
+      setOpenModal(false)
     } else {
-      setOpenModal(true)
-    }
-  }
-
-  const clickCloseModal = () => {
-    setOpenModal(false)
-
-    if (redirectOnSuccess) {
-      if (connected) {
-        window.location.href = '/wallet'
-      } else if (modalOnly) {
-        window.location.href = '/'
-      }
+      window.location.href = '/'
     }
   }
 
@@ -58,19 +44,10 @@ export default function ConnectWallet({
 
   return (
     <Fragment>
-      {!modalOnly ? (
-        <BaseButton
-          label={connected ? 'Wallet' : 'Connect'}
-          onClick={clickConnectButton}
-          backgroundColor='var(--brown)'
-          hoverColor='orange'
-        />
-      ) : null}
-
       <Modal
         title={connected ? 'Wallet Connected' : 'Connect a Wallet'}
         open={openModal}
-        onClose={clickCloseModal}
+        onClose={onClose}
         style={{ maxWidth: '800px', padding: isMobile ? '1rem 2rem' : '1rem 4rem' }}
       >
         {connected ? (
@@ -81,7 +58,9 @@ export default function ConnectWallet({
         ) : (
           <Fragment>
             <p>
-              {introText} {DISCLAIMER}
+              {introText}
+              <br />
+              <u>Disclaimer</u>: {DISCLAIMER}
             </p>
 
             {availableWallets.length == 0 ? (

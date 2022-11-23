@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react'
 // import { toast } from 'react-hot-toast'
 // import { useMint } from '../../contexts/MintContext'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
+import useWallet from '../../contexts/WalletContext'
 import { AppBar, Avatar, IconButton } from '@mui/material'
 import { MenuRounded } from '@mui/icons-material'
 import Modal from '../Modal'
 import BaseButton from '../BaseButton'
-import ConnectWallet from '../ConnectWallet'
 // import OnlineIndicator from '../OnlineIndicator'
 import Socials from './Socials'
 import { HOME, UTILITIES, TEAM } from '../../constants/scroll-nav'
@@ -16,6 +16,7 @@ import styles from './Header.module.css'
 
 export default function Header({ scrollTo = () => null }) {
   const { isMobile } = useScreenSize()
+  const { connected } = useWallet()
   // const { isPreSaleOnline, isPublicSaleOnline } = useMint()
 
   const { route, query } = useRouter()
@@ -52,6 +53,10 @@ export default function Header({ scrollTo = () => null }) {
 
   const clickCatalogs = () => {
     window.location.href = '/catalogs'
+  }
+
+  const clickConnect = () => {
+    window.location.href = '/wallet'
   }
 
   // const clickMint = () => {
@@ -140,7 +145,14 @@ export default function Header({ scrollTo = () => null }) {
             <BaseButton label='Mint' onClick={clickMint} transparent style={jsStyles.btn} />
           </OnlineIndicator> */}
 
-          {route !== '/mint' ? <ConnectWallet redirectOnSuccess /> : null}
+          {route !== '/mint' ? (
+            <BaseButton
+              label={connected ? 'Wallet' : 'Connect'}
+              onClick={clickConnect}
+              backgroundColor='var(--brown)'
+              hoverColor='orange'
+            />
+          ) : null}
           <Socials closeMenu={closeMenu} />
         </nav>
       </Modal>

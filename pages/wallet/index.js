@@ -11,7 +11,7 @@ export default function Page() {
     return (
       <div className='App flex-col'>
         <Header />
-        <ConnectWallet modalOnly />
+        <ConnectWallet introText='Connect a wallet to view your personal portfolio etc.' />
         <Footer />
       </div>
     )
