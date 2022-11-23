@@ -13,6 +13,7 @@ import Socials from './Socials'
 import { HOME, UTILITIES, TEAM } from '../../constants/scroll-nav'
 import { GITHUB_MEDIA_URL } from '../../constants/api-urls'
 import styles from './Header.module.css'
+import ToolsMenu from './ToolsMenu'
 
 export default function Header({ scrollTo = () => null }) {
   const { isMobile } = useScreenSize()
@@ -140,6 +141,7 @@ export default function Header({ scrollTo = () => null }) {
           {isHome ? <BaseButton label='Team' onClick={clickTeam} transparent style={jsStyles.btn} /> : null}
 
           <BaseButton label='Catalogs' onClick={clickCatalogs} transparent style={jsStyles.btn} />
+          <ToolsMenu btnStyle={jsStyles.btn} closeMenu={closeMenu} />
 
           {/* <OnlineIndicator online={isPreSaleOnline || isPublicSaleOnline}>
             <BaseButton label='Mint' onClick={clickMint} transparent style={jsStyles.btn} />
