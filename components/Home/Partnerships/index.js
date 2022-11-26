@@ -84,6 +84,13 @@ const Partnerships = () => {
             logoHeight: '80px',
             logoWidth: '80px',
           },
+          {
+            name: 'Cornucopias',
+            url: 'https://www.cornucopias.io',
+            logo: `${GITHUB_MEDIA_URL}/logo/other/cornucopias.png`,
+            logoHeight: '80px',
+            logoWidth: '120px',
+          },
         ].map((obj) => (
           <div
             key={`partner-${obj.name}`}
