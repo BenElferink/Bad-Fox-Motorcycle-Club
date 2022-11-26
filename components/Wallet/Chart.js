@@ -1,17 +1,37 @@
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 import React, { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
-import fromHex from '../../functions/formatters/hex/fromHex'
-import getFileForPolicyId from '../../functions/getFileForPolicyId'
-import formatIpfsImageUrl from '../../functions/formatters/formatIpfsImageUrl'
 import getDatesFromFloorData from '../../functions/charts/getDatesFromFloorData'
 import getPortfolioSeries from '../../functions/charts/getPortfolioSeries'
+import formatIpfsImageUrl from '../../functions/formatters/formatIpfsImageUrl'
+import fromHex from '../../functions/formatters/hex/fromHex'
+import getFileForPolicyId from '../../functions/getFileForPolicyId'
+import AssetCard from '../Assets/AssetCard'
+import BaseButton from '../BaseButton'
 import Modal from '../Modal'
 import Toggle from '../Toggle'
-import BaseButton from '../BaseButton'
-import AssetCard from '../Assets/AssetCard'
 
-const ApexChart = dynamic(() => import('react-apexcharts'), { ssr: false })
+// TODO:
+// https://towardsdev.com/chart-js-next-js-beautiful-data-driven-dashboards-how-to-create-them-fast-and-efficiently-a59e313a3153
+// https://miro.medium.com/max/640/1*FuLAoztQMgX9X_TEUGRWwg.webp
+
+import {
+  CategoryScale,
+  Chart as ChartJS,
+  Filler,
+  Legend,
+  LinearScale,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
+} from 'chart.js'
+
+import { Line } from 'react-chartjs-2'
+
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Title, Tooltip, Legend)
+
+// const ApexChart = dynamic(() => import('react-apexcharts'), { ssr: false })
 
 const Chart = ({
   policyId,
@@ -70,6 +90,61 @@ const Chart = ({
 
   return (
     <Fragment>
+      {/* <div style={{ backgroundColor: 'whitesmoke' }}>
+        <div>
+          <h6 style={{ color: 'grey' }}>Sales netto</h6>
+          <h4 style={{ color: 'black' }}>$306.20</h4>
+          <div>
+            <span style={{ color: 'red' }}>1.3%</span>
+            <span style={{ color: 'red' }}>↓</span>
+            <p style={{ color: 'grey' }}>than last month</p>
+          </div>
+        </div>
+
+        <div>
+          <Line
+            width={200}
+            height={100}
+            options={{
+              plugins: {
+                legend: {
+                  display: false,
+                },
+              },
+              scales: {
+                x: {
+                  display: false,
+                },
+                y: {
+                  display: false,
+                },
+              },
+              elements: {
+                line: {
+                  tension: 0,
+                  borderWidth: 2,
+                  borderColor: 'rgba(47,97,68, 1)',
+                  fill: 'start',
+                  backgroundColor: 'rgba(47,97,68, 0.3)',
+                },
+                point: {
+                  radius: 0,
+                  hitRadius: 0,
+                },
+              },
+            }}
+            data={{
+              labels: categories,
+              datasets: [
+                {
+                  data: series[2].data,
+                },
+              ],
+            }}
+          />
+        </div>
+      </div> */}
+
       <div style={styles.chartWrapper}>
         <div className='flex-row' style={{ minHeight: '50px' }}>
           <Toggle
@@ -92,7 +167,7 @@ const Chart = ({
           </div>
         </div>
 
-        <ApexChart
+        {/* <ApexChart
           type='line'
           width={chartWidth}
           series={series}
@@ -123,6 +198,43 @@ const Chart = ({
               show: false,
               row: { colors: ['rgba(255, 255, 255, 0.2)', 'rgba(255, 255, 255, 0.4)'] },
             },
+          }}
+        /> */}
+
+        <Line
+          width={chartWidth}
+          height={chartWidth * 0.7}
+          options={{
+            plugins: {
+              legend: {
+                display: false,
+              },
+            },
+            scales: {
+              x: {
+                display: false,
+              },
+              y: {
+                display: false,
+              },
+            },
+            elements: {
+              line: {
+                tension: 0,
+                borderWidth: 2,
+                fill: 'start',
+                // borderColor: 'rgba(47,97,68, 1)',
+                // backgroundColor: 'rgba(47,97,68, 0.3)',
+              },
+              point: {
+                radius: 0,
+                hitRadius: 0,
+              },
+            },
+          }}
+          data={{
+            labels: categories,
+            datasets: series,
           }}
         />
       </div>

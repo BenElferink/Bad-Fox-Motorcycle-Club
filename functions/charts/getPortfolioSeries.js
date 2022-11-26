@@ -1,28 +1,25 @@
+// https://www.chartjs.org/docs/latest/samples/line/multi-axis.html
+
 const getPortfolioSeries = (pricedAssets, floorSnapshots, isMonth) => {
   const days = isMonth ? 30 : 7
   const pricedAssetsArr = Object.values(pricedAssets)
   const snapshots = [...floorSnapshots]
 
   const totalBoughtSeries = {
-    name: 'Investment Value',
+    label: 'Investment Value',
     data: new Array(days).fill(null),
   }
   const totalHighestTraitSeries = {
-    name: 'Highest Trait Value',
+    label: 'Highest Trait Value',
     data: new Array(days).fill(null),
   }
   const totalFloorSeries = {
-    name: 'Floor Value',
+    label: 'Floor Value',
     data: new Array(days).fill(null),
   }
 
-  if (isMonth) {
-    while (snapshots.length < 30) snapshots.unshift({})
-    while (snapshots.length > 30) snapshots.shift()
-  } else {
-    while (snapshots.length < 7) snapshots.unshift({})
-    while (snapshots.length > 7) snapshots.shift()
-  }
+  while (snapshots.length < days) snapshots.unshift({})
+  while (snapshots.length > days) snapshots.shift()
 
   const isTimestampValid = (idx, timestamp) => {
     const thisStamp = snapshots[snapshots.length - (days - idx)]?.timestamp
@@ -75,6 +72,33 @@ const getPortfolioSeries = (pricedAssets, floorSnapshots, isMonth) => {
       })
     }
   })
+
+  totalBoughtSeries.borderColor = 'rgba(114, 137, 218, 1)'
+  totalBoughtSeries.backgroundColor = 'rgba(114, 137, 218, 0.4)'
+
+  const totalHighestTraitSeriesIsUp =
+    totalHighestTraitSeries.data[totalHighestTraitSeries.data.findIndex((num) => num !== null)] <
+    totalHighestTraitSeries.data[totalHighestTraitSeries.data.length - 1]
+
+  totalHighestTraitSeries.borderColor = totalHighestTraitSeriesIsUp
+    ? 'rgba(68, 183, 0, 1)' // 'var(--online)'
+    : 'rgba(183, 68, 0, 1)' // 'var(--offline)'
+
+  totalHighestTraitSeries.backgroundColor = totalHighestTraitSeriesIsUp
+    ? 'rgba(68, 183, 0, 0.4)' // 'var(--online)'
+    : 'rgba(183, 68, 0, 0.4)' // 'var(--offline)'
+
+  const totalFloorSeriesIsUp =
+    totalFloorSeries.data[totalFloorSeries.data.findIndex((num) => num !== null)] <
+    totalFloorSeries.data[totalFloorSeries.data.length - 1]
+
+  totalFloorSeries.borderColor = totalFloorSeriesIsUp
+    ? 'rgba(68, 183, 0, 1)' // 'var(--online)'
+    : 'rgba(183, 68, 0, 1)' // 'var(--offline)'
+
+  totalFloorSeries.backgroundColor = totalFloorSeriesIsUp
+    ? 'rgba(68, 183, 0, 0.4)' // 'var(--online)'
+    : 'rgba(183, 68, 0, 0.4)' // 'var(--offline)'
 
   return [totalBoughtSeries, totalHighestTraitSeries, totalFloorSeries]
 }
