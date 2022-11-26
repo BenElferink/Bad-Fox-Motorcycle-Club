@@ -42,11 +42,11 @@ const Wallet = () => {
           timestamp: 0,
         }
 
-        try {
-          txHistory = await jpgStore.getAssetPurchasePrice(assetId)
-        } catch (error) {
-          console.error(error)
-        }
+        // try {
+        //   txHistory = await jpgStore.getAssetPurchasePrice(assetId)
+        // } catch (error) {
+        //   console.error(error)
+        // }
 
         if (!txHistory.price && !txHistory.timestamp) {
           if (oldStored) {

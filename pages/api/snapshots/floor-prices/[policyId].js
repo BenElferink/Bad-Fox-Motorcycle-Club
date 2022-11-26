@@ -31,7 +31,7 @@ export default async (req, res) => {
     switch (method) {
       case 'GET': {
         const dbSnapshots = await FloorSnapshot.find({ policyId }).sort({ timestamp: 1 })
-        const liveAttributeFloors = await getAttributeFloors(policyId)
+        // const liveAttributeFloors = await getAttributeFloors(policyId)
 
         dbSnapshots.push({
           policyId,
