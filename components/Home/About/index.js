@@ -1,6 +1,6 @@
 import styles from './About.module.css'
 
-export default function About() {
+const About = () => {
   return (
     <section className={styles.root}>
       <h1>What is Bad Fox Motorcycle Club?</h1>
@@ -12,3 +12,5 @@ export default function About() {
     </section>
   )
 }
+
+export default About

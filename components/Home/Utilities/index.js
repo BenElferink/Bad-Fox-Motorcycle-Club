@@ -1,11 +1,9 @@
 import dynamic from 'next/dynamic'
-import { forwardRef } from 'react'
 import { CheckCircle, RadioButtonUnchecked } from '@mui/icons-material'
 import { useScreenSize } from '../../../contexts/ScreenSizeContext'
 import ListItem from './LisItem'
 import MediaWrapper from './MediaWrapper'
 import Tokens from './Tokens'
-import { UTILITIES } from '../../../constants/scroll-nav'
 import { GITHUB_MEDIA_URL } from '../../../constants/api-urls'
 import styles from './Utilities.module.css'
 
@@ -64,7 +62,7 @@ const data = [
     events: [
       {
         complete: true,
-        title: '4042 Chain',
+        title: '42 Chain',
         description:
           "Limited supply of 150, airdrop to owners of 4042's famous traits. Grants membership access to exclusive/early content produced by 4042.",
       },
@@ -72,19 +70,19 @@ const data = [
         complete: false,
         title: 'Music Album',
         description:
-          'Airdrop to holders of the 4042 Chain. Produced in collaboration with 4042 and Awesomeisjayell.',
+          'Airdrop to holders of the 42 Chain. Produced in collaboration with 4042 and Awesomeisjayell.',
       },
       {
         complete: false,
         title: '3D Fox Avatar',
         description:
-          'Supply of 5,000 3D metaverse compatible avatars. To be used in the OGVerse and other metaverses that support this standard.',
+          'Supply of 6,000 3D metaverse compatible avatars. To be used in the OGVerse and other metaverses that support this standard.',
       },
       {
         complete: false,
         title: 'Vox Fox Avatar',
         description:
-          'Supply of 5,000 Vox metaverse compatible avatars. To be used in the Boss Planet and other metaverses that support this standard.',
+          'Supply of 6,000 Vox metaverse compatible avatars. To be used in the Boss Planet and other metaverses that support this standard.',
       },
     ],
     renderMedia: (isLeft) => (
@@ -116,6 +114,11 @@ const data = [
       },
       {
         complete: false,
+        title: 'Unbounded Earth',
+        description: 'Coming soon™️',
+      },
+      {
+        complete: false,
         title: 'Boss Planet',
         description: 'Coming soon™️',
       },
@@ -128,11 +131,11 @@ const data = [
   },
 ]
 
-const Utilities = forwardRef((props, ref) => {
+const Utilities = () => {
   const { isMobile } = useScreenSize()
 
   return (
-    <div ref={ref} id={UTILITIES} className={styles.root}>
+    <div className={styles.root}>
       <h1>Utilities</h1>
 
       {data.map((phase, idx) => {
@@ -167,6 +170,6 @@ const Utilities = forwardRef((props, ref) => {
       })}
     </div>
   )
-})
+}
 
 export default Utilities

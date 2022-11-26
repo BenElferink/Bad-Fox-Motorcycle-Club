@@ -1,6 +1,6 @@
 import { GITHUB_MEDIA_URL } from '../../../constants/api-urls'
 
-export default function Partnerships() {
+const Partnerships = () => {
   return (
     <div style={{ maxWidth: '90vw', width: '100%', margin: '3rem auto', color: 'var(--grey)' }}>
       <h1 style={{ margin: '0 0 1rem 0', textAlign: 'center' }}>Partnerships</h1>
@@ -112,3 +112,5 @@ export default function Partnerships() {
     </div>
   )
 }
+
+export default Partnerships
