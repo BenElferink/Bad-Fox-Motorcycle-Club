@@ -176,6 +176,13 @@ const Partnerships = () => {
               logoHeight: '80px',
               logoWidth: '80px',
             },
+            {
+              name: 'Stag Allience',
+              url: 'https://www.stagalliance.com',
+              logoUrl: `${GITHUB_MEDIA_URL}/logo/other/stagalliance.png`,
+              logoHeight: '80px',
+              logoWidth: '80px',
+            },
           ].map((obj) => (
             <PartnerItem
               key={`partner-${obj.name}`}
