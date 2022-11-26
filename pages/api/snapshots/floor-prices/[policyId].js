@@ -90,7 +90,7 @@ export default async (req, res) => {
       }
     }
   } catch (error) {
-    console.error(error.message)
+    console.error(error)
 
     return res.status(500).json({})
   }
