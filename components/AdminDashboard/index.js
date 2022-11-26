@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Transaction } from '@martifylabs/mesh'
 import writeXlsxFile from 'write-excel-file'
 import useWallet from '../../contexts/WalletContext'
+import sleep from '../../functions/sleep'
 import getFileForPolicyId from '../../functions/getFileForPolicyId'
 import BaseButton from '../BaseButton'
 import OnlineIndicator from '../OnlineIndicator'
@@ -14,8 +15,6 @@ const COLLECTIONS = [
   { policyId: BAD_FOX_POLICY_ID, policyAssets: getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets') },
   { policyId: BAD_MOTORCYCLE_POLICY_ID, policyAssets: getFileForPolicyId(BAD_MOTORCYCLE_POLICY_ID, 'assets') },
 ]
-
-const sleep = (ms) => new Promise((resolve) => setTimeout(() => resolve(true), ms))
 
 const displayBalance = (v) => (Number(v) / MILLION).toFixed(2)
 
