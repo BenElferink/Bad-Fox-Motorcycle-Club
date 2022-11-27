@@ -205,14 +205,16 @@ const Chart = ({
           width={chartWidth}
           height={chartWidth * 0.7}
           options={{
-            plugins: {
-              legend: {
-                display: false,
-              },
-            },
+            // plugins: {
+            //   legend: {
+            //     display: false,
+            //   },
+            // },
             scales: {
               x: {
-                display: false,
+                grid: {
+                  display: false,
+                },
               },
               y: {
                 display: false,

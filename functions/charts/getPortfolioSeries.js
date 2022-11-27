@@ -9,12 +9,12 @@ const getPortfolioSeries = (pricedAssets, floorSnapshots, isMonth) => {
     label: 'Investment Value',
     data: new Array(days).fill(null),
   }
-  const totalHighestTraitSeries = {
-    label: 'Highest Trait Value',
-    data: new Array(days).fill(null),
-  }
   const totalFloorSeries = {
     label: 'Floor Value',
+    data: new Array(days).fill(null),
+  }
+  const totalHighestTraitSeries = {
+    label: 'Highest Trait Value',
     data: new Array(days).fill(null),
   }
 
@@ -59,15 +59,15 @@ const getPortfolioSeries = (pricedAssets, floorSnapshots, isMonth) => {
         return num
       })
 
-      totalHighestTraitSeries.data = totalHighestTraitSeries.data.map((num, i) => {
-        if (isTimestampValid(i, timestamp))
-          return Math.round(num + getTotalValuesForAttributesAtThisDate(attributes, i).highestTrait)
-        return num
-      })
-
       totalFloorSeries.data = totalFloorSeries.data.map((num, i) => {
         if (isTimestampValid(i, timestamp))
           return Math.round(num + getTotalValuesForAttributesAtThisDate(attributes, i).floor)
+        return num
+      })
+
+      totalHighestTraitSeries.data = totalHighestTraitSeries.data.map((num, i) => {
+        if (isTimestampValid(i, timestamp))
+          return Math.round(num + getTotalValuesForAttributesAtThisDate(attributes, i).highestTrait)
         return num
       })
     }
@@ -75,18 +75,6 @@ const getPortfolioSeries = (pricedAssets, floorSnapshots, isMonth) => {
 
   totalBoughtSeries.borderColor = 'rgba(114, 137, 218, 1)'
   totalBoughtSeries.backgroundColor = 'rgba(114, 137, 218, 0.4)'
-
-  const totalHighestTraitSeriesIsUp =
-    totalHighestTraitSeries.data[totalHighestTraitSeries.data.findIndex((num) => num !== null)] <
-    totalHighestTraitSeries.data[totalHighestTraitSeries.data.length - 1]
-
-  totalHighestTraitSeries.borderColor = totalHighestTraitSeriesIsUp
-    ? 'rgba(68, 183, 0, 1)' // 'var(--online)'
-    : 'rgba(183, 68, 0, 1)' // 'var(--offline)'
-
-  totalHighestTraitSeries.backgroundColor = totalHighestTraitSeriesIsUp
-    ? 'rgba(68, 183, 0, 0.4)' // 'var(--online)'
-    : 'rgba(183, 68, 0, 0.4)' // 'var(--offline)'
 
   const totalFloorSeriesIsUp =
     totalFloorSeries.data[totalFloorSeries.data.findIndex((num) => num !== null)] <
@@ -100,7 +88,19 @@ const getPortfolioSeries = (pricedAssets, floorSnapshots, isMonth) => {
     ? 'rgba(68, 183, 0, 0.4)' // 'var(--online)'
     : 'rgba(183, 68, 0, 0.4)' // 'var(--offline)'
 
-  return [totalBoughtSeries, totalHighestTraitSeries, totalFloorSeries]
+  const totalHighestTraitSeriesIsUp =
+    totalHighestTraitSeries.data[totalHighestTraitSeries.data.findIndex((num) => num !== null)] <
+    totalHighestTraitSeries.data[totalHighestTraitSeries.data.length - 1]
+
+  totalHighestTraitSeries.borderColor = totalHighestTraitSeriesIsUp
+    ? 'rgba(68, 183, 0, 1)' // 'var(--online)'
+    : 'rgba(183, 68, 0, 1)' // 'var(--offline)'
+
+  totalHighestTraitSeries.backgroundColor = totalHighestTraitSeriesIsUp
+    ? 'rgba(68, 183, 0, 0.4)' // 'var(--online)'
+    : 'rgba(183, 68, 0, 0.4)' // 'var(--offline)'
+
+  return [totalBoughtSeries, totalFloorSeries, totalHighestTraitSeries]
 }
 
 module.exports = getPortfolioSeries

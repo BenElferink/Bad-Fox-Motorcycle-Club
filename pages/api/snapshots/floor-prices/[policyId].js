@@ -33,11 +33,11 @@ export default async (req, res) => {
         const dbSnapshots = await FloorSnapshot.find({ policyId }).sort({ timestamp: 1 })
         // const liveAttributeFloors = await getAttributeFloors(policyId)
 
-        dbSnapshots.push({
-          policyId,
-          timestamp: 'LIVE',
-          attributes: liveAttributeFloors,
-        })
+        // dbSnapshots.push({
+        //   policyId,
+        //   timestamp: 'LIVE',
+        //   attributes: liveAttributeFloors,
+        // })
 
         return res.status(200).json({
           count: dbSnapshots.length,
