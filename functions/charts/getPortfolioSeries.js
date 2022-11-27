@@ -1,28 +1,26 @@
-// https://www.chartjs.org/docs/latest/samples/line/multi-axis.html
-
-const getPortfolioSeries = (pricedAssets, floorSnapshots, isMonth) => {
-  const days = isMonth ? 30 : 7
+const getPortfolioSeries = (pricedAssets, floorSnapshots) => {
+  const numOfDataPoints = 30
   const pricedAssetsArr = Object.values(pricedAssets)
   const snapshots = [...floorSnapshots]
 
-  const totalBoughtSeries = {
-    label: 'Investment Value',
-    data: new Array(days).fill(null),
+  const investementValue = {
+    label: 'Investment',
+    data: new Array(numOfDataPoints).fill(0),
   }
-  const totalFloorSeries = {
-    label: 'Floor Value',
-    data: new Array(days).fill(null),
+  const floorValue = {
+    label: 'Floor',
+    data: new Array(numOfDataPoints).fill(0),
   }
-  const totalHighestTraitSeries = {
-    label: 'Highest Trait Value',
-    data: new Array(days).fill(null),
+  const highestTraitValue = {
+    label: 'Highest Trait',
+    data: new Array(numOfDataPoints).fill(0),
   }
 
-  while (snapshots.length < days) snapshots.unshift({})
-  while (snapshots.length > days) snapshots.shift()
+  while (snapshots.length < numOfDataPoints) snapshots.unshift({})
+  while (snapshots.length > numOfDataPoints) snapshots.shift()
 
   const isTimestampValid = (idx, timestamp) => {
-    const thisStamp = snapshots[snapshots.length - (days - idx)]?.timestamp
+    const thisStamp = snapshots[snapshots.length - (numOfDataPoints - idx)]?.timestamp
 
     if (thisStamp >= timestamp || thisStamp === 'LIVE') {
       return true
@@ -54,18 +52,18 @@ const getPortfolioSeries = (pricedAssets, floorSnapshots, isMonth) => {
 
   pricedAssetsArr.forEach(({ attributes, price, timestamp }) => {
     if (attributes) {
-      totalBoughtSeries.data = totalBoughtSeries.data.map((num, i) => {
+      investementValue.data = investementValue.data.map((num, i) => {
         if (isTimestampValid(i, timestamp)) return Math.round(num + price)
         return num
       })
 
-      totalFloorSeries.data = totalFloorSeries.data.map((num, i) => {
+      floorValue.data = floorValue.data.map((num, i) => {
         if (isTimestampValid(i, timestamp))
           return Math.round(num + getTotalValuesForAttributesAtThisDate(attributes, i).floor)
         return num
       })
 
-      totalHighestTraitSeries.data = totalHighestTraitSeries.data.map((num, i) => {
+      highestTraitValue.data = highestTraitValue.data.map((num, i) => {
         if (isTimestampValid(i, timestamp))
           return Math.round(num + getTotalValuesForAttributesAtThisDate(attributes, i).highestTrait)
         return num
@@ -73,34 +71,23 @@ const getPortfolioSeries = (pricedAssets, floorSnapshots, isMonth) => {
     }
   })
 
-  totalBoughtSeries.borderColor = 'rgba(114, 137, 218, 1)'
-  totalBoughtSeries.backgroundColor = 'rgba(114, 137, 218, 0.4)'
+  investementValue.borderColor = 'rgba(114, 137, 218, 1)'
+  investementValue.backgroundColor = 'rgba(114, 137, 218, 0.4)'
 
-  const totalFloorSeriesIsUp =
-    totalFloorSeries.data[totalFloorSeries.data.findIndex((num) => num !== null)] <
-    totalFloorSeries.data[totalFloorSeries.data.length - 1]
+  const floorValueIsUp =
+    floorValue.data[floorValue.data.findIndex((num) => num !== 0)] < floorValue.data[floorValue.data.length - 1]
 
-  totalFloorSeries.borderColor = totalFloorSeriesIsUp
-    ? 'rgba(68, 183, 0, 1)' // 'var(--online)'
-    : 'rgba(183, 68, 0, 1)' // 'var(--offline)'
+  floorValue.borderColor = floorValueIsUp ? 'rgba(68, 183, 0, 1)' : 'rgba(183, 68, 0, 1)'
+  floorValue.backgroundColor = floorValueIsUp ? 'rgba(68, 183, 0, 0.4)' : 'rgba(183, 68, 0, 0.4)'
 
-  totalFloorSeries.backgroundColor = totalFloorSeriesIsUp
-    ? 'rgba(68, 183, 0, 0.4)' // 'var(--online)'
-    : 'rgba(183, 68, 0, 0.4)' // 'var(--offline)'
+  const highestTraitValueIsUp =
+    highestTraitValue.data[highestTraitValue.data.findIndex((num) => num !== 0)] <
+    highestTraitValue.data[highestTraitValue.data.length - 1]
 
-  const totalHighestTraitSeriesIsUp =
-    totalHighestTraitSeries.data[totalHighestTraitSeries.data.findIndex((num) => num !== null)] <
-    totalHighestTraitSeries.data[totalHighestTraitSeries.data.length - 1]
+  highestTraitValue.borderColor = highestTraitValueIsUp ? 'rgba(68, 183, 0, 1)' : 'rgba(183, 68, 0, 1)'
+  highestTraitValue.backgroundColor = highestTraitValueIsUp ? 'rgba(68, 183, 0, 0.4)' : 'rgba(183, 68, 0, 0.4)'
 
-  totalHighestTraitSeries.borderColor = totalHighestTraitSeriesIsUp
-    ? 'rgba(68, 183, 0, 1)' // 'var(--online)'
-    : 'rgba(183, 68, 0, 1)' // 'var(--offline)'
-
-  totalHighestTraitSeries.backgroundColor = totalHighestTraitSeriesIsUp
-    ? 'rgba(68, 183, 0, 0.4)' // 'var(--online)'
-    : 'rgba(183, 68, 0, 0.4)' // 'var(--offline)'
-
-  return [totalBoughtSeries, totalFloorSeries, totalHighestTraitSeries]
+  return [investementValue, floorValue, highestTraitValue]
 }
 
 module.exports = getPortfolioSeries

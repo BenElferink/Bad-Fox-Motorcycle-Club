@@ -1,22 +1,19 @@
-const getDatesFromFloorData = (floorSnapshots, isMonth) => {
+const getDatesFromFloorData = (floorSnapshots) => {
+  const numOfDataPoints = 30
+
   const dates = floorSnapshots.map(({ timestamp }) => {
     if (timestamp === 'LIVE') return timestamp
 
     const t = new Date(timestamp)
-    // const month = t.getMonth()
     const day = t.getDate()
+    // const month = t.getMonth()
 
     // return `${month + 1}/${day}`
     return day
   })
 
-  if (isMonth) {
-    while (dates.length < 30) dates.unshift(0)
-    while (dates.length > 30) dates.shift()
-  } else {
-    while (dates.length < 7) dates.unshift(0)
-    while (dates.length > 7) dates.shift()
-  }
+  while (dates.length < numOfDataPoints) dates.unshift(0)
+  while (dates.length > numOfDataPoints) dates.shift()
 
   return dates
 }

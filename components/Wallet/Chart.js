@@ -1,5 +1,6 @@
-// import dynamic from 'next/dynamic'
-import React, { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
+import React, { Fragment, useCallback, useMemo, useState } from 'react'
+import { Chart as ChartJS, LineElement, PointElement, LinearScale, CategoryScale, Legend, Filler } from 'chart.js'
+import { Line } from 'react-chartjs-2'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import getDatesFromFloorData from '../../functions/charts/getDatesFromFloorData'
 import getPortfolioSeries from '../../functions/charts/getPortfolioSeries'
@@ -9,29 +10,13 @@ import getFileForPolicyId from '../../functions/getFileForPolicyId'
 import AssetCard from '../Assets/AssetCard'
 import BaseButton from '../BaseButton'
 import Modal from '../Modal'
-import Toggle from '../Toggle'
 
 // TODO:
 // https://towardsdev.com/chart-js-next-js-beautiful-data-driven-dashboards-how-to-create-them-fast-and-efficiently-a59e313a3153
 // https://miro.medium.com/max/640/1*FuLAoztQMgX9X_TEUGRWwg.webp
+// https://www.chartjs.org/docs/latest/samples/line/multi-axis.html
 
-import {
-  CategoryScale,
-  Chart as ChartJS,
-  Filler,
-  Legend,
-  LinearScale,
-  LineElement,
-  PointElement,
-  Title,
-  Tooltip,
-} from 'chart.js'
-
-import { Line } from 'react-chartjs-2'
-
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Title, Tooltip, Legend)
-
-// const ApexChart = dynamic(() => import('react-apexcharts'), { ssr: false })
+ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Legend, Filler)
 
 const Chart = ({
   policyId,
@@ -41,12 +26,7 @@ const Chart = ({
   getPricesFromAttributes = () => null,
 }) => {
   const { isMobile, screenWidth } = useScreenSize()
-  const [isMonth, setIsMonth] = useState(!isMobile)
   const [isManagePortfolio, setIsManagePortfolio] = useState(false)
-
-  useEffect(() => {
-    setIsMonth(!isMobile)
-  }, [isMobile])
 
   const chartWidth = useCallback(() => {
     const maxWidth = 640
@@ -55,8 +35,8 @@ const Chart = ({
     return val
   }, [screenWidth, isMobile])()
 
-  const series = getPortfolioSeries(pricedItems, floorSnapshots, isMonth)
-  const categories = getDatesFromFloorData(floorSnapshots, isMonth)
+  const series = getPortfolioSeries(pricedItems, floorSnapshots)
+  const categories = getDatesFromFloorData(floorSnapshots)
 
   const styles = {
     chartWrapper: {
@@ -146,61 +126,6 @@ const Chart = ({
       </div> */}
 
       <div style={styles.chartWrapper}>
-        <div className='flex-row' style={{ minHeight: '50px' }}>
-          <Toggle
-            labelLeft='7d'
-            labelRight='30d'
-            showIcons={false}
-            state={{ value: isMonth, setValue: setIsMonth }}
-            style={{ margin: '0 auto 0 1rem', fontSize: '0.9rem' }}
-          />
-
-          <div style={{ width: '40%', margin: '0rem 1rem 0rem auto' }}>
-            <BaseButton
-              label='Manage Portfolio'
-              onClick={() => setIsManagePortfolio(true)}
-              backgroundColor='var(--brown)'
-              hoverColor='var(--orange)'
-              fullWidth
-              size='small'
-            />
-          </div>
-        </div>
-
-        {/* <ApexChart
-          type='line'
-          width={chartWidth}
-          series={series}
-          options={{
-            chart: {
-              id: 'portfolio-chart',
-              type: 'line',
-              stacked: false,
-              toolbar: { show: true },
-              zoom: { enabled: false },
-            },
-            xaxis: {
-              categories,
-            },
-            theme: { mode: 'dark' },
-            colors: [
-              'var(--discord-purple)',
-              series[1].data[series[1].data.findIndex((num) => num !== null)] <
-              series[1].data[series[1].data.length - 1]
-                ? 'var(--online)'
-                : 'var(--offline)',
-              series[2].data[series[2].data.findIndex((num) => num !== null)] <
-              series[2].data[series[2].data.length - 1]
-                ? 'var(--online)'
-                : 'var(--offline)',
-            ],
-            grid: {
-              show: false,
-              row: { colors: ['rgba(255, 255, 255, 0.2)', 'rgba(255, 255, 255, 0.4)'] },
-            },
-          }}
-        /> */}
-
         <Line
           width={chartWidth}
           height={chartWidth * 0.7}
@@ -238,6 +163,16 @@ const Chart = ({
             labels: categories,
             datasets: series,
           }}
+        />
+
+        <BaseButton
+          label='Manage Portfolio'
+          onClick={() => setIsManagePortfolio(true)}
+          backgroundColor='var(--brown)'
+          hoverColor='var(--orange)'
+          fullWidth
+          size='small'
+          style={{ margin: 0 }}
         />
       </div>
 
