@@ -1,19 +1,21 @@
-const axios = require('axios')
-const getFileForPolicyId = require('../functions/getFileForPolicyId')
-const formatIpfsImageUrl = require('../functions/formatters/formatIpfsImageUrl')
-const { JPG_API } = require('../constants/api-urls')
-const { BAD_FOX_POLICY_ID } = require('../constants/policy-ids')
+import axios from 'axios'
+import sleep from '../functions/sleep'
+import getFileForPolicyId from '../functions/getFileForPolicyId'
+import formatIpfsImageUrl from '../functions/formatters/formatIpfsImageUrl'
+import { BAD_FOX_POLICY_ID } from '../constants/policy-ids'
 
 const ONE_MILLION = 1000000
 
 class JpgStore {
-  constructor() {}
+  constructor() {
+    this.baseUrl = 'https://server.jpgstoreapis.com'
+  }
 
   getRecents = (options = {}) => {
     const policyId = options.policyId ?? BAD_FOX_POLICY_ID
     const sold = options.sold ?? false
     const page = options.page ?? 1
-    const uri = `${JPG_API}/policy/${policyId}/${sold ? 'sales' : 'listings'}?page=${page}`
+    const uri = `${this.baseUrl}/policy/${policyId}/${sold ? 'sales' : 'listings'}?page=${page}`
 
     return new Promise(async (resolve, reject) => {
       console.log(
@@ -21,7 +23,11 @@ class JpgStore {
       )
 
       try {
-        const { data } = await axios.get(uri)
+        const { data } = await axios.get(uri, {
+          headers: {
+            'Accept-Encoding': 'application/json',
+          },
+        })
 
         const payload = data
           .map((item) => {
@@ -46,26 +52,51 @@ class JpgStore {
         // sold = false
         // [
         //   {
-        //     asset_id: 'fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967426164466f7832363334',
-        //     display_name: 'Bad Fox #2634',
-        //     tx_hash: 'e23096dead242805a54451cd747720f2b46f376c047df4bc51f035878e411e33',
-        //     listing_id: 20124090,
-        //     listed_at: '2022-08-22T21:29:03.233+00:00',
-        //     price_lovelace: 199000000
+        //     asset_id: 'fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967426164466f7832353230',
+        //     display_name: 'Bad Fox #2520',
+        //     tx_hash: '1a8cee3c96e7a46da0d9482ae0172d87c5e38c4d5f9dce6c68be8eacb9d575b9',
+        //     listing_id: 20638802,
+        //     listed_at: '2022-11-29T03:31:08.798+00:00',
+        //     price_lovelace: 90000000,
+        //     listing_type: 'SINGLE_ASSET' | 'BUNDLE'
         //   }
         // ]
 
         // sold = true
         // [
         //   {
-        //     asset_id: 'fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967426164466f7833393230',
-        //     display_name: 'Bad Fox #3920',
-        //     tx_hash: '17e5385746def6fde2bd1cfbb42b1a9925447ff8cb05bc5487d30d17df64cdd3',
-        //     listing_id: 20156621,
-        //     confirmed_at: '2022-08-22T16:41:02.965+00:00',
-        //     price_lovelace: 34000000
+        //     asset_id: 'fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967426164466f7833343934',
+        //     display_name: 'Bad Fox #3494',
+        //     tx_hash: '8701d3b1395dbb353185f98f663751d99cff1d4ef81e79b27cb0c4ca52bf934f',
+        //     listing_id: null,
+        //     confirmed_at: null,
+        //     price_lovelace: 125000000,
+        //     listing_type: 'SINGLE_ASSET' | 'BUNDLE'
         //   }
         // ]
+
+        // BUNDLE
+        // {
+        //     ...
+        //     bundled_assets": [
+        //         {
+        //           "asset_id": "fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967426164466f7834313536",
+        //           "display_name": "Bad Fox #4156"
+        //         },
+        //         {
+        //           "asset_id": "fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967426164466f7834303130",
+        //           "display_name": "Bad Fox #4010"
+        //         },
+        //         {
+        //           "asset_id": "fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967426164466f7832323432",
+        //           "display_name": "Bad Fox #2242"
+        //         },
+        //         {
+        //           "asset_id": "fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967426164466f7834373031",
+        //           "display_name": "Bad Fox #4701"
+        //         }
+        //     ]
+        // }
       } catch (e) {
         return reject(e)
       }
@@ -74,15 +105,19 @@ class JpgStore {
 
   getListings = (options = {}) => {
     const policyId = options.policyId ?? BAD_FOX_POLICY_ID
-    const size = options.size ?? 6000
-    const uri = `${JPG_API}/search/tokens?policyIds=["${policyId}"]&saleType=buy-now&sortBy=price-low-to-high&verified=default&size=${size}`
+    const size = options.size ?? 100
+    const uri = `${this.baseUrl}/search/tokens?policyIds=["${policyId}"]&saleType=buy-now&sortBy=price-low-to-high&verified=default&size=${size}`
     // &saleType=default
 
     return new Promise(async (resolve, reject) => {
       console.log(`Fetching ${size} listings from jpg.store for policy ID ${policyId}`)
 
       try {
-        const { data } = await axios.get(uri)
+        const { data } = await axios.get(uri, {
+          headers: {
+            'Accept-Encoding': 'application/json',
+          },
+        })
 
         const payload = data.tokens
           .filter((item) => item.listing_lovelace > 0)
@@ -169,7 +204,7 @@ class JpgStore {
   }
 
   getAssetPurchasePrice = (assetId, walletAddress) => {
-    const uri = `${JPG_API}/token/${assetId}/tx-history?limit=50&offset=0`
+    const uri = `${this.baseUrl}/token/${assetId}/tx-history?limit=50&offset=0`
 
     return new Promise(async (resolve, reject) => {
       console.log(
@@ -179,7 +214,12 @@ class JpgStore {
       )
 
       try {
-        const { data } = await axios.get(uri)
+        const { data } = await axios.get(uri, {
+          headers: {
+            'Accept-Encoding': 'application/json',
+          },
+        })
+
         let boughtAtPrice = 0
         let boughtAtTimestamp = 0
 
@@ -233,7 +273,4 @@ class JpgStore {
 
 const jpgStore = new JpgStore()
 
-module.exports = {
-  JpgStore,
-  jpgStore,
-}
+export default jpgStore

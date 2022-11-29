@@ -5,7 +5,6 @@ const { blockfrost } = require('../utils/blockfrost')
 const getFileForPolicyId = require('../functions/getFileForPolicyId')
 const fromHex = require('../functions/formatters/hex/fromHex')
 const { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } = require('../constants/policy-ids')
-const { CNFT_TOOLS_API } = require('../constants/api-urls')
 
 const POLICY_ID = BAD_FOX_POLICY_ID
 const ASSET_DISPLAY_NAME_PREFIX = 'Bad Fox #'
@@ -27,7 +26,13 @@ const populateNewAsset = async (assetId) => {
 
     if (HAS_RANKS_ON_CNFT_TOOLS) {
       if (!cnftToolsAssets.length) {
-        cnftToolsAssets = (await axios.get(`${CNFT_TOOLS_API}/external/${POLICY_ID}`)).data
+        cnftToolsAssets = (
+          await axios.get(`https://cnft.tools/api/external/${POLICY_ID}`, {
+            headers: {
+              'Accept-Encoding': 'application/json',
+            },
+          })
+        ).data
       }
 
       rarityRank = Number(

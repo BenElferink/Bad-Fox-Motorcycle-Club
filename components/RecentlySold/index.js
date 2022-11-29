@@ -25,22 +25,19 @@ function RecentlySold() {
     }
   }, [])
 
-  const imageSize = 250
+  const imageSize = 200
   const slidesPerView = Math.floor((screenWidth * 0.9) / imageSize)
-
-  const imageWidth = imageSize
-  const imageHeight = imageSize * 0.8
 
   return (
     <section style={{ margin: '1rem auto 2rem auto' }}>
-      <div style={{ width: imageWidth * slidesPerView * 1.1 }}>
+      <div style={{ width: imageSize * slidesPerView * 1.1 }}>
         {loading ? (
           <Loader />
         ) : (
           <Swiper slidesPerView={slidesPerView} modules={[Navigation]} navigation>
             {recentlySold.map((item, idx) => (
               <SwiperSlide key={`recently-sold-${item.assetId}-${idx}`}>
-                <div style={{ width: imageWidth, height: imageHeight * 1.1, position: 'relative' }}>
+                <div style={{ width: imageSize, height: imageSize * 1.1, position: 'relative' }}>
                   <div className={styles.price} onClick={() => window.open(item.itemUrl, '_blank')}>
                     <span>{ADA_SYMBOL}</span>
                     {formatBigNumber(item.price)}
@@ -49,8 +46,8 @@ function RecentlySold() {
                   <Image
                     src={item.imageUrl}
                     alt=''
-                    width={imageWidth}
-                    height={imageHeight}
+                    width={imageSize}
+                    height={imageSize}
                     objectFit='cover'
                     className={styles.img}
                   />
@@ -59,8 +56,8 @@ function RecentlySold() {
                   <div
                     className={styles.img}
                     style={{
-                      width: imageWidth,
-                      height: imageHeight,
+                      width: imageSize,
+                      height: imageSize,
 
                       position: 'absolute',
                       bottom: 0,

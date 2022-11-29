@@ -35,7 +35,6 @@
 
 .img {
   background: radial-gradient(circle at top right, transparent 42px, var(--brown-25) 0);
-  background-size: auto, cover;
   background-position: center;
 
   border-radius: 25% 50%;

@@ -1,5 +1,5 @@
-const { jpgStore } = require('../../utils/jpgStore')
-const getFileForPolicyId = require('../getFileForPolicyId')
+import jpgStore from '../../utils/jpgStore'
+import getFileForPolicyId from '../getFileForPolicyId'
 
 const getAttributes = (policyId) => {
   const payload = {}
@@ -44,4 +44,4 @@ const getAttributeFloors = async (policyId) => {
   return floorData
 }
 
-module.exports = getAttributeFloors
+export default getAttributeFloors

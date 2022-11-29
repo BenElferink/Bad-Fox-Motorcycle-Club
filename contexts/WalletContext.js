@@ -83,7 +83,7 @@ export const WalletProvider = ({ children }) => {
 
     try {
       if (_walletIdentifier) {
-        const { data } = await axios.get(`/api/wallets/${_walletIdentifier}`)
+        const { data } = await axios.get(`/api/wallet/${_walletIdentifier}`)
         if (data) {
           setPopulatedWallet({
             ...data,

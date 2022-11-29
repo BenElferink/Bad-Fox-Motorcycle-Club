@@ -2,7 +2,6 @@ import { Fragment, useCallback, useEffect, useState } from 'react'
 import axios from 'axios'
 import useWallet from '../../contexts/WalletContext'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
-import { jpgStore } from '../../utils/jpgStore'
 import getFileForPolicyId from '../../functions/getFileForPolicyId'
 import formatBigNumber from '../../functions/formatters/formatBigNumber'
 import ProjectListItem from '../ProjectListItem'
@@ -11,7 +10,6 @@ import Chart from './Chart'
 import BaseButton from '../BaseButton'
 import WalletAssets from '../Assets/WalletAssets'
 import { ADA_SYMBOL } from '../../constants/ada'
-import { BINANCE_API } from '../../constants/api-urls'
 import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
 import projectsFile from '../../data/projects.json'
 
@@ -42,11 +40,11 @@ const Wallet = () => {
           timestamp: 0,
         }
 
-        // try {
-        //   txHistory = await jpgStore.getAssetPurchasePrice(assetId)
-        // } catch (error) {
-        //   console.error(error)
-        // }
+        try {
+          txHistory = await jpgStore.getAssetPurchasePrice(assetId)
+        } catch (error) {
+          console.error(error)
+        }
 
         if (!txHistory.price && !txHistory.timestamp) {
           if (oldStored) {
@@ -78,9 +76,17 @@ const Wallet = () => {
     if (selectedPolicyId) {
       ;(async () => {
         try {
-          const { data } = await axios.get(`/api/snapshots/floor-prices/${selectedPolicyId}`)
+          const { data } = await axios.get(`/api/floor/${selectedPolicyId}`)
 
-          setFloorSnapshots(data.snapshots)
+          setFloorSnapshots(data.items)
+        } catch (error) {
+          console.error(error)
+        }
+
+        try {
+          const { data } = await axios.get(`/api/floor/${selectedPolicyId}?live=true`)
+
+          setFloorSnapshots((prev) => prev.concat(data.items))
         } catch (error) {
           console.error(error)
         }
@@ -161,12 +167,12 @@ const Wallet = () => {
 
   useEffect(() => {
     axios
-      .get(`${BINANCE_API}/api/v3/ticker/price?symbol=ADABUSD`)
+      .get('https://www.binance.com/api/v3/ticker/price?symbol=ADABUSD')
       .then(({ data }) => setAdaUsdTicker(Number(data.price).toFixed(2)))
       .catch((error) => console.error(error))
 
     axios
-      .get(`${BINANCE_API}/api/v3/ticker/24hr?symbol=ADABUSD`)
+      .get('https://www.binance.com/api/v3/ticker/24hr?symbol=ADABUSD')
       .then(({ data }) => setAdaUsdChange24h(Number(data.priceChangePercent).toFixed(1)))
       .catch((error) => console.error(error))
   }, [])

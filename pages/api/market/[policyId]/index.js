@@ -1,4 +1,4 @@
-import { jpgStore } from '../../../../utils/jpgStore'
+import jpgStore from '../../../../utils/jpgStore'
 import isPolicyIdAllowed from '../../../../functions/isPolicyIdAllowed'
 
 export default async (req, res) => {

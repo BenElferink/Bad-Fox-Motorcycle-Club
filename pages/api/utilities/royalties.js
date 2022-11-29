@@ -14,7 +14,7 @@ export default async (req, res) => {
           wallet.amount.find((item) => item.unit === 'lovelace')?.quantity || ONE_MILLION
         )
 
-        // const openCnftResponse = await axios.get(`${OPEN_CNFT_API}/policy/${BAD_FOX_POLICY_ID}`)
+        // const openCnftResponse = await axios.get(`https://api.opencnft.io/1/policy/${BAD_FOX_POLICY_ID}`)
         // const volumeLovelace = Number(openCnftResponse.data?.total_volume || ONE_MILLION)
 
         return res.status(200).json({
