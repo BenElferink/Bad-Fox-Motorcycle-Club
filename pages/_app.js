@@ -3,7 +3,6 @@ import { Fragment } from 'react'
 import { Toaster } from 'react-hot-toast'
 import { WalletProvider } from '../contexts/WalletContext'
 import { ScreenSizeProvider } from '../contexts/ScreenSizeContext'
-import { MintProvider } from '../contexts/MintContext'
 import { createTheme, ThemeProvider } from '@mui/material'
 import CssBaseline from '@mui/material/CssBaseline'
 import '@fontsource/roboto'
@@ -44,11 +43,9 @@ function App({ Component, pageProps }) {
         <Toaster />
 
         <ScreenSizeProvider>
-          <MintProvider>
-            <WalletProvider>
-              <Component {...pageProps} />
-            </WalletProvider>
-          </MintProvider>
+          <WalletProvider>
+            <Component {...pageProps} />
+          </WalletProvider>
         </ScreenSizeProvider>
       </ThemeProvider>
     </Fragment>
