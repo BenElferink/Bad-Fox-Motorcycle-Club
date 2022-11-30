@@ -39,7 +39,7 @@ class JpgStore {
               price: item.price_lovelace / ONE_MILLION,
               rank: asset.rarityRank,
               attributes: asset.attributes,
-              imageUrl: asset.image.firebase || formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank),
+              imageUrl: formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank),
               itemUrl: `https://jpg.store/asset/${item.asset_id}`,
               date: new Date(sold ? item.confirmed_at : item.listed_at),
             }
@@ -104,22 +104,24 @@ class JpgStore {
   }
 
   getListings = (options = {}) => {
+    const maxSize = 100
     const policyId = options.policyId ?? BAD_FOX_POLICY_ID
-    const size = options.size ?? 100
-    const uri = `${this.baseUrl}/search/tokens?policyIds=["${policyId}"]&saleType=buy-now&sortBy=price-low-to-high&verified=default&size=${size}`
+    const uri = `${this.baseUrl}/search/tokens?policyIds=["${policyId}"]&saleType=buy-now&sortBy=price-low-to-high&verified=default`
     // &saleType=default
 
     return new Promise(async (resolve, reject) => {
-      console.log(`Fetching ${size} listings from jpg.store for policy ID ${policyId}`)
+      console.log(`Fetching listings from jpg.store for policy ID ${policyId}`)
 
       try {
-        const { data } = await axios.get(uri, {
+        const payload = []
+
+        const { data } = await axios.get(`${uri}&size=${maxSize}`, {
           headers: {
             'Accept-Encoding': 'application/json',
           },
         })
 
-        const payload = data.tokens
+        data.tokens
           .filter((item) => item.listing_lovelace > 0)
           .map((item) => {
             const asset = getFileForPolicyId(policyId, 'assets').find((asset) => asset.assetId === item.asset_id)
@@ -130,7 +132,7 @@ class JpgStore {
               price: Number(item.listing_lovelace) / ONE_MILLION,
               rank: asset.rarityRank,
               attributes: asset.attributes,
-              imageUrl: asset.image.firebase || formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank),
+              imageUrl: formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank),
               itemUrl: `https://jpg.store/asset/${item.asset_id}`,
               date: new Date(item.listed_at),
             }

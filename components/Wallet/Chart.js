@@ -199,9 +199,7 @@ const Chart = ({
                   key={`asset-${assetId}`}
                   mainTitles={[thisAsset.displayName]}
                   subTitles={[`Rank ${thisAsset.rarityRank}`]}
-                  imageSrc={
-                    thisAsset.image.firebase || formatIpfsImageUrl(thisAsset.image.ipfs, !!thisAsset.rarityRank)
-                  }
+                  imageSrc={formatIpfsImageUrl(thisAsset.image.ipfs, !!thisAsset.rarityRank)}
                   noClick
                   style={{ boxShadow }}
                   tableRows={[

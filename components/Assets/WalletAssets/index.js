@@ -57,7 +57,7 @@ const WalletAssets = ({ policyId }) => {
                   key={`collection-asset-${asset.assetId}-${idx}`}
                   mainTitles={[asset.displayName]}
                   subTitles={[`Rank: ${asset.rarityRank}`]}
-                  imageSrc={asset.image.firebase || formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank)}
+                  imageSrc={formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank)}
                   itemUrl={`https://jpg.store/asset/${asset.assetId}`}
                   tableRows={Object.entries(asset.attributes)
                     .sort((a, b) => a[0].localeCompare(b[0]))
