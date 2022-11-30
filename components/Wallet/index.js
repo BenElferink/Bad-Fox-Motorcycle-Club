@@ -83,13 +83,13 @@ const Wallet = () => {
           console.error(error)
         }
 
-        try {
-          const { data } = await axios.get(`/api/floor/${selectedPolicyId}?live=true`)
+        // try {
+        //   const { data } = await axios.get(`/api/floor/${selectedPolicyId}?live=true`)
 
-          setFloorSnapshots((prev) => prev.concat(data.items))
-        } catch (error) {
-          console.error(error)
-        }
+        //   setFloorSnapshots((prev) => prev.concat(data.items))
+        // } catch (error) {
+        //   console.error(error)
+        // }
 
         const priced = await appendBuyPriceToAssets(selectedPolicyId)
         setPricedItems(priced)

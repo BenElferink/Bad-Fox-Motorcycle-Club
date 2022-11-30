@@ -39,7 +39,7 @@ class JpgStore {
               price: item.price_lovelace / ONE_MILLION,
               rank: asset.rarityRank,
               attributes: asset.attributes,
-              imageUrl: formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank),
+              imageUrl: asset.image.firebase || formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank),
               itemUrl: `https://jpg.store/asset/${item.asset_id}`,
               date: new Date(sold ? item.confirmed_at : item.listed_at),
             }
@@ -130,7 +130,7 @@ class JpgStore {
               price: Number(item.listing_lovelace) / ONE_MILLION,
               rank: asset.rarityRank,
               attributes: asset.attributes,
-              imageUrl: formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank),
+              imageUrl: asset.image.firebase || formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank),
               itemUrl: `https://jpg.store/asset/${item.asset_id}`,
               date: new Date(item.listed_at),
             }

@@ -7,7 +7,12 @@ const nextConfig = {
     responseLimit: false,
   },
   images: {
-    domains: ['raw.githubusercontent.com', 'images.cnft.tools', 'alwaysinvert.mypinata.cloud'],
+    domains: [
+      'firebasestorage.googleapis.com',
+      'raw.githubusercontent.com',
+      'images.cnft.tools',
+      'alwaysinvert.mypinata.cloud',
+    ],
   },
   webpack: function (config, options) {
     config.experiments = {
