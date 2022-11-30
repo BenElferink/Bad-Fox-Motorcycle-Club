@@ -5,7 +5,7 @@ export default async (req, res) => {
   try {
     const {
       method,
-      query: { policyId, size },
+      query: { policyId },
     } = req
 
     if (!policyId) {
@@ -24,14 +24,7 @@ export default async (req, res) => {
 
     switch (method) {
       case 'GET': {
-        const s = (() => {
-          const max = 6000
-          const num = Number(size)
-
-          return isNaN(num) ? max : num <= max ? num : max
-        })()
-
-        const data = await jpgStore.getListings({ policyId, size: s })
+        const data = await jpgStore.getListings({ policyId })
 
         return res.status(200).json(data)
       }

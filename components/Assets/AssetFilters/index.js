@@ -24,7 +24,7 @@ import styles from './AssetFilters.module.css'
 const AssetFilters = ({ traitsMatrix = [], assetsArr = [], callbackRendered = () => {} }) => {
   const { isMobile } = useScreenSize()
   const market = useMarket()
-  const withListed = market && market.allListed.length
+  const withListed = false // market && market.allListed.length
   const withListedFinal = useRef(false)
 
   const [openOnMobile, setOpenOnMobile] = useState(false)
