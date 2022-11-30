@@ -37,8 +37,13 @@ const data = [
       },
       {
         complete: true,
-        title: 'Mad Dog Token',
+        title: 'MD Token',
         description: 'Non custodial staking with Mad Dog Cur Club',
+      },
+      {
+        complete: false,
+        title: 'C4 Token',
+        description: 'Non custodial staking with Cardano Crocs Club',
       },
     ],
     renderMedia: (isLeft) => (
@@ -51,6 +56,7 @@ const data = [
             `${GITHUB_MEDIA_URL}/tokens/hexonium.png`,
             `${GITHUB_MEDIA_URL}/tokens/society.png`,
             `${GITHUB_MEDIA_URL}/tokens/md.png`,
+            `${GITHUB_MEDIA_URL}/tokens/c4.png`,
           ]}
         />
       </MediaWrapper>

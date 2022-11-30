@@ -110,18 +110,18 @@ const Partnerships = () => {
               logoWidth: '80px',
             },
             {
+              name: 'Cardano Crocs Club',
+              url: 'https://swamplands.cardanocrocsclub.com',
+              logoUrl: `${GITHUB_MEDIA_URL}/logo/other/cardanocrocsclub.png`,
+              logoHeight: '80px',
+              logoWidth: '80px',
+            },
+            {
               name: 'SoundRig',
               url: 'https://www.soundrig.io',
               logoUrl: `${GITHUB_MEDIA_URL}/logo/other/soundrig.png`,
               logoHeight: '80px',
               logoWidth: '110px',
-            },
-            {
-              name: 'Bearmarket Doxxing',
-              url: 'https://doxxing.bearmarket.io/bad-fox-motorcycle-club',
-              logoUrl: `${GITHUB_MEDIA_URL}/logo/other/bearmarket-doxxing.png`,
-              logoHeight: '80px',
-              logoWidth: '120px',
             },
           ].map((obj) => (
             <PartnerItem
@@ -182,6 +182,38 @@ const Partnerships = () => {
               logoUrl: `${GITHUB_MEDIA_URL}/logo/other/stagalliance.png`,
               logoHeight: '80px',
               logoWidth: '80px',
+            },
+          ].map((obj) => (
+            <PartnerItem
+              key={`partner-${obj.name}`}
+              name={obj.name}
+              url={obj.url}
+              logoUrl={obj.logoUrl}
+              logoHeight={obj.logoHeight}
+              logoWidth={obj.logoWidth}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div style={styles.container}>
+        <h1 style={styles.title}>Verified Badges</h1>
+
+        <div style={styles.wrap}>
+          {[
+            {
+              name: 'Bearmarket Doxxing',
+              url: 'https://doxxing.bearmarket.io/bad-fox-motorcycle-club',
+              logoUrl: `${GITHUB_MEDIA_URL}/badges/bearmarket.png`,
+              logoHeight: '80px',
+              logoWidth: '60px',
+            },
+            {
+              name: 'Block Investment Group',
+              url: 'https://blockinvestmentgroup.com',
+              logoUrl: `${GITHUB_MEDIA_URL}/badges/blockinvestmentgroup.png`,
+              logoHeight: '80px',
+              logoWidth: '70px',
             },
           ].map((obj) => (
             <PartnerItem
