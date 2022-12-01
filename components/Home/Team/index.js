@@ -9,6 +9,7 @@ import { GITHUB_MEDIA_URL } from '../../../constants/api-urls'
 import { DISCORD, INSTAGRAM, LINKEDIN, TWITTER } from '../../../constants/socials'
 import styles from './Team.module.css'
 
+// eslint-disable-next-line react/display-name
 const Team = forwardRef((props, ref) => {
   const clickSocial = (url) => {
     window.open(url, '_blank')

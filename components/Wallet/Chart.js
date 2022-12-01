@@ -206,6 +206,7 @@ const Chart = ({
                     [
                       'Bought for:',
                       <input
+                        key={`portfolio-asset-price-${assetId}`}
                         placeholder='0'
                         value={thisPrice || ''}
                         onChange={(e) =>
@@ -229,17 +230,31 @@ const Chart = ({
                         style={{ ...styles.amount, backgroundColor: 'var(--charcoal)', boxShadow }}
                       />,
                     ],
-                    ['Floor:', <p style={styles.amount}>{thisFloor}</p>],
+                    [
+                      'Floor:',
+                      <p key={`portfolio-asset-floorValue-${assetId}`} style={styles.amount}>
+                        {thisFloor}
+                      </p>,
+                    ],
                     [
                       `Floor ${floorGainOrLoss > 0 ? 'Gain' : floorGainOrLoss < 0 ? 'Loss' : 'Gain/Loss'}:`,
-                      <p style={styles.amount}>{floorGainOrLoss}</p>,
+                      <p key={`portfolio-asset-gainOrLoss-${assetId}`} style={styles.amount}>
+                        {floorGainOrLoss}
+                      </p>,
                     ],
-                    ['Highest Trait:', <p style={styles.amount}>{thisHighestTraitValue}</p>],
+                    [
+                      'Highest Trait:',
+                      <p key={`portfolio-asset-highestTraitValue-${assetId}`} style={styles.amount}>
+                        {thisHighestTraitValue}
+                      </p>,
+                    ],
                     [
                       `Highest Trait ${
                         highestTraitGainOrLoss > 0 ? 'Gain' : highestTraitGainOrLoss < 0 ? 'Loss' : 'Gain/Loss'
                       }:`,
-                      <p style={styles.amount}>{highestTraitGainOrLoss}</p>,
+                      <p key={`portfolio-asset-highestTraitGainOrLoss-${assetId}`} style={styles.amount}>
+                        {highestTraitGainOrLoss}
+                      </p>,
                     ],
                   ]}
                 />

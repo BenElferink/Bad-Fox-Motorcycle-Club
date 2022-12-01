@@ -15,7 +15,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@blockfrost/blockfrost-js": "^5.0.0",
@@ -45,6 +46,12 @@
     "write-excel-file": "^1.4.15"
   },
   "devDependencies": {
-    "dotenv": "^16.0.3"
+    "@types/node": "^18.11.10",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.9",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.28.0",
+    "eslint-config-next": "^13.0.5",
+    "typescript": "^4.9.3"
   }
 }

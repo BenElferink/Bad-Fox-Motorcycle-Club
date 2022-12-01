@@ -52,7 +52,7 @@ export default function ConnectWallet({
       >
         {connected ? (
           <p style={{ textAlign: 'center' }}>
-            You've succesfully connected your wallet with {connectedName}:<br />
+            You&apos;ve succesfully connected your wallet with {connectedName}:<br />
             <span style={{ fontSize: '0.9rem', color: 'var(--online)' }}>{populatedWallet.stakeKey}</span>
           </p>
         ) : (

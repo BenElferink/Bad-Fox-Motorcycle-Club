@@ -1,10 +1,11 @@
 import Head from 'next/head'
+import { AppProps } from 'next/app'
 import { Fragment } from 'react'
 import { Toaster } from 'react-hot-toast'
-import { WalletProvider } from '../contexts/WalletContext'
-import { ScreenSizeProvider } from '../contexts/ScreenSizeContext'
-import { createTheme, ThemeProvider } from '@mui/material'
 import CssBaseline from '@mui/material/CssBaseline'
+import { createTheme, ThemeProvider } from '@mui/material'
+import { ScreenSizeProvider } from '../contexts/ScreenSizeContext'
+import { WalletProvider } from '../contexts/WalletContext'
 import '@fontsource/roboto'
 import 'animate.css'
 import 'swiper/css'
@@ -14,7 +15,6 @@ import '../styles/swiper-overrides.css'
 import '../styles/globals.css'
 
 // https://animate.style
-// https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public
 
 const theme = createTheme({
   palette: {
@@ -22,7 +22,7 @@ const theme = createTheme({
   },
 })
 
-function App({ Component, pageProps }) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <Fragment>
       <Head>
