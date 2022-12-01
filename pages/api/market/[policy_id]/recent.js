@@ -3,10 +3,11 @@ import isPolicyIdAllowed from '../../../../functions/isPolicyIdAllowed'
 
 export default async (req, res) => {
   try {
-    const {
-      method,
-      query: { policyId, page, sold },
-    } = req
+    const { method, query } = req
+
+    const policyId = query.policy_id
+    const sold = !!query.sold && query.sold != 'false' && query.sold != '0'
+    const page = Number(query.page || 1)
 
     if (!policyId) {
       return res.status(400).json({
@@ -24,7 +25,6 @@ export default async (req, res) => {
 
     switch (method) {
       case 'GET': {
-        const s = sold == 'true'
         const p = (() => {
           const min = 1
           const num = Number(page)
@@ -32,9 +32,12 @@ export default async (req, res) => {
           return isNaN(num) ? min : num >= min ? num : min
         })()
 
-        const data = await jpgStore.getRecents({ policyId, sold: s, page: p })
+        const data = await jpgStore.getRecents({ policyId, sold, page: p })
 
-        return res.status(200).json(data)
+        return res.status(200).json({
+          count: data.length,
+          items: data,
+        })
       }
 
       default: {

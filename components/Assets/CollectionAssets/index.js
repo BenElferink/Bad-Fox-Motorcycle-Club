@@ -72,7 +72,7 @@ const CollectionAssets = ({ policyId }) => {
                   mainTitles={[asset.displayName]}
                   subTitles={[
                     `Rank: ${asset.rarityRank}`,
-                    // asset.price ? `Listed: ${ADA_SYMBOL}${asset.price}` : 'Not listed',
+                    asset.price ? `Listed: ${ADA_SYMBOL}${asset.price}` : 'Not listed',
                   ]}
                   imageSrc={formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank)}
                   itemUrl={`https://jpg.store/asset/${asset.assetId}`}

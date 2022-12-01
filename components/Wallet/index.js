@@ -2,12 +2,13 @@ import { Fragment, useCallback, useEffect, useState } from 'react'
 import axios from 'axios'
 import useWallet from '../../contexts/WalletContext'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
+import jpgStore from '../../utils/jpgStore'
 import getFileForPolicyId from '../../functions/getFileForPolicyId'
 import formatBigNumber from '../../functions/formatters/formatBigNumber'
 import ProjectListItem from '../ProjectListItem'
-import ClayTraits from './ClayTraits'
-import Chart from './Chart'
 import BaseButton from '../BaseButton'
+import Chart from './Chart'
+import ClayTraits from './ClayTraits'
 import WalletAssets from '../Assets/WalletAssets'
 import { ADA_SYMBOL } from '../../constants/ada'
 import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
@@ -19,22 +20,24 @@ const Wallet = () => {
 
   const appendBuyPriceToAssets = useCallback(async (policyId) => {
     const toSet = {}
-    const oldStored = JSON.parse(window.localStorage.getItem('BadFoxMC_AssetsPrices'))
-    const stored = JSON.parse(
-      window.localStorage.getItem(`wallet-portfolio-${populatedWallet.stakeKey}-${policyId}`)
-    )
+    const stored = JSON.parse(window.localStorage.getItem(`portfolio-${policyId}-${populatedWallet.stakeKey}`))
 
     for await (const { assetId } of populatedWallet.assets[policyId]) {
       const asset = getFileForPolicyId(policyId, 'assets').find((asset) => asset.assetId === assetId)
 
       if (stored) {
         const storedAsset = stored[assetId]
-        toSet[assetId] = {
-          price: storedAsset ? storedAsset.price : 0,
-          timestamp: storedAsset ? storedAsset.timestamp : 0,
-          attributes: asset.attributes,
+
+        if (storedAsset) {
+          toSet[assetId] = {
+            price: storedAsset.price,
+            timestamp: storedAsset.timestamp,
+            attributes: asset.attributes,
+          }
         }
-      } else {
+      }
+
+      if (!toSet[assetId]) {
         let txHistory = {
           price: 0,
           timestamp: 0,
@@ -46,16 +49,6 @@ const Wallet = () => {
           console.error(error)
         }
 
-        if (!txHistory.price && !txHistory.timestamp) {
-          if (oldStored) {
-            const oldStoredAsset = oldStored[assetId]
-            if (oldStoredAsset) {
-              txHistory.price = oldStoredAsset.price
-              txHistory.timestamp = oldStoredAsset.timestamp
-            }
-          }
-        }
-
         toSet[assetId] = {
           price: txHistory.price,
           timestamp: txHistory.timestamp,
@@ -64,7 +57,6 @@ const Wallet = () => {
       }
     }
 
-    window.localStorage.removeItem('BadFoxMC_AssetsPrices')
     return toSet
   }, [])
 
@@ -76,20 +68,20 @@ const Wallet = () => {
     if (selectedPolicyId) {
       ;(async () => {
         try {
-          const { data } = await axios.get(`/api/floor/${selectedPolicyId}`)
+          const { data } = await axios.get(`/api/market/${selectedPolicyId}/floor`)
 
           setFloorSnapshots(data.items)
         } catch (error) {
           console.error(error)
         }
 
-        // try {
-        //   const { data } = await axios.get(`/api/floor/${selectedPolicyId}?live=true`)
+        try {
+          const { data } = await axios.get(`/api/market/${selectedPolicyId}/floor?live=true`)
 
-        //   setFloorSnapshots((prev) => prev.concat(data.items))
-        // } catch (error) {
-        //   console.error(error)
-        // }
+          setFloorSnapshots((prev) => prev.concat(data.items))
+        } catch (error) {
+          console.error(error)
+        }
 
         const priced = await appendBuyPriceToAssets(selectedPolicyId)
         setPricedItems(priced)
@@ -100,9 +92,13 @@ const Wallet = () => {
   useEffect(() => {
     if (window && selectedPolicyId && JSON.stringify(pricedItems) !== JSON.stringify({})) {
       window.localStorage.setItem(
-        `wallet-portfolio-${populatedWallet.stakeKey}-${selectedPolicyId}`,
+        `portfolio-${selectedPolicyId}-${populatedWallet.stakeKey}`,
         JSON.stringify(pricedItems)
       )
+
+      // delete old & unused items
+      window.localStorage.removeItem(`wallet-portfolio-${populatedWallet.stakeKey}-${selectedPolicyId}`)
+      window.localStorage.removeItem('BadFoxMC_AssetsPrices')
     }
   }, [pricedItems])
 

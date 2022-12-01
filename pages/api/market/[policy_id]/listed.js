@@ -3,10 +3,9 @@ import isPolicyIdAllowed from '../../../../functions/isPolicyIdAllowed'
 
 export default async (req, res) => {
   try {
-    const {
-      method,
-      query: { policyId },
-    } = req
+    const { method, query } = req
+
+    const policyId = query.policy_id
 
     if (!policyId) {
       return res.status(400).json({
@@ -24,9 +23,12 @@ export default async (req, res) => {
 
     switch (method) {
       case 'GET': {
-        const data = await jpgStore.getListings({ policyId })
+        const data = await jpgStore.getListings(policyId)
 
-        return res.status(200).json(data)
+        return res.status(200).json({
+          count: data.length,
+          items: data,
+        })
       }
 
       default: {

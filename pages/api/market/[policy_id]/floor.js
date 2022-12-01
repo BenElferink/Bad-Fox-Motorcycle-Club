@@ -1,15 +1,16 @@
-import { firestore } from '../../../utils/firebase'
-import isPolicyIdAllowed from '../../../functions/isPolicyIdAllowed'
-import getAttributeFloors from '../../../functions/markets/getAttributeFloors'
-import { ADMIN_CODE } from '../../../constants/api-keys'
-import projects from '../../../data/projects.json'
+import { firestore } from '../../../../utils/firebase'
+import jpgStore from '../../../../utils/jpgStore'
+import isPolicyIdAllowed from '../../../../functions/isPolicyIdAllowed'
+import { ADMIN_CODE } from '../../../../constants/api-keys'
+import projects from '../../../../data/projects.json'
 
 export default async (req, res) => {
-  const { method, query } = req
+  const { method, headers, query } = req
 
-  const policyId = query.policyId
-  const limit = Number(query.limit || 30)
+  const adminCode = headers.admin_code
+  const policyId = query.policy_id
   const live = !!query.live
+  const limit = Number(query.limit || 30)
 
   if (!policyId) {
     return res.status(400).json({
@@ -30,7 +31,7 @@ export default async (req, res) => {
       case 'GET': {
         if (live) {
           const timestamp = Date.now()
-          const liveAttributeFloors = await getAttributeFloors(policyId)
+          const liveFloorPrices = await jpgStore.getFloorPrices(policyId)
 
           return res.status(200).json({
             count: 1,
@@ -38,7 +39,7 @@ export default async (req, res) => {
               {
                 policyId,
                 timestamp,
-                attributes: liveAttributeFloors,
+                attributes: liveFloorPrices,
               },
             ],
           })
@@ -70,11 +71,7 @@ export default async (req, res) => {
       }
 
       case 'HEAD': {
-        const {
-          headers: { admin_code },
-        } = req
-
-        if (admin_code !== ADMIN_CODE) {
+        if (adminCode !== ADMIN_CODE) {
           return res.status(401).json({
             type: 'UNAUTHORIZED',
             message: 'Admin code is invalid',
@@ -82,13 +79,13 @@ export default async (req, res) => {
         }
 
         const timestamp = Date.now()
-        const liveAttributeFloors = await getAttributeFloors(policyId)
+        const liveFloorPrices = await jpgStore.getFloorPrices(policyId)
 
         const collection = firestore.collection('floor-snapshots')
         await collection.add({
           policyId,
           timestamp,
-          attributes: liveAttributeFloors,
+          attributes: liveFloorPrices,
         })
 
         return res.status(204).end()

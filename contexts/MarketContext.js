@@ -17,8 +17,8 @@ export function MarketProvider({ children, policyId }) {
 
   const fetchAndSetAllListed = async () => {
     try {
-      const res = await axios.get(`/api/market/${policyId}`)
-      setAllListed(res.data)
+      const res = await axios.get(`/api/market/${policyId}/listed`)
+      setAllListed(res.data.items)
     } catch (error) {
       console.error(error)
       setAllListed([])
@@ -29,9 +29,9 @@ export function MarketProvider({ children, policyId }) {
     try {
       const { data } = await axios.get(`/api/market/${policyId}/recent?sold=${sold}&page=${page}`)
       if (sold) {
-        setRecentlySold((prev) => [...prev, ...data])
+        setRecentlySold((prev) => [...prev, ...data.items])
       } else {
-        setRecentlyListed((prev) => [...prev, ...data])
+        setRecentlyListed((prev) => [...prev, ...data.items])
       }
     } catch (error) {
       console.error(error)
