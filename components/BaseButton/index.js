@@ -1,4 +1,4 @@
-import { useScreenSize } from '../../contexts/ScreenSizeContext'
+import { useScreenSize } from '../../contexts/ScreenSizeContext.tsx'
 import { Button } from '@mui/material'
 import { useRef } from 'react'
 

@@ -7,7 +7,7 @@ import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import { useMarket } from '../../contexts/MarketContext'
 import formatBigNumber from '../../functions/formatters/formatBigNumber'
 import Loader from '../Loader'
-import { ADA_SYMBOL } from '../../constants/ada'
+import { ADA_SYMBOL } from '../../constants'
 import styles from './RecentlySold.module.css'
 
 function RecentlySold() {

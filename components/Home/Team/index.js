@@ -4,9 +4,7 @@ import Discord from '../../../icons/Discord'
 import Twitter from '../../../icons/Twitter'
 import LinkedIn from '../../../icons/LinkedIn'
 import Instagram from '../../../icons/Instagram'
-import { TEAM } from '../../../constants/scroll-nav'
-import { GITHUB_MEDIA_URL } from '../../../constants/api-urls'
-import { DISCORD, INSTAGRAM, LINKEDIN, TWITTER } from '../../../constants/socials'
+import { GITHUB_MEDIA_URL, TEAM, DISCORD, INSTAGRAM, LINKEDIN, TWITTER } from '../../../constants'
 import styles from './Team.module.css'
 
 // eslint-disable-next-line react/display-name
@@ -26,15 +24,15 @@ const Team = forwardRef((props, ref) => {
           profilePicture: `${GITHUB_MEDIA_URL}/team/Ben.jpg`,
           socials: [
             {
-              type: 'LINKEDIN',
+              type: LINKEDIN,
               url: 'https://www.linkedin.com/in/ben-elferink-37ba251b9',
             },
             {
-              type: 'TWITTER',
+              type: TWITTER,
               url: 'https://twitter.com/BenElferink',
             },
             {
-              type: 'DISCORD',
+              type: DISCORD,
               url: 'https://discord.com/users/791763515554922507',
             },
           ],
@@ -47,15 +45,15 @@ const Team = forwardRef((props, ref) => {
           profilePicture: `${GITHUB_MEDIA_URL}/team/David.jpg`,
           socials: [
             {
-              type: 'LINKEDIN',
+              type: LINKEDIN,
               url: 'https://www.linkedin.com/in/david-minkov-50187620a',
             },
             {
-              type: 'INSTAGRAM',
+              type: INSTAGRAM,
               url: 'https://instagram.com/david_minkov',
             },
             {
-              type: 'DISCORD',
+              type: DISCORD,
               url: 'https://discord.com/users/958536998140907550',
             },
           ],
@@ -68,15 +66,15 @@ const Team = forwardRef((props, ref) => {
           profilePicture: `${GITHUB_MEDIA_URL}/team/Chris.jpg`,
           socials: [
             {
-              type: 'INSTAGRAM',
+              type: INSTAGRAM,
               url: 'https://instagram.com/m__chris',
             },
             {
-              type: 'TWITTER',
+              type: TWITTER,
               url: 'https://twitter.com/ChrisMitrev',
             },
             {
-              type: 'DISCORD',
+              type: DISCORD,
               url: 'https://discord.com/users/906518144108101642',
             },
           ],
@@ -89,11 +87,11 @@ const Team = forwardRef((props, ref) => {
           profilePicture: `${GITHUB_MEDIA_URL}/team/4042.png`,
           socials: [
             {
-              type: 'TWITTER',
+              type: TWITTER,
               url: 'https://twitter.com/CribKingCOM',
             },
             {
-              type: 'DISCORD',
+              type: DISCORD,
               url: 'https://discord.com/users/829116071663370250',
             },
           ],
@@ -106,7 +104,7 @@ const Team = forwardRef((props, ref) => {
           profilePicture: `${GITHUB_MEDIA_URL}/team/Uberman.jpg`,
           socials: [
             {
-              type: 'DISCORD',
+              type: DISCORD,
               url: 'https://discord.com/users/458201578571038740',
             },
           ],

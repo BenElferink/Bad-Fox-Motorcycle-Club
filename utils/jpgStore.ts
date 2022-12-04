@@ -1,17 +1,71 @@
 import axios from 'axios'
 import getFileForPolicyId from '../functions/getFileForPolicyId'
 import formatIpfsImageUrl from '../functions/formatters/formatIpfsImageUrl'
-import { BAD_FOX_POLICY_ID } from '../constants/policy-ids'
+import { JpgListedItem, JpgRecentItem, PopulatedAsset, PopulatedTrait } from '../@types'
 
 const ONE_MILLION = 1000000
 
+interface FetchedListing {
+  reports: string
+  listed_at: string
+  traits: {
+    [key: string]: string
+  }
+  quantity: number
+  policy_id: string
+  initial_mint_tx_hash: string
+  has_pending_transaction: boolean
+  listing_lovelace: string
+  created_at: string
+  asset_id: string
+  source: string
+  display_name: string
+  optimized_source: string
+  asset_name: string
+  media_type: null | any
+  collections: Record<any, any>
+  fingerprint: string
+  asset_num: number
+  likes: string
+  is_taken_down: false
+  bundled_assets: null | any
+  bundle_display_names: null | any
+  listing_type: null | any
+  main_bundle_item: null | any
+  bundle_size: null | any
+  views: string
+}
+
+interface FetchedRecent {
+  asset_id: string
+  display_name: string
+  tx_hash: string
+  listing_id: number | null
+  listed_at?: string
+  confirmed_at?: string
+  price_lovelace: number
+  listing_type: 'SINGLE_ASSET' | 'BUNDLE'
+}
+
+interface FetchedAssetHistory {
+  action: 'BUY' | 'SELL' | 'DELIST' | 'UPDATE'
+  tx_hash: string
+  seller_address: string
+  signer_address: string
+  created_at: string
+  amount_lovelace: number
+  bundled_assets_count: number
+}
+
 class JpgStore {
+  baseUrl: string
+
   constructor() {
     this.baseUrl = 'https://server.jpgstoreapis.com'
   }
 
-  getRecents = (options = {}) => {
-    const policyId = options.policyId ?? BAD_FOX_POLICY_ID
+  getRecents = (options: { policyId: string; sold?: boolean; page?: number }): Promise<JpgRecentItem[]> => {
+    const policyId = options.policyId ?? ''
     const sold = options.sold ?? false
     const page = options.page ?? 1
     const uri = `${this.baseUrl}/policy/${policyId}/${sold ? 'sales' : 'listings'}?page=${page}`
@@ -22,14 +76,14 @@ class JpgStore {
       )
 
       try {
-        const { data } = await axios.get(uri, {
+        const { data } = await axios.get<FetchedRecent[]>(uri, {
           headers: {
             'Accept-Encoding': 'application/json',
           },
         })
 
-        const policyAssets = getFileForPolicyId(policyId, 'assets')
-        const payload = data
+        const policyAssets = getFileForPolicyId(policyId, 'assets') as PopulatedAsset[]
+        const payload: JpgRecentItem[] = data
           .map((item) => {
             const asset = policyAssets.find((asset) => asset.assetId === item.asset_id)
 
@@ -37,11 +91,12 @@ class JpgStore {
               assetId: item.asset_id,
               name: item.display_name,
               price: item.price_lovelace / ONE_MILLION,
-              rank: asset.rarityRank,
-              attributes: asset.attributes,
-              imageUrl: formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank),
+              rank: asset?.rarityRank || 0,
+              attributes: asset?.attributes || {},
+              imageUrl: formatIpfsImageUrl(asset?.image.ipfs || '', !!asset?.rarityRank),
               itemUrl: `https://jpg.store/asset/${item.asset_id}`,
-              date: new Date(sold ? item.confirmed_at : item.listed_at),
+              // @ts-ignore
+              date: new Date(sold ? item?.confirmed_at : item?.listed_at),
             }
           })
           .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -55,12 +110,10 @@ class JpgStore {
     })
   }
 
-  // https://api.opencnft.io/1/policy/fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967
-  // https://api.coingecko.com/api/v3/simple/price?ids=cardano&vs_currencies=usd
-
-  getListings = (policyId) => {
+  getListings = (policyId: string): Promise<JpgListedItem[]> => {
     const maxSize = 100
-    const uri = `${this.baseUrl}/search/tokens?policyIds=["${policyId}"]&traits={}&nameQuery=&verified=default&listingTypes=["SINGLE_ASSET"]&saleType=buy-now&sortBy=price-low-to-high&size=${maxSize}` // &onlyMainBundleAsset=false
+    const uri = `${this.baseUrl}/search/tokens?policyIds=["${policyId}"]&verified=default&listingTypes=["SINGLE_ASSET"]&saleType=buy-now&sortBy=price-low-to-high&size=${maxSize}`
+    // &onlyMainBundleAsset=false&traits={}&nameQuery=
     // listingTypes = "SINGLE_ASSET" || "BUNDLE" || "ALL_LISTINGS"
 
     return new Promise(async (resolve, reject) => {
@@ -69,10 +122,18 @@ class JpgStore {
       try {
         let totalToFetch = 0
         let pagination = {}
-        let fetchedListings = []
+        let fetchedListings: FetchedListing[] = []
 
         for (let i = 0; true; i++) {
-          const { data } = await axios.get(`${uri}&pagination=${JSON.stringify(pagination)}`, {
+          const { data } = await axios.get<{
+            tokens: FetchedListing[]
+            pagination: {
+              pointInTimeId: string
+              pointInTimeExpiryMs: number
+              lastHitSort: number[]
+              total: number
+            }
+          }>(`${uri}&pagination=${JSON.stringify(pagination)}`, {
             headers: {
               'Accept-Encoding': 'application/json',
             },
@@ -102,7 +163,7 @@ class JpgStore {
           }
         }
 
-        const payload = fetchedListings.map((item) => ({
+        const payload: JpgListedItem[] = fetchedListings.map((item) => ({
           assetId: item.asset_id,
           name: item.display_name,
           price: Number(item.listing_lovelace) / ONE_MILLION,
@@ -119,12 +180,12 @@ class JpgStore {
     })
   }
 
-  getFloorPrices = async (policyId) => {
-    const floorData = {}
-    const traitsData = {}
+  getFloorPrices = async (policyId: string): Promise<Record<string, Record<string, number>>> => {
+    const floorData: Record<string, Record<string, number>> = {}
+    const traitsData: Record<string, string[]> = {}
 
-    const policyAssets = getFileForPolicyId(policyId, 'assets')
-    const policyTraits = getFileForPolicyId(policyId, 'traits')
+    const policyAssets = getFileForPolicyId(policyId, 'assets') as PopulatedAsset[]
+    const policyTraits = getFileForPolicyId(policyId, 'traits') as Record<string, PopulatedTrait[]>
 
     Object.entries(policyTraits).forEach(([cat, traits]) => {
       traitsData[cat] = traits.map(({ onChainName }) => onChainName)
@@ -144,7 +205,7 @@ class JpgStore {
         for (const { assetId, price } of listings) {
           const asset = policyAssets.find((asset) => asset.assetId === assetId)
 
-          if (asset.attributes[category] === trait) {
+          if (asset?.attributes[category] === trait) {
             // Found floor price for this trait
 
             if (!floorData[category]) {
@@ -164,7 +225,13 @@ class JpgStore {
     return floorData
   }
 
-  getAssetPurchasePrice = (assetId, walletAddress) => {
+  getAssetPurchasePrice = (
+    assetId: string,
+    walletAddress: string
+  ): Promise<{
+    price: number
+    timestamp: number
+  }> => {
     const uri = `${this.baseUrl}/token/${assetId}/tx-history?limit=50&offset=0`
 
     return new Promise(async (resolve, reject) => {
@@ -175,11 +242,16 @@ class JpgStore {
       )
 
       try {
-        const { data } = await axios.get(uri, {
+        const { data } = await axios.get<{
+          count: number
+          txs: FetchedAssetHistory[]
+        }>(uri, {
           headers: {
             'Accept-Encoding': 'application/json',
           },
         })
+
+        console.log(data)
 
         let boughtAtPrice = 0
         let boughtAtTimestamp = 0

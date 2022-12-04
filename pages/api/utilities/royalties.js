@@ -1,5 +1,5 @@
-import { blockfrost } from '../../../utils/blockfrost'
-import { ROYALTY_WALLET } from '../../../constants/addresses'
+import blockfrost from '../../../utils/blockfrost'
+import { ROYALTY_WALLET } from '../../../constants'
 
 const ONE_MILLION = 1000000
 

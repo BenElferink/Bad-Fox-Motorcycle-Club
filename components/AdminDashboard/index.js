@@ -7,8 +7,7 @@ import sleep from '../../functions/sleep'
 import getFileForPolicyId from '../../functions/getFileForPolicyId'
 import BaseButton from '../BaseButton'
 import OnlineIndicator from '../OnlineIndicator'
-import { ADA_SYMBOL } from '../../constants/ada'
-import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants/policy-ids'
+import { ADA_SYMBOL, BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants'
 
 const MILLION = 1000000
 const COLLECTIONS = [

@@ -6,7 +6,7 @@ import formatIpfsImageUrl from '../../../functions/formatters/formatIpfsImageUrl
 import AssetFilters from '../AssetFilters'
 import AssetCard from '../AssetCard'
 import Loader from '../../Loader'
-import { ADA_SYMBOL } from '../../../constants/ada'
+import { ADA_SYMBOL } from '../../../constants'
 
 const INITIAL_DISPLAY_AMOUNT = 20
 

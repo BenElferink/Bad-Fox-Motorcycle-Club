@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { useScreenSize } from '../../../contexts/ScreenSizeContext'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper'
-import { GITHUB_MEDIA_URL } from '../../../constants/api-urls'
+import { GITHUB_MEDIA_URL } from '../../../constants'
 import styles from './Sneaks.module.css'
 
 const Sneaks = () => {

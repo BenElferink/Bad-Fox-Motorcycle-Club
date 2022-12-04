@@ -1,24 +1,19 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-// import { toast } from 'react-hot-toast'
-// import { useMint } from '../../contexts/MintContext'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import useWallet from '../../contexts/WalletContext'
 import { AppBar, Avatar, IconButton } from '@mui/material'
 import { MenuRounded } from '@mui/icons-material'
-import Modal from '../Modal'
 import BaseButton from '../BaseButton'
-// import OnlineIndicator from '../OnlineIndicator'
+import Modal from '../Modal'
 import Socials from './Socials'
-import { HOME, TEAM } from '../../constants/scroll-nav'
-import { GITHUB_MEDIA_URL } from '../../constants/api-urls'
-import styles from './Header.module.css'
 import ToolsMenu from './ToolsMenu'
+import { GITHUB_MEDIA_URL, HOME, TEAM } from '../../constants'
+import styles from './Header.module.css'
 
 export default function Header({ scrollTo = () => null }) {
   const { isMobile } = useScreenSize()
   const { connected } = useWallet()
-  // const { isPreSaleOnline, isPublicSaleOnline } = useMint()
 
   const { route, query } = useRouter()
   const isHome = route === '/'

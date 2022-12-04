@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import useWallet from '../../../contexts/WalletContext'
-import { useScreenSize } from '../../../contexts/ScreenSizeContext'
+import { useScreenSize } from '../../../contexts/ScreenSizeContext.tsx'
 import getFileForPolicyId from '../../../functions/getFileForPolicyId'
 import formatIpfsImageUrl from '../../../functions/formatters/formatIpfsImageUrl'
 import AssetFilters from '../AssetFilters'

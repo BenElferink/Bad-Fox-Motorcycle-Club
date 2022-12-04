@@ -1,10 +1,7 @@
 import connectDB from '../../../utils/mongo'
-import { blockfrost } from '../../../utils/blockfrost'
+import blockfrost from '../../../utils/blockfrost'
 import Wallet from '../../../models/Wallet'
-// import { blockfrost } from '../../../../utils/blockfrost'
-// import { BLOCKFROST_WEBHOOK_AUTH_TOKEN } from '../../../../constants/api-keys'
-import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
-import { MARKETPLACE_ADDRESSES } from '../../../constants/addresses'
+import { BAD_FOX_POLICY_ID, MARKETPLACE_ADDRESSES } from '../../../constants'
 
 export default async (req, res) => {
   try {

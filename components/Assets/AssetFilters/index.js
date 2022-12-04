@@ -15,7 +15,7 @@ import {
   TextField,
 } from '@mui/material'
 import { CloseRounded, TuneRounded as FilterIcon } from '@mui/icons-material'
-import { useScreenSize } from '../../../contexts/ScreenSizeContext'
+import { useScreenSize } from '../../../contexts/ScreenSizeContext.tsx'
 import { useMarket } from '../../../contexts/MarketContext'
 import Toggle from '../../Toggle'
 import BaseButton from '../../BaseButton'

@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const { MONGO_OPTIONS, MONGO_URI } = require('../constants/mongo')
+import mongoose from 'mongoose'
+import { MONGO_OPTIONS, MONGO_URI } from '../constants'
 
 const connection = {}
 
@@ -17,4 +17,4 @@ const connectDB = async () => {
   }
 }
 
-module.exports = connectDB
+export default connectDB

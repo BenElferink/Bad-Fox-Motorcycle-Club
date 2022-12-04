@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useScreenSize } from '../../../contexts/ScreenSizeContext'
 import About from '../About'
-import { GITHUB_MEDIA_URL } from '../../../constants/api-urls'
+import { GITHUB_MEDIA_URL } from '../../../constants'
 import styles from './Landing.module.css'
 
 const Landing = ({ isHome = false, children }) => {

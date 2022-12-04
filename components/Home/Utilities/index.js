@@ -4,7 +4,7 @@ import { useScreenSize } from '../../../contexts/ScreenSizeContext'
 import ListItem from './LisItem'
 import MediaWrapper from './MediaWrapper'
 import Tokens from './Tokens'
-import { GITHUB_MEDIA_URL } from '../../../constants/api-urls'
+import { GITHUB_MEDIA_URL } from '../../../constants'
 import styles from './Utilities.module.css'
 
 const Male = dynamic(() => import('./Model/Male'), { ssr: false })

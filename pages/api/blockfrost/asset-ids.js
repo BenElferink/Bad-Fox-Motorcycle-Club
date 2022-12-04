@@ -1,4 +1,4 @@
-import { blockfrost } from '../../../utils/blockfrost'
+import blockfrost from '../../../utils/blockfrost'
 
 export default async (req, res) => {
   try {

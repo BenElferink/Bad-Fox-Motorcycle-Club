@@ -1,5 +1,5 @@
-import { blockfrost } from '../../../utils/blockfrost'
-import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../../constants/policy-ids'
+import blockfrost from '../../../utils/blockfrost'
+import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../../constants'
 
 export default async (req, res) => {
   try {
@@ -25,9 +25,7 @@ export default async (req, res) => {
           stakeKey: addressInfo.stake_address || '',
           walletAddress,
           assets: {
-            [BAD_FOX_POLICY_ID]: addressInfo.amount.filter(
-              ({ unit }) => unit.indexOf(BAD_FOX_POLICY_ID) === 0
-            ),
+            [BAD_FOX_POLICY_ID]: addressInfo.amount.filter(({ unit }) => unit.indexOf(BAD_FOX_POLICY_ID) === 0),
             [BAD_MOTORCYCLE_POLICY_ID]: addressInfo.amount.filter(
               ({ unit }) => unit.indexOf(BAD_MOTORCYCLE_POLICY_ID) === 0
             ),

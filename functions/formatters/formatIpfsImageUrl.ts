@@ -1,4 +1,4 @@
-const formatIpfsImageUrl = (ipfsUri, hasRank) => {
+const formatIpfsImageUrl = (ipfsUri: string, hasRank?: boolean) => {
   // return `${ipfsUri.replace('ipfs://', 'https://')}.ipfs.nftstorage.link`
   // return ipfsUri.replace('ipfs://', 'https://ipfs.blockfrost.dev/ipfs/')
   // return ipfsUri.replace('ipfs://', 'https://ipfs.jpgstoreapis.com/')
@@ -10,4 +10,4 @@ const formatIpfsImageUrl = (ipfsUri, hasRank) => {
   }
 }
 
-module.exports = formatIpfsImageUrl
+export default formatIpfsImageUrl

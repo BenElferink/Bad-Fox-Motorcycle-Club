@@ -1,14 +1,13 @@
 import { Fragment, useEffect, useState } from 'react'
 import axios from 'axios'
 import useWallet from '../../contexts/WalletContext'
-import { useScreenSize } from '../../contexts/ScreenSizeContext'
+import { useScreenSize } from '../../contexts/ScreenSizeContext.tsx'
 import Modal from '../Modal'
 import Loader from '../Loader'
 import Toggle from '../Toggle'
 import BaseButton from '../BaseButton'
 import ClayTraitSet from './ClayTraitSet'
-import { GITHUB_MEDIA_URL } from '../../constants/api-urls'
-import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
+import { BAD_FOX_POLICY_ID, GITHUB_MEDIA_URL } from '../../constants'
 
 const ClayTraits = () => {
   const { isMobile } = useScreenSize()

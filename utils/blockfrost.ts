@@ -1,25 +1,21 @@
-const { BlockFrostAPI } = require('@blockfrost/blockfrost-js')
-const { BLOCKFROST_API_KEY } = require('../constants/api-keys')
+import { BlockFrostAPI } from '@blockfrost/blockfrost-js'
+import { BLOCKFROST_API_KEY } from '../constants'
 
 class Blockfrost {
+  api: BlockFrostAPI
+
   constructor() {
-    // https://github.com/blockfrost/blockfrost-js
     this.api = new BlockFrostAPI({
       projectId: BLOCKFROST_API_KEY,
-      // version: 0,
-      // debug: false,
-      // isTestnet: false,
-      // rateLimiter: true,
-      // requestTimeout: 20000,
     })
   }
 
-  getAssetIdsWithPolicyId = (policyId) => {
+  getAssetIdsWithPolicyId = (policyId: string): Promise<string[]> => {
     return new Promise(async (resolve, reject) => {
       try {
         console.log('Fetching asset IDs with policy ID:', policyId)
 
-        const assetIds = []
+        const assetIds: string[] = []
         const data = await this.api.assetsPolicyByIdAll(policyId)
 
         data.forEach(({ asset }) => {
@@ -37,7 +33,29 @@ class Blockfrost {
     })
   }
 
-  getAssetWithAssetId = (assetId) => {
+  getAssetWithAssetId = (
+    assetId: string
+  ): Promise<{
+    asset: string
+    policy_id: string
+    asset_name: string | null
+    fingerprint: string
+    quantity: string
+    initial_mint_tx_hash: string
+    mint_or_burn_count: number
+    onchain_metadata: {
+      [key: string]: unknown
+    } | null
+    onchain_metadata_standard?: ('CIP25v1' | 'CIP25v2') | null
+    metadata: {
+      name: string
+      description: string
+      ticker: string | null
+      url: string | null
+      logo: string | null
+      decimals: number | null
+    } | null
+  }> => {
     return new Promise(async (resolve, reject) => {
       try {
         console.log('Fetching asset with asset ID:', assetId)
@@ -53,12 +71,12 @@ class Blockfrost {
     })
   }
 
-  getAssetIdsWithStakeKey = (stakeKey, policyId) => {
+  getAssetIdsWithStakeKey = (stakeKey: string, policyId?: string): Promise<string[]> => {
     return new Promise(async (resolve, reject) => {
       try {
         console.log('Fetching asset IDs with stake key:', stakeKey)
 
-        const assetIds = []
+        const assetIds: string[] = []
         const data = await this.api.accountsAddressesAssetsAll(stakeKey)
 
         data.forEach(({ unit }) => {
@@ -76,7 +94,7 @@ class Blockfrost {
     })
   }
 
-  getWalletAddressWithAssetId = (assetId) => {
+  getWalletAddressWithAssetId = (assetId: string): Promise<string> => {
     return new Promise(async (resolve, reject) => {
       try {
         console.log('Fetching wallet address with asset ID:', assetId)
@@ -92,13 +110,13 @@ class Blockfrost {
     })
   }
 
-  getStakeKeyWithWalletAddress = (walletAddress) => {
+  getStakeKeyWithWalletAddress = (walletAddress: string): Promise<string> => {
     return new Promise(async (resolve, reject) => {
       try {
         console.log('Fetching stake key with wallet address:', walletAddress)
 
         const data = await this.api.addresses(walletAddress)
-        const stakeKey = data.stake_address
+        const stakeKey = data.stake_address || ''
 
         console.log('Fetched stake key:', stakeKey)
         return resolve(stakeKey)
@@ -108,7 +126,7 @@ class Blockfrost {
     })
   }
 
-  getWalletAddressesWithStakeKey = (stakeKey) => {
+  getWalletAddressesWithStakeKey = (stakeKey: string): Promise<string[]> => {
     return new Promise(async (resolve, reject) => {
       try {
         console.log('Fetching wallet addresses with stakey key:', stakeKey)
@@ -124,7 +142,18 @@ class Blockfrost {
     })
   }
 
-  getWalletWithWalletAddress = (walletAddress) => {
+  getWalletWithWalletAddress = (
+    walletAddress: string
+  ): Promise<{
+    address: string
+    amount: {
+      unit: string
+      quantity: string
+    }[]
+    stake_address: string | null
+    type: 'byron' | 'shelley'
+    script: boolean
+  }> => {
     return new Promise(async (resolve, reject) => {
       try {
         console.log('Fetching wallet with wallet address:', walletAddress)
@@ -142,7 +171,4 @@ class Blockfrost {
 
 const blockfrost = new Blockfrost()
 
-module.exports = {
-  Blockfrost,
-  blockfrost,
-}
+export default blockfrost

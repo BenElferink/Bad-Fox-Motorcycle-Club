@@ -1,9 +1,8 @@
 import connectDB from '../../../utils/mongo'
 import Wallet from '../../../models/Wallet'
-import { blockfrost } from '../../../utils/blockfrost'
+import blockfrost from '../../../utils/blockfrost'
 import getFileForPolicyId from '../../../functions/getFileForPolicyId'
-import { TREASURY_WALLET } from '../../../constants/addresses'
-import { BAD_FOX_POLICY_ID } from '../../../constants/policy-ids'
+import { BAD_FOX_POLICY_ID, TREASURY_WALLET } from '../../../constants'
 import clayTraitSetsFile from '../../../data/clay-trait-sets'
 // import traitsData from '../../../data/traits/bad-fox.json'
 

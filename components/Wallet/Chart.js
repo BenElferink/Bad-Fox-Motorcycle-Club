@@ -1,7 +1,7 @@
 import React, { Fragment, useCallback, useMemo, useState } from 'react'
 import { Chart as ChartJS, LineElement, PointElement, LinearScale, CategoryScale, Legend, Filler } from 'chart.js'
 import { Line } from 'react-chartjs-2'
-import { useScreenSize } from '../../contexts/ScreenSizeContext'
+import { useScreenSize } from '../../contexts/ScreenSizeContext.tsx'
 import getDatesFromFloorData from '../../functions/charts/getDatesFromFloorData'
 import getPortfolioSeries from '../../functions/charts/getPortfolioSeries'
 import formatIpfsImageUrl from '../../functions/formatters/formatIpfsImageUrl'

@@ -1,7 +1,7 @@
 import { Fragment, useCallback, useEffect, useState } from 'react'
 import axios from 'axios'
 import useWallet from '../../contexts/WalletContext'
-import { useScreenSize } from '../../contexts/ScreenSizeContext'
+import { useScreenSize } from '../../contexts/ScreenSizeContext.tsx'
 import jpgStore from '../../utils/jpgStore'
 import getFileForPolicyId from '../../functions/getFileForPolicyId'
 import formatBigNumber from '../../functions/formatters/formatBigNumber'
@@ -10,8 +10,7 @@ import BaseButton from '../BaseButton'
 import Chart from './Chart'
 import ClayTraits from './ClayTraits'
 import WalletAssets from '../Assets/WalletAssets'
-import { ADA_SYMBOL } from '../../constants/ada'
-import { BAD_FOX_POLICY_ID } from '../../constants/policy-ids'
+import { ADA_SYMBOL, BAD_FOX_POLICY_ID } from '../../constants'
 import projectsFile from '../../data/projects.json'
 
 const Wallet = () => {

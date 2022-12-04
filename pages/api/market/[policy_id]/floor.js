@@ -1,7 +1,7 @@
 import { firestore } from '../../../../utils/firebase'
 import jpgStore from '../../../../utils/jpgStore'
 import isPolicyIdAllowed from '../../../../functions/isPolicyIdAllowed'
-import { ADMIN_CODE } from '../../../../constants/api-keys'
+import { ADMIN_CODE } from '../../../../constants'
 import projects from '../../../../data/projects.json'
 
 export default async (req, res) => {

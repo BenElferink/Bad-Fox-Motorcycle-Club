@@ -15,6 +15,8 @@ import '../styles/swiper-overrides.css'
 import '../styles/globals.css'
 
 // https://animate.style
+// https://api.opencnft.io/1/policy/fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967
+// https://api.coingecko.com/api/v3/simple/price?ids=cardano&vs_currencies=usd
 
 const theme = createTheme({
   palette: {

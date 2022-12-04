@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { Card, CardActionArea, CardContent, Divider, Typography } from '@mui/material'
-import { useScreenSize } from '../../../contexts/ScreenSizeContext'
+import { useScreenSize } from '../../../contexts/ScreenSizeContext.tsx'
 import LoadingImage from '../../LoadingImage'
 
 function AssetCard({

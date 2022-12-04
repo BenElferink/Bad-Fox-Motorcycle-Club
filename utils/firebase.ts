@@ -7,9 +7,7 @@ import {
   FIREBASE_MESSAGING_SENDER_ID,
   FIREBASE_PROJECT_ID,
   FIREBASE_STORAGE_BUCKET,
-} from '../constants/api-keys'
-
-// https://firebase.google.com/docs/web/modular-upgrade
+} from '../constants'
 
 if (!firebase.apps.length) {
   firebase.initializeApp({

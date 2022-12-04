@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { useRef } from 'react'
-import { useScreenSize } from '../../contexts/ScreenSizeContext'
+import { useScreenSize } from '../../contexts/ScreenSizeContext.tsx'
 
 function ProjectListItem({ name, image, onClick }) {
   const overlayRef = useRef(null)

@@ -1,4 +1,4 @@
-const toHex = (txt) => {
+const toHex = (txt: string) => {
   const str = String(txt)
   let result = ''
 
@@ -9,4 +9,4 @@ const toHex = (txt) => {
   return result
 }
 
-module.exports = toHex
+export default toHex

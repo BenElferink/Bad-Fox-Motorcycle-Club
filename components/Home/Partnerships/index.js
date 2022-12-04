@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { GITHUB_MEDIA_URL } from '../../../constants/api-urls'
+import { GITHUB_MEDIA_URL } from '../../../constants'
 
 const PartnerItem = ({ name, url, logoUrl, logoHeight, logoWidth }) => (
   <div

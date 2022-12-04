@@ -9,9 +9,7 @@ import Sneaks from '../components/Home/Sneaks'
 import Partnerships from '../components/Home/Partnerships'
 import Utilities from '../components/Home/Utilities'
 import Team from '../components/Home/Team'
-import { HOME } from '../constants/scroll-nav'
-
-// const CountDown = dynamic(() => import('../components/CountDown'), { ssr: false })
+import { HOME } from '../constants'
 
 export default function Page() {
   const { isTablet } = useScreenSize()
