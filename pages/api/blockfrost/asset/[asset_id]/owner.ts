@@ -1,20 +1,23 @@
-import blockfrost from '../../../utils/blockfrost'
-import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../../constants'
+import blockfrost from '../../../../../utils/blockfrost'
+import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../../../../constants'
+import { NextApiRequest, NextApiResponse } from 'next'
+import { OwningWallet } from '../../../../../@types'
 
-export default async (req, res) => {
+interface Response extends OwningWallet {}
+
+export default async (req: NextApiRequest, res: NextApiResponse<Response>) => {
+  const { method, query } = req
+
+  const assetId = query.asset_id
+
+  if (!assetId || typeof assetId !== 'string') {
+    return res.status(400).end('Bad Request')
+  }
+
   try {
-    const {
-      method,
-      query: { assetId },
-    } = req
-
     switch (method) {
       case 'GET': {
-        if (!assetId || typeof assetId !== 'string') {
-          return res.status(400).end('Bad Request')
-        }
-
-        console.log('Fetching wallet information with asset ID:', assetId)
+        console.log('Fetching wallet with asset ID:', assetId)
 
         const assetAddresses = await blockfrost.api.assetsAddresses(assetId)
         const walletAddress = assetAddresses[0]?.address ?? ''
@@ -32,19 +35,18 @@ export default async (req, res) => {
           },
         }
 
-        console.log('Fetched wallet information:', payload)
+        console.log('Fetched wallet:', payload)
 
         return res.status(200).json(payload)
       }
 
       default: {
         res.setHeader('Allow', 'GET')
-        return res.status(405).end('Method Not Allowed')
+        return res.status(405).end()
       }
     }
   } catch (error) {
-    console.error(error.message)
-
-    return res.status(500).json({})
+    console.error(error)
+    return res.status(500).end()
   }
 }

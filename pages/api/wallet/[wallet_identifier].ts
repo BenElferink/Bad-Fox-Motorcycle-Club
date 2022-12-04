@@ -8,31 +8,21 @@ import { PopulatedAsset, PopulatedWallet } from '../../../@types'
 interface Response extends PopulatedWallet {}
 
 export default async (req: NextApiRequest, res: NextApiResponse<Response>) => {
-  try {
-    const {
-      method,
-      query: { wallet_identifier },
-    } = req
+  const { method, query } = req
 
+  const walletIdentifier = query.wallet_identifier as string
+
+  let stakeKey = walletIdentifier.indexOf('stake1') === 0 ? walletIdentifier : null
+  let walletAddress = walletIdentifier.indexOf('addr1') === 0 ? walletIdentifier : null
+  const adaHandle = walletIdentifier.indexOf('$') === 0 ? walletIdentifier : null
+
+  if (!stakeKey && !walletAddress && !adaHandle) {
+    return res.status(400).end('Please provide a valid wallet identifer: $handle / addr1... / stake1...')
+  }
+
+  try {
     switch (method) {
       case 'GET': {
-        let stakeKey =
-          typeof wallet_identifier === 'string' && wallet_identifier.indexOf('stake1') === 0
-            ? wallet_identifier
-            : null
-
-        let walletAddress =
-          typeof wallet_identifier === 'string' && wallet_identifier.indexOf('addr1') === 0
-            ? wallet_identifier
-            : null
-
-        const adaHandle =
-          typeof wallet_identifier === 'string' && wallet_identifier.indexOf('$') === 0 ? wallet_identifier : null
-
-        if (!stakeKey && !walletAddress && !adaHandle) {
-          return res.status(400).end('Please provide a valid wallet identifer: $handle / addr1... / stake1...')
-        }
-
         if (!stakeKey) {
           if (!walletAddress) {
             walletAddress = await blockfrost.getWalletAddressWithAssetId(
@@ -77,12 +67,11 @@ export default async (req: NextApiRequest, res: NextApiResponse<Response>) => {
 
       default: {
         res.setHeader('Allow', 'GET')
-        return res.status(405).end('Method Not Allowed')
+        return res.status(405).end()
       }
     }
-  } catch (error: any) {
-    console.error(error.message)
-
+  } catch (error) {
+    console.error(error)
     return res.status(500).end()
   }
 }

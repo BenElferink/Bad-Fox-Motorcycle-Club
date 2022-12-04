@@ -60,7 +60,7 @@ const AdminDashboard = () => {
 
   const fetchOwningWallet = useCallback(async (assetId) => {
     try {
-      const { data } = await axios.get(`/api/admin/owner?assetId=${assetId}`)
+      const { data } = await axios.get(`/api/blockfrost/asset/${assetId}/owner`)
 
       return data
     } catch (error) {
@@ -208,7 +208,7 @@ const AdminDashboard = () => {
 
   const txConfirmation = useCallback(async (txHash) => {
     try {
-      const { data } = await axios.get(`/api/admin/tx-status?txHash=${txHash}`)
+      const { data } = await axios.get(`/api/blockfrost/tx/${txHash}/status`)
 
       if (data.submitted) {
         return data
@@ -381,7 +381,7 @@ const AdminDashboard = () => {
 
     try {
       addTranscript(`Syncing ${payoutWallets.length} wallets`)
-      await axios.post('/api/admin/syncDbWallets', { wallets: holdingWallets })
+      await axios.post('/api/clay/sync', { wallets: holdingWallets })
       addTranscript('Done!')
     } catch (error) {
       console.error(error)

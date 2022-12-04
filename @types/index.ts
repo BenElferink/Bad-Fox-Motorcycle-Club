@@ -1,5 +1,21 @@
 import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../constants'
 
+export interface OwningWallet {
+  isContract: boolean
+  stakeKey: string
+  walletAddress: string
+  assets: {
+    [BAD_FOX_POLICY_ID]: {
+      unit: string
+      quantity: string
+    }[]
+    [BAD_MOTORCYCLE_POLICY_ID]: {
+      unit: string
+      quantity: string
+    }[]
+  }
+}
+
 export interface PopulatedWallet {
   stakeKey: string
   walletAddress: string

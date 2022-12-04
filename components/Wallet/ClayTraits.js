@@ -33,7 +33,7 @@ const ClayTraits = () => {
         setMyShares(0)
         setMyTokens(0)
 
-        const { data } = await axios.get('/api/utilities/clay')
+        const { data } = await axios.get('/api/clay')
         const mappedSets = {}
 
         for (const roleName in data.traitSets ?? {}) {

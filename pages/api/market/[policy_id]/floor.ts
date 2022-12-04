@@ -1,29 +1,31 @@
-import { firestore } from '../../../../utils/firebase'
+import { firebase, firestore } from '../../../../utils/firebase'
 import jpgStore from '../../../../utils/jpgStore'
 import isPolicyIdAllowed from '../../../../functions/isPolicyIdAllowed'
 import { ADMIN_CODE } from '../../../../constants'
+import { NextApiRequest, NextApiResponse } from 'next'
 import projects from '../../../../data/projects.json'
 
-export default async (req, res) => {
+interface Response {
+  count: number
+  items: firebase.firestore.DocumentData[]
+}
+
+export default async (req: NextApiRequest, res: NextApiResponse<Response>) => {
   const { method, headers, query } = req
 
+  const policyId = query.policy_id as string
   const adminCode = headers.admin_code
-  const policyId = query.policy_id
   const live = !!query.live
-  const limit = Number(query.limit || 30)
+  const limit = (() => {
+    const min = 1
+    const max = 30
+    const num = Number(query.limit)
 
-  if (!policyId) {
-    return res.status(400).json({
-      type: 'BAD_REQUEST',
-      message: 'Query params required (policyId: string)',
-    })
-  }
+    return isNaN(num) ? max : num >= min && num <= max ? num : max
+  })()
 
   if (!isPolicyIdAllowed(policyId)) {
-    return res.status(400).json({
-      type: 'BAD_REQUEST',
-      message: `This policy ID is not allowed: ${policyId}`,
-    })
+    return res.status(400).end(`This Policy ID is not allowed: ${policyId}`)
   }
 
   try {
@@ -46,10 +48,7 @@ export default async (req, res) => {
         }
 
         if (!limit || isNaN(limit)) {
-          return res.status(400).json({
-            type: 'BAD_REQUEST',
-            message: 'Query params required (limit: number)',
-          })
+          return res.status(400).end('Query params required (limit: number)')
         }
 
         const docsQuery = await firestore
@@ -72,10 +71,7 @@ export default async (req, res) => {
 
       case 'HEAD': {
         if (adminCode !== ADMIN_CODE) {
-          return res.status(401).json({
-            type: 'UNAUTHORIZED',
-            message: 'Admin code is invalid',
-          })
+          return res.status(401).end()
         }
 
         const timestamp = Date.now()
@@ -94,12 +90,11 @@ export default async (req, res) => {
       default: {
         res.setHeader('Allow', 'GET')
         res.setHeader('Allow', 'HEAD')
-        return res.status(405).end('Method Not Allowed')
+        return res.status(405).end()
       }
     }
   } catch (error) {
     console.error(error)
-
-    return res.status(500).json({})
+    return res.status(500).end()
   }
 }
