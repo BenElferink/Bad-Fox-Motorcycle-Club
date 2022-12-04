@@ -3,7 +3,7 @@ import Wallet from '../../../models/Wallet'
 import blockfrost from '../../../utils/blockfrost'
 import getFileForPolicyId from '../../../functions/getFileForPolicyId'
 import { BAD_FOX_POLICY_ID, TREASURY_WALLET } from '../../../constants'
-import clayTraitSetsFile from '../../../data/clay-trait-sets'
+import clayTraitSetsFile from '../../../data/clay-trait-sets.json'
 // import traitsData from '../../../data/traits/bad-fox.json'
 
 // const data = {
@@ -67,9 +67,12 @@ export default async (req, res) => {
         const traitSets = {}
         const wallets = await Wallet.find()
 
+        const assetsFromFile = getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets')
+        const traitsFromFile = getFileForPolicyId(BAD_FOX_POLICY_ID, 'traits')
+
         for (const wallet of wallets) {
           const assetsOfThisWallet = wallet.assets[BAD_FOX_POLICY_ID].map((assetId) =>
-            getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets').find((asset) => asset.assetId === assetId)
+            assetsFromFile.find((asset) => asset.assetId === assetId)
           )
 
           for (const setName in clayTraitSetsFile) {
@@ -145,8 +148,14 @@ export default async (req, res) => {
 
         const tokensPerShare = clayBalance / ownedShares
 
-        Object.entries(traitSets).forEach(([setName, { shares }]) => {
+        Object.entries(traitSets).forEach(([setName, { shares, set }]) => {
           traitSets[setName].tokens = tokensPerShare * shares
+          traitSets[setName].set = set.map((item) => ({
+            ...item,
+            traitImage: traitsFromFile[item.traitCategory].find(
+              ({ onChainName }) => onChainName === item.traitLabel
+            ).image,
+          }))
         })
 
         return res.status(200).json({
