@@ -8,15 +8,13 @@ import { PopulatedAsset, PopulatedTrait } from '../@types'
 const getFileForPolicyId = (policyId: string, fileType: 'assets' | 'traits') => {
   switch (fileType) {
     case 'assets':
-      return (
-        policyId === BAD_FOX_POLICY_ID
-          ? // @ts-ignore
-            badFoxAssetsFile?.assets || []
-          : policyId === BAD_MOTORCYCLE_POLICY_ID
-          ? // @ts-ignore
-            badMotorcycleAssetsFile?.assets || []
-          : []
-      ) as PopulatedAsset[]
+      return (policyId === BAD_FOX_POLICY_ID
+        ? // @ts-ignore
+          badFoxAssetsFile?.assets || []
+        : policyId === BAD_MOTORCYCLE_POLICY_ID
+        ? // @ts-ignore
+          badMotorcycleAssetsFile?.assets || []
+        : []) as unknown as PopulatedAsset[]
 
     case 'traits':
       return (
