@@ -5,7 +5,7 @@ import Loader from '.'
 const ImageLoader = ({
   width = 100,
   height = 100,
-  loaderSize = 100,
+  loaderSize,
   src = '',
   alt = '',
   style = {},

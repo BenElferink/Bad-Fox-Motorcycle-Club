@@ -1,6 +1,6 @@
 // https://static.vecteezy.com/system/resources/previews/002/027/257/original/car-wheel-illustration-for-conceptual-design-free-vector.jpg
 
-const Loader = ({ size = 250 }: { size?: number }) => {
+const Loader = ({ size = 150 }: { size?: number }) => {
   return (
     <div className='flex-col'>
       <div className='rotating' style={{ filter: 'drop-shadow(0 0 3px var(--white))' }}>

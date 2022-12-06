@@ -46,7 +46,7 @@ function RecentlySold() {
                   <ImageLoader
                     width={imageSize}
                     height={imageSize}
-                    loaderSize={imageSize * 0.7}
+                    loaderSize={imageSize * 0.5}
                     src={item.imageUrl}
                     alt=''
                     style={{
