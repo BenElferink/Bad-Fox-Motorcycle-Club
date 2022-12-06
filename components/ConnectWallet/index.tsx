@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { FormEventHandler, Fragment, useState } from 'react'
 import { TextField } from '@mui/material'
 import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import useWallet from '../../contexts/WalletContext'
@@ -35,7 +35,7 @@ export default function ConnectWallet({
     }
   }
 
-  const submitManualWallet = async (event) => {
+  const submitManualWallet: FormEventHandler<HTMLFormElement> = async (event) => {
     event?.preventDefault()
 
     connectWalletManually(input)
@@ -46,14 +46,14 @@ export default function ConnectWallet({
     <Fragment>
       <Modal
         title={connected ? 'Wallet Connected' : 'Connect a Wallet'}
-        open={openModal}
+        open={openModal && !connecting}
         onClose={onClose}
         style={{ maxWidth: '800px', padding: isMobile ? '1rem 2rem' : '1rem 4rem' }}
       >
         {connected ? (
           <p style={{ textAlign: 'center' }}>
             You&apos;ve succesfully connected your wallet with {connectedName}:<br />
-            <span style={{ fontSize: '0.9rem', color: 'var(--online)' }}>{populatedWallet.stakeKey}</span>
+            <span style={{ fontSize: '0.9rem', color: 'var(--online)' }}>{populatedWallet?.stakeKey}</span>
           </p>
         ) : (
           <Fragment>

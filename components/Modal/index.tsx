@@ -1,8 +1,22 @@
-import { useScreenSize } from '../../contexts/ScreenSizeContext.tsx'
+import { useScreenSize } from '../../contexts/ScreenSizeContext'
 import { Modal as MuiModal, IconButton, Typography, Fade } from '@mui/material'
 import { CloseRounded } from '@mui/icons-material'
 
-function Modal({ open, onClose, style = {}, title = 'Title', children, onlyChildren }) {
+function Modal({
+  open = false,
+  onClose,
+  title,
+  style = {},
+  children,
+  onlyChildren,
+}: {
+  open: boolean
+  onClose?: () => void
+  title?: string
+  style?: React.CSSProperties
+  onlyChildren?: boolean
+  children: JSX.Element
+}) {
   const { isMobile } = useScreenSize()
 
   if (onlyChildren) {

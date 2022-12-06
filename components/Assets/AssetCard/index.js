@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { Card, CardActionArea, CardContent, Divider, Typography } from '@mui/material'
 import { useScreenSize } from '../../../contexts/ScreenSizeContext.tsx'
-import LoadingImage from '../../LoadingImage'
+import ImageLoader from '../../Loader/ImageLoader'
 
 function AssetCard({
   mainTitles = [],
@@ -38,7 +38,7 @@ function AssetCard({
         onClick={() => (noClick ? {} : onClick ? onClick() : window.open(itemUrl, '_blank'))}
       >
         {imageSrc ? (
-          <LoadingImage
+          <ImageLoader
             width={imgSize}
             height={imgSize}
             src={imageSrc}

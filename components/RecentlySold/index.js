@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
 import { format } from 'timeago.js'
@@ -9,6 +8,7 @@ import formatBigNumber from '../../functions/formatters/formatBigNumber'
 import Loader from '../Loader'
 import { ADA_SYMBOL } from '../../constants'
 import styles from './RecentlySold.module.css'
+import ImageLoader from '../Loader/ImageLoader'
 
 function RecentlySold() {
   const { screenWidth } = useScreenSize()
@@ -43,13 +43,20 @@ function RecentlySold() {
                     {formatBigNumber(item.price)}
                   </div>
 
-                  <Image
-                    src={item.imageUrl}
-                    alt=''
+                  <ImageLoader
                     width={imageSize}
                     height={imageSize}
-                    objectFit='cover'
-                    className={styles.img}
+                    loaderSize={imageSize * 0.7}
+                    src={item.imageUrl}
+                    alt=''
+                    style={{
+                      background: 'radial-gradient(circle at top right, transparent 42px, var(--brown-25) 0)',
+                      backgroundPosition: 'center',
+                      borderRadius: '25% 50%',
+                      borderTopRightRadius: '70% 100%',
+                      borderBottomLeftRadius: '70% 100%',
+                      boxShadow: '0 0 3px 1px var(--brown) inset',
+                    }}
                   />
 
                   <div className={styles.timeAgo}>{format(new Date(item.date))}</div>

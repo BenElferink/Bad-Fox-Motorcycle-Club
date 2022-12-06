@@ -1,4 +1,4 @@
-import LoadingImage from '../LoadingImage'
+import ImageLoader from '../Loader/ImageLoader'
 
 const setItemTextStyle = {
   margin: '0.2rem 0 0 0',
@@ -45,7 +45,7 @@ const ClayTraitSet = ({ title = '', textRows = [], set = [] }) => {
                 position: 'relative',
               }}
             >
-              <LoadingImage src={traitImage} width={170} height={170} style={{ borderRadius: '100%' }} />
+              <ImageLoader src={traitImage} width={170} height={170} style={{ borderRadius: '100%' }} />
               {ownedTraitCount ? (
                 <p
                   style={{
