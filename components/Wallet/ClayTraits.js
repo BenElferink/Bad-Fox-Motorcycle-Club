@@ -115,7 +115,7 @@ const ClayTraits = () => {
           />
 
           <p style={{ textAlign: 'center' }}>
-            Tokens in treasury = {Math.floor(clayBalance)} (accumulating)
+            Tokens in treasury = {Math.floor(clayBalance)}
             <br />
             Global shares = {occupiedShares} / {maxShares}
             <br />
