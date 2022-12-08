@@ -11,7 +11,7 @@ const Page = () => {
     return (
       <div className='App flex-col'>
         <Header />
-        <ConnectWallet introText='Connect a wallet to transcend your NFTs.' />
+        <ConnectWallet disableManual introText='Connect a wallet to transcend your NFTs.' />
         <Footer />
       </div>
     )

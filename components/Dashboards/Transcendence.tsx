@@ -18,7 +18,7 @@ const BURN_ADDRESS =
 
 const Transcendence = () => {
   const { isMobile } = useScreenSize()
-  const { wallet, populatedWallet, disconnectWallet } = useWallet()
+  const { connectedManually, wallet, populatedWallet, disconnectWallet } = useWallet()
   const [selector, setSelector] = useState<'M' | 'F' | 'B' | ''>('')
   const [selectedMale, setSelectedMale] = useState<string>('')
   const [selectedFemale, setSelectedFemale] = useState<string>('')
@@ -154,6 +154,23 @@ const Transcendence = () => {
     }),
     []
   )
+
+  if (connectedManually) {
+    return (
+      <div className='flex-col'>
+        <p>
+          ERROR! You connected manually, if you wish to build & sign a TX please reconnect in a non-manual way.
+        </p>
+
+        <BaseButton
+          label='Disconnect Wallet'
+          onClick={disconnectWallet}
+          backgroundColor='var(--apex-charcoal)'
+          hoverColor='var(--brown)'
+        />
+      </div>
+    )
+  }
 
   return (
     <div className='flex-col'>
