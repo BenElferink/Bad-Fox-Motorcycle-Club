@@ -147,7 +147,7 @@ export const WalletProvider = ({ children }: { children: JSX.Element }) => {
   }, [connected])
 
   useEffect(() => {
-    if (window.location.pathname === '/wallet') {
+    if (window.location.pathname === '/wallet' || window.location.pathname === '/transcend') {
       const storageItem = window.localStorage.getItem('connected-wallet')
 
       if (storageItem) {
