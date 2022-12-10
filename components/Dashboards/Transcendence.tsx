@@ -13,8 +13,7 @@ import { toast } from 'react-hot-toast'
 import axios from 'axios'
 import sleep from '../../functions/sleep'
 
-const BURN_ADDRESS =
-  'addr1q8asn9zjsxetzc8l6dt0jl9h5kpsqqprtke8zvyllxdenjhcacrlq84f8xf0jctd35ep8atk3yjl3uvctgkxa7t9jvcqqx2thp'
+const BURN_ADDRESS = ''
 
 const Transcendence = () => {
   const { isMobile } = useScreenSize()
