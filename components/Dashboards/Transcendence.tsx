@@ -13,16 +13,20 @@ import { toast } from 'react-hot-toast'
 import axios from 'axios'
 import sleep from '../../functions/sleep'
 
-const BURN_ADDRESS = ''
+const BURN_ADDRESS =
+  'addr1q8asn9zjsxetzc8l6dt0jl9h5kpsqqprtke8zvyllxdenjhcacrlq84f8xf0jctd35ep8atk3yjl3uvctgkxa7t9jvcqqx2thp'
 
 const Transcendence = () => {
   const { isMobile } = useScreenSize()
   const { connectedManually, wallet, populatedWallet, disconnectWallet } = useWallet()
+
   const [selector, setSelector] = useState<'M' | 'F' | 'B' | ''>('')
   const [selectedMale, setSelectedMale] = useState<string>('')
   const [selectedFemale, setSelectedFemale] = useState<string>('')
   const [selectedBike, setSelectedBike] = useState<string>('')
+
   const [loadingTx, setLoadingTx] = useState<boolean>(false)
+  const [errorMessage, setErrorMessage] = useState<string>('')
 
   const txConfirmation = useCallback(
     async (
@@ -94,6 +98,14 @@ const Transcendence = () => {
     } catch (error: any) {
       console.error(error)
       toast.error(error?.message || error)
+
+      if (error?.message?.indexOf('Not enough ADA leftover to include non-ADA assets') !== -1) {
+        // [Transaction] An error occurred during build: Not enough ADA leftover to include non-ADA assets in a change address.
+        setErrorMessage('TX build failed: your UTXOs are clogged, please send all your ADA & assets to yourself.')
+      } else if (error?.message?.indexOf('UTxO Balance Insufficient') !== -1) {
+        // [Transaction] An error occurred during build: UTxO Balance Insufficient.
+        setErrorMessage('TX build failed: not enough ADA to process TX, please obtain more ADA, then try again.')
+      }
     }
 
     setLoadingTx(false)
@@ -108,12 +120,11 @@ const Transcendence = () => {
       },
       title: {
         margin: '0.5rem 0',
-        fontSize: '1.5rem',
+        fontSize: '1.3rem',
         fontWeight: 'bold',
       },
       stakeKey: {
         margin: '0.1rem 0',
-        fontSize: '1.1rem',
         fontWeight: 'bold',
       },
 
@@ -143,6 +154,12 @@ const Transcendence = () => {
         height: 100,
       },
 
+      errorMessage: {
+        color: 'var(--pink)',
+        textAlign: 'center' as const,
+        fontWeight: 'bold',
+      },
+
       listOfAssets: {
         width: isMobile ? 'unset' : '90vw',
         display: 'flex',
@@ -157,8 +174,10 @@ const Transcendence = () => {
   if (connectedManually) {
     return (
       <div className='flex-col'>
-        <p>
-          ERROR! You connected manually, if you wish to build & sign a TX please reconnect in a non-manual way.
+        <p style={styles.errorMessage}>
+          Error! You connected manually.
+          <br />
+          If you wish to build & sign a TX, please re-connect in a non-manual way.
         </p>
 
         <BaseButton
@@ -257,22 +276,28 @@ const Transcendence = () => {
         </div>
       </div>
 
-      <BaseButton
-        label='Transcend'
-        onClick={buildTx}
-        disabled={!BURN_ADDRESS || loadingTx || !selectedMale || !selectedFemale || !selectedBike}
-        fullWidth
-        backgroundColor={
-          !BURN_ADDRESS || loadingTx || !selectedMale || !selectedFemale || !selectedBike
-            ? 'var(--charcoal)'
-            : 'var(--brown)'
-        }
-        hoverColor={
-          !BURN_ADDRESS || loadingTx || !selectedMale || !selectedFemale || !selectedBike
-            ? 'var(--charcoal)'
-            : 'var(--orange)'
-        }
-      />
+      <div style={{ width: '100%' }}>
+        <BaseButton
+          label='Transcend'
+          onClick={buildTx}
+          disabled={
+            !BURN_ADDRESS || !!errorMessage || loadingTx || !selectedMale || !selectedFemale || !selectedBike
+          }
+          fullWidth
+          backgroundColor={
+            !BURN_ADDRESS || !!errorMessage || loadingTx || !selectedMale || !selectedFemale || !selectedBike
+              ? 'var(--charcoal)'
+              : 'var(--brown)'
+          }
+          hoverColor={
+            !BURN_ADDRESS || !!errorMessage || loadingTx || !selectedMale || !selectedFemale || !selectedBike
+              ? 'var(--charcoal)'
+              : 'var(--orange)'
+          }
+        />
+
+        {errorMessage ? <p style={styles.errorMessage}>{errorMessage}</p> : null}
+      </div>
 
       <Modal
         open={!!selector}
