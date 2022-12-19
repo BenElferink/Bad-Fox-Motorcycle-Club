@@ -120,7 +120,7 @@ const teamData = [
     title: 'Founder / Fullstack Developer',
     description:
       "I started my career as Fullstack Developer in 2020 & have been involved in the crypto & NFT space since 2021. Aside from my personal portfolio, I've also helped build several communities at their early stages.",
-    profilePicture: '/media/team/ben.jpg',
+    profilePicture: '/media/team/Ben.jpg',
     socials: [
       'https://github.com/belferink1996',
       'https://www.linkedin.com/in/ben-elferink-37ba251b9',
@@ -133,7 +133,7 @@ const teamData = [
     title: 'Co-Founder / Lead Artist',
     description:
       "I'm an artist from a very young age, I started my graphic design career in 2020. I'm very excited to work on the art for Bad Fox MC, as it's is my first time being in the Cardano NFT space!",
-    profilePicture: '/media/team/david.jpg',
+    profilePicture: '/media/team/David.jpg',
     socials: [
       'https://www.linkedin.com/in/david-minkov-50187620a',
       'https://instagram.com/david_minkov',
@@ -146,7 +146,7 @@ const teamData = [
     title: 'Co-Founder / Co-Artist',
     description:
       "I'm an aspiring artist. I've invested in the tools required to produce the art for Bad Fox MC. I help in the making of traits, and I lead the work & design for our merchandise store.",
-    profilePicture: '/media/team/chris.jpg',
+    profilePicture: '/media/team/Chris.jpg',
     socials: [
       'https://instagram.com/m__chris',
       'https://twitter.com/ChrisMitrev',
@@ -166,7 +166,7 @@ const teamData = [
     title: 'Blockchain & Fullstack Developer',
     description:
       "I'm a programmer, and I've been minting NFT projects on Cardano since September 2021. Over that time, I've' been part of many successful teams such as OGBears, and Filthy Rich Horses. I love everyone who is part of the Cardano community and now it feels like a small family to me.",
-    profilePicture: '/media/team/uberman.jpg',
+    profilePicture: '/media/team/Uberman.jpg',
     socials: ['https://discord.com/users/458201578571038740'],
   },
 ]
