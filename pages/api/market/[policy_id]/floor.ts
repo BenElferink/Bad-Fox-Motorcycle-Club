@@ -1,8 +1,9 @@
+import { NextApiRequest, NextApiResponse } from 'next'
 import { firebase, firestore } from '../../../../utils/firebase'
 import jpgStore from '../../../../utils/jpgStore'
 import isPolicyIdAllowed from '../../../../functions/isPolicyIdAllowed'
 import { ADMIN_CODE } from '../../../../constants'
-import { NextApiRequest, NextApiResponse } from 'next'
+import { PolicyId } from '../../../../@types'
 import projects from '../../../../data/projects.json'
 
 interface Response {
@@ -10,12 +11,12 @@ interface Response {
   items: firebase.firestore.DocumentData[]
 }
 
-export default async (req: NextApiRequest, res: NextApiResponse<Response>) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
   const { method, headers, query } = req
 
-  const policyId = query.policy_id as string
+  const policyId = query.policy_id as PolicyId
   const adminCode = headers.admin_code
-  const live = !!query.live
+  const live = !!query.live && query.live != 'false' && query.live != '0'
   const limit = (() => {
     const min = 1
     const max = 30
@@ -54,7 +55,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<Response>) => {
         const docsQuery = await firestore
           .collection('floor-snapshots')
           .orderBy('timestamp', 'asc')
-          .limit(limit * projects.length)
+          // .limit(limit * projects.length)
           .get()
 
         const docs = docsQuery.docs.map((doc) => doc.data()).filter((doc) => doc.policyId === policyId)
@@ -98,3 +99,5 @@ export default async (req: NextApiRequest, res: NextApiResponse<Response>) => {
     return res.status(500).end()
   }
 }
+
+export default handler

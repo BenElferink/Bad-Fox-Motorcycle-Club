@@ -1,14 +1,15 @@
+import { PolicyId } from '../@types'
 import projects from '../data/projects.json'
 
-const isPolicyIdAllowed = (policyId: string) => {
-  if (!policyId) {
-    return false
-  }
-
+const isPolicyIdAllowed = (policyId: PolicyId, key?: 'collections' | 'traits' | 'portfolio') => {
   let isAllowed = false
 
+  if (!policyId) {
+    return isAllowed
+  }
+
   for (const proj of projects) {
-    if (proj.policyId === policyId) {
+    if (proj.policyId === policyId && (!key || !!proj[key])) {
       isAllowed = true
     }
   }

@@ -2,51 +2,33 @@ import Image from 'next/image'
 import { useState } from 'react'
 import Loader from '.'
 
-const ImageLoader = ({
-  width = 100,
-  height = 100,
-  loaderSize,
-  src = '',
-  alt = '',
-  style = {},
-}: {
-  width?: number
-  height?: number
-  loaderSize?: number
+export interface ImageLoaderProps {
   src: string
   alt: string
-  style?: {}
-}) => {
+  width?: number
+  height?: number
+  style?: React.CSSProperties
+}
+
+const ImageLoader = (props: ImageLoaderProps) => {
+  const { src = '', alt = '', width = 100, height = 100, style = {} } = props
   const [loading, setLoading] = useState(true)
 
   return (
-    <div style={{ position: 'relative', zIndex: 1 }}>
+    <div className='relative z-10' style={style}>
       {loading ? (
-        <div
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            zIndex: -1,
-          }}
-        >
-          <Loader size={loaderSize} />
+        <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10'>
+          <Loader size={Math.min(width, height) * 0.7} />
         </div>
       ) : null}
 
       <Image
         src={src}
         alt={alt}
+        onLoadingComplete={() => setLoading(false)}
         width={width}
         height={height}
-        onLoadingComplete={() => setLoading(false)}
-        style={{
-          backgroundColor: 'transparent',
-          border: '1px solid var(--black)',
-          borderRadius: '1rem',
-          ...style,
-        }}
+        style={style}
       />
     </div>
   )

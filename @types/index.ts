@@ -1,29 +1,18 @@
 import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../constants'
 
+export type PolicyId = typeof BAD_FOX_POLICY_ID | typeof BAD_MOTORCYCLE_POLICY_ID
+
 export interface OwningWallet {
   isContract: boolean
   stakeKey: string
   walletAddress: string
-  assets: {
-    [BAD_FOX_POLICY_ID]: {
+  assets: Record<
+    PolicyId,
+    {
       unit: string
       quantity: string
     }[]
-    [BAD_MOTORCYCLE_POLICY_ID]: {
-      unit: string
-      quantity: string
-    }[]
-  }
-}
-
-export interface PopulatedWallet {
-  stakeKey: string
-  walletAddress: string
-  assets: {
-    [BAD_FOX_POLICY_ID]: PopulatedAsset[]
-    [BAD_MOTORCYCLE_POLICY_ID]: PopulatedAsset[]
-  }
-  ownsAssets: boolean
+  >
 }
 
 export interface PopulatedAsset {
@@ -34,6 +23,7 @@ export interface PopulatedAsset {
   displayName: string
   serialNumber: number
   rarityRank: number
+  price?: number
   attributes: {
     [category: string]: string
   }
@@ -42,6 +32,13 @@ export interface PopulatedAsset {
     firebase: string
   }
   files: []
+}
+
+export interface PopulatedWallet {
+  stakeKey: string
+  walletAddress: string
+  assets: Record<PolicyId, PopulatedAsset[]>
+  ownsAssets: boolean
 }
 
 export interface PopulatedTrait {
@@ -53,6 +50,8 @@ export interface PopulatedTrait {
   percent: string
 }
 
+export type TraitsFile = Record<string, PopulatedTrait[]>
+
 export interface JpgListedItem {
   assetId: string
   name: string
@@ -62,7 +61,20 @@ export interface JpgListedItem {
 }
 
 export interface JpgRecentItem extends JpgListedItem {
+  type: 'sale' | 'listing'
+  imageUrl: string
   rank: number
   attributes: Record<string, string>
-  imageUrl: string
+}
+
+export interface FloorPrices {
+  [category: string]: {
+    [trait: string]: number
+  }
+}
+
+export interface FloorSnapshot {
+  timestamp: number
+  policyId: PolicyId
+  attributes: FloorPrices
 }

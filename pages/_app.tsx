@@ -1,55 +1,55 @@
 import Head from 'next/head'
 import { AppProps } from 'next/app'
-import { Fragment } from 'react'
+import { Fragment, useEffect } from 'react'
 import { Toaster } from 'react-hot-toast'
-import CssBaseline from '@mui/material/CssBaseline'
-import { createTheme, ThemeProvider } from '@mui/material'
-import { ScreenSizeProvider } from '../contexts/ScreenSizeContext'
-import { WalletProvider } from '../contexts/WalletContext'
-import '@fontsource/roboto'
 import 'animate.css'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import '../styles/swiper-overrides.css'
 import '../styles/globals.css'
+import { WalletProvider } from '../contexts/WalletContext'
+import Header from '../components/layout/Header'
+import Footer from '../components/layout/Footer'
+import SnowCanvas from '../components/canvas/SnowCanvas'
 
-// https://animate.style
+// https://api.cnft.tools/api/external/fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967
 // https://api.opencnft.io/1/policy/fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967
 // https://api.coingecko.com/api/v3/simple/price?ids=cardano&vs_currencies=usd
 
-const theme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-})
+const App = ({ Component, pageProps }: AppProps) => {
+  useEffect(() => {
+    const handler = () => window.scrollTo({ top: 0 })
+    window.addEventListener('beforeunload', handler)
+    return () => window.removeEventListener('beforeunload', handler)
+  }, [])
 
-function App({ Component, pageProps }: AppProps) {
   return (
     <Fragment>
       <Head>
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta name='author' content='Ben Elferink' />
+        {/* <meta name='description' content='' /> */}
+        {/* <meta name='keywords' content='' /> */}
+
         <link rel='icon' type='image/x-icon' href='/favicon.ico' />
         <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
         <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
         <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
         <link rel='manifest' href='/manifest.json' />
-        <meta name='author' content='Ben Elferink' />
-        {/* <meta name='description' content='' /> */}
-        {/* <meta name='keywords' content='' /> */}
+
         <title>Bad Fox Motorcycle Club</title>
       </Head>
 
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Toaster />
-
-        <ScreenSizeProvider>
-          <WalletProvider>
-            <Component {...pageProps} />
-          </WalletProvider>
-        </ScreenSizeProvider>
-      </ThemeProvider>
+      <Toaster />
+      <Header />
+      <main className='w-screen min-h-screen bg-black bg-opacity-50'>
+        <SnowCanvas />
+        <WalletProvider>
+          <Component {...pageProps} />
+        </WalletProvider>
+      </main>
+      <Footer />
     </Fragment>
   )
 }

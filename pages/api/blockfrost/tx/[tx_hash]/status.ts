@@ -6,7 +6,7 @@ interface Response {
   submitted: boolean
 }
 
-export default async (req: NextApiRequest, res: NextApiResponse<Response>) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
   const { method, query } = req
 
   const txHash = query.tx_hash
@@ -48,3 +48,5 @@ export default async (req: NextApiRequest, res: NextApiResponse<Response>) => {
     return res.status(500).end()
   }
 }
+
+export default handler

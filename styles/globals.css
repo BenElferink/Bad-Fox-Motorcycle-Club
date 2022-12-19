@@ -1,21 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-gray-400;
+  }
+}
+
 :root {
   --online: #44b700;
   --offline: #b74400;
 
-  --black: rgb(10, 10, 10);
-  --charcoal: rgb(42, 42, 42);
-  --apex-charcoal: rgb(66, 66, 66);
-  --grey: rgb(120, 135, 150);
-  --white: rgb(245, 245, 245);
-  --brown: rgb(100, 85, 85);
-  --brown-25: rgba(100, 85, 85, 0.25);
-  --brown-75: rgba(100, 85, 85, 0.75);
-  --orange: rgb(255, 80, 55);
-  --pink: rgb(255, 0, 130);
-
-  --gradient: linear-gradient(65deg, var(--orange), var(--pink));
   --cardano-blue: #1231a6;
   --discord-purple: #7289da;
+
+  --orange: rgb(255, 80, 55);
+  --pink: rgb(255, 0, 130);
+  --gradient: linear-gradient(65deg, var(--orange), var(--pink));
 }
 
 html {
@@ -23,114 +25,12 @@ html {
 }
 
 body {
-  font-family: 'Roboto';
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-size: 16px;
-  background-color: var(--black) !important;
-  color: var(--white) !important;
-}
-
-.App {
-  width: 100vw;
-  min-height: 100vh;
-}
-
-.flex-row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.flex-col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.scroll {
-  overflow: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  cursor: all-scroll;
-}
-
-.react-toggle-track {
-  background-color: var(--brown) !important;
-}
-.react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track {
-  background-color: var(--orange) !important;
-}
-.react-toggle--checked .react-toggle-track {
-  background-color: var(--brown) !important;
-}
-.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
-  background-color: var(--orange) !important;
-}
-.react-toggle--checked .react-toggle-thumb {
-  left: 27px;
-  border-color: var(--brown) !important;
-}
-
-.apexchartsfloor-chart-lines > svg > foreignObject,
-.apexchartsportfolio-chart-area > svg > foreignObject {
-  display: none;
-}
-
-/* .scroll::-webkit-scrollbar {
-  display: none;
-} */
-
-/*
-  Extra Small Devices, Phones 
-  @media only screen and (min-width: 480px) {}
-*/
-
-/*
-  Small Devices, Tablets
-  @media only screen and (min-width: 768px) {}
-*/
-
-/*
-  Medium Devices, Desktops
-  @media only screen and (min-width: 992px) {}
-*/
-
-/*
-  Large Devices, Wide Screens
-  @media only screen and (min-width: 1200px) {}
-*/
-
-@-webkit-keyframes rotating /* Safari and Chrome */ {
-  from {
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@keyframes rotating {
-  from {
-    -ms-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  to {
-    -ms-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-.rotating {
-  -webkit-animation: rotating 3s linear infinite;
-  -moz-animation: rotating 3s linear infinite;
-  -ms-animation: rotating 3s linear infinite;
-  -o-animation: rotating 3s linear infinite;
-  animation: rotating 3s linear infinite;
+  background-color: rgba(0, 0, 0, 0.1);
+  background-image: url('/media/landing/bg.png');
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }

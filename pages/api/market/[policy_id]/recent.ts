@@ -1,17 +1,17 @@
 import jpgStore from '../../../../utils/jpgStore'
 import isPolicyIdAllowed from '../../../../functions/isPolicyIdAllowed'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { JpgRecentItem } from '../../../../@types'
+import { JpgRecentItem, PolicyId } from '../../../../@types'
 
 interface Response {
   count: number
   items: JpgRecentItem[]
 }
 
-export default async (req: NextApiRequest, res: NextApiResponse<Response>) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
   const { method, query } = req
 
-  const policyId = query.policy_id as string
+  const policyId = query.policy_id as PolicyId
   const sold = !!query.sold && query.sold != 'false' && query.sold != '0'
   const page = (() => {
     const min = 1
@@ -45,3 +45,5 @@ export default async (req: NextApiRequest, res: NextApiResponse<Response>) => {
     return res.status(500).end()
   }
 }
+
+export default handler

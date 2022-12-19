@@ -1,9 +1,20 @@
+import { useEffect } from 'react'
 import Loader from '.'
 import Modal from '../Modal'
 
-const GlobalLoader = ({ loading = true }) => {
+interface GlobalLoaderProps {
+  loading: boolean
+}
+
+const GlobalLoader = (props: GlobalLoaderProps) => {
+  const { loading } = props
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 })
+  }, [])
+
   return (
-    <Modal title='' open={loading} style={{ backgroundColor: 'transparent', outline: 'none' }}>
+    <Modal open={loading} noModal>
       <Loader size={300} />
     </Modal>
   )

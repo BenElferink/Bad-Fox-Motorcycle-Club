@@ -5,7 +5,7 @@ import { OwningWallet } from '../../../../../@types'
 
 interface Response extends OwningWallet {}
 
-export default async (req: NextApiRequest, res: NextApiResponse<Response>) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
   const { method, query } = req
 
   const assetId = query.asset_id
@@ -50,3 +50,5 @@ export default async (req: NextApiRequest, res: NextApiResponse<Response>) => {
     return res.status(500).end()
   }
 }
+
+export default handler

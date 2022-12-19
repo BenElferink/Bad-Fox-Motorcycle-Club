@@ -1,18 +1,18 @@
 [
   {
     "name": "Bad Fox",
-    "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/projects/bad-fox.png",
+    "image": "/media/projects/bad-fox.png",
     "policyId": "fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967",
-    "catalogCollections": true,
-    "catalogTraits": true,
-    "walletPortfolio": true
+    "collections": true,
+    "traits": true,
+    "portfolio": true
   },
   {
     "name": "Bad Motorcycle",
-    "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/projects/bad-motorcycle.png",
+    "image": "/media/projects/bad-motorcycle.png",
     "policyId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba8",
-    "catalogCollections": true,
-    "catalogTraits": true,
-    "walletPortfolio": true
+    "collections": true,
+    "traits": true,
+    "portfolio": true
   }
 ]

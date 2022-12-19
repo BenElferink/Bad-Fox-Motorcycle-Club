@@ -7,7 +7,7 @@ import { PopulatedAsset, PopulatedWallet } from '../../../@types'
 
 interface Response extends PopulatedWallet {}
 
-export default async (req: NextApiRequest, res: NextApiResponse<Response>) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
   const { method, query } = req
 
   const walletIdentifier = query.wallet_identifier as string
@@ -75,3 +75,5 @@ export default async (req: NextApiRequest, res: NextApiResponse<Response>) => {
     return res.status(500).end()
   }
 }
+
+export default handler

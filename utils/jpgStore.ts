@@ -1,7 +1,7 @@
 import axios from 'axios'
 import getFileForPolicyId from '../functions/getFileForPolicyId'
 import formatIpfsImageUrl from '../functions/formatters/formatIpfsImageUrl'
-import { JpgListedItem, JpgRecentItem, PopulatedAsset, PopulatedTrait } from '../@types'
+import { FloorPrices, JpgListedItem, JpgRecentItem, PolicyId, PopulatedAsset, TraitsFile } from '../@types'
 
 const ONE_MILLION = 1000000
 
@@ -64,16 +64,15 @@ class JpgStore {
     this.baseUrl = 'https://server.jpgstoreapis.com'
   }
 
-  getRecents = (options: { policyId: string; sold?: boolean; page?: number }): Promise<JpgRecentItem[]> => {
+  getRecents = (options: { policyId: PolicyId; sold?: boolean; page?: number }): Promise<JpgRecentItem[]> => {
     const policyId = options.policyId ?? ''
     const sold = options.sold ?? false
+    const type = sold ? 'sales' : 'listings'
     const page = options.page ?? 1
-    const uri = `${this.baseUrl}/policy/${policyId}/${sold ? 'sales' : 'listings'}?page=${page}`
+    const uri = `${this.baseUrl}/policy/${policyId}/${type}?page=${page}`
 
     return new Promise(async (resolve, reject) => {
-      console.log(
-        `Fetching recent ${sold ? 'sales' : 'listings'} from jpg.store at page ${page} for policy ID ${policyId}`
-      )
+      console.log(`Fetching recent ${type} from jpg.store at page ${page} for policy ID ${policyId}`)
 
       try {
         const { data } = await axios.get<FetchedRecent[]>(uri, {
@@ -97,6 +96,7 @@ class JpgStore {
               itemUrl: `https://jpg.store/asset/${item.asset_id}`,
               // @ts-ignore
               date: new Date(sold ? item?.confirmed_at : item?.listed_at),
+              type: type.substring(0, type.length - 1) as 'sale' | 'listing',
             }
           })
           .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -110,7 +110,7 @@ class JpgStore {
     })
   }
 
-  getListings = (policyId: string): Promise<JpgListedItem[]> => {
+  getListings = (policyId: PolicyId): Promise<JpgListedItem[]> => {
     const maxSize = 100
     const uri = `${this.baseUrl}/search/tokens?policyIds=["${policyId}"]&verified=default&listingTypes=["SINGLE_ASSET"]&saleType=buy-now&sortBy=price-low-to-high&size=${maxSize}`
     // &onlyMainBundleAsset=false&traits={}&nameQuery=
@@ -180,12 +180,12 @@ class JpgStore {
     })
   }
 
-  getFloorPrices = async (policyId: string): Promise<Record<string, Record<string, number>>> => {
-    const floorData: Record<string, Record<string, number>> = {}
+  getFloorPrices = async (policyId: PolicyId): Promise<FloorPrices> => {
+    const floorData: FloorPrices = {}
     const traitsData: Record<string, string[]> = {}
 
     const policyAssets = getFileForPolicyId(policyId, 'assets') as PopulatedAsset[]
-    const policyTraits = getFileForPolicyId(policyId, 'traits') as Record<string, PopulatedTrait[]>
+    const policyTraits = getFileForPolicyId(policyId, 'traits') as TraitsFile
 
     Object.entries(policyTraits).forEach(([cat, traits]) => {
       traitsData[cat] = traits.map(({ onChainName }) => onChainName)

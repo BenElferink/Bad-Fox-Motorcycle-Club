@@ -4,7 +4,7 @@
       "onChainName": "Female",
       "displayName": "Female",
       "model": "Female",
-      "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/_none.png",
+      "image": "/media/_none.png",
       "count": 3000,
       "percent": "50.00%"
     },
@@ -12,7 +12,7 @@
       "onChainName": "Male",
       "displayName": "Male",
       "model": "Male",
-      "image": "https://raw.githubusercontent.com/belferink1996/bad-fox-mc-website/main/public/media/_none.png",
+      "image": "/media/_none.png",
       "count": 3000,
       "percent": "50.00%"
     }

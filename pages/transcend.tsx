@@ -1,27 +1,21 @@
+import { Fragment } from 'react'
 import useWallet from '../contexts/WalletContext'
-import ConnectWallet from '../components/ConnectWallet'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import Transcendence from '../components/Dashboards/Transcendence'
+import WalletConnect from '../components/Wallet/WalletConnect'
+import BurnDashboard from '../components/dashboards/BurnDashboard'
 
 const Page = () => {
   const { connected } = useWallet()
 
-  if (!connected) {
-    return (
-      <div className='App flex-col'>
-        <Header />
-        <ConnectWallet disableManual introText='Connect a wallet to transcend your NFTs.' />
-        <Footer />
-      </div>
-    )
-  }
-
   return (
-    <div className='App flex-col'>
-      <Header />
-      <Transcendence />
-      <Footer />
+    <div className='flex flex-col items-center'>
+      {!connected ? (
+        <Fragment>
+          <WalletConnect introText='Connect to transcend your NFTs.' />
+          <p className='pt-[15vh] text-center text-xl text-[var(--pink)]'>Not connected.</p>
+        </Fragment>
+      ) : (
+        <BurnDashboard />
+      )}
     </div>
   )
 }

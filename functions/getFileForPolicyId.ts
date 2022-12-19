@@ -3,9 +3,9 @@ import badFoxAssetsFile from '../data/assets/bad-fox.json'
 import badFoxTraitsFile from '../data/traits/bad-fox.json'
 import badMotorcycleAssetsFile from '../data/assets/bad-motorcycle.json'
 import badMotorcycleTraitsFile from '../data/traits/bad-motorcycle.json'
-import { PopulatedAsset, PopulatedTrait } from '../@types'
+import { PolicyId, PopulatedAsset, TraitsFile } from '../@types'
 
-const getFileForPolicyId = (policyId: string, fileType: 'assets' | 'traits') => {
+const getFileForPolicyId = (policyId: PolicyId, fileType: 'assets' | 'traits') => {
   switch (fileType) {
     case 'assets':
       return (policyId === BAD_FOX_POLICY_ID
@@ -23,7 +23,7 @@ const getFileForPolicyId = (policyId: string, fileType: 'assets' | 'traits') => 
           : policyId === BAD_MOTORCYCLE_POLICY_ID
           ? badMotorcycleTraitsFile
           : {}
-      ) as Record<string, PopulatedTrait[]>
+      ) as TraitsFile
 
     default:
       return null

@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, useMemo, useEffect } from 'react'
+import { createContext, useState, useContext, useMemo, useEffect, Dispatch, SetStateAction } from 'react'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { BrowserWallet, Wallet } from '@martifylabs/mesh'

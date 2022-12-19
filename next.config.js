@@ -4,14 +4,9 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: [
-      'firebasestorage.googleapis.com',
-      'raw.githubusercontent.com',
-      'images.cnft.tools',
-      'alwaysinvert.mypinata.cloud',
-    ],
+    domains: ['firebasestorage.googleapis.com', 'images.cnft.tools', 'alwaysinvert.mypinata.cloud'],
   },
-  webpack: function (config, options) {
+  webpack: (config, options) => {
     config.experiments = {
       asyncWebAssembly: true,
       layers: true,
