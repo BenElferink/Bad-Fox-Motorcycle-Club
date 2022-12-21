@@ -1,5 +1,5 @@
 import blockfrost from '../../../../../utils/blockfrost'
-import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../../../../constants'
+import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../../../../constants'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { OwningWallet } from '../../../../../@types'
 
@@ -32,6 +32,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
             [BAD_MOTORCYCLE_POLICY_ID]: addressInfo.amount.filter(
               ({ unit }) => unit.indexOf(BAD_MOTORCYCLE_POLICY_ID) === 0
             ),
+            [BAD_KEY_POLICY_ID]: addressInfo.amount.filter(({ unit }) => unit.indexOf(BAD_KEY_POLICY_ID) === 0),
           },
         }
 
