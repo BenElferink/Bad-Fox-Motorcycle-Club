@@ -16,7 +16,7 @@ const CollectionSelector = (props: CollectionSelectorProps) => {
   return (
     <div className='flex flex-wrap items-center justify-center'>
       {Object.entries(populatedWallet?.assets || {}).map(([policyId, assets]) => {
-        const proj = projectsFile.find((proj) => proj.policyId === policyId && !!proj.portfolio)
+        const proj = projectsFile.find((proj) => proj.policyId === policyId && !!proj.collections)
         if (!proj) return null
 
         const imageSrc = proj.image

@@ -3,7 +3,7 @@ import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { BrowserWallet, Wallet } from '@martifylabs/mesh'
 import getFileForPolicyId from '../functions/getFileForPolicyId'
-import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../constants'
+import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../constants'
 import { PopulatedAsset, PopulatedWallet } from '../@types'
 
 interface LocalStorageConnectedWallet {
@@ -66,19 +66,65 @@ export const WalletProvider = ({ children }: { children: JSX.Element }) => {
         const stakeKeys = await _wallet.getRewardAddresses()
         const walletAddress = await _wallet.getChangeAddress()
 
+        const badFoxAssetsFile = getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets') as PopulatedAsset[]
         const badFoxAssets =
-          ((await _wallet.getPolicyIdAssets(BAD_FOX_POLICY_ID))?.map(({ unit }) =>
-            (getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets') as PopulatedAsset[]).find(
-              (asset) => asset.assetId === unit
-            )
-          ) as PopulatedAsset[]) || []
+          (await Promise.all(
+            (
+              await _wallet.getPolicyIdAssets(BAD_FOX_POLICY_ID)
+            )?.map(async ({ unit }) => {
+              const foundAsset = badFoxAssetsFile.find((asset) => asset.assetId === unit)
 
+              if (!foundAsset) {
+                const { data } = await axios.get<PopulatedAsset>(
+                  `/api/asset/populate?policyId=${BAD_FOX_POLICY_ID}&assetId=${unit}&withRanks=${true}`
+                )
+
+                return data
+              }
+
+              return foundAsset
+            })
+          )) || []
+
+        const badMotorcycleAssetsFile = getFileForPolicyId(BAD_MOTORCYCLE_POLICY_ID, 'assets') as PopulatedAsset[]
         const badMotorcycleAssets =
-          ((await _wallet.getPolicyIdAssets(BAD_MOTORCYCLE_POLICY_ID))?.map(({ unit }) =>
-            (getFileForPolicyId(BAD_MOTORCYCLE_POLICY_ID, 'assets') as PopulatedAsset[]).find(
-              (asset) => asset.assetId === unit
-            )
-          ) as PopulatedAsset[]) || []
+          (await Promise.all(
+            (
+              await _wallet.getPolicyIdAssets(BAD_MOTORCYCLE_POLICY_ID)
+            )?.map(async ({ unit }) => {
+              const foundAsset = badMotorcycleAssetsFile.find((asset) => asset.assetId === unit)
+
+              if (!foundAsset) {
+                const { data } = await axios.get<PopulatedAsset>(
+                  `/api/asset/populate?policyId=${BAD_MOTORCYCLE_POLICY_ID}&assetId=${unit}&withRanks=${true}`
+                )
+
+                return data
+              }
+
+              return foundAsset
+            })
+          )) || []
+
+        const badKeyAssetsFile = getFileForPolicyId(BAD_KEY_POLICY_ID, 'assets') as PopulatedAsset[]
+        const badKeyAssets =
+          (await Promise.all(
+            (
+              await _wallet.getPolicyIdAssets(BAD_KEY_POLICY_ID)
+            )?.map(async ({ unit }) => {
+              const foundAsset = badKeyAssetsFile.find((asset) => asset.assetId === unit)
+
+              if (!foundAsset) {
+                const { data } = await axios.get<PopulatedAsset>(
+                  `/api/asset/populate?policyId=${BAD_KEY_POLICY_ID}&assetId=${unit}&withRanks=${false}`
+                )
+
+                return data
+              }
+
+              return foundAsset
+            })
+          )) || []
 
         setPopulatedWallet({
           stakeKey: stakeKeys[0],
@@ -86,8 +132,8 @@ export const WalletProvider = ({ children }: { children: JSX.Element }) => {
           assets: {
             [BAD_FOX_POLICY_ID]: badFoxAssets,
             [BAD_MOTORCYCLE_POLICY_ID]: badMotorcycleAssets,
+            [BAD_KEY_POLICY_ID]: badKeyAssets,
           },
-          ownsAssets: !!badFoxAssets.length || !!badMotorcycleAssets.length,
         })
 
         setWallet(_wallet)
@@ -110,6 +156,7 @@ export const WalletProvider = ({ children }: { children: JSX.Element }) => {
     try {
       if (_walletIdentifier) {
         const { data } = await axios.get<PopulatedWallet>(`/api/wallet/${_walletIdentifier}`)
+
         if (data) {
           setPopulatedWallet(data)
           setConnectedName('Blockfrost')

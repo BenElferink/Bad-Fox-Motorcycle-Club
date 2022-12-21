@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import axios from 'axios'
+import useWallet from '../../contexts/WalletContext'
 import getFileForPolicyId from '../../functions/getFileForPolicyId'
 import formatIpfsImageUrl from '../../functions/formatters/formatIpfsImageUrl'
 import AssetFilters from '../filters/AssetFilters'
 import AssetCard from '../cards/AssetCard'
-import { ADA_SYMBOL } from '../../constants'
-import { JpgListedItem, PolicyId, PopulatedAsset, TraitsFile } from '../../@types'
-import axios from 'axios'
-import useWallet from '../../contexts/WalletContext'
 import Loader from '../Loader'
+import { ADA_SYMBOL, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID } from '../../constants'
+import { JpgListedItem, PolicyId, PopulatedAsset, TraitsFile } from '../../@types'
 
 const INITIAL_DISPLAY_AMOUNT = 20
 
@@ -51,6 +51,21 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
           price: !!foundListing ? foundListing.price : 0,
         }
       })
+
+      for await (const listed of data.items) {
+        const found = assets.find((asset) => asset.assetId === listed.assetId)
+
+        if (!found) {
+          const { data } = await axios.get<PopulatedAsset>(
+            `/api/asset/populate?policyId=${policyId}&assetId=${listed.assetId}&withRanks=${
+              policyId !== BAD_KEY_POLICY_ID
+            }`
+          )
+
+          data.price = listed.price
+          assets.push(data as typeof assets[0])
+        }
+      }
 
       setTraitsFile(traits)
       setAssetsFile(assets)
@@ -101,22 +116,62 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
           ) : !rendered.length ? (
             <div className='text-lg'>None found...</div>
           ) : (
-            rendered.map((asset, idx) =>
-              idx < displayNum ? (
+            rendered.map((asset, idx) => {
+              if (idx >= displayNum) {
+                return null
+              }
+
+              const keyAssetsFile = !!asset?.isBurned
+                ? (getFileForPolicyId(BAD_KEY_POLICY_ID, 'assets') as PopulatedAsset[])
+                : []
+
+              const foundKey = keyAssetsFile.find(
+                (key) =>
+                  key.attributes[
+                    policyId === BAD_FOX_POLICY_ID ? `Fox (${asset?.attributes?.Gender?.charAt(0)})` : 'Motorcycle'
+                  ] === asset.displayName
+              )
+
+              return (
                 <AssetCard
-                  key={`collection-asset-${asset.assetId}-${idx}`}
+                  key={`collection-asset-${asset?.assetId}-${idx}`}
                   onClick={() => {
-                    window.open(`https://jpg.store/asset/${asset.assetId}`, '_blank', 'noopener')
+                    if (!!asset?.isBurned) {
+                      window.open(`https://jpg.store/asset/${foundKey?.assetId}`, '_blank', 'noopener')
+                    } else {
+                      window.open(`https://jpg.store/asset/${asset?.assetId}`, '_blank', 'noopener')
+                    }
                   }}
-                  imageSrc={formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank)}
-                  title={asset.displayName}
+                  isBurned={!!asset?.isBurned}
+                  title={asset?.displayName}
+                  imageSrc={formatIpfsImageUrl(asset?.image?.ipfs || '/not-found.webp', !!asset?.rarityRank)}
+                  tiedImageSrcs={
+                    !!asset?.files?.length
+                      ? asset.files
+                          .filter((file) => file.mediaType === 'image/png')
+                          .map((file) => ({
+                            src: formatIpfsImageUrl(file.src, true),
+                            name: `#${asset.attributes[file.name.replace('Bad ', '')].split('#')[1]}`,
+                          }))
+                      : []
+                  }
                   subTitles={[
-                    `Rank: ${asset.rarityRank}`,
-                    asset.price ? `Listed: ${ADA_SYMBOL}${asset.price}` : 'Unlisted',
+                    !!asset?.isBurned
+                      ? 'Asset Transcended'
+                      : !!asset?.rarityRank
+                      ? `Rank: ${asset.rarityRank}`
+                      : '',
+                    !!asset?.isBurned
+                      ? (foundKey?.displayName as string)
+                      : !!withListed
+                      ? asset?.price
+                        ? `Listed: ${ADA_SYMBOL}${asset.price}`
+                        : 'Unlisted'
+                      : '',
                   ]}
                 />
-              ) : null
-            )
+              )
+            })
           )}
         </div>
 
@@ -124,9 +179,11 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
       </div>
 
       <AssetFilters
+        policyId={policyId}
         traitsData={traitsFile}
         assetsData={assetsFile}
         withListed={!!withListed && !!fetched}
+        withWallet={!!withWallet}
         callbackRendered={(arr) => setRendered(arr)}
       />
     </div>

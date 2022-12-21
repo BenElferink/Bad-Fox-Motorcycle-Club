@@ -4,7 +4,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['firebasestorage.googleapis.com', 'images.cnft.tools', 'alwaysinvert.mypinata.cloud'],
+    domains: ['firebasestorage.googleapis.com', 'images.cnft.tools', 'ipfs.jpgstoreapis.com'],
   },
   webpack: (config, options) => {
     config.experiments = {

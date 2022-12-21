@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import axios from 'axios'
 import { Chart as ChartJS, LineElement, PointElement, LinearScale, CategoryScale, Legend, Filler } from 'chart.js'
 import { Line } from 'react-chartjs-2'
@@ -56,7 +56,7 @@ const CollectionCharts = (props: CollectionChartsProps) => {
     const mutableFloorSnapshots = [...floorSnapshots]
 
     while (mutableFloorSnapshots.length < numOfDataPoints) {
-      mutableFloorSnapshots.unshift({ timestamp: 0, policyId, attributes: {} })
+      mutableFloorSnapshots.unshift({ policyId, timestamp: 0, floor: 0, attributes: {} })
     }
     while (mutableFloorSnapshots.length > numOfDataPoints) {
       mutableFloorSnapshots.shift()
@@ -95,7 +95,8 @@ const CollectionCharts = (props: CollectionChartsProps) => {
         highestTrait: number
       } => {
         const idx = typeof floorPricesIndex === 'number' ? floorPricesIndex : mutableFloorSnapshots.length - 1
-        const floorPricesFromIndex = mutableFloorSnapshots[idx]?.attributes || {}
+        const attributesOfIndex = mutableFloorSnapshots[idx]?.attributes || {}
+        const floorOfIndex = mutableFloorSnapshots[idx]?.floor || 0
 
         let totalFloorValue = 0
         let totalHighestTraitValue = 0
@@ -105,7 +106,7 @@ const CollectionCharts = (props: CollectionChartsProps) => {
           let assetHighestTraitValue = 0
 
           if (!assetId || asset.assetId === assetId) {
-            Object.entries(floorPricesFromIndex).forEach(([floorPricesCategory, floorPricesTraits]) => {
+            Object.entries(attributesOfIndex).forEach(([floorPricesCategory, floorPricesTraits]) => {
               const assetCategoryTraitName = asset.attributes[floorPricesCategory]
               const traitFloorValue = floorPricesTraits[assetCategoryTraitName]
 
@@ -119,10 +120,15 @@ const CollectionCharts = (props: CollectionChartsProps) => {
                 }
               }
             })
-          }
 
-          totalFloorValue += assetFloorValue
-          totalHighestTraitValue += assetHighestTraitValue
+            if (!assetFloorValue) {
+              // this happens when there is no trait file, for example the Bad Key
+              totalFloorValue += floorOfIndex
+            } else {
+              totalFloorValue += assetFloorValue
+              totalHighestTraitValue += assetHighestTraitValue
+            }
+          }
         })
 
         return {
@@ -132,7 +138,8 @@ const CollectionCharts = (props: CollectionChartsProps) => {
       }
 
       myCollectionAssets.forEach((asset) => {
-        if (asset.attributes) {
+        console.log('asset', asset)
+        if (asset) {
           floorPayload.data = floorPayload.data.map((num, i) =>
             Math.round(num + getFloorAndTraitValues({ assetId: asset.assetId, floorPricesIndex: i }).floor)
           )
@@ -156,7 +163,7 @@ const CollectionCharts = (props: CollectionChartsProps) => {
       const floorDifference = floorLast - floorFirst
       floorPayload.differencePercent = Number(((100 / floorFirst) * floorDifference).toFixed(2))
 
-      if (floorDifference > 0) {
+      if (floorDifference >= 0) {
         floorPayload.borderColor = 'rgba(68, 183, 0, 1)' // green
         floorPayload.backgroundColor = 'rgba(68, 183, 0, 0.4)' // green
       }
@@ -176,7 +183,7 @@ const CollectionCharts = (props: CollectionChartsProps) => {
         ((100 / highestTraitFirst) * highestTraitDifference).toFixed(2)
       )
 
-      if (highestTraitDifference > 0) {
+      if (highestTraitDifference >= 0) {
         highestTraitPayload.borderColor = 'rgba(68, 183, 0, 1)' // green
         highestTraitPayload.backgroundColor = 'rgba(68, 183, 0, 0.4)' // green
       }
@@ -202,11 +209,17 @@ const CollectionCharts = (props: CollectionChartsProps) => {
     return [floorPayload, highestTraitPayload]
   }, [policyId, populatedWallet, floorSnapshots])
 
+  const charts = useMemo(() => getAndRenderCharts(), [getAndRenderCharts])
+
   return (
     <div className='flex flex-wrap items-center justify-center'>
-      {getAndRenderCharts().map(
+      {charts.map(
         ({ name, data, labels, borderColor, backgroundColor, totalBalance, differencePercent, daysAgo }) => {
-          const isUp = differencePercent > 0
+          const isUp = differencePercent >= 0
+
+          if (!totalBalance) {
+            return null
+          }
 
           return (
             <div

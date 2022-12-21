@@ -24,10 +24,10 @@ const RecentMarketActivity = (props: RecentMarketActivityProps) => {
   const [recentlyListed, setRecentlyListed] = useState<JpgRecentItem[]>([])
   const [recentlySold, setRecentlySold] = useState<JpgRecentItem[]>([])
 
-  const fetchRecentSales = useCallback(
-    async ({ page = 1 }: { page?: number }): Promise<JpgRecentItem[]> => {
+  const fetchRecents = useCallback(
+    async ({ page = 1, sold = false }: { page?: number; sold?: boolean }): Promise<JpgRecentItem[]> => {
       try {
-        const uri = `/api/market/${policyId}/recent?sold=${true}&page=${page}`
+        const uri = `/api/market/${policyId}/recent?sold=${sold}&page=${page}`
         const { data } = await axios.get<{ count: number; items: JpgRecentItem[] }>(uri)
         return data.items
       } catch (error) {
@@ -38,21 +38,7 @@ const RecentMarketActivity = (props: RecentMarketActivityProps) => {
     [policyId]
   )
 
-  const fetchRecentListings = useCallback(
-    async ({ page = 1 }: { page?: number }): Promise<JpgRecentItem[]> => {
-      try {
-        const uri = `/api/market/${policyId}/recent?sold=${false}&page=${page}`
-        const { data } = await axios.get<{ count: number; items: JpgRecentItem[] }>(uri)
-        return data.items
-      } catch (error) {
-        console.error(error)
-        return []
-      }
-    },
-    [policyId]
-  )
-
-  const fetchAndSetRecents = useCallback(
+  const fetchAndSet = useCallback(
     async ({ page = 1 }: { page?: number }): Promise<void> => {
       setFetching(true)
       const isSalesOnly = type === 'sales'
@@ -60,14 +46,14 @@ const RecentMarketActivity = (props: RecentMarketActivityProps) => {
 
       try {
         if (isSalesOnly) {
-          const salesItems = await fetchRecentSales({ page })
+          const salesItems = await fetchRecents({ page, sold: true })
           setRecentlySold(salesItems)
         } else if (isListingsOnly) {
-          const listingsItems = await fetchRecentListings({ page })
+          const listingsItems = await fetchRecents({ page, sold: false })
           setRecentlyListed(listingsItems)
         } else {
-          const salesItems = await fetchRecentSales({ page })
-          const listingsItems = await fetchRecentListings({ page })
+          const salesItems = await fetchRecents({ page, sold: true })
+          const listingsItems = await fetchRecents({ page, sold: false })
           setRecentlySold(salesItems)
           setRecentlyListed(listingsItems)
         }
@@ -77,20 +63,24 @@ const RecentMarketActivity = (props: RecentMarketActivityProps) => {
 
       setFetching(false)
     },
-    [type, fetchRecentSales, fetchRecentListings]
+    [type, fetchRecents]
   )
 
   useEffect(() => {
-    fetchAndSetRecents({ page: 1 })
-  }, [fetchAndSetRecents])
+    fetchAndSet({ page: 1 })
+  }, [fetchAndSet])
 
   const imageSize = 170
   const [slidesPerView, setSlidesPerView] = useState(0)
   const [renderItems, setRenderItems] = useState<JpgRecentItem[]>([])
 
   useEffect(() => {
-    setSlidesPerView(Math.floor((screenWidth * 0.9) / imageSize))
-  }, [screenWidth])
+    const _l = renderItems.length
+    if (!!_l) {
+      const _v = Math.floor((screenWidth * 0.9) / imageSize)
+      setSlidesPerView(_v < _l ? _v : _l)
+    }
+  }, [screenWidth, renderItems])
 
   useEffect(() => {
     setRenderItems(
@@ -108,7 +98,7 @@ const RecentMarketActivity = (props: RecentMarketActivityProps) => {
     <section className='w-full my-4 mx-auto'>
       {fetching ? (
         <Loader />
-      ) : (
+      ) : !!slidesPerView ? (
         <Swiper slidesPerView={slidesPerView} modules={[Navigation]} navigation>
           {renderItems.map((item, idx) => (
             <SwiperSlide key={`recently-sold-${item.assetId}-${idx}`}>
@@ -121,7 +111,6 @@ const RecentMarketActivity = (props: RecentMarketActivityProps) => {
                     alt={item.name}
                     style={{ borderRadius: '100%' }}
                   />
-
                   <p className='whitespace-nowrap px-1 rounded-lg bg-gray-900 text-xs text-center font-light absolute bottom-0 left-1/2 -translate-x-1/2 z-20'>
                     <span className='text-sm text-gray-200'>
                       {item.type === 'sale' ? 'Bought' : item.type === 'listing' ? 'Listed' : null}
@@ -137,7 +126,7 @@ const RecentMarketActivity = (props: RecentMarketActivityProps) => {
             </SwiperSlide>
           ))}
         </Swiper>
-      )}
+      ) : null}
     </section>
   )
 }

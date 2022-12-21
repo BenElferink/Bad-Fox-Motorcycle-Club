@@ -1,6 +1,6 @@
-import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../constants'
+import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../constants'
 
-export type PolicyId = typeof BAD_FOX_POLICY_ID | typeof BAD_MOTORCYCLE_POLICY_ID
+export type PolicyId = typeof BAD_FOX_POLICY_ID | typeof BAD_MOTORCYCLE_POLICY_ID | typeof BAD_KEY_POLICY_ID
 
 export interface OwningWallet {
   isContract: boolean
@@ -13,6 +13,12 @@ export interface OwningWallet {
       quantity: string
     }[]
   >
+}
+
+export interface AssetFile {
+  name: string
+  mediaType: string
+  src: string
 }
 
 export interface PopulatedAsset {
@@ -31,14 +37,13 @@ export interface PopulatedAsset {
     ipfs: string
     firebase: string
   }
-  files: []
+  files: AssetFile[]
 }
 
 export interface PopulatedWallet {
   stakeKey: string
   walletAddress: string
   assets: Record<PolicyId, PopulatedAsset[]>
-  ownsAssets: boolean
 }
 
 export interface PopulatedTrait {
@@ -74,7 +79,8 @@ export interface FloorPrices {
 }
 
 export interface FloorSnapshot {
-  timestamp: number
   policyId: PolicyId
+  timestamp: number
+  floor: number
   attributes: FloorPrices
 }

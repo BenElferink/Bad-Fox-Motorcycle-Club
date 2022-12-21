@@ -1,7 +1,7 @@
 import { PolicyId } from '../@types'
 import projects from '../data/projects.json'
 
-const isPolicyIdAllowed = (policyId: PolicyId, key?: 'collections' | 'traits' | 'portfolio') => {
+const isPolicyIdAllowed = (policyId: PolicyId | '', key?: 'collections' | 'traits') => {
   let isAllowed = false
 
   if (!policyId) {

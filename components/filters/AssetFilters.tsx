@@ -1,27 +1,39 @@
 import { AdjustmentsVerticalIcon, ChevronDownIcon } from '@heroicons/react/24/solid'
 import React, { Fragment, useCallback, useEffect, useState } from 'react'
-import { PopulatedAsset, TraitsFile } from '../../@types'
+import { PolicyId, PopulatedAsset, TraitsFile } from '../../@types'
+import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants'
 
 export interface AssetFiltersProps {
+  policyId: PolicyId
   traitsData: TraitsFile
   assetsData: PopulatedAsset[]
   withListed?: boolean
+  withWallet?: boolean
   callbackRendered: (assets: PopulatedAsset[]) => void
 }
 
 const AssetFilters = (props: AssetFiltersProps) => {
-  const { traitsData = {}, assetsData = [], withListed = false, callbackRendered = () => {} } = props
+  const {
+    policyId,
+    traitsData = {},
+    assetsData = [],
+    withListed = false,
+    withWallet = false,
+    callbackRendered = () => {},
+  } = props
 
   const [openOnMobile, setOpenOnMobile] = useState(false)
-  const [sortBy, setSortBy] = useState<'PRICE' | 'RANK' | 'ID'>(withListed ? 'PRICE' : 'RANK')
+  const [sortBy, setSortBy] = useState<'PRICE' | 'RANK' | 'ID' | 'BURN'>(
+    withListed ? 'PRICE' : policyId === BAD_KEY_POLICY_ID ? 'ID' : 'RANK'
+  )
   const [ascending, setAscending] = useState(true)
   const [filterComponents, setFilterComponents] = useState<Record<string, boolean>>({})
   const [filters, setFilters] = useState<Record<string, string[]>>({})
   const [search, setSearch] = useState('')
 
   useEffect(() => {
-    setSortBy(withListed ? 'PRICE' : 'RANK')
-  }, [withListed])
+    setSortBy(withListed ? 'PRICE' : policyId === BAD_KEY_POLICY_ID ? 'ID' : 'RANK')
+  }, [policyId, withListed])
 
   const filterAssets = useCallback(
     (assets: PopulatedAsset[]): PopulatedAsset[] => {
@@ -56,7 +68,7 @@ const AssetFilters = (props: AssetFiltersProps) => {
   const sortAssets = useCallback(
     (items: PopulatedAsset[]): PopulatedAsset[] => {
       switch (sortBy) {
-        case 'PRICE':
+        case 'PRICE': {
           const sorted = items.sort(
             (a, b) => ((ascending ? a : b)?.price || 0) - ((ascending ? b : a)?.price || 0)
           )
@@ -66,8 +78,24 @@ const AssetFilters = (props: AssetFiltersProps) => {
           }
 
           return sorted
-        case 'RANK':
-          return items.sort((a, b) => (ascending ? a : b).rarityRank - (ascending ? b : a).rarityRank)
+        }
+
+        case 'RANK': {
+          const sorted = items.sort((a, b) => (ascending ? a : b).rarityRank - (ascending ? b : a).rarityRank)
+
+          if (ascending) {
+            return sorted.sort((a, b) => (!!a.isBurned ? 1 : -1) - (!!b.isBurned ? 1 : -1))
+          }
+
+          return sorted
+        }
+
+        case 'BURN': {
+          return items.sort(
+            (a, b) => (!!(ascending ? a : b).isBurned ? -1 : 1) - (!!(ascending ? b : a).isBurned ? -1 : 1)
+          )
+        }
+
         case 'ID':
         default:
           return items.sort((a, b) => (ascending ? a : b).serialNumber - (ascending ? b : a).serialNumber)
@@ -128,7 +156,33 @@ const AssetFilters = (props: AssetFiltersProps) => {
           <span className='ml-2 text-sm w-16'>{ascending ? 'Ascend' : 'Descend'}</span>
         </label>
 
-        <div className='flex items-center justify-center'>
+        <div className='flex flex-wrap items-center justify-center'>
+          <label className='m-2 flex items-center hover:text-white cursor-pointer'>
+            <input
+              type='radio'
+              name='sort-by'
+              value='ID'
+              onChange={(e) => setSortBy(e.target.value as 'ID')}
+              checked={sortBy === 'ID'}
+              className='cursor-pointer'
+            />
+            <span className='ml-2 text-sm'>ID</span>
+          </label>
+
+          {policyId !== BAD_KEY_POLICY_ID ? (
+            <label className='m-2 flex items-center hover:text-white cursor-pointer'>
+              <input
+                type='radio'
+                name='sort-by'
+                value='RANK'
+                onChange={(e) => setSortBy(e.target.value as 'RANK')}
+                checked={sortBy === 'RANK'}
+                className='cursor-pointer'
+              />
+              <span className='ml-2 text-sm'>Rank</span>
+            </label>
+          ) : null}
+
           {withListed ? (
             <label className='m-2 flex items-center hover:text-white cursor-pointer'>
               <input
@@ -143,29 +197,19 @@ const AssetFilters = (props: AssetFiltersProps) => {
             </label>
           ) : null}
 
-          <label className='m-2 flex items-center hover:text-white cursor-pointer'>
-            <input
-              type='radio'
-              name='sort-by'
-              value='RANK'
-              onChange={(e) => setSortBy(e.target.value as 'RANK')}
-              checked={sortBy === 'RANK'}
-              className='cursor-pointer'
-            />
-            <span className='ml-2 text-sm'>Rank</span>
-          </label>
-
-          <label className='m-2 flex items-center hover:text-white cursor-pointer'>
-            <input
-              type='radio'
-              name='sort-by'
-              value='ID'
-              onChange={(e) => setSortBy(e.target.value as 'ID')}
-              checked={sortBy === 'ID'}
-              className='cursor-pointer'
-            />
-            <span className='ml-2 text-sm'>ID</span>
-          </label>
+          {!withWallet && (policyId === BAD_FOX_POLICY_ID || policyId === BAD_MOTORCYCLE_POLICY_ID) ? (
+            <label className='m-2 flex items-center hover:text-white cursor-pointer'>
+              <input
+                type='radio'
+                name='sort-by'
+                value='BURN'
+                onChange={(e) => setSortBy(e.target.value as 'BURN')}
+                checked={sortBy === 'BURN'}
+                className='cursor-pointer'
+              />
+              <span className='ml-2 text-sm'>Burn</span>
+            </label>
+          ) : null}
         </div>
 
         {Object.entries(traitsData)

@@ -1,9 +1,9 @@
 import axios from 'axios'
 import getFileForPolicyId from '../functions/getFileForPolicyId'
 import formatIpfsImageUrl from '../functions/formatters/formatIpfsImageUrl'
+import populateAsset from '../functions/populateAsset'
 import { FloorPrices, JpgListedItem, JpgRecentItem, PolicyId, PopulatedAsset, TraitsFile } from '../@types'
-
-const ONE_MILLION = 1000000
+import { BAD_KEY_POLICY_ID, ONE_MILLION } from '../constants'
 
 interface FetchedListing {
   reports: string
@@ -82,24 +82,34 @@ class JpgStore {
         })
 
         const policyAssets = getFileForPolicyId(policyId, 'assets') as PopulatedAsset[]
-        const payload: JpgRecentItem[] = data
-          .map((item) => {
-            const asset = policyAssets.find((asset) => asset.assetId === item.asset_id)
+        const payload: JpgRecentItem[] = (
+          await Promise.all(
+            data.map(async (item) => {
+              let asset = policyAssets.find((asset) => asset.assetId === item.asset_id)
 
-            return {
-              assetId: item.asset_id,
-              name: item.display_name,
-              price: item.price_lovelace / ONE_MILLION,
-              rank: asset?.rarityRank || 0,
-              attributes: asset?.attributes || {},
-              imageUrl: formatIpfsImageUrl(asset?.image.ipfs || '', !!asset?.rarityRank),
-              itemUrl: `https://jpg.store/asset/${item.asset_id}`,
-              // @ts-ignore
-              date: new Date(sold ? item?.confirmed_at : item?.listed_at),
-              type: type.substring(0, type.length - 1) as 'sale' | 'listing',
-            }
-          })
-          .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+              if (!asset) {
+                asset = await populateAsset({
+                  policyId,
+                  assetId: item.asset_id,
+                  withRanks: policyId !== BAD_KEY_POLICY_ID,
+                })
+              }
+
+              return {
+                assetId: item.asset_id,
+                name: item.display_name,
+                price: item.price_lovelace / ONE_MILLION,
+                rank: asset?.rarityRank || 0,
+                attributes: asset?.attributes || {},
+                imageUrl: formatIpfsImageUrl(asset?.image.ipfs || '', !!asset?.rarityRank),
+                itemUrl: `https://jpg.store/asset/${item.asset_id}`,
+                // @ts-ignore
+                date: new Date(sold ? item?.confirmed_at : item?.listed_at),
+                type: type.substring(0, type.length - 1) as 'sale' | 'listing',
+              }
+            })
+          )
+        ).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
         console.log(`Fetched ${payload.length} items from jpg.store`)
 
@@ -117,7 +127,7 @@ class JpgStore {
     // listingTypes = "SINGLE_ASSET" || "BUNDLE" || "ALL_LISTINGS"
 
     return new Promise(async (resolve, reject) => {
-      console.log(`Fetching listings from jpg.store for policy ID ${policyId}`)
+      console.log(`Fetching listings from jpg.store for policy ID ${policyId}`, uri)
 
       try {
         let totalToFetch = 0
@@ -155,11 +165,11 @@ class JpgStore {
           else if (fetchedListings.length < totalToFetch) {
             pagination = data.pagination
             fetchedListings = fetchedListings.concat(data.tokens)
+          }
 
-            // all paginated tiems fetched, break loop
-            if (fetchedListings.length >= totalToFetch) {
-              break
-            }
+          // all paginated items fetched, break loop
+          if (fetchedListings.length === totalToFetch) {
+            break
           }
         }
 
@@ -180,7 +190,12 @@ class JpgStore {
     })
   }
 
-  getFloorPrices = async (policyId: PolicyId): Promise<FloorPrices> => {
+  getFloorPrices = async (
+    policyId: PolicyId
+  ): Promise<{
+    baseFloor: number
+    attributesFloor: FloorPrices
+  }> => {
     const floorData: FloorPrices = {}
     const traitsData: Record<string, string[]> = {}
 
@@ -203,6 +218,7 @@ class JpgStore {
         // Looping through category traits
 
         for (const { assetId, price } of listings) {
+          // Lisitng sare already sorted by price, cheapest 1st
           const asset = policyAssets.find((asset) => asset.assetId === assetId)
 
           if (asset?.attributes[category] === trait) {
@@ -222,7 +238,10 @@ class JpgStore {
 
     console.log('Found all floor prices')
 
-    return floorData
+    return {
+      baseFloor: listings[0]?.price || 0,
+      attributesFloor: floorData,
+    }
   }
 
   getAssetPurchasePrice = (

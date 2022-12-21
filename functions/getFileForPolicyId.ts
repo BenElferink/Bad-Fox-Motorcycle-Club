@@ -1,7 +1,8 @@
-import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../constants'
+import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../constants'
 import badFoxAssetsFile from '../data/assets/bad-fox.json'
-import badFoxTraitsFile from '../data/traits/bad-fox.json'
 import badMotorcycleAssetsFile from '../data/assets/bad-motorcycle.json'
+import baKeyAssetsFile from '../data/assets/bad-key.json'
+import badFoxTraitsFile from '../data/traits/bad-fox.json'
 import badMotorcycleTraitsFile from '../data/traits/bad-motorcycle.json'
 import { PolicyId, PopulatedAsset, TraitsFile } from '../@types'
 
@@ -14,6 +15,9 @@ const getFileForPolicyId = (policyId: PolicyId, fileType: 'assets' | 'traits') =
         : policyId === BAD_MOTORCYCLE_POLICY_ID
         ? // @ts-ignore
           badMotorcycleAssetsFile?.assets || []
+        : policyId === BAD_KEY_POLICY_ID
+        ? // @ts-ignore
+          baKeyAssetsFile?.assets || []
         : []) as unknown as PopulatedAsset[]
 
     case 'traits':

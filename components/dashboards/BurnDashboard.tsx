@@ -64,7 +64,7 @@ const BurnDashboard = () => {
 
     try {
       const tx = new Transaction({ initiator: wallet })
-        .sendLovelace({ address: BURN_ADDRESS }, String(5 * ONE_MILLION))
+        .sendLovelace({ address: BURN_ADDRESS }, String(4 * ONE_MILLION))
         .sendAssets({ address: BURN_ADDRESS }, [
           {
             unit: selectedMale,
@@ -80,17 +80,21 @@ const BurnDashboard = () => {
           },
         ])
 
-      toast.loading('Building transaction')
+      let toastId = toast.loading('Building transaction')
       const unsignedTx = await tx.build()
+      toast.dismiss(toastId)
 
-      toast.loading('Awaiting signature')
+      toastId = toast.loading('Awaiting signature')
       const signedTx = await wallet?.signTx(unsignedTx)
+      toast.dismiss(toastId)
 
-      toast.loading('Submitting transaction')
+      toastId = toast.loading('Submitting transaction')
       const txHash = await wallet?.submitTx(signedTx as string)
+      toast.dismiss(toastId)
 
-      toast.loading('Awaiting network confirmation')
+      toastId = toast.loading('Awaiting network confirmation')
       await txConfirmation(txHash as string)
+      toast.dismiss(toastId)
 
       toast.success('Transaction submitted!')
       setSelectedMale('')

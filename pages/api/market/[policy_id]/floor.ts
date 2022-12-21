@@ -4,7 +4,6 @@ import jpgStore from '../../../../utils/jpgStore'
 import isPolicyIdAllowed from '../../../../functions/isPolicyIdAllowed'
 import { ADMIN_CODE } from '../../../../constants'
 import { PolicyId } from '../../../../@types'
-import projects from '../../../../data/projects.json'
 
 interface Response {
   count: number
@@ -42,7 +41,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
               {
                 policyId,
                 timestamp,
-                attributes: liveFloorPrices,
+                floor: liveFloorPrices.baseFloor,
+                attributes: liveFloorPrices.attributesFloor,
               },
             ],
           })
@@ -82,7 +82,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
         await collection.add({
           policyId,
           timestamp,
-          attributes: liveFloorPrices,
+          floor: liveFloorPrices.baseFloor,
+          attributes: liveFloorPrices.attributesFloor,
         })
 
         return res.status(204).end()
