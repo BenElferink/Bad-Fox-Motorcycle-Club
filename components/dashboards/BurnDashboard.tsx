@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast'
 import { Transaction } from '@martifylabs/mesh'
 import useWallet from '../../contexts/WalletContext'
 import { PhotoIcon } from '@heroicons/react/24/solid'
-import Modal from '../Modal'
+import Modal from '../layout/Modal'
 import ImageLoader from '../Loader/ImageLoader'
 import WalletHero from '../Wallet/WalletHero'
 import AssetCard from '../cards/AssetCard'
@@ -102,6 +102,7 @@ const BurnDashboard = () => {
       setSelectedBike('')
     } catch (error: any) {
       console.error(error)
+      toast.remove()
       toast.error(error?.message || error)
 
       if (error?.message?.indexOf('Not enough ADA leftover to include non-ADA assets') !== -1) {

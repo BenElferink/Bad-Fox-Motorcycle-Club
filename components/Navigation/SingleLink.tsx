@@ -12,7 +12,6 @@ const SingleLink = (props: SingleLinkProps) => {
   const router = useRouter()
   const selected = router.pathname === path || router.asPath === path
 
-  // if (router.pathname === '/') {
   return (
     <Link
       scroll={false}
@@ -28,28 +27,6 @@ const SingleLink = (props: SingleLinkProps) => {
       {label}
     </Link>
   )
-  // }
-
-  // return (
-  //   <button
-  //     type='button'
-  //     onClick={() => {
-  //       if (!selected && !!path) {
-  //         window.location.href = path
-  //       }
-  //       if (!!url) {
-  //         window.open(url, '_blank', 'noopener')
-  //       }
-  //     }}
-  //     className={
-  //       selected
-  //         ? 'block py-2 px-3 md:p-0 w-full md:w-auto text-start md:text-center text-sm rounded text-white'
-  //         : 'block py-2 px-3 md:p-0 w-full md:w-auto text-start md:text-center text-sm rounded md:border-0 hover:bg-gray-700 md:hover:bg-transparent hover:text-white'
-  //     }
-  //   >
-  //     {label}
-  //   </button>
-  // )
 }
 
 export default SingleLink

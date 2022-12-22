@@ -2,9 +2,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
-import MusicPlayer from './MusicPlayer'
-import Navigation from './Navigation'
-import SocialIcon from '../../SocialIcon'
+import MusicPlayer from '../MusicPlayer'
+import Navigation from '../Navigation'
+import SocialIcon from '../SocialIcon'
 
 const Header = () => {
   const router = useRouter()
@@ -31,12 +31,6 @@ const Header = () => {
 
         <div className='hidden md:block'>
           <Link
-            // type='button'
-            // onClick={() => {
-            //   if (router.pathname !== '/wallet') {
-            //     window.location.href = '/wallet'
-            //   }
-            // }}
             href='/wallet'
             className={
               'mx-2 p-4 rounded-lg text-sm ' +

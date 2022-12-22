@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import Loader from '.'
-import Modal from '../Modal'
+import Modal from '../layout/Modal'
 
 interface GlobalLoaderProps {
   loading: boolean
@@ -8,10 +8,6 @@ interface GlobalLoaderProps {
 
 const GlobalLoader = (props: GlobalLoaderProps) => {
   const { loading } = props
-
-  useEffect(() => {
-    window.scrollTo({ top: 0 })
-  }, [])
 
   return (
     <Modal open={loading} noModal>

@@ -14,18 +14,23 @@ const Modal = (props: ModalProps) => {
   const { open, onClose, title, noModal, className = '', style = {}, children } = props
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden'
+    if (!!open) {
+      window.scrollTo({ top: 0 })
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
 
     return () => {
       document.body.style.overflow = ''
     }
-  }, [])
+  }, [open])
 
   return (
     <div
       className={
         (!!open ? 'block' : 'hidden') +
-        ' w-screen h-screen bg-black bg-opacity-50 backdrop-blur-lg flex items-center justify-center absolute top-0 left-0 z-50'
+        ' w-screen h-screen bg-black bg-opacity-50 backdrop-blur-lg flex items-center justify-center fixed top-0 left-0 z-50'
       }
     >
       <div className='animate__animated animate__fadeIn'>

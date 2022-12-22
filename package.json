@@ -1,15 +1,15 @@
 {
-  "homepage": "https://badfoxmc.com/",
-  "name": "bad-fox-mc-website",
+  "name": "bad-fox-motorcycle-club",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://badfoxmc.com",
   "author": "Ben Elferink <ben.elferink@icloud.com> (https://www.linkedin.com/in/ben-elferink-37ba251b9)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/belferink1996/bad-fox-mc-website.git"
+    "url": "https://github.com/belferink1996/bad-fox-motorcycle-club.git"
   },
   "bugs": {
-    "url": "https://github.com/belferink1996/bad-fox-mc-website/issues",
+    "url": "https://github.com/belferink1996/bad-fox-motorcycle-club/issues",
     "email": "ben.elferink@icloud.com"
   },
   "scripts": {
