@@ -1,6 +1,6 @@
 import { Fragment, useCallback, useEffect, useState } from 'react'
 import axios from 'axios'
-import { Transaction } from '@martifylabs/mesh'
+import { Transaction } from '@meshsdk/core'
 import writeXlsxFile from 'write-excel-file'
 import useWallet from '../../contexts/WalletContext'
 import sleep from '../../functions/sleep'

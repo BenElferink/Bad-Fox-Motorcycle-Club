@@ -1,7 +1,7 @@
-import React, { Fragment, useCallback, useState } from 'react'
+import React, { Fragment, useCallback, useMemo, useState } from 'react'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
-import { Transaction } from '@martifylabs/mesh'
+import { Transaction } from '@meshsdk/core'
 import useWallet from '../../contexts/WalletContext'
 import { PhotoIcon } from '@heroicons/react/24/solid'
 import Modal from '../layout/Modal'
@@ -116,6 +116,19 @@ const BurnDashboard = () => {
 
     setLoadingTx(false)
   }, [wallet, selectedMale, selectedFemale, selectedBike, txConfirmation, loadingTx])
+
+  const filteredAssets = useMemo(
+    () =>
+      populatedWallet?.assets[selector === 'B' ? BAD_MOTORCYCLE_POLICY_ID : BAD_FOX_POLICY_ID]
+        .sort((a, b) => a.serialNumber - b.serialNumber)
+        .filter(
+          (asset) =>
+            selector === 'B' ||
+            (selector === 'M' && asset.attributes.Gender === 'Male') ||
+            (selector === 'F' && asset.attributes.Gender === 'Female')
+        ) || [],
+    [populatedWallet, selector]
+  )
 
   if (connectedManually) {
     return (
@@ -251,15 +264,10 @@ const BurnDashboard = () => {
         }
       >
         <div className='md:max-m-[90vw] m-fit flex flex-wrap items-center justify-evenly'>
-          {populatedWallet?.assets[selector === 'B' ? BAD_MOTORCYCLE_POLICY_ID : BAD_FOX_POLICY_ID]
-            .sort((a, b) => a.serialNumber - b.serialNumber)
-            .filter(
-              (asset) =>
-                selector === 'B' ||
-                (selector === 'M' && asset.attributes.Gender === 'Male') ||
-                (selector === 'F' && asset.attributes.Gender === 'Female')
-            )
-            .map((asset) => (
+          {!filteredAssets.length ? (
+            <div>none</div>
+          ) : (
+            filteredAssets.map((asset) => (
               <AssetCard
                 key={`asset-${asset.assetId}`}
                 imageSrc={formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank)}
@@ -276,7 +284,8 @@ const BurnDashboard = () => {
                   setSelector('')
                 }}
               />
-            ))}
+            ))
+          )}
         </div>
       </Modal>
     </div>
