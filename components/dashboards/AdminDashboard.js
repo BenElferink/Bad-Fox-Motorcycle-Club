@@ -5,11 +5,18 @@ import writeXlsxFile from 'write-excel-file'
 import useWallet from '../../contexts/WalletContext'
 import sleep from '../../functions/sleep'
 import getFileForPolicyId from '../../functions/getFileForPolicyId'
-import { ADA_SYMBOL, BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID, ONE_MILLION } from '../../constants'
+import {
+  ADA_SYMBOL,
+  BAD_FOX_POLICY_ID,
+  BAD_KEY_POLICY_ID,
+  BAD_MOTORCYCLE_POLICY_ID,
+  ONE_MILLION,
+} from '../../constants'
 
 const COLLECTIONS = [
   { policyId: BAD_FOX_POLICY_ID, policyAssets: getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets') },
   { policyId: BAD_MOTORCYCLE_POLICY_ID, policyAssets: getFileForPolicyId(BAD_MOTORCYCLE_POLICY_ID, 'assets') },
+  { policyId: BAD_KEY_POLICY_ID, policyAssets: getFileForPolicyId(BAD_KEY_POLICY_ID, 'assets') },
 ]
 
 const displayBalance = (v) => (Number(v) / ONE_MILLION).toFixed(2)
@@ -26,10 +33,10 @@ const AdminDashboard = () => {
   }, [wallet])
 
   const [transcripts, setTranscripts] = useState([{ timestamp: new Date().getTime(), msg: 'Welcome Admin' }])
-  const [unlistedFoxCount, setUnlistedFoxCount] = useState(0)
-  const [listedFoxCount, setListedFoxCount] = useState(0)
-  const [unlistedMotorcycleCount, setUnlistedMotorcycleCount] = useState(0)
-  const [listedMotorcycleCount, setListedMotorcycleCount] = useState(0)
+  const [counts, setCounts] = useState({
+    unlisted: { fox: 0, motorcycle: 0, key: 0 },
+    listed: { fox: 0, motorcycle: 0, key: 0 },
+  })
 
   const [holdingWallets, setHoldingWallets] = useState([])
   const [payoutWallets, setPayoutWallets] = useState([])
@@ -73,6 +80,7 @@ const AdminDashboard = () => {
     const fetchedWallets = []
     let unlistedFoxes = 0
     let unlistedMotorcycles = 0
+    let unlistedKeys = 0
 
     for (let c = 0; c < COLLECTIONS.length; c++) {
       const { policyId, policyAssets } = COLLECTIONS[c]
@@ -99,13 +107,24 @@ const AdminDashboard = () => {
             fetchedWallets.push(wallet)
           }
 
-          const { isContract, stakeKey, walletAddress, assets } = wallet
+          const { isContract, stakeKey, walletAddress } = wallet
 
           if (isContract) {
             if (policyId === BAD_FOX_POLICY_ID) {
-              setListedFoxCount((prev) => prev + 1)
+              setCounts((prev) => ({
+                ...prev,
+                listed: { ...prev.listed, fox: prev.listed.fox + 1 },
+              }))
             } else if (policyId === BAD_MOTORCYCLE_POLICY_ID) {
-              setListedMotorcycleCount((prev) => prev + 1)
+              setCounts((prev) => ({
+                ...prev,
+                listed: { ...prev.listed, motorcycle: prev.listed.motorcycle + 1 },
+              }))
+            } else if (policyId === BAD_KEY_POLICY_ID) {
+              setCounts((prev) => ({
+                ...prev,
+                listed: { ...prev.listed, key: prev.listed.key + 1 },
+              }))
             }
           } else {
             const holderIndex = holders.findIndex((item) => item.stakeKey === stakeKey)
@@ -132,10 +151,22 @@ const AdminDashboard = () => {
 
             if (policyId === BAD_FOX_POLICY_ID) {
               unlistedFoxes++
-              setUnlistedFoxCount((prev) => prev + 1)
+              setCounts((prev) => ({
+                ...prev,
+                unlisted: { ...prev.unlisted, fox: prev.unlisted.fox + 1 },
+              }))
             } else if (policyId === BAD_MOTORCYCLE_POLICY_ID) {
               unlistedMotorcycles++
-              setUnlistedMotorcycleCount((prev) => prev + 1)
+              setCounts((prev) => ({
+                ...prev,
+                unlisted: { ...prev.unlisted, motorcycle: prev.unlisted.motorcycle + 1 },
+              }))
+            } else if (policyId === BAD_KEY_POLICY_ID) {
+              unlistedKeys++
+              setCounts((prev) => ({
+                ...prev,
+                unlisted: { ...prev.unlisted, key: prev.unlisted.key + 1 },
+              }))
             }
           }
         }
@@ -145,7 +176,9 @@ const AdminDashboard = () => {
     setHoldingWallets(holders)
 
     const lovelacePool = balance * 0.8
-    const lovelacePerShare = Math.floor(lovelacePool / (unlistedFoxes + unlistedMotorcycles * 2))
+    const lovelacePerShare = Math.floor(
+      lovelacePool / (unlistedFoxes + unlistedMotorcycles * 2 + unlistedKeys * 4)
+    )
 
     setPayoutWallets(
       holders
@@ -182,16 +215,16 @@ const AdminDashboard = () => {
                   lovelaceForTraits += 10 * ONE_MILLION
                 }
               }
+            } else if (policyId === BAD_KEY_POLICY_ID) {
+              lovelaceForAssets += policyAssets.length * lovelacePerShare * 4
             }
-            // else if (policyId === BAD_KEY_POLICY_ID) {
-            //   lovelaceForAssets += policyAssets.length * lovelacePerShare * 4
-            // }
           })
 
           return {
             stakeKey,
             address: addresses[0],
-            payout: lovelaceForAssets + lovelaceForTraits,
+            payout: Math.floor(lovelaceForAssets + lovelaceForTraits),
+            txHash: '',
           }
         })
         .sort((a, b) => b.payout - a.payout)
@@ -200,7 +233,7 @@ const AdminDashboard = () => {
     addTranscript('Snapshot done!')
     setSnapshotDone(true)
     setLoading(false)
-  }, [balance])
+  }, [COLLECTIONS, balance, fetchOwningWallet])
 
   const txConfirmation = useCallback(async (txHash) => {
     try {
@@ -247,10 +280,10 @@ const AdminDashboard = () => {
               const str5 = 'Note: accepting will increase the total pool size.'
 
               if (window.confirm(`${str1}\n\n${str2}\n\n${str3}\n${str4}\n\n${str5}`)) {
-                tx.sendLovelace(address, String(ONE_MILLION))
+                tx.sendLovelace({ address }, String(ONE_MILLION))
               }
             } else {
-              tx.sendLovelace(address, String(payout))
+              tx.sendLovelace({ address }, String(payout))
             }
           }
 
@@ -302,23 +335,11 @@ const AdminDashboard = () => {
     const data = [
       [
         {
-          value: 'Wallet Address',
+          value: 'Payout',
           fontWeight: 'bold',
         },
         {
           value: 'Stake Key',
-          fontWeight: 'bold',
-        },
-        {
-          value: 'Fox Count',
-          fontWeight: 'bold',
-        },
-        {
-          value: 'Motorcycle Count',
-          fontWeight: 'bold',
-        },
-        {
-          value: 'Payout',
           fontWeight: 'bold',
         },
         {
@@ -328,29 +349,15 @@ const AdminDashboard = () => {
       ],
     ]
 
-    for (const { address, stakeKey, payout, txHash } of payoutWallets) {
-      const holder = holdingWallets.find((holder) => holder.stakeKey === stakeKey)
-
+    for (const { stakeKey, payout, txHash } of payoutWallets) {
       data.push([
         {
           type: String,
-          value: address,
+          value: displayBalance(payout),
         },
         {
           type: String,
           value: stakeKey,
-        },
-        {
-          type: Number,
-          value: holder.assets[BAD_FOX_POLICY_ID]?.length || 0,
-        },
-        {
-          type: Number,
-          value: holder.assets[BAD_MOTORCYCLE_POLICY_ID]?.length || 0,
-        },
-        {
-          type: String,
-          value: displayBalance(payout),
         },
         {
           type: String,
@@ -418,14 +425,14 @@ const AdminDashboard = () => {
         <butto
           type='button'
           onClick={runSnapshot}
-          disabled={snapshotDone || loading || !balance}
+          disabled={!balance || snapshotDone || loading}
           className='w-1/4 p-4 disabled:bg-gray-900 disabled:bg-opacity-50 disabled:text-gray-700 disabled:border-gray-800 bg-gray-900 border border-gray-700 rounded-xl hover:bg-gray-700 hover:border-gray-500 hover:text-gray-200 disabled:cursor-not-allowed cursor-pointer'
         >
           Run Snapshot
         </butto>
         <button
           type='button'
-          onClick={payEveryone}
+          onClick={() => payEveryone()}
           disabled={!snapshotDone || payoutDone || loading}
           className='w-1/4 p-4 disabled:bg-gray-900 disabled:bg-opacity-50 disabled:text-gray-700 disabled:border-gray-800 bg-gray-900 border border-gray-700 rounded-xl hover:bg-gray-700 hover:border-gray-500 hover:text-gray-200 disabled:cursor-not-allowed cursor-pointer'
         >
@@ -441,27 +448,35 @@ const AdminDashboard = () => {
         </button>
       </div>
 
-      <table className='mt-6 mx-auto text-center'>
+      <table className='my-6 mx-auto'>
         <thead>
           <tr>
-            <th className='px-2'>Unlisted Foxes</th>
-            <th className='px-2'>Listed Foxes</th>
-            <th className='px-2'>Unlisted Motorcycles</th>
-            <th className='px-2'>Listed Motorcycles</th>
+            <th className='text-start'>Assets</th>
+            <th className='px-1 text-start'>Unlisted</th>
+            <th className='px-1 text-start'>Listed</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>{unlistedFoxCount}</td>
-            <td>{listedFoxCount}</td>
-            <td>{unlistedMotorcycleCount}</td>
-            <td>{listedMotorcycleCount}</td>
+            <td className='text-start'>Bad Fox</td>
+            <td className='text-center'>{counts.unlisted.fox}</td>
+            <td className='text-center'>{counts.listed.fox}</td>
+          </tr>
+          <tr>
+            <td className='text-start'>Bad Motorcycle</td>
+            <td className='text-center'>{counts.unlisted.motorcycle}</td>
+            <td className='text-center'>{counts.listed.motorcycle}</td>
+          </tr>
+          <tr>
+            <td className='text-start'>Bad Key</td>
+            <td className='text-center'>{counts.unlisted.key}</td>
+            <td className='text-center'>{counts.listed.key}</td>
           </tr>
         </tbody>
       </table>
 
       {payoutWallets.length ? (
-        <table className='mt-6 mx-auto text-center'>
+        <table className='mx-auto text-start'>
           <thead>
             <tr>
               <th>Payout</th>
@@ -472,12 +487,12 @@ const AdminDashboard = () => {
           <tbody>
             {payoutWallets.map(({ stakeKey, payout, txHash }) => (
               <tr key={stakeKey}>
-                <td>
+                <td className='px-1'>
                   {ADA_SYMBOL}
                   {displayBalance(payout)}
                 </td>
-                <td className='px-4'>{stakeKey}</td>
-                <td>{txHash}</td>
+                <td className='px-1'>{stakeKey}</td>
+                <td className='px-1'>{txHash}</td>
               </tr>
             ))}
           </tbody>
