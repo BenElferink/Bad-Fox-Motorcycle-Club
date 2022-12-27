@@ -52,9 +52,9 @@ interface FetchedAssetHistory {
   tx_hash: string
   seller_address: string
   signer_address: string
-  created_at: string
-  amount_lovelace: number
-  bundled_assets_count: number
+  confirmed_at: string
+  amount_lovelace: string
+  bundled_assets_count: string
 }
 
 class JpgStore {
@@ -246,7 +246,7 @@ class JpgStore {
 
   getAssetPurchasePrice = (
     assetId: string,
-    walletAddress: string
+    walletAddress?: string
   ): Promise<{
     price: number
     timestamp: number
@@ -279,8 +279,8 @@ class JpgStore {
           const tx = data.txs[i]
 
           if (tx.action === 'BUY' && (!walletAddress || walletAddress === tx.signer_address)) {
-            boughtAtPrice = tx.amount_lovelace / ONE_MILLION
-            boughtAtTimestamp = new Date(tx.created_at).getTime()
+            boughtAtPrice = Number(tx.amount_lovelace) / ONE_MILLION
+            boughtAtTimestamp = new Date(tx.confirmed_at).getTime()
             break
           }
         }
