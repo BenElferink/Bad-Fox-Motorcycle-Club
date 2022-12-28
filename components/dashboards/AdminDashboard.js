@@ -399,15 +399,8 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div>
-      <div className='flex items-center justify-center'>
-        <p>
-          Balance: {ADA_SYMBOL}
-          {displayBalance(balance)}
-        </p>
-      </div>
-
-      <div className='overflow-y-auto flex flex-col-reverse w-[69vw] h-[42vh] m-4 py-2 px-4 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700'>
+    <div className='w-3/4 mx-auto flex flex-col items-center'>
+      <div className='overflow-y-auto flex flex-col-reverse w-full h-[42vh] py-2 px-4 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700'>
         {transcripts.map(({ timestamp, msg, key }, idx) => (
           <p key={`transcript_${idx}_${timestamp}`}>
             {new Date(timestamp).toLocaleTimeString()} - {msg}
@@ -421,20 +414,20 @@ const AdminDashboard = () => {
         ))}
       </div>
 
-      <div className='flex items-center justify-evenly'>
-        <butto
+      <div className='w-full flex flex-wrap items-center justify-evenly'>
+        <button
           type='button'
           onClick={runSnapshot}
           disabled={!balance || snapshotDone || loading}
-          className='w-1/4 p-4 disabled:bg-gray-900 disabled:bg-opacity-50 disabled:text-gray-700 disabled:border-gray-800 bg-gray-900 border border-gray-700 rounded-xl hover:bg-gray-700 hover:border-gray-500 hover:text-gray-200 disabled:cursor-not-allowed cursor-pointer'
+          className='grow m-1 p-4 disabled:cursor-not-allowed disabled:bg-gray-900 disabled:bg-opacity-50 disabled:border-gray-800 disabled:text-gray-700 rounded-xl bg-green-900 hover:bg-green-700 bg-opacity-50 hover:bg-opacity-50 hover:text-gray-200 disabled:border border hover:border border-green-700 hover:border-green-700 hover:cursor-pointer'
         >
           Run Snapshot
-        </butto>
+        </button>
         <button
           type='button'
           onClick={() => payEveryone()}
           disabled={!snapshotDone || payoutDone || loading}
-          className='w-1/4 p-4 disabled:bg-gray-900 disabled:bg-opacity-50 disabled:text-gray-700 disabled:border-gray-800 bg-gray-900 border border-gray-700 rounded-xl hover:bg-gray-700 hover:border-gray-500 hover:text-gray-200 disabled:cursor-not-allowed cursor-pointer'
+          className='grow m-1 p-4 disabled:cursor-not-allowed disabled:bg-gray-900 disabled:bg-opacity-50 disabled:border-gray-800 disabled:text-gray-700 rounded-xl bg-green-900 hover:bg-green-700 bg-opacity-50 hover:bg-opacity-50 hover:text-gray-200 disabled:border border hover:border border-green-700 hover:border-green-700 hover:cursor-pointer'
         >
           Pay Everyone
         </button>
@@ -442,62 +435,69 @@ const AdminDashboard = () => {
           type='button'
           onClick={downloadReceipt}
           disabled={!payoutDone || loading}
-          className='w-1/4 p-4 disabled:bg-gray-900 disabled:bg-opacity-50 disabled:text-gray-700 disabled:border-gray-800 bg-gray-900 border border-gray-700 rounded-xl hover:bg-gray-700 hover:border-gray-500 hover:text-gray-200 disabled:cursor-not-allowed cursor-pointer'
+          className='grow m-1 p-4 disabled:cursor-not-allowed disabled:bg-gray-900 disabled:bg-opacity-50 disabled:border-gray-800 disabled:text-gray-700 rounded-xl bg-green-900 hover:bg-green-700 bg-opacity-50 hover:bg-opacity-50 hover:text-gray-200 disabled:border border hover:border border-green-700 hover:border-green-700 hover:cursor-pointer'
         >
           Download Receipt
         </button>
       </div>
 
-      <table className='my-6 mx-auto'>
-        <thead>
-          <tr>
-            <th className='text-start'>Assets</th>
-            <th className='px-1 text-start'>Unlisted</th>
-            <th className='px-1 text-start'>Listed</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className='text-start'>Bad Fox</td>
-            <td className='text-center'>{counts.unlisted.fox}</td>
-            <td className='text-center'>{counts.listed.fox}</td>
-          </tr>
-          <tr>
-            <td className='text-start'>Bad Motorcycle</td>
-            <td className='text-center'>{counts.unlisted.motorcycle}</td>
-            <td className='text-center'>{counts.listed.motorcycle}</td>
-          </tr>
-          <tr>
-            <td className='text-start'>Bad Key</td>
-            <td className='text-center'>{counts.unlisted.key}</td>
-            <td className='text-center'>{counts.listed.key}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div className='flex flex-col items-center'>
+        <p className='my-2'>
+          Balance: {ADA_SYMBOL}
+          {displayBalance(balance)}
+        </p>
 
-      {payoutWallets.length ? (
-        <table className='mx-auto text-start'>
+        <table className='my-2'>
           <thead>
             <tr>
-              <th>Payout</th>
-              <th>Stake Key</th>
-              <th>TX Hash</th>
+              <th className='text-start'>Assets</th>
+              <th className='px-1 text-start'>Unlisted</th>
+              <th className='px-1 text-start'>Listed</th>
             </tr>
           </thead>
           <tbody>
-            {payoutWallets.map(({ stakeKey, payout, txHash }) => (
-              <tr key={stakeKey}>
-                <td className='px-1'>
-                  {ADA_SYMBOL}
-                  {displayBalance(payout)}
-                </td>
-                <td className='px-1'>{stakeKey}</td>
-                <td className='px-1'>{txHash}</td>
-              </tr>
-            ))}
+            <tr>
+              <td className='text-start'>Bad Fox</td>
+              <td className='text-center'>{counts.unlisted.fox}</td>
+              <td className='text-center'>{counts.listed.fox}</td>
+            </tr>
+            <tr>
+              <td className='text-start'>Bad Motorcycle</td>
+              <td className='text-center'>{counts.unlisted.motorcycle}</td>
+              <td className='text-center'>{counts.listed.motorcycle}</td>
+            </tr>
+            <tr>
+              <td className='text-start'>Bad Key</td>
+              <td className='text-center'>{counts.unlisted.key}</td>
+              <td className='text-center'>{counts.listed.key}</td>
+            </tr>
           </tbody>
         </table>
-      ) : null}
+
+        {payoutWallets.length ? (
+          <table className='my-2'>
+            <thead>
+              <tr>
+                <th className='text-center'>Payout</th>
+                <th className='text-center'>Stake Key</th>
+                <th className='text-center'>TX Hash</th>
+              </tr>
+            </thead>
+            <tbody>
+              {payoutWallets.map(({ stakeKey, payout, txHash }) => (
+                <tr key={stakeKey}>
+                  <td className='text-start'>
+                    {ADA_SYMBOL}
+                    {displayBalance(payout)}
+                  </td>
+                  <td className='px-2 text-start'>{stakeKey}</td>
+                  <td className='text-start'>{txHash}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : null}
+      </div>
     </div>
   )
 }
