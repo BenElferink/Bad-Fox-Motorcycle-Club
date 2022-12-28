@@ -11,18 +11,8 @@ type Response =
     }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
-  const { method, query, body } = req
+  const { method, query, body = {} } = req
 
-  const {
-    snapshotStarted,
-    snapshotDone,
-    payoutStarted,
-    payoutDone,
-    receiptStarted,
-    receiptDone,
-    txError,
-    settings,
-  } = body
   const sessionId = query.sessionId
   const collection = firestore.collection('bad-drop')
 
@@ -31,14 +21,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
       case 'POST': {
         const newDoc = await collection.add({
           timestamp: Date.now(),
-          snapshotStarted,
-          snapshotDone,
-          payoutStarted,
-          payoutDone,
-          receiptStarted,
-          receiptDone,
-          txError,
-          settings,
+          ...body,
         })
 
         return res.status(201).json({
@@ -51,16 +34,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
           return res.status(400).end('Query params required (sessionId: string)')
         }
 
-        await collection.doc(sessionId).update({
-          snapshotStarted,
-          snapshotDone,
-          payoutStarted,
-          payoutDone,
-          receiptStarted,
-          receiptDone,
-          txError,
-          settings,
-        })
+        await collection.doc(sessionId).update(body)
 
         return res.status(201).json({
           sessionId,
@@ -79,6 +53,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
 
       default: {
         res.setHeader('Allow', 'POST')
+        res.setHeader('Allow', 'PATCH')
         res.setHeader('Allow', 'GET')
         return res.status(405).end()
       }
