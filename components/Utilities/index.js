@@ -28,22 +28,27 @@ const data = [
       {
         complete: true,
         title: 'Hexonium Token',
-        description: 'Non custodial staking with Cardano Lands',
+        description: 'Non-custodial staking with Cardano Lands',
       },
       {
         complete: true,
         title: 'Society Token',
-        description: 'Non custodial staking with The Ape Society',
+        description: 'Non-custodial staking with The Ape Society',
       },
       {
         complete: true,
         title: 'MD Token',
-        description: 'Non custodial staking with Mad Dog Cur Club',
+        description: 'Non-custodial staking with Mad Dog Cur Club',
       },
       {
         complete: false,
         title: 'C4 Token',
-        description: 'Non custodial staking with Cardano Crocs Club',
+        description: 'Non-custodial staking with Cardano Crocs Club',
+      },
+      {
+        complete: false,
+        title: 'DDoS Token',
+        description: 'Stake-pool staking with Degen Dino orb Society',
       },
     ],
     renderMedia: (isLeft) => (
@@ -57,6 +62,7 @@ const data = [
             '/media/tokens/society.png',
             '/media/tokens/md.png',
             '/media/tokens/c4.png',
+            '/media/tokens/ddos.png',
           ]}
         />
       </MediaWrapper>

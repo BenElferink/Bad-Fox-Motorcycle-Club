@@ -47,14 +47,19 @@ const partnershipsData = [
     logoUrl: '/media/logo/other/theapesociety.png',
   },
   {
+    name: 'Cardano Crocs Club',
+    url: 'https://swamplands.cardanocrocsclub.com',
+    logoUrl: '/media/logo/other/cardanocrocsclub.png',
+  },
+  {
     name: 'Mad Dog Car Club',
     url: 'https://mdtoken.io',
     logoUrl: '/media/logo/other/maddogcarclub.png',
   },
   {
-    name: 'Cardano Crocs Club',
-    url: 'https://swamplands.cardanocrocsclub.com',
-    logoUrl: '/media/logo/other/cardanocrocsclub.png',
+    name: 'Degen Dino orb Society',
+    url: 'http://www.ddos.design',
+    logoUrl: '/media/logo/other/degendinoorbsociety.png',
   },
 ]
 
