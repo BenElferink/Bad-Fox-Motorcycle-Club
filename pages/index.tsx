@@ -58,7 +58,7 @@ const partnershipsData = [
   },
   {
     name: 'Degen Dino orb Society',
-    url: 'http://www.ddos.design',
+    url: 'https://stake.ddos.design',
     logoUrl: '/media/logo/other/degendinoorbsociety.png',
   },
 ]
