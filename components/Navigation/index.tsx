@@ -40,6 +40,7 @@ const Navigation = () => {
                 { label: 'Bad Fox', path: `/collections/${BAD_FOX_POLICY_ID}` },
                 { label: 'Bad Motorcycle', path: `/collections/${BAD_MOTORCYCLE_POLICY_ID}` },
                 { label: 'Bad Key', path: `/collections/${BAD_KEY_POLICY_ID}` },
+                { label: '3D Fox', path: '/sneek3d' },
               ]}
             />
           </li>
