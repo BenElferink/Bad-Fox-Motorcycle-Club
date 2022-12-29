@@ -1,6 +1,5 @@
-import { ChangeEventHandler, FormEventHandler, useState } from 'react'
+import { ChangeEventHandler, FormEventHandler, useEffect, useState } from 'react'
 import ImageLoader from '../components/Loader/ImageLoader'
-import ModelViewer from '../components/ModelViewer'
 import avatarFilesFile from '../data/3D/files.json'
 import avatarRendersFile from '../data/3D/renders.json'
 
@@ -38,6 +37,11 @@ const Page = () => {
     }, 0)
   }
 
+  useEffect(() => {
+    import('@google/model-viewer').catch(console.error)
+    // https://modelviewer.dev
+  }, [])
+
   return (
     <div className='flex flex-col items-center'>
       <form onSubmit={searchSubmit} className='w-72 mt-4 relative'>
@@ -62,7 +66,18 @@ const Page = () => {
       {fileSrc && imageSrc ? (
         <div className='flex flex-wrap items-center justify-center'>
           <div className='flex flex-col items-center justify-center w-[300px] md:w-[450px] lg:w-[600px] h-[300px] md:h-[450px] lg:h-[600px] m-4 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700'>
-            <ModelViewer src={fileSrc.replace('https://firebasestorage.googleapis.com', '/storage')} />
+            {/* @ts-ignore */}
+            <model-viewer
+              src={fileSrc.replace('https://firebasestorage.googleapis.com', '/storage')}
+              ios-src={fileSrc.replace('https://firebasestorage.googleapis.com', '/storage')}
+              alt='3D File'
+              environment-image='neutral'
+              shadow-intensity='1'
+              camera-controls
+              auto-rotate
+              autoplay
+              // @ts-ignore
+            ></model-viewer>
           </div>
 
           <div
