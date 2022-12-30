@@ -1,12 +1,14 @@
-import { ChangeEventHandler, FormEventHandler, useEffect, useState } from 'react'
+import { ChangeEventHandler, FormEventHandler, useState } from 'react'
+import { PopulatedAsset } from '../@types'
 import ImageLoader from '../components/Loader/ImageLoader'
+import FoxModel from '../components/models/FoxModel'
+import { BAD_FOX_POLICY_ID } from '../constants'
 import avatarFilesFile from '../data/3D/files.json'
 import avatarRendersFile from '../data/3D/renders.json'
+import getFileForPolicyId from '../functions/getFileForPolicyId'
 
 const Page = () => {
   const [search, setSearch] = useState('')
-  const [fileSrc, setFileSrc] = useState('')
-  const [imageSrc, setImageSrc] = useState('')
 
   const searchChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const v = e.target.value
@@ -17,10 +19,14 @@ const Page = () => {
     }
   }
 
+  const [foxName, setFoxName] = useState('')
+  const [fileSrc, setFileSrc] = useState('')
+  const [newImageSrc, setNewImageSrc] = useState('')
+  const [oldImageSrc, setOldImageSrc] = useState('')
+
   const searchSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e?.preventDefault()
-    setFileSrc('')
-    setImageSrc('')
+    setFoxName('')
 
     setTimeout(() => {
       let v = String(Number(search))
@@ -30,17 +36,18 @@ const Page = () => {
       v = `Bad Fox #${v}`
 
       setSearch('')
+      setFoxName(v)
       // @ts-ignore
       setFileSrc(avatarFilesFile[`${v}.glb`])
       // @ts-ignore
-      setImageSrc(avatarRendersFile[`${v}.png`])
+      setNewImageSrc(avatarRendersFile[`${v}.png`])
+      setOldImageSrc(
+        (getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets') as PopulatedAsset[])?.find(
+          (item) => item.displayName === v
+        )?.image.firebase || ''
+      )
     }, 0)
   }
-
-  useEffect(() => {
-    import('@google/model-viewer').catch(console.error)
-    // https://modelviewer.dev
-  }, [])
 
   return (
     <div className='flex flex-col items-center'>
@@ -63,35 +70,41 @@ const Page = () => {
         </button>
       </form>
 
-      {fileSrc && imageSrc ? (
-        <div className='flex flex-wrap items-center justify-center'>
-          <div className='flex flex-col items-center justify-center w-[300px] md:w-[450px] lg:w-[600px] h-[300px] md:h-[450px] lg:h-[600px] m-4 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700'>
-            {/* @ts-ignore */}
-            <model-viewer
-              src={fileSrc.replace('https://firebasestorage.googleapis.com', '/storage')}
-              ios-src={fileSrc.replace('https://firebasestorage.googleapis.com', '/storage')}
-              alt='3D File'
-              environment-image='neutral'
-              shadow-intensity='1'
-              camera-controls
-              auto-rotate
-              autoplay
-              // @ts-ignore
-            ></model-viewer>
-          </div>
+      {!!foxName ? (
+        <div>
+          <h6 className='text-center text-xl'>{foxName}</h6>
+          <div className='flex flex-wrap items-start justify-center'>
+            <div
+              onClick={() => window.open(oldImageSrc, '_blank', '_noopener')}
+              className='flex flex-col items-center justify-center w-[270px] md:w-[333px] lg:w-[444px] h-[270px] md:h-[333px] lg:h-[444px] m-4 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700 cursor-pointer'
+            >
+              <ImageLoader
+                src={oldImageSrc}
+                alt='2D Profile Picture'
+                width={1080}
+                height={1080}
+                loaderSize={200}
+                style={{ borderRadius: '0.75rem' }}
+              />
+            </div>
 
-          <div
-            onClick={() => window.open(imageSrc, '_blank', '_noopener')}
-            className='flex flex-col items-center justify-center w-[300px] md:w-[450px] lg:w-[600px] h-[300px] md:h-[450px] lg:h-[600px] m-4 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700 cursor-pointer'
-          >
-            <ImageLoader
-              src={imageSrc}
-              alt='3D Profile Picture'
-              width={1080}
-              height={1080}
-              loaderSize={200}
-              style={{ borderRadius: '0.75rem' }}
-            />
+            <div
+              onClick={() => window.open(newImageSrc, '_blank', '_noopener')}
+              className='flex flex-col items-center justify-center w-[270px] md:w-[333px] lg:w-[444px] h-[270px] md:h-[333px] lg:h-[444px] m-4 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700 cursor-pointer'
+            >
+              <ImageLoader
+                src={newImageSrc}
+                alt='3D Profile Picture'
+                width={1080}
+                height={1080}
+                loaderSize={200}
+                style={{ borderRadius: '0.75rem' }}
+              />
+            </div>
+
+            <div className='flex flex-col items-center justify-center w-[270px] md:w-[333px] lg:w-[444px] h-[550px] md:h-[650px] lg:h-[750px] m-4 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700'>
+              <FoxModel src={fileSrc.replace('https://firebasestorage.googleapis.com', '/storage')} />
+            </div>
           </div>
         </div>
       ) : (

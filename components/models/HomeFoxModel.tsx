@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Canvas } from '@react-three/fiber'
-import Model from '.'
+import ModelChild from './ModelChild'
 
-const Fox = () => {
+const HomeFoxModel = () => {
   const [flip, setFlip] = useState(false)
 
   return (
@@ -10,12 +10,13 @@ const Fox = () => {
       <pointLight intensity={1} position={[5, 20, 15]} />
       <ambientLight intensity={0.3} color='#FFFFFF' />
 
-      <Model
+      <ModelChild
         src='/media/3d/fox-4946.glb'
         scale={1.7}
         positionY={-0.3}
         animationName='All Animations'
         animateScene={(scene) => {
+          // @ts-ignore
           const curr = scene.rotation.y
 
           if (curr >= 1) {
@@ -25,8 +26,10 @@ const Fox = () => {
           }
 
           if (flip) {
+            // @ts-ignore
             scene.rotation.y -= 0.01
           } else {
+            // @ts-ignore
             scene.rotation.y += 0.01
           }
         }}
@@ -35,4 +38,4 @@ const Fox = () => {
   )
 }
 
-export default Fox
+export default HomeFoxModel

@@ -1,14 +1,12 @@
-import dynamic from 'next/dynamic'
 import useScreenSize from '../../hooks/useScreenSize'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 import { MinusCircleIcon } from '@heroicons/react/24/outline'
-import Tokens from './Tokens'
 import ListItem from './LisItem'
 import MediaWrapper from './MediaWrapper'
+import Tokens from './Tokens'
+import HomeFoxModel from '../models/HomeFoxModel'
+import HomeKeyModel from '../models/HomeKeyModel'
 import styles from './Utilities.module.css'
-
-const Fox = dynamic(() => import('./Model/Fox'), { suspense: true })
-const Key = dynamic(() => import('./Model/Key'), { suspense: true })
 
 const data = [
   {
@@ -104,7 +102,7 @@ const data = [
     ],
     renderMedia: (isLeft) => (
       <MediaWrapper isLeft={isLeft} size={300} posTop='0px'>
-        <Key />
+        <HomeKeyModel />
       </MediaWrapper>
     ),
   },
@@ -142,7 +140,7 @@ const data = [
     ],
     renderMedia: (isLeft) => (
       <MediaWrapper isLeft={isLeft} size={450} posTop='0px'>
-        <Fox />
+        <HomeFoxModel />
       </MediaWrapper>
     ),
   },

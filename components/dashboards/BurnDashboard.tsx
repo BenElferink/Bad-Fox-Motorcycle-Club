@@ -238,6 +238,7 @@ const BurnDashboard = () => {
 
       <div style={{ width: '100%' }}>
         <button
+          type='button'
           onClick={buildTx}
           disabled={
             !BURN_ADDRESS || !!errorMessage || loadingTx || !selectedMale || !selectedFemale || !selectedBike

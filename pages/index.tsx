@@ -1,9 +1,8 @@
-import PartnerProject from '../components/PartnerProject'
-import TeamCard from '../components/cards/TeamCard'
-
 import Landing from '../components/Landing'
 import Previews from '../components/Previews'
+import PartnerProject from '../components/PartnerProject'
 import Utilities from '../components/Utilities'
+import TeamCard from '../components/cards/TeamCard'
 
 const partnershipsData = [
   {

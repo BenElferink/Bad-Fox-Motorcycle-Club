@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { AppProps } from 'next/app'
-import { Fragment, useEffect } from 'react'
+import { Fragment } from 'react'
 import { Toaster } from 'react-hot-toast'
 import 'animate.css'
 import 'swiper/css'
@@ -18,12 +18,6 @@ import SnowCanvas from '../components/canvas/SnowCanvas'
 // https://api.coingecko.com/api/v3/simple/price?ids=cardano&vs_currencies=usd
 
 const App = ({ Component, pageProps }: AppProps) => {
-  useEffect(() => {
-    const handler = () => window.scrollTo({ top: 0 })
-    window.addEventListener('beforeunload', handler)
-    return () => window.removeEventListener('beforeunload', handler)
-  }, [])
-
   return (
     <Fragment>
       <Head>
