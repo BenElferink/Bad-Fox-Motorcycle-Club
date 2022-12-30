@@ -14,8 +14,8 @@ const FoxModel = (props: FoxModelProps) => {
   return (
     <Canvas camera={{ position: [0, 0, 1], fov: 45 }}>
       <Environment path={'/media/3d/'} files={'environment.hdr'} />
-      <SpotLight opacity={0.1} />
-      <pointLight position={[-1, 1, 0]} />
+      <SpotLight opacity={0.15} />
+      <pointLight position={[-1, 1, 0]} intensity={0.5} />
       <OrbitControls />
 
       <ModelChild
