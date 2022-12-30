@@ -1,4 +1,4 @@
-import { OrbitControls, SpotLight } from '@react-three/drei'
+import { Environment, OrbitControls, SpotLight } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { useState } from 'react'
 import ModelChild from './ModelChild'
@@ -13,12 +13,11 @@ const FoxModel = (props: FoxModelProps) => {
 
   return (
     <Canvas camera={{ position: [0, 0, 1], fov: 45 }}>
-      <SpotLight opacity={0.2} />
-      <hemisphereLight args={['#fff', '#000', 1]} />
-      <pointLight intensity={0.1} position={[0, 0, 1]} />
-      {/* <directionalLight position={[0, 5, 0]} /> */}
-
+      <Environment path={'/media/3d/'} files={'environment.hdr'} />
+      <SpotLight opacity={0.1} />
+      <pointLight position={[-1, 1, 0]} />
       <OrbitControls />
+
       <ModelChild
         src={src}
         scale={2}
