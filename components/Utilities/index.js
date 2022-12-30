@@ -44,7 +44,7 @@ const data = [
         description: 'Non-custodial staking with Cardano Crocs Club',
       },
       {
-        complete: false,
+        complete: true,
         title: 'DDoS Token',
         description: 'Stake-pool staking with Degen Dino orb Society',
       },
