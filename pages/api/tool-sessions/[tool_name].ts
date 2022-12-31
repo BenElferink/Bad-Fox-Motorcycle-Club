@@ -17,7 +17,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
   const toolsProdCode = headers.tools_prod_code
   const sessionId = query.sessionId
   const toolName = query.tool_name as string
-  const collection = firestore.collection(`tools/${toolName}`)
+  const collection = firestore.collection(`tools/${toolName}/sessions`)
 
   try {
     switch (method) {
