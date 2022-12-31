@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast'
 import { BrowserWallet, Wallet } from '@meshsdk/core'
 import getFileForPolicyId from '../functions/getFileForPolicyId'
 import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../constants'
-import { PopulatedAsset, PopulatedWallet } from '../@types'
+import { PolicyId, PopulatedAsset, PopulatedWallet } from '../@types'
 
 interface LocalStorageConnectedWallet {
   walletProvider: string
@@ -22,6 +22,7 @@ interface ContextValue {
   connectedManually: boolean
   wallet: BrowserWallet | null
   populatedWallet: PopulatedWallet | null
+  removeAssetsFromWallet: (_assetIds: string[]) => Promise<void>
 }
 
 const WalletContext = createContext<ContextValue>({
@@ -35,6 +36,7 @@ const WalletContext = createContext<ContextValue>({
   connectedName: '',
   wallet: null,
   populatedWallet: null,
+  removeAssetsFromWallet: async (_assetIds: string[]) => {},
 })
 
 export default function useWallet() {
@@ -209,6 +211,35 @@ export const WalletProvider = ({ children }: { children: JSX.Element }) => {
     }
   }, [])
 
+  const removeAssetsFromWallet = async (_assetIds: string[]) => {
+    if (connecting) return
+    setConnecting(true)
+
+    try {
+      if (wallet) {
+        setPopulatedWallet((prev) => {
+          if (!prev) return prev
+
+          const payload = { ...prev.assets }
+
+          Object.entries(payload).forEach(([policyId, assets]) => {
+            payload[policyId as PolicyId] = assets.filter((asset) => !_assetIds.includes(asset.assetId))
+          })
+
+          return {
+            ...prev,
+            assets: payload,
+          }
+        })
+      }
+    } catch (error: any) {
+      console.error(error)
+      toast.error(error.message)
+    }
+
+    setConnecting(false)
+  }
+
   const payload = useMemo(
     () => ({
       availableWallets,
@@ -221,8 +252,9 @@ export const WalletProvider = ({ children }: { children: JSX.Element }) => {
       connectedManually,
       populatedWallet,
       wallet,
+      removeAssetsFromWallet,
     }),
-    [availableWallets, connecting, connected, populatedWallet, wallet]
+    [availableWallets, connecting, connected, populatedWallet, wallet, removeAssetsFromWallet]
   )
 
   return <WalletContext.Provider value={payload}>{children}</WalletContext.Provider>

@@ -12,10 +12,11 @@ import sleep from '../../functions/sleep'
 import formatIpfsImageUrl from '../../functions/formatters/formatIpfsImageUrl'
 import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID, ONE_MILLION } from '../../constants'
 
-const BURN_ADDRESS = ''
+const BURN_ADDRESS =
+  'addr1qyn6t3nwhasa8gslcs6mj4qay78d3ufm7val0pz0uh3gy8dsf86vnnyx9qhjvka6etzkjpw82lz25vjfexnd9a6l08tqymvfqp'
 
 const BurnDashboard = () => {
-  const { connectedManually, wallet, populatedWallet, disconnectWallet } = useWallet()
+  const { connectedManually, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } = useWallet()
 
   const [selector, setSelector] = useState<'M' | 'F' | 'B' | ''>('')
   const [selectedMale, setSelectedMale] = useState<string>('')
@@ -97,6 +98,7 @@ const BurnDashboard = () => {
       toast.dismiss(toastId)
 
       toast.success('Transaction submitted!')
+      await removeAssetsFromWallet([selectedMale, selectedFemale, selectedBike])
       setSelectedMale('')
       setSelectedFemale('')
       setSelectedBike('')
@@ -107,7 +109,7 @@ const BurnDashboard = () => {
 
       if (error?.message?.indexOf('Not enough ADA leftover to include non-ADA assets') !== -1) {
         // [Transaction] An error occurred during build: Not enough ADA leftover to include non-ADA assets in a change address.
-        setErrorMessage('TX build failed: your UTXOs are clogged, please send all your ADA & assets to yourself.')
+        setErrorMessage('TX build failed: your UTXOs are clogged, please send your NFTs & ADA to yourself.')
       } else if (error?.message?.indexOf('UTxO Balance Insufficient') !== -1) {
         // [Transaction] An error occurred during build: UTxO Balance Insufficient.
         setErrorMessage('TX build failed: not enough ADA to process TX, please obtain more ADA, then try again.')
