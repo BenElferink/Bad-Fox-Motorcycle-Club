@@ -16,7 +16,8 @@ const BURN_ADDRESS =
   'addr1qyn6t3nwhasa8gslcs6mj4qay78d3ufm7val0pz0uh3gy8dsf86vnnyx9qhjvka6etzkjpw82lz25vjfexnd9a6l08tqymvfqp'
 
 const BurnDashboard = () => {
-  const { connectedManually, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } = useWallet()
+  const { connectedManually, connectedName, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } =
+    useWallet()
 
   const [selector, setSelector] = useState<'M' | 'F' | 'B' | ''>('')
   const [selectedMale, setSelectedMale] = useState<string>('')
@@ -250,6 +251,11 @@ const BurnDashboard = () => {
           Transcend
         </button>
 
+        {connectedName.toLowerCase() === 'eternl' ? (
+          <p className='mt-2 text-center text-lg text-[var(--pink)]'>
+            Eternl is known to cause problems, please use a single-address wallet.
+          </p>
+        ) : null}
         {errorMessage ? <p className='mt-2 text-center text-lg text-[var(--pink)]'>{errorMessage}</p> : null}
       </div>
 
