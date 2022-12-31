@@ -12,14 +12,58 @@ import {
   BAD_MOTORCYCLE_POLICY_ID,
   ONE_MILLION,
 } from '../../constants'
+import { OwningWallet, PolicyId, PopulatedAsset } from '../../@types'
 
 const COLLECTIONS = [
-  { policyId: BAD_FOX_POLICY_ID, policyAssets: getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets') },
-  { policyId: BAD_MOTORCYCLE_POLICY_ID, policyAssets: getFileForPolicyId(BAD_MOTORCYCLE_POLICY_ID, 'assets') },
-  { policyId: BAD_KEY_POLICY_ID, policyAssets: getFileForPolicyId(BAD_KEY_POLICY_ID, 'assets') },
+  {
+    policyId: BAD_FOX_POLICY_ID as PolicyId,
+    policyAssets: getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets') as PopulatedAsset[],
+  },
+  {
+    policyId: BAD_MOTORCYCLE_POLICY_ID as PolicyId,
+    policyAssets: getFileForPolicyId(BAD_MOTORCYCLE_POLICY_ID, 'assets') as PopulatedAsset[],
+  },
+  {
+    policyId: BAD_KEY_POLICY_ID as PolicyId,
+    policyAssets: getFileForPolicyId(BAD_KEY_POLICY_ID, 'assets') as PopulatedAsset[],
+  },
 ]
 
-const displayBalance = (v) => (Number(v) / ONE_MILLION).toFixed(2)
+type Holder = {
+  stakeKey: string
+  addresses: string[]
+  assets: {
+    [BAD_FOX_POLICY_ID]?: string[]
+    [BAD_MOTORCYCLE_POLICY_ID]?: string[]
+    [BAD_KEY_POLICY_ID]?: string[]
+  }
+}
+
+type Payout = {
+  stakeKey: string
+  address: string
+  payout: number
+  txHash?: string
+}
+
+type TxStatus = {
+  txHash: string
+  submitted: boolean
+}
+
+type SpreadsheetObject = {
+  value: string | number
+  type?: StringConstructor | NumberConstructor
+  fontWeight?: string
+}
+
+type Transcript = {
+  timestamp: number
+  msg: string
+  key?: string
+}
+
+const displayBalance = (v: number | string) => (Number(v) / ONE_MILLION).toFixed(2)
 
 const AdminDashboard = () => {
   const { wallet, connectedManually, disconnectWallet } = useWallet()
@@ -32,20 +76,22 @@ const AdminDashboard = () => {
     })()
   }, [wallet])
 
-  const [transcripts, setTranscripts] = useState([{ timestamp: new Date().getTime(), msg: 'Welcome Admin' }])
+  const [transcripts, setTranscripts] = useState<Transcript[]>([
+    { timestamp: new Date().getTime(), msg: 'Welcome Admin' },
+  ])
   const [counts, setCounts] = useState({
     unlisted: { fox: 0, motorcycle: 0, key: 0 },
     listed: { fox: 0, motorcycle: 0, key: 0 },
   })
 
-  const [holdingWallets, setHoldingWallets] = useState([])
-  const [payoutWallets, setPayoutWallets] = useState([])
+  const [holdingWallets, setHoldingWallets] = useState<Holder[]>([])
+  const [payoutWallets, setPayoutWallets] = useState<Payout[]>([])
 
   const [loading, setLoading] = useState(false)
   const [snapshotDone, setSnapshotDone] = useState(false)
   const [payoutDone, setPayoutDone] = useState(false)
 
-  const addTranscript = (msg, key) => {
+  const addTranscript = (msg: string, key?: string) => {
     setTranscripts((prev) => {
       const prevCopy = [...prev]
       if (prevCopy.length >= 50) prevCopy.pop()
@@ -61,12 +107,12 @@ const AdminDashboard = () => {
     })
   }
 
-  const fetchOwningWallet = useCallback(async (assetId) => {
+  const fetchOwningWallet = useCallback(async (assetId: string): Promise<OwningWallet> => {
     try {
-      const { data } = await axios.get(`/api/blockfrost/asset/${assetId}/owner`)
+      const { data } = await axios.get<OwningWallet>(`/api/blockfrost/asset/${assetId}/owner`)
 
       return data
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
       addTranscript('ERROR', error.message)
       return await fetchOwningWallet(assetId)
@@ -76,8 +122,8 @@ const AdminDashboard = () => {
   const runSnapshot = useCallback(async () => {
     setLoading(true)
 
-    const holders = []
-    const fetchedWallets = []
+    const holders: Holder[] = []
+    const fetchedWallets: OwningWallet[] = []
     let unlistedFoxes = 0
     let unlistedMotorcycles = 0
     let unlistedKeys = 0
@@ -142,8 +188,8 @@ const AdminDashboard = () => {
                 holders[holderIndex].addresses.push(walletAddress)
               }
 
-              if (holders[holderIndex].assets[policyId]) {
-                holders[holderIndex].assets[policyId].push(assetId)
+              if (Array.isArray(holders[holderIndex].assets[policyId])) {
+                holders[holderIndex].assets[policyId]?.push(assetId)
               } else {
                 holders[holderIndex].assets[policyId] = [assetId]
               }
@@ -189,34 +235,42 @@ const AdminDashboard = () => {
           Object.entries(assets).forEach(([policyId, policyAssets]) => {
             const collection = COLLECTIONS.find((collection) => collection.policyId === policyId)
 
-            if (policyId === BAD_FOX_POLICY_ID) {
-              lovelaceForAssets += policyAssets.length * lovelacePerShare
+            if (collection) {
+              if (policyId === BAD_FOX_POLICY_ID) {
+                lovelaceForAssets += policyAssets.length * lovelacePerShare
 
-              for (const assetId of policyAssets) {
-                const { attributes } = collection.policyAssets.find((asset) => asset.assetId === assetId)
-                if (attributes['Mouth'] === '(F) Crypto') {
-                  lovelaceForTraits += 10 * ONE_MILLION
-                } else if (attributes['Mouth'] === '(M) Cash Bag') {
-                  lovelaceForTraits += 10 * ONE_MILLION
-                }
-              }
-            } else if (policyId === BAD_MOTORCYCLE_POLICY_ID) {
-              lovelaceForAssets += policyAssets.length * lovelacePerShare * 2
+                for (const assetId of policyAssets) {
+                  const { attributes } = collection.policyAssets.find(
+                    (asset) => asset.assetId === assetId
+                  ) as PopulatedAsset
 
-              for (const assetId of policyAssets) {
-                const { attributes } = collection.policyAssets.find((asset) => asset.assetId === assetId)
-                if (attributes['Rear'] === '(CH) Ada Bag') {
-                  lovelaceForTraits += 10 * ONE_MILLION
-                } else if (attributes['Rear'] === '(HB) Vault') {
-                  lovelaceForTraits += 10 * ONE_MILLION
-                } else if (attributes['Above'] === '(NI) Cash Bag') {
-                  lovelaceForTraits += 10 * ONE_MILLION
-                } else if (attributes['Anterior'] === '(VE) Piggy Savings') {
-                  lovelaceForTraits += 10 * ONE_MILLION
+                  if (attributes['Mouth'] === '(F) Crypto') {
+                    lovelaceForTraits += 10 * ONE_MILLION
+                  } else if (attributes['Mouth'] === '(M) Cash Bag') {
+                    lovelaceForTraits += 10 * ONE_MILLION
+                  }
                 }
+              } else if (policyId === BAD_MOTORCYCLE_POLICY_ID) {
+                lovelaceForAssets += policyAssets.length * lovelacePerShare * 2
+
+                for (const assetId of policyAssets) {
+                  const { attributes } = collection.policyAssets.find(
+                    (asset) => asset.assetId === assetId
+                  ) as PopulatedAsset
+
+                  if (attributes['Rear'] === '(CH) Ada Bag') {
+                    lovelaceForTraits += 10 * ONE_MILLION
+                  } else if (attributes['Rear'] === '(HB) Vault') {
+                    lovelaceForTraits += 10 * ONE_MILLION
+                  } else if (attributes['Above'] === '(NI) Cash Bag') {
+                    lovelaceForTraits += 10 * ONE_MILLION
+                  } else if (attributes['Anterior'] === '(VE) Piggy Savings') {
+                    lovelaceForTraits += 10 * ONE_MILLION
+                  }
+                }
+              } else if (policyId === BAD_KEY_POLICY_ID) {
+                lovelaceForAssets += policyAssets.length * lovelacePerShare * 4
               }
-            } else if (policyId === BAD_KEY_POLICY_ID) {
-              lovelaceForAssets += policyAssets.length * lovelacePerShare * 4
             }
           })
 
@@ -235,9 +289,9 @@ const AdminDashboard = () => {
     setLoading(false)
   }, [COLLECTIONS, balance, fetchOwningWallet])
 
-  const txConfirmation = useCallback(async (txHash) => {
+  const txConfirmation = useCallback(async (txHash: string): Promise<TxStatus> => {
     try {
-      const { data } = await axios.get(`/api/blockfrost/tx/${txHash}/status`)
+      const { data } = await axios.get<TxStatus>(`/api/blockfrost/tx/${txHash}/status`)
 
       if (data.submitted) {
         return data
@@ -245,7 +299,7 @@ const AdminDashboard = () => {
         await sleep(1000)
         return await txConfirmation(txHash)
       }
-    } catch (error) {
+    } catch (error: any) {
       addTranscript('ERROR', error.message)
       await sleep(1000)
       return await txConfirmation(txHash)
@@ -253,7 +307,7 @@ const AdminDashboard = () => {
   }, [])
 
   const payEveryone = useCallback(
-    async (difference) => {
+    async (difference?: number): Promise<any> => {
       setLoading(true)
 
       if (!difference) {
@@ -289,8 +343,8 @@ const AdminDashboard = () => {
 
           const unsignedTx = await tx.build()
           addTranscript(`Building TX ${idx + 1} of ${batches.length}`)
-          const signedTx = await wallet.signTx(unsignedTx)
-          const txHash = await wallet.submitTx(signedTx)
+          const signedTx = (await wallet?.signTx(unsignedTx)) as string
+          const txHash = (await wallet?.submitTx(signedTx)) as string
           addTranscript('Awaiting network confirmation', 'This may take a moment...')
           await txConfirmation(txHash)
           addTranscript('Confirmed!', txHash)
@@ -309,12 +363,12 @@ const AdminDashboard = () => {
 
         addTranscript('Airdrop done!', "You can now leave the app, don't forget to download the receipt 👍")
         setPayoutDone(true)
-      } catch (error) {
+      } catch (error: any) {
         console.error(error)
 
         if (error.message.indexOf('Maximum transaction size') !== -1) {
           // [Transaction] An error occurred during build: Maximum transaction size of 16384 exceeded. Found: 21861.
-          const splitMessage = error.message.split(' ')
+          const splitMessage: string[] = error.message.split(' ')
           const [max, curr] = splitMessage.filter((str) => !isNaN(Number(str))).map((str) => Number(str))
           // [16384, 21861]
 
@@ -332,7 +386,7 @@ const AdminDashboard = () => {
   const downloadReceipt = useCallback(async () => {
     setLoading(true)
 
-    const data = [
+    const data: SpreadsheetObject[][] = [
       [
         {
           value: 'Payout',
@@ -361,17 +415,18 @@ const AdminDashboard = () => {
         },
         {
           type: String,
-          value: txHash,
+          value: txHash || '',
         },
       ])
     }
 
     try {
-      await writeXlsxFile(data, {
+      await writeXlsxFile<SpreadsheetObject>(data, {
         fileName: `BadFoxMC Royalty Distribution (${new Date().toLocaleDateString()}).xlsx`,
+        // @ts-ignore
         columns: [{ width: 100 }, { width: 60 }, { width: 25 }, { width: 25 }, { width: 25 }, { width: 60 }],
       })
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
       addTranscript('ERROR', error.message)
     }
