@@ -106,7 +106,7 @@ const BurnDashboard = () => {
     } catch (error: any) {
       console.error(error)
       toast.remove()
-      toast.error(error?.message || error)
+      toast.error('Woopsies!')
 
       if (error?.message?.indexOf('Not enough ADA leftover to include non-ADA assets') !== -1) {
         // [Transaction] An error occurred during build: Not enough ADA leftover to include non-ADA assets in a change address.
@@ -253,7 +253,7 @@ const BurnDashboard = () => {
 
         {connectedName.toLowerCase() === 'eternl' ? (
           <p className='mt-2 text-center text-lg text-[var(--pink)]'>
-            Eternl is known to cause problems, please use a single-address wallet.
+            Eternl is known to cause problems, please consider using a single-address wallet.
           </p>
         ) : null}
         {errorMessage ? <p className='mt-2 text-center text-lg text-[var(--pink)]'>{errorMessage}</p> : null}
