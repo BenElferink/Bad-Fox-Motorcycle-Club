@@ -31,6 +31,11 @@ const partnershipsData = [
     logoUrl: '/media/logo/other/cornucopias.png',
   },
   {
+    name: 'Speed Throne',
+    url: 'https://speedthrone.io',
+    logoUrl: '/media/logo/other/speedthrone.png',
+  },
+  {
     name: 'SoundRig',
     url: 'https://www.soundrig.io/artist/bad-fox-4042',
     logoUrl: '/media/logo/other/soundrig.png',
