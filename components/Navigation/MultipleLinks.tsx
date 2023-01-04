@@ -1,24 +1,33 @@
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
-import { useState } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 import SingleLink, { SingleLinkProps } from './SingleLink'
 
 export interface MultipleLinksProps {
   title: string
   links: SingleLinkProps[]
+  dropdownState: {
+    value: string
+    setValue: Dispatch<SetStateAction<string>>
+  }
 }
 
 const MultipleLinks = (props: MultipleLinksProps) => {
-  const { title, links } = props
-  const [open, setOpen] = useState(false)
+  const { title, links, dropdownState } = props
+  const open = dropdownState.value === title
 
   return (
     <div className='relative'>
       <button
         type='button'
-        onClick={() => setOpen((prev) => !prev)}
+        onClick={() =>
+          dropdownState.setValue((prev) => {
+            if (prev === title) return ''
+            return title
+          })
+        }
         className={
-          (open ? 'bg-gray-800 md:bg-transparent md:text-white ' : '') +
-          'py-2 px-3 md:p-0 w-full md:w-auto flex items-center text-start md:text-center text-sm rounded md:border-0 hover:bg-gray-700 md:hover:bg-transparent hover:text-white'
+          (open ? 'bg-gray-800 xl:bg-transparent xl:text-white ' : '') +
+          'py-2 px-3 xl:p-0 w-full xl:w-auto flex items-center text-start xl:text-center text-sm truncate rounded xl:border-0 hover:bg-gray-700 xl:hover:bg-transparent hover:text-white'
         }
       >
         {title}
@@ -27,13 +36,13 @@ const MultipleLinks = (props: MultipleLinksProps) => {
 
       <div className={open ? 'block' : 'hidden'}>
         <ul
-          onClick={() => setOpen(false)}
-          className='md:flex md:flex-col md:items-start md:absolute md:top-12 md:right-0 md:overflow-auto md:w-40 md:p-4 md:bg-gray-900 md:border-gray-700 md:rounded-xl'
+          onClick={() => dropdownState.setValue('')}
+          className='xl:flex xl:flex-col xl:items-start xl:absolute xl:top-12 xl:right-0 xl:overflow-auto xl:w-40 xl:p-4 xl:bg-gray-900 xl:border-gray-700 xl:rounded-xl'
         >
           {links.map((obj) => (
             <li
               key={`link-group-${title}-item-${obj.label}`}
-              className='md:py-1 bg-gray-800 md:bg-transparent rounded'
+              className='xl:py-1 bg-gray-800 xl:bg-transparent rounded'
             >
               <SingleLink {...obj} />
             </li>

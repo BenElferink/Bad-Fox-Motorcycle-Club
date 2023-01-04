@@ -11,6 +11,7 @@ const SingleLink = (props: SingleLinkProps) => {
   const { label, path, url } = props
   const router = useRouter()
   const selected = router.pathname === path || router.asPath === path
+  const isNothing = !url && !path
 
   return (
     <Link
@@ -19,9 +20,11 @@ const SingleLink = (props: SingleLinkProps) => {
       target={!!url ? '_blank' : ''}
       rel={!!url ? 'noopener' : ''}
       className={
-        selected
-          ? 'block py-2 px-3 md:p-0 w-full md:w-auto text-start md:text-center text-sm rounded text-white'
-          : 'block py-2 px-3 md:p-0 w-full md:w-auto text-start md:text-center text-sm rounded md:border-0 hover:bg-gray-700 md:hover:bg-transparent hover:text-white'
+        (selected ? 'text-white' : 'xl:border-0') +
+        ' block py-2 px-3 xl:p-0 w-full xl:w-auto text-start xl:text-center text-sm rounded truncate ' +
+        (isNothing
+          ? 'cursor-not-allowed line-through text-gray-600'
+          : 'hover:bg-gray-700 xl:hover:bg-transparent hover:text-white')
       }
     >
       {label}

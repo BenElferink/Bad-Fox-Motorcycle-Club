@@ -7,32 +7,43 @@ import SingleLink from './SingleLink'
 
 const Navigation = () => {
   const router = useRouter()
-  const [open, setOpen] = useState(false)
+  const [openNavOnMobile, setOpenNavOnMobile] = useState(false)
+  const [openDropdownName, setOpenDropdownName] = useState('')
 
   return (
     <nav>
       <button
         type='button'
-        onClick={() => setOpen((prev) => !prev)}
-        className='md:hidden flex items-center p-1 mx-1 rounded-lg text-sm hover:bg-gray-700 focus:outline-none focus:ring-gray-600 focus:ring-2'
+        onClick={() => setOpenNavOnMobile((prev) => !prev)}
+        className='xl:hidden flex items-center p-1 mx-1 rounded-lg text-sm hover:bg-gray-700 focus:outline-none focus:ring-gray-600 focus:ring-2'
       >
         <Bars3Icon className='w-7 h-7' />
       </button>
 
-      <div className={(open ? 'block' : 'hidden') + ' md:block'}>
-        <ul className='flex flex-col md:flex-row absolute right-0 md:static overflow-auto md:overflow-visible max-h-[80vh] md:max-h-auto w-9/12 md:w-auto mt-6 md:mt-0 p-4 bg-gray-900 border md:border-0 rounded-lg border-gray-700 md:space-x-8'>
+      <div className={(openNavOnMobile ? 'block' : 'hidden') + ' xl:block'}>
+        <ul className='flex flex-col xl:flex-row absolute right-0 xl:static overflow-auto xl:overflow-visible max-h-[80vh] xl:max-h-auto w-9/12 xl:w-auto mt-6 xl:mt-0 p-4 bg-gray-900 border xl:border-0 rounded-lg border-gray-700 xl:space-x-8'>
           <li
             onClick={() => {
               if (router.pathname === '/') window.scrollTo({ top: 0 })
-              setOpen(false)
+              setOpenNavOnMobile(false)
             }}
           >
             <SingleLink label='Home' path={'/'} />
           </li>
-          <li onClick={() => setOpen(false)}>
+          <li onClick={() => setOpenNavOnMobile(false)}>
             <SingleLink label='Team' path='/#team' />
           </li>
 
+          <li>
+            <MultipleLinks
+              title='2D Traits'
+              links={[
+                { label: 'Bad Fox', path: `/traits/${BAD_FOX_POLICY_ID}` },
+                { label: 'Bad Motorcycle', path: `/traits/${BAD_MOTORCYCLE_POLICY_ID}` },
+              ]}
+              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
+            />
+          </li>
           <li>
             <MultipleLinks
               title='Collections'
@@ -41,25 +52,50 @@ const Navigation = () => {
                 { label: 'Bad Motorcycle', path: `/collections/${BAD_MOTORCYCLE_POLICY_ID}` },
                 { label: 'Bad Key', path: `/collections/${BAD_KEY_POLICY_ID}` },
                 { label: '3D Fox', path: '/sneek3d' },
+                { label: '3D Motorcycle', path: '' },
+                { label: 'Vox Fox', path: '' },
               ]}
+              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
+            />
+          </li>
+
+          <li>
+            <MultipleLinks
+              title='Tokens'
+              links={[
+                { label: 'ADA', path: '' },
+                { label: 'Hexonium', path: '' },
+                { label: 'Society', path: '' },
+                { label: 'MD', path: '' },
+                { label: 'C4', path: '' },
+                { label: 'DDoS', path: '' },
+              ]}
+              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
             />
           </li>
           <li>
             <MultipleLinks
-              title='Traits'
+              title='Metaverses'
               links={[
-                { label: 'Bad Fox', path: `/traits/${BAD_FOX_POLICY_ID}` },
-                { label: 'Bad Motorcycle', path: `/traits/${BAD_MOTORCYCLE_POLICY_ID}` },
+                { label: 'Cornucopias', path: '' },
+                { label: 'OGVerse', path: '' },
+                { label: 'Unboundead Earth', path: '' },
+                { label: 'Boss Planet', path: '' },
+                { label: 'MetaView Tower', path: '' },
               ]}
+              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
             />
           </li>
-
-          {/* <li>
-            <MultipleLinks title='Metaverses' links={[{ label: 'TBA', path: '/' }]} />
-          </li> */}
-
           <li>
-            <MultipleLinks title='Tools' links={[{ label: 'Bad Drop', url: 'https://drop.badfoxmc.com' }]} />
+            <MultipleLinks
+              title='Tools'
+              links={[
+                { label: 'Bad Drop', url: 'https://drop.badfoxmc.com' },
+                { label: 'Bad Poll', url: '' },
+                { label: 'Bad Raffle', url: '' },
+              ]}
+              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
+            />
           </li>
         </ul>
       </div>
