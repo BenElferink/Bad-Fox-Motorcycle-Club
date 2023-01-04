@@ -110,7 +110,7 @@ const BurnDashboard = () => {
 
       if (error?.message?.indexOf('Not enough ADA leftover to include non-ADA assets') !== -1) {
         // [Transaction] An error occurred during build: Not enough ADA leftover to include non-ADA assets in a change address.
-        setErrorMessage('TX build failed: your UTXOs are clogged, please send your NFTs & ADA to yourself.')
+        setErrorMessage('TX build failed: your UTXOs are clogged, please send your ADA and your NFTs to yourself.')
       } else if (error?.message?.indexOf('UTxO Balance Insufficient') !== -1) {
         // [Transaction] An error occurred during build: UTxO Balance Insufficient.
         setErrorMessage('TX build failed: not enough ADA to process TX, please obtain more ADA, then try again.')
