@@ -4,11 +4,11 @@ import PartnerProject from '../components/PartnerProject'
 import Utilities from '../components/Utilities'
 import TeamCard from '../components/cards/TeamCard'
 
-const partnershipsData = [
+const partnerships = [
   {
-    name: 'Dot Dot Labs',
-    url: 'https://dotdotlabs.io',
-    logoUrl: '/media/logo/other/dotdotlabs.png',
+    name: 'OGBears',
+    url: 'https://www.ogbears.com',
+    logoUrl: '/media/logo/other/ogbears.png',
   },
   {
     name: 'CardaStacks',
@@ -16,9 +16,9 @@ const partnershipsData = [
     logoUrl: '/media/logo/other/cardastacks.png',
   },
   {
-    name: 'OGBears',
-    url: 'https://www.ogbears.com',
-    logoUrl: '/media/logo/other/ogbears.png',
+    name: 'Dot Dot Labs',
+    url: 'https://dotdotlabs.io',
+    logoUrl: '/media/logo/other/dotdotlabs.png',
   },
   {
     name: 'Unbounded Earth',
@@ -35,11 +35,18 @@ const partnershipsData = [
     url: 'https://speedthrone.io',
     logoUrl: '/media/logo/other/speedthrone.png',
   },
+
   {
     name: 'SoundRig',
     url: 'https://www.soundrig.io/artist/bad-fox-4042',
     logoUrl: '/media/logo/other/soundrig.png',
   },
+  {
+    name: 'Leon Art Group',
+    url: 'https://twitter.com/leonartgroup',
+    logoUrl: '/media/logo/other/leonartgroup.png',
+  },
+
   {
     name: 'Cardano Lands',
     url: 'https://cardanolands.com',
@@ -47,18 +54,18 @@ const partnershipsData = [
   },
   {
     name: 'The Ape Society',
-    url: 'https://www.theapesociety.io',
+    url: 'https://city.theapesociety.io',
     logoUrl: '/media/logo/other/theapesociety.png',
-  },
-  {
-    name: 'Cardano Crocs Club',
-    url: 'https://swamplands.cardanocrocsclub.com',
-    logoUrl: '/media/logo/other/cardanocrocsclub.png',
   },
   {
     name: 'Mad Dog Car Club',
     url: 'https://mdtoken.io',
     logoUrl: '/media/logo/other/maddogcarclub.png',
+  },
+  {
+    name: 'Cardano Crocs Club',
+    url: 'https://swamplands.cardanocrocsclub.com',
+    logoUrl: '/media/logo/other/cardanocrocsclub.png',
   },
   {
     name: 'Degen Dino orb Society',
@@ -67,11 +74,16 @@ const partnershipsData = [
   },
 ]
 
-const alliancesData = [
+const alliances = [
   {
-    name: 'Cardano Villa',
-    url: 'https://spatial.io/s/cardanovillas-BFMC-632abbcb959f2400013ec9a5?share=4838127040499173286',
-    logoUrl: '/media/logo/other/cardanovilla.png',
+    name: 'Winged Warriors',
+    url: 'https://wingedwarriors.xyz',
+    logoUrl: '/media/logo/other/wingedwarriors.png',
+  },
+  {
+    name: 'Blurry Kits Lounge',
+    url: 'https://www.blurrykitslounge.com',
+    logoUrl: '/media/logo/other/blurrykitslounge.png',
   },
   {
     name: "Summoner's Guild",
@@ -84,33 +96,28 @@ const alliancesData = [
     logoUrl: '/media/logo/other/spacetroopers.png',
   },
   {
-    name: 'Stag Allience',
+    name: 'Stag Alliance',
     url: 'https://www.stagalliance.com',
     logoUrl: '/media/logo/other/stagalliance.png',
-  },
-  {
-    name: 'Winged Warriors',
-    url: 'https://wingedwarriors.xyz',
-    logoUrl: '/media/logo/other/wingedwarriors.png',
-  },
-  {
-    name: 'Blurry Kits Lounge',
-    url: 'https://www.blurrykitslounge.com',
-    logoUrl: '/media/logo/other/blurrykitslounge.png',
-  },
-  {
-    name: 'Freaky Snakes',
-    url: 'https://freakysnakes.io',
-    logoUrl: '/media/logo/other/freakysnakes.png',
   },
   {
     name: 'Space Otter Society',
     url: 'https://spaceottersociety.io',
     logoUrl: '/media/logo/other/spaceottersociety.png',
   },
+  {
+    name: 'Beez Hive',
+    url: 'https://beezhive.io',
+    logoUrl: '/media/logo/other/beezhive.png',
+  },
+  {
+    name: 'Freaky Snakes',
+    url: 'https://freakysnakes.io',
+    logoUrl: '/media/logo/other/freakysnakes.png',
+  },
 ]
 
-const doxxedData = [
+const doxxedServices = [
   {
     name: 'Bearmarket Doxxing',
     url: 'https://doxxing.bearmarket.io/bad-fox-motorcycle-club',
@@ -123,7 +130,7 @@ const doxxedData = [
   },
 ]
 
-const teamData = [
+const teamMembers = [
   {
     name: 'Ben Elferink',
     title: 'Founder / Fullstack Developer',
@@ -183,20 +190,13 @@ const teamData = [
 const Page = () => {
   return (
     <div className='px-4 flex flex-col items-center'>
-      {/*  */}
-
       <Landing />
-
-      {/*  */}
-
       <Previews />
 
-      {/* Partnerships & Alliances */}
-
-      <div className='flex flex-col items-center justify-center mt-10 mb-5 py-5 text-gray-500'>
+      <div className='flex flex-col items-center justify-center my-5 py-5 text-gray-500'>
         <h5 className='mb-2 text-2xl'>Partnerships</h5>
         <div className='flex flex-wrap items-center justify-center'>
-          {partnershipsData.map(({ name, url, logoUrl }) => (
+          {partnerships.map(({ name, url, logoUrl }) => (
             <PartnerProject key={`doxxed-by-${name}`} name={name} url={url} logoUrl={logoUrl} />
           ))}
         </div>
@@ -205,29 +205,25 @@ const Page = () => {
       <div className='flex flex-col items-center justify-center mt-5 mb-10 py-5 text-gray-500'>
         <h5 className='mb-2 text-2xl'>Alliances</h5>
         <div className='flex flex-wrap items-center justify-center'>
-          {alliancesData.map(({ name, url, logoUrl }) => (
+          {alliances.map(({ name, url, logoUrl }) => (
             <PartnerProject key={`doxxed-by-${name}`} name={name} url={url} logoUrl={logoUrl} />
           ))}
         </div>
       </div>
 
-      {/*  */}
-
       <Utilities />
 
-      {/* Team */}
-
-      <div id='team' className='flex flex-col items-center justify-center mt-10 mb-5 text-gray-500'>
+      <div id='team' className='flex flex-col items-center justify-center my-5 text-gray-500'>
         <h5 className='text-3xl'>Team (Certified Doxxed)</h5>
         <div className='flex flex-wrap items-center justify-center'>
-          {doxxedData.map(({ name, url, logoUrl }) => (
+          {doxxedServices.map(({ name, url, logoUrl }) => (
             <PartnerProject key={`doxxed-by-${name}`} name={name} url={url} logoUrl={logoUrl} className='mx-8' />
           ))}
         </div>
       </div>
 
       <div className='flex flex-wrap justify-center max-w-5xl mb-10'>
-        {teamData.map(({ profilePicture, name, title, description, socials }) => (
+        {teamMembers.map(({ profilePicture, name, title, description, socials }) => (
           <TeamCard
             key={`team-${name}`}
             profilePicture={profilePicture}

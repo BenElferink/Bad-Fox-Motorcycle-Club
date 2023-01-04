@@ -112,20 +112,14 @@ const data = [
     events: [
       {
         complete: false,
-        title: 'MetaView Tower',
-        description:
-          'CardaStacks made us a custom interior design for your studio in the residential tower, and gave us an entire floor in their collaboration tower (floor #69). We will develop a motorcycle club with different gaming elements!',
-      },
-      {
-        complete: false,
-        title: 'OGVerse',
-        description:
-          "OGBears are developing a Bear vs. Fox Motorcycle Racing mini-game for both our communities. It will be a restricted P2E mini-game, with NFTs as prizes. In addition to the mini-game, we're going to enter the OGVerse and have our own world integrated.",
-      },
-      {
-        complete: false,
         title: 'Cornucopias',
         description: 'Coming soon™️',
+      },
+      {
+        complete: false,
+        title: 'OGBears - OGVerse',
+        description:
+          "OGBears are developing a Bear vs. Fox Motorcycle Racing mini-game for both our communities. It will be a restricted P2E mini-game, with NFTs as prizes. In addition to the mini-game, we're going to enter the OGVerse and have our own world integrated.",
       },
       {
         complete: false,
@@ -136,6 +130,12 @@ const data = [
         complete: false,
         title: 'Boss Planet',
         description: 'Coming soon™️',
+      },
+      {
+        complete: false,
+        title: 'CardaStacks - MetaView Tower',
+        description:
+          'CardaStacks made us a custom interior design for your studio in the residential tower, and gave us an entire floor in their collaboration tower (floor #69). We will develop a motorcycle club with different gaming elements!',
       },
     ],
     renderMedia: (isLeft) => (
