@@ -121,64 +121,27 @@ class JpgStore {
   }
 
   getListings = (policyId: PolicyId): Promise<JpgListedItem[]> => {
-    const maxSize = 100
-    const uri = `${this.baseUrl}/search/tokens?policyIds=["${policyId}"]&verified=default&listingTypes=["SINGLE_ASSET"]&saleType=buy-now&sortBy=price-low-to-high&size=${maxSize}`
-    // &onlyMainBundleAsset=false&traits={}&nameQuery=
-    // listingTypes = "SINGLE_ASSET" || "BUNDLE" || "ALL_LISTINGS"
-
     return new Promise(async (resolve, reject) => {
-      console.log(`Fetching listings from jpg.store for policy ID ${policyId}`, uri)
-
+      console.log(`Fetching listings from jpg.store for policy ID ${policyId}`)
       try {
-        let totalToFetch = 0
-        let pagination = {}
-        let fetchedListings: FetchedListing[] = []
-
-        for (let i = 0; true; i++) {
-          const { data } = await axios.get<{
-            tokens: FetchedListing[]
-            pagination: {
-              pointInTimeId: string
-              pointInTimeExpiryMs: number
-              lastHitSort: number[]
-              total: number
-            }
-          }>(`${uri}&pagination=${JSON.stringify(pagination)}`, {
-            headers: {
-              'Accept-Encoding': 'application/json',
-            },
+        let fetchedJpgRecentItems: JpgRecentItem[] = []
+        for (let page = 1; true; page++) {
+          const items = await this.getRecents({
+            policyId,
+            sold: false,
+            page,
           })
 
-          // only on 1st loop
-          if (!totalToFetch) {
-            totalToFetch = data.pagination.total
-          }
-
-          // listings changed, reset and start again
-          if (totalToFetch !== data.pagination.total) {
-            totalToFetch = 0
-            pagination = {}
-            fetchedListings = []
-          }
-
-          // add paginated data to fetched data
-          else if (fetchedListings.length < totalToFetch) {
-            pagination = data.pagination
-            fetchedListings = fetchedListings.concat(data.tokens)
-          }
-
-          // all paginated items fetched, break loop
-          if (fetchedListings.length === totalToFetch) {
-            break
-          }
+          if (!items.length) break
+          fetchedJpgRecentItems = fetchedJpgRecentItems.concat(items)
         }
 
-        const payload: JpgListedItem[] = fetchedListings.map((item) => ({
-          assetId: item.asset_id,
-          name: item.display_name,
-          price: Number(item.listing_lovelace) / ONE_MILLION,
-          itemUrl: `https://jpg.store/asset/${item.asset_id}`,
-          date: new Date(item.listed_at),
+        const payload: JpgListedItem[] = fetchedJpgRecentItems.map((item) => ({
+          assetId: item.assetId,
+          name: item.name,
+          price: item.price,
+          itemUrl: `https://jpg.store/asset/${item.assetId}`,
+          date: item.date,
         }))
 
         console.log(`Fetched ${payload.length} listings from jpg.store`)
