@@ -136,13 +136,15 @@ class JpgStore {
           fetchedJpgRecentItems = fetchedJpgRecentItems.concat(items)
         }
 
-        const payload: JpgListedItem[] = fetchedJpgRecentItems.map((item) => ({
-          assetId: item.assetId,
-          name: item.name,
-          price: item.price,
-          itemUrl: `https://jpg.store/asset/${item.assetId}`,
-          date: item.date,
-        }))
+        const payload: JpgListedItem[] = fetchedJpgRecentItems
+          .map((item) => ({
+            assetId: item.assetId,
+            name: item.name,
+            price: item.price,
+            itemUrl: `https://jpg.store/asset/${item.assetId}`,
+            date: item.date,
+          }))
+          .sort((a, b) => a.price - b.price)
 
         console.log(`Fetched ${payload.length} listings from jpg.store`)
 
