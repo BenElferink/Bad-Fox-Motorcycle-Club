@@ -5,37 +5,6 @@ import populateAsset from '../functions/populateAsset'
 import { FloorPrices, JpgListedItem, JpgRecentItem, PolicyId, PopulatedAsset, TraitsFile } from '../@types'
 import { BAD_KEY_POLICY_ID, ONE_MILLION } from '../constants'
 
-interface FetchedListing {
-  reports: string
-  listed_at: string
-  traits: {
-    [key: string]: string
-  }
-  quantity: number
-  policy_id: string
-  initial_mint_tx_hash: string
-  has_pending_transaction: boolean
-  listing_lovelace: string
-  created_at: string
-  asset_id: string
-  source: string
-  display_name: string
-  optimized_source: string
-  asset_name: string
-  media_type: null | any
-  collections: Record<any, any>
-  fingerprint: string
-  asset_num: number
-  likes: string
-  is_taken_down: false
-  bundled_assets: null | any
-  bundle_display_names: null | any
-  listing_type: null | any
-  main_bundle_item: null | any
-  bundle_size: null | any
-  views: string
-}
-
 interface FetchedRecent {
   asset_id: string
   display_name: string
