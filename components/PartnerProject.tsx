@@ -47,9 +47,9 @@ const PartnerProject = (props: PartnerProjectProps) => {
       href={url}
       target='_blank'
       rel='noopener'
-      className={'w-20 h-12 m-5 flex flex-col items-center justify-center relative ' + className}
+      className={'w-20 h-12 m-6 flex flex-col items-center justify-center relative ' + className}
     >
-      <Image src={logoUrl} alt={name} fill sizes='5rem' className='object-contain' />
+      <Image src={logoUrl} alt='logo' fill sizes='5rem' className='object-contain' />
       <h6 className='absolute -bottom-7 text-xs whitespace-nowrap'>{name}</h6>
     </Link>
   )

@@ -101,9 +101,14 @@ const alliances = [
     logoUrl: '/media/logo/other/stagalliance.png',
   },
   {
-    name: 'Space Otter Society',
-    url: 'https://spaceottersociety.io',
-    logoUrl: '/media/logo/other/spaceottersociety.png',
+    name: 'Generation Zeta',
+    url: 'https://twitter.com/GenZetaCNFT',
+    logoUrl: '/media/logo/other/generationzeta.png',
+  },
+  {
+    name: 'Walkers',
+    url: 'http://walkerscardano.xyz',
+    logoUrl: '/media/logo/other/walkers.png',
   },
   {
     name: 'Beez Hive',
@@ -114,6 +119,11 @@ const alliances = [
     name: 'Freaky Snakes',
     url: 'https://freakysnakes.io',
     logoUrl: '/media/logo/other/freakysnakes.png',
+  },
+  {
+    name: 'Space Otter Society',
+    url: 'https://spaceottersociety.io',
+    logoUrl: '/media/logo/other/spaceottersociety.png',
   },
 ]
 
