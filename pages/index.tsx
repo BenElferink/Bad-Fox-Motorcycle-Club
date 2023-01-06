@@ -101,14 +101,14 @@ const alliances = [
     logoUrl: '/media/logo/other/stagalliance.png',
   },
   {
-    name: 'Generation Zeta',
-    url: 'https://twitter.com/GenZetaCNFT',
-    logoUrl: '/media/logo/other/generationzeta.png',
-  },
-  {
     name: 'Walkers',
     url: 'http://walkerscardano.xyz',
     logoUrl: '/media/logo/other/walkers.png',
+  },
+  {
+    name: 'Generation Zeta',
+    url: 'https://twitter.com/GenZetaCNFT',
+    logoUrl: '/media/logo/other/generationzeta.png',
   },
   {
     name: 'Beez Hive',
