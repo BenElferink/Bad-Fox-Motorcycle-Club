@@ -32,7 +32,11 @@ const AssetFilters = (props: AssetFiltersProps) => {
   const [search, setSearch] = useState('')
 
   useEffect(() => {
+    setAscending(true)
     setSortBy(withListed ? 'PRICE' : policyId === BAD_KEY_POLICY_ID ? 'ID' : 'RANK')
+    setFilterComponents({})
+    setFilters({})
+    setSearch('')
   }, [policyId, withListed])
 
   const filterAssets = useCallback(
