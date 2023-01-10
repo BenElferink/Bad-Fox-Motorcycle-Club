@@ -1,20 +1,16 @@
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
-import React, { useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import { TraitsFile } from '../../@types'
 
 export interface TraitCategoryFiltersProps {
   traitsData: TraitsFile
-  callbackSelectedCategory: (category: string) => void
+  selectedCategory: string
+  setSelectedCategory: Dispatch<SetStateAction<string>>
 }
 
 const TraitCategoryFilters = (props: TraitCategoryFiltersProps) => {
-  const { traitsData = {}, callbackSelectedCategory = () => {} } = props
-  const [selectedCategory, setSelectedCategory] = useState('Skin')
+  const { traitsData = {}, selectedCategory, setSelectedCategory } = props
   const [openDropdown, setOpenDropdown] = useState(false)
-
-  useEffect(() => {
-    callbackSelectedCategory(selectedCategory)
-  }, [selectedCategory])
 
   return (
     <div className='w-full my-4 flex justify-center relative'>

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import getFileForPolicyId from '../../functions/getFileForPolicyId'
 import TraitCategoryFilters from '../filters/TraitCategoryFilters'
 import TraitCard from '../cards/TraitCard'
@@ -10,17 +10,25 @@ export interface CollectionTraitsProps {
 
 const CollectionTraits = (props: CollectionTraitsProps) => {
   const { policyId } = props
-  const [selectedCategory, setSelectedCategory] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState('Skin')
   const traitsFile = useMemo(() => getFileForPolicyId(policyId, 'traits'), [policyId]) as TraitsFile
+
+  useEffect(() => {
+    setSelectedCategory('Skin')
+  }, [policyId])
 
   return (
     <div>
-      <TraitCategoryFilters traitsData={traitsFile} callbackSelectedCategory={(str) => setSelectedCategory(str)} />
+      <TraitCategoryFilters
+        traitsData={traitsFile}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+      />
 
       <div className='flex flex-row flex-wrap items-center justify-center'>
         {traitsFile[selectedCategory]?.map((trait) => (
           <TraitCard
-            key={`catalog-${selectedCategory}-trait-${trait.displayName}-${trait.model}`}
+            key={`catalog-${policyId}-category-${selectedCategory}-trait-${trait.displayName}-model-${trait.model}`}
             imageSrc={trait.image}
             title={trait.displayName}
             tableRows={[
