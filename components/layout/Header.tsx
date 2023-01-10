@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <header className='w-screen py-3 md:py-4 px-2 md:px-2 bg-black bg-opacity-50 flex items-center justify-between sticky top-0 z-40'>
       <div className='flex items-center'>
-        <Link href='/' className='h-16 w-16 mx-2 relative'>
+        <Link href='/' onClick={() => window.scroll({ top: 0, left: 0 })} className='h-16 w-16 mx-2 relative'>
           <Image
             src='/media/logo/white_alpha.png'
             alt='logo'
@@ -31,6 +31,7 @@ const Header = () => {
         <div className='hidden md:block'>
           <Link
             href='/wallet'
+            onClick={() => window.scroll({ top: 0, left: 0 })}
             className={
               'mx-2 p-4 rounded-lg text-sm ' +
               (router.pathname === '/wallet'
@@ -43,6 +44,7 @@ const Header = () => {
 
           <Link
             href='/transcend'
+            onClick={() => window.scroll({ top: 0, left: 0 })}
             className={
               'mx-0 p-4 rounded-lg text-sm ' +
               (router.pathname === '/transcend'
