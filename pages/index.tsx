@@ -156,7 +156,7 @@ const teamMembers = [
   },
   {
     name: 'David Minkov',
-    title: 'Co-Founder / Lead Artist',
+    title: 'Co-Founder / Artist',
     description:
       "I'm an artist from a very young age, I started my graphic design career in 2020. I'm very excited to work on the art for Bad Fox MC, as it's is my first time being in the Cardano NFT space!",
     profilePicture: '/media/team/David.jpg',
@@ -169,7 +169,7 @@ const teamMembers = [
   },
   {
     name: 'Chris Mitrev',
-    title: 'Co-Founder / Co-Artist',
+    title: 'Co-Founder / Artist',
     description:
       "I'm an aspiring artist. I've invested in the tools required to produce the art for Bad Fox MC. I help in the making of traits, and I lead the work & design for our merchandise store.",
     profilePicture: '/media/team/Chris.jpg',
@@ -203,28 +203,28 @@ const Page = () => {
       <Landing />
       <Previews />
 
-      <div className='flex flex-col items-center justify-center my-5 py-5 text-gray-500'>
-        <h5 className='mb-2 text-2xl'>Partnerships</h5>
-        <div className='flex flex-wrap items-center justify-center'>
-          {partnerships.map(({ name, url, logoUrl }) => (
-            <PartnerProject key={`doxxed-by-${name}`} name={name} url={url} logoUrl={logoUrl} />
-          ))}
-        </div>
-      </div>
-
-      <div className='flex flex-col items-center justify-center mt-5 mb-10 py-5 text-gray-500'>
-        <h5 className='mb-2 text-2xl'>Alliances</h5>
-        <div className='flex flex-wrap items-center justify-center'>
-          {alliances.map(({ name, url, logoUrl }) => (
-            <PartnerProject key={`doxxed-by-${name}`} name={name} url={url} logoUrl={logoUrl} />
-          ))}
-        </div>
-      </div>
-
       <Utilities />
 
-      <div id='team' className='flex flex-col items-center justify-center my-5 text-gray-500'>
-        <h5 className='text-3xl'>Team (Certified Doxxed)</h5>
+      <div className='flex flex-col items-center justify-center my-8 text-gray-500'>
+        <h5 className='text-2xl'>Partnerships</h5>
+        <div className='flex flex-wrap items-center justify-center'>
+          {partnerships.map(({ name, url, logoUrl }) => (
+            <PartnerProject key={`partner-${name}`} name={name} url={url} logoUrl={logoUrl} />
+          ))}
+        </div>
+      </div>
+
+      <div className='flex flex-col items-center justify-center my-8 text-gray-500'>
+        <h5 className='text-2xl'>Alliances</h5>
+        <div className='flex flex-wrap items-center justify-center'>
+          {alliances.map(({ name, url, logoUrl }) => (
+            <PartnerProject key={`alliance-${name}`} name={name} url={url} logoUrl={logoUrl} />
+          ))}
+        </div>
+      </div>
+
+      <div id='team' className='flex flex-col items-center justify-center my-8 text-gray-500'>
+        <h5 className='text-2xl'>Certifications</h5>
         <div className='flex flex-wrap items-center justify-center'>
           {doxxedServices.map(({ name, url, logoUrl }) => (
             <PartnerProject key={`doxxed-by-${name}`} name={name} url={url} logoUrl={logoUrl} className='mx-8' />

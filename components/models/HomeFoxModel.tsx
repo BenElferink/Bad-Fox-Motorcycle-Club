@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import ModelChild from './ModelChild'
+import { Environment } from '@react-three/drei'
 
 const HomeFoxModel = () => {
   const [flip, setFlip] = useState(false)
 
   return (
-    <Canvas style={{ width: 450, height: 400 }} camera={{ position: [0, 0, 1], fov: 45 }}>
-      <pointLight intensity={1} position={[5, 20, 15]} />
-      <ambientLight intensity={0.3} color='#FFFFFF' />
+    <Canvas style={{ width: 300, height: 350 }} camera={{ position: [0, 0, 1], fov: 45 }}>
+      <Environment path={'/media/3d/'} files={'env.hdr'} />
+      <pointLight position={[-1, 1, 0]} intensity={0.7} />
 
       <ModelChild
         src='/media/3d/fox-4946.glb'

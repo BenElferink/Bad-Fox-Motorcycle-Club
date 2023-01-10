@@ -1,7 +1,7 @@
 import useScreenSize from '../../hooks/useScreenSize'
 
-const MediaWrapper = ({ children, size = 100, isLeft = false, posTop = '0px' }) => {
-  const { isMobile } = useScreenSize()
+const MediaWrapper = ({ children, size = 100, isLeft = false, posTop = '0px', posSide }) => {
+  const { isMobile, screenWidth } = useScreenSize()
 
   return (
     <div
@@ -12,8 +12,8 @@ const MediaWrapper = ({ children, size = 100, isLeft = false, posTop = '0px' }) 
               width: size,
               position: 'absolute',
               top: posTop,
-              right: isLeft ? (-420 - size) / 2 : 'unset',
-              left: isLeft ? 'unset' : (-420 - size) / 2,
+              right: isLeft ? posSide || ((screenWidth > 900 ? -420 : -screenWidth / 2.2) - size) / 2 : 'unset',
+              left: isLeft ? 'unset' : posSide || ((screenWidth > 900 ? -420 : -screenWidth / 2.2) - size) / 2,
               zIndex: 1,
             }
       }

@@ -9,6 +9,7 @@
 }
 
 .chapter {
+  min-height: 300px;
   max-width: 420px;
   margin: 0 auto;
   user-select: none;
@@ -47,12 +48,12 @@
   background-color: rgba(120, 135, 150, 0.2);
   border-radius: 1rem;
   text-align: left;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
-.event:hover {
+/* .event:hover {
   box-shadow: 0 0 0.5rem var(--orange);
-}
+} */
 
 .event > h3 {
   margin: 0;

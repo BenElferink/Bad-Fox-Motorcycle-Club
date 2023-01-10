@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <header className='w-screen py-3 md:py-4 px-2 md:px-2 bg-black bg-opacity-50 flex items-center justify-between sticky top-0 z-40'>
       <div className='flex items-center'>
-        <Link href='/' className='h-16 md:h-20 w-16 md:w-20 mx-3 relative'>
+        <Link href='/' className='h-16 w-16 mx-2 relative'>
           <Image
             src='/media/logo/white_alpha.png'
             alt='logo'
@@ -22,7 +22,6 @@ const Header = () => {
             className='object-contain rounded-full'
           />
         </Link>
-        <h1 className='hidden md:inline text-white text-lg'>Bad Fox Motorcycle Club</h1>
       </div>
 
       <div className='flex items-center'>

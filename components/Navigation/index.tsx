@@ -1,6 +1,6 @@
 import { Bars3Icon } from '@heroicons/react/24/solid'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants'
 import MultipleLinks from './MultipleLinks'
 import SingleLink from './SingleLink'
@@ -9,6 +9,12 @@ const Navigation = () => {
   const router = useRouter()
   const [openNavOnMobile, setOpenNavOnMobile] = useState(false)
   const [openDropdownName, setOpenDropdownName] = useState('')
+
+  useEffect(() => {
+    if (!openDropdownName) {
+      setOpenNavOnMobile(false)
+    }
+  }, [openDropdownName])
 
   return (
     <nav>
@@ -63,25 +69,26 @@ const Navigation = () => {
             <MultipleLinks
               title='Tokens'
               links={[
-                { label: 'ADA', path: '' },
-                { label: 'Hexonium', path: '' },
-                { label: 'Society', path: '' },
-                { label: 'MD', path: '' },
-                { label: 'C4', path: '' },
-                { label: 'DDoS', path: '' },
+                { label: 'ADA', path: '/tokens/ada' },
+                { label: 'Hexonium', path: '/tokens/hexonium' },
+                { label: 'Society', path: '/tokens/society' },
+                { label: 'C4', path: '/tokens/c4' },
+                { label: 'DDoS', path: '/tokens/ddos' },
+                { label: 'MD', path: '/tokens/md' },
               ]}
               dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
             />
           </li>
           <li>
             <MultipleLinks
-              title='Metaverses'
+              title='Games & Metaverses'
               links={[
                 { label: 'Cornucopias', path: '' },
-                { label: 'OGVerse', path: '' },
+                { label: 'OGBears - OGVerse', path: '' },
+                { label: 'Speed Throne', path: '' },
                 { label: 'Unboundead Earth', path: '' },
                 { label: 'Boss Planet', path: '' },
-                { label: 'MetaView Tower', path: '' },
+                { label: 'CardaStacks - MetaView Tower', path: '' },
               ]}
               dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
             />

@@ -1,145 +1,109 @@
 import useScreenSize from '../../hooks/useScreenSize'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 import { MinusCircleIcon } from '@heroicons/react/24/outline'
-import ListItem from './LisItem'
 import MediaWrapper from './MediaWrapper'
-import Tokens from './Tokens'
-import HomeFoxModel from '../models/HomeFoxModel'
+import ImageLoader from '../Loader/ImageLoader'
 import HomeKeyModel from '../models/HomeKeyModel'
+import HomeFoxModel from '../models/HomeFoxModel'
 import styles from './Utilities.module.css'
 
 const data = [
   {
-    complete: false,
-    chapter: 'Fund Redistribution',
+    complete: true,
+    chapter: 'Bad Fox',
     events: [
       {
-        complete: true,
-        title: 'ADA',
-        description: '80% royalties to 100% holders (foxes, motorcycles, keys)',
-      },
-      {
-        complete: true,
-        title: 'Clay Token',
-        description: 'Exclusive Airdrop to collectors of certain trait sets. Airdrop occurred Christmas 2022.',
-      },
-      {
-        complete: true,
-        title: 'Hexonium Token',
-        description: 'Non-custodial staking with Cardano Lands',
-      },
-      {
-        complete: true,
-        title: 'Society Token',
-        description: 'Non-custodial staking with The Ape Society',
-      },
-      {
-        complete: true,
-        title: 'MD Token',
-        description: 'Non-custodial staking with Mad Dog Cur Club',
-      },
-      {
         complete: false,
-        title: 'C4 Token',
-        description: 'Non-custodial staking with Cardano Crocs Club',
+        title: 'Supply 6,000',
       },
       {
         complete: true,
-        title: 'DDoS Token',
-        description: 'Stake-pool staking with Degen Dino orb Society',
+        title: 'Royalty Rewards',
+      },
+      {
+        complete: true,
+        title: 'Token Staking',
       },
     ],
     renderMedia: (isLeft) => (
-      <MediaWrapper isLeft={isLeft} size={150} posTop='150px'>
-        <Tokens
-          size={150}
-          srcs={[
-            '/media/tokens/ada.webp',
-            '/media/tokens/clay.png',
-            '/media/tokens/hexonium.png',
-            '/media/tokens/society.png',
-            '/media/tokens/md.png',
-            '/media/tokens/c4.png',
-            '/media/tokens/ddos.png',
-          ]}
-        />
+      <MediaWrapper isLeft={isLeft} size={150} posTop='30px'>
+        <ImageLoader src='/media/landing/bad-fox.png' alt='fox' width={150} loaderSize={50} />
       </MediaWrapper>
     ),
   },
   {
-    complete: false,
-    chapter: 'Airdrops',
+    complete: true,
+    chapter: 'Bad Motorcycle',
     events: [
       {
+        complete: false,
+        title: 'Supply 3,000',
+      },
+      {
         complete: true,
-        title: '42 Chain',
-        description:
-          "Limited supply of 150, exclusive airdrop (occurred Sept. 2022) to owners of Bad Fox #4042's famous traits. Grants membership access to exclusive/early content produced by 4042.",
+        title: 'Royalty Rewards',
       },
       {
-        complete: false,
-        title: 'Music Album',
-        description:
-          'Airdrop to holders of the 42 Chain. Produced in collaboration with 4042 and Awesomeisjayell.',
-      },
-      {
-        complete: false,
-        title: '3D Fox Avatar',
-        description:
-          'Supply of 6,000 3D metaverse compatible avatars. To be used in the OGVerse and other metaverses that support this standard.',
-      },
-      {
-        complete: false,
-        title: '3D Motorcycle',
-        description: 'Coming soon™️',
-      },
-      {
-        complete: false,
-        title: 'Vox Fox Avatar',
-        description:
-          'Supply of 6,000 Vox metaverse compatible avatars. To be used in the Boss Planet and other metaverses that support this standard.',
+        complete: true,
+        title: 'Token Staking',
       },
     ],
     renderMedia: (isLeft) => (
-      <MediaWrapper isLeft={isLeft} size={300} posTop='0px'>
+      <MediaWrapper isLeft={isLeft} size={300} posTop='70px'>
+        <ImageLoader src='/media/landing/bad-motorcycle.png' alt='motorcycle' width={300} loaderSize={50} />
+      </MediaWrapper>
+    ),
+  },
+  {
+    complete: true,
+    chapter: 'Bad Key',
+    events: [
+      {
+        complete: false,
+        title: 'Supply 0',
+      },
+      {
+        complete: true,
+        title: 'Royalty Rewards',
+      },
+      {
+        complete: true,
+        title: 'Token Staking',
+      },
+      {
+        complete: true,
+        title: 'Access to Tools',
+      },
+      {
+        complete: true,
+        title: 'Lifetime Airdrops',
+      },
+      {
+        complete: true,
+        title: 'Metaverse Benefits',
+      },
+    ],
+    renderMedia: (isLeft) => (
+      <MediaWrapper isLeft={isLeft} size={300} posTop='70px'>
         <HomeKeyModel />
       </MediaWrapper>
     ),
   },
   {
     complete: false,
-    chapter: 'Games & Metaverses',
+    chapter: '3D Fox',
     events: [
       {
         complete: false,
-        title: 'Cornucopias',
-        description: 'Coming soon™️',
+        title: 'Supply 6,000',
       },
       {
         complete: false,
-        title: 'OGBears - OGVerse',
-        description:
-          "OGBears are developing a Bear vs. Fox Motorcycle Racing mini-game for both our communities. It will be a restricted P2E mini-game, with NFTs as prizes. In addition to the mini-game, we're going to enter the OGVerse and have our own world integrated.",
-      },
-      {
-        complete: false,
-        title: 'Unbounded Earth',
-        description: 'Coming soon™️',
-      },
-      {
-        complete: false,
-        title: 'Boss Planet',
-        description: 'Coming soon™️',
-      },
-      {
-        complete: false,
-        title: 'CardaStacks - MetaView Tower',
-        description:
-          'CardaStacks made us a custom interior design for your studio in the residential tower, and gave us an entire floor in their collaboration tower (floor #69). We will develop a motorcycle club with different gaming elements!',
+        title: 'Metaverse Asset (avatar)',
       },
     ],
     renderMedia: (isLeft) => (
-      <MediaWrapper isLeft={isLeft} size={450} posTop='0px'>
+      <MediaWrapper isLeft={isLeft} size={300} posTop='0px'>
         <HomeFoxModel />
       </MediaWrapper>
     ),
@@ -151,7 +115,7 @@ const Utilities = () => {
 
   return (
     <div className={`${styles.root} mt-10 text-gray-500`}>
-      <h1 className='mb-5 text-3xl'>Utilities</h1>
+      <h1 className='mb-5 text-3xl'>Collections & Utilities</h1>
 
       {data.map((phase, idx) => {
         const isLeft = idx % 2 !== 0
@@ -163,23 +127,32 @@ const Utilities = () => {
               !isMobile ? (isLeft ? styles.leftChapter : styles.rightChapter) : styles.mobileChapter
             }`}
           >
+            {phase.renderMedia(isLeft)}
+
             <h2 className='text-xl'>
               {phase.complete ? <CheckCircleIcon className='w-6 h-6' /> : <MinusCircleIcon className='w-6 h-6' />}
               {phase.chapter}
             </h2>
 
             {phase.events.map((event) => (
-              <ListItem
+              <div
                 key={event.title}
-                complete={event.complete}
-                title={event.title}
-                description={event.description}
-                media={event.media}
-                isLeft={isLeft}
-              />
+                className={`${styles.event} ${
+                  !isMobile ? (isLeft ? styles.leftEvent : styles.rightEvent) : styles.mobileEvent
+                }`}
+              >
+                <h3>
+                  {event.complete ? (
+                    <CheckCircleIcon className='w-6 h-6' />
+                  ) : (
+                    <MinusCircleIcon className='w-6 h-6' />
+                  )}
+                  {event.title}
+                </h3>
+              </div>
             ))}
 
-            {phase.renderMedia(isLeft)}
+            {isMobile ? <br /> : null}
           </div>
         )
       })}

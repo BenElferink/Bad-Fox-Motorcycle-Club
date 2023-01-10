@@ -37,7 +37,7 @@ const MultipleLinks = (props: MultipleLinksProps) => {
       <div className={open ? 'block' : 'hidden'}>
         <ul
           onClick={() => dropdownState.setValue('')}
-          className='xl:flex xl:flex-col xl:items-start xl:absolute xl:top-12 xl:right-0 xl:overflow-auto xl:w-40 xl:p-4 xl:bg-gray-900 xl:border-gray-700 xl:rounded-xl'
+          className='xl:flex xl:flex-col xl:items-start xl:absolute xl:top-12 xl:right-0 xl:overflow-auto xl:w-fit xl:p-4 xl:bg-gray-900 xl:border-gray-700 xl:rounded-xl'
         >
           {links.map((obj) => (
             <li
