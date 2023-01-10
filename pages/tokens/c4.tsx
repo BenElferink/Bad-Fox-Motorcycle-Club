@@ -16,7 +16,7 @@ const Page = () => {
           <ImageLoader src={TOKEN_IMAGE_SRC} alt='token' width={111} height={111} />
         </div>
 
-        <div className='md:ml-4 flex flex-col justify-between'>
+        <div className=' md:ml-4 flex flex-col justify-between'>
           <div>
             <h2 className='text-gray-200 text-xl'>{TOKEN_NAME}</h2>
             <h3 className='text-sm'>{PROJECT_NAME}</h3>
@@ -29,7 +29,7 @@ const Page = () => {
           <p className='text-xs'>
             Policy ID:
             <br />
-            {TOKEN_POLICY_ID}
+            <span className='break-all'>{TOKEN_POLICY_ID}</span>
           </p>
         </div>
       </div>
@@ -37,7 +37,7 @@ const Page = () => {
       <div className='w-full my-2 p-4 px-6 flex flex-col bg-gray-400 bg-opacity-20 rounded-xl'>
         <h4 className='mb-2 text-gray-200 text-lg text-center'>Who can earn?</h4>
 
-        <ul className='flex items-center justify-center'>
+        <ul className='mx-auto flex flex-col md:flex-row md:items-center md:justify-center'>
           <li
             className={`flex items-center text-sm ${
               WHO_CAN_EARN.includes('Bad Fox') ? 'text-[var(--online)]' : 'text-[var(--offline)]'

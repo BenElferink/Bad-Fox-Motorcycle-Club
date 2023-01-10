@@ -32,7 +32,7 @@ const Page = () => {
       <div className='w-full my-2 p-4 px-6 flex flex-col bg-gray-400 bg-opacity-20 rounded-xl'>
         <h4 className='mb-2 text-gray-200 text-lg text-center'>Who can earn?</h4>
 
-        <ul className='flex items-center justify-center'>
+        <ul className='mx-auto flex flex-col md:flex-row md:items-center md:justify-center'>
           <li
             className={`flex items-center text-sm ${
               WHO_CAN_EARN.includes('Bad Fox') ? 'text-[var(--online)]' : 'text-[var(--offline)]'
