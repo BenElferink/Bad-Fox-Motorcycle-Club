@@ -4,7 +4,48 @@ import PartnerProject from '../components/PartnerProject'
 import Utilities from '../components/Utilities'
 import TeamCard from '../components/cards/TeamCard'
 
-const partnerships = [
+const tokenPartnerships = [
+  {
+    name: 'Cardano Lands',
+    url: 'https://cardanolands.com',
+    logoUrl: '/media/logo/other/cardanolands.png',
+  },
+  {
+    name: 'The Ape Society',
+    url: 'https://city.theapesociety.io',
+    logoUrl: '/media/logo/other/theapesociety.png',
+  },
+  {
+    name: 'Mad Dog Car Club',
+    url: 'https://mdtoken.io',
+    logoUrl: '/media/logo/other/maddogcarclub.png',
+  },
+  {
+    name: 'Cardano Crocs Club',
+    url: 'https://swamplands.cardanocrocsclub.com',
+    logoUrl: '/media/logo/other/cardanocrocsclub.png',
+  },
+  {
+    name: 'Degen Dino orb Society',
+    url: 'https://stake.ddos.design',
+    logoUrl: '/media/logo/other/degendinoorbsociety.png',
+  },
+]
+
+const creativePartnerships = [
+  {
+    name: 'SoundRig',
+    url: 'https://www.soundrig.io/artist/bad-fox-4042',
+    logoUrl: '/media/logo/other/soundrig.png',
+  },
+  {
+    name: 'Leon Art Group',
+    url: 'https://twitter.com/leonartgroup',
+    logoUrl: '/media/logo/other/leonartgroup.png',
+  },
+]
+
+const metaPartnerships = [
   {
     name: 'OGBears',
     url: 'https://www.ogbears.com',
@@ -34,43 +75,6 @@ const partnerships = [
     name: 'Speed Throne',
     url: 'https://speedthrone.io',
     logoUrl: '/media/logo/other/speedthrone.png',
-  },
-
-  {
-    name: 'SoundRig',
-    url: 'https://www.soundrig.io/artist/bad-fox-4042',
-    logoUrl: '/media/logo/other/soundrig.png',
-  },
-  {
-    name: 'Leon Art Group',
-    url: 'https://twitter.com/leonartgroup',
-    logoUrl: '/media/logo/other/leonartgroup.png',
-  },
-
-  {
-    name: 'Cardano Lands',
-    url: 'https://cardanolands.com',
-    logoUrl: '/media/logo/other/cardanolands.png',
-  },
-  {
-    name: 'The Ape Society',
-    url: 'https://city.theapesociety.io',
-    logoUrl: '/media/logo/other/theapesociety.png',
-  },
-  {
-    name: 'Mad Dog Car Club',
-    url: 'https://mdtoken.io',
-    logoUrl: '/media/logo/other/maddogcarclub.png',
-  },
-  {
-    name: 'Cardano Crocs Club',
-    url: 'https://swamplands.cardanocrocsclub.com',
-    logoUrl: '/media/logo/other/cardanocrocsclub.png',
-  },
-  {
-    name: 'Degen Dino orb Society',
-    url: 'https://stake.ddos.design',
-    logoUrl: '/media/logo/other/degendinoorbsociety.png',
   },
 ]
 
@@ -208,7 +212,17 @@ const Page = () => {
       <div className='flex flex-col items-center justify-center my-8 text-gray-500'>
         <h5 className='text-2xl'>Partnerships</h5>
         <div className='flex flex-wrap items-center justify-center'>
-          {partnerships.map(({ name, url, logoUrl }) => (
+          {tokenPartnerships.map(({ name, url, logoUrl }) => (
+            <PartnerProject key={`partner-${name}`} name={name} url={url} logoUrl={logoUrl} />
+          ))}
+        </div>
+        <div className='flex flex-wrap items-center justify-center'>
+          {metaPartnerships.map(({ name, url, logoUrl }) => (
+            <PartnerProject key={`partner-${name}`} name={name} url={url} logoUrl={logoUrl} />
+          ))}
+        </div>
+        <div className='flex flex-wrap items-center justify-center'>
+          {creativePartnerships.map(({ name, url, logoUrl }) => (
             <PartnerProject key={`partner-${name}`} name={name} url={url} logoUrl={logoUrl} />
           ))}
         </div>
