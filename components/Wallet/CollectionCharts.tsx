@@ -39,7 +39,7 @@ const CollectionCharts = (props: CollectionChartsProps) => {
     for await (const asset of myCollectionAssets) {
       const {
         data: { price },
-      } = await axios.get(`/api/market/history/${asset.assetId}`)
+      } = await axios.get(`/api/asset/${asset.assetId}/market/history`)
 
       if (!price) {
         totalNotFound++
@@ -60,7 +60,7 @@ const CollectionCharts = (props: CollectionChartsProps) => {
   }, [getPortfolioInvestments])
 
   const getFloorPrices = useCallback(async () => {
-    const uri = `/api/market/${policyId}/floor`
+    const uri = `/api/policy/${policyId}/market/floor`
     let payload: FloorSnapshot[] = []
 
     try {

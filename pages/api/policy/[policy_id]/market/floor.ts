@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { firebase, firestore } from '../../../../utils/firebase'
-import jpgStore from '../../../../utils/jpgStore'
-import isPolicyIdAllowed from '../../../../functions/isPolicyIdAllowed'
-import { ADMIN_CODE } from '../../../../constants'
-import { PolicyId } from '../../../../@types'
+import { firebase, firestore } from '../../../../../utils/firebase'
+import jpgStore from '../../../../../utils/jpgStore'
+import isPolicyIdAllowed from '../../../../../functions/isPolicyIdAllowed'
+import { ADMIN_CODE } from '../../../../../constants'
+import { PolicyId } from '../../../../../@types'
 
 interface Response {
   count: number

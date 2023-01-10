@@ -24,7 +24,7 @@ const Page = () => {
   const [newImageSrc, setNewImageSrc] = useState('')
   const [oldImageSrc, setOldImageSrc] = useState('')
 
-  const searchSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+  const searchSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e?.preventDefault()
     setFoxName('')
 

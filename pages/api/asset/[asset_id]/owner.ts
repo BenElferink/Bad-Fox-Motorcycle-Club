@@ -1,7 +1,7 @@
-import blockfrost from '../../../../../utils/blockfrost'
-import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../../../../constants'
+import blockfrost from '../../../../utils/blockfrost'
+import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../../../constants'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { OwningWallet } from '../../../../../@types'
+import { OwningWallet } from '../../../../@types'
 
 interface Response extends OwningWallet {}
 

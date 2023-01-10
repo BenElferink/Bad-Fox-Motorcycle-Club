@@ -40,7 +40,7 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
     setFetching(true)
 
     try {
-      const uri = `/api/market/${policyId}/listed`
+      const uri = `/api/policy/${policyId}/market/listed`
       const { data } = await axios.get<{ count: number; items: JpgListedItem[] }>(uri)
 
       const traits = getFileForPolicyId(policyId, 'traits') as TraitsFile
@@ -57,7 +57,7 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
 
         if (!found) {
           const { data } = await axios.get<PopulatedAsset>(
-            `/api/asset/populate?policyId=${policyId}&assetId=${listed.assetId}&withRanks=${
+            `/api/asset/${listed.assetId}/populate?policyId=${policyId}&withRanks=${
               policyId !== BAD_KEY_POLICY_ID
             }`
           )

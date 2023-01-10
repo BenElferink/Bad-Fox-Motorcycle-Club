@@ -9,5 +9,5 @@ jobs:
       - name: Call floor prices snapshot API route
         run: |
           curl --request HEAD \
-          --url 'https://badfoxmc.com/api/market/80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add14/floor' \
+          --url 'https://badfoxmc.com/api/policy/80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add14/market/floor' \
           --header 'admin_code: ${{ secrets.ADMIN_CODE }}'

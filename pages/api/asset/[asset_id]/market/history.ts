@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import jpgStore from '../../../../utils/jpgStore'
+import jpgStore from '../../../../../utils/jpgStore'
 
 interface Response {
   price: number

@@ -1,4 +1,4 @@
-import blockfrost from '../../../../../utils/blockfrost'
+import blockfrost from '../../../../utils/blockfrost'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 interface Response {

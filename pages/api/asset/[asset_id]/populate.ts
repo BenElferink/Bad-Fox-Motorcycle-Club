@@ -1,26 +1,32 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { PolicyId, PopulatedAsset } from '../../../@types'
-import populateAsset from '../../../functions/populateAsset'
+import { PolicyId, PopulatedAsset } from '../../../../@types'
+import populateAsset from '../../../../functions/populateAsset'
 
 interface Response extends PopulatedAsset {}
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
   const { method, query } = req
 
-  const policyId = query.policyId as PolicyId
-  const assetId = query.assetId as PolicyId
-  const withRanks = !!query.withRanks && query.withRanks != 'false' && query.withRanks != '0'
+  const assetId = query.asset_id
 
-  if (!policyId && !assetId) {
-    return res.status(400).end('Query params required; (policyId: string), (assetId: string)')
+  if (!assetId || typeof assetId !== 'string') {
+    return res.status(400).end('Bad Request')
   }
+
+  const policyId = query.policyId as PolicyId
+
+  if (!policyId) {
+    return res.status(400).end('Bad Request')
+  }
+
+  const withRanks = !!query.withRanks && query.withRanks != 'false' && query.withRanks != '0'
 
   try {
     switch (method) {
       case 'GET': {
         const populatedAsset = await populateAsset({
-          policyId,
           assetId,
+          policyId,
           withRanks,
         })
 

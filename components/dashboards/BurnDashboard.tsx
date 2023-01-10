@@ -42,7 +42,7 @@ const BurnDashboard = () => {
         const { data } = await axios.get<{
           txHash: string
           submitted: boolean
-        }>(`/api/blockfrost/tx/${txHash}/status`)
+        }>(`/api/transaction/${txHash}/status`)
 
         if (data.submitted) {
           return data

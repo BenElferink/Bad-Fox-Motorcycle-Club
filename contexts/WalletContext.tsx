@@ -78,7 +78,7 @@ export const WalletProvider = ({ children }: { children: JSX.Element }) => {
 
               if (!foundAsset) {
                 const { data } = await axios.get<PopulatedAsset>(
-                  `/api/asset/populate?policyId=${BAD_FOX_POLICY_ID}&assetId=${unit}&withRanks=${true}`
+                  `/api/asset/${unit}/populate?policyId=${BAD_FOX_POLICY_ID}&withRanks=${true}`
                 )
 
                 return data
@@ -98,7 +98,7 @@ export const WalletProvider = ({ children }: { children: JSX.Element }) => {
 
               if (!foundAsset) {
                 const { data } = await axios.get<PopulatedAsset>(
-                  `/api/asset/populate?policyId=${BAD_MOTORCYCLE_POLICY_ID}&assetId=${unit}&withRanks=${true}`
+                  `/api/asset/${unit}/populate?policyId=${BAD_MOTORCYCLE_POLICY_ID}&withRanks=${true}`
                 )
 
                 return data
@@ -118,7 +118,7 @@ export const WalletProvider = ({ children }: { children: JSX.Element }) => {
 
               if (!foundAsset) {
                 const { data } = await axios.get<PopulatedAsset>(
-                  `/api/asset/populate?policyId=${BAD_KEY_POLICY_ID}&assetId=${unit}&withRanks=${false}`
+                  `/api/asset/${unit}/populate?policyId=${BAD_KEY_POLICY_ID}&withRanks=${false}`
                 )
 
                 return data

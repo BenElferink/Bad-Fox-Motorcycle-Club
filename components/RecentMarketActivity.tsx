@@ -27,7 +27,7 @@ const RecentMarketActivity = (props: RecentMarketActivityProps) => {
   const fetchRecents = useCallback(
     async ({ page = 1, sold = false }: { page?: number; sold?: boolean }): Promise<JpgRecentItem[]> => {
       try {
-        const uri = `/api/market/${policyId}/recent?sold=${sold}&page=${page}`
+        const uri = `/api/policy/${policyId}/market/recent?sold=${sold}&page=${page}`
         const { data } = await axios.get<{ count: number; items: JpgRecentItem[] }>(uri)
         return data.items
       } catch (error) {
