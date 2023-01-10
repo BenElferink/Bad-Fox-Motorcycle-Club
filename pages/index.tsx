@@ -4,80 +4,6 @@ import PartnerProject from '../components/PartnerProject'
 import Utilities from '../components/Utilities'
 import TeamCard from '../components/cards/TeamCard'
 
-const tokenPartnerships = [
-  {
-    name: 'Cardano Lands',
-    url: 'https://cardanolands.com',
-    logoUrl: '/media/logo/other/cardanolands.png',
-  },
-  {
-    name: 'The Ape Society',
-    url: 'https://city.theapesociety.io',
-    logoUrl: '/media/logo/other/theapesociety.png',
-  },
-  {
-    name: 'Mad Dog Car Club',
-    url: 'https://mdtoken.io',
-    logoUrl: '/media/logo/other/maddogcarclub.png',
-  },
-  {
-    name: 'Cardano Crocs Club',
-    url: 'https://swamplands.cardanocrocsclub.com',
-    logoUrl: '/media/logo/other/cardanocrocsclub.png',
-  },
-  {
-    name: 'Degen Dino orb Society',
-    url: 'https://stake.ddos.design',
-    logoUrl: '/media/logo/other/degendinoorbsociety.png',
-  },
-]
-
-const creativePartnerships = [
-  {
-    name: 'SoundRig',
-    url: 'https://www.soundrig.io/artist/bad-fox-4042',
-    logoUrl: '/media/logo/other/soundrig.png',
-  },
-  {
-    name: 'Leon Art Group',
-    url: 'https://twitter.com/leonartgroup',
-    logoUrl: '/media/logo/other/leonartgroup.png',
-  },
-]
-
-const metaPartnerships = [
-  {
-    name: 'OGBears',
-    url: 'https://www.ogbears.com',
-    logoUrl: '/media/logo/other/ogbears.png',
-  },
-  {
-    name: 'CardaStacks',
-    url: 'https://www.cardastacks.com',
-    logoUrl: '/media/logo/other/cardastacks.png',
-  },
-  {
-    name: 'Dot Dot Labs',
-    url: 'https://dotdotlabs.io',
-    logoUrl: '/media/logo/other/dotdotlabs.png',
-  },
-  {
-    name: 'Unbounded Earth',
-    url: 'https://unbounded.earth',
-    logoUrl: '/media/logo/other/unboundedearth.png',
-  },
-  {
-    name: 'Cornucopias',
-    url: 'https://www.cornucopias.io',
-    logoUrl: '/media/logo/other/cornucopias.png',
-  },
-  {
-    name: 'Speed Throne',
-    url: 'https://speedthrone.io',
-    logoUrl: '/media/logo/other/speedthrone.png',
-  },
-]
-
 const alliances = [
   {
     name: 'Winged Warriors',
@@ -96,13 +22,8 @@ const alliances = [
   },
   {
     name: 'Space Troopers',
-    url: 'https://spacetroopers.org/arenabeta',
+    url: 'https://spacetroopers.org',
     logoUrl: '/media/logo/other/spacetroopers.png',
-  },
-  {
-    name: 'Stag Alliance',
-    url: 'https://www.stagalliance.com',
-    logoUrl: '/media/logo/other/stagalliance.png',
   },
   {
     name: 'Walkers',
@@ -115,19 +36,93 @@ const alliances = [
     logoUrl: '/media/logo/other/generationzeta.png',
   },
   {
+    name: 'Stag Alliance',
+    url: 'https://www.stagalliance.com',
+    logoUrl: '/media/logo/other/stagalliance.png',
+  },
+  {
     name: 'Beez Hive',
     url: 'https://beezhive.io',
     logoUrl: '/media/logo/other/beezhive.png',
   },
   {
-    name: 'Freaky Snakes',
-    url: 'https://freakysnakes.io',
-    logoUrl: '/media/logo/other/freakysnakes.png',
-  },
-  {
     name: 'Space Otter Society',
     url: 'https://spaceottersociety.io',
     logoUrl: '/media/logo/other/spaceottersociety.png',
+  },
+]
+
+const tokenPartnerships = [
+  {
+    name: 'Cardano Lands',
+    url: 'https://cardanolands.com',
+    logoUrl: '/media/logo/other/cardanolands.png',
+  },
+  {
+    name: 'The Ape Society',
+    url: 'https://theapesociety.io',
+    logoUrl: '/media/logo/other/theapesociety.png',
+  },
+  {
+    name: 'Mad Dog Car Club',
+    url: 'https://mdtoken.io',
+    logoUrl: '/media/logo/other/maddogcarclub.png',
+  },
+  {
+    name: 'Cardano Crocs Club',
+    url: 'https://cardanocrocsclub.com',
+    logoUrl: '/media/logo/other/cardanocrocsclub.png',
+  },
+  {
+    name: 'Degen Dino orb Society',
+    url: 'https://stake.ddos.design',
+    logoUrl: '/media/logo/other/degendinoorbsociety.png',
+  },
+]
+
+const metaPartnerships = [
+  {
+    name: 'CardaStacks',
+    url: 'https://cardastacks.com',
+    logoUrl: '/media/logo/other/cardastacks.png',
+  },
+  {
+    name: 'Dot Dot Labs',
+    url: 'https://dotdotlabs.io',
+    logoUrl: '/media/logo/other/dotdotlabs.png',
+  },
+  {
+    name: 'Unbounded Earth',
+    url: 'https://unbounded.earth',
+    logoUrl: '/media/logo/other/unboundedearth.png',
+  },
+  {
+    name: 'OGBears',
+    url: 'https://ogbears.com',
+    logoUrl: '/media/logo/other/ogbears.png',
+  },
+  {
+    name: 'Cornucopias',
+    url: 'https://cornucopias.io',
+    logoUrl: '/media/logo/other/cornucopias.png',
+  },
+  {
+    name: 'Speed Throne',
+    url: 'https://speedthrone.io',
+    logoUrl: '/media/logo/other/speedthrone.png',
+  },
+]
+
+const creativePartnerships = [
+  {
+    name: 'SoundRig',
+    url: 'https://www.soundrig.io/artist/bad-fox-4042',
+    logoUrl: '/media/logo/other/soundrig.png',
+  },
+  {
+    name: 'Leon Art Group',
+    url: 'https://twitter.com/leonartgroup',
+    logoUrl: '/media/logo/other/leonartgroup.png',
   },
 ]
 
