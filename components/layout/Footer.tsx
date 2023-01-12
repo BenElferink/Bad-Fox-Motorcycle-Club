@@ -12,7 +12,7 @@ const data = [
   },
   {
     name: 'Mesh',
-    url: 'https://mesh.martify.io',
+    url: 'https://meshjs.dev',
     logoUrl: '/media/logo/other/mesh.png',
     logoHeight: 70,
     logoWidth: 70,
