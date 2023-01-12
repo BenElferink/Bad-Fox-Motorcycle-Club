@@ -5,14 +5,14 @@ import populateAsset from '../functions/populateAsset'
 import { FloorPrices, JpgListedItem, JpgRecentItem, PolicyId, PopulatedAsset, TraitsFile } from '../@types'
 import { BAD_KEY_POLICY_ID, ONE_MILLION } from '../constants'
 
-interface FetchedRecent {
+interface FetchedSaleOrListing {
   asset_id: string
   display_name: string
   tx_hash: string
   listing_id: number | null
   listed_at?: string
   confirmed_at?: string
-  price_lovelace: number
+  price_lovelace: string
   listing_type: 'SINGLE_ASSET' | 'BUNDLE'
 }
 
@@ -44,7 +44,7 @@ class JpgStore {
       console.log(`Fetching recent ${type} from jpg.store at page ${page} for policy ID ${policyId}`)
 
       try {
-        const { data } = await axios.get<FetchedRecent[]>(uri, {
+        const { data } = await axios.get<FetchedSaleOrListing[]>(uri, {
           headers: {
             'Accept-Encoding': 'application/json',
           },
@@ -67,7 +67,7 @@ class JpgStore {
               return {
                 assetId: item.asset_id,
                 name: item.display_name,
-                price: item.price_lovelace / ONE_MILLION,
+                price: Number(item.price_lovelace) / ONE_MILLION,
                 rank: asset?.rarityRank || 0,
                 attributes: asset?.attributes || {},
                 imageUrl: formatIpfsImageUrl(asset?.image.ipfs || '', !!asset?.rarityRank),
@@ -90,30 +90,62 @@ class JpgStore {
   }
 
   getListings = (policyId: PolicyId): Promise<JpgListedItem[]> => {
+    const uri = `${this.baseUrl}/policy/${policyId}/listings`
+
     return new Promise(async (resolve, reject) => {
       console.log(`Fetching listings from jpg.store for policy ID ${policyId}`)
       try {
-        let fetchedJpgRecentItems: JpgRecentItem[] = []
-        for (let page = 1; true; page++) {
-          const items = await this.getRecents({
-            policyId,
-            sold: false,
-            page,
+        let cursor = null
+        let fetchedItems: FetchedSaleOrListing[] = []
+
+        for (let i = 0; true; i++) {
+          if (!cursor && i > 0) break
+
+          // @ts-ignore
+          const { data } = await axios.get<{
+            nextPageCursor: string | null
+            listings: FetchedSaleOrListing[]
+          }>(uri + (cursor ? `?cursor=${cursor}` : ''), {
+            headers: {
+              'Accept-Encoding': 'application/json',
+            },
           })
 
-          if (!items.length) break
-          fetchedJpgRecentItems = fetchedJpgRecentItems.concat(items)
+          cursor = data.nextPageCursor
+
+          if (!data.listings.length) break
+          fetchedItems = fetchedItems.concat(data.listings)
         }
 
-        const payload: JpgListedItem[] = fetchedJpgRecentItems
-          .map((item) => ({
-            assetId: item.assetId,
-            name: item.name,
-            price: item.price,
-            itemUrl: `https://jpg.store/asset/${item.assetId}`,
-            date: item.date,
-          }))
-          .sort((a, b) => a.price - b.price)
+        const policyAssets = getFileForPolicyId(policyId, 'assets') as PopulatedAsset[]
+        const payload: JpgListedItem[] = (
+          await Promise.all(
+            fetchedItems.map(async (item) => {
+              let asset = policyAssets.find((asset) => asset.assetId === item.asset_id)
+
+              if (!asset) {
+                asset = await populateAsset({
+                  policyId,
+                  assetId: item.asset_id,
+                  withRanks: policyId !== BAD_KEY_POLICY_ID,
+                })
+              }
+
+              return {
+                assetId: item.asset_id,
+                name: item.display_name,
+                price: Number(item.price_lovelace) / ONE_MILLION,
+                rank: asset?.rarityRank || 0,
+                attributes: asset?.attributes || {},
+                imageUrl: formatIpfsImageUrl(asset?.image.ipfs || '', !!asset?.rarityRank),
+                itemUrl: `https://jpg.store/asset/${item.asset_id}`,
+                // @ts-ignore
+                date: new Date(item.listed_at),
+                type: 'listing',
+              }
+            })
+          )
+        ).sort((a, b) => a.price - b.price)
 
         console.log(`Fetched ${payload.length} listings from jpg.store`)
 
