@@ -71,10 +71,11 @@ const Navigation = () => {
               links={[
                 { label: 'ADA', path: '/tokens/ada' },
                 { label: 'Hexonium', path: '/tokens/hexonium' },
+                { label: 'NFTC', path: '/tokens/nftc' },
                 { label: 'Society', path: '/tokens/society' },
                 { label: 'C4', path: '/tokens/c4' },
-                { label: 'DDoS', path: '/tokens/ddos' },
                 { label: 'MD', path: '/tokens/md' },
+                { label: 'DDoS', path: '/tokens/ddos' },
               ]}
               dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
             />

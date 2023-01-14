@@ -78,6 +78,11 @@ const tokenPartnerships = [
     url: 'https://stake.ddos.design',
     logoUrl: '/media/logo/other/degendinoorbsociety.png',
   },
+  {
+    name: 'NFT Creative',
+    url: 'https://nftcreative.ca',
+    logoUrl: '/media/logo/other/nftcreative.png',
+  },
 ]
 
 const metaPartnerships = [
