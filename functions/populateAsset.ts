@@ -1,5 +1,5 @@
-import axios from 'axios'
 import blockfrost from '../utils/blockfrost'
+import cnftTools from '../utils/cnftTools'
 import fromHex from './formatters/hex/fromHex'
 import { AssetFile, PolicyId, PopulatedAsset } from '../@types'
 
@@ -36,13 +36,7 @@ const populateAsset: (options: {
 
     if (!!withRanks) {
       if (!cnftToolsAssets[policyId]?.length) {
-        cnftToolsAssets[policyId] = (
-          await axios.get(`https://api.cnft.tools/api/external/${policyId}`, {
-            headers: {
-              'Accept-Encoding': 'application/json',
-            },
-          })
-        ).data
+        cnftToolsAssets[policyId] = await cnftTools.getPolicyAssets(policyId)
       }
 
       rarityRank = Number(
