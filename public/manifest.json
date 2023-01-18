@@ -1,7 +1,7 @@
 {
   "short_name": "Bad Fox MC",
   "name": "Bad Fox Motorcycle Club",
-  "description": "BFMC is an NFT collection on the Cardano Blockchain",
+  "description": "Bad Fox Motorcycle Club is a large collective of NFT fans who are working to innovate on what is possible with a PFP project. We do diverse forms of fund redistribution, integrations into various metaverses, and we develop tools that benefit everyone on Cardano.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -9,14 +9,14 @@
       "type": "image/x-icon"
     },
     {
-      "src":"/android-chrome-192x192.png",
-      "sizes":"192x192",
-      "type":"image/png"
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
     },
     {
-      "src":"/android-chrome-512x512.png",
-      "sizes":"512x512",
-      "type":"image/png"
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
   "start_url": ".",

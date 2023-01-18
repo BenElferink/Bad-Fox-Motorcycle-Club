@@ -13,7 +13,6 @@ import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
 import SnowCanvas from '../components/canvas/SnowCanvas'
 
-// https://api.cnft.tools/api/external/fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967
 // https://api.opencnft.io/1/policy/fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967
 // https://api.coingecko.com/api/v3/simple/price?ids=cardano&vs_currencies=usd
 
@@ -21,6 +20,11 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <Fragment>
       <Head>
+        <meta
+          name='description'
+          content='Bad Fox Motorcycle Club is a large collective of NFT fans who are working to innovate on what is possible with a PFP project. We do diverse forms of fund redistribution, integrations into various metaverses, and we develop tools that benefit everyone on Cardano.'
+        />
+
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <meta name='author' content='Ben Elferink' />
         {/* <meta name='description' content='' /> */}
