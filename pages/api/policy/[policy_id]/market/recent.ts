@@ -1,11 +1,11 @@
-import jpgStore from '../../../../../utils/jpgStore'
+import jpgStore, { FormattedListingOrSale } from '../../../../../utils/jpgStore'
 import isPolicyIdAllowed from '../../../../../functions/isPolicyIdAllowed'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { JpgRecentItem, PolicyId } from '../../../../../@types'
+import { PolicyId } from '../../../../../@types'
 
 interface Response {
   count: number
-  items: JpgRecentItem[]
+  items: FormattedListingOrSale[]
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {

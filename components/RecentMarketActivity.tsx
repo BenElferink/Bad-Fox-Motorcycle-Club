@@ -9,7 +9,8 @@ import Loader from './Loader'
 import ImageLoader from './Loader/ImageLoader'
 import formatBigNumber from '../functions/formatters/formatBigNumber'
 import { ADA_SYMBOL } from '../constants'
-import { JpgRecentItem, PolicyId } from '../@types'
+import { PolicyId } from '../@types'
+import { FormattedListingOrSale } from '../utils/jpgStore'
 
 export interface RecentMarketActivityProps {
   policyId: PolicyId
@@ -21,14 +22,14 @@ const RecentMarketActivity = (props: RecentMarketActivityProps) => {
   const { screenWidth } = useScreenSize()
   const [fetching, setFetching] = useState(false)
 
-  const [recentlyListed, setRecentlyListed] = useState<JpgRecentItem[]>([])
-  const [recentlySold, setRecentlySold] = useState<JpgRecentItem[]>([])
+  const [recentlyListed, setRecentlyListed] = useState<FormattedListingOrSale[]>([])
+  const [recentlySold, setRecentlySold] = useState<FormattedListingOrSale[]>([])
 
   const fetchRecents = useCallback(
-    async ({ page = 1, sold = false }: { page?: number; sold?: boolean }): Promise<JpgRecentItem[]> => {
+    async ({ page = 1, sold = false }: { page?: number; sold?: boolean }): Promise<FormattedListingOrSale[]> => {
       try {
         const uri = `/api/policy/${policyId}/market/recent?sold=${sold}&page=${page}`
-        const { data } = await axios.get<{ count: number; items: JpgRecentItem[] }>(uri)
+        const { data } = await axios.get<{ count: number; items: FormattedListingOrSale[] }>(uri)
         return data.items
       } catch (error) {
         console.error(error)
@@ -72,7 +73,7 @@ const RecentMarketActivity = (props: RecentMarketActivityProps) => {
 
   const imageSize = 170
   const [slidesPerView, setSlidesPerView] = useState(0)
-  const [renderItems, setRenderItems] = useState<JpgRecentItem[]>([])
+  const [renderItems, setRenderItems] = useState<FormattedListingOrSale[]>([])
 
   useEffect(() => {
     const _l = renderItems.length
