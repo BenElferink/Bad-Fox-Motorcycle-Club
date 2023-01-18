@@ -13,7 +13,7 @@ const {
 const POLICY_ID = BAD_KEY_POLICY_ID
 const JSON_FILE_NAME = 'bad-key.json'
 const SHOULD_COUNT_TRAITS = false
-const HAS_RANKS_ON_CNFT_TOOLS = false
+const HAS_RANKS_ON_CNFT_TOOLS = true
 
 const traitsFile = getFileForPolicyId(POLICY_ID, 'traits')
 const assetsFile = getFileForPolicyId(POLICY_ID, 'assets')
