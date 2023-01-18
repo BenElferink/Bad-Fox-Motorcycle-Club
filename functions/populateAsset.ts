@@ -1,24 +1,10 @@
 import blockfrost from '../utils/blockfrost'
-import cnftTools from '../utils/cnftTools'
+import CnftTools, { FormattedRankedAsset } from '../utils/cnftTools'
 import fromHex from './formatters/hex/fromHex'
-import { AssetFile, PolicyId, PopulatedAsset } from '../@types'
+import { AssetIncludedFile, PolicyId, PopulatedAsset } from '../@types'
 
-let cnftToolsAssets: Partial<
-  Record<
-    PolicyId,
-    {
-      onSale: boolean
-      assetName: string // on-chain name
-      name: string // display name
-      assetID: string // serial number
-      rarityRank: string
-      iconurl: string // ipfs ref with no prefix
-      ownerStakeKey: string
-      // the rest are attribute category keys - lowercased!
-      // their values are string, case sensitive
-    }[]
-  >
-> = {}
+const cnftTools = new CnftTools()
+let cnftToolsAssets: Partial<Record<PolicyId, FormattedRankedAsset[]>> | null = null
 
 const populateAsset: (options: {
   policyId: PolicyId
@@ -35,13 +21,15 @@ const populateAsset: (options: {
     let rarityRank = 0
 
     if (!!withRanks) {
-      if (!cnftToolsAssets[policyId]?.length) {
-        cnftToolsAssets[policyId] = await cnftTools.getPolicyAssets(policyId)
+      if (!cnftToolsAssets) {
+        cnftToolsAssets = {}
       }
 
-      rarityRank = Number(
-        cnftToolsAssets[policyId]?.find((item) => item.name === data.onchain_metadata?.name)?.rarityRank || 0
-      )
+      if (!cnftToolsAssets[policyId]?.length) {
+        cnftToolsAssets[policyId] = await cnftTools.getRankedAssets(policyId)
+      }
+
+      rarityRank = Number(cnftToolsAssets[policyId]?.find((item) => item.assetId === assetId)?.rank || 0)
     }
 
     const ipfsReference =
@@ -64,7 +52,7 @@ const populateAsset: (options: {
         ipfs: ipfsReference.indexOf('ipfs://') === 0 ? ipfsReference : `ipfs://${ipfsReference}`,
         firebase: firebaseImageUrl || '',
       },
-      files: (data.onchain_metadata?.files as AssetFile[]) || [],
+      files: (data.onchain_metadata?.files as AssetIncludedFile[]) || [],
     }
   } catch (error) {
     console.error(`Error populating asset with ID ${assetId}`)

@@ -7,7 +7,8 @@ import AssetFilters from '../filters/AssetFilters'
 import AssetCard from '../cards/AssetCard'
 import Loader from '../Loader'
 import { ADA_SYMBOL, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID } from '../../constants'
-import { JpgListedItem, PolicyId, PopulatedAsset, TraitsFile } from '../../@types'
+import { PolicyId, PopulatedAsset, TraitsFile } from '../../@types'
+import { ResponsePolicyMarketListings } from '../../pages/api/policy/[policy_id]/market/listed'
 
 const INITIAL_DISPLAY_AMOUNT = 20
 
@@ -41,7 +42,7 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
 
     try {
       const uri = `/api/policy/${policyId}/market/listed`
-      const { data } = await axios.get<{ count: number; items: JpgListedItem[] }>(uri)
+      const { data } = await axios.get<ResponsePolicyMarketListings>(uri)
 
       const traits = getFileForPolicyId(policyId, 'traits') as TraitsFile
       const assets = (getFileForPolicyId(policyId, 'assets') as PopulatedAsset[]).map((asset) => {

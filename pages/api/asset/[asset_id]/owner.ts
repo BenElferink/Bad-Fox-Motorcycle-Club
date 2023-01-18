@@ -1,11 +1,22 @@
 import blockfrost from '../../../../utils/blockfrost'
 import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../../../constants'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { OwningWallet } from '../../../../@types'
+import { PolicyId } from '../../../../@types'
 
-interface Response extends OwningWallet {}
+export interface ResponseAssetOwner {
+  isContract: boolean
+  stakeKey: string
+  walletAddress: string
+  assets: Record<
+    PolicyId,
+    {
+      unit: string
+      quantity: string
+    }[]
+  >
+}
 
-const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse<ResponseAssetOwner>) => {
   const { method, query } = req
 
   const assetId = query.asset_id

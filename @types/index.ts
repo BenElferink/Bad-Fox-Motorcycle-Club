@@ -2,20 +2,7 @@ import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '
 
 export type PolicyId = typeof BAD_FOX_POLICY_ID | typeof BAD_MOTORCYCLE_POLICY_ID | typeof BAD_KEY_POLICY_ID
 
-export interface OwningWallet {
-  isContract: boolean
-  stakeKey: string
-  walletAddress: string
-  assets: Record<
-    PolicyId,
-    {
-      unit: string
-      quantity: string
-    }[]
-  >
-}
-
-export interface AssetFile {
+export interface AssetIncludedFile {
   name: string
   mediaType: string
   src: string
@@ -37,7 +24,7 @@ export interface PopulatedAsset {
     ipfs: string
     firebase: string
   }
-  files: AssetFile[]
+  files: AssetIncludedFile[]
 }
 
 export interface PopulatedWallet {
@@ -46,31 +33,17 @@ export interface PopulatedWallet {
   assets: Record<PolicyId, PopulatedAsset[]>
 }
 
-export interface PopulatedTrait {
-  onChainName: string
-  displayName: string
-  model: string
-  image: string
-  count: number
-  percent: string
-}
-
-export type TraitsFile = Record<string, PopulatedTrait[]>
-
-export interface JpgListedItem {
-  assetId: string
-  name: string
-  price: number
-  itemUrl: string
-  date: Date
-}
-
-export interface JpgRecentItem extends JpgListedItem {
-  type: 'sale' | 'listing'
-  imageUrl: string
-  rank: number
-  attributes: Record<string, string>
-}
+export type TraitsFile = Record<
+  string,
+  {
+    onChainName: string
+    displayName: string
+    model: string
+    image: string
+    count: number
+    percent: string
+  }[]
+>
 
 export interface FloorPrices {
   [category: string]: {

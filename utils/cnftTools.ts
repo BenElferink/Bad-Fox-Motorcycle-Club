@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export interface RankedPolicyAsset {
+interface FetchedRankedAsset {
   onSale: boolean
   assetID: string // '1'
   assetName: string // 'on-chain name'
@@ -13,6 +13,11 @@ export interface RankedPolicyAsset {
   [lowercasedTraitCategory: string]: any // eyewear: '(U) 3D Glasses'
 }
 
+export interface FormattedRankedAsset {
+  assetId: string
+  rank: number
+}
+
 class CnftTools {
   baseUrl: string
 
@@ -20,31 +25,40 @@ class CnftTools {
     this.baseUrl = 'https://api.cnft.tools'
   }
 
-  getPolicyAssets = (policyId: string): Promise<RankedPolicyAsset[]> => {
+  getRankedAssets = (policyId: string): Promise<FormattedRankedAsset[]> => {
     const uri = `${this.baseUrl}/api/external/${policyId}`
 
     return new Promise(async (resolve, reject) => {
       console.log(`Fetching from cnft.tools for policy ID ${policyId}`)
 
       try {
-        const { data } = await axios.get<RankedPolicyAsset[]>(uri, {
+        const { data } = await axios.get<FetchedRankedAsset[]>(uri, {
           headers: {
             'Accept-Encoding': 'application/json',
           },
         })
 
-        const payload = data.sort((a, b) => Number(a.assetID) - Number(b.assetID))
+        const payload = data
+          .map((item) => ({
+            assetId: `${policyId}${item.encodedName}`,
+            rank: Number(item.rarityRank),
+          }))
+          .sort((a, b) => a.rank - b.rank)
 
-        console.log(`Fetched ${payload.length} items from jpg.store`)
+        const payloadLength = payload.length
 
-        return resolve(data)
-      } catch (e) {
-        return reject(e)
+        console.log(`Fetched ${payloadLength} items from cnft.tools`)
+
+        return resolve(payload)
+      } catch (error: any) {
+        if (error?.response?.data?.error === 'Policy ID not found') {
+          return resolve([])
+        }
+
+        return reject(error)
       }
     })
   }
 }
 
-const cnftTools = new CnftTools()
-
-export default cnftTools
+export default CnftTools
