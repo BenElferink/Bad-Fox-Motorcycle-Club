@@ -9,7 +9,6 @@ import {
 } from '../../../constants'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { PopulatedAsset, PopulatedWallet } from '../../../@types'
-import fromHex from '../../../functions/formatters/hex/fromHex'
 import populateAsset from '../../../functions/populateAsset'
 
 interface Response extends PopulatedWallet {}
