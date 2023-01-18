@@ -123,6 +123,25 @@ const Page = () => {
           </li>
         </ol>
       </div>
+
+      <div className='w-full my-2 p-4 px-6 bg-gray-400 bg-opacity-20 rounded-xl'>
+        <h4 className='mb-2 text-gray-200 text-lg text-center'>How much can be earned?</h4>
+
+        <div className='mx-auto w-fit'>
+          <p className='text-sm text-center'>
+            Visit the{' '}
+            <Link
+              href='https://litepaper.theapesociety.io/cabins/framing-staking'
+              target='_blank'
+              rel='noopener'
+              className='text-blue-400'
+            >
+              TAS Whitepaper
+            </Link>{' '}
+            for a detailed description on reward calculations.
+          </p>
+        </div>
+      </div>
     </div>
   )
 }

@@ -105,7 +105,11 @@ const Page = () => {
         <h4 className='mb-2 text-gray-200 text-lg text-center'>How much can be earned?</h4>
 
         <div className='mx-auto w-fit'>
-          <p className='text-sm'>50 $NFTC per 1 (eligible) NFT</p>
+          <p className='text-sm text-center'>
+            50 $NFTC per 1 (eligible) NFT,
+            <br />
+            every epoch (5 days).
+          </p>
         </div>
       </div>
     </div>

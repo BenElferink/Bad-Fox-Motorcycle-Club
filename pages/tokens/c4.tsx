@@ -116,6 +116,18 @@ const Page = () => {
 
         <p className='mx-auto text-sm'>Coming soon.</p>
       </div>
+
+      <div className='w-full my-2 p-4 px-6 bg-gray-400 bg-opacity-20 rounded-xl'>
+        <h4 className='mb-2 text-gray-200 text-lg text-center'>How much can be earned?</h4>
+
+        <div className='mx-auto w-fit'>
+          <p className='text-sm text-center'>
+            300 $C4 per 1 (eligible) NFT,
+            <br />
+            every month.
+          </p>
+        </div>
+      </div>
     </div>
   )
 }

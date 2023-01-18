@@ -111,6 +111,25 @@ const Page = () => {
           </li>
         </ol>
       </div>
+
+      <div className='w-full my-2 p-4 px-6 bg-gray-400 bg-opacity-20 rounded-xl'>
+        <h4 className='mb-2 text-gray-200 text-lg text-center'>How much can be earned?</h4>
+
+        <div className='mx-auto w-fit'>
+          <p className='text-sm text-center'>
+            Visit the{' '}
+            <Link
+              href='https://cardanolands.com/calculator'
+              target='_blank'
+              rel='noopener'
+              className='text-blue-400'
+            >
+              CL Staking Calculator
+            </Link>{' '}
+            to view the reward variable.
+          </p>
+        </div>
+      </div>
     </div>
   )
 }

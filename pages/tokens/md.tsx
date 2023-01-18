@@ -115,6 +115,26 @@ const Page = () => {
           </li>
         </ol>
       </div>
+
+      <div className='w-full my-2 p-4 px-6 bg-gray-400 bg-opacity-20 rounded-xl'>
+        <h4 className='mb-2 text-gray-200 text-lg text-center'>How much can be earned?</h4>
+
+        <div className='mx-auto w-fit'>
+          <h5 className='text-center underline'>Ranks 1 - 1000</h5>
+          <p className='text-sm text-center'>
+            0.265 $MD per 1 (eligible) NFT,
+            <br />
+            every day.
+          </p>
+
+          <h5 className='mt-2 text-center underline'>Ranks 1001 - 6000</h5>
+          <p className='text-sm text-center'>
+            0.072 $MD per 1 (eligible) NFT,
+            <br />
+            every day.
+          </p>
+        </div>
+      </div>
     </div>
   )
 }
