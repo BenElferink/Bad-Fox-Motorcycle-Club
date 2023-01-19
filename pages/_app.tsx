@@ -11,7 +11,7 @@ import '../styles/globals.css'
 import { WalletProvider } from '../contexts/WalletContext'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
-import SnowCanvas from '../components/canvas/SnowCanvas'
+// import SnowCanvas from '../components/canvas/SnowCanvas'
 
 // https://api.opencnft.io/1/policy/fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967
 // https://api.coingecko.com/api/v3/simple/price?ids=cardano&vs_currencies=usd
@@ -42,7 +42,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       <Toaster />
       <Header />
       <main className='w-screen min-h-screen bg-black bg-opacity-50'>
-        <SnowCanvas />
+        {/* <SnowCanvas /> */}
         <WalletProvider>
           <Component {...pageProps} />
         </WalletProvider>
