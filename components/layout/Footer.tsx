@@ -37,6 +37,7 @@ const Footer = () => {
             <Image
               src={obj.logoUrl}
               alt={obj.name}
+              unoptimized
               width={obj.logoWidth}
               height={obj.logoHeight}
               className='drop-shadow-footeritem'

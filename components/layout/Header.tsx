@@ -16,6 +16,7 @@ const Header = () => {
           <Image
             src='/media/logo/white_alpha.png'
             alt='logo'
+            unoptimized
             priority
             fill
             sizes='5rem'

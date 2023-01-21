@@ -5,6 +5,7 @@ import Loader from '.'
 export interface ImageLoaderProps {
   src: string
   alt: string
+  unoptimized?: boolean
   width?: number
   height?: number
   loaderSize?: number
@@ -12,7 +13,7 @@ export interface ImageLoaderProps {
 }
 
 const ImageLoader = (props: ImageLoaderProps) => {
-  const { src = '', alt = '', width = 100, height = 100, loaderSize = 0, style = {} } = props
+  const { src = '', alt = '', unoptimized = true, width = 100, height = 100, loaderSize = 0, style = {} } = props
   const [loading, setLoading] = useState(true)
 
   return (
@@ -26,6 +27,7 @@ const ImageLoader = (props: ImageLoaderProps) => {
       <Image
         src={src}
         alt={alt}
+        unoptimized={unoptimized}
         onLoadingComplete={() => setLoading(false)}
         width={width}
         height={height}

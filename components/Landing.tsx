@@ -45,7 +45,7 @@ const Landing = () => {
             <Image
               src='/media/logo/white_alpha.png'
               alt='logo'
-              // priority
+              priority
               width={logoSize}
               height={logoSize}
               className='drop-shadow-landinglogo'
@@ -58,7 +58,7 @@ const Landing = () => {
             <Image
               src={`/media/landing/${showFemale ? 'f_fox.png' : 'm_fox.png'}`}
               alt='fox'
-              // priority
+              priority
               width={foxSize}
               height={foxSize}
             />
@@ -70,7 +70,7 @@ const Landing = () => {
             <Image
               src={`/media/landing/${showFemale ? 'f_bike.png' : 'm_bike.png'}`}
               alt='motorcycle'
-              // priority
+              priority
               width={bikeSize}
               height={bikeSize / 1.7647}
             />

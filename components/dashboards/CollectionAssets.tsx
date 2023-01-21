@@ -145,7 +145,8 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
                   }}
                   isBurned={!!asset?.isBurned}
                   title={asset?.displayName}
-                  imageSrc={formatIpfsImageUrl(asset?.image?.ipfs || '/not-found.webp', !!asset?.rarityRank)}
+                  // imageSrc={asset.image.firebase || formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank)}
+                  imageSrc={formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank)}
                   tiedImageSrcs={
                     !!asset?.files?.length
                       ? asset.files
