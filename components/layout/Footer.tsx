@@ -7,15 +7,11 @@ const data = [
     name: 'Cardano',
     url: 'https://cardano.org',
     logoUrl: '/media/logo/other/cardano.png',
-    logoHeight: 70,
-    logoWidth: 70,
   },
   {
     name: 'Mesh',
     url: 'https://meshjs.dev',
     logoUrl: '/media/logo/other/mesh.png',
-    logoHeight: 70,
-    logoWidth: 70,
   },
 ]
 
@@ -31,15 +27,15 @@ const Footer = () => {
             href={obj.url}
             target='_blank'
             rel='noopener'
-            className='m-2 flex flex-col items-center justify-center'
+            className='w-16 h-20 m-2 flex flex-col items-center justify-between'
           >
             <h6 className='mb-1 text-sm'>{obj.name}</h6>
             <Image
               src={obj.logoUrl}
               alt={obj.name}
               unoptimized
-              width={obj.logoWidth}
-              height={obj.logoHeight}
+              width={64}
+              height={64}
               className='drop-shadow-footeritem'
             />
           </Link>
