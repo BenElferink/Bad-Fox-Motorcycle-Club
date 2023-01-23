@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import Head from 'next/head'
 import { AppProps } from 'next/app'
 import { Fragment } from 'react'
@@ -45,6 +46,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         {/* <SnowCanvas /> */}
         <WalletProvider>
           <Component {...pageProps} />
+          <Analytics />
         </WalletProvider>
       </main>
       <Footer />

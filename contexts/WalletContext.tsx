@@ -43,7 +43,7 @@ export default function useWallet() {
   return useContext(WalletContext)
 }
 
-export const WalletProvider = ({ children }: { children: JSX.Element }) => {
+export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
   const [availableWallets, setAvailableWallets] = useState<Wallet[]>([])
   const [wallet, setWallet] = useState<BrowserWallet | null>(null)
   const [populatedWallet, setPopulatedWallet] = useState<PopulatedWallet | null>(null)
