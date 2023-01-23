@@ -18,7 +18,6 @@ const TeamCard = (props: TeamCardProps) => {
         <Image
           src={profilePicture}
           alt={name}
-          unoptimized
           fill
           sizes='10rem'
           className='object-cover rounded-full shadow-[0_0_3px_0_rgb(0,0,0)]'

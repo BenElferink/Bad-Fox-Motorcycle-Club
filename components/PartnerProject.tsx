@@ -49,7 +49,7 @@ const PartnerProject = (props: PartnerProjectProps) => {
       rel='noopener'
       className={'w-20 h-10 my-6 mx-6 flex flex-col items-center justify-center relative ' + className}
     >
-      <Image src={logoUrl} alt='logo' unoptimized fill sizes='5rem' className='object-contain' />
+      <Image src={logoUrl} alt='logo' fill sizes='5rem' className='object-contain' />
       <h6 className='absolute -bottom-7 text-xs whitespace-nowrap'>{name}</h6>
     </Link>
   )
