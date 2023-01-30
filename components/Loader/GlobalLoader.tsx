@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import Loader from '.'
 import Modal from '../layout/Modal'
 
@@ -10,8 +9,8 @@ const GlobalLoader = (props: GlobalLoaderProps) => {
   const { loading } = props
 
   return (
-    <Modal open={loading} noModal>
-      <Loader size={300} />
+    <Modal open={loading} noModal className='justify-center'>
+      <Loader size={250} />
     </Modal>
   )
 }

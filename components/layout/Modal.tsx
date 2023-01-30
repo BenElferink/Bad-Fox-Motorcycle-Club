@@ -7,7 +7,7 @@ export interface ModalProps {
   noModal?: boolean
   className?: string
   style?: React.CSSProperties
-  children: JSX.Element
+  children: React.ReactNode
 }
 
 const Modal = (props: ModalProps) => {

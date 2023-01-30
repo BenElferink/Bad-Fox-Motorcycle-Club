@@ -1,4 +1,5 @@
 import { Bars3Icon } from '@heroicons/react/24/solid'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants'
@@ -17,7 +18,7 @@ const Navigation = () => {
   }, [openDropdownName])
 
   return (
-    <nav>
+    <nav className='flex items-center'>
       <button
         type='button'
         onClick={() => setOpenNavOnMobile((prev) => !prev)}
@@ -106,6 +107,34 @@ const Navigation = () => {
             />
           </li>
         </ul>
+      </div>
+
+      <div className='hidden md:block'>
+        <Link
+          href='/wallet'
+          onClick={() => window.scroll({ top: 0, left: 0 })}
+          className={
+            'mx-2 p-4 rounded-lg text-sm ' +
+            (router.pathname === '/wallet'
+              ? 'bg-gray-700 text-white'
+              : 'bg-gray-900 hover:bg-gray-700 hover:text-white')
+          }
+        >
+          Wallet
+        </Link>
+
+        <Link
+          href='/transcend'
+          onClick={() => window.scroll({ top: 0, left: 0 })}
+          className={
+            'mx-0 p-4 rounded-lg text-sm ' +
+            (router.pathname === '/transcend'
+              ? 'bg-gray-700 text-white'
+              : 'bg-gray-900 hover:bg-gray-700 hover:text-white')
+          }
+        >
+          Transcend
+        </Link>
       </div>
     </nav>
   )

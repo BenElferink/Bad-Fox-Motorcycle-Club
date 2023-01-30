@@ -1,14 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import React from 'react'
 import MusicPlayer from '../MusicPlayer'
 import Navigation from '../Navigation'
 import SocialIcon from '../SocialIcon'
 
 const Header = () => {
-  const router = useRouter()
-
   return (
     <header className='w-screen py-3 md:py-4 px-2 md:px-2 bg-black bg-opacity-50 flex items-center justify-between sticky top-0 z-40'>
       <div className='flex items-center'>
@@ -27,34 +24,6 @@ const Header = () => {
       <div className='flex items-center'>
         <MusicPlayer />
         <Navigation />
-
-        <div className='hidden md:block'>
-          <Link
-            href='/wallet'
-            onClick={() => window.scroll({ top: 0, left: 0 })}
-            className={
-              'mx-2 p-4 rounded-lg text-sm ' +
-              (router.pathname === '/wallet'
-                ? 'bg-gray-700 text-white'
-                : 'bg-gray-900 hover:bg-gray-700 hover:text-white')
-            }
-          >
-            Wallet
-          </Link>
-
-          <Link
-            href='/transcend'
-            onClick={() => window.scroll({ top: 0, left: 0 })}
-            className={
-              'mx-0 p-4 rounded-lg text-sm ' +
-              (router.pathname === '/transcend'
-                ? 'bg-gray-700 text-white'
-                : 'bg-gray-900 hover:bg-gray-700 hover:text-white')
-            }
-          >
-            Transcend
-          </Link>
-        </div>
 
         <div className='flex items-center'>
           <SocialIcon

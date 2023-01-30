@@ -136,10 +136,10 @@ const BurnDashboard = () => {
   if (connectedManually) {
     return (
       <div className='flex flex-col items-center'>
-        <p className='pt-[15vh] text-center text-lg text-[var(--pink)]'>
+        <p className='pt-[5vh] text-center text-lg text-[var(--pink)]'>
           Error! You connected manually.
           <br />
-          If you wish to build & sign a TX, please re-connect in a non-manual way.
+          Please re-connect in a non-manual way.
         </p>
 
         <button
