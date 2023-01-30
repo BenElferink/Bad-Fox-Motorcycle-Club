@@ -6,14 +6,24 @@ import TeamCard from '../components/cards/TeamCard'
 
 const alliances = [
   {
-    name: 'Winged Warriors',
-    url: 'https://wingedwarriors.xyz',
-    logoUrl: '/media/logo/other/wingedwarriors.png',
+    name: 'Stag Alliance',
+    url: 'https://www.stagalliance.com',
+    logoUrl: '/media/logo/other/stagalliance.png',
   },
   {
-    name: 'Blurry Kits Lounge',
-    url: 'https://www.blurrykitslounge.com',
-    logoUrl: '/media/logo/other/blurrykitslounge.png',
+    name: 'MICEFIA',
+    url: 'https://micefia.com',
+    logoUrl: '/media/logo/other/micefia.png',
+  },
+  {
+    name: 'Alley Katz',
+    url: 'https://alleykatz.xyz',
+    logoUrl: '/media/logo/other/alleykatz.png',
+  },
+  {
+    name: 'Goombles',
+    url: 'https://www.goombles.io',
+    logoUrl: '/media/logo/other/goombles.png',
   },
   {
     name: "Summoner's Guild",
@@ -36,14 +46,29 @@ const alliances = [
     logoUrl: '/media/logo/other/generationzeta.png',
   },
   {
-    name: 'Stag Alliance',
-    url: 'https://www.stagalliance.com',
-    logoUrl: '/media/logo/other/stagalliance.png',
-  },
-  {
     name: 'Beez Hive',
     url: 'https://beezhive.io',
     logoUrl: '/media/logo/other/beezhive.png',
+  },
+  {
+    name: 'Winged Warriors',
+    url: 'https://wingedwarriors.xyz',
+    logoUrl: '/media/logo/other/wingedwarriors.png',
+  },
+  {
+    name: 'Blurry Kits Lounge',
+    url: 'https://www.blurrykitslounge.com',
+    logoUrl: '/media/logo/other/blurrykitslounge.png',
+  },
+  {
+    name: 'Ape Nation',
+    url: 'https://apenationcnft.com',
+    logoUrl: '/media/logo/other/apenation.png',
+  },
+  {
+    name: 'Eggscape Club',
+    url: 'https://eggscape.io',
+    logoUrl: '/media/logo/other/eggscapeclub.png',
   },
   {
     name: 'Space Otter Society',
@@ -206,7 +231,6 @@ const Page = () => {
     <div className='px-4 flex flex-col items-center'>
       <Landing />
       <Previews />
-
       <Utilities />
 
       <div className='flex flex-col items-center justify-center my-8 text-gray-500'>
