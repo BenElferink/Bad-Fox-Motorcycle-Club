@@ -73,7 +73,14 @@ const Previews = () => {
       >
         {data.map((str) => (
           <SwiperSlide key={str}>
-            <ImageLoader src={str} alt='' width={imageSize} height={imageSize} style={{ borderRadius: '1rem' }} />
+            <ImageLoader
+              src={str}
+              alt=''
+              width={imageSize}
+              height={imageSize}
+              unoptimized={false}
+              style={{ borderRadius: '1rem' }}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

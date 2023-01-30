@@ -1,11 +1,27 @@
+import dynamic from 'next/dynamic'
 import useScreenSize from '../../hooks/useScreenSize'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 import { MinusCircleIcon } from '@heroicons/react/24/outline'
 import MediaWrapper from './MediaWrapper'
+import Loader from '../Loader'
 import ImageLoader from '../Loader/ImageLoader'
-import HomeKeyModel from '../models/HomeKeyModel'
-import HomeFoxModel from '../models/HomeFoxModel'
 import styles from './Utilities.module.css'
+
+const HomeKeyModel = dynamic(() =>
+  import('../models/HomeKeyModel', {
+    ssr: false,
+    suspense: true,
+    loading: () => <Loader size={100} />,
+  })
+)
+
+const HomeFoxModel = dynamic(() =>
+  import('../models/HomeFoxModel', {
+    ssr: false,
+    suspense: true,
+    loading: () => <Loader size={100} />,
+  })
+)
 
 const data = [
   {
