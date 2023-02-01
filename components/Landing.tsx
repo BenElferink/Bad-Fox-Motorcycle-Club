@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { Fragment, useEffect, useState } from 'react'
 import useScreenSize from '../hooks/useScreenSize'
 
@@ -11,6 +12,40 @@ const About = () => {
         with a PFP project. We do diverse forms of fund redistribution, integrations into various metaverses, and
         we develop tools that benefit everyone on Cardano.
       </p>
+
+      <div className='mt-4'>
+        <h2 className='text-xl mb-4'>What's Happening Now?</h2>
+        <p className='text-xs'>
+          We&apos;re releasing the 3D Foxes very soon™️
+          <br />
+          They are metaverse ready avatars, with an average of 15k polys
+          <br />
+          They are compatible with majority of games (even of low quality)
+          <br />
+          <br />
+          With the NFT you will own:
+        </p>
+        <ul className='list-disc list-inside text-xs'>
+          <li>Rendered PFP</li>
+          <li>Animated .glb file</li>
+          <li>T-posed .fbx file</li>
+        </ul>
+
+        <div className='mt-2'>
+          <Link
+            href='/sneek3d'
+            className='w-full lg:w-60 my-2 p-4 block text-center rounded-xl bg-green-900 hover:bg-green-700 bg-opacity-50 hover:bg-opacity-50 hover:text-gray-200 disabled:border border hover:border border-green-700 hover:border-green-700'
+          >
+            3D sneak peeks
+          </Link>
+          <Link
+            href='/reserve3d'
+            className='w-full lg:w-60 my-2 p-4 block text-center rounded-xl bg-green-900 hover:bg-green-700 bg-opacity-50 hover:bg-opacity-50 hover:text-gray-200 disabled:border border hover:border border-green-700 hover:border-green-700'
+          >
+            3D reservation
+          </Link>
+        </div>
+      </div>
     </div>
   )
 }

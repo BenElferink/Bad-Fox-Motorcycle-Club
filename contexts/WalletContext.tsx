@@ -196,16 +196,20 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
   }, [connected])
 
   useEffect(() => {
-    if (window.location.pathname === '/wallet' || window.location.pathname === '/transcend') {
-      const storageItem = window.localStorage.getItem('connected-wallet')
+    if (!connected) {
+      const connectPaths = ['/wallet', '/transcend', '/reserve3d']
 
-      if (storageItem) {
-        const connectedWallet: LocalStorageConnectedWallet = JSON.parse(storageItem)
+      if (connectPaths.includes(window.location.pathname)) {
+        const storageItem = window.localStorage.getItem('connected-wallet')
 
-        if (connectedWallet.walletProvider === 'Blockfrost') {
-          connectWalletManually(connectedWallet.stakeKey)
-        } else {
-          connectWallet(connectedWallet.walletProvider)
+        if (storageItem) {
+          const connectedWallet: LocalStorageConnectedWallet = JSON.parse(storageItem)
+
+          if (connectedWallet.walletProvider === 'Blockfrost') {
+            connectWalletManually(connectedWallet.stakeKey)
+          } else {
+            connectWallet(connectedWallet.walletProvider)
+          }
         }
       }
     }
