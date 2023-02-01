@@ -52,12 +52,10 @@ const CollectionSelector = (props: CollectionSelectorProps) => {
               className={
                 ownsThisCollection
                   ? 'hidden'
-                  : 'w-full h-full absolute top-0 left-0 z-20 bg-gray-900 bg-opacity-50 rounded-xl'
+                  : 'w-full h-full absolute top-0 left-0 z-20 flex items-center justify-center bg-gray-900 bg-opacity-50 rounded-xl'
               }
             >
-              <LockClosedIcon
-                className={ownsThisCollection ? 'hidden' : 'w-3/4 h-3/4 mt-4 mx-auto text-gray-200'}
-              />
+              <LockClosedIcon className='w-3/4 h-3/4 text-gray-200' />
             </div>
           </button>
         )

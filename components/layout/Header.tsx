@@ -19,6 +19,7 @@ const Header = () => {
             className='object-contain rounded-full'
           />
         </Link>
+        <h1 className='hidden 2xl:inline text-gray-200 text-lg'>Bad Fox Motorcycle Club</h1>
       </div>
 
       <div className='flex items-center'>

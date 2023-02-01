@@ -8,12 +8,12 @@ import SingleLink from './SingleLink'
 
 const Navigation = () => {
   const router = useRouter()
-  const [openNavOnMobile, setOpenNavOnMobile] = useState(false)
+  const [isNavOpen, setIsNavOpen] = useState(false)
   const [openDropdownName, setOpenDropdownName] = useState('')
 
   useEffect(() => {
     if (!openDropdownName) {
-      setOpenNavOnMobile(false)
+      setIsNavOpen(false)
     }
   }, [openDropdownName])
 
@@ -21,23 +21,23 @@ const Navigation = () => {
     <nav className='flex items-center'>
       <button
         type='button'
-        onClick={() => setOpenNavOnMobile((prev) => !prev)}
+        onClick={() => setIsNavOpen((prev) => !prev)}
         className='xl:hidden flex items-center p-1 mx-1 rounded-lg text-sm hover:bg-gray-700 focus:outline-none focus:ring-gray-600 focus:ring-2'
       >
         <Bars3Icon className='w-7 h-7' />
       </button>
 
-      <div className={(openNavOnMobile ? 'block' : 'hidden') + ' xl:block'}>
-        <ul className='flex flex-col xl:flex-row absolute right-0 xl:static overflow-auto xl:overflow-visible max-h-[80vh] xl:max-h-auto w-9/12 xl:w-auto mt-6 xl:mt-0 p-4 bg-gray-900 border xl:border-0 rounded-lg border-gray-700 xl:space-x-8'>
+      <div className={(isNavOpen ? 'block' : 'hidden') + ' xl:block'}>
+        <ul className='flex flex-col xl:flex-row absolute right-0 xl:static overflow-auto xl:overflow-visible max-h-[80vh] xl:max-h-auto w-80 xl:w-auto mt-8 xl:mt-0 p-4 bg-gray-900 border xl:border-0 rounded-lg border-gray-700 xl:space-x-8'>
           <li
             onClick={() => {
               if (router.pathname === '/') window.scrollTo({ top: 0 })
-              setOpenNavOnMobile(false)
+              setIsNavOpen(false)
             }}
           >
             <SingleLink label='Home' path={'/'} />
           </li>
-          <li onClick={() => setOpenNavOnMobile(false)}>
+          <li onClick={() => setIsNavOpen(false)}>
             <SingleLink label='Team' path='/#team' />
           </li>
 
@@ -58,7 +58,7 @@ const Navigation = () => {
                 { label: 'Bad Fox', path: `/collections/${BAD_FOX_POLICY_ID}` },
                 { label: 'Bad Motorcycle', path: `/collections/${BAD_MOTORCYCLE_POLICY_ID}` },
                 { label: 'Bad Key', path: `/collections/${BAD_KEY_POLICY_ID}` },
-                { label: '3D Fox', path: '/sneek3d' },
+                { label: '3D Fox', path: '' },
                 { label: '3D Motorcycle', path: '' },
                 { label: 'Vox Fox', path: '' },
               ]}
