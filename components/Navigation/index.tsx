@@ -46,20 +46,12 @@ const Navigation = () => {
 
           <li>
             <MultipleLinks
-              title='2D Traits'
-              links={[
-                { label: 'Bad Fox', path: `/traits/${BAD_FOX_POLICY_ID}` },
-                { label: 'Bad Motorcycle', path: `/traits/${BAD_MOTORCYCLE_POLICY_ID}` },
-              ]}
-              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
-            />
-          </li>
-          <li>
-            <MultipleLinks
               title='Collections'
               links={[
                 { label: 'Bad Fox', path: `/collections/${BAD_FOX_POLICY_ID}` },
+                { label: 'Bad Fox (traits)', path: `/traits/${BAD_FOX_POLICY_ID}` },
                 { label: 'Bad Motorcycle', path: `/collections/${BAD_MOTORCYCLE_POLICY_ID}` },
+                { label: 'Bad Motorcycle (traits)', path: `/traits/${BAD_MOTORCYCLE_POLICY_ID}` },
                 { label: 'Bad Key', path: `/collections/${BAD_KEY_POLICY_ID}` },
                 { label: '3D Fox', path: '' },
                 { label: '3D Motorcycle', path: '' },
@@ -69,6 +61,17 @@ const Navigation = () => {
             />
           </li>
 
+          <li>
+            <MultipleLinks
+              title='Tools'
+              links={[
+                { label: 'Bad Drop', url: 'https://drop.badfoxmc.com' },
+                { label: 'Bad Poll', url: '' },
+                { label: 'Bad Raffle', url: '' },
+              ]}
+              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
+            />
+          </li>
           <li>
             <MultipleLinks
               title='Tokens'
@@ -88,23 +91,13 @@ const Navigation = () => {
             <MultipleLinks
               title='Games & Metaverses'
               links={[
-                { label: 'Cornucopias', path: '' },
+                { label: 'OGBears - Motorcycle Race', path: '' },
                 { label: 'OGBears - OGVerse', path: '' },
                 { label: 'Speed Throne', path: '' },
-                { label: 'Unboundead Earth', path: '' },
+                { label: 'Cornucopias', path: '' },
                 { label: 'Boss Planet', path: '' },
+                { label: 'Unboundead Earth', path: '' },
                 { label: 'CardaStacks - MetaView Tower', path: '' },
-              ]}
-              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
-            />
-          </li>
-          <li>
-            <MultipleLinks
-              title='Tools'
-              links={[
-                { label: 'Bad Drop', url: 'https://drop.badfoxmc.com' },
-                { label: 'Bad Poll', url: '' },
-                { label: 'Bad Raffle', url: '' },
               ]}
               dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
             />
