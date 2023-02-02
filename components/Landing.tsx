@@ -14,7 +14,7 @@ const About = () => {
       </p>
 
       <div className='mt-4'>
-        <h2 className='text-xl mb-4'>What's Happening Now?</h2>
+        <h2 className='text-xl mb-4'>What&apos;s Happening Now?</h2>
         <p className='text-xs'>
           We&apos;re releasing the 3D Foxes very soon™️
           <br />

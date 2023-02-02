@@ -30,12 +30,10 @@ export interface FormattedListingOrSale {
   assetId: string
   name: string
   price: number
+  imageUrl: string
   itemUrl: string
   date: Date
   type: 'sale' | 'listing'
-  imageUrl: string
-  rank: number
-  attributes: Record<string, string>
 }
 
 class JpgStore {
@@ -68,8 +66,6 @@ class JpgStore {
           assetId: item.asset_id,
           name: item.display_name,
           price: Number(item.price_lovelace) / ONE_MILLION,
-          rank: asset?.rarityRank || 0,
-          attributes: asset?.attributes || {},
           imageUrl: formatIpfsImageUrl(asset?.image.ipfs || '', !!asset?.rarityRank),
           itemUrl: `https://jpg.store/asset/${item.asset_id}`,
           // @ts-ignore
