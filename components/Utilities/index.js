@@ -10,7 +10,6 @@ import styles from './Utilities.module.css'
 const HomeKeyModel = dynamic(() =>
   import('../models/HomeKeyModel', {
     ssr: false,
-    suspense: true,
     loading: () => <Loader size={100} />,
   })
 )
@@ -18,7 +17,6 @@ const HomeKeyModel = dynamic(() =>
 const HomeFoxModel = dynamic(() =>
   import('../models/HomeFoxModel', {
     ssr: false,
-    suspense: true,
     loading: () => <Loader size={100} />,
   })
 )
