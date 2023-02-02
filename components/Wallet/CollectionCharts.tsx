@@ -7,6 +7,7 @@ import useWallet from '../../contexts/WalletContext'
 import formatBigNumber from '../../functions/formatters/formatBigNumber'
 import { ADA_SYMBOL } from '../../constants'
 import { FloorSnapshot, PolicyId } from '../../@types'
+import { toast } from 'react-hot-toast'
 
 export interface CollectionChartsProps {
   policyId: PolicyId
@@ -26,33 +27,38 @@ const CollectionCharts = (props: CollectionChartsProps) => {
   const [floorSnapshots, setFloorSnapshots] = useState<FloorSnapshot[]>([])
 
   const getPortfolioInvestments = useCallback(async () => {
-    const myCollectionAssets = populatedWallet?.assets[policyId] || []
-    let totalInvested = 0
-    let totalNotFound = 0
+    try {
+      const myCollectionAssets = populatedWallet?.assets[policyId] || []
+      let totalInvested = 0
+      let totalNotFound = 0
 
-    setMyStats({
-      owned: myCollectionAssets.length,
-      invested: 0,
-      priceNotFound: 0,
-    })
+      setMyStats({
+        owned: myCollectionAssets.length,
+        invested: 0,
+        priceNotFound: 0,
+      })
 
-    for await (const asset of myCollectionAssets) {
-      const {
-        data: { price },
-      } = await axios.get(`/api/asset/${asset.assetId}/market/history`)
+      for await (const asset of myCollectionAssets) {
+        const {
+          data: { price },
+        } = await axios.get(`/api/asset/${asset.assetId}/market/history`)
 
-      if (!price) {
-        totalNotFound++
-      } else {
-        totalInvested += price
+        if (!price) {
+          totalNotFound++
+        } else {
+          totalInvested += price
+        }
       }
-    }
 
-    setMyStats({
-      owned: myCollectionAssets.length,
-      invested: totalInvested,
-      priceNotFound: totalNotFound,
-    })
+      setMyStats({
+        owned: myCollectionAssets.length,
+        invested: totalInvested,
+        priceNotFound: totalNotFound,
+      })
+    } catch (error: any) {
+      console.error(error)
+      toast.error(`JPG Store error: ${error.message}`)
+    }
   }, [populatedWallet, policyId])
 
   useEffect(() => {

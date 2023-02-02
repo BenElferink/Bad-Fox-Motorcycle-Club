@@ -1,3 +1,4 @@
+'use client'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import useWallet from '../../contexts/WalletContext'
@@ -5,10 +6,202 @@ import getFileForPolicyId from '../../functions/getFileForPolicyId'
 import formatIpfsImageUrl from '../../functions/formatters/formatIpfsImageUrl'
 import AssetFilters from '../filters/AssetFilters'
 import AssetCard from '../cards/AssetCard'
+import CopyChip from '../CopyChip'
 import Loader from '../Loader'
+import Modal from '../layout/Modal'
+import ImageLoader from '../Loader/ImageLoader'
+import ModelViewer from '../models/ModelViewer'
 import { ADA_SYMBOL, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID } from '../../constants'
-import { PolicyId, PopulatedAsset, TraitsFile } from '../../@types'
+import { AssetIncludedFile, PolicyId, PopulatedAsset, TraitsFile } from '../../@types'
 import { ResponsePolicyMarketListings } from '../../pages/api/policy/[policy_id]/market/listed'
+import Image from 'next/image'
+
+interface AssetModalContentProps {
+  policyId: string
+  asset: PopulatedAsset
+}
+
+const AssetModalContent = (props: AssetModalContentProps) => {
+  const { policyId, asset } = props
+
+  const [badKeyIdOfBurnedAsset, setBadKeyIdOfBurnedAsset] = useState('')
+  const [displayedFile, setDisplayedFile] = useState<AssetIncludedFile>(
+    asset.files.length
+      ? asset.files[0]
+      : {
+          name: asset.displayName,
+          mediaType: 'image/png',
+          src: asset.image.ipfs,
+        }
+  )
+
+  useEffect(() => {
+    const { isBurned, displayName, attributes } = asset
+
+    if (isBurned) {
+      const badKeyTraitCategory =
+        policyId === BAD_FOX_POLICY_ID
+          ? `Fox (${
+              // translates to : M || F
+              attributes.Gender?.charAt(0)
+            })`
+          : 'Motorcycle'
+
+      const badKeyAssetsFile = getFileForPolicyId(BAD_KEY_POLICY_ID, 'assets') as PopulatedAsset[]
+      const foundBadKey = badKeyAssetsFile.find(
+        (badKey) => badKey.attributes[badKeyTraitCategory] === displayName
+      ) as PopulatedAsset
+
+      setBadKeyIdOfBurnedAsset(foundBadKey.assetId)
+    }
+  }, [policyId, asset])
+
+  return (
+    <div className='flex flex-col lg:flex-row lg:justify-between md:px-6'>
+      <div className=''>
+        {displayedFile.mediaType === 'image/png' ? (
+          <button
+            onClick={() => window.open(displayedFile.src, '_blank', 'noopener')}
+            className='w-[80vw] md:w-[555px]'
+          >
+            <ImageLoader
+              src={formatIpfsImageUrl(displayedFile.src, false)}
+              alt={displayedFile.name}
+              width={1000}
+              height={1000}
+              loaderSize={150}
+              style={{ borderRadius: '1rem' }}
+            />
+          </button>
+        ) : displayedFile.mediaType === 'model/gltf-binary' ? (
+          <button onClick={() => {}} className='w-[80vw] md:w-[555px]'>
+            <div className='w-[100%] h-[80vw] md:w-[555px] md:h-[555px] bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
+              <ModelViewer src={formatIpfsImageUrl(displayedFile.src, false)} />
+            </div>
+          </button>
+        ) : (
+          <button onClick={() => {}} className='w-[80vw] md:w-[555px]'>
+            <div className='w-[100%] h-[80vw] md:w-[555px] md:h-[555px] bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
+              Unhandled file type:
+              <br />
+              {displayedFile.mediaType}
+            </div>
+          </button>
+        )}
+
+        <div className='flex flex-wrap items-center'>
+          {asset.files.length
+            ? asset.files.map((file) =>
+                file.src !== displayedFile.src ? (
+                  <button
+                    key={`file-${file.src}`}
+                    onClick={() => setDisplayedFile(file)}
+                    className='w-32 h-32 m-1'
+                  >
+                    {file.mediaType === 'image/png' ? (
+                      <ImageLoader
+                        src={formatIpfsImageUrl(file.src, !!asset.rarityRank)}
+                        alt={file.name}
+                        width={150}
+                        height={150}
+                        style={{ flex: 0.42, borderRadius: '1rem' }}
+                      />
+                    ) : file.mediaType === 'model/gltf-binary' ? (
+                      <div className='w-full h-full bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
+                        <ModelViewer src={formatIpfsImageUrl(file.src, false)} freeze />
+                      </div>
+                    ) : (
+                      <div className='w-full h-full bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
+                        Unhandled file type:
+                        <br />
+                        {displayedFile.mediaType}
+                      </div>
+                    )}
+                  </button>
+                ) : null
+              )
+            : null}
+        </div>
+      </div>
+
+      <div className='mt-2 lg:mt-0 lg:ml-6'>
+        <div className='my-1'>
+          <CopyChip prefix='Policy ID' value={policyId} />
+        </div>
+        <div className='my-1'>
+          <CopyChip prefix='Asset ID' value={asset.assetId} />
+        </div>
+
+        <table className='my-2 border-collapse'>
+          <thead>
+            <tr>
+              <th className='pr-2 text-sm text-start truncate'>Trait Category</th>
+              <th className='pl-2 text-sm text-start truncate'>Trait Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.entries(asset.attributes).map(([category, trait]) => (
+              <tr key={`attribute-${category}-${trait}`}>
+                <td className='pr-2 text-sm text-start truncate'>{category}</td>
+                <td className='pl-2 text-sm text-start truncate'>{trait}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        {badKeyIdOfBurnedAsset ? (
+          <button
+            onClick={() =>
+              window.open(`https://www.jpg.store/asset/${badKeyIdOfBurnedAsset}`, '_blank', 'noopener')
+            }
+            className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded'
+          >
+            <Image src='/media/fire.gif' alt='' width={30} height={30} className='mr-2' />
+            Corresponding Bad Key
+          </button>
+        ) : null}
+
+        <button
+          onClick={() => window.open(`https://www.jpg.store/asset/${asset.assetId}`, '_blank', 'noopener')}
+          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded'
+        >
+          <Image src='/media/icon/jpg_store.png' alt='' width={30} height={30} className='mr-2' />
+          JPG Store
+        </button>
+
+        {asset.rarityRank ? (
+          <button
+            onClick={() =>
+              window.open(
+                `https://cnft.tools/badfoxmotorcycleclub?asset=${asset.onChainName}`,
+                '_blank',
+                'noopener'
+              )
+            }
+            className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded'
+          >
+            <Image src='/media/icon/cnft_tools.png' alt='' width={30} height={30} className='mr-2' />
+            CNFT Tools
+          </button>
+        ) : null}
+
+        <button
+          onClick={() =>
+            window.open(
+              `https://www.cnftjungle.io/collections/${policyId}?tab=assets&assetId=${policyId}.${asset.onChainName}`,
+              '_blank',
+              'noopener'
+            )
+          }
+          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded'
+        >
+          <Image src='/media/icon/cnft_jungle.png' alt='' width={30} height={30} className='mr-2' />
+          CNFT Jungle
+        </button>
+      </div>
+    </div>
+  )
+}
 
 const INITIAL_DISPLAY_AMOUNT = 20
 
@@ -80,9 +273,9 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
   }, [policyId, appendDefault])
 
   useEffect(() => {
-    if (!!withListed) {
+    if (withListed) {
       fetchPricesAndAppendListed()
-    } else if (!!withWallet) {
+    } else if (withWallet) {
       appendWallet()
     } else {
       appendDefault()
@@ -90,6 +283,8 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
   }, [withListed, withWallet, fetchPricesAndAppendListed, appendWallet, appendDefault])
 
   const [rendered, setRendered] = useState<PopulatedAsset[]>([])
+  const [selectedAsset, setSelectedAsset] = useState<PopulatedAsset | null>(null)
+  // TODO : setDisplayNum using the window width and/or height
   const [displayNum, setDisplayNum] = useState(INITIAL_DISPLAY_AMOUNT)
   const bottomRef = useRef<HTMLDivElement>(null)
 
@@ -122,33 +317,15 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
                 return null
               }
 
-              const keyAssetsFile = !!asset?.isBurned
-                ? (getFileForPolicyId(BAD_KEY_POLICY_ID, 'assets') as PopulatedAsset[])
-                : []
-
-              const foundKey = keyAssetsFile.find(
-                (key) =>
-                  key.attributes[
-                    policyId === BAD_FOX_POLICY_ID ? `Fox (${asset?.attributes?.Gender?.charAt(0)})` : 'Motorcycle'
-                  ] === asset.displayName
-              )
-
               return (
                 <AssetCard
-                  key={`collection-asset-${asset?.assetId}-${idx}`}
-                  onClick={() => {
-                    if (!!asset?.isBurned) {
-                      window.open(`https://jpg.store/asset/${foundKey?.assetId}`, '_blank', 'noopener')
-                    } else {
-                      window.open(`https://jpg.store/asset/${asset?.assetId}`, '_blank', 'noopener')
-                    }
-                  }}
-                  isBurned={!!asset?.isBurned}
-                  title={asset?.displayName}
-                  // imageSrc={asset.image.firebase || formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank)}
+                  key={`collection-asset-${asset.assetId}-${idx}`}
+                  onClick={() => setSelectedAsset(asset)}
+                  isBurned={asset.isBurned}
+                  title={asset.displayName}
                   imageSrc={formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank)}
                   tiedImageSrcs={
-                    !!asset?.files?.length
+                    asset.files?.length
                       ? asset.files
                           .filter((file) => file.mediaType === 'image/png')
                           .map((file) => ({
@@ -157,20 +334,14 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
                           }))
                       : []
                   }
-                  subTitles={[
-                    !!asset?.isBurned
-                      ? 'Asset Transcended'
-                      : !!asset?.rarityRank
-                      ? `Rank: ${asset.rarityRank}`
-                      : '',
-                    !!asset?.isBurned
-                      ? (foundKey?.displayName as string)
-                      : !!withListed
-                      ? asset?.price
-                        ? `Listed: ${ADA_SYMBOL}${asset.price}`
-                        : 'Unlisted'
-                      : '',
-                  ]}
+                  subTitles={
+                    asset.isBurned
+                      ? ['Asset Burned']
+                      : [
+                          asset.rarityRank ? `Rank: ${asset.rarityRank}` : '',
+                          withListed ? (asset.price ? `Listed: ${ADA_SYMBOL}${asset.price}` : 'Unlisted') : '',
+                        ]
+                  }
                 />
               )
             })
@@ -184,10 +355,16 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
         policyId={policyId}
         traitsData={traitsFile}
         assetsData={assetsFile}
-        withListed={!!withListed && !!fetched}
-        withWallet={!!withWallet}
+        withListed={withListed && fetched}
+        withWallet={withWallet}
         callbackRendered={(arr) => setRendered(arr)}
       />
+
+      {selectedAsset ? (
+        <Modal title={selectedAsset.displayName} open onClose={() => setSelectedAsset(null)}>
+          <AssetModalContent policyId={policyId} asset={selectedAsset} />
+        </Modal>
+      ) : null}
     </div>
   )
 }
