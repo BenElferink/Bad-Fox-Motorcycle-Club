@@ -5,16 +5,17 @@ import ModelChild from './ModelChild'
 
 export interface FoxModelProps {
   src: string
+  withSpotlight?: boolean
 }
 
 const FoxModel = (props: FoxModelProps) => {
-  const { src } = props
+  const { src, withSpotlight = false } = props
   const [rotated, setRotated] = useState(false)
 
   return (
     <Canvas camera={{ position: [0, 0, 1], fov: 45 }}>
       <Environment path={'/media/3d/'} files={'env.hdr'} />
-      <SpotLight opacity={0.15} />
+      {withSpotlight ? <SpotLight opacity={0.15} /> : null}
       <pointLight position={[-1, 1, 0]} intensity={0.5} />
       <OrbitControls />
 
