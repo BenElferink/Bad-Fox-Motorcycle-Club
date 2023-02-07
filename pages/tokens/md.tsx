@@ -91,7 +91,7 @@ const Page = () => {
         <ol className='mx-auto list-decimal list-inside'>
           <li className='text-sm'>
             Connect your wallet on the{' '}
-            <Link href='https://mdtoken.io/' target='_blank' rel='noopener' className='text-blue-400'>
+            <Link href='https://mdtoken.io/' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
               MD Token Website
             </Link>
             .
@@ -106,7 +106,7 @@ const Page = () => {
             <Link
               href='https://mdtoken.io/collect-rewards'
               target='_blank'
-              rel='noopener'
+              rel='noopener noreferrer'
               className='text-blue-400'
             >
               MD Token Claim Dashboard

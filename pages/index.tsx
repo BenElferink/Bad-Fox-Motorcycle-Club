@@ -41,11 +41,6 @@ const alliances = [
     logoUrl: '/media/logo/other/walkers.png',
   },
   {
-    name: 'Generation Zeta',
-    url: 'https://twitter.com/GenZetaCNFT',
-    logoUrl: '/media/logo/other/generationzeta.png',
-  },
-  {
     name: 'Beez Hive',
     url: 'https://beezhive.io',
     logoUrl: '/media/logo/other/beezhive.png',
@@ -74,6 +69,11 @@ const alliances = [
     name: 'Space Otter Society',
     url: 'https://spaceottersociety.io',
     logoUrl: '/media/logo/other/spaceottersociety.png',
+  },
+  {
+    name: 'Generation Zeta',
+    url: 'https://twitter.com/GenZetaCNFT',
+    logoUrl: '/media/logo/other/generationzeta.png',
   },
 ]
 

@@ -104,7 +104,7 @@ const RecentMarketActivity = (props: RecentMarketActivityProps) => {
           {renderItems.map((item, idx) => (
             <SwiperSlide key={`recently-sold-${item.assetId}-${idx}`}>
               <div className='relative rounded-full border border-gray-900 shadow-inner'>
-                <Link href={item.itemUrl} target='_blank' rel='noopener'>
+                <Link href={item.itemUrl} target='_blank' rel='noopener noreferrer'>
                   <ImageLoader
                     width={imageSize}
                     height={imageSize}

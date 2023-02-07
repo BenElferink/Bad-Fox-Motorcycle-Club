@@ -91,18 +91,24 @@ const Page = () => {
         <ol className='mx-auto list-decimal list-inside'>
           <li className='text-sm'>
             Connect your wallet to the{' '}
-            <Link href='https://cardanolands.com/staking' target='_blank' rel='noopener' className='text-blue-400'>
+            <Link
+              href='https://cardanolands.com/staking'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-blue-400'
+            >
               CL Staking Dashboard
             </Link>
             .
           </li>
           <li className='text-sm'>That&apos;s it, you&apos;re accumulating.</li>
+          <li className='text-sm'>Connect at least once a month, or accumulation will pause.</li>
           <li className='text-sm'>
-            Come back later to claim your tokens from the{' '}
+            You can claim your tokens from the{' '}
             <Link
               href='https://cardanolands.com/inventory'
               target='_blank'
-              rel='noopener'
+              rel='noopener noreferrer'
               className='text-blue-400'
             >
               CL Token Claim Dashboard
@@ -121,7 +127,7 @@ const Page = () => {
             <Link
               href='https://cardanolands.com/calculator'
               target='_blank'
-              rel='noopener'
+              rel='noopener noreferrer'
               className='text-blue-400'
             >
               CL Staking Calculator

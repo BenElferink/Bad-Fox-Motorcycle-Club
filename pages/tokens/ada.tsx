@@ -81,7 +81,7 @@ const Page = () => {
           No need to make a submission/claim!
           <br />
           (airdrop via{' '}
-          <Link href='https://drop.badfoxmc.com' target='_blank' rel='noopener' className='text-blue-400'>
+          <Link href='https://drop.badfoxmc.com' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
             Bad Drop
           </Link>
           )
@@ -93,7 +93,7 @@ const Page = () => {
 
         <p className='mx-auto text-sm text-center'>
           Every time the{' '}
-          <Link href='https://pool.pm/$bfmc_royalty' target='_blank' rel='noopener' className='text-blue-400'>
+          <Link href='https://pool.pm/$bfmc_royalty' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
             royalty wallet
           </Link>{' '}
           reaches {ADA_SYMBOL}

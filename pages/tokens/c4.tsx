@@ -81,7 +81,7 @@ const Page = () => {
         <h4 className='mb-2 text-gray-200 text-lg text-center'>Prerequisites</h4>
 
         <div className='flex items-center justify-center'>
-          <Link href='https://swamplands.cardanocrocsclub.com/swamp' target='_blank' rel='noopener'>
+          <Link href='https://swamplands.cardanocrocsclub.com/swamp' target='_blank' rel='noopener noreferrer'>
             <ImageLoader
               src='/media/tokens/c4/living-land.png'
               alt='nft'
@@ -100,14 +100,14 @@ const Page = () => {
         {/* <ol className='mx-auto list-decimal list-inside'>
           <li className='text-sm'>
             Connect your wallet to the{' '}
-            <Link href='' target='_blank' rel='noopener' className='text-blue-400'>
+            <Link href='' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
               CCC Staking Dashboard
             </Link>
             .
           </li>
           <li className='text-sm'>
             Come back later to claim your tokens from the{' '}
-            <Link href='' target='_blank' rel='noopener' className='text-blue-400'>
+            <Link href='' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
               CCC Token Claim Dashboard
             </Link>
             .

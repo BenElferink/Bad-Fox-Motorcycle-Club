@@ -91,7 +91,7 @@ const Page = () => {
         <ol className='mx-auto list-decimal list-inside'>
           <li className='text-sm'>
             Connect your wallet with{' '}
-            <Link href='https://dripdropz.io/' target='_blank' rel='noopener' className='text-blue-400'>
+            <Link href='https://dripdropz.io/' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
               Drip Dropz
             </Link>
             .

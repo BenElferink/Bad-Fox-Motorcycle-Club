@@ -26,7 +26,7 @@ const Footer = () => {
             key={`powered-by-${obj.name}`}
             href={obj.url}
             target='_blank'
-            rel='noopener'
+            rel='noopener noreferrer'
             className='w-16 h-20 m-2 flex flex-col items-center justify-between'
           >
             <h6 className='mb-1 text-sm'>{obj.name}</h6>

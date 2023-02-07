@@ -361,7 +361,7 @@ const SocialIcon = (props: SocialIconProps) => {
   }, [url, network, color, size])
 
   return (
-    <Link href={url} target='_blank' rel='noopener' className={className}>
+    <Link href={url} target='_blank' rel='noopener noreferrer' className={className}>
       {renderIcon()}
     </Link>
   )

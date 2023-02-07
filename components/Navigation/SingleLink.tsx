@@ -18,7 +18,7 @@ const SingleLink = (props: SingleLinkProps) => {
       scroll={false}
       href={url || path || ''}
       target={!!url ? '_blank' : ''}
-      rel={!!url ? 'noopener' : ''}
+      rel={!!url ? 'noopener noreferrer' : ''}
       onClick={() => {
         if (!isNothing) window.scroll({ top: 0, left: 0 })
       }}

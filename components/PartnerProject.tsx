@@ -24,7 +24,7 @@ const PartnerProject = (props: PartnerProjectProps) => {
           } else if (!showWord) {
             setShowWord(true)
           } else if (clickCount >= 69 && showWord) {
-            window.open(url, '_blank', 'noopener')
+            window.open(url, '_blank', 'noopener noreferrer')
           }
         }}
         className={'w-20 h-10 my-6 mx-6 flex flex-col items-center justify-center relative ' + className}
@@ -47,7 +47,7 @@ const PartnerProject = (props: PartnerProjectProps) => {
     <Link
       href={url}
       target='_blank'
-      rel='noopener'
+      rel='noopener noreferrer'
       className={'w-20 h-10 my-6 mx-6 flex flex-col items-center justify-center relative ' + className}
     >
       <Image src={logoUrl} alt='logo' fill sizes='5rem' className='object-contain' />

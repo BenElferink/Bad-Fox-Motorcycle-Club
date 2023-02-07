@@ -84,7 +84,7 @@ const Page = () => {
           <Link
             href='https://www.jpg.store/collection/52c16147514c66ad5ce74dccbd4a27e5e58c94fab31ed17d7b871218'
             target='_blank'
-            rel='noopener'
+            rel='noopener noreferrer'
           >
             <ImageLoader
               src='/media/tokens/ddos/dino.png'
@@ -101,7 +101,7 @@ const Page = () => {
           <Link
             href='https://www.jpg.store/collection/a862fde1093e4618c7a664eddb43f8529116e9caa70536dfaa500550'
             target='_blank'
-            rel='noopener'
+            rel='noopener noreferrer'
           >
             <ImageLoader
               src='/media/tokens/ddos/cosmic-medallion.gif'
@@ -124,7 +124,7 @@ const Page = () => {
             <Link
               href='https://stake.ddos.design/app/stake'
               target='_blank'
-              rel='noopener'
+              rel='noopener noreferrer'
               className='text-blue-400'
             >
               DDoS Staking Dashboard
@@ -142,7 +142,7 @@ const Page = () => {
             <Link
               href='https://stake.ddos.design/app/token'
               target='_blank'
-              rel='noopener'
+              rel='noopener noreferrer'
               className='text-blue-400'
             >
               DDoS Token Claim Dashboard
@@ -161,7 +161,7 @@ const Page = () => {
             <Link
               href='https://whitepaper.ddos.design/ddos-staking-platform/for-holders/xp-counter'
               target='_blank'
-              rel='noopener'
+              rel='noopener noreferrer'
               className='text-blue-400'
             >
               DDoS Whitepaper

@@ -84,7 +84,7 @@ const Page = () => {
           <Link
             href='https://www.jpg.store/collection/d4e087164acf8314f1203f0b0996f14908e2a199a296d065f14b8b09'
             target='_blank'
-            rel='noopener'
+            rel='noopener noreferrer'
           >
             <ImageLoader
               src='/media/tokens/society/cabin.gif'
@@ -104,7 +104,7 @@ const Page = () => {
         <ol className='mx-auto list-decimal list-inside'>
           <li className='text-sm'>
             Connect your wallet to the{' '}
-            <Link href='https://city.theapesociety.io/' target='_blank' rel='noopener' className='text-blue-400'>
+            <Link href='https://city.theapesociety.io/' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
               TAS Staking Dashboard
             </Link>
             .
@@ -116,7 +116,7 @@ const Page = () => {
           </li>
           <li className='text-sm'>
             Come back later to claim your tokens from the{' '}
-            <Link href='https://city.theapesociety.io/' target='_blank' rel='noopener' className='text-blue-400'>
+            <Link href='https://city.theapesociety.io/' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
               TAS Staking Dashboard
             </Link>
             .
@@ -133,7 +133,7 @@ const Page = () => {
             <Link
               href='https://litepaper.theapesociety.io/cabins/framing-staking'
               target='_blank'
-              rel='noopener'
+              rel='noopener noreferrer'
               className='text-blue-400'
             >
               TAS Whitepaper

@@ -14,7 +14,7 @@ const TraitCard = (props: TraitCardProps) => {
   return (
     <div className='flex flex-col items-center text-center truncate w-[250px] m-1 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-800'>
       {imageSrc ? (
-        <Link href={imageSrc} target='_blank' rel='noopener'>
+        <Link href={imageSrc} target='_blank' rel='noopener noreferrer'>
           <ImageLoader
             src={imageSrc}
             alt={title}

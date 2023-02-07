@@ -75,7 +75,7 @@ const Page = () => {
           <h6 className='text-center text-xl'>{foxName}</h6>
           <div className='flex flex-wrap items-start justify-center'>
             <div
-              onClick={() => window.open(oldImageSrc, '_blank', '_noopener')}
+              onClick={() => window.open(oldImageSrc, '_blank', '_noopener noreferrer')}
               className='flex flex-col items-center justify-center w-[270px] md:w-[333px] lg:w-[444px] h-[270px] md:h-[333px] lg:h-[444px] m-4 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700 cursor-pointer'
             >
               <ImageLoader
@@ -89,7 +89,7 @@ const Page = () => {
             </div>
 
             <div
-              onClick={() => window.open(newImageSrc, '_blank', '_noopener')}
+              onClick={() => window.open(newImageSrc, '_blank', '_noopener noreferrer')}
               className='flex flex-col items-center justify-center w-[270px] md:w-[333px] lg:w-[444px] h-[270px] md:h-[333px] lg:h-[444px] m-4 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700 cursor-pointer'
             >
               <ImageLoader
@@ -103,7 +103,10 @@ const Page = () => {
             </div>
 
             <div className='flex flex-col items-center justify-center w-[270px] md:w-[333px] lg:w-[444px] h-[550px] md:h-[650px] lg:h-[750px] m-4 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700'>
-              <FoxModel src={fileSrc.replace('https://firebasestorage.googleapis.com', '/storage')} />
+              <FoxModel
+                withSpotlight
+                src={fileSrc.replace('https://firebasestorage.googleapis.com', '/storage')}
+              />
             </div>
           </div>
         </div>

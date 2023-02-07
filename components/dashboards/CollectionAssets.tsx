@@ -61,7 +61,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
       <div className=''>
         {displayedFile.mediaType === 'image/png' ? (
           <button
-            onClick={() => window.open(displayedFile.src, '_blank', 'noopener')}
+            onClick={() => window.open(displayedFile.src, '_blank', 'noopener noreferrer')}
             className='w-[80vw] md:w-[555px]'
           >
             <ImageLoader
@@ -152,7 +152,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
         {badKeyIdOfBurnedAsset ? (
           <button
             onClick={() =>
-              window.open(`https://www.jpg.store/asset/${badKeyIdOfBurnedAsset}`, '_blank', 'noopener')
+              window.open(`https://www.jpg.store/asset/${badKeyIdOfBurnedAsset}`, '_blank', 'noopener noreferrer')
             }
             className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded'
           >
@@ -162,7 +162,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
         ) : null}
 
         <button
-          onClick={() => window.open(`https://www.jpg.store/asset/${asset.assetId}`, '_blank', 'noopener')}
+          onClick={() => window.open(`https://www.jpg.store/asset/${asset.assetId}`, '_blank', 'noopener noreferrer')}
           className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded'
         >
           <Image src='/media/icon/jpg_store.png' alt='' width={30} height={30} className='mr-2' />
@@ -175,7 +175,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
               window.open(
                 `https://cnft.tools/badfoxmotorcycleclub?asset=${asset.onChainName}`,
                 '_blank',
-                'noopener'
+                'noopener noreferrer'
               )
             }
             className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded'
@@ -190,7 +190,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
             window.open(
               `https://www.cnftjungle.io/collections/${policyId}?tab=assets&assetId=${policyId}.${asset.onChainName}`,
               '_blank',
-              'noopener'
+              'noopener noreferrer'
             )
           }
           className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded'
