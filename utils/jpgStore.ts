@@ -66,7 +66,10 @@ class JpgStore {
           assetId: item.asset_id,
           name: item.display_name,
           price: Number(item.price_lovelace) / ONE_MILLION,
-          imageUrl: formatIpfsImageUrl(asset?.image.ipfs || '', !!asset?.rarityRank),
+          imageUrl: formatIpfsImageUrl({
+            ipfsUri: asset?.image.ipfs || '',
+            hasRank: !!asset?.rarityRank,
+          }),
           itemUrl: `https://jpg.store/asset/${item.asset_id}`,
           // @ts-ignore
           date: new Date(type === 'sale' ? item?.confirmed_at : item?.listed_at),

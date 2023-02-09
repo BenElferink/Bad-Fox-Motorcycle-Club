@@ -65,7 +65,10 @@ const AssetModalContent = (props: AssetModalContentProps) => {
             className='w-[80vw] md:w-[555px]'
           >
             <ImageLoader
-              src={formatIpfsImageUrl(displayedFile.src, false)}
+              src={formatIpfsImageUrl({
+                ipfsUri: displayedFile.src,
+                hasRank: false,
+              })}
               alt={displayedFile.name}
               width={1000}
               height={1000}
@@ -76,7 +79,12 @@ const AssetModalContent = (props: AssetModalContentProps) => {
         ) : displayedFile.mediaType === 'model/gltf-binary' ? (
           <button onClick={() => {}} className='w-[80vw] md:w-[555px]'>
             <div className='w-[100%] h-[80vw] md:w-[555px] md:h-[555px] bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
-              <ModelViewer src={formatIpfsImageUrl(displayedFile.src, false)} />
+              <ModelViewer
+                src={formatIpfsImageUrl({
+                  ipfsUri: displayedFile.src,
+                  is3D: true,
+                })}
+              />
             </div>
           </button>
         ) : (
@@ -100,7 +108,10 @@ const AssetModalContent = (props: AssetModalContentProps) => {
                   >
                     {file.mediaType === 'image/png' ? (
                       <ImageLoader
-                        src={formatIpfsImageUrl(file.src, !!asset.rarityRank)}
+                        src={formatIpfsImageUrl({
+                          ipfsUri: file.src,
+                          hasRank: !!asset.rarityRank,
+                        })}
                         alt={file.name}
                         width={150}
                         height={150}
@@ -108,7 +119,13 @@ const AssetModalContent = (props: AssetModalContentProps) => {
                       />
                     ) : file.mediaType === 'model/gltf-binary' ? (
                       <div className='w-full h-full bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
-                        <ModelViewer src={formatIpfsImageUrl(file.src, false)} freeze />
+                        <ModelViewer
+                          src={formatIpfsImageUrl({
+                            ipfsUri: file.src,
+                            is3D: true,
+                          })}
+                          freeze
+                        />
                       </div>
                     ) : (
                       <div className='w-full h-full bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
@@ -162,7 +179,9 @@ const AssetModalContent = (props: AssetModalContentProps) => {
         ) : null}
 
         <button
-          onClick={() => window.open(`https://www.jpg.store/asset/${asset.assetId}`, '_blank', 'noopener noreferrer')}
+          onClick={() =>
+            window.open(`https://www.jpg.store/asset/${asset.assetId}`, '_blank', 'noopener noreferrer')
+          }
           className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded'
         >
           <Image src='/media/icon/jpg_store.png' alt='' width={30} height={30} className='mr-2' />
@@ -323,13 +342,19 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
                   onClick={() => setSelectedAsset(asset)}
                   isBurned={asset.isBurned}
                   title={asset.displayName}
-                  imageSrc={formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank)}
+                  imageSrc={formatIpfsImageUrl({
+                    ipfsUri: asset.image.ipfs,
+                    hasRank: !!asset.rarityRank,
+                  })}
                   tiedImageSrcs={
                     asset.files?.length
                       ? asset.files
                           .filter((file) => file.mediaType === 'image/png')
                           .map((file) => ({
-                            src: formatIpfsImageUrl(file.src, true),
+                            src: formatIpfsImageUrl({
+                              ipfsUri: file.src,
+                              hasRank: true,
+                            }),
                             name: `#${asset.attributes[file.name.replace('Bad ', '')].split('#')[1]}`,
                           }))
                       : []

@@ -279,8 +279,10 @@ const BurnDashboard = () => {
             filteredAssets.map((asset) => (
               <AssetCard
                 key={`asset-${asset.assetId}`}
-                // imageSrc={asset.image.firebase || formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank)}
-                imageSrc={formatIpfsImageUrl(asset.image.ipfs, !!asset.rarityRank)}
+                imageSrc={formatIpfsImageUrl({
+                  ipfsUri: asset.image.ipfs,
+                  hasRank: !!asset.rarityRank,
+                })}
                 title={asset.displayName}
                 onClick={() => {
                   selector === 'B'
