@@ -1,7 +1,7 @@
 {
-  "_wen": 1675364005919,
+  "_wen": 1675966960957,
   "policyId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add14",
-  "count": 1687,
+  "count": 1770,
   "assets": [
     {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930303032",
@@ -2631,6 +2631,43 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930313230",
+      "fingerprint": "asset16m0wt5l5cd3s0ayrh2hqx3pmk24fau4rjzkn26",
+      "isBurned": false,
+      "onChainName": "BadKey0120",
+      "displayName": "Bad Key #0120",
+      "serialNumber": 120,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #4481",
+        "Fox (M)": "Bad Fox #2258",
+        "Motorcycle": "Bad Motorcycle #0120"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmYXeRZU2ffcHutQePhEsQMwzHhHdaE6FBr32CsAUtK1C1",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmPzbMrTKx3T8rAvztHB7xKZitG9foUPrZZQHXz9wxN6JZ",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmQAuhC3N6hpSeqbu77vaDGGaFdUFsB4Q12PRZpNKdEqYY",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930313231",
       "fingerprint": "asset18r9dlckylufdsldj0s07vsm9w0v7t08vmzdyly",
       "isBurned": false,
@@ -2847,6 +2884,80 @@
         },
         {
           "src": "ipfs://QmVHZ7fcyDPezpBZ63B9avvjtZjCGzc7chVou2mv4w1DuQ",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930313330",
+      "fingerprint": "asset1t79ejfnmew68mdcaqrpu95qcy7sv5ll9ejlh2d",
+      "isBurned": false,
+      "onChainName": "BadKey0130",
+      "displayName": "Bad Key #0130",
+      "serialNumber": 130,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #5241",
+        "Fox (M)": "Bad Fox #0654",
+        "Motorcycle": "Bad Motorcycle #0130"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmV3jGvshX9CpM4Dbbw3qsWdxJWYEcBwYpR8rkRLXGQc2V",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmQvEGRJcirqvp3toRSgKTqdNRS7jqJ3xCpEoYfeje9gRE",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmeoDU9as7xuhDsSqqPQKd71495FzqkbJEtf5Nk5stsq9p",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930313330",
+      "fingerprint": "asset1t79ejfnmew68mdcaqrpu95qcy7sv5ll9ejlh2d",
+      "isBurned": false,
+      "onChainName": "BadKey0130",
+      "displayName": "Bad Key #0130",
+      "serialNumber": 130,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #5241",
+        "Fox (M)": "Bad Fox #0654",
+        "Motorcycle": "Bad Motorcycle #0130"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmV3jGvshX9CpM4Dbbw3qsWdxJWYEcBwYpR8rkRLXGQc2V",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmQvEGRJcirqvp3toRSgKTqdNRS7jqJ3xCpEoYfeje9gRE",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmeoDU9as7xuhDsSqqPQKd71495FzqkbJEtf5Nk5stsq9p",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -3778,6 +3889,43 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930313730",
+      "fingerprint": "asset14x2jafgsnu0qxaa88w8fe6jg5wwyklnr377rk7",
+      "isBurned": false,
+      "onChainName": "BadKey0170",
+      "displayName": "Bad Key #0170",
+      "serialNumber": 170,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #5153",
+        "Fox (M)": "Bad Fox #4172",
+        "Motorcycle": "Bad Motorcycle #0170"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmdECzijheEywwCKNWDUAHuNqzc1bcx11qjNLGfkbLbuHC",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmatZDZuhst2VMarivDVEZRxRww44c7o3AorJmd2WyHJtt",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmeNdiyP8QaLpTuxfiYj4SR9nFdrm5KnjwznhmWM4HMooE",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930313732",
       "fingerprint": "asset10suxegpv4u9tplky22nqwtu0rafvycekfjyg82",
       "isBurned": false,
@@ -4222,6 +4370,80 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930313933",
+      "fingerprint": "asset19whm02vaa8x2peym2tvcng7xkv6zjpvd7rupka",
+      "isBurned": false,
+      "onChainName": "BadKey0193",
+      "displayName": "Bad Key #0193",
+      "serialNumber": 193,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #5029",
+        "Fox (M)": "Bad Fox #2890",
+        "Motorcycle": "Bad Motorcycle #0193"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmTiytefzj7tG7iu8S2p6Hvk1Y8feuh5HQHX76F8PqsKNv",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmPjAdRsGqnp3BaBTdomPVivpoP5JDJSVHgDaeVJyPUx7C",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmaLBWA86BwvRYmF2hqcCUJPYArh3S2VvbNmxKtSVTDoSc",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930313933",
+      "fingerprint": "asset19whm02vaa8x2peym2tvcng7xkv6zjpvd7rupka",
+      "isBurned": false,
+      "onChainName": "BadKey0193",
+      "displayName": "Bad Key #0193",
+      "serialNumber": 193,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #5029",
+        "Fox (M)": "Bad Fox #2890",
+        "Motorcycle": "Bad Motorcycle #0193"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmTiytefzj7tG7iu8S2p6Hvk1Y8feuh5HQHX76F8PqsKNv",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmPjAdRsGqnp3BaBTdomPVivpoP5JDJSVHgDaeVJyPUx7C",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmaLBWA86BwvRYmF2hqcCUJPYArh3S2VvbNmxKtSVTDoSc",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930313935",
       "fingerprint": "asset17rz9ga6tn3tn9u68s7czagvtckxl88k0ugaqq9",
       "isBurned": false,
@@ -4438,6 +4660,43 @@
         },
         {
           "src": "ipfs://QmPKUDR2C6N7oz6rgQjfcgqUSgLPxin7MTB9sJGrAkKupL",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930323037",
+      "fingerprint": "asset1h4s47uxvm5mk6dsjfut30k0qzc5yzgvwl00jvz",
+      "isBurned": false,
+      "onChainName": "BadKey0207",
+      "displayName": "Bad Key #0207",
+      "serialNumber": 207,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #1139",
+        "Fox (M)": "Bad Fox #0912",
+        "Motorcycle": "Bad Motorcycle #0207"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmZg6daA3Y69hMkBF2JE15qetTzALhS1BJ1y3oNHDodE2Q",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmZAo9RTCHzg1iRSRZYRwmWUQ8jTnou7YLVM6CRtDroe8C",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmXw9u8U8uv1cqwJnEBNY8DsVNuytBNrHZHuYiLenhZUQ9",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -5628,6 +5887,80 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930323633",
+      "fingerprint": "asset1g3cs5lhkxgxce5fqrfukxngaqks498h0rhekpc",
+      "isBurned": false,
+      "onChainName": "BadKey0263",
+      "displayName": "Bad Key #0263",
+      "serialNumber": 263,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #5313",
+        "Fox (M)": "Bad Fox #1670",
+        "Motorcycle": "Bad Motorcycle #0263"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmcJbViPd3J1cofQbMNHmENp8GH93XizQn2JpCW93FADeK",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://Qmf3Bv85h7CyHnM7SFWCcwxHvFm3esdA923W3wHiyzskdx",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmTCsK5gTEfJ8Tfp7tSm5wWvTZ2Nzz71QHreGCbJvRogAg",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930323633",
+      "fingerprint": "asset1g3cs5lhkxgxce5fqrfukxngaqks498h0rhekpc",
+      "isBurned": false,
+      "onChainName": "BadKey0263",
+      "displayName": "Bad Key #0263",
+      "serialNumber": 263,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #5313",
+        "Fox (M)": "Bad Fox #1670",
+        "Motorcycle": "Bad Motorcycle #0263"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmcJbViPd3J1cofQbMNHmENp8GH93XizQn2JpCW93FADeK",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://Qmf3Bv85h7CyHnM7SFWCcwxHvFm3esdA923W3wHiyzskdx",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmTCsK5gTEfJ8Tfp7tSm5wWvTZ2Nzz71QHreGCbJvRogAg",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930323635",
       "fingerprint": "asset16p5q0u6r2xjmp427n6svw4r5y4443gy4y3v5jl",
       "isBurned": false,
@@ -5733,6 +6066,43 @@
         },
         {
           "src": "ipfs://QmeP49H2HJKGcCGbMVvkmisCmZuKjPtpdX2YuiW5recEDA",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930323639",
+      "fingerprint": "asset1xm5jkld7wld9fnjnx56ghlx08w62gs0kmcv95y",
+      "isBurned": false,
+      "onChainName": "BadKey0269",
+      "displayName": "Bad Key #0269",
+      "serialNumber": 269,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #4305",
+        "Fox (M)": "Bad Fox #2648",
+        "Motorcycle": "Bad Motorcycle #0269"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmQeVNLJ3TKBDHrD4DYoVmLUUEAEizmQJPs22Xc88LkLPj",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmXJyRiqA2SK1kNDGVQsVGuw58QJhhxzhGev7pQXTPTbsq",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmRMLiKJqoG1xgmgFq3MS6CtMdcHZCXtiNeTkvUiuRnzp1",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -5918,6 +6288,80 @@
         },
         {
           "src": "ipfs://QmXzuvTcGfUqpfkjxindjtDGzqi6wcupTmuRW51PS34Ghz",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930323832",
+      "fingerprint": "asset1g2mrnh2l79xcehf9v66eh5fzevqe2x3ck2k7ge",
+      "isBurned": false,
+      "onChainName": "BadKey0282",
+      "displayName": "Bad Key #0282",
+      "serialNumber": 282,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #2943",
+        "Fox (M)": "Bad Fox #2502",
+        "Motorcycle": "Bad Motorcycle #0282"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmeKxdpox7zcZmbjyAFvn6tq1UAz5kAZnNXw5zeXLJ6yH8",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmSk9iBnesRyY53jrFFaLX2HhrXrto2YiYJ4FzgktYRDfR",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmT8FaFZaitswo2Dpjgh2oHQ26KyrAPPyvLMREEn3UUQ7J",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930323832",
+      "fingerprint": "asset1g2mrnh2l79xcehf9v66eh5fzevqe2x3ck2k7ge",
+      "isBurned": false,
+      "onChainName": "BadKey0282",
+      "displayName": "Bad Key #0282",
+      "serialNumber": 282,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #2943",
+        "Fox (M)": "Bad Fox #2502",
+        "Motorcycle": "Bad Motorcycle #0282"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmeKxdpox7zcZmbjyAFvn6tq1UAz5kAZnNXw5zeXLJ6yH8",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmSk9iBnesRyY53jrFFaLX2HhrXrto2YiYJ4FzgktYRDfR",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmT8FaFZaitswo2Dpjgh2oHQ26KyrAPPyvLMREEn3UUQ7J",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -8434,6 +8878,80 @@
         },
         {
           "src": "ipfs://QmWTFwmQPpvozfxJJnKQMyjVSR8axQF2u1gCCoiHiLxnTu",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930333933",
+      "fingerprint": "asset16a65a4nezu4rpsn3hpf6xjxjc0fazea6cxkul2",
+      "isBurned": false,
+      "onChainName": "BadKey0393",
+      "displayName": "Bad Key #0393",
+      "serialNumber": 393,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #1109",
+        "Fox (M)": "Bad Fox #2878",
+        "Motorcycle": "Bad Motorcycle #0393"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmNRz58amxk18xj7hzYJ8MMsA5bC8y49ysDab3iLHxBEHA",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmPMJauXpZcsmLrkjaBWPkgEGhpMVyctcuMteKGv67snHV",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmSM2SVvjy2ftYd3bUNuXRFCn1npe4747rr5RYAAMrA6Uh",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930333933",
+      "fingerprint": "asset16a65a4nezu4rpsn3hpf6xjxjc0fazea6cxkul2",
+      "isBurned": false,
+      "onChainName": "BadKey0393",
+      "displayName": "Bad Key #0393",
+      "serialNumber": 393,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #1109",
+        "Fox (M)": "Bad Fox #2878",
+        "Motorcycle": "Bad Motorcycle #0393"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmNRz58amxk18xj7hzYJ8MMsA5bC8y49ysDab3iLHxBEHA",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmPMJauXpZcsmLrkjaBWPkgEGhpMVyctcuMteKGv67snHV",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmSM2SVvjy2ftYd3bUNuXRFCn1npe4747rr5RYAAMrA6Uh",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -13694,6 +14212,80 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930363337",
+      "fingerprint": "asset1wthypmzmqmguppnulpaglmwn7t8s4zs90y2aca",
+      "isBurned": false,
+      "onChainName": "BadKey0637",
+      "displayName": "Bad Key #0637",
+      "serialNumber": 637,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #2909",
+        "Fox (M)": "Bad Fox #5728",
+        "Motorcycle": "Bad Motorcycle #0637"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://Qme1GvJqRb7mZwXVLRhzVBro9NwiT6PyfAqggvTsEuGU9X",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmWr11q1eFW9oENVPnRU3QgBw1V8F8i5p2Veb7xQZGj6bV",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmWd2knGQf9Th4xByGXP2VPkq9YzQaf2uPCCNgnjtASVSG",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930363337",
+      "fingerprint": "asset1wthypmzmqmguppnulpaglmwn7t8s4zs90y2aca",
+      "isBurned": false,
+      "onChainName": "BadKey0637",
+      "displayName": "Bad Key #0637",
+      "serialNumber": 637,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #2909",
+        "Fox (M)": "Bad Fox #5728",
+        "Motorcycle": "Bad Motorcycle #0637"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://Qme1GvJqRb7mZwXVLRhzVBro9NwiT6PyfAqggvTsEuGU9X",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmWr11q1eFW9oENVPnRU3QgBw1V8F8i5p2Veb7xQZGj6bV",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmWd2knGQf9Th4xByGXP2VPkq9YzQaf2uPCCNgnjtASVSG",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930363338",
       "fingerprint": "asset1k0fze2tk2e2p0emvsuxssqn007nws6s9r2777q",
       "isBurned": false,
@@ -14286,6 +14878,80 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930363639",
+      "fingerprint": "asset1mc47tf83ezh7nq4vj79qnp650v2efqdyp3wqsc",
+      "isBurned": false,
+      "onChainName": "BadKey0669",
+      "displayName": "Bad Key #0669",
+      "serialNumber": 669,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #4785",
+        "Fox (M)": "Bad Fox #2390",
+        "Motorcycle": "Bad Motorcycle #0669"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmX7uSEXJhDVZfWRGayFLyixm2XhtEJghgGJ6HxEygPygT",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmULVheHSSpSwG8sb35tqMQjrNT9JzPFYftypqLGVkbRFG",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmS8wkDHbCdMG5nESKpSt4ApDdrAyLusetTy5aGDweRyHK",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930363639",
+      "fingerprint": "asset1mc47tf83ezh7nq4vj79qnp650v2efqdyp3wqsc",
+      "isBurned": false,
+      "onChainName": "BadKey0669",
+      "displayName": "Bad Key #0669",
+      "serialNumber": 669,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #4785",
+        "Fox (M)": "Bad Fox #2390",
+        "Motorcycle": "Bad Motorcycle #0669"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmX7uSEXJhDVZfWRGayFLyixm2XhtEJghgGJ6HxEygPygT",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmULVheHSSpSwG8sb35tqMQjrNT9JzPFYftypqLGVkbRFG",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmS8wkDHbCdMG5nESKpSt4ApDdrAyLusetTy5aGDweRyHK",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930363731",
       "fingerprint": "asset1yt7f32akqtdr94sek54qkmmw0duwkalmqcpvv4",
       "isBurned": false,
@@ -14730,6 +15396,80 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930363838",
+      "fingerprint": "asset1vs90pjmjzg782gt2yrnevydtjk8smxcy87mqaq",
+      "isBurned": false,
+      "onChainName": "BadKey0688",
+      "displayName": "Bad Key #0688",
+      "serialNumber": 688,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #1317",
+        "Fox (M)": "Bad Fox #0644",
+        "Motorcycle": "Bad Motorcycle #0688"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmeoCgKddaZxhr2JfdWA8jDHo4TZwirtypqqTvASowktEh",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmYgEH7m7Q4Us6AvdMXHZhhrHM26Li7Xi5KYrBsn6kVHbj",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmXfs4PZg6DmzmtMLyZ5vm3BAPdXPrHmg8JKX3q5MGuqCi",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930363838",
+      "fingerprint": "asset1vs90pjmjzg782gt2yrnevydtjk8smxcy87mqaq",
+      "isBurned": false,
+      "onChainName": "BadKey0688",
+      "displayName": "Bad Key #0688",
+      "serialNumber": 688,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #1317",
+        "Fox (M)": "Bad Fox #0644",
+        "Motorcycle": "Bad Motorcycle #0688"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmeoCgKddaZxhr2JfdWA8jDHo4TZwirtypqqTvASowktEh",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmYgEH7m7Q4Us6AvdMXHZhhrHM26Li7Xi5KYrBsn6kVHbj",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmXfs4PZg6DmzmtMLyZ5vm3BAPdXPrHmg8JKX3q5MGuqCi",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930363931",
       "fingerprint": "asset1zjfcww6d6qe2nr8cdt0pn6yt8k3j9pp5r24rce",
       "isBurned": false,
@@ -14835,6 +15575,80 @@
         },
         {
           "src": "ipfs://QmSkdfA6XVhKmpwRRq2x2Hp2k7M1Qx3RL6hMT638ADsWgW",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930363935",
+      "fingerprint": "asset1vut94uzredw8t7efkg3y5m84xd288qq3ddky2d",
+      "isBurned": false,
+      "onChainName": "BadKey0695",
+      "displayName": "Bad Key #0695",
+      "serialNumber": 695,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #4521",
+        "Fox (M)": "Bad Fox #1092",
+        "Motorcycle": "Bad Motorcycle #0695"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmTT9eEZjHe2b8GKH3HM7nmwyjeSYv7hoctV3RuNCvLu1p",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmQWezg7hBDoiMrxJX4z163PHMnxFRynFy23kRnAEzP7sn",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmXYZbWi29rdNqp1QpU5wY43pWYTRiHYFK2JZbPEaBdc5H",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930363935",
+      "fingerprint": "asset1vut94uzredw8t7efkg3y5m84xd288qq3ddky2d",
+      "isBurned": false,
+      "onChainName": "BadKey0695",
+      "displayName": "Bad Key #0695",
+      "serialNumber": 695,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #4521",
+        "Fox (M)": "Bad Fox #1092",
+        "Motorcycle": "Bad Motorcycle #0695"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmTT9eEZjHe2b8GKH3HM7nmwyjeSYv7hoctV3RuNCvLu1p",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmQWezg7hBDoiMrxJX4z163PHMnxFRynFy23kRnAEzP7sn",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmXYZbWi29rdNqp1QpU5wY43pWYTRiHYFK2JZbPEaBdc5H",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -19355,6 +20169,43 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930393134",
+      "fingerprint": "asset19w45rk8s9hye6dq8sxak25n7ztvqsr8e6smd66",
+      "isBurned": false,
+      "onChainName": "BadKey0914",
+      "displayName": "Bad Key #0914",
+      "serialNumber": 914,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #3743",
+        "Fox (M)": "Bad Fox #5844",
+        "Motorcycle": "Bad Motorcycle #0914"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmRHu9e3g1zeQTT3asdwtjeSjTsGwc2DUnuuCNMcmfdyWf",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmZ7cK68fwZ4gFne4z9haEXUPduj4xbVfPhi3EyKwpWR2K",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmPxQgQQGWrbEWikJtaAsgYShWnC9D82mYysptaGW4L7oP",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930393135",
       "fingerprint": "asset1cgvn2n2hxfzv2wvetqh80hzgnlhrqvm2jfc92c",
       "isBurned": false,
@@ -21390,6 +22241,43 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657930393938",
+      "fingerprint": "asset1ky4qt70dk02mjsmn2cfs6v6nxafwknvq2agut3",
+      "isBurned": false,
+      "onChainName": "BadKey0998",
+      "displayName": "Bad Key #0998",
+      "serialNumber": 998,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #4635",
+        "Fox (M)": "Bad Fox #0468",
+        "Motorcycle": "Bad Motorcycle #0998"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmbQRGowMSrDpdZHpBZv2DgAaWiYmN9x9S2uguauv1iigL",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmXYaFxMUxoh7ywdPR4TUEwAim4N3wAzo3MFLuu2Y7w7ps",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmTTzqxuA5UAL2XqhMj6U5Ci56T2jSWLz7fm7KozNEYfV3",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931303030",
       "fingerprint": "asset1jm7qwrwv82zuml80s8cxy32th052363h5hmfan",
       "isBurned": false,
@@ -23092,6 +23980,80 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931303931",
+      "fingerprint": "asset1p24r5n4x4hyt76l8825k5j85ycsucujczqw75d",
+      "isBurned": false,
+      "onChainName": "BadKey1091",
+      "displayName": "Bad Key #1091",
+      "serialNumber": 1091,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #1407",
+        "Fox (M)": "Bad Fox #0200",
+        "Motorcycle": "Bad Motorcycle #1091"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmYpfQgHFHSsk27RojQt47fRGXxezrz4WbXMjBcWihiUoP",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmSKZ74fZ4GYvkwNgQaMYzEGKY5LeHA5UtsXxXas23h23Q",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmUAsrdMwxgKXrVVQsJaBekMNJGepdipEgVkqrWXCewQRy",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931303931",
+      "fingerprint": "asset1p24r5n4x4hyt76l8825k5j85ycsucujczqw75d",
+      "isBurned": false,
+      "onChainName": "BadKey1091",
+      "displayName": "Bad Key #1091",
+      "serialNumber": 1091,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #1407",
+        "Fox (M)": "Bad Fox #0200",
+        "Motorcycle": "Bad Motorcycle #1091"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmYpfQgHFHSsk27RojQt47fRGXxezrz4WbXMjBcWihiUoP",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmSKZ74fZ4GYvkwNgQaMYzEGKY5LeHA5UtsXxXas23h23Q",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmUAsrdMwxgKXrVVQsJaBekMNJGepdipEgVkqrWXCewQRy",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931303933",
       "fingerprint": "asset1trgfkjpmk3ypjmf82e8l9gpwa4susz09mx4z09",
       "isBurned": false,
@@ -23123,6 +24085,43 @@
         },
         {
           "src": "ipfs://QmWHysb7Wc8otfPT8podQjFA6ipvkwZJi1epYCBmfUXM1y",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931303934",
+      "fingerprint": "asset1f768wsw5y3rutk5fahqyplnmdwa7pecj3tgxhs",
+      "isBurned": false,
+      "onChainName": "BadKey1094",
+      "displayName": "Bad Key #1094",
+      "serialNumber": 1094,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #4555",
+        "Fox (M)": "Bad Fox #3046",
+        "Motorcycle": "Bad Motorcycle #1094"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmQRHU814LmPtPYXKzi2LFfqNMzGPnzLXBydnD4MDsW2kL",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmNR6vwMA3wJaJgyAgtoDUrwuuVQd44qPFGjLUcEYBUsoW",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmYhppG1oMKh2g7cyreLdB87bPH6VJJ4FQ42gCGdtQQK4B",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -29863,6 +30862,80 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931333935",
+      "fingerprint": "asset1xh40huvczjnhnal5072fqp7ucrme4wmfp8h9yh",
+      "isBurned": false,
+      "onChainName": "BadKey1395",
+      "displayName": "Bad Key #1395",
+      "serialNumber": 1395,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #2043",
+        "Fox (M)": "Bad Fox #4194",
+        "Motorcycle": "Bad Motorcycle #1395"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmQfzGjpwPbowEjoVntQYBVu7CdALE7LyXATzV1AimvBZE",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmVEb7jwFCyZ7fjLwGQ8dW3Et9otNHdASdDN9qr8JfpE5B",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://Qmf7NXYGHkKFkmpNiBj4zvv1MWbC7UbfmXdeqNnHuqPU5h",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931333935",
+      "fingerprint": "asset1xh40huvczjnhnal5072fqp7ucrme4wmfp8h9yh",
+      "isBurned": false,
+      "onChainName": "BadKey1395",
+      "displayName": "Bad Key #1395",
+      "serialNumber": 1395,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #2043",
+        "Fox (M)": "Bad Fox #4194",
+        "Motorcycle": "Bad Motorcycle #1395"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmQfzGjpwPbowEjoVntQYBVu7CdALE7LyXATzV1AimvBZE",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmVEb7jwFCyZ7fjLwGQ8dW3Et9otNHdASdDN9qr8JfpE5B",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://Qmf7NXYGHkKFkmpNiBj4zvv1MWbC7UbfmXdeqNnHuqPU5h",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931333938",
       "fingerprint": "asset19y0v36ylawuep4jzv4ckdr0m6pzqtv8mnnh2sv",
       "isBurned": false,
@@ -31824,6 +32897,43 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931353030",
+      "fingerprint": "asset1exv5sejlyetpssc6mln37k0nvkwrwcu2e8qr49",
+      "isBurned": false,
+      "onChainName": "BadKey1500",
+      "displayName": "Bad Key #1500",
+      "serialNumber": 1500,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #0941",
+        "Fox (M)": "Bad Fox #3018",
+        "Motorcycle": "Bad Motorcycle #1500"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmaZLzXpHbGbpWpViLS8LkZ6nL7NnaAcc7ZBfVP9Fot3oj",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmV7WrARzXyZkcfeHfHzoQWtyi5nwUJa5eb2nwnCZeMHkt",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmQ9VkC1RqUneMdqoddvKjjpBtSgbRB2q6RHe7D8SMUtxM",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931353031",
       "fingerprint": "asset17t5a4yjjh02d2sd4ucyxemaa2taum0zsuzph2j",
       "isBurned": false,
@@ -32299,6 +33409,117 @@
         },
         {
           "src": "ipfs://QmbBPuDDhJUPU9TSxkNZBEpeySnrHoSjnLxMjREaiqPdQ7",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931353139",
+      "fingerprint": "asset166ngqrcxq06sznd2exghwy0tzt7sdss0j58p23",
+      "isBurned": false,
+      "onChainName": "BadKey1519",
+      "displayName": "Bad Key #1519",
+      "serialNumber": 1519,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #0805",
+        "Fox (M)": "Bad Fox #3350",
+        "Motorcycle": "Bad Motorcycle #1519"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmVnuuCLxWz976ezKbJ3fFm5gdTQSdZJ7kft1ea9n8XwrK",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmSsKVcyJyxx58tRAm5GnFYnkn8QmWJ6HT7xQ3cqBKRkt6",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmcuHgydSCMzeu8z78p4UsDgLVGQMRML9k8T5srpZi4A2e",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931353230",
+      "fingerprint": "asset1fkg9u7f9t8wecqe2cet48cepfld5fhdpzna3pa",
+      "isBurned": false,
+      "onChainName": "BadKey1520",
+      "displayName": "Bad Key #1520",
+      "serialNumber": 1520,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #0803",
+        "Fox (M)": "Bad Fox #4608",
+        "Motorcycle": "Bad Motorcycle #1520"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmPeGhy8YqK95tNnA6UnBSDi1sVSAqiSPSycdA4HXwwstV",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmcufA4dQd7kFbfPK4SrxQscLf4CE2CiqQ55VX3KjBoiJp",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmbTL8YU17LoEt9u1NMMmRYz9N2YKbLUcVZNMJNed8jBHy",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931353230",
+      "fingerprint": "asset1fkg9u7f9t8wecqe2cet48cepfld5fhdpzna3pa",
+      "isBurned": false,
+      "onChainName": "BadKey1520",
+      "displayName": "Bad Key #1520",
+      "serialNumber": 1520,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #0803",
+        "Fox (M)": "Bad Fox #4608",
+        "Motorcycle": "Bad Motorcycle #1520"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmPeGhy8YqK95tNnA6UnBSDi1sVSAqiSPSycdA4HXwwstV",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmcufA4dQd7kFbfPK4SrxQscLf4CE2CiqQ55VX3KjBoiJp",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmbTL8YU17LoEt9u1NMMmRYz9N2YKbLUcVZNMJNed8jBHy",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -33859,6 +35080,80 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931353839",
+      "fingerprint": "asset1c9yu8f4n2xgk49fn8eamapmy5e23965dzc2h3y",
+      "isBurned": false,
+      "onChainName": "BadKey1589",
+      "displayName": "Bad Key #1589",
+      "serialNumber": 1589,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #5453",
+        "Fox (M)": "Bad Fox #4956",
+        "Motorcycle": "Bad Motorcycle #1589"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmeUFnL5D98gzLHMGg3t6j2ASJ4uDrEd2AruYFQZAVMNNW",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmXY34XWTXK5v63nSg7DfiU5ifUfaCpMjnrLkmfryWwVWs",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmXwMcsP8wta8df2sYteJBTzNiXveEYrdCVg5uRbXiUS8W",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931353839",
+      "fingerprint": "asset1c9yu8f4n2xgk49fn8eamapmy5e23965dzc2h3y",
+      "isBurned": false,
+      "onChainName": "BadKey1589",
+      "displayName": "Bad Key #1589",
+      "serialNumber": 1589,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #5453",
+        "Fox (M)": "Bad Fox #4956",
+        "Motorcycle": "Bad Motorcycle #1589"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmeUFnL5D98gzLHMGg3t6j2ASJ4uDrEd2AruYFQZAVMNNW",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmXY34XWTXK5v63nSg7DfiU5ifUfaCpMjnrLkmfryWwVWs",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmXwMcsP8wta8df2sYteJBTzNiXveEYrdCVg5uRbXiUS8W",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931353931",
       "fingerprint": "asset1maxx4jykwu20g08uj6nlv0dra5c9ga2vrg97z8",
       "isBurned": false,
@@ -34001,6 +35296,80 @@
         },
         {
           "src": "ipfs://QmThWGVUz4F7cwKypnzGeyaWFGhi4ZB6gBj9BTGihq2xWX",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931353936",
+      "fingerprint": "asset1arfdw5l7clzke2srqru5zccex7qlgw57s3hhx4",
+      "isBurned": false,
+      "onChainName": "BadKey1596",
+      "displayName": "Bad Key #1596",
+      "serialNumber": 1596,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #0971",
+        "Fox (M)": "Bad Fox #1698",
+        "Motorcycle": "Bad Motorcycle #1596"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmbQP3hthi6gXnxibCkyzJWMgDm5SAPrH8NV3Qd2m2XoUf",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmUZDSBiqC5YYNi1QZ2Buo96rnkpR2E3EdSyKgvUauiLyh",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmbjVmRQK4fiXkmviZGwK7kV8CkLAGZF8muQddEk531UKh",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931353936",
+      "fingerprint": "asset1arfdw5l7clzke2srqru5zccex7qlgw57s3hhx4",
+      "isBurned": false,
+      "onChainName": "BadKey1596",
+      "displayName": "Bad Key #1596",
+      "serialNumber": 1596,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #0971",
+        "Fox (M)": "Bad Fox #1698",
+        "Motorcycle": "Bad Motorcycle #1596"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmbQP3hthi6gXnxibCkyzJWMgDm5SAPrH8NV3Qd2m2XoUf",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmUZDSBiqC5YYNi1QZ2Buo96rnkpR2E3EdSyKgvUauiLyh",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmbjVmRQK4fiXkmviZGwK7kV8CkLAGZF8muQddEk531UKh",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -34334,6 +35703,43 @@
         },
         {
           "src": "ipfs://QmbTetEmrvn6B5Ahb6xT1KFQRakNZZe6Er1Viezett8pAT",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931363132",
+      "fingerprint": "asset13vde8l3jxyk437437028th7gpvp5lpn7574a6n",
+      "isBurned": false,
+      "onChainName": "BadKey1612",
+      "displayName": "Bad Key #1612",
+      "serialNumber": 1612,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #3827",
+        "Fox (M)": "Bad Fox #1556",
+        "Motorcycle": "Bad Motorcycle #1612"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmY7ZMsMghx4iURL8idqFbkY1MJAibVaazL19WMH52eK3o",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmZYs9k9mbTz3XkotqiJtmezVaUCYiMWHT2pWS8MAjcsAk",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmRzgF34Fptpiq4F538qo6NxVWqJECztGQnfMCYUUQLxcm",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -35148,6 +36554,80 @@
         },
         {
           "src": "ipfs://QmbuoWyoB8uX8sPuoYomVR6eLCcvRgfqjzkByxy1aJaLcV",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931363532",
+      "fingerprint": "asset1hqc8v7wwa6up7xdpnupkqepe8l5ntqs7cxym2s",
+      "isBurned": false,
+      "onChainName": "BadKey1652",
+      "displayName": "Bad Key #1652",
+      "serialNumber": 1652,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #3639",
+        "Fox (M)": "Bad Fox #0162",
+        "Motorcycle": "Bad Motorcycle #1652"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmSrwxBq2qvThzKAJrmNRL4E12eMqG4Ha3XuRueJbtRSDm",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmWcKUpaZ6bJTRNov2NUWzqMGmHm6fYZEwhpncRrcDtcCF",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmV8fQA9kP1S44s5n4j96hgU34pkM3ZvSPKGUAwk1vcuzg",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931363532",
+      "fingerprint": "asset1hqc8v7wwa6up7xdpnupkqepe8l5ntqs7cxym2s",
+      "isBurned": false,
+      "onChainName": "BadKey1652",
+      "displayName": "Bad Key #1652",
+      "serialNumber": 1652,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #3639",
+        "Fox (M)": "Bad Fox #0162",
+        "Motorcycle": "Bad Motorcycle #1652"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmSrwxBq2qvThzKAJrmNRL4E12eMqG4Ha3XuRueJbtRSDm",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmWcKUpaZ6bJTRNov2NUWzqMGmHm6fYZEwhpncRrcDtcCF",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmV8fQA9kP1S44s5n4j96hgU34pkM3ZvSPKGUAwk1vcuzg",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -36782,6 +38262,80 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931373335",
+      "fingerprint": "asset1vpufrjsdlzd4lvx43f9p5td5udgqj7sxg46fpz",
+      "isBurned": false,
+      "onChainName": "BadKey1735",
+      "displayName": "Bad Key #1735",
+      "serialNumber": 1735,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #1469",
+        "Fox (M)": "Bad Fox #4426",
+        "Motorcycle": "Bad Motorcycle #1735"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmaUGtFSrZCk9acdiXusbaVLGGx7n5wHi1ednWc7bex3qE",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmQFsQfgYRdwAafrVjd7HVKA3geTei2yTm3CkW5aWZLi9k",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmSacQP8RhMssj17amXBjJhcJS77MiTtkrUUTTV9aegrwc",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931373335",
+      "fingerprint": "asset1vpufrjsdlzd4lvx43f9p5td5udgqj7sxg46fpz",
+      "isBurned": false,
+      "onChainName": "BadKey1735",
+      "displayName": "Bad Key #1735",
+      "serialNumber": 1735,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #1469",
+        "Fox (M)": "Bad Fox #4426",
+        "Motorcycle": "Bad Motorcycle #1735"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmaUGtFSrZCk9acdiXusbaVLGGx7n5wHi1ednWc7bex3qE",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmQFsQfgYRdwAafrVjd7HVKA3geTei2yTm3CkW5aWZLi9k",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmSacQP8RhMssj17amXBjJhcJS77MiTtkrUUTTV9aegrwc",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931373337",
       "fingerprint": "asset1agaqhntuzz3gajluwskfqdugap0mrrse32nwc7",
       "isBurned": false,
@@ -37405,6 +38959,80 @@
         },
         {
           "src": "ipfs://QmdBXmdJsFba8V8kdro8N4JV7woipnLHLZazvnRFGNNKzd",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931373735",
+      "fingerprint": "asset1vyn6w04mh76dk3d63xx87actvhvqpgvvf6u8td",
+      "isBurned": false,
+      "onChainName": "BadKey1775",
+      "displayName": "Bad Key #1775",
+      "serialNumber": 1775,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #5003",
+        "Fox (M)": "Bad Fox #5712",
+        "Motorcycle": "Bad Motorcycle #1775"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://Qmdfae1WhFx1tCm2H7jCKCWEPFqd5SEeahfdci24fJwTbj",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmYAoRVGNTaVmYGd3AkME3pBTmwr8sSpvwsEApbkomjACG",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmWB4RQFUghiNWaFfBYUWZiC3P4bZub7yppGj2qXu3g6Gd",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931373735",
+      "fingerprint": "asset1vyn6w04mh76dk3d63xx87actvhvqpgvvf6u8td",
+      "isBurned": false,
+      "onChainName": "BadKey1775",
+      "displayName": "Bad Key #1775",
+      "serialNumber": 1775,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #5003",
+        "Fox (M)": "Bad Fox #5712",
+        "Motorcycle": "Bad Motorcycle #1775"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://Qmdfae1WhFx1tCm2H7jCKCWEPFqd5SEeahfdci24fJwTbj",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmYAoRVGNTaVmYGd3AkME3pBTmwr8sSpvwsEApbkomjACG",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmWB4RQFUghiNWaFfBYUWZiC3P4bZub7yppGj2qXu3g6Gd",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -39409,6 +41037,43 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931383637",
+      "fingerprint": "asset1l25lza9zwgq0zg2d4ehr769rfstc36eq8hfucl",
+      "isBurned": false,
+      "onChainName": "BadKey1867",
+      "displayName": "Bad Key #1867",
+      "serialNumber": 1867,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #0779",
+        "Fox (M)": "Bad Fox #2982",
+        "Motorcycle": "Bad Motorcycle #1867"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmUVBn3LRfY9x61n7yZRFyHf9q7x2pYWmb4kaEC9LX3PZ2",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmVNRgKezGU8ttaGYDGFtAYBkU3Koxmee834oRJ8aBnkZe",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmWHku9bFJVyBuE4yWj7SxxiZveSAAc86eoWSwrQTJ851C",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931383731",
       "fingerprint": "asset1pgdnvaf0wgvl4tfquau9t3paxmzzrmc6238sae",
       "isBurned": false,
@@ -41222,6 +42887,80 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931393439",
+      "fingerprint": "asset13cxr96cx0gj9m7x6ukc2qlzrjtuygxsjx3a3hu",
+      "isBurned": false,
+      "onChainName": "BadKey1949",
+      "displayName": "Bad Key #1949",
+      "serialNumber": 1949,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #3525",
+        "Fox (M)": "Bad Fox #5580",
+        "Motorcycle": "Bad Motorcycle #1949"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmWeneYJY5urt1Snvk6gvxhvzhiPd5uyPgB6ww1X85jahB",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmXbw1PWbZ8DKcZwyVuz69YxNnL24caPwuLpd4P86GCCT4",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmXcWze5chKXUwfUW8tjbYXECpfbFsNFwT4mdqAun1weBg",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931393439",
+      "fingerprint": "asset13cxr96cx0gj9m7x6ukc2qlzrjtuygxsjx3a3hu",
+      "isBurned": false,
+      "onChainName": "BadKey1949",
+      "displayName": "Bad Key #1949",
+      "serialNumber": 1949,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #3525",
+        "Fox (M)": "Bad Fox #5580",
+        "Motorcycle": "Bad Motorcycle #1949"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmWeneYJY5urt1Snvk6gvxhvzhiPd5uyPgB6ww1X85jahB",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmXbw1PWbZ8DKcZwyVuz69YxNnL24caPwuLpd4P86GCCT4",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmXcWze5chKXUwfUW8tjbYXECpfbFsNFwT4mdqAun1weBg",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657931393530",
       "fingerprint": "asset17w8g0kepx5h9e29xzt35evfgju2kj6jyln6ft7",
       "isBurned": false,
@@ -42517,6 +44256,80 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932303235",
+      "fingerprint": "asset1q3y7nkv5axcp4e7zcp35rw0ccey7hevkqxlfuc",
+      "isBurned": false,
+      "onChainName": "BadKey2025",
+      "displayName": "Bad Key #2025",
+      "serialNumber": 2025,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #4215",
+        "Fox (M)": "Bad Fox #4684",
+        "Motorcycle": "Bad Motorcycle #2025"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmYNDZoUjxbFqqopTUjEHZWu5TaHeDAotw88XpATTbFtKt",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmUyuhPTBmSQc5wuXzh9DgiT4wWyixV5kRxssBybUfcAso",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmWm2SX8mwtFnz75LDdVteTX6HkNUaLbpWN8HwoEodz7vv",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932303235",
+      "fingerprint": "asset1q3y7nkv5axcp4e7zcp35rw0ccey7hevkqxlfuc",
+      "isBurned": false,
+      "onChainName": "BadKey2025",
+      "displayName": "Bad Key #2025",
+      "serialNumber": 2025,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #4215",
+        "Fox (M)": "Bad Fox #4684",
+        "Motorcycle": "Bad Motorcycle #2025"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmYNDZoUjxbFqqopTUjEHZWu5TaHeDAotw88XpATTbFtKt",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmUyuhPTBmSQc5wuXzh9DgiT4wWyixV5kRxssBybUfcAso",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmWm2SX8mwtFnz75LDdVteTX6HkNUaLbpWN8HwoEodz7vv",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932303236",
       "fingerprint": "asset1vdx2hhrmj4zeq62v8ue6nmw7rp4mqg6klx00j4",
       "isBurned": false,
@@ -43177,6 +44990,80 @@
         },
         {
           "src": "ipfs://QmdpDRMuk1MuAQYListZ5VYXm1F8LT4WyyM5yp1iyWQGJC",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932303631",
+      "fingerprint": "asset1x0tt4hnxk8m30guuu8txvq9hryytd50972ak5h",
+      "isBurned": false,
+      "onChainName": "BadKey2061",
+      "displayName": "Bad Key #2061",
+      "serialNumber": 2061,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #4501",
+        "Fox (M)": "Bad Fox #2584",
+        "Motorcycle": "Bad Motorcycle #2061"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmNPgC9QQvDZPr6HS7uoKRHXUPDjH3q288rNorq9QAaQam",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://Qmcwmp449BYv7WCvJxwX2XBsECbMWJNmqgQf7Cf2X7K2AK",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://Qmbn77LEjVaBiU99vffsST1PAoTWitgvYN3za1ADpeouF3",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932303631",
+      "fingerprint": "asset1x0tt4hnxk8m30guuu8txvq9hryytd50972ak5h",
+      "isBurned": false,
+      "onChainName": "BadKey2061",
+      "displayName": "Bad Key #2061",
+      "serialNumber": 2061,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #4501",
+        "Fox (M)": "Bad Fox #2584",
+        "Motorcycle": "Bad Motorcycle #2061"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmNPgC9QQvDZPr6HS7uoKRHXUPDjH3q288rNorq9QAaQam",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://Qmcwmp449BYv7WCvJxwX2XBsECbMWJNmqgQf7Cf2X7K2AK",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://Qmbn77LEjVaBiU99vffsST1PAoTWitgvYN3za1ADpeouF3",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -43960,6 +45847,43 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932313035",
+      "fingerprint": "asset108sh8078ratvfd9gefcwgk2dutfyx0enge3vyq",
+      "isBurned": false,
+      "onChainName": "BadKey2105",
+      "displayName": "Bad Key #2105",
+      "serialNumber": 2105,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #3399",
+        "Fox (M)": "Bad Fox #5612",
+        "Motorcycle": "Bad Motorcycle #2105"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmWTTVNrGA3DLjHv558Hki229gp6JATCaPt3xsPXifXTEd",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmTHku6XVpASdFPmczvNH4NvRGXd4znL1q9NNkBNmXGw37",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmfSkKrxZKn4rZHFPACRAVdYEms6K1sbJehgbR87HRt1hF",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932313036",
       "fingerprint": "asset1ptaavp8tmru0erru9zmratnsutpypfny9y68xg",
       "isBurned": false,
@@ -44028,6 +45952,80 @@
         },
         {
           "src": "ipfs://QmReHusqaH8mmmf5kxcjHVfTaef9isFjkN1kMS7oZLkeAe",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932313038",
+      "fingerprint": "asset1wq5qkhvtpptc8n6a8gww6ytjq5a25t3q675wln",
+      "isBurned": false,
+      "onChainName": "BadKey2108",
+      "displayName": "Bad Key #2108",
+      "serialNumber": 2108,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #2827",
+        "Fox (M)": "Bad Fox #4708",
+        "Motorcycle": "Bad Motorcycle #2108"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmQ7oQTzAU9tpty7BraG3sX1QyYAteC91pW7hBqrPBQ3nU",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmZGzWtTQJBSXX6t2R2J5S15QtWg3X2RzektDiVC9p271p",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmVPM6zTK35ZVQQozyX9J1dVkxrnPGHZM2brZJhZcDKTqJ",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932313038",
+      "fingerprint": "asset1wq5qkhvtpptc8n6a8gww6ytjq5a25t3q675wln",
+      "isBurned": false,
+      "onChainName": "BadKey2108",
+      "displayName": "Bad Key #2108",
+      "serialNumber": 2108,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #2827",
+        "Fox (M)": "Bad Fox #4708",
+        "Motorcycle": "Bad Motorcycle #2108"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmQ7oQTzAU9tpty7BraG3sX1QyYAteC91pW7hBqrPBQ3nU",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmZGzWtTQJBSXX6t2R2J5S15QtWg3X2RzektDiVC9p271p",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmVPM6zTK35ZVQQozyX9J1dVkxrnPGHZM2brZJhZcDKTqJ",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -44287,6 +46285,43 @@
         },
         {
           "src": "ipfs://QmaASdQyswBLGQR6tkynXvke9HLWhBR3BzJJwGgDewuJeE",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932313232",
+      "fingerprint": "asset1cern90g7rcdg752pctt7a86dl9r3lrplhqkdqx",
+      "isBurned": false,
+      "onChainName": "BadKey2122",
+      "displayName": "Bad Key #2122",
+      "serialNumber": 2122,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #2539",
+        "Fox (M)": "Bad Fox #1980",
+        "Motorcycle": "Bad Motorcycle #2122"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmVVdzdwNpE6biMmBqKD42btiSJhQxMbe7QUSwW4zYRUEW",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmRqnnUJdsNLWj3QWRmLgvvjdG74Zoboq9664ePEfszHPX",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmYv92nPSRtTNRTB8R6oFuDHUauktNkTo8LWBuMdNF5pGB",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -45810,6 +47845,80 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932313933",
+      "fingerprint": "asset1acj075qanh3c468n39vlycqe8qclc5ksq3wjls",
+      "isBurned": false,
+      "onChainName": "BadKey2193",
+      "displayName": "Bad Key #2193",
+      "serialNumber": 2193,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #0819",
+        "Fox (M)": "Bad Fox #0438",
+        "Motorcycle": "Bad Motorcycle #2193"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmWActgkY672tJxW1NVSsvdwn1pfSvJnfjhFo29PXmRi2J",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://Qmd5MUQNg67YCxVZfWNFoDnuC8QrnDYY9rocs1H2odYRLF",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmRzdWvVzuo5TV7rcFSH7AmTCxeDt3GucF1np9TNEFzEFS",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932313933",
+      "fingerprint": "asset1acj075qanh3c468n39vlycqe8qclc5ksq3wjls",
+      "isBurned": false,
+      "onChainName": "BadKey2193",
+      "displayName": "Bad Key #2193",
+      "serialNumber": 2193,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #0819",
+        "Fox (M)": "Bad Fox #0438",
+        "Motorcycle": "Bad Motorcycle #2193"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmWActgkY672tJxW1NVSsvdwn1pfSvJnfjhFo29PXmRi2J",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://Qmd5MUQNg67YCxVZfWNFoDnuC8QrnDYY9rocs1H2odYRLF",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmRzdWvVzuo5TV7rcFSH7AmTCxeDt3GucF1np9TNEFzEFS",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932313934",
       "fingerprint": "asset135wgtw5s94zqq0a9nq4wd5pylhmpayu7a8m0t3",
       "isBurned": false,
@@ -46254,6 +48363,80 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932323132",
+      "fingerprint": "asset17a0ttdjhnjfaug2ha7720ggf2hhq5cece7reps",
+      "isBurned": false,
+      "onChainName": "BadKey2212",
+      "displayName": "Bad Key #2212",
+      "serialNumber": 2212,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #1889",
+        "Fox (M)": "Bad Fox #2236",
+        "Motorcycle": "Bad Motorcycle #2212"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmfLF9yFAtHga7fKz6TRMyXj43HXaVpEG3gZrQKCXvecKU",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmRcNVVMH8pABtVFeQXm3hrWCEaQFpR7gNGbkELWYQBWu3",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://Qmbw3tf5cJjnpXJqtG5QRgUrZt4mk7vkmNg5PMJ7P4aQjf",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932323132",
+      "fingerprint": "asset17a0ttdjhnjfaug2ha7720ggf2hhq5cece7reps",
+      "isBurned": false,
+      "onChainName": "BadKey2212",
+      "displayName": "Bad Key #2212",
+      "serialNumber": 2212,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #1889",
+        "Fox (M)": "Bad Fox #2236",
+        "Motorcycle": "Bad Motorcycle #2212"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmfLF9yFAtHga7fKz6TRMyXj43HXaVpEG3gZrQKCXvecKU",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmRcNVVMH8pABtVFeQXm3hrWCEaQFpR7gNGbkELWYQBWu3",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://Qmbw3tf5cJjnpXJqtG5QRgUrZt4mk7vkmNg5PMJ7P4aQjf",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932323135",
       "fingerprint": "asset1u6cs6h07msan04z9p8nv8kmf8eep0sq7wjzmgx",
       "isBurned": false,
@@ -46433,6 +48616,43 @@
         },
         {
           "src": "ipfs://QmaWM6RPe9wfKLcfAQRVbLu4bqvbp1zzcR8xSwRWpGzGvp",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932323234",
+      "fingerprint": "asset1jaagjdnf4rqs2hpffgzl3y4nyvxppc2xrxn5x0",
+      "isBurned": false,
+      "onChainName": "BadKey2224",
+      "displayName": "Bad Key #2224",
+      "serialNumber": 2224,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #4173",
+        "Fox (M)": "Bad Fox #0966",
+        "Motorcycle": "Bad Motorcycle #2224"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmbwuPMfKnNH6BP2gbyXSk44wNNi3Nw95phBrgcacVgDcX",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://Qme53Gc9nkZvqC4k2YA1gKwqjh6NkiLm56f772dufazX2U",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmdupRBLieV9oWcrodbYxHCbFmAcc69tx3tkR1rd4yETVj",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -49584,6 +51804,80 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932333935",
+      "fingerprint": "asset1wjc25krrx5ks375hdjzq9r60w5jhff7uzuv67h",
+      "isBurned": false,
+      "onChainName": "BadKey2395",
+      "displayName": "Bad Key #2395",
+      "serialNumber": 2395,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #5257",
+        "Fox (M)": "Bad Fox #4644",
+        "Motorcycle": "Bad Motorcycle #2395"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmZMZTLk8sj4CAh31i5ojsv4YCoYCbubRyb2trMzQPKgTH",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmU4fKE6ZATHnvLNugL9NtgAXQsbJx2SVVuaaUTeZFPu5H",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://Qmc4gYxqjnRHkznhttJRFVAgASZJV8BkQ1AxGiF1AFoMy9",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932333935",
+      "fingerprint": "asset1wjc25krrx5ks375hdjzq9r60w5jhff7uzuv67h",
+      "isBurned": false,
+      "onChainName": "BadKey2395",
+      "displayName": "Bad Key #2395",
+      "serialNumber": 2395,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #5257",
+        "Fox (M)": "Bad Fox #4644",
+        "Motorcycle": "Bad Motorcycle #2395"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmZMZTLk8sj4CAh31i5ojsv4YCoYCbubRyb2trMzQPKgTH",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmU4fKE6ZATHnvLNugL9NtgAXQsbJx2SVVuaaUTeZFPu5H",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://Qmc4gYxqjnRHkznhttJRFVAgASZJV8BkQ1AxGiF1AFoMy9",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932333937",
       "fingerprint": "asset1yswmlazkkz9keqtu74j5568ux8zm39tmwxjkxe",
       "isBurned": false,
@@ -50657,6 +52951,43 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932343438",
+      "fingerprint": "asset1ypn8x5dpudjdn9zqgr5g39pdkzmtc2w2j5k2qg",
+      "isBurned": false,
+      "onChainName": "BadKey2448",
+      "displayName": "Bad Key #2448",
+      "serialNumber": 2448,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #4359",
+        "Fox (M)": "Bad Fox #5496",
+        "Motorcycle": "Bad Motorcycle #2448"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://Qmc6nvUDEYjT51Rm2bbXuMjx15ACdbLEAybizphNAkSrdB",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmbTxXxHsDZEqk7ax8ZtxuSnAhy6Ykirouxfe3saGjxC2t",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://Qmc9Zz2vLCA23jhMXQ29jVJdHA1mgLRSteMptjt6t6TuZg",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932343439",
       "fingerprint": "asset1nc8ra28uu59wm2gpd9uq4uckrpevjze9ul44kv",
       "isBurned": false,
@@ -50947,6 +53278,80 @@
         },
         {
           "src": "ipfs://QmYEebw45P8UiNY1ymVES3hfhrRZwwWkgTjWNiuP55TN27",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932343635",
+      "fingerprint": "asset189c2kpg48zvgjht8fx2zeleukhpd5dgn34udr0",
+      "isBurned": false,
+      "onChainName": "BadKey2465",
+      "displayName": "Bad Key #2465",
+      "serialNumber": 2465,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #0565",
+        "Fox (M)": "Bad Fox #5288",
+        "Motorcycle": "Bad Motorcycle #2465"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmVUpohp6kLuojCQEvYi3j47e11RqqgYZ6MHYwxh17XVwQ",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmXosjE4UakKkPknF5YQQcsrc6SjwgzZHTzu5ZZVeZjm2P",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmRyjC1EsNduzBMDV75wQimmAZDGUtYaAgULPjd1SLHwEQ",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932343635",
+      "fingerprint": "asset189c2kpg48zvgjht8fx2zeleukhpd5dgn34udr0",
+      "isBurned": false,
+      "onChainName": "BadKey2465",
+      "displayName": "Bad Key #2465",
+      "serialNumber": 2465,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #0565",
+        "Fox (M)": "Bad Fox #5288",
+        "Motorcycle": "Bad Motorcycle #2465"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmVUpohp6kLuojCQEvYi3j47e11RqqgYZ6MHYwxh17XVwQ",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmXosjE4UakKkPknF5YQQcsrc6SjwgzZHTzu5ZZVeZjm2P",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmRyjC1EsNduzBMDV75wQimmAZDGUtYaAgULPjd1SLHwEQ",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -51471,6 +53876,43 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932343931",
+      "fingerprint": "asset15vd7c4d5h4lfdpnvyv0jlze82jxcz57dadwnam",
+      "isBurned": false,
+      "onChainName": "BadKey2491",
+      "displayName": "Bad Key #2491",
+      "serialNumber": 2491,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #1603",
+        "Fox (M)": "Bad Fox #2896",
+        "Motorcycle": "Bad Motorcycle #2491"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmcT72yMoWHS3gaoTnGHpcToUhpr2c6UtV67xF8BZRmPZ7",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmVf68Po3A46U3S1qEvG9nsXU8bXyfSW7kc3jrkbuadA6v",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmWxWBJs6mbmaSJZGdKj29QM2fc1Qg7uXoYdkLkTnRSQRY",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932343933",
       "fingerprint": "asset1k8zndahdxy56nvnusvj2854lnpuulj9k9mrw3x",
       "isBurned": false,
@@ -51650,6 +54092,80 @@
         },
         {
           "src": "ipfs://QmXxqnThp3iFHPy2AMkNEQRimNkfnKB3qsy4zJQijmsfWo",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932353030",
+      "fingerprint": "asset1zen9utd8qlergsheexvrsmwey27wrr2fgzmfsw",
+      "isBurned": false,
+      "onChainName": "BadKey2500",
+      "displayName": "Bad Key #2500",
+      "serialNumber": 2500,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #2585",
+        "Fox (M)": "Bad Fox #4556",
+        "Motorcycle": "Bad Motorcycle #2500"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://Qmedp9UhTRi6aDHzXWc3VhXrJNcb9CKjjrZwH1SaBjj8me",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmQMABMHKx3iJS5uPLQwte8VbxpD18CpVE9ZzWVJ1C3SmC",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://Qme3HFF5NZHPezoKgjMRvq1bSXJTEpUPGBpV9ze2Xqixy5",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932353030",
+      "fingerprint": "asset1zen9utd8qlergsheexvrsmwey27wrr2fgzmfsw",
+      "isBurned": false,
+      "onChainName": "BadKey2500",
+      "displayName": "Bad Key #2500",
+      "serialNumber": 2500,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #2585",
+        "Fox (M)": "Bad Fox #4556",
+        "Motorcycle": "Bad Motorcycle #2500"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://Qmedp9UhTRi6aDHzXWc3VhXrJNcb9CKjjrZwH1SaBjj8me",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmQMABMHKx3iJS5uPLQwte8VbxpD18CpVE9ZzWVJ1C3SmC",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://Qme3HFF5NZHPezoKgjMRvq1bSXJTEpUPGBpV9ze2Xqixy5",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -52211,6 +54727,80 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932353330",
+      "fingerprint": "asset1unx0gtvr470chdadutp05mwgg6qna6kggw27as",
+      "isBurned": false,
+      "onChainName": "BadKey2530",
+      "displayName": "Bad Key #2530",
+      "serialNumber": 2530,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #0321",
+        "Fox (M)": "Bad Fox #0234",
+        "Motorcycle": "Bad Motorcycle #2530"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmY5TAJSvwcQw7dfbx8XfLir8ThqWCPLPhHB94SDhHdc1x",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmYZayZYy2Z4VpeM7ts22Wj75zeqXQXbVxzuNAAZhaiH1i",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmVLPu874CcqsNbGfYbfruNw5oqcNSy9ihXw71GGgYsnzy",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932353330",
+      "fingerprint": "asset1unx0gtvr470chdadutp05mwgg6qna6kggw27as",
+      "isBurned": false,
+      "onChainName": "BadKey2530",
+      "displayName": "Bad Key #2530",
+      "serialNumber": 2530,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #0321",
+        "Fox (M)": "Bad Fox #0234",
+        "Motorcycle": "Bad Motorcycle #2530"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmY5TAJSvwcQw7dfbx8XfLir8ThqWCPLPhHB94SDhHdc1x",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmYZayZYy2Z4VpeM7ts22Wj75zeqXQXbVxzuNAAZhaiH1i",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmVLPu874CcqsNbGfYbfruNw5oqcNSy9ihXw71GGgYsnzy",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932353332",
       "fingerprint": "asset1hk5hy78vhjhpghwnz4x6es6c4mluus6ultw7jg",
       "isBurned": false,
@@ -52353,6 +54943,43 @@
         },
         {
           "src": "ipfs://QmQjSbTLyQ9EbkbdxegnypyRyRhdvrpzfoHaQRmuNeJFz9",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932353430",
+      "fingerprint": "asset1257vcxusukgmcdvgkehu2la33pz59sf54sqw9x",
+      "isBurned": false,
+      "onChainName": "BadKey2540",
+      "displayName": "Bad Key #2540",
+      "serialNumber": 2540,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #1943",
+        "Fox (M)": "Bad Fox #2138",
+        "Motorcycle": "Bad Motorcycle #2540"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmX4qWZJ1kwbCusfR1yPzsYHmX8e3XEZaC7CdHYqytA11i",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmZhXDT9pvEkBDnHjfhzrpPEkoxues49KY4s6y1cDM2Egs",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmfXDPupTA85YE8dk69BRi6WYbMT5jin2fUQZ2ioY8EhJq",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -53580,6 +56207,43 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932353936",
+      "fingerprint": "asset1g287dtgyem8as9nysw6p880tfuqd42heyunrwn",
+      "isBurned": false,
+      "onChainName": "BadKey2596",
+      "displayName": "Bad Key #2596",
+      "serialNumber": 2596,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #2065",
+        "Fox (M)": "Bad Fox #3388",
+        "Motorcycle": "Bad Motorcycle #2596"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmTKRTv2jMS3ZcxSHV5gPV1LKPZyUW8CcvikHVquGNmF7E",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmadCtobSMZmkkrkq1xsBkjAqQW522mf5iRgC1zbtvufFY",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmV7rMH3tYNeNmStJnTkybjatWhRKBKvRjZMFe3e5rN1RK",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932353938",
       "fingerprint": "asset19rp08qwt45y32vvs2upc05zyylkdeesyku8wqs",
       "isBurned": false,
@@ -53648,6 +56312,80 @@
         },
         {
           "src": "ipfs://QmRGG6yjYgHmWaZPBAL5hii7prX51ifqqPWHRsX6eLdX9Z",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932363033",
+      "fingerprint": "asset14654vn447xj970vv3e67m00mc602e3rwv450g7",
+      "isBurned": false,
+      "onChainName": "BadKey2603",
+      "displayName": "Bad Key #2603",
+      "serialNumber": 2603,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #0767",
+        "Fox (M)": "Bad Fox #4186",
+        "Motorcycle": "Bad Motorcycle #2603"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmWQsRr8K7awiaABWSowyKSSd9cG2apiSvPfxAahazEZKY",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmTFCDgHPLy5pNn7QVHPjV6WWZP38BkPeD9WCDgo33W5Rv",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmdMLFY32NpRzWFUVpnL3NziEY1gT4kTuCWpZgFiWHKZk3",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932363033",
+      "fingerprint": "asset14654vn447xj970vv3e67m00mc602e3rwv450g7",
+      "isBurned": false,
+      "onChainName": "BadKey2603",
+      "displayName": "Bad Key #2603",
+      "serialNumber": 2603,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #0767",
+        "Fox (M)": "Bad Fox #4186",
+        "Motorcycle": "Bad Motorcycle #2603"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmWQsRr8K7awiaABWSowyKSSd9cG2apiSvPfxAahazEZKY",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmTFCDgHPLy5pNn7QVHPjV6WWZP38BkPeD9WCDgo33W5Rv",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmdMLFY32NpRzWFUVpnL3NziEY1gT4kTuCWpZgFiWHKZk3",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -55134,6 +57872,80 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932363734",
+      "fingerprint": "asset1vyrs5xykfj3pgpaf0kqwpa6q978hjwpkdf2xqx",
+      "isBurned": false,
+      "onChainName": "BadKey2674",
+      "displayName": "Bad Key #2674",
+      "serialNumber": 2674,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #1799",
+        "Fox (M)": "Bad Fox #0250",
+        "Motorcycle": "Bad Motorcycle #2674"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmbbQSqMaqEHUs5wZyjAvm3uLJox4n9qpJHdkK4b7HsY42",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmPY1uBM4aMCV71TAovuJEQG2PFJURYJdJ7uk4GdU69QMo",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmW26teGu7HSknHQS7Nwta4rGNUpFUrs7cLX3zCMpnAfwc",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932363734",
+      "fingerprint": "asset1vyrs5xykfj3pgpaf0kqwpa6q978hjwpkdf2xqx",
+      "isBurned": false,
+      "onChainName": "BadKey2674",
+      "displayName": "Bad Key #2674",
+      "serialNumber": 2674,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #1799",
+        "Fox (M)": "Bad Fox #0250",
+        "Motorcycle": "Bad Motorcycle #2674"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmbbQSqMaqEHUs5wZyjAvm3uLJox4n9qpJHdkK4b7HsY42",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmPY1uBM4aMCV71TAovuJEQG2PFJURYJdJ7uk4GdU69QMo",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmW26teGu7HSknHQS7Nwta4rGNUpFUrs7cLX3zCMpnAfwc",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932363736",
       "fingerprint": "asset10tr626wdxcsfqaqda5nty0gvswrce33s2dz7xc",
       "isBurned": false,
@@ -55985,6 +58797,80 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932373136",
+      "fingerprint": "asset1saxjp2mgu73ck7syerapkgfejkg6ez65tu2syv",
+      "isBurned": false,
+      "onChainName": "BadKey2716",
+      "displayName": "Bad Key #2716",
+      "serialNumber": 2716,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #5263",
+        "Fox (M)": "Bad Fox #5528",
+        "Motorcycle": "Bad Motorcycle #2716"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmT5AcPzbEzAyhhDtiVVFcdpt4sgCxhWRJLfShEniaSBmx",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmTy9wZy5aB3kuwYV7K9b2hPLs6DBp4txQUa9mSWjcNzAG",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmVa8Aud3WFtCM2tUmyPArrRdpxAJPp3qkKErG2GcDqyns",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932373136",
+      "fingerprint": "asset1saxjp2mgu73ck7syerapkgfejkg6ez65tu2syv",
+      "isBurned": false,
+      "onChainName": "BadKey2716",
+      "displayName": "Bad Key #2716",
+      "serialNumber": 2716,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #5263",
+        "Fox (M)": "Bad Fox #5528",
+        "Motorcycle": "Bad Motorcycle #2716"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmT5AcPzbEzAyhhDtiVVFcdpt4sgCxhWRJLfShEniaSBmx",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmTy9wZy5aB3kuwYV7K9b2hPLs6DBp4txQUa9mSWjcNzAG",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmVa8Aud3WFtCM2tUmyPArrRdpxAJPp3qkKErG2GcDqyns",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932373138",
       "fingerprint": "asset14p8lqv3as7hcsmnvv3j7e40rykelslmgkcnhw3",
       "isBurned": false,
@@ -56645,6 +59531,80 @@
         },
         {
           "src": "ipfs://QmXofE5Qm1QMjn8Jo3A6bqxVFSwRP7jVB8RwtSKzrLgkHS",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932373434",
+      "fingerprint": "asset1pncuz2v8nvja7mumyjyvp8mdsk8edwfku2r7pa",
+      "isBurned": false,
+      "onChainName": "BadKey2744",
+      "displayName": "Bad Key #2744",
+      "serialNumber": 2744,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #4119",
+        "Fox (M)": "Bad Fox #0780",
+        "Motorcycle": "Bad Motorcycle #2744"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmUA4ZDiF3L3iGu78Z8bivj4DLuRqZ3XhvFJu66hUUAtTb",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmYyoTTcTiLftoeDGLZWvJ6rso75wxXJF61MCMRQYe5LuY",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmSBuzyeB24ZyA7V6s1X2Ddmn1Ubr82kojpiAEAjrmZyFS",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932373434",
+      "fingerprint": "asset1pncuz2v8nvja7mumyjyvp8mdsk8edwfku2r7pa",
+      "isBurned": false,
+      "onChainName": "BadKey2744",
+      "displayName": "Bad Key #2744",
+      "serialNumber": 2744,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #4119",
+        "Fox (M)": "Bad Fox #0780",
+        "Motorcycle": "Bad Motorcycle #2744"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmUA4ZDiF3L3iGu78Z8bivj4DLuRqZ3XhvFJu66hUUAtTb",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmYyoTTcTiLftoeDGLZWvJ6rso75wxXJF61MCMRQYe5LuY",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmSBuzyeB24ZyA7V6s1X2Ddmn1Ubr82kojpiAEAjrmZyFS",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -58501,6 +61461,43 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932383233",
+      "fingerprint": "asset1hympe3mlzjglk38semskg2x7rv2rqq0p0gjfcm",
+      "isBurned": false,
+      "onChainName": "BadKey2823",
+      "displayName": "Bad Key #2823",
+      "serialNumber": 2823,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #5069",
+        "Fox (M)": "Bad Fox #5262",
+        "Motorcycle": "Bad Motorcycle #2823"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmZPhjNsA7JrtCSZ67xswaeDeGf9ogCNqopkMst2ctPK9f",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmazTxbcFuQvpmuPuqnp2XbczLUk9vjPfoGMR6tCfxThnu",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmVfR3P15f7UPr5n8JVe3MKkmsXz1aBHXvT4zVUCBGha7y",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932383234",
       "fingerprint": "asset1f746rktrk99mxmjtnvhgcajehyuecqxzzgk7hr",
       "isBurned": false,
@@ -58569,6 +61566,43 @@
         },
         {
           "src": "ipfs://QmY1zrPVNqp5EgJhkhxVNRZa8ksfoM2jibSzQRw4SvaB1w",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932383238",
+      "fingerprint": "asset1c7xdffhde5xwtrydf7kx4ulvq8qnuntey9jlyn",
+      "isBurned": false,
+      "onChainName": "BadKey2828",
+      "displayName": "Bad Key #2828",
+      "serialNumber": 2828,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #4553",
+        "Fox (M)": "Bad Fox #0128",
+        "Motorcycle": "Bad Motorcycle #2828"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmYZUrWetcLQVufQRUckm3zJ5hQEcPC6SDcrhJDRoWH99U",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmVwteyfViAB4YuaNyM97Xnv84KCVQx6JZzXXSbr8kD3fp",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmQRN9FV5jjaUd17pji8c6RL85exvfinzrhKBguM4Sw3xW",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
@@ -62090,6 +65124,80 @@
       ]
     },
     {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932393838",
+      "fingerprint": "asset1dmu27lxdnudwjzm877dsfan75qmgfwea33793k",
+      "isBurned": false,
+      "onChainName": "BadKey2988",
+      "displayName": "Bad Key #2988",
+      "serialNumber": 2988,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #5933",
+        "Fox (M)": "Bad Fox #5876",
+        "Motorcycle": "Bad Motorcycle #2988"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmTT5f51dpL81GZEfSynvHzYZ2VAZmtEZr5CcaP3wbjqsK",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmbVXTWgf2jQ2M7neE5hVAkbTHsDsai96ixrsWaCTsi4DT",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmcE6FPDJHxGR5DqjX9crjxidHWccF3dWworaSP8iSqKnZ",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
+      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932393838",
+      "fingerprint": "asset1dmu27lxdnudwjzm877dsfan75qmgfwea33793k",
+      "isBurned": false,
+      "onChainName": "BadKey2988",
+      "displayName": "Bad Key #2988",
+      "serialNumber": 2988,
+      "rarityRank": 1,
+      "attributes": {
+        "Fox (F)": "Bad Fox #5933",
+        "Fox (M)": "Bad Fox #5876",
+        "Motorcycle": "Bad Motorcycle #2988"
+      },
+      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
+      "files": [
+        {
+          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
+          "name": "Bad Key",
+          "mediaType": "model/gltf-binary"
+        },
+        {
+          "src": "ipfs://QmTT5f51dpL81GZEfSynvHzYZ2VAZmtEZr5CcaP3wbjqsK",
+          "name": "Bad Motorcycle",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmbVXTWgf2jQ2M7neE5hVAkbTHsDsai96ixrsWaCTsi4DT",
+          "name": "Bad Fox (M)",
+          "mediaType": "image/png"
+        },
+        {
+          "src": "ipfs://QmcE6FPDJHxGR5DqjX9crjxidHWccF3dWworaSP8iSqKnZ",
+          "name": "Bad Fox (F)",
+          "mediaType": "image/png"
+        }
+      ]
+    },
+    {
       "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932393839",
       "fingerprint": "asset1mutwcyuvytemmx8q4zruyk78e4an8zqpetnx6v",
       "isBurned": false,
@@ -62306,43 +65414,6 @@
         },
         {
           "src": "ipfs://Qmdc7fBcXjPNztMEfQz53oXVk1uV2ut1ewD8ZsAQJ84SDF",
-          "name": "Bad Fox (F)",
-          "mediaType": "image/png"
-        }
-      ]
-    },
-    {
-      "assetId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add144261644b657932393938",
-      "fingerprint": "asset1ge2fdm6f5eddg4s2qvtdh6gpws2sjc80rjafrd",
-      "isBurned": false,
-      "onChainName": "BadKey2998",
-      "displayName": "Bad Key #2998",
-      "serialNumber": 2998,
-      "rarityRank": 1,
-      "attributes": {
-        "Fox (F)": "Bad Fox #2289",
-        "Fox (M)": "Bad Fox #1440",
-        "Motorcycle": "Bad Motorcycle #2998"
-      },
-      "image": { "ipfs": "ipfs://QmRG8ATFNgtcohy7vtkciToGazzw4ngG3wKCQUFH5hR4UT", "firebase": "" },
-      "files": [
-        {
-          "src": "ipfs://QmZyzAGjdbHbxYYiKhvgR18TmTF6UiYEDTQjSAjdnEKQNg",
-          "name": "Bad Key",
-          "mediaType": "model/gltf-binary"
-        },
-        {
-          "src": "ipfs://QmPToJTjAVHNpRdW1eDEhyrGU5jx3sRDSdzCgURSywBFvH",
-          "name": "Bad Motorcycle",
-          "mediaType": "image/png"
-        },
-        {
-          "src": "ipfs://QmRVYPBsMtiSkqU4QdsQhAxhgEK8N6k9fA6PjG85VNCjRK",
-          "name": "Bad Fox (M)",
-          "mediaType": "image/png"
-        },
-        {
-          "src": "ipfs://QmUgXQ3YtmxiZpTtNUkY6B7PnvHhJ5W8LQoAkVmzkQDxfo",
           "name": "Bad Fox (F)",
           "mediaType": "image/png"
         }
