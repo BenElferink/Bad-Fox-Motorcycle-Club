@@ -1,0 +1,13 @@
+name: cron-space-troopers
+on:
+  schedule:
+    - cron: '0 6 * * mon-sat'
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Space Troopers auto entry
+        run: |
+          curl --request HEAD \
+          --url 'https://badfoxmc.com/api/wallet/ALL/space-troopers' \
+          --header 'admin_code: ${{ secrets.ADMIN_CODE }}'

@@ -1,15 +1,15 @@
-import blockfrost from '../../../utils/blockfrost'
-import toHex from '../../../functions/formatters/hex/toHex'
-import getFileForPolicyId from '../../../functions/getFileForPolicyId'
+import blockfrost from '../../../../utils/blockfrost'
+import toHex from '../../../../functions/formatters/hex/toHex'
+import getFileForPolicyId from '../../../../functions/getFileForPolicyId'
 import {
   ADA_HANDLE_POLICY_ID,
   BAD_FOX_POLICY_ID,
   BAD_KEY_POLICY_ID,
   BAD_MOTORCYCLE_POLICY_ID,
-} from '../../../constants'
+} from '../../../../constants'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { PopulatedAsset, PopulatedWallet } from '../../../@types'
-import populateAsset from '../../../functions/populateAsset'
+import { PopulatedAsset, PopulatedWallet } from '../../../../@types'
+import populateAsset from '../../../../functions/populateAsset'
 
 interface Response extends PopulatedWallet {}
 
