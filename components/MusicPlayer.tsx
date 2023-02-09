@@ -30,7 +30,7 @@ const MusicPlayer = () => {
     const foundIdx = songs.findIndex((str) => window.location.origin + str === player.src)
     const albumIdx = foundIdx !== -1 ? foundIdx : Math.floor(Math.random() * songs.length)
     return albumIdx
-  }, [player, songs])
+  }, [player])
 
   const playPrev = useCallback(() => {
     if (player) {

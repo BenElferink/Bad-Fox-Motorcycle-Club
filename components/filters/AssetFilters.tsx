@@ -110,6 +110,7 @@ const AssetFilters = (props: AssetFiltersProps) => {
 
   useEffect(() => {
     callbackRendered(sortAssets(filterAssets(assetsData)))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterAssets, sortAssets, assetsData])
 
   return (

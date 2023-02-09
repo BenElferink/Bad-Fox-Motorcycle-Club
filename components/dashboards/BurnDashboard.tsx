@@ -118,6 +118,7 @@ const BurnDashboard = () => {
     }
 
     setLoadingTx(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [wallet, selectedMale, selectedFemale, selectedBike, txConfirmation, loadingTx])
 
   const filteredAssets = useMemo(
