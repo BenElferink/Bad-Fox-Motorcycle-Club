@@ -26,9 +26,9 @@ const RecentMarketActivity = (props: RecentMarketActivityProps) => {
   const [recentlySold, setRecentlySold] = useState<FormattedListingOrSale[]>([])
 
   const fetchRecents = useCallback(
-    async ({ page = 1, sold = false }: { page?: number; sold?: boolean }): Promise<FormattedListingOrSale[]> => {
+    async ({ sold = false }: { sold?: boolean }): Promise<FormattedListingOrSale[]> => {
       try {
-        const uri = `/api/policy/${policyId}/market/recent?sold=${sold}&page=${page}`
+        const uri = `/api/policy/${policyId}/market/recent?sold=${sold}`
         const { data } = await axios.get<{ count: number; items: FormattedListingOrSale[] }>(uri)
         return data.items
       } catch (error) {
@@ -39,36 +39,33 @@ const RecentMarketActivity = (props: RecentMarketActivityProps) => {
     [policyId]
   )
 
-  const fetchAndSet = useCallback(
-    async ({ page = 1 }: { page?: number }): Promise<void> => {
-      setFetching(true)
-      const isSalesOnly = type === 'sales'
-      const isListingsOnly = type === 'listings'
+  const fetchAndSet = useCallback(async (): Promise<void> => {
+    setFetching(true)
+    const isSalesOnly = type === 'sales'
+    const isListingsOnly = type === 'listings'
 
-      try {
-        if (isSalesOnly) {
-          const salesItems = await fetchRecents({ page, sold: true })
-          setRecentlySold(salesItems)
-        } else if (isListingsOnly) {
-          const listingsItems = await fetchRecents({ page, sold: false })
-          setRecentlyListed(listingsItems)
-        } else {
-          const salesItems = await fetchRecents({ page, sold: true })
-          const listingsItems = await fetchRecents({ page, sold: false })
-          setRecentlySold(salesItems)
-          setRecentlyListed(listingsItems)
-        }
-      } catch (error) {
-        console.error(error)
+    try {
+      if (isSalesOnly) {
+        const salesItems = await fetchRecents({ sold: true })
+        setRecentlySold(salesItems)
+      } else if (isListingsOnly) {
+        const listingsItems = await fetchRecents({ sold: false })
+        setRecentlyListed(listingsItems)
+      } else {
+        const salesItems = await fetchRecents({ sold: true })
+        const listingsItems = await fetchRecents({ sold: false })
+        setRecentlySold(salesItems)
+        setRecentlyListed(listingsItems)
       }
+    } catch (error) {
+      console.error(error)
+    }
 
-      setFetching(false)
-    },
-    [type, fetchRecents]
-  )
+    setFetching(false)
+  }, [type, fetchRecents])
 
   useEffect(() => {
-    fetchAndSet({ page: 1 })
+    fetchAndSet()
   }, [fetchAndSet])
 
   const imageSize = 170
@@ -84,15 +81,26 @@ const RecentMarketActivity = (props: RecentMarketActivityProps) => {
   }, [screenWidth, renderItems])
 
   useEffect(() => {
-    setRenderItems(
-      type === 'sales'
-        ? recentlySold
-        : type === 'listings'
-        ? recentlyListed
-        : [...recentlySold, ...recentlyListed].sort(
-            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-          )
-    )
+    let payload: FormattedListingOrSale[] = []
+
+    switch (type) {
+      case 'sales': {
+        payload = recentlySold
+        break
+      }
+      case 'listings': {
+        payload = recentlyListed
+        break
+      }
+      default: {
+        payload = recentlySold
+          .concat(recentlyListed)
+          .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        break
+      }
+    }
+
+    setRenderItems(payload)
   }, [type, recentlySold, recentlyListed])
 
   return (

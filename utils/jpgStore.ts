@@ -84,8 +84,8 @@ class JpgStore {
     const policyId = options.policyId ?? ''
     const sold = options.sold ?? false
     const type = sold ? 'sales' : 'listings'
-    const page = options.page ?? 1
-    const uri = `${this.baseUrl}/policy/${policyId}/${type}?page=${page}`
+    const page = options.page ?? 0
+    const uri = `${this.baseUrl}/policy/${policyId}/${type}${sold ? `?page=${page || 1}` : ''}`
 
     return new Promise(async (resolve, reject) => {
       console.log(`Fetching recent ${type} from jpg.store at page ${page} for policy ID ${policyId}`)
@@ -98,8 +98,19 @@ class JpgStore {
         })
 
         const payload = (
-          await this.formatListingOrSale(type.substring(0, type.length - 1) as 'sale' | 'listing', policyId, data)
-        ).sort((a, b) => b.date.getTime() - a.date.getTime())
+          await this.formatListingOrSale(
+            type.substring(0, type.length - 1) as 'sale' | 'listing',
+            policyId,
+            // @ts-ignore ( data.listings = only for /listings )
+            !sold ? data?.listings : data
+          )
+        ).sort((a, b) => a.date.getTime() - b.date.getTime())
+
+        if (!sold) {
+          console.log(payload)
+          console.log(uri)
+          console.log(options)
+        }
 
         console.log(`Fetched ${payload.length} items from jpg.store`)
 
