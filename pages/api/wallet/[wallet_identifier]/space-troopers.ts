@@ -69,11 +69,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<SpaceTroopersRe
           return res.status(401).end()
         }
 
+        res.status(202).end()
+
         const collection = firestore.collection('space-troopers')
         const collectionQuery = await collection.where('active', '==', true).get()
         const collectionDocs = collectionQuery.docs.map((doc) => doc.data())
 
-        await Promise.all(
+        return await Promise.all(
           collectionDocs.map(({ walletAddress }) =>
             axios.post<{
               result: {
@@ -89,8 +91,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<SpaceTroopersRe
             })
           )
         )
-
-        return res.status(200).end()
       }
 
       default: {
