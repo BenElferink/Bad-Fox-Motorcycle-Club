@@ -66,7 +66,7 @@ const Navigation = () => {
               title='Tools'
               links={[
                 { label: 'Bad Drop', url: 'https://drop.badfoxmc.com' },
-                { label: 'Bad Poll', url: '' },
+                { label: 'Bad Poll', url: 'https://poll.badfoxmc.com' },
                 { label: 'Bad Raffle', url: '' },
               ]}
               dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
