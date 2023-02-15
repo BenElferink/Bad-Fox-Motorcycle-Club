@@ -12,7 +12,8 @@ import sleep from '../../functions/sleep'
 import formatIpfsImageUrl from '../../functions/formatters/formatIpfsImageUrl'
 import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID, ONE_MILLION } from '../../constants'
 
-const BURN_ADDRESS = ''
+const BURN_ADDRESS =
+  'addr1qyn6t3nwhasa8gslcs6mj4qay78d3ufm7val0pz0uh3gy8dsf86vnnyx9qhjvka6etzkjpw82lz25vjfexnd9a6l08tqymvfqp'
 
 const BurnDashboard = () => {
   const { connectedManually, connectedName, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } =
