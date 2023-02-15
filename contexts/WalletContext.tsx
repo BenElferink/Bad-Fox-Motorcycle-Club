@@ -197,7 +197,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (!connected) {
-      const connectPaths = ['/wallet', '/transcend', '/reserve3d']
+      const connectPaths = ['/wallet', '/reserve3d']
 
       if (connectPaths.includes(window.location.pathname)) {
         const storageItem = window.localStorage.getItem('connected-wallet')
@@ -213,7 +213,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
         }
       }
     }
-  }, [])
+  }, [window.location.pathname])
 
   const removeAssetsFromWallet = async (_assetIds: string[]) => {
     if (connecting) return
