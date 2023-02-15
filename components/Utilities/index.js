@@ -28,7 +28,7 @@ const data = [
     events: [
       {
         complete: false,
-        title: 'Supply 6,000',
+        title: 'Supply 2,280',
       },
       {
         complete: true,
@@ -51,7 +51,7 @@ const data = [
     events: [
       {
         complete: false,
-        title: 'Supply 3,000',
+        title: 'Supply 1,140',
       },
       {
         complete: true,
@@ -74,7 +74,7 @@ const data = [
     events: [
       {
         complete: false,
-        title: 'Supply 0',
+        title: 'Supply 1,860',
       },
       {
         complete: true,
@@ -114,6 +114,10 @@ const data = [
       {
         complete: false,
         title: 'Metaverse Asset (avatar)',
+      },
+      {
+        complete: false,
+        title: 'IP Ownership & File Custody',
       },
     ],
     renderMedia: (isLeft) => (

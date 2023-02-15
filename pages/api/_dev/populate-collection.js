@@ -20,11 +20,13 @@ const assetsFile = getFileForPolicyId(POLICY_ID, 'assets')
 
 const countTraits = (assets) => {
   const traits = {}
-  const numOfAssets = assets.length
+  const numOfAssets = assets.filter((item) => !item.isBurned).length
 
   Object.entries(traitsFile).forEach(([category, attributes]) => {
     attributes.forEach((trait) => {
-      const labelCount = assets.filter((item) => item.attributes[category] === trait.onChainName).length
+      const labelCount = assets.filter(
+        (item) => !item.isBurned && item.attributes[category] === trait.onChainName
+      ).length
 
       const payload = {
         ...trait,
@@ -73,7 +75,11 @@ const handler = async (req, res) => {
               assetId,
               withRanks: HAS_RANKS_ON_CNFT_TOOLS,
             })
-            assetsFile.push(populatedAsset)
+
+            // motorcycle that was minted once, burned, then minted again
+            if (populatedAsset.fingerprint !== 'asset1wtxr28fwdskq6nw0dvmlq38qkfgzelq2vgvqva') {
+              assetsFile.push(populatedAsset)
+            }
           } else {
             const updatedAsset = await populate({
               policyId: POLICY_ID,
