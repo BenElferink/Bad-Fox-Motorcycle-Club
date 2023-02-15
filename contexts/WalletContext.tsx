@@ -213,7 +213,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
         }
       }
     }
-  }, [window.location.pathname])
+  }, [])
 
   const removeAssetsFromWallet = async (_assetIds: string[]) => {
     if (connecting) return
