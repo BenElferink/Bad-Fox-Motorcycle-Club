@@ -49,9 +49,7 @@ const Navigation = () => {
               title='Collections'
               links={[
                 { label: 'Bad Fox', path: `/collections/${BAD_FOX_POLICY_ID}` },
-                { label: 'Bad Fox (traits)', path: `/traits/${BAD_FOX_POLICY_ID}` },
                 { label: 'Bad Motorcycle', path: `/collections/${BAD_MOTORCYCLE_POLICY_ID}` },
-                { label: 'Bad Motorcycle (traits)', path: `/traits/${BAD_MOTORCYCLE_POLICY_ID}` },
                 { label: 'Bad Key', path: `/collections/${BAD_KEY_POLICY_ID}` },
                 { label: '3D Fox', path: '' },
                 { label: '3D Motorcycle', path: '' },
@@ -117,19 +115,6 @@ const Navigation = () => {
           }
         >
           Wallet
-        </Link>
-
-        <Link
-          href='/transcend'
-          onClick={() => window.scroll({ top: 0, left: 0 })}
-          className={
-            'mx-0 p-4 rounded-lg text-sm ' +
-            (router.pathname === '/transcend'
-              ? 'bg-gray-700 text-white'
-              : 'bg-gray-900 hover:bg-gray-700 hover:text-white')
-          }
-        >
-          Transcend
         </Link>
       </div>
     </nav>
