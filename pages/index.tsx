@@ -210,11 +210,16 @@ const teamMembers = [
   },
   {
     name: 'Crib King (4042)',
-    title: 'Community Manager',
+    title: 'Director of Vibes',
     description:
-      'I\'m an artist by nature. I love to take "this" and "that" and combine them to make something even better. I\'ve been in the crypto space since late 2020 and am in the Cardano NFT space since inception. I know this is the place for me!',
+      'I use creative thinking as a means of expression. This helps me to connect dots and build bridges from one point to another. What is a "Director of Vibes" ? Look at it as a less formal version of Community Manager. I\'m here to coordinate the community vibes and connect with the people!',
     profilePicture: '/media/team/4042.jpg',
-    socials: ['https://twitter.com/CribKingCOM', 'https://discord.com/users/829116071663370250'],
+    socials: [
+      'https://twitter.com/CribKingCOM',
+      'https://soundcloud.com/badfox4042',
+      'https://www.youtube.com/@badfox4042',
+      'https://discord.com/users/829116071663370250',
+    ],
   },
   {
     name: 'Uberman',

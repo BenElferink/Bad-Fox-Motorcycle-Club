@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React, { useCallback } from 'react'
 
 export type SocialNetwork =
+  | 'soundcloud'
   | 'behance'
   | 'discord'
   | 'github'
@@ -40,6 +41,21 @@ const SocialIcon = (props: SocialIconProps) => {
     const finalSize = size || 'w-7 h-7'
 
     switch (network || networkFromUrl) {
+      case 'soundcloud':
+        return (
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            viewBox='0 0 291.319 291.319'
+            className={finalSize}
+            style={{ color: color || '#1769ff' }}
+          >
+            <path
+              fill='currentColor'
+              d='M72.83 218.485h18.207V103.832c-6.828 1.93-12.982 5.435-18.207 10.041v104.612zm-36.415-77.564v77.436l1.174.127h17.033v-77.682H37.589l-1.174.119zM0 179.63c0 14.102 7.338 26.328 18.207 33.147V146.52C7.338 153.329 0 165.556 0 179.63zm109.245 38.855h18.207v-109.6c-5.444-3.396-11.607-5.635-18.207-6.5v116.1zm144.485-77.682h-10.242c.519-3.168.847-6.382.847-9.705 0-32.182-25.245-58.264-56.388-58.264-16.896 0-31.954 7.775-42.287 19.955v125.695h108.07c20.747 0 37.589-17.388 37.589-38.855 0-21.447-16.842-38.826-37.589-38.826z'
+            ></path>
+          </svg>
+        )
+
       case 'behance':
         return (
           <svg
