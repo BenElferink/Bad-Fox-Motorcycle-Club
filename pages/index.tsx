@@ -156,6 +156,29 @@ const creativePartnerships = [
   },
 ]
 
+const featuredBy = [
+  {
+    name: 'Awesomeisjayell',
+    url: 'https://www.youtube.com/@awesomeisjayell',
+    logoUrl: '/media/logo/other/awesomeisjayell.png',
+  },
+  {
+    name: 'Atlanick',
+    url: 'https://www.youtube.com/@Atlanick',
+    logoUrl: '/media/logo/other/atlanick.png',
+  },
+  {
+    name: 'Cardano Thor',
+    url: 'https://www.youtube.com/@CardanoThor',
+    logoUrl: '/media/logo/other/cardanothor.png',
+  },
+  {
+    name: 'Ultimate CNFT',
+    url: 'https://www.youtube.com/@ultimatecnft',
+    logoUrl: '/media/logo/other/ultimatecnft.png',
+  },
+]
+
 const doxxedServices = [
   {
     name: 'Bearmarket Doxxing',
@@ -258,6 +281,15 @@ const Page = () => {
       </div>
 
       <div className='flex flex-col items-center justify-center my-8 text-gray-500'>
+        <h5 className='text-2xl'>Featured by Content Creators</h5>
+        <div className='flex flex-wrap items-center justify-center'>
+          {featuredBy.map(({ name, url, logoUrl }) => (
+            <PartnerProject key={`featured-${name}`} name={name} url={url} logoUrl={logoUrl} />
+          ))}
+        </div>
+      </div>
+
+      <div className='flex flex-col items-center justify-center my-8 text-gray-500'>
         <h5 className='text-2xl'>Alliances</h5>
         <div className='flex flex-wrap items-center justify-center'>
           {alliances.map(({ name, url, logoUrl }) => (
@@ -270,7 +302,13 @@ const Page = () => {
         <h5 className='text-2xl'>Certifications</h5>
         <div className='flex flex-wrap items-center justify-center'>
           {doxxedServices.map(({ name, url, logoUrl }) => (
-            <PartnerProject key={`doxxed-by-${name}`} name={name} url={url} logoUrl={logoUrl} className='mx-8' />
+            <PartnerProject
+              key={`certification-${name}`}
+              name={name}
+              url={url}
+              logoUrl={logoUrl}
+              className='mx-8'
+            />
           ))}
         </div>
       </div>
