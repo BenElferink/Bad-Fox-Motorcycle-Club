@@ -61,7 +61,16 @@ const AssetModalContent = (props: AssetModalContentProps) => {
       <div className=''>
         {displayedFile.mediaType === 'image/png' ? (
           <button
-            onClick={() => window.open(displayedFile.src, '_blank', 'noopener noreferrer')}
+            onClick={() =>
+              window.open(
+                formatIpfsImageUrl({
+                  ipfsUri: displayedFile.src,
+                  hasRank: false,
+                }),
+                '_blank',
+                'noopener noreferrer'
+              )
+            }
             className='w-[80vw] md:w-[555px]'
           >
             <ImageLoader
