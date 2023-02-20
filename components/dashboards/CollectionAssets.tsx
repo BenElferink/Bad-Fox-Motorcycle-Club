@@ -11,7 +11,7 @@ import Loader from '../Loader'
 import Modal from '../layout/Modal'
 import ImageLoader from '../Loader/ImageLoader'
 import ModelViewer from '../models/ModelViewer'
-import { ADA_SYMBOL, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID } from '../../constants'
+import { ADA_SYMBOL, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants'
 import { AssetIncludedFile, PolicyId, PopulatedAsset, TraitsFile } from '../../@types'
 import { ResponsePolicyMarketListings } from '../../pages/api/policy/[policy_id]/market/listed'
 import Image from 'next/image'
@@ -58,7 +58,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
 
   return (
     <div className='flex flex-col lg:flex-row lg:justify-between md:px-6'>
-      <div className=''>
+      <div>
         {displayedFile.mediaType === 'image/png' ? (
           <button
             onClick={() =>
@@ -158,18 +158,18 @@ const AssetModalContent = (props: AssetModalContentProps) => {
           <CopyChip prefix='Asset ID' value={asset.assetId} />
         </div>
 
-        <table className='my-2 border-collapse'>
+        <table className='mx-2 my-4 border-collapse'>
           <thead>
             <tr>
-              <th className='pr-2 text-sm text-start truncate'>Trait Category</th>
-              <th className='pl-2 text-sm text-start truncate'>Trait Value</th>
+              <th className='pr-2 text-xs text-start truncate'>Trait Category</th>
+              <th className='pl-2 text-xs text-start truncate'>Trait Value</th>
             </tr>
           </thead>
           <tbody>
             {Object.entries(asset.attributes).map(([category, trait]) => (
               <tr key={`attribute-${category}-${trait}`}>
-                <td className='pr-2 text-sm text-start truncate'>{category}</td>
-                <td className='pl-2 text-sm text-start truncate'>{trait}</td>
+                <td className='pr-2 text-xs text-start truncate'>{category}</td>
+                <td className='pl-2 text-xs text-start truncate'>{trait}</td>
               </tr>
             ))}
           </tbody>
@@ -188,13 +188,33 @@ const AssetModalContent = (props: AssetModalContentProps) => {
         ) : null}
 
         <button
-          onClick={() =>
-            window.open(`https://www.jpg.store/asset/${asset.assetId}`, '_blank', 'noopener noreferrer')
-          }
-          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded'
+          onClick={() => window.open(`https://pool.pm/${asset.fingerprint}`, '_blank', 'noopener noreferrer')}
+          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
         >
-          <Image src='/media/icon/jpg_store.png' alt='' width={30} height={30} className='mr-2' />
-          JPG Store
+          <Image src='/media/icon/poolpm.png' alt='' width={30} height={30} className='mr-2' />
+          pool.pm
+        </button>
+
+        <button
+          onClick={() =>
+            window.open(
+              `https://opencnft.io/${
+                policyId === BAD_FOX_POLICY_ID
+                  ? 'bad-fox-motorcycle-club-fox-collection'
+                  : policyId === BAD_MOTORCYCLE_POLICY_ID
+                  ? 'bad-fox-motorcycle-club-bad-motorcycle'
+                  : policyId === BAD_MOTORCYCLE_POLICY_ID
+                  ? 'bad-fox-motorcycle-club-bad-key'
+                  : ''
+              }/asset/${asset.fingerprint}`,
+              '_blank',
+              'noopener noreferrer'
+            )
+          }
+          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+        >
+          <Image src='/media/icon/opencnft.png' alt='' width={30} height={30} className='mr-2' />
+          Open CNFT
         </button>
 
         {asset.rarityRank ? (
@@ -206,9 +226,9 @@ const AssetModalContent = (props: AssetModalContentProps) => {
                 'noopener noreferrer'
               )
             }
-            className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded'
+            className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
           >
-            <Image src='/media/icon/cnft_tools.png' alt='' width={30} height={30} className='mr-2' />
+            <Image src='/media/icon/cnfttools.png' alt='' width={30} height={30} className='mr-2' />
             CNFT Tools
           </button>
         ) : null}
@@ -216,15 +236,43 @@ const AssetModalContent = (props: AssetModalContentProps) => {
         <button
           onClick={() =>
             window.open(
-              `https://www.cnftjungle.io/collections/${policyId}?tab=assets&assetId=${policyId}.${asset.onChainName}`,
+              `https://www.cnftjungle.io/asset/${policyId}.${asset.onChainName}`,
               '_blank',
               'noopener noreferrer'
             )
           }
-          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded'
+          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
         >
-          <Image src='/media/icon/cnft_jungle.png' alt='' width={30} height={30} className='mr-2' />
+          <Image src='/media/icon/cnftjungle.png' alt='' width={30} height={30} className='mr-2' />
           CNFT Jungle
+        </button>
+
+        <button
+          onClick={() =>
+            window.open(`https://www.jpg.store/asset/${asset.assetId}`, '_blank', 'noopener noreferrer')
+          }
+          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+        >
+          <Image src='/media/icon/jpgstore.png' alt='' width={30} height={30} className='mr-2' />
+          JPG Store
+        </button>
+
+        <button
+          onClick={() =>
+            window.open(`https://www.plutus.art/asset/${asset.assetId}`, '_blank', 'noopener noreferrer')
+          }
+          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+        >
+          <Image src='/media/icon/plutusart.png' alt='' width={30} height={30} className='mr-2' />
+          Plutus.art
+        </button>
+
+        <button
+          onClick={() => window.open(`https://epoch.art/asset/${asset.assetId}`, '_blank', 'noopener noreferrer')}
+          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+        >
+          <Image src='/media/icon/epochart.png' alt='' width={30} height={30} className='mr-2' />
+          Epoch.art
         </button>
       </div>
     </div>
