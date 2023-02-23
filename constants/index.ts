@@ -2,7 +2,6 @@ export const ADA_SYMBOL = '₳'
 export const ONE_MILLION = 1000000
 
 export const ADMIN_CODE = process.env.ADMIN_CODE
-export const TOOLS_PROD_CODE = process.env.TOOLS_PROD_CODE
 
 export const BLOCKFROST_API_KEY = process.env.BLOCKFROST_KEY as string
 export const BLOCKFROST_WEBHOOK_AUTH_TOKEN = process.env.BLOCKFROST_WEBHOOK_AUTH_TOKEN
