@@ -2,11 +2,11 @@ import Link from 'next/link'
 import TokenHeader from '../../components/tokens/TokenHeader'
 import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns'
 
-const TOKEN_IMAGE_SRC = '/media/tokens/nftc/token.png'
-const TOKEN_POLICY_ID = 'b0af30edf2c7f11465853821137e0a6ebc395cab71ee39c24127ffb4'
-const TOKEN_NAME = 'NFTC'
-const PROJECT_NAME = 'NFT Creative'
-const WHO_CAN_EARN: WhoCanEarn = ['Bad Fox', 'Bad Motorcycle', 'Bad Key']
+const TOKEN_IMAGE_SRC = '/media/tokens/cswap/token.png'
+const TOKEN_POLICY_ID = '???'
+const TOKEN_NAME = 'CSWAP'
+const PROJECT_NAME = 'CSWAP DEX'
+const WHO_CAN_EARN: WhoCanEarn = ['Bad Key']
 
 const Page = () => {
   return (
@@ -32,14 +32,20 @@ const Page = () => {
 
         <ol className='mx-auto list-decimal list-inside'>
           <li className='text-sm'>
-            Connect your wallet with{' '}
-            <Link href='https://dripdropz.io/' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
-              Drip Dropz
+            Connect your wallet to the{' '}
+            <Link
+              href='https://app.cswap.fi/nftstaking'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-blue-400'
+            >
+              CSWAP Staking Dashboard
             </Link>
             .
           </li>
-          <li className='text-sm'>Claim &quot;NFTC&quot; from the available tokens.</li>
-          <li className='text-sm'>Repeat every epoch (5 days).</li>
+          <li className='text-sm'>Click "Partner Staking", then click "Stake".</li>
+          <li className='text-sm'>That&apos;s it, you&apos;re accumulating.</li>
+          <li className='text-sm'>Claim your tokens by clicking "Harvest".</li>
         </ol>
       </div>
 
@@ -48,9 +54,9 @@ const Page = () => {
 
         <div className='mx-auto w-fit'>
           <p className='text-sm text-center'>
-            50 ${TOKEN_NAME} per 1 (eligible) NFT,
+            1 ${TOKEN_NAME} per 1 (eligible) NFT,
             <br />
-            every epoch (5 days).
+            every day.
           </p>
         </div>
       </div>

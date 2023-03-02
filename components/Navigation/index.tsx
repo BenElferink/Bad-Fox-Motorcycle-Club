@@ -75,12 +75,15 @@ const Navigation = () => {
               title='Tokens'
               links={[
                 { label: 'ADA', path: '/tokens/ada' },
-                { label: 'Hexonium', path: '/tokens/hexonium' },
-                { label: 'Society', path: '/tokens/society' },
                 { label: 'C4', path: '/tokens/c4' },
-                { label: 'NFTC', path: '/tokens/nftc' },
-                { label: 'DDoS', path: '/tokens/ddos' },
+                { label: 'CSWAP', path: '/tokens/cswap' },
+                { label: 'DDOS', path: '/tokens/ddos' },
+                { label: 'HEXO', path: '/tokens/hexo' },
                 { label: 'MD', path: '/tokens/md' },
+                { label: 'NFTC', path: '/tokens/nftc' },
+                { label: 'QAK', path: '' },
+                { label: 'SAFARI', path: '' },
+                { label: 'SOCIETY', path: '/tokens/society' },
               ]}
               dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
             />

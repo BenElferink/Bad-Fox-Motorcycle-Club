@@ -2,10 +2,10 @@ import Link from 'next/link'
 import TokenHeader from '../../components/tokens/TokenHeader'
 import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns'
 
-const TOKEN_IMAGE_SRC = '/media/tokens/nftc/token.png'
-const TOKEN_POLICY_ID = 'b0af30edf2c7f11465853821137e0a6ebc395cab71ee39c24127ffb4'
-const TOKEN_NAME = 'NFTC'
-const PROJECT_NAME = 'NFT Creative'
+const TOKEN_IMAGE_SRC = '/media/tokens/hexonium/token.png'
+const TOKEN_POLICY_ID = '27eee19588c997ca54d3137f64afe55a18dfcf9062fa83a724bf2357'
+const TOKEN_NAME = 'HEXO'
+const PROJECT_NAME = 'Cardano Lands'
 const WHO_CAN_EARN: WhoCanEarn = ['Bad Fox', 'Bad Motorcycle', 'Bad Key']
 
 const Page = () => {
@@ -32,14 +32,31 @@ const Page = () => {
 
         <ol className='mx-auto list-decimal list-inside'>
           <li className='text-sm'>
-            Connect your wallet with{' '}
-            <Link href='https://dripdropz.io/' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
-              Drip Dropz
+            Connect your wallet to the{' '}
+            <Link
+              href='https://cardanolands.com/staking'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-blue-400'
+            >
+              CL Staking Dashboard
             </Link>
             .
           </li>
-          <li className='text-sm'>Claim &quot;NFTC&quot; from the available tokens.</li>
-          <li className='text-sm'>Repeat every epoch (5 days).</li>
+          <li className='text-sm'>That&apos;s it, you&apos;re accumulating.</li>
+          <li className='text-sm'>Connect at least once a month, or accumulation will pause.</li>
+          <li className='text-sm'>
+            You can claim your tokens from the{' '}
+            <Link
+              href='https://cardanolands.com/inventory'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-blue-400'
+            >
+              CL Token Claim Dashboard
+            </Link>
+            .
+          </li>
         </ol>
       </div>
 
@@ -48,9 +65,16 @@ const Page = () => {
 
         <div className='mx-auto w-fit'>
           <p className='text-sm text-center'>
-            50 ${TOKEN_NAME} per 1 (eligible) NFT,
-            <br />
-            every epoch (5 days).
+            Visit the{' '}
+            <Link
+              href='https://cardanolands.com/calculator'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-blue-400'
+            >
+              CL Staking Calculator
+            </Link>{' '}
+            to view the reward variable.
           </p>
         </div>
       </div>
