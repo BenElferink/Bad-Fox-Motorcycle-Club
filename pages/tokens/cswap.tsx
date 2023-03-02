@@ -43,9 +43,9 @@ const Page = () => {
             </Link>
             .
           </li>
-          <li className='text-sm'>Click "Partner Staking", then click "Stake".</li>
+          <li className='text-sm'>Click &quot;Partner Staking&quot;, then click &quot;Stake&quot;.</li>
           <li className='text-sm'>That&apos;s it, you&apos;re accumulating.</li>
-          <li className='text-sm'>Claim your tokens by clicking "Harvest".</li>
+          <li className='text-sm'>Claim your tokens by clicking &quot;Harvest&quot;.</li>
         </ol>
       </div>
 
