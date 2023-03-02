@@ -79,6 +79,11 @@ const alliances = [
 
 const tokenPartnerships = [
   {
+    name: 'NFT Creative',
+    url: 'https://nftcreative.ca',
+    logoUrl: '/media/logo/other/nftcreative.png',
+  },
+  {
     name: 'Cardano Lands',
     url: 'https://cardanolands.com',
     logoUrl: '/media/logo/other/cardanolands.png',
@@ -89,14 +94,19 @@ const tokenPartnerships = [
     logoUrl: '/media/logo/other/theapesociety.png',
   },
   {
-    name: 'Mad Dog Car Club',
-    url: 'https://mdtoken.io',
-    logoUrl: '/media/logo/other/maddogcarclub.png',
-  },
-  {
     name: 'Cardano Crocs Club',
     url: 'https://cardanocrocsclub.com',
     logoUrl: '/media/logo/other/cardanocrocsclub.png',
+  },
+  {
+    name: 'CSWAP DEX',
+    url: 'https://www.cswap.fi',
+    logoUrl: '/media/logo/other/cswap.png',
+  },
+  {
+    name: 'Mad Dog Car Club',
+    url: 'https://mdtoken.io',
+    logoUrl: '/media/logo/other/maddogcarclub.png',
   },
   {
     name: 'Degen Dino orb Society',
@@ -104,9 +114,14 @@ const tokenPartnerships = [
     logoUrl: '/media/logo/other/degendinoorbsociety.png',
   },
   {
-    name: 'NFT Creative',
-    url: 'https://nftcreative.ca',
-    logoUrl: '/media/logo/other/nftcreative.png',
+    name: 'Lunatics',
+    url: 'https://lunaticscnft.io',
+    logoUrl: '/media/logo/other/lunatics.png',
+  },
+  {
+    name: 'Safari Squad',
+    url: 'https://www.safarisquad.io',
+    logoUrl: '/media/logo/other/safarisquad.png',
   },
 ]
 
