@@ -49,6 +49,7 @@ const WalletConnect = (props: WalletConnectProps) => {
         title={connected ? 'Wallet Connected' : 'Connect a Wallet'}
         open={!!openModal && !connecting}
         onClose={onClose}
+        scrollToTop
         className='px-8 md:px-10 text-center'
       >
         {connected ? (

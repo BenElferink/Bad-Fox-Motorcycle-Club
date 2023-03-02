@@ -8,13 +8,14 @@ export interface ModalProps {
   className?: string
   style?: React.CSSProperties
   children: React.ReactNode
+  scrollToTop?: boolean
 }
 
 const Modal = (props: ModalProps) => {
-  const { open, onClose, title, noModal, className = '', style = {}, children } = props
+  const { open, onClose, title, noModal, className = '', style = {}, children, scrollToTop } = props
 
   useEffect(() => {
-    if (!!open) {
+    if (!!open && !!scrollToTop) {
       window.scrollTo({ top: 0 })
       document.body.style.overflow = 'hidden'
     } else {
@@ -24,7 +25,7 @@ const Modal = (props: ModalProps) => {
     return () => {
       document.body.style.overflow = ''
     }
-  }, [open])
+  }, [open, scrollToTop])
 
   return (
     <div

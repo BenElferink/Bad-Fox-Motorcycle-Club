@@ -9,7 +9,7 @@ const GlobalLoader = (props: GlobalLoaderProps) => {
   const { loading } = props
 
   return (
-    <Modal open={loading} noModal className='justify-center'>
+    <Modal open={loading} scrollToTop noModal className='justify-center'>
       <Loader size={250} />
     </Modal>
   )
