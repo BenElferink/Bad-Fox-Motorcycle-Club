@@ -276,7 +276,7 @@ const Page = () => {
       <Previews />
       <Utilities />
 
-      <div className='flex flex-col items-center justify-center my-8 text-gray-500'>
+      {/* <div className='flex flex-col items-center justify-center my-8 text-gray-500'>
         <h5 className='text-2xl'>Partnerships</h5>
         <div className='flex flex-wrap items-center justify-center'>
           {tokenPartnerships.map(({ name, url, logoUrl }) => (
@@ -293,7 +293,7 @@ const Page = () => {
             <PartnerProject key={`partner-${name}`} name={name} url={url} logoUrl={logoUrl} />
           ))}
         </div>
-      </div>
+      </div> */}
 
       <div className='flex flex-col items-center justify-center my-8 text-gray-500'>
         <h5 className='text-2xl'>Featured by Content Creators</h5>
@@ -304,14 +304,14 @@ const Page = () => {
         </div>
       </div>
 
-      <div className='flex flex-col items-center justify-center my-8 text-gray-500'>
+      {/* <div className='flex flex-col items-center justify-center my-8 text-gray-500'>
         <h5 className='text-2xl'>Alliances</h5>
         <div className='flex flex-wrap items-center justify-center'>
           {alliances.map(({ name, url, logoUrl }) => (
             <PartnerProject key={`alliance-${name}`} name={name} url={url} logoUrl={logoUrl} />
           ))}
         </div>
-      </div>
+      </div> */}
 
       <div id='team' className='flex flex-col items-center justify-center my-8 text-gray-500'>
         <h5 className='text-2xl'>Certifications</h5>
