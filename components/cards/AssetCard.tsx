@@ -35,7 +35,7 @@ const AssetCard = (props: AssetCardProps) => {
         />
         {isBurned ? (
           <div className='absolute top-0 left-0 z-10 flex items-center justify-center w-[250px] h-[250px] bg-gray-900 bg-opacity-50'>
-            <Image src='/media/fire.gif' alt='BURNED' width={150} height={150} />
+            <Image unoptimized src='/media/fire.gif' alt='BURNED' width={150} height={150} />
           </div>
         ) : null}
 

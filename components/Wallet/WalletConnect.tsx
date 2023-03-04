@@ -83,9 +83,9 @@ const WalletConnect = (props: WalletConnectProps) => {
                     }}
                   >
                     <Image
+                      unoptimized
                       src={wallet.icon}
                       alt={wallet.name}
-                      unoptimized
                       width={35}
                       height={35}
                       className='mr-2'

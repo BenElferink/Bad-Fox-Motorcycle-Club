@@ -182,7 +182,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
             }
             className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded'
           >
-            <Image src='/media/fire.gif' alt='' width={30} height={30} className='mr-2' />
+            <Image unoptimized src='/media/fire.gif' alt='' width={30} height={30} className='mr-2' />
             Corresponding Bad Key
           </button>
         ) : null}
@@ -191,7 +191,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
           onClick={() => window.open(`https://pool.pm/${asset.fingerprint}`, '_blank', 'noopener noreferrer')}
           className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
         >
-          <Image src='/media/icon/poolpm.png' alt='' width={30} height={30} className='mr-2' />
+          <Image unoptimized src='/media/icon/poolpm.png' alt='' width={30} height={30} className='mr-2' />
           pool.pm
         </button>
 
@@ -213,7 +213,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
           }
           className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
         >
-          <Image src='/media/icon/opencnft.png' alt='' width={30} height={30} className='mr-2' />
+          <Image unoptimized src='/media/icon/opencnft.png' alt='' width={30} height={30} className='mr-2' />
           Open CNFT
         </button>
 
@@ -228,7 +228,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
             }
             className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
           >
-            <Image src='/media/icon/cnfttools.png' alt='' width={30} height={30} className='mr-2' />
+            <Image unoptimized src='/media/icon/cnfttools.png' alt='' width={30} height={30} className='mr-2' />
             CNFT Tools
           </button>
         ) : null}
@@ -243,7 +243,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
           }
           className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
         >
-          <Image src='/media/icon/cnftjungle.png' alt='' width={30} height={30} className='mr-2' />
+          <Image unoptimized src='/media/icon/cnftjungle.png' alt='' width={30} height={30} className='mr-2' />
           CNFT Jungle
         </button>
 
@@ -253,7 +253,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
           }
           className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
         >
-          <Image src='/media/icon/jpgstore.png' alt='' width={30} height={30} className='mr-2' />
+          <Image unoptimized src='/media/icon/jpgstore.png' alt='' width={30} height={30} className='mr-2' />
           JPG Store
         </button>
 
@@ -263,7 +263,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
           }
           className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
         >
-          <Image src='/media/icon/plutusart.png' alt='' width={30} height={30} className='mr-2' />
+          <Image unoptimized src='/media/icon/plutusart.png' alt='' width={30} height={30} className='mr-2' />
           Plutus.art
         </button>
 
@@ -271,7 +271,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
           onClick={() => window.open(`https://epoch.art/asset/${asset.assetId}`, '_blank', 'noopener noreferrer')}
           className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
         >
-          <Image src='/media/icon/epochart.png' alt='' width={30} height={30} className='mr-2' />
+          <Image unoptimized src='/media/icon/epochart.png' alt='' width={30} height={30} className='mr-2' />
           Epoch.art
         </button>
       </div>
