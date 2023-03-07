@@ -2,7 +2,7 @@ import Link from 'next/link'
 import TokenHeader from '../../components/tokens/TokenHeader'
 import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns'
 
-const TOKEN_IMAGE_SRC = '/media/tokens/hexonium/token.png'
+const TOKEN_IMAGE_SRC = '/media/tokens/hexo/token.png'
 const TOKEN_POLICY_ID = '27eee19588c997ca54d3137f64afe55a18dfcf9062fa83a724bf2357'
 const TOKEN_NAME = 'HEXO'
 const PROJECT_NAME = 'Cardano Lands'
