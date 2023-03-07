@@ -92,13 +92,13 @@ const Navigation = () => {
             <MultipleLinks
               title='Games & Metaverses'
               links={[
-                { label: 'OGBears - Motorcycle Race', path: '' },
-                { label: 'OGBears - OGVerse', path: '' },
-                { label: 'Speed Throne', path: '' },
+                { label: 'Degen Royale', path: '' },
+                { label: 'OGBears', path: '' },
                 { label: 'Cornucopias', path: '' },
+                { label: 'Speed Throne', path: '' },
+                { label: 'CardaStacks', path: '' },
                 { label: 'Boss Planet', path: '' },
-                { label: 'Unboundead Earth', path: '' },
-                { label: 'CardaStacks - MetaView Tower', path: '' },
+                { label: 'U.E (secret: preparation)', path: '' },
               ]}
               dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
             />

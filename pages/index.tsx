@@ -1,173 +1,20 @@
 import Landing from '../components/Landing'
 import Previews from '../components/Previews'
-import PartnerProject from '../components/PartnerProject'
 import Utilities from '../components/Utilities'
 import TeamCard from '../components/cards/TeamCard'
+import Link from 'next/link'
+import Image from 'next/image'
 
-const alliances = [
-  {
-    name: 'Stag Alliance',
-    url: 'https://www.stagalliance.com',
-    logoUrl: '/media/logo/other/stagalliance.png',
-  },
-  {
-    name: 'MICEFIA',
-    url: 'https://micefia.com',
-    logoUrl: '/media/logo/other/micefia.png',
-  },
-  {
-    name: 'Alley Katz',
-    url: 'https://alleykatz.xyz',
-    logoUrl: '/media/logo/other/alleykatz.png',
-  },
-  {
-    name: 'Goombles',
-    url: 'https://www.goombles.io',
-    logoUrl: '/media/logo/other/goombles.png',
-  },
-  {
-    name: "Summoner's Guild",
-    url: 'https://summonersguild.io',
-    logoUrl: '/media/logo/other/summonersguild.png',
-  },
-  {
-    name: 'Space Troopers',
-    url: 'https://spacetroopers.org',
-    logoUrl: '/media/logo/other/spacetroopers.png',
-  },
-  {
-    name: 'Walkers',
-    url: 'http://walkerscardano.xyz',
-    logoUrl: '/media/logo/other/walkers.png',
-  },
-  {
-    name: 'Beez Hive',
-    url: 'https://beezhive.io',
-    logoUrl: '/media/logo/other/beezhive.png',
-  },
-  {
-    name: 'Winged Warriors',
-    url: 'https://wingedwarriors.xyz',
-    logoUrl: '/media/logo/other/wingedwarriors.png',
-  },
-  {
-    name: 'Blurry Kits Lounge',
-    url: 'https://www.blurrykitslounge.com',
-    logoUrl: '/media/logo/other/blurrykitslounge.png',
-  },
-  {
-    name: 'Ape Nation',
-    url: 'https://apenationcnft.com',
-    logoUrl: '/media/logo/other/apenation.png',
-  },
-  {
-    name: 'Eggscape Club',
-    url: 'https://eggscape.io',
-    logoUrl: '/media/logo/other/eggscapeclub.png',
-  },
-  {
-    name: 'Space Otter Society',
-    url: 'https://spaceottersociety.io',
-    logoUrl: '/media/logo/other/spaceottersociety.png',
-  },
-  {
-    name: 'Generation Zeta',
-    url: 'https://twitter.com/GenZetaCNFT',
-    logoUrl: '/media/logo/other/generationzeta.png',
-  },
-]
-
-const tokenPartnerships = [
-  {
-    name: 'NFT Creative',
-    url: 'https://nftcreative.ca',
-    logoUrl: '/media/logo/other/nftcreative.png',
-  },
-  {
-    name: 'Cardano Lands',
-    url: 'https://cardanolands.com',
-    logoUrl: '/media/logo/other/cardanolands.png',
-  },
-  {
-    name: 'The Ape Society',
-    url: 'https://theapesociety.io',
-    logoUrl: '/media/logo/other/theapesociety.png',
-  },
-  {
-    name: 'Cardano Crocs Club',
-    url: 'https://cardanocrocsclub.com',
-    logoUrl: '/media/logo/other/cardanocrocsclub.png',
-  },
-  {
-    name: 'CSWAP DEX',
-    url: 'https://www.cswap.fi',
-    logoUrl: '/media/logo/other/cswap.png',
-  },
-  {
-    name: 'Mad Dog Car Club',
-    url: 'https://mdtoken.io',
-    logoUrl: '/media/logo/other/maddogcarclub.png',
-  },
-  {
-    name: 'Degen Dino orb Society',
-    url: 'https://stake.ddos.design',
-    logoUrl: '/media/logo/other/degendinoorbsociety.png',
-  },
-  {
-    name: 'Lunatics',
-    url: 'https://lunaticscnft.io',
-    logoUrl: '/media/logo/other/lunatics.png',
-  },
-  {
-    name: 'Safari Squad',
-    url: 'https://www.safarisquad.io',
-    logoUrl: '/media/logo/other/safarisquad.png',
-  },
-]
-
-const metaPartnerships = [
-  {
-    name: 'CardaStacks',
-    url: 'https://cardastacks.com',
-    logoUrl: '/media/logo/other/cardastacks.png',
-  },
-  {
-    name: 'Dot Dot Labs',
-    url: 'https://dotdotlabs.io',
-    logoUrl: '/media/logo/other/dotdotlabs.png',
-  },
-  {
-    name: 'Unbounded Earth',
-    url: 'https://unbounded.earth',
-    logoUrl: '/media/logo/other/unboundedearth.png',
-  },
-  {
-    name: 'OGBears',
-    url: 'https://ogbears.com',
-    logoUrl: '/media/logo/other/ogbears.png',
-  },
-  {
-    name: 'Cornucopias',
-    url: 'https://cornucopias.io',
-    logoUrl: '/media/logo/other/cornucopias.png',
-  },
-  {
-    name: 'Speed Throne',
-    url: 'https://speedthrone.io',
-    logoUrl: '/media/logo/other/speedthrone.png',
-  },
-]
-
-const creativePartnerships = [
-  {
-    name: 'SoundRig',
-    url: 'https://www.soundrig.io/artist/bad-fox-4042',
-    logoUrl: '/media/logo/other/soundrig.png',
-  },
+const partnerships = [
   {
     name: 'Leon Art Group',
     url: 'https://twitter.com/leonartgroup',
     logoUrl: '/media/logo/other/leonartgroup.png',
+  },
+  {
+    name: 'SoundRig',
+    url: 'https://www.soundrig.io/artist/bad-fox-4042',
+    logoUrl: '/media/logo/other/soundrig.png',
   },
 ]
 
@@ -194,25 +41,25 @@ const featuredBy = [
   },
 ]
 
-const doxxedServices = [
+const certifications = [
   {
     name: 'Bearmarket Doxxing',
     url: 'https://doxxing.bearmarket.io/bad-fox-motorcycle-club',
-    logoUrl: '/media/badges/bearmarket.png',
+    logoUrl: '/media/logo/other/bearmarket.png',
   },
   {
     name: 'Block Investment Group',
     url: 'https://blockinvestmentgroup.com/?tab=calendar',
-    logoUrl: '/media/badges/blockinvestmentgroup.png',
+    logoUrl: '/media/logo/other/blockinvestmentgroup.png',
   },
 ]
 
 const teamMembers = [
   {
     name: 'Ben Elferink',
-    title: 'Founder / Fullstack Developer',
+    title: 'Co-Founder / Fullstack Developer',
     description:
-      "I started my career as Fullstack Developer in 2020 & have been involved in the crypto & NFT space since 2021. Aside from my personal portfolio, I've also helped build several communities at their early stages.",
+      'I started my career as Fullstack Developer in 2020 & have been involved in the crypto & NFT space since 2021. I do most of the work around here.',
     profilePicture: '/media/team/Ben.jpg',
     socials: [
       'https://github.com/belferink1996',
@@ -222,28 +69,28 @@ const teamMembers = [
     ],
   },
   {
-    name: 'David Minkov',
+    name: 'Chris Mitrev',
     title: 'Co-Founder / Artist',
     description:
-      "I'm an artist from a very young age, I started my graphic design career in 2020. I'm very excited to work on the art for Bad Fox MC, as it's is my first time being in the Cardano NFT space!",
+      "I'm a graffiti artist. I helped in the making of the 2D traits, I lead the work & design for our merchandise store. I also make the graphics for social media.",
+    profilePicture: '/media/team/Chris.jpg',
+    socials: [
+      'https://instagram.com/m__chris',
+      'https://twitter.com/ChrisMitrev',
+      'https://discord.com/users/906518144108101642',
+    ],
+  },
+  {
+    name: 'David Minkov',
+    title: '2D Artist',
+    description:
+      "I'm an artist from a young age, and this is my first time being in the CNFT space! I'm excited to lead the work on 2D art for Bad Fox MC.",
     profilePicture: '/media/team/David.jpg',
     socials: [
       'https://www.linkedin.com/in/david-minkov-50187620a',
       'https://instagram.com/david_minkov',
       'https://twitter.com/Minkov_D',
       'https://discord.com/users/958536998140907550',
-    ],
-  },
-  {
-    name: 'Chris Mitrev',
-    title: 'Co-Founder / Artist',
-    description:
-      "I'm an aspiring artist. I've invested in the tools required to produce the art for Bad Fox MC. I help in the making of traits, and I lead the work & design for our merchandise store.",
-    profilePicture: '/media/team/Chris.jpg',
-    socials: [
-      'https://instagram.com/m__chris',
-      'https://twitter.com/ChrisMitrev',
-      'https://discord.com/users/906518144108101642',
     ],
   },
   {
@@ -260,14 +107,45 @@ const teamMembers = [
     ],
   },
   {
-    name: 'Uberman',
-    title: 'Blockchain & Fullstack Developer',
+    name: 'Stevie-T',
+    title: 'Moderator',
     description:
-      "I'm a programmer, and I've been minting NFT projects on Cardano since September 2021. Over that time, I've' been part of many successful teams such as OGBears, and Filthy Rich Horses. I love everyone who is part of the Cardano community and now it feels like a small family to me.",
-    profilePicture: '/media/team/Uberman.jpg',
-    socials: ['https://discord.com/users/458201578571038740'],
+      "I've been an IT admin for 10+ years, and have been involved in the crypto space since 2019. I found my passion in CNFTs, and am proud to be part of the Bad Fox team.",
+    profilePicture: '/media/team/Stevie.jpg',
+    socials: ['https://twitter.com/StevieTIota', 'https://discord.com/users/677534591636209664'],
   },
+  // {
+  //   name: 'Uberman',
+  //   title: 'Blockchain & Fullstack Developer',
+  //   description:
+  //     "I'm a programmer, and I've been minting NFT projects on Cardano since September 2021. Over that time, I've' been part of many successful teams such as OGBears, and Filthy Rich Horses. I love everyone who is part of the Cardano community and now it feels like a small family to me.",
+  //   profilePicture: '/media/team/Uberman.jpg',
+  //   socials: ['https://discord.com/users/458201578571038740'],
+  // },
 ]
+
+interface BadgeProps {
+  name: string
+  url: string
+  logoUrl: string
+  className?: string
+}
+
+const Badge = (props: BadgeProps) => {
+  const { name, url, logoUrl, className } = props
+
+  return (
+    <Link
+      href={url}
+      target='_blank'
+      rel='noopener noreferrer'
+      className={'w-20 h-10 my-6 mx-6 flex flex-col items-center justify-center relative ' + className}
+    >
+      <Image src={logoUrl} alt='logo' fill sizes='5rem' className='object-contain' />
+      <h6 className='absolute -bottom-7 text-xs whitespace-nowrap'>{name}</h6>
+    </Link>
+  )
+}
 
 const Page = () => {
   return (
@@ -276,54 +154,29 @@ const Page = () => {
       <Previews />
       <Utilities />
 
-      {/* <div className='flex flex-col items-center justify-center my-8 text-gray-500'>
+      <div className='flex flex-col items-center justify-center my-8 text-gray-500'>
         <h5 className='text-2xl'>Partnerships</h5>
         <div className='flex flex-wrap items-center justify-center'>
-          {tokenPartnerships.map(({ name, url, logoUrl }) => (
-            <PartnerProject key={`partner-${name}`} name={name} url={url} logoUrl={logoUrl} />
+          {partnerships.map(({ name, url, logoUrl }) => (
+            <Badge key={`partner-${name}`} name={name} url={url} logoUrl={logoUrl} />
           ))}
         </div>
-        <div className='flex flex-wrap items-center justify-center'>
-          {metaPartnerships.map(({ name, url, logoUrl }) => (
-            <PartnerProject key={`partner-${name}`} name={name} url={url} logoUrl={logoUrl} />
-          ))}
-        </div>
-        <div className='flex flex-wrap items-center justify-center'>
-          {creativePartnerships.map(({ name, url, logoUrl }) => (
-            <PartnerProject key={`partner-${name}`} name={name} url={url} logoUrl={logoUrl} />
-          ))}
-        </div>
-      </div> */}
+      </div>
 
       <div className='flex flex-col items-center justify-center my-8 text-gray-500'>
         <h5 className='text-2xl'>Featured by Content Creators</h5>
         <div className='flex flex-wrap items-center justify-center'>
           {featuredBy.map(({ name, url, logoUrl }) => (
-            <PartnerProject key={`featured-${name}`} name={name} url={url} logoUrl={logoUrl} />
+            <Badge key={`featured-${name}`} name={name} url={url} logoUrl={logoUrl} />
           ))}
         </div>
       </div>
 
-      {/* <div className='flex flex-col items-center justify-center my-8 text-gray-500'>
-        <h5 className='text-2xl'>Alliances</h5>
-        <div className='flex flex-wrap items-center justify-center'>
-          {alliances.map(({ name, url, logoUrl }) => (
-            <PartnerProject key={`alliance-${name}`} name={name} url={url} logoUrl={logoUrl} />
-          ))}
-        </div>
-      </div> */}
-
       <div id='team' className='flex flex-col items-center justify-center my-8 text-gray-500'>
         <h5 className='text-2xl'>Certifications</h5>
         <div className='flex flex-wrap items-center justify-center'>
-          {doxxedServices.map(({ name, url, logoUrl }) => (
-            <PartnerProject
-              key={`certification-${name}`}
-              name={name}
-              url={url}
-              logoUrl={logoUrl}
-              className='mx-8'
-            />
+          {certifications.map(({ name, url, logoUrl }) => (
+            <Badge key={`certification-${name}`} name={name} url={url} logoUrl={logoUrl} className='mx-8' />
           ))}
         </div>
       </div>
