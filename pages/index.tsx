@@ -107,12 +107,24 @@ const teamMembers = [
     ],
   },
   {
-    name: 'Stevie-T',
+    name: 'Stevie',
     title: 'Moderator',
     description:
       "I've been an IT admin for 10+ years, and have been involved in the crypto space since 2019. I found my passion in CNFTs, and am proud to be part of the Bad Fox team.",
     profilePicture: '/media/team/Stevie.jpg',
     socials: ['https://twitter.com/StevieTIota', 'https://discord.com/users/677534591636209664'],
+  },
+  {
+    name: 'Stef',
+    title: 'Moderator',
+    description:
+      "I remote operate offshore oil and gas producing platforms from an onshore controlroom for a living, I've been into crypto for about 1,5 years and became a NFT enthousiast on Cardano little over a year ago. BadFoxMC has got a special place in my heart.",
+    profilePicture: '/media/team/Stef.jpg',
+    socials: [
+      'https://www.instagram.com/stef_bbq/',
+      'https://twitter.com/Stef_bbq',
+      'https://discord.com/users/933925521346138182',
+    ],
   },
   // {
   //   name: 'Uberman',
