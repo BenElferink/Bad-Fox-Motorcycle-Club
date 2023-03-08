@@ -52,7 +52,9 @@ const Page = () => {
             If you&apos;re visiting for the 1st time, you&apos;ll need to register an email account.
           </li>
           <li className='text-sm'>Login with your acocunt, and connect your wallet.</li>
-          <li className='text-sm'>Navigate to the "unstaked" tab, click "select all", and start staking.</li>
+          <li className='text-sm'>
+            Navigate to the &quot;unstaked&quot; tab, click &quot;select all&quot;, and start staking.
+          </li>
           <li className='text-sm'>Come back later to claim your tokens.</li>
         </ol>
       </div>
