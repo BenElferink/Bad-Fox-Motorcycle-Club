@@ -76,6 +76,7 @@ const Navigation = () => {
               links={[
                 { label: 'ADA', path: '/tokens/ada' },
                 { label: 'C4', path: '/tokens/c4' },
+                { label: 'CHILLAZ', path: '/tokens/chillaz' },
                 { label: 'CSWAP', path: '/tokens/cswap' },
                 { label: 'DDOS', path: '/tokens/ddos' },
                 { label: 'HEXO', path: '/tokens/hexo' },
