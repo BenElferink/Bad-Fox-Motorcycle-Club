@@ -5,7 +5,7 @@ import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns
 
 const TOKEN_IMAGE_SRC = '/media/tokens/c4/token.png'
 const TOKEN_POLICY_ID = 'a00fdf4fb9ab6c8c2bd1533a2f14855edf12aed5ecbf96d4b5f5b939'
-const TOKEN_NAME = 'C4 Token'
+const TOKEN_NAME = 'C4'
 const PROJECT_NAME = 'Cardano Crocs Club'
 const WHO_CAN_EARN: WhoCanEarn = ['Bad Fox', 'Bad Motorcycle', 'Bad Key']
 
