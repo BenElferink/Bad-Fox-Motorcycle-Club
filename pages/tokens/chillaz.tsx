@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import ImageLoader from '../../components/Loader/ImageLoader'
 import TokenHeader from '../../components/tokens/TokenHeader'
+import TokenPrerequisites from '../../components/tokens/TokenPrerequisites'
 import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns'
 
 const TOKEN_IMAGE_SRC = '/media/tokens/chillaz/token.png'
@@ -18,29 +18,19 @@ const Page = () => {
         tokenSrc={TOKEN_IMAGE_SRC}
         policyId={TOKEN_POLICY_ID}
       />
+
       <TokenWhoEarns whoCanEarn={WHO_CAN_EARN} />
 
-      <div className='w-full my-2 p-4 px-6 flex flex-col bg-gray-400 bg-opacity-20 rounded-xl'>
-        <h4 className='mb-2 text-gray-200 text-lg text-center'>Prerequisites</h4>
-
-        <div className='flex items-center justify-center'>
-          <Link
-            href='https://www.jpg.store/collection/61643a27e4e897e4c8b05d4df0e723b98a852d173a23c966e988addc'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <ImageLoader
-              src='/media/tokens/chillaz/blockchillaz.png'
-              alt='nft'
-              width={150}
-              height={150}
-              style={{ borderRadius: '1rem' }}
-            />
-            <p className='mt-1 text-xs text-center'>BlockChillaz</p>
-            <p className='mt-1 text-xs text-center'>1 = stake 5 NFT(s)</p>
-          </Link>
-        </div>
-      </div>
+      <TokenPrerequisites
+        items={[
+          {
+            imageUrl: '/media/tokens/chillaz/blockchillaz.png',
+            purchaseUrl:
+              'https://www.jpg.store/collection/61643a27e4e897e4c8b05d4df0e723b98a852d173a23c966e988addc',
+            texts: ['BlockChillaz', '1 = stake 5 NFT(s)'],
+          },
+        ]}
+      />
 
       <div className='w-full my-2 p-4 px-6 flex flex-col bg-gray-400 bg-opacity-20 rounded-xl'>
         <h4 className='mb-2 text-gray-200 text-lg text-center'>How to earn?</h4>
