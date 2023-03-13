@@ -7,22 +7,22 @@ const HomeFoxModel = () => {
   const [flip, setFlip] = useState(false)
 
   return (
-    <Canvas style={{ width: 300, height: 350 }} camera={{ position: [0, 0, 1], fov: 45 }}>
+    <Canvas style={{ width: 300, height: 300 }} camera={{ position: [0, 0, 1], fov: 45 }}>
       <Environment path={'/media/3d/'} files={'env.hdr'} />
       <pointLight position={[-1, 1, 0]} intensity={0.7} />
 
       <ModelChild
-        src='/media/3d/fox-4946.glb'
-        scale={1.7}
+        src='/media/3d/fox.glb'
+        scale={2}
         positionY={-0.3}
         animationName='All Animations'
         animateScene={(scene) => {
           // @ts-ignore
           const curr = scene.rotation.y
 
-          if (curr >= 1) {
+          if (curr >= 0.7) {
             setFlip(true)
-          } else if (curr <= -1) {
+          } else if (curr <= -0.7) {
             setFlip(false)
           }
 

@@ -21,6 +21,13 @@ const HomeFoxModel = dynamic(() =>
   })
 )
 
+const HomeMotorcycleModel = dynamic(() =>
+  import('../models/HomeMotorcycleModel', {
+    ssr: false,
+    loading: () => <Loader size={100} />,
+  })
+)
+
 const data = [
   {
     complete: true,
@@ -41,7 +48,7 @@ const data = [
     ],
     renderMedia: (isLeft) => (
       <MediaWrapper isLeft={isLeft} size={150} posTop='30px'>
-        <ImageLoader src='/media/landing/bad-fox.png' alt='fox' width={150} loaderSize={50} />
+        <ImageLoader src='/media/landing/bad_fox.png' alt='fox' width={150} loaderSize={50} />
       </MediaWrapper>
     ),
   },
@@ -64,7 +71,7 @@ const data = [
     ],
     renderMedia: (isLeft) => (
       <MediaWrapper isLeft={isLeft} size={300} posTop='70px'>
-        <ImageLoader src='/media/landing/bad-motorcycle.png' alt='motorcycle' width={300} loaderSize={50} />
+        <ImageLoader src='/media/landing/bad_motorcycle.png' alt='motorcycle' width={300} loaderSize={50} />
       </MediaWrapper>
     ),
   },
@@ -113,16 +120,39 @@ const data = [
       },
       {
         complete: false,
-        title: 'Metaverse Asset (avatar)',
+        title: 'Game/Meta Asset (avatar)',
       },
       {
         complete: false,
-        title: 'IP Ownership & File Custody',
+        title: 'File Custody & IP Ownership',
       },
     ],
     renderMedia: (isLeft) => (
       <MediaWrapper isLeft={isLeft} size={300} posTop='0px'>
         <HomeFoxModel />
+      </MediaWrapper>
+    ),
+  },
+  {
+    complete: false,
+    chapter: '3D Motorcycle',
+    events: [
+      {
+        complete: false,
+        title: 'Supply 3,000',
+      },
+      {
+        complete: false,
+        title: 'Game/Meta Asset (vehicle)',
+      },
+      {
+        complete: false,
+        title: 'File Custody & IP Ownership',
+      },
+    ],
+    renderMedia: (isLeft) => (
+      <MediaWrapper isLeft={isLeft} size={300} posTop='20px'>
+        <HomeMotorcycleModel />
       </MediaWrapper>
     ),
   },

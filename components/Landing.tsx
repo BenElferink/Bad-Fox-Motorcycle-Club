@@ -13,14 +13,12 @@ const About = () => {
         we develop tools that benefit everyone on Cardano.
       </p>
 
-      <div className='mt-4'>
-        <h2 className='text-xl mb-4'>What&apos;s Happening Now?</h2>
+      <div className='mt-20'>
+        <h2 className='text-xl mb-4'>What&apos;s Next?</h2>
         <p className='text-xs'>
-          We&apos;re releasing the 3D Foxes very soon™️
+          We&apos;re releasing the 3D Foxes in April.
           <br />
-          They are metaverse ready avatars, with an average of 15k polys
-          <br />
-          They are compatible with majority of games (even of low quality)
+          They are game/metaverse ready avatars, with an average of 15k polys.
           <br />
           <br />
           With the NFT you will own:
