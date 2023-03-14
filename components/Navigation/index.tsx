@@ -6,6 +6,45 @@ import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '
 import MultipleLinks from './MultipleLinks'
 import SingleLink from './SingleLink'
 
+export const navCollections = [
+  { label: 'Bad Fox', path: `/collections/${BAD_FOX_POLICY_ID}` },
+  { label: 'Bad Motorcycle', path: `/collections/${BAD_MOTORCYCLE_POLICY_ID}` },
+  { label: 'Bad Key', path: `/collections/${BAD_KEY_POLICY_ID}` },
+  { label: '3D Fox', path: '' },
+  { label: '3D Motorcycle', path: '' },
+  { label: 'Vox Fox', path: '' },
+]
+
+export const navTools = [
+  { label: 'Bad Drop', url: 'https://drop.badfoxmc.com' },
+  { label: 'Bad Poll', url: 'https://poll.badfoxmc.com' },
+  { label: 'Bad Raffle', url: '' },
+]
+
+export const navTokens = [
+  { label: 'ADA', path: '/tokens/ada' },
+  { label: 'C4', path: '/tokens/c4' },
+  { label: 'CHILLAZ', path: '/tokens/chillaz' },
+  { label: 'CSWAP', path: '/tokens/cswap' },
+  { label: 'DDOS', path: '/tokens/ddos' },
+  { label: 'HEXO', path: '/tokens/hexo' },
+  { label: 'MD', path: '/tokens/md' },
+  { label: 'NFTC', path: '/tokens/nftc' },
+  { label: 'QAK', path: '' },
+  { label: 'SAFARI', path: '' },
+  { label: 'SOCIETY', path: '/tokens/society' },
+]
+
+export const navGames = [
+  { label: 'Degen Royale', path: '' },
+  { label: 'OGBears', path: '' },
+  { label: 'Cornucopias', path: '' },
+  { label: 'Speed Throne', path: '' },
+  { label: 'CardaStacks', path: '' },
+  { label: 'Boss Planet', path: '' },
+  { label: 'U.E (secret: preparation)', path: '' },
+]
+
 const Navigation = () => {
   const router = useRouter()
   const [isNavOpen, setIsNavOpen] = useState(false)
@@ -47,14 +86,7 @@ const Navigation = () => {
           <li>
             <MultipleLinks
               title='Collections'
-              links={[
-                { label: 'Bad Fox', path: `/collections/${BAD_FOX_POLICY_ID}` },
-                { label: 'Bad Motorcycle', path: `/collections/${BAD_MOTORCYCLE_POLICY_ID}` },
-                { label: 'Bad Key', path: `/collections/${BAD_KEY_POLICY_ID}` },
-                { label: '3D Fox', path: '' },
-                { label: '3D Motorcycle', path: '' },
-                { label: 'Vox Fox', path: '' },
-              ]}
+              links={navCollections}
               dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
             />
           </li>
@@ -62,45 +94,21 @@ const Navigation = () => {
           <li>
             <MultipleLinks
               title='Tools'
-              links={[
-                { label: 'Bad Drop', url: 'https://drop.badfoxmc.com' },
-                { label: 'Bad Poll', url: 'https://poll.badfoxmc.com' },
-                { label: 'Bad Raffle', url: '' },
-              ]}
+              links={navTools}
               dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
             />
           </li>
           <li>
             <MultipleLinks
               title='Tokens'
-              links={[
-                { label: 'ADA', path: '/tokens/ada' },
-                { label: 'C4', path: '/tokens/c4' },
-                { label: 'CHILLAZ', path: '/tokens/chillaz' },
-                { label: 'CSWAP', path: '/tokens/cswap' },
-                { label: 'DDOS', path: '/tokens/ddos' },
-                { label: 'HEXO', path: '/tokens/hexo' },
-                { label: 'MD', path: '/tokens/md' },
-                { label: 'NFTC', path: '/tokens/nftc' },
-                { label: 'QAK', path: '' },
-                { label: 'SAFARI', path: '' },
-                { label: 'SOCIETY', path: '/tokens/society' },
-              ]}
+              links={navTokens}
               dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
             />
           </li>
           <li>
             <MultipleLinks
               title='Games & Metaverses'
-              links={[
-                { label: 'Degen Royale', path: '' },
-                { label: 'OGBears', path: '' },
-                { label: 'Cornucopias', path: '' },
-                { label: 'Speed Throne', path: '' },
-                { label: 'CardaStacks', path: '' },
-                { label: 'Boss Planet', path: '' },
-                { label: 'U.E (secret: preparation)', path: '' },
-              ]}
+              links={navGames}
               dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
             />
           </li>

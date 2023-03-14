@@ -4,7 +4,7 @@ import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns
 import formatBigNumber from '../../functions/formatters/formatBigNumber'
 import { ADA_SYMBOL } from '../../constants'
 
-const TOKEN_IMAGE_SRC = '/media/tokens/ada.webp'
+const TOKEN_IMAGE_SRC = '/media/tokens/ada/token.png'
 const TOKEN_NAME = 'ADA'
 const PROJECT_NAME = 'Cardano'
 const WHO_CAN_EARN: WhoCanEarn = ['Bad Fox', 'Bad Motorcycle', 'Bad Key']
