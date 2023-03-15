@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 import useScreenSize from '../../hooks/useScreenSize'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 import { MinusCircleIcon } from '@heroicons/react/24/outline'
@@ -6,6 +7,7 @@ import MediaWrapper from './MediaWrapper'
 import Loader from '../Loader'
 import ImageLoader from '../Loader/ImageLoader'
 import styles from './Utilities.module.css'
+import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants'
 
 const HomeKeyModel = dynamic(() =>
   import('../models/HomeKeyModel', {
@@ -35,14 +37,17 @@ const data = [
     events: [
       {
         complete: false,
+        redirectPath: `/collections/${BAD_FOX_POLICY_ID}`,
         title: 'Supply 2,280',
       },
       {
         complete: true,
+        redirectPath: '/tokens/ada',
         title: 'Royalty Rewards',
       },
       {
         complete: true,
+        redirectPath: '/tokens',
         title: 'Token Staking',
       },
     ],
@@ -58,14 +63,17 @@ const data = [
     events: [
       {
         complete: false,
+        redirectPath: `/collections/${BAD_MOTORCYCLE_POLICY_ID}`,
         title: 'Supply 1,140',
       },
       {
         complete: true,
+        redirectPath: '/tokens/ada',
         title: 'Royalty Rewards',
       },
       {
         complete: true,
+        redirectPath: '/tokens',
         title: 'Token Staking',
       },
     ],
@@ -81,27 +89,31 @@ const data = [
     events: [
       {
         complete: false,
+        redirectPath: `/collections/${BAD_KEY_POLICY_ID}`,
         title: 'Supply 1,860',
       },
       {
         complete: true,
+        redirectPath: '/tokens/ada',
         title: 'Royalty Rewards',
       },
       {
         complete: true,
+        redirectPath: '/tokens',
         title: 'Token Staking',
       },
       {
         complete: true,
+        redirectPath: '/tools',
         title: 'Access to Tools',
       },
       {
         complete: true,
-        title: 'Lifetime Airdrops',
+        title: 'Metaverse Benefits',
       },
       {
         complete: true,
-        title: 'Metaverse Benefits',
+        title: 'Lifetime Airdrops',
       },
     ],
     renderMedia: (isLeft) => (
@@ -160,6 +172,7 @@ const data = [
 
 const Utilities = () => {
   const { isMobile } = useScreenSize()
+  const router = useRouter()
 
   return (
     <div className={`${styles.root} mt-10 text-gray-500`}>
@@ -185,9 +198,14 @@ const Utilities = () => {
             {phase.events.map((event) => (
               <div
                 key={event.title}
-                className={`${styles.event} ${
+                className={`${styles.event} ${event.redirectPath ? styles.clickEvent : ''} ${
                   !isMobile ? (isLeft ? styles.leftEvent : styles.rightEvent) : styles.mobileEvent
                 }`}
+                onClick={() => {
+                  if (event.redirectPath) {
+                    router.push(event.redirectPath)
+                  }
+                }}
               >
                 <h3>
                   {event.complete ? (
