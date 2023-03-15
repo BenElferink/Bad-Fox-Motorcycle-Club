@@ -12,7 +12,7 @@ const Page = () => {
               <div className='w-44 h-44 m-2 py-6 flex flex-col justify-between rounded-xl bg-gray-400 hover:bg-gray-200 bg-opacity-20 hover:bg-opacity-20 hover:text-gray-200'>
                 <div className='flex items-center justify-center animate-pulse'>
                   <ImageLoader
-                    src={`/media/${path}/token.png`}
+                    src={`/media/${path.charAt(0) === '/' ? path.slice(1) : path}/token.png`}
                     alt='token'
                     width={label === 'CSWAP' ? 80 : 100}
                     height={label === 'CSWAP' ? 80 : 100}
