@@ -5,7 +5,7 @@ import { navTokens } from '../../components/Navigation'
 const Page = () => {
   return (
     <div>
-      <div className='max-w-[690px] mx-auto flex flex-wrap'>
+      <div className='max-w-[690px] mx-auto flex justify-center flex-wrap'>
         {navTokens.map(({ label, path }) =>
           path ? (
             <Link key={`token_${label}`} scroll={false} href={path}>
