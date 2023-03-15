@@ -1,21 +1,21 @@
 [
   {
     "name": "Bad Fox",
-    "image": "/media/projects/bad-fox.png",
+    "image": "/media/collections/bad-fox.png",
     "policyId": "fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967",
     "collections": true,
     "traits": true
   },
   {
     "name": "Bad Motorcycle",
-    "image": "/media/projects/bad-motorcycle.png",
+    "image": "/media/collections/bad-motorcycle.png",
     "policyId": "ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba8",
     "collections": true,
     "traits": true
   },
   {
     "name": "Bad Key",
-    "image": "/media/projects/bad-key.png",
+    "image": "/media/collections/bad-key.png",
     "policyId": "80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add14",
     "collections": true,
     "traits": false

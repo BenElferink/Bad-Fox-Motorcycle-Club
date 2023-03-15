@@ -1,5 +1,5 @@
 import { PolicyId } from '../@types'
-import projects from '../data/projects.json'
+import collections from '../data/collections.json'
 
 const isPolicyIdAllowed = (policyId: PolicyId | '', key?: 'collections' | 'traits') => {
   let isAllowed = false
@@ -8,8 +8,8 @@ const isPolicyIdAllowed = (policyId: PolicyId | '', key?: 'collections' | 'trait
     return isAllowed
   }
 
-  for (const proj of projects) {
-    if (proj.policyId === policyId && (!key || !!proj[key])) {
+  for (const coll of collections) {
+    if (coll.policyId === policyId && (!key || !!coll[key])) {
       isAllowed = true
     }
   }
