@@ -109,10 +109,12 @@ const data = [
       },
       {
         complete: true,
+        redirectPath: '/games',
         title: 'Metaverse Benefits',
       },
       {
         complete: true,
+        redirectPath: '/reserve3d',
         title: 'Lifetime Airdrops',
       },
     ],
