@@ -12,6 +12,11 @@ const partnerships = [
     logoUrl: '/media/logo/other/leonartgroup.png',
   },
   {
+    name: 'ADA Anvil',
+    url: 'https://ada-anvil.io',
+    logoUrl: '/media/logo/other/adaanvil.png',
+  },
+  {
     name: 'SoundRig',
     url: 'https://www.soundrig.io/artist/bad-fox-4042',
     logoUrl: '/media/logo/other/soundrig.png',
