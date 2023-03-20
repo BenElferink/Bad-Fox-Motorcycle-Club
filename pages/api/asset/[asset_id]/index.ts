@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+import fromHex from '../../../../functions/formatters/hex/fromHex'
 import blockfrost from '../../../../utils/blockfrost'
 
 export interface FetchedAssetResponse {
@@ -44,6 +45,18 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<FetchedAssetRes
         const data = await blockfrost.api.assetsById(assetId)
 
         console.log('Fetched asset:', data)
+
+        // @ts-ignore
+        if (data.onchain_metadata_standard === 'CIP68v1') {
+          Object.entries(data.onchain_metadata || {}).forEach(([key, val]) => {
+            if (!['name', 'description', 'image', 'mediaType', 'files'].includes(key)) {
+              // @ts-ignore
+              data.onchain_metadata[key] = fromHex(val as string).slice(1)
+            }
+          })
+
+          console.log('Translated CIP-68 metadata:', data.onchain_metadata)
+        }
 
         return res.status(200).json(data)
       }
