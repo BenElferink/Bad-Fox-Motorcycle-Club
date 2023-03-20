@@ -3,8 +3,9 @@ import { PopulatedAsset } from '../@types'
 import ImageLoader from '../components/Loader/ImageLoader'
 import FoxModel from '../components/models/FoxModel'
 import { BAD_FOX_POLICY_ID } from '../constants'
-import avatarFilesFile from '../data/3D/files.json'
-import avatarRendersFile from '../data/3D/renders.json'
+import avatarPngFilesFile from '../data/3D/png.json'
+import avatarGlbFilesFile from '../data/3D/glb.json'
+import avatarFbxFilesFile from '../data/3D/fbx.json'
 import getFileForPolicyId from '../functions/getFileForPolicyId'
 
 const Page = () => {
@@ -20,9 +21,10 @@ const Page = () => {
   }
 
   const [foxName, setFoxName] = useState('')
-  const [fileSrc, setFileSrc] = useState('')
-  const [newImageSrc, setNewImageSrc] = useState('')
   const [oldImageSrc, setOldImageSrc] = useState('')
+  const [newImageSrc, setNewImageSrc] = useState('')
+  const [glbFileSrc, setGlbFileSrc] = useState('')
+  const [fbxFileSrc, setFbxFileSrc] = useState('')
 
   const searchSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e?.preventDefault()
@@ -37,15 +39,18 @@ const Page = () => {
 
       setSearch('')
       setFoxName(v)
-      // @ts-ignore
-      setFileSrc(avatarFilesFile[`${v}.glb`])
-      // @ts-ignore
-      setNewImageSrc(avatarRendersFile[`${v}.png`])
+
       setOldImageSrc(
         (getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets') as PopulatedAsset[])?.find(
           (item) => item.displayName === v
         )?.image.firebase || ''
       )
+      // @ts-ignore
+      setNewImageSrc(avatarPngFilesFile[`${v}.png`])
+      // @ts-ignore
+      setGlbFileSrc(avatarGlbFilesFile[`${v}.glb`])
+      // @ts-ignore
+      setFbxFileSrc(avatarFbxFilesFile[`${v}.fbx`])
     }, 0)
   }
 
@@ -105,7 +110,7 @@ const Page = () => {
             <div className='flex flex-col items-center justify-center w-[270px] md:w-[333px] lg:w-[444px] h-[550px] md:h-[650px] lg:h-[750px] m-4 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700'>
               <FoxModel
                 withSpotlight
-                src={fileSrc.replace('https://firebasestorage.googleapis.com', '/storage')}
+                src={glbFileSrc.replace('https://firebasestorage.googleapis.com', '/storage')}
               />
             </div>
           </div>

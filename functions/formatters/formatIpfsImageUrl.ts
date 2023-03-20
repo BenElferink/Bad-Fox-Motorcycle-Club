@@ -8,7 +8,7 @@ const formatIpfsImageUrl = ({
   is3D?: boolean
 }) => {
   if (is3D) {
-    return ipfsUri.replace('ipfs://', 'https://ipfs.jpgstoreapis.com/')
+    return ipfsUri.replace('ipfs://', 'https://image-optimizer.jpgstoreapis.com/')
   }
 
   if (hasRank) {

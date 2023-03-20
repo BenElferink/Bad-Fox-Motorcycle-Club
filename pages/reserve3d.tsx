@@ -5,7 +5,7 @@ import useWallet from '../contexts/WalletContext'
 import WalletConnect from '../components/Wallet/WalletConnect'
 import ImageLoader from '../components/Loader/ImageLoader'
 import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID } from '../constants'
-import avatarRendersFile from '../data/3D/renders.json'
+import avatarRendersFile from '../data/3D/png.json'
 import { CheckIcon } from '@heroicons/react/24/solid'
 
 interface ChoiceItem {
