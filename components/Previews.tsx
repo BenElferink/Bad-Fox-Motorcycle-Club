@@ -5,14 +5,14 @@ import useScreenSize from '../hooks/useScreenSize'
 import ImageLoader from './Loader/ImageLoader'
 
 const data = [
-  'https://firebasestorage.googleapis.com/v0/b/badfoxmc-web.appspot.com/o/3D%20Fox%2FAvatar%20Renders%2FBad%20Fox%20%230001.png?alt=media&token=a2c93fc5-b83a-4a57-a2e9-5c27e0609408',
-  'https://firebasestorage.googleapis.com/v0/b/badfoxmc-web.appspot.com/o/3D%20Fox%2FAvatar%20Renders%2FBad%20Fox%20%230002.png?alt=media&token=72aa6c8e-623b-4b49-abff-059c36d58c12',
-  'https://firebasestorage.googleapis.com/v0/b/badfoxmc-web.appspot.com/o/3D%20Fox%2FAvatar%20Renders%2FBad%20Fox%20%230003.png?alt=media&token=b45cce9d-1a99-4b42-8de3-31585fa342b7',
-  'https://firebasestorage.googleapis.com/v0/b/badfoxmc-web.appspot.com/o/3D%20Fox%2FAvatar%20Renders%2FBad%20Fox%20%230004.png?alt=media&token=1bb7ad2c-c179-48a6-a2ae-e18b703542d0',
-  'https://firebasestorage.googleapis.com/v0/b/badfoxmc-web.appspot.com/o/3D%20Fox%2FAvatar%20Renders%2FBad%20Fox%20%230005.png?alt=media&token=b0ff3bad-bcf8-49a2-8680-99b0e74d366b',
-  'https://firebasestorage.googleapis.com/v0/b/badfoxmc-web.appspot.com/o/3D%20Fox%2FAvatar%20Renders%2FBad%20Fox%20%230006.png?alt=media&token=92c69a49-f722-4724-8355-be7293fc0820',
-  'https://firebasestorage.googleapis.com/v0/b/badfoxmc-web.appspot.com/o/3D%20Fox%2FAvatar%20Renders%2FBad%20Fox%20%230007.png?alt=media&token=bd3ac325-e8a6-4719-88a2-140987db6e93',
-  'https://firebasestorage.googleapis.com/v0/b/badfoxmc-web.appspot.com/o/3D%20Fox%2FAvatar%20Renders%2FBad%20Fox%20%230008.png?alt=media&token=b39f4f59-d506-44eb-a9e6-fab6e578f661',
+  'https://firebasestorage.googleapis.com/v0/b/badfoxmc-web.appspot.com/o/3D%20Fox%2FCollection%2FPNG%2FBad%20Fox%20%230001.png?alt=media&token=7e12cbf2-daa7-45c9-96f7-a3c2478ea817',
+  'https://firebasestorage.googleapis.com/v0/b/badfoxmc-web.appspot.com/o/3D%20Fox%2FCollection%2FPNG%2FBad%20Fox%20%230002.png?alt=media&token=e039b296-9f05-4b44-bbe0-c6197f75a35f',
+  'https://firebasestorage.googleapis.com/v0/b/badfoxmc-web.appspot.com/o/3D%20Fox%2FCollection%2FPNG%2FBad%20Fox%20%230003.png?alt=media&token=7d24b949-b8b3-479d-b998-d03aad59c675',
+  'https://firebasestorage.googleapis.com/v0/b/badfoxmc-web.appspot.com/o/3D%20Fox%2FCollection%2FPNG%2FBad%20Fox%20%230004.png?alt=media&token=08095e54-69f2-477f-aa63-68870bd9034e',
+  'https://firebasestorage.googleapis.com/v0/b/badfoxmc-web.appspot.com/o/3D%20Fox%2FCollection%2FPNG%2FBad%20Fox%20%230005.png?alt=media&token=4ed3b1c1-5df7-4519-bd2c-260cde3234c0',
+  'https://firebasestorage.googleapis.com/v0/b/badfoxmc-web.appspot.com/o/3D%20Fox%2FCollection%2FPNG%2FBad%20Fox%20%230006.png?alt=media&token=33c865f7-d751-455b-ba7a-23dc2112409d',
+  'https://firebasestorage.googleapis.com/v0/b/badfoxmc-web.appspot.com/o/3D%20Fox%2FCollection%2FPNG%2FBad%20Fox%20%230007.png?alt=media&token=f5039505-a075-4383-9372-e7ff68ff060d',
+  'https://firebasestorage.googleapis.com/v0/b/badfoxmc-web.appspot.com/o/3D%20Fox%2FCollection%2FPNG%2FBad%20Fox%20%230008.png?alt=media&token=4babf9fc-2792-4399-8981-dc7d847ef12b',
 ]
 
 const Previews = () => {
@@ -40,7 +40,14 @@ const Previews = () => {
       >
         {data.map((str) => (
           <SwiperSlide key={str}>
-            <ImageLoader src={str} alt='' width={imageSize} height={imageSize} style={{ borderRadius: '1rem' }} />
+            <ImageLoader
+              src={str}
+              alt=''
+              optimized
+              width={imageSize}
+              height={imageSize}
+              style={{ borderRadius: '1rem' }}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
