@@ -310,19 +310,20 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
     setFetching(true)
 
     try {
-      const uri = `/api/policy/${policyId}/market/listed`
-      const { data } = await axios.get<ResponsePolicyMarketListings>(uri)
+      const {
+        data: { items: listedItems },
+      } = await axios.get<ResponsePolicyMarketListings>(`/api/policy/${policyId}/market/listed`)
 
       const traits = getFileForPolicyId(policyId, 'traits') as TraitsFile
       const assets = (getFileForPolicyId(policyId, 'assets') as PopulatedAsset[]).map((asset) => {
-        const foundListing = data.items.find((listed) => listed.assetId === asset.assetId)
+        const foundListing = listedItems.find((listed) => listed.assetId === asset.assetId)
         return {
           ...asset,
           price: !!foundListing ? foundListing.price : 0,
         }
       })
 
-      for await (const listed of data.items) {
+      for await (const listed of listedItems) {
         const found = assets.find((asset) => asset.assetId === listed.assetId)
 
         if (!found) {
