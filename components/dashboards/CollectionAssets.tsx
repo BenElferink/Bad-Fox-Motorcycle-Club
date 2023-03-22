@@ -196,32 +196,36 @@ const AssetModalContent = (props: AssetModalContentProps) => {
         </button>
 
         <button
+          onClick={() => window.open(`https://flipr.io/asset/${asset.assetId}`, '_blank', 'noopener noreferrer')}
+          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+        >
+          <Image unoptimized src='/media/icon/flipr.png' alt='' width={30} height={30} className='mr-2' />
+          Flipr
+        </button>
+
+        <button
           onClick={() =>
-            window.open(
-              `https://opencnft.io/${
-                policyId === BAD_FOX_POLICY_ID
-                  ? 'bad-fox-motorcycle-club-fox-collection'
-                  : policyId === BAD_MOTORCYCLE_POLICY_ID
-                  ? 'bad-fox-motorcycle-club-bad-motorcycle'
-                  : policyId === BAD_MOTORCYCLE_POLICY_ID
-                  ? 'bad-fox-motorcycle-club-bad-key'
-                  : ''
-              }/asset/${asset.fingerprint}`,
-              '_blank',
-              'noopener noreferrer'
-            )
+            window.open(`https://www.jpg.store/asset/${asset.assetId}`, '_blank', 'noopener noreferrer')
           }
           className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
         >
-          <Image unoptimized src='/media/icon/opencnft.png' alt='' width={30} height={30} className='mr-2' />
-          Open CNFT
+          <Image unoptimized src='/media/icon/jpgstore.png' alt='' width={30} height={30} className='mr-2' />
+          JPG Store
         </button>
 
         {asset.rarityRank ? (
           <button
             onClick={() =>
               window.open(
-                `https://cnft.tools/badfoxmotorcycleclub?asset=${asset.onChainName}`,
+                `https://cnft.tools/${
+                  policyId === BAD_FOX_POLICY_ID
+                    ? 'badfoxmotorcycleclub'
+                    : policyId === BAD_MOTORCYCLE_POLICY_ID
+                    ? 'bfmcbadmotorcycle'
+                    : policyId === BAD_MOTORCYCLE_POLICY_ID
+                    ? 'badfoxmotorcycleclubbadkey'
+                    : ''
+                }?asset=${asset.onChainName}`,
                 '_blank',
                 'noopener noreferrer'
               )
@@ -249,30 +253,24 @@ const AssetModalContent = (props: AssetModalContentProps) => {
 
         <button
           onClick={() =>
-            window.open(`https://www.jpg.store/asset/${asset.assetId}`, '_blank', 'noopener noreferrer')
+            window.open(
+              `https://opencnft.io/${
+                policyId === BAD_FOX_POLICY_ID
+                  ? 'bad-fox-motorcycle-club-fox-collection'
+                  : policyId === BAD_MOTORCYCLE_POLICY_ID
+                  ? 'bad-fox-motorcycle-club-bad-motorcycle'
+                  : policyId === BAD_MOTORCYCLE_POLICY_ID
+                  ? 'bad-fox-motorcycle-club-bad-key'
+                  : ''
+              }/asset/${asset.fingerprint}`,
+              '_blank',
+              'noopener noreferrer'
+            )
           }
           className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
         >
-          <Image unoptimized src='/media/icon/jpgstore.png' alt='' width={30} height={30} className='mr-2' />
-          JPG Store
-        </button>
-
-        <button
-          onClick={() =>
-            window.open(`https://www.plutus.art/asset/${asset.assetId}`, '_blank', 'noopener noreferrer')
-          }
-          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
-        >
-          <Image unoptimized src='/media/icon/plutusart.png' alt='' width={30} height={30} className='mr-2' />
-          Plutus.art
-        </button>
-
-        <button
-          onClick={() => window.open(`https://epoch.art/asset/${asset.assetId}`, '_blank', 'noopener noreferrer')}
-          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
-        >
-          <Image unoptimized src='/media/icon/epochart.png' alt='' width={30} height={30} className='mr-2' />
-          Epoch.art
+          <Image unoptimized src='/media/icon/opencnft.png' alt='' width={30} height={30} className='mr-2' />
+          Open CNFT
         </button>
       </div>
     </div>
