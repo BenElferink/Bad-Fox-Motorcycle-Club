@@ -1,5 +1,5 @@
 'use client'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { Fragment, useCallback, useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import useWallet from '../../contexts/WalletContext'
 import getFileForPolicyId from '../../functions/getFileForPolicyId'
@@ -221,93 +221,104 @@ const AssetModalContent = (props: AssetModalContentProps) => {
             <Image unoptimized src='/media/fire.gif' alt='' width={30} height={30} className='mr-2' />
             Corresponding Bad Key
           </button>
-        ) : null}
+        ) : (
+          <Fragment>
+            <button
+              onClick={() => window.open(`https://pool.pm/${asset.fingerprint}`, '_blank', 'noopener noreferrer')}
+              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+            >
+              <Image unoptimized src='/media/icon/poolpm.png' alt='' width={30} height={30} className='mr-2' />
+              pool.pm
+            </button>
 
-        <button
-          onClick={() => window.open(`https://pool.pm/${asset.fingerprint}`, '_blank', 'noopener noreferrer')}
-          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
-        >
-          <Image unoptimized src='/media/icon/poolpm.png' alt='' width={30} height={30} className='mr-2' />
-          pool.pm
-        </button>
+            <button
+              onClick={() =>
+                window.open(`https://flipr.io/asset/${asset.assetId}`, '_blank', 'noopener noreferrer')
+              }
+              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+            >
+              <Image unoptimized src='/media/icon/flipr.png' alt='' width={30} height={30} className='mr-2' />
+              Flipr
+            </button>
 
-        <button
-          onClick={() => window.open(`https://flipr.io/asset/${asset.assetId}`, '_blank', 'noopener noreferrer')}
-          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
-        >
-          <Image unoptimized src='/media/icon/flipr.png' alt='' width={30} height={30} className='mr-2' />
-          Flipr
-        </button>
+            <button
+              onClick={() =>
+                window.open(`https://www.jpg.store/asset/${asset.assetId}`, '_blank', 'noopener noreferrer')
+              }
+              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+            >
+              <Image unoptimized src='/media/icon/jpgstore.png' alt='' width={30} height={30} className='mr-2' />
+              JPG Store
+            </button>
 
-        <button
-          onClick={() =>
-            window.open(`https://www.jpg.store/asset/${asset.assetId}`, '_blank', 'noopener noreferrer')
-          }
-          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
-        >
-          <Image unoptimized src='/media/icon/jpgstore.png' alt='' width={30} height={30} className='mr-2' />
-          JPG Store
-        </button>
+            {asset.rarityRank ? (
+              <button
+                onClick={() =>
+                  window.open(
+                    `https://cnft.tools/${
+                      policyId === BAD_FOX_POLICY_ID
+                        ? 'badfoxmotorcycleclub'
+                        : policyId === BAD_MOTORCYCLE_POLICY_ID
+                        ? 'bfmcbadmotorcycle'
+                        : policyId === BAD_MOTORCYCLE_POLICY_ID
+                        ? 'badfoxmotorcycleclubbadkey'
+                        : ''
+                    }?asset=${asset.onChainName}`,
+                    '_blank',
+                    'noopener noreferrer'
+                  )
+                }
+                className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+              >
+                <Image
+                  unoptimized
+                  src='/media/icon/cnfttools.png'
+                  alt=''
+                  width={30}
+                  height={30}
+                  className='mr-2'
+                />
+                CNFT Tools
+              </button>
+            ) : null}
 
-        {asset.rarityRank ? (
-          <button
-            onClick={() =>
-              window.open(
-                `https://cnft.tools/${
-                  policyId === BAD_FOX_POLICY_ID
-                    ? 'badfoxmotorcycleclub'
-                    : policyId === BAD_MOTORCYCLE_POLICY_ID
-                    ? 'bfmcbadmotorcycle'
-                    : policyId === BAD_MOTORCYCLE_POLICY_ID
-                    ? 'badfoxmotorcycleclubbadkey'
-                    : ''
-                }?asset=${asset.onChainName}`,
-                '_blank',
-                'noopener noreferrer'
-              )
-            }
-            className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
-          >
-            <Image unoptimized src='/media/icon/cnfttools.png' alt='' width={30} height={30} className='mr-2' />
-            CNFT Tools
-          </button>
-        ) : null}
+            <button
+              onClick={() =>
+                window.open(
+                  `https://www.cnftjungle.io/asset/${policyId}.${asset.onChainName}`,
+                  '_blank',
+                  'noopener noreferrer'
+                )
+              }
+              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+            >
+              <Image unoptimized src='/media/icon/cnftjungle.png' alt='' width={30} height={30} className='mr-2' />
+              CNFT Jungle
+            </button>
 
-        <button
-          onClick={() =>
-            window.open(
-              `https://www.cnftjungle.io/asset/${policyId}.${asset.onChainName}`,
-              '_blank',
-              'noopener noreferrer'
-            )
-          }
-          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
-        >
-          <Image unoptimized src='/media/icon/cnftjungle.png' alt='' width={30} height={30} className='mr-2' />
-          CNFT Jungle
-        </button>
-
-        <button
-          onClick={() =>
-            window.open(
-              `https://opencnft.io/${
-                policyId === BAD_FOX_POLICY_ID
-                  ? 'bad-fox-motorcycle-club-fox-collection'
-                  : policyId === BAD_MOTORCYCLE_POLICY_ID
-                  ? 'bad-fox-motorcycle-club-bad-motorcycle'
-                  : policyId === BAD_MOTORCYCLE_POLICY_ID
-                  ? 'bad-fox-motorcycle-club-bad-key'
-                  : ''
-              }/asset/${asset.fingerprint}`,
-              '_blank',
-              'noopener noreferrer'
-            )
-          }
-          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
-        >
-          <Image unoptimized src='/media/icon/opencnft.png' alt='' width={30} height={30} className='mr-2' />
-          Open CNFT
-        </button>
+            <button
+              onClick={() =>
+                window.open(
+                  `https://opencnft.io/${
+                    policyId === BAD_FOX_POLICY_ID
+                      ? 'bad-fox-motorcycle-club-fox-collection'
+                      : policyId === BAD_MOTORCYCLE_POLICY_ID
+                      ? 'bad-fox-motorcycle-club-bad-motorcycle'
+                      : policyId === BAD_MOTORCYCLE_POLICY_ID
+                      ? 'bad-fox-motorcycle-club-bad-key'
+                      : ''
+                  }/asset/${asset.fingerprint}`,
+                  '_blank',
+                  'noopener noreferrer'
+                )
+              }
+              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+            >
+              <Image unoptimized src='/media/icon/opencnft.png' alt='' width={30} height={30} className='mr-2' />
+              Open CNFT
+            </button>
+          </Fragment>
+        )}
       </div>
     </div>
   )
