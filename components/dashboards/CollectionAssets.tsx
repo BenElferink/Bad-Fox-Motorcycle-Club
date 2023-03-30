@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 import { Fragment, useCallback, useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import useWallet from '../../contexts/WalletContext'
@@ -12,18 +13,18 @@ import Modal from '../layout/Modal'
 import ImageLoader from '../Loader/ImageLoader'
 import ModelViewer from '../models/ModelViewer'
 import { ADA_SYMBOL, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants'
-import { AssetIncludedFile, PolicyId, PopulatedAsset, TraitsFile } from '../../@types'
-import { ResponsePolicyMarketListings } from '../../pages/api/policy/[policy_id]/market/listed'
-import Image from 'next/image'
+import type { AssetIncludedFile, PolicyId, PopulatedAsset, TraitsFile } from '../../@types'
+import type { ResponsePolicyMarketListings } from '../../pages/api/policy/[policy_id]/market/listed'
 
 interface AssetModalContentProps {
   policyId: string
   asset: PopulatedAsset
   withWallet: boolean
+  selectBadKeyOfBurnedAsset: (assetId: string) => void
 }
 
 const AssetModalContent = (props: AssetModalContentProps) => {
-  const { policyId, asset, withWallet } = props
+  const { policyId, asset, withWallet, selectBadKeyOfBurnedAsset } = props
 
   const [boughtAtPrice, setBoughtAtPrice] = useState(0)
   const [badKeyIdOfBurnedAsset, setBadKeyIdOfBurnedAsset] = useState('')
@@ -213,9 +214,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
 
         {badKeyIdOfBurnedAsset ? (
           <button
-            onClick={() =>
-              window.open(`https://www.jpg.store/asset/${badKeyIdOfBurnedAsset}`, '_blank', 'noopener noreferrer')
-            }
+            onClick={() => selectBadKeyOfBurnedAsset(badKeyIdOfBurnedAsset)}
             className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded'
           >
             <Image unoptimized src='/media/fire.gif' alt='' width={30} height={30} className='mr-2' />
@@ -340,6 +339,7 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
   const [fetched, setFetched] = useState(false)
   const [traitsFile, setTraitsFile] = useState<TraitsFile>({})
   const [assetsFile, setAssetsFile] = useState<PopulatedAsset[]>([])
+  const [selectedAsset, setSelectedAsset] = useState<PopulatedAsset | null>(null)
 
   const appendDefault = useCallback(async () => {
     setTraitsFile(getFileForPolicyId(policyId, 'traits') as TraitsFile)
@@ -405,7 +405,6 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
   }, [withListed, withWallet, fetchPricesAndAppendListed, appendWallet, appendDefault])
 
   const [rendered, setRendered] = useState<PopulatedAsset[]>([])
-  const [selectedAsset, setSelectedAsset] = useState<PopulatedAsset | null>(null)
   // TODO : setDisplayNum using the window width and/or height
   const [displayNum, setDisplayNum] = useState(INITIAL_DISPLAY_AMOUNT)
   const bottomRef = useRef<HTMLDivElement>(null)
@@ -490,7 +489,19 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
 
       {selectedAsset ? (
         <Modal title={selectedAsset.displayName} open onClose={() => setSelectedAsset(null)}>
-          <AssetModalContent policyId={policyId} asset={selectedAsset} withWallet={withWallet} />
+          <AssetModalContent
+            policyId={policyId}
+            asset={selectedAsset}
+            withWallet={withWallet}
+            selectBadKeyOfBurnedAsset={(badKeyId) => {
+              setSelectedAsset(null)
+              setTimeout(() => {
+                const badKeys = getFileForPolicyId(BAD_KEY_POLICY_ID, 'assets') as PopulatedAsset[]
+                const foundBadKey = badKeys.find((asset) => asset.assetId === badKeyId)
+                if (foundBadKey) setSelectedAsset(foundBadKey)
+              }, 0)
+            }}
+          />
         </Modal>
       ) : null}
     </div>

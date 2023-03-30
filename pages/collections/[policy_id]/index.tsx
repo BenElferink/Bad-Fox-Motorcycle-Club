@@ -1,13 +1,13 @@
 import { useRouter } from 'next/router'
 import { Fragment } from 'react'
-import RecentMarketActivity from '../../components/RecentMarketActivity'
-import CollectionAssets from '../../components/dashboards/CollectionAssets'
-import isPolicyIdAllowed from '../../functions/isPolicyIdAllowed'
-import { PolicyId } from '../../@types'
+import RecentMarketActivity from '../../../components/RecentMarketActivity'
+import CollectionAssets from '../../../components/dashboards/CollectionAssets'
+import isPolicyIdAllowed from '../../../functions/isPolicyIdAllowed'
+import { PolicyId } from '../../../@types'
 
 const Page = () => {
   const router = useRouter()
-  const policyId = router.query.policyId as PolicyId
+  const policyId = router.query.policy_id as PolicyId
   const policyOk = isPolicyIdAllowed(policyId, 'collections')
 
   return (
