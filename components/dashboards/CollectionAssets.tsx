@@ -19,11 +19,13 @@ import Image from 'next/image'
 interface AssetModalContentProps {
   policyId: string
   asset: PopulatedAsset
+  withWallet: boolean
 }
 
 const AssetModalContent = (props: AssetModalContentProps) => {
-  const { policyId, asset } = props
+  const { policyId, asset, withWallet } = props
 
+  const [boughtAtPrice, setBoughtAtPrice] = useState(0)
   const [badKeyIdOfBurnedAsset, setBadKeyIdOfBurnedAsset] = useState('')
   const [displayedFile, setDisplayedFile] = useState<AssetIncludedFile>(
     asset.files.length
@@ -54,7 +56,23 @@ const AssetModalContent = (props: AssetModalContentProps) => {
 
       setBadKeyIdOfBurnedAsset(foundBadKey.assetId)
     }
-  }, [policyId, asset])
+
+    if (withWallet) {
+      const stored = localStorage.getItem(`asset-price-${asset.assetId}`)
+      const storedPrice = stored ? JSON.parse(stored) : 0
+      const storedPriceNum = Number(storedPrice)
+
+      if (storedPrice && !isNaN(storedPriceNum)) {
+        setBoughtAtPrice(storedPriceNum)
+      } else {
+        axios.get(`/api/asset/${asset.assetId}/market/history`).then(({ data: { price } }) => {
+          if (price) {
+            setBoughtAtPrice(price)
+          }
+        })
+      }
+    }
+  }, [policyId, asset, withWallet])
 
   return (
     <div className='flex flex-col lg:flex-row lg:justify-between md:px-6'>
@@ -157,6 +175,24 @@ const AssetModalContent = (props: AssetModalContentProps) => {
         <div className='my-1'>
           <CopyChip prefix='Asset ID' value={asset.assetId} />
         </div>
+
+        {withWallet ? (
+          <div className='mt-1 flex items-center'>
+            <p className='mx-2 whitespace-nowrap'>Bought for:</p>
+            <input
+              value={boughtAtPrice}
+              onChange={(e) => {
+                const val = Number(e.target.value)
+
+                if (!isNaN(val)) {
+                  localStorage.setItem(`asset-price-${asset.assetId}`, String(val))
+                  setBoughtAtPrice(val)
+                }
+              }}
+              className='w-full p-3 rounded-lg bg-gray-900 border border-gray-700 text-sm hover:bg-gray-700 hover:border-gray-500 hover:text-white'
+            />
+          </div>
+        ) : null}
 
         <table className='mx-2 my-4 border-collapse'>
           <thead>
@@ -443,7 +479,7 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
 
       {selectedAsset ? (
         <Modal title={selectedAsset.displayName} open onClose={() => setSelectedAsset(null)}>
-          <AssetModalContent policyId={policyId} asset={selectedAsset} />
+          <AssetModalContent policyId={policyId} asset={selectedAsset} withWallet={withWallet} />
         </Modal>
       ) : null}
     </div>

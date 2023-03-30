@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import axios from 'axios'
-import { ArrowLongDownIcon, ArrowLongUpIcon } from '@heroicons/react/24/solid'
+import { ArrowLongDownIcon, ArrowLongUpIcon, ArrowPathIcon } from '@heroicons/react/24/solid'
 import { Chart as ChartJS, LineElement, PointElement, LinearScale, CategoryScale, Legend, Filler } from 'chart.js'
 import { Line } from 'react-chartjs-2'
 import useWallet from '../../contexts/WalletContext'
@@ -26,7 +26,11 @@ const CollectionCharts = (props: CollectionChartsProps) => {
   const [myStats, setMyStats] = useState({ owned: 0, invested: 0, priceNotFound: 0 })
   const [floorSnapshots, setFloorSnapshots] = useState<FloorSnapshot[]>([])
 
+  const [loadingPortfolio, setLoadingPortfolio] = useState(false)
+
   const getPortfolioInvestments = useCallback(async () => {
+    setLoadingPortfolio(true)
+
     try {
       const myCollectionAssets = populatedWallet?.assets[policyId] || []
       let totalInvested = 0
@@ -39,14 +43,23 @@ const CollectionCharts = (props: CollectionChartsProps) => {
       })
 
       for await (const asset of myCollectionAssets) {
-        const {
-          data: { price },
-        } = await axios.get(`/api/asset/${asset.assetId}/market/history`)
+        const stored = localStorage.getItem(`asset-price-${asset.assetId}`)
+        const storedPrice = stored ? JSON.parse(stored) : 0
+        const storedPriceNum = Number(storedPrice)
 
-        if (!price) {
-          totalNotFound++
+        if (storedPrice && !isNaN(storedPriceNum)) {
+          totalInvested += storedPriceNum
         } else {
-          totalInvested += price
+          const {
+            data: { price },
+          } = await axios.get(`/api/asset/${asset.assetId}/market/history`)
+
+          if (!price) {
+            totalNotFound++
+          } else {
+            totalInvested += price
+            localStorage.setItem(`asset-price-${asset.assetId}`, String(price))
+          }
         }
       }
 
@@ -59,6 +72,8 @@ const CollectionCharts = (props: CollectionChartsProps) => {
       console.error(error)
       toast.error(`JPG Store error: ${error.message}`)
     }
+
+    setLoadingPortfolio(false)
   }, [populatedWallet, policyId])
 
   useEffect(() => {
@@ -253,14 +268,24 @@ const CollectionCharts = (props: CollectionChartsProps) => {
 
   return (
     <div className='flex flex-wrap items-center justify-center'>
-      <div className='flex flex-col justify-between items-end text-end h-56 w-64 m-1 mx-2 py-1 px-2 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700 [text-shadow:_0px_0px_2px_rgb(0_0_0_/_100%)]'>
+      <div className='relative flex flex-col justify-between items-end text-end h-56 w-64 m-1 mx-2 py-1 px-2 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700 [text-shadow:_0px_0px_2px_rgb(0_0_0_/_100%)]'>
+        <button
+          onClick={() => getPortfolioInvestments()}
+          disabled={loadingPortfolio}
+          className={
+            'absolute top-2 left-2 w-fit h-fit p-0 bg-transparent border-0 ' +
+            (loadingPortfolio ? 'animate-spin' : '')
+          }
+        >
+          <ArrowPathIcon className='w-6 h-6 text-gray-200' />
+        </button>
+
         <div>
           <h6>Invested</h6>
           <h4 className='text-2xl text-gray-200'>
             {ADA_SYMBOL}
             {formatBigNumber(myStats.invested)}
           </h4>
-          <div className='text-xs'>based on jpg.store sales</div>
           {myStats.priceNotFound ? (
             <div className='text-xs'>could not locate price of {myStats.priceNotFound} assets</div>
           ) : null}
