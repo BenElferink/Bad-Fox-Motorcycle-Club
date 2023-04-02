@@ -2,9 +2,16 @@ import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon, PauseIcon, PlayIcon } fr
 import { useCallback, useEffect, useState } from 'react'
 
 const songs = [
-  '/media/music/4042%20-%20Welcome%20To%20The%20Club%20Prod.%20AwesomeIsJayell.wav',
-  '/media/music/4042%20-%20FoxVerse%20Prod.%20AwesomeIsJayell.wav',
-  '/media/music/4042%20-%20Moving%20Melodies%20Prod.%20AwesomeIsJayell.wav',
+  '/media/music/01. Ben Intro.wav'.replaceAll(' ', '%20'),
+  '/media/music/02. Welcome To The Club.wav'.replaceAll(' ', '%20'),
+  '/media/music/03. FoxVerse.wav'.replaceAll(' ', '%20'),
+  '/media/music/04. Motorcycle Club.wav'.replaceAll(' ', '%20'),
+  '/media/music/05. New Wave.wav'.replaceAll(' ', '%20'),
+  '/media/music/06. Moving Melodies (Interlude).wav'.replaceAll(' ', '%20'),
+  '/media/music/07. Foxy Mami.wav'.replaceAll(' ', '%20'),
+  '/media/music/08. No Chains.wav'.replaceAll(' ', '%20'),
+  '/media/music/09. Out The Cage.wav'.replaceAll(' ', '%20'),
+  '/media/music/10. Riding Around Town.wav'.replaceAll(' ', '%20'),
 ]
 
 const MusicPlayer = () => {
