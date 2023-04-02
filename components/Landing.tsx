@@ -13,12 +13,12 @@ const About = () => {
         we develop tools that benefit everyone on Cardano.
       </p>
 
-      <div className='mt-20'>
+      <div className='mt-10'>
         <h2 className='text-xl mb-4'>What&apos;s Next?</h2>
         <p className='text-xs'>
-          We&apos;re releasing the 3D Foxes in April.
+          We&apos;re releasing the 3D Foxes on April 20th.
           <br />
-          They are game/metaverse ready avatars, with an average of 15k polys.
+          They are game/metaverse ready avatars.
           <br />
           <br />
           With the NFT you will own:
@@ -31,16 +31,24 @@ const About = () => {
 
         <div className='mt-2'>
           <Link
+            href='https://twitter.com/BadFoxMC/status/1638646965436133380'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='w-full lg:w-60 my-2 p-4 block text-center rounded-xl bg-green-900 hover:bg-green-700 bg-opacity-50 hover:bg-opacity-50 hover:text-gray-200 disabled:border border hover:border border-green-700 hover:border-green-700'
+          >
+            Info Thread
+          </Link>
+          <Link
             href='/sneek3d'
             className='w-full lg:w-60 my-2 p-4 block text-center rounded-xl bg-green-900 hover:bg-green-700 bg-opacity-50 hover:bg-opacity-50 hover:text-gray-200 disabled:border border hover:border border-green-700 hover:border-green-700'
           >
-            3D sneak peeks
+            3D Sneak Peeks
           </Link>
           <Link
             href='/reserve3d'
             className='w-full lg:w-60 my-2 p-4 block text-center rounded-xl bg-green-900 hover:bg-green-700 bg-opacity-50 hover:bg-opacity-50 hover:text-gray-200 disabled:border border hover:border border-green-700 hover:border-green-700'
           >
-            3D reservation
+            3D Reservation
           </Link>
         </div>
       </div>

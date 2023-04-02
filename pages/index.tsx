@@ -67,10 +67,10 @@ const teamMembers = [
       'I started my career as Fullstack Developer in 2020 & have been involved in the crypto & NFT space since 2021. I do most of the work around here.',
     profilePicture: '/media/team/Ben.jpg',
     socials: [
-      'https://github.com/belferink1996',
-      'https://www.linkedin.com/in/ben-elferink-37ba251b9',
       'https://twitter.com/BenElferink',
       'https://discord.com/users/791763515554922507',
+      'https://www.linkedin.com/in/ben-elferink-37ba251b9',
+      'https://github.com/belferink1996',
     ],
   },
   {
@@ -80,9 +80,9 @@ const teamMembers = [
       "I'm a graffiti artist. I helped in the making of the 2D traits, I lead the work & design for our merchandise store. I also make the graphics for social media.",
     profilePicture: '/media/team/Chris.jpg',
     socials: [
-      'https://instagram.com/m__chris',
       'https://twitter.com/ChrisMitrev',
       'https://discord.com/users/906518144108101642',
+      'https://instagram.com/m__chris',
     ],
   },
   {
@@ -92,10 +92,10 @@ const teamMembers = [
       "I'm an artist from a young age, and this is my first time being in the CNFT space! I'm excited to lead the work on 2D art for Bad Fox MC.",
     profilePicture: '/media/team/David.jpg',
     socials: [
-      'https://www.linkedin.com/in/david-minkov-50187620a',
-      'https://instagram.com/david_minkov',
       'https://twitter.com/Minkov_D',
       'https://discord.com/users/958536998140907550',
+      'https://instagram.com/david_minkov',
+      'https://www.linkedin.com/in/david-minkov-50187620a',
     ],
   },
   {
@@ -106,9 +106,21 @@ const teamMembers = [
     profilePicture: '/media/team/4042.jpg',
     socials: [
       'https://twitter.com/CribKingCOM',
-      'https://soundcloud.com/badfox4042',
-      'https://www.youtube.com/@badfox4042',
       'https://discord.com/users/829116071663370250',
+      'https://www.youtube.com/@badfox4042',
+      'https://soundcloud.com/badfox4042',
+    ],
+  },
+  {
+    name: 'Stef',
+    title: 'Moderator',
+    description:
+      "I remote operate offshore oil and gas producing platforms from an onshore controlroom for a living, I've been into crypto for about 1,5 years and became a NFT enthousiast on Cardano little over a year ago. BadFoxMC has got a special place in my heart.",
+    profilePicture: '/media/team/Stef.jpg',
+    socials: [
+      'https://twitter.com/Stef_bbq',
+      'https://discord.com/users/933925521346138182',
+      'https://www.instagram.com/stef_bbq/',
     ],
   },
   {
@@ -118,18 +130,6 @@ const teamMembers = [
       "I've been an IT admin for 10+ years, and have been involved in the crypto space since 2019. I found my passion in CNFTs, and am proud to be part of the Bad Fox team.",
     profilePicture: '/media/team/Stevie.jpg',
     socials: ['https://twitter.com/StevieTIota', 'https://discord.com/users/677534591636209664'],
-  },
-  {
-    name: 'Stef',
-    title: 'Moderator',
-    description:
-      "I remote operate offshore oil and gas producing platforms from an onshore controlroom for a living, I've been into crypto for about 1,5 years and became a NFT enthousiast on Cardano little over a year ago. BadFoxMC has got a special place in my heart.",
-    profilePicture: '/media/team/Stef.jpg',
-    socials: [
-      'https://www.instagram.com/stef_bbq/',
-      'https://twitter.com/Stef_bbq',
-      'https://discord.com/users/933925521346138182',
-    ],
   },
   // {
   //   name: 'Uberman',
