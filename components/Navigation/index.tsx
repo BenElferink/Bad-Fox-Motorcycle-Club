@@ -30,8 +30,6 @@ export const navTokens = [
   { label: 'HEXO', path: '/tokens/hexo' },
   { label: 'MD', path: '/tokens/md' },
   { label: 'NFTC', path: '/tokens/nftc' },
-  { label: 'QAK', path: '' },
-  { label: 'SAFARI', path: '' },
   { label: 'SOCIETY', path: '/tokens/society' },
 ]
 
@@ -40,6 +38,7 @@ export const navGames = [
   { label: 'OGBears', path: '/games/ogbears' },
   { label: 'Cornucopias', path: '/games/cornucopias' },
   { label: 'Speed Throne', path: '' },
+  { label: 'Kwicverse', path: '' },
   { label: 'CardaStacks', path: '' },
   { label: 'Boss Planet', path: '' },
   { label: 'U.E (secret: preparation)', path: '' },
