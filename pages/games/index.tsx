@@ -14,9 +14,11 @@ const Page = () => {
                   <ImageLoader
                     src={`/media/${path.charAt(0) === '/' ? path.slice(1) : path}/logo.png`}
                     alt='token'
-                    width={label === 'Degen Royale' ? 110 : 200}
-                    height={label === 'Degen Royale' ? 110 : 50}
-                    style={label === 'Degen Royale' ? { marginBottom: '0.5rem' } : {}}
+                    width={label === 'Degen Royale' || label === 'Bajuzki Studios' ? 110 : 200}
+                    height={label === 'Degen Royale' || label === 'Bajuzki Studios' ? 110 : 50}
+                    style={
+                      label === 'Degen Royale' || label === 'Bajuzki Studios' ? { marginBottom: '0.5rem' } : {}
+                    }
                   />
                 </div>
                 <h3 className='absolute bottom-2 left-1/2 -translate-x-1/2 text-center text-sm'>{label}</h3>
