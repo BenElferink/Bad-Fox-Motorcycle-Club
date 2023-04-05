@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 const Page = () => {
   useEffect(() => {
-    document.body.style.backgroundImage = "url('/media/games/degen-royale/bg.jpg')"
+    document.body.style.backgroundImage = "url('/media/games/degen-royale/bg.png')"
 
     return () => {
       document.body.style.backgroundImage = "url('/media/landing/bg.png')"
