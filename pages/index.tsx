@@ -105,7 +105,7 @@ const teamMembers = [
       'I use creative thinking as a means of expression. This helps me to connect dots and build bridges from one point to another. What is a "Director of Vibes" ? Look at it as a less formal version of Community Manager. I\'m here to coordinate the community vibes and connect with the people!',
     profilePicture: '/media/team/4042.jpg',
     socials: [
-      'https://twitter.com/CribKingCOM',
+      'https://twitter.com/BadFox4042',
       'https://discord.com/users/829116071663370250',
       'https://www.youtube.com/@badfox4042',
       'https://soundcloud.com/badfox4042',
