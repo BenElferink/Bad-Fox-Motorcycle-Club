@@ -3,8 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Fragment, useEffect, useState } from 'react'
 import useScreenSize from '../hooks/useScreenSize'
+import Loader from './Loader'
 
-const CountDown = dynamic(() => import('./CountDown'), { ssr: false })
+const CountDown = dynamic(() => import('./CountDown'), { ssr: false, loading: () => <Loader size={50} /> })
 
 const About = () => {
   const [mintStarted, setMintStarted] = useState(new Date().getMonth() >= 3 && new Date().getDate() > 20)

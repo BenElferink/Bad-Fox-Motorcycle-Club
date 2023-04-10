@@ -3,11 +3,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Landing from '../components/Landing'
 // import Previews from '../components/Previews'
-// import Utilities from '../components/Utilities'
+import Utilities from '../components/Utilities'
 import TeamCard from '../components/cards/TeamCard'
 
 const Previews = dynamic(() => import('../components/Previews'), { ssr: false })
-const Utilities = dynamic(() => import('../components/Utilities'), { ssr: false })
 
 const partnerships = [
   {
