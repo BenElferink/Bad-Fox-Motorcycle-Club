@@ -1,9 +1,14 @@
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Fragment, useEffect, useState } from 'react'
 import useScreenSize from '../hooks/useScreenSize'
 
+const CountDown = dynamic(() => import('./CountDown'), { ssr: false })
+
 const About = () => {
+  const [mintStarted, setMintStarted] = useState(new Date().getMonth() >= 3 && new Date().getDate() > 20)
+
   return (
     <div className='my-4 mx-2 md:mx-10 max-w-2xl lg:max-w-lg text-gray-300'>
       <h1 className='text-xl mb-4'>About The Club:</h1>
@@ -13,44 +18,38 @@ const About = () => {
         we develop tools that benefit everyone on Cardano.
       </p>
 
-      <div className='mt-10'>
-        <h2 className='text-xl mb-4'>What&apos;s Next?</h2>
-        <p className='text-xs'>
-          We&apos;re releasing the 3D Foxes on April 20th.
-          <br />
-          They are game/metaverse ready avatars.
-          <br />
-          <br />
-          With the NFT you will own:
-        </p>
-        <ul className='list-disc list-inside text-xs'>
-          <li>Rendered PFP</li>
-          <li>Animated .glb file</li>
-          <li>T-posed .fbx file</li>
-        </ul>
+      <div className='max-w-[330px] mt-10 mx-auto lg:mx-0 flex flex-col items-center'>
+        <CountDown callbackMintStarted={() => setMintStarted(true)} />
 
-        <div className='mt-2'>
-          <Link
-            href='https://twitter.com/BadFoxMC/status/1638646965436133380'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='w-full lg:w-60 my-2 p-4 block text-center rounded-xl bg-green-900 hover:bg-green-700 bg-opacity-50 hover:bg-opacity-50 hover:text-gray-200 disabled:border border hover:border border-green-700 hover:border-green-700'
-          >
-            Info Thread
-          </Link>
-          <Link
-            href='/sneek3d'
-            className='w-full lg:w-60 my-2 p-4 block text-center rounded-xl bg-green-900 hover:bg-green-700 bg-opacity-50 hover:bg-opacity-50 hover:text-gray-200 disabled:border border hover:border border-green-700 hover:border-green-700'
-          >
-            3D Sneak Peeks
-          </Link>
-          <Link
-            href='/reserve3d'
-            className='w-full lg:w-60 my-2 p-4 block text-center rounded-xl bg-green-900 hover:bg-green-700 bg-opacity-50 hover:bg-opacity-50 hover:text-gray-200 disabled:border border hover:border border-green-700 hover:border-green-700'
-          >
-            3D Reservation
-          </Link>
-        </div>
+        {mintStarted ? (
+          <div className='w-full lg:w-fit'>
+            <Link
+              href='https://badfoxmc.ada-anvil.io/'
+              // target='_blank'
+              rel='noopener noreferrer'
+              className='w-full lg:w-60 my-2 p-4 flex items-center justify-center text-sm text-center rounded-xl bg-green-900 hover:bg-green-700 bg-opacity-50 hover:bg-opacity-50 hover:text-gray-200 disabled:border border hover:border border-green-700 hover:border-green-700'
+            >
+              Mint&nbsp;&nbsp;&nbsp;(&nbsp;
+              <Image src='/media/logo/other/adaanvil.png' alt='ADA Anvil logo' width={55} height={55} />
+              &nbsp;)
+            </Link>
+          </div>
+        ) : (
+          <div className='w-full lg:w-fit'>
+            <Link
+              href='/sneek3d'
+              className='w-full lg:w-60 my-2 p-4 block text-sm text-center rounded-xl bg-green-900 hover:bg-green-700 bg-opacity-50 hover:bg-opacity-50 hover:text-gray-200 disabled:border border hover:border border-green-700 hover:border-green-700'
+            >
+              3D Sneak Peeks
+            </Link>
+            <Link
+              href='/reserve3d'
+              className='w-full lg:w-60 my-2 p-4 block text-sm text-center rounded-xl bg-green-900 hover:bg-green-700 bg-opacity-50 hover:bg-opacity-50 hover:text-gray-200 disabled:border border hover:border border-green-700 hover:border-green-700'
+            >
+              3D Reservation
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   )
