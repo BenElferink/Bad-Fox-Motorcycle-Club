@@ -9,26 +9,22 @@ import ImageLoader from '../Loader/ImageLoader'
 import styles from './Utilities.module.css'
 import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants'
 
-const HomeKeyModel = dynamic(() =>
-  import('../models/HomeKeyModel', {
-    ssr: false,
-    loading: () => <Loader size={100} />,
-  })
-)
+const loading = () => <Loader size={100} />
 
-const HomeFoxModel = dynamic(() =>
-  import('../models/HomeFoxModel', {
-    ssr: false,
-    loading: () => <Loader size={100} />,
-  })
-)
+const HomeKeyModel = dynamic(() => import('../models/HomeKeyModel'), {
+  ssr: false,
+  loading,
+})
 
-const HomeMotorcycleModel = dynamic(() =>
-  import('../models/HomeMotorcycleModel', {
-    ssr: false,
-    loading: () => <Loader size={100} />,
-  })
-)
+const HomeFoxModel = dynamic(() => import('../models/HomeFoxModel'), {
+  ssr: false,
+  loading,
+})
+
+const HomeMotorcycleModel = dynamic(() => import('../models/HomeMotorcycleModel'), {
+  ssr: false,
+  loading,
+})
 
 const data = [
   {

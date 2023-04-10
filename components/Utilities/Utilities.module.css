@@ -22,7 +22,8 @@
   margin-right: 50%;
 }
 
-.chapter svg {
+.chapter h2 svg,
+.chapter h3 svg {
   color: var(--orange);
   filter: drop-shadow(0 0 0.5rem var(--pink));
 }
