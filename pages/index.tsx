@@ -112,7 +112,7 @@ const teamMembers = [
     ],
   },
   {
-    name: 'Stef',
+    name: 'Stef BBQ',
     title: 'Moderator',
     description:
       "I remote operate offshore oil and gas producing platforms from an onshore controlroom for a living, I've been into crypto for about 1,5 years and became a NFT enthousiast on Cardano little over a year ago. BadFoxMC has got a special place in my heart.",
@@ -124,21 +124,21 @@ const teamMembers = [
     ],
   },
   {
-    name: 'Stevie',
+    name: 'Stevie T',
     title: 'Moderator',
     description:
       "I've been an IT admin for 10+ years, and have been involved in the crypto space since 2019. I found my passion in CNFTs, and am proud to be part of the Bad Fox team.",
     profilePicture: '/media/team/Stevie.jpg',
     socials: ['https://twitter.com/StevieTIota', 'https://discord.com/users/677534591636209664'],
   },
-  // {
-  //   name: 'Uberman',
-  //   title: 'Blockchain & Fullstack Developer',
-  //   description:
-  //     "I'm a programmer, and I've been minting NFT projects on Cardano since September 2021. Over that time, I've' been part of many successful teams such as OGBears, and Filthy Rich Horses. I love everyone who is part of the Cardano community and now it feels like a small family to me.",
-  //   profilePicture: '/media/team/Uberman.jpg',
-  //   socials: ['https://discord.com/users/458201578571038740'],
-  // },
+  {
+    name: 'Happyboi',
+    title: 'Moderator',
+    description:
+      "I'm Sydney by name, also known as Happyboi. I'm into trading, and learning technical analysis. I don't have many hobbies, but I love reading books or watching movies whenever I'm free.",
+    profilePicture: '/media/team/Happyboi.jpg',
+    socials: ['https://discord.com/users/1024728525015621723', 'https://instagram.com/sydney.chukwu.52'],
+  },
 ]
 
 interface BadgeProps {
@@ -198,7 +198,7 @@ const Page = () => {
         </div>
       </div>
 
-      <div className='flex flex-wrap justify-center max-w-5xl mb-10'>
+      <div className='flex flex-wrap justify-center max-w-7xl mb-10'>
         {teamMembers.map(({ profilePicture, name, title, description, socials }) => (
           <TeamCard
             key={`team-${name}`}
