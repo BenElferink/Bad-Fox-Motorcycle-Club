@@ -15,8 +15,8 @@ const About = () => {
       <h1 className='text-xl mb-4'>About The Club:</h1>
       <p className='text-xs'>
         Bad Fox Motorcycle Club is a large collective of NFT fans who are working to innovate on what is possible
-        with a PFP project. We do diverse forms of fund redistribution, integrations into various metaverses, and
-        we develop tools that benefit everyone on Cardano.
+        with a Web3 brand. We do diverse forms of fund redistributions, integrations into various games/metaverses,
+        and we develop tools that benefit everyone on Cardano.
       </p>
 
       <div className='max-w-[330px] mt-10 mx-auto lg:mx-0 flex flex-col items-center'>
