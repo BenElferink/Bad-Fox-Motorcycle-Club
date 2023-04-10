@@ -2,17 +2,17 @@ import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon, PauseIcon, PlayIcon } fr
 import { useCallback, useEffect, useState } from 'react'
 
 const songs = [
-  '/media/music/01. Ben Intro.wav'.replaceAll(' ', '%20'),
-  '/media/music/02. Welcome To The Club.wav'.replaceAll(' ', '%20'),
-  '/media/music/03. FoxVerse.wav'.replaceAll(' ', '%20'),
-  '/media/music/04. Riding Around Town.wav'.replaceAll(' ', '%20'),
-  '/media/music/05. Motorcycle Club.wav'.replaceAll(' ', '%20'),
-  '/media/music/06. New Wave.wav'.replaceAll(' ', '%20'),
-  '/media/music/07. Moving Melodies (Interlude).wav'.replaceAll(' ', '%20'),
-  '/media/music/08. Foxy Mami.wav'.replaceAll(' ', '%20'),
-  '/media/music/09. Out The Cage.wav'.replaceAll(' ', '%20'),
-  '/media/music/10. No Chains.wav'.replaceAll(' ', '%20'),
-]
+  '/media/music/01. Ben Intro.wav',
+  '/media/music/02. Welcome To The Club.wav',
+  '/media/music/03. FoxVerse.wav',
+  '/media/music/04. Riding Around Town.wav',
+  '/media/music/05. Motorcycle Club.wav',
+  '/media/music/06. New Wave.wav',
+  '/media/music/07. Moving Melodies (Interlude).wav',
+  '/media/music/08. Foxy Mami.wav',
+  '/media/music/09. Out The Cage.wav',
+  '/media/music/10. No Chains.wav',
+].map((str) => str.replaceAll(' ', '%20'))
 
 const MusicPlayer = () => {
   const [player, setPlayer] = useState<HTMLAudioElement>()
