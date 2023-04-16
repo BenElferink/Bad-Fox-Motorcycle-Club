@@ -16,7 +16,7 @@ const Page = () => {
         <p className='pt-[15vh] text-center text-xl text-[var(--pink)]'>Policy ID is not permitted.</p>
       ) : (
         <Fragment>
-          <RecentMarketActivity policyId={policyId} type='mix' />
+          <RecentMarketActivity policyId={policyId} />
           <CollectionAssets policyId={policyId} withListed />
         </Fragment>
       )}

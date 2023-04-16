@@ -1,10 +1,11 @@
 import { createContext, useState, useContext, useMemo, useEffect } from 'react'
-import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { BrowserWallet, Wallet } from '@meshsdk/core'
+import BadApi from '../utils/badApi'
 import getFileForPolicyId from '../functions/getFileForPolicyId'
-import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../constants'
-import { PolicyId, PopulatedAsset, PopulatedWallet } from '../@types'
+import populateAsset from '../functions/populateAsset'
+import { BAD_FOX_3D_POLICY_ID, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../constants'
+import type { PolicyId, PopulatedAsset, PopulatedWallet } from '../@types'
 
 interface LocalStorageConnectedWallet {
   walletProvider: string
@@ -39,6 +40,8 @@ const WalletContext = createContext<ContextValue>({
   removeAssetsFromWallet: async (_assetIds: string[]) => {},
 })
 
+const badApi = new BadApi()
+
 export default function useWallet() {
   return useContext(WalletContext)
 }
@@ -67,74 +70,83 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
       if (_wallet) {
         const stakeKeys = await _wallet.getRewardAddresses()
         const walletAddress = await _wallet.getChangeAddress()
+        const walletAssets = await _wallet.getAssets()
 
         const badFoxAssetsFile = getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets') as PopulatedAsset[]
-        const badFoxAssets =
-          (await Promise.all(
-            (
-              await _wallet.getPolicyIdAssets(BAD_FOX_POLICY_ID)
-            )?.map(async ({ unit }) => {
-              const foundAsset = badFoxAssetsFile.find((asset) => asset.assetId === unit)
-
-              if (!foundAsset) {
-                const { data } = await axios.get<PopulatedAsset>(
-                  `/api/asset/${unit}/populate?policyId=${BAD_FOX_POLICY_ID}&withRanks=${true}`
-                )
-
-                return data
-              }
-
-              return foundAsset
-            })
-          )) || []
-
         const badMotorcycleAssetsFile = getFileForPolicyId(BAD_MOTORCYCLE_POLICY_ID, 'assets') as PopulatedAsset[]
-        const badMotorcycleAssets =
-          (await Promise.all(
-            (
-              await _wallet.getPolicyIdAssets(BAD_MOTORCYCLE_POLICY_ID)
-            )?.map(async ({ unit }) => {
-              const foundAsset = badMotorcycleAssetsFile.find((asset) => asset.assetId === unit)
-
-              if (!foundAsset) {
-                const { data } = await axios.get<PopulatedAsset>(
-                  `/api/asset/${unit}/populate?policyId=${BAD_MOTORCYCLE_POLICY_ID}&withRanks=${true}`
-                )
-
-                return data
-              }
-
-              return foundAsset
-            })
-          )) || []
-
         const badKeyAssetsFile = getFileForPolicyId(BAD_KEY_POLICY_ID, 'assets') as PopulatedAsset[]
-        const badKeyAssets =
-          (await Promise.all(
-            (
-              await _wallet.getPolicyIdAssets(BAD_KEY_POLICY_ID)
-            )?.map(async ({ unit }) => {
-              const foundAsset = badKeyAssetsFile.find((asset) => asset.assetId === unit)
+        const badFox3dAssetsFile = getFileForPolicyId(BAD_FOX_3D_POLICY_ID, 'assets') as PopulatedAsset[]
 
-              if (!foundAsset) {
-                const { data } = await axios.get<PopulatedAsset>(
-                  `/api/asset/${unit}/populate?policyId=${BAD_KEY_POLICY_ID}&withRanks=${false}`
-                )
-
-                return data
-              }
-
-              return foundAsset
-            })
-          )) || []
+        const filterAssetsForPolicy = (pId: string) => walletAssets.filter(({ unit }) => unit.indexOf(pId) == 0)
 
         setPopulatedWallet({
           stakeKey: stakeKeys[0],
           walletAddress,
           assets: {
-            [BAD_FOX_POLICY_ID]: badFoxAssets,
-            [BAD_MOTORCYCLE_POLICY_ID]: badMotorcycleAssets,
-            [BAD_KEY_POLICY_ID]: badKeyAssets,
+            [BAD_FOX_POLICY_ID]:
+              (await Promise.all(
+                filterAssetsForPolicy(BAD_FOX_POLICY_ID)?.map(async ({ unit }) => {
+                  const foundAsset = badFoxAssetsFile.find((asset) => asset.tokenId === unit)
+
+                  if (!foundAsset) {
+                    return await populateAsset({
+                      assetId: unit,
+                      policyId: BAD_FOX_POLICY_ID,
+                      withRanks: true,
+                    })
+                  }
+
+                  return foundAsset
+                })
+              )) || [],
+            [BAD_MOTORCYCLE_POLICY_ID]:
+              (await Promise.all(
+                filterAssetsForPolicy(BAD_MOTORCYCLE_POLICY_ID)?.map(async ({ unit }) => {
+                  const foundAsset = badMotorcycleAssetsFile.find((asset) => asset.tokenId === unit)
+
+                  if (!foundAsset) {
+                    return await populateAsset({
+                      assetId: unit,
+                      policyId: BAD_MOTORCYCLE_POLICY_ID,
+                      withRanks: true,
+                    })
+                  }
+
+                  return foundAsset
+                })
+              )) || [],
+            [BAD_KEY_POLICY_ID]:
+              (await Promise.all(
+                filterAssetsForPolicy(BAD_KEY_POLICY_ID)?.map(async ({ unit }) => {
+                  const foundAsset = badKeyAssetsFile.find((asset) => asset.tokenId === unit)
+
+                  if (!foundAsset) {
+                    return await populateAsset({
+                      assetId: unit,
+                      policyId: BAD_KEY_POLICY_ID,
+                      withRanks: true,
+                    })
+                  }
+
+                  return foundAsset
+                })
+              )) || [],
+            [BAD_FOX_3D_POLICY_ID]:
+              (await Promise.all(
+                filterAssetsForPolicy(BAD_FOX_3D_POLICY_ID)?.map(async ({ unit }) => {
+                  const foundAsset = badFox3dAssetsFile.find((asset) => asset.tokenId === unit)
+
+                  if (!foundAsset) {
+                    return await populateAsset({
+                      assetId: unit,
+                      policyId: BAD_FOX_3D_POLICY_ID,
+                      withRanks: true,
+                    })
+                  }
+
+                  return foundAsset
+                })
+              )) || [],
           },
         })
 
@@ -157,14 +169,90 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
 
     try {
       if (_walletIdentifier) {
-        const { data } = await axios.get<PopulatedWallet>(`/api/wallet/${_walletIdentifier}`)
+        const data = await badApi.wallet.getData(_walletIdentifier)
 
-        if (data) {
-          setPopulatedWallet(data)
-          setConnectedName('Blockfrost')
-          setConnected(true)
-          setConnectedManually(true)
-        }
+        const badFoxAssetsFile = getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets') as PopulatedAsset[]
+        const badMotorcycleAssetsFile = getFileForPolicyId(BAD_MOTORCYCLE_POLICY_ID, 'assets') as PopulatedAsset[]
+        const badKeyAssetsFile = getFileForPolicyId(BAD_KEY_POLICY_ID, 'assets') as PopulatedAsset[]
+        const badFox3dAssetsFile = getFileForPolicyId(BAD_FOX_3D_POLICY_ID, 'assets') as PopulatedAsset[]
+
+        const filterAssetsForPolicy = (pId: string) =>
+          data.tokens?.filter(({ tokenId }) => tokenId.indexOf(pId) == 0) || []
+
+        setPopulatedWallet({
+          stakeKey: data.stakeKey,
+          walletAddress: data.addresses[0].address,
+          assets: {
+            [BAD_FOX_POLICY_ID]:
+              (await Promise.all(
+                filterAssetsForPolicy(BAD_FOX_POLICY_ID)?.map(async ({ tokenId }) => {
+                  const foundAsset = badFoxAssetsFile.find((asset) => asset.tokenId === tokenId)
+
+                  if (!foundAsset) {
+                    return await populateAsset({
+                      assetId: tokenId,
+                      policyId: BAD_FOX_POLICY_ID,
+                      withRanks: true,
+                    })
+                  }
+
+                  return foundAsset
+                })
+              )) || [],
+            [BAD_MOTORCYCLE_POLICY_ID]:
+              (await Promise.all(
+                filterAssetsForPolicy(BAD_MOTORCYCLE_POLICY_ID)?.map(async ({ tokenId }) => {
+                  const foundAsset = badMotorcycleAssetsFile.find((asset) => asset.tokenId === tokenId)
+
+                  if (!foundAsset) {
+                    return await populateAsset({
+                      assetId: tokenId,
+                      policyId: BAD_MOTORCYCLE_POLICY_ID,
+                      withRanks: true,
+                    })
+                  }
+
+                  return foundAsset
+                })
+              )) || [],
+            [BAD_KEY_POLICY_ID]:
+              (await Promise.all(
+                filterAssetsForPolicy(BAD_KEY_POLICY_ID)?.map(async ({ tokenId }) => {
+                  const foundAsset = badKeyAssetsFile.find((asset) => asset.tokenId === tokenId)
+
+                  if (!foundAsset) {
+                    return await populateAsset({
+                      assetId: tokenId,
+                      policyId: BAD_KEY_POLICY_ID,
+                      withRanks: true,
+                    })
+                  }
+
+                  return foundAsset
+                })
+              )) || [],
+            [BAD_FOX_3D_POLICY_ID]:
+              (await Promise.all(
+                filterAssetsForPolicy(BAD_FOX_3D_POLICY_ID)?.map(async ({ tokenId }) => {
+                  const foundAsset = badFox3dAssetsFile.find((asset) => asset.tokenId === tokenId)
+
+                  if (!foundAsset) {
+                    return await populateAsset({
+                      assetId: tokenId,
+                      policyId: BAD_FOX_3D_POLICY_ID,
+                      withRanks: true,
+                    })
+                  }
+
+                  return foundAsset
+                })
+              )) || [],
+          },
+        })
+
+        setConnectedName('Blockfrost')
+        setConnected(true)
+        setConnectedManually(true)
       }
     } catch (error: any) {
       console.error(error)
@@ -227,7 +315,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
           const payload = { ...prev.assets }
 
           Object.entries(payload).forEach(([policyId, assets]) => {
-            payload[policyId as PolicyId] = assets.filter((asset) => !_assetIds.includes(asset.assetId))
+            payload[policyId as PolicyId] = assets.filter((asset) => !_assetIds.includes(asset.tokenId))
           })
 
           return {

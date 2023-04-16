@@ -50,7 +50,14 @@ const AssetFilters = (props: AssetFiltersProps) => {
       })
 
       return assets.filter((asset) => {
-        if (!search || (search && asset.displayName.indexOf(search) !== -1)) {
+        if (
+          !search ||
+          (search &&
+            (asset.tokenName?.display.indexOf(search) !== -1 ||
+              asset.tokenName?.onChain.indexOf(search) !== -1 ||
+              asset.tokenId.indexOf(search) !== -1 ||
+              asset.fingerprint.indexOf(search) !== -1))
+        ) {
           const matchingCategories = []
           const arrWithSelected = Object.entries(objWithSelected)
 
@@ -85,7 +92,9 @@ const AssetFilters = (props: AssetFiltersProps) => {
         }
 
         case 'RANK': {
-          const sorted = items.sort((a, b) => (ascending ? a : b).rarityRank - (ascending ? b : a).rarityRank)
+          const sorted = items.sort(
+            (a, b) => ((ascending ? a : b).rarityRank || 0) - ((ascending ? b : a).rarityRank || 0)
+          )
 
           if (ascending) {
             return sorted.sort((a, b) => (!!a.isBurned ? 1 : -1) - (!!b.isBurned ? 1 : -1))
@@ -102,7 +111,9 @@ const AssetFilters = (props: AssetFiltersProps) => {
 
         case 'ID':
         default:
-          return items.sort((a, b) => (ascending ? a : b).serialNumber - (ascending ? b : a).serialNumber)
+          return items.sort(
+            (a, b) => ((ascending ? a : b).serialNumber || 0) - ((ascending ? b : a).serialNumber || 0)
+          )
       }
     },
     [ascending, sortBy]

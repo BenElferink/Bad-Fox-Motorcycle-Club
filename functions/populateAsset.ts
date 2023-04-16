@@ -1,10 +1,10 @@
-import blockfrost from '../utils/blockfrost'
-import CnftTools, { FormattedRankedAsset } from '../utils/cnftTools'
-import fromHex from './formatters/hex/fromHex'
-import { AssetIncludedFile, PolicyId, PopulatedAsset } from '../@types'
+import BadApi from '../utils/badApi'
+import type { BadApiRankedToken } from '../utils/badApi'
+import type { PolicyId, PopulatedAsset } from '../@types'
 
-const cnftTools = new CnftTools()
-let cnftToolsAssets: Partial<Record<PolicyId, FormattedRankedAsset[]>> | null = null
+const badApi = new BadApi()
+
+let cnftToolsAssets: Partial<Record<PolicyId, BadApiRankedToken[]>> | null = null
 
 const populateAsset: (options: {
   policyId: PolicyId
@@ -16,43 +16,26 @@ const populateAsset: (options: {
   console.log(`Populating asset with ID ${assetId}`)
 
   try {
-    const data = await blockfrost.getAssetWithAssetId(assetId)
+    const data = await badApi.token.getData(assetId)
 
-    let rarityRank = 0
-
-    if (!!withRanks) {
-      if (!cnftToolsAssets) {
-        cnftToolsAssets = {}
-      }
-
-      if (!cnftToolsAssets[policyId]?.length) {
-        cnftToolsAssets[policyId] = await cnftTools.getRankedAssets(policyId)
-      }
-
-      rarityRank = Number(cnftToolsAssets[policyId]?.find((item) => item.assetId === assetId)?.rank || 0)
+    if (!cnftToolsAssets) {
+      cnftToolsAssets = {}
     }
 
-    const ipfsReference =
-      typeof data.onchain_metadata?.image === 'string'
-        ? data.onchain_metadata?.image
-        : typeof data.onchain_metadata?.image === 'object'
-        ? ((data.onchain_metadata?.image as string[]) || []).join('')
-        : 'unknown'
+    if (!cnftToolsAssets[policyId]?.length) {
+      cnftToolsAssets[policyId] = (await badApi.policy.getData(policyId, { withRanks, allTokens: true })).tokens
+    }
+
+    const rarityRank = cnftToolsAssets[policyId]?.find((item) => item.tokenId === assetId)?.rarityRank || 0
 
     return {
-      assetId: data.asset,
-      fingerprint: data.fingerprint,
-      isBurned: data.quantity === '0',
-      onChainName: fromHex(data.asset_name || ''),
-      displayName: (data.onchain_metadata?.name as string) || '',
-      serialNumber: Number(((data.onchain_metadata?.name as string) || '#0').split('#')[1]),
+      ...data,
+      isBurned: data.tokenAmount.onChain == 0,
       rarityRank,
-      attributes: (data.onchain_metadata?.attributes as Record<string, string>) || {},
       image: {
-        ipfs: ipfsReference.indexOf('ipfs://') === 0 ? ipfsReference : `ipfs://${ipfsReference}`,
-        firebase: firebaseImageUrl || '',
+        ipfs: data.image.ipfs,
+        url: firebaseImageUrl || data.image.url || '',
       },
-      files: (data.onchain_metadata?.files as AssetIncludedFile[]) || [],
     }
   } catch (error) {
     console.error(`Error populating asset with ID ${assetId}`)

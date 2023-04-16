@@ -1,16 +1,19 @@
 import React, { Fragment, useCallback, useMemo, useState } from 'react'
-import axios from 'axios'
 import { toast } from 'react-hot-toast'
+import { PhotoIcon } from '@heroicons/react/24/solid'
 import { Transaction } from '@meshsdk/core'
 import useWallet from '../../contexts/WalletContext'
-import { PhotoIcon } from '@heroicons/react/24/solid'
-import Modal from '../layout/Modal'
-import ImageLoader from '../Loader/ImageLoader'
-import WalletHero from '../Wallet/WalletHero'
-import AssetCard from '../cards/AssetCard'
+import BadApi from '../../utils/badApi'
 import sleep from '../../functions/sleep'
 import formatIpfsImageUrl from '../../functions/formatters/formatIpfsImageUrl'
+import WalletHero from '../Wallet/WalletHero'
+import Modal from '../layout/Modal'
+import ImageLoader from '../Loader/ImageLoader'
+import AssetCard from '../cards/AssetCard'
 import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID, ONE_MILLION } from '../../constants'
+import type { BadApiTransaction } from '../../utils/badApi'
+
+const badApi = new BadApi()
 
 const BURN_ADDRESS = ''
 
@@ -30,34 +33,27 @@ const BurnDashboard = () => {
       : ''
   )
 
-  const txConfirmation = useCallback(
-    async (
-      txHash: string
-    ): Promise<{
-      txHash: string
-      submitted: boolean
-    }> => {
-      try {
-        const { data } = await axios.get<{
-          txHash: string
-          submitted: boolean
-        }>(`/api/transaction/${txHash}/status`)
+  const txConfirmation = useCallback(async (_txHash: string): Promise<BadApiTransaction> => {
+    try {
+      const data = await badApi.transaction.getData(_txHash)
 
-        if (data.submitted) {
-          return data
-        } else {
-          await sleep(1000)
-          return await txConfirmation(txHash)
-        }
-      } catch (error) {
-        console.error(error)
-
+      if (data.block) {
+        return data
+      } else {
         await sleep(1000)
-        return await txConfirmation(txHash)
+        return await txConfirmation(_txHash)
       }
-    },
-    []
-  )
+    } catch (error: any) {
+      const errMsg = error?.response?.data || error?.message || error?.toString() || 'UNKNOWN ERROR'
+
+      if (errMsg === `The requested component has not been found. ${_txHash}`) {
+        await sleep(1000)
+        return await txConfirmation(_txHash)
+      } else {
+        throw new Error(errMsg)
+      }
+    }
+  }, [])
 
   const buildTx = useCallback(async () => {
     if (!BURN_ADDRESS || loadingTx) return
@@ -123,7 +119,7 @@ const BurnDashboard = () => {
   const filteredAssets = useMemo(
     () =>
       populatedWallet?.assets[selector === 'B' ? BAD_MOTORCYCLE_POLICY_ID : BAD_FOX_POLICY_ID]
-        .sort((a, b) => a.serialNumber - b.serialNumber)
+        .sort((a, b) => (a?.serialNumber || 0) - (b?.serialNumber || 0))
         .filter(
           (asset) =>
             selector === 'B' ||
@@ -163,12 +159,12 @@ const BurnDashboard = () => {
           className='relative flex flex-col items-center justify-center w-72 h-72 my-4 bg-gray-900 hover:bg-gray-700 bg-opacity-50 hover:bg-opacity-50 rounded-xl border border-gray-700 hover:border-gray-500 hover:text-gray-200'
         >
           {selectedMale ? (
-            populatedWallet?.assets[BAD_FOX_POLICY_ID].filter((asset) => asset.assetId === selectedMale).map(
+            populatedWallet?.assets[BAD_FOX_POLICY_ID].filter((asset) => asset.tokenId === selectedMale).map(
               (asset) => (
-                <div key={`selected-${asset.assetId}`} style={{ position: 'absolute', top: 0, left: 0 }}>
+                <div key={`selected-${asset.tokenId}`} style={{ position: 'absolute', top: 0, left: 0 }}>
                   <ImageLoader
-                    src={asset.image.firebase}
-                    alt={asset.displayName}
+                    src={asset.image.url}
+                    alt={asset.tokenName?.display as string}
                     width={288}
                     height={288}
                     style={{ borderRadius: '0.75rem' }}
@@ -190,12 +186,12 @@ const BurnDashboard = () => {
           className='relative flex flex-col items-center justify-center w-72 h-72 my-4 bg-gray-900 hover:bg-gray-700 bg-opacity-50 hover:bg-opacity-50 rounded-xl border border-gray-700 hover:border-gray-500 hover:text-gray-200'
         >
           {selectedFemale ? (
-            populatedWallet?.assets[BAD_FOX_POLICY_ID].filter((asset) => asset.assetId === selectedFemale).map(
+            populatedWallet?.assets[BAD_FOX_POLICY_ID].filter((asset) => asset.tokenId === selectedFemale).map(
               (asset) => (
-                <div key={`selected-${asset.assetId}`} style={{ position: 'absolute', top: 0, left: 0 }}>
+                <div key={`selected-${asset.tokenId}`} style={{ position: 'absolute', top: 0, left: 0 }}>
                   <ImageLoader
-                    src={asset.image.firebase}
-                    alt={asset.displayName}
+                    src={asset.image.url}
+                    alt={asset.tokenName?.display as string}
                     width={288}
                     height={288}
                     style={{ borderRadius: '0.75rem' }}
@@ -218,12 +214,12 @@ const BurnDashboard = () => {
         >
           {selectedBike ? (
             populatedWallet?.assets[BAD_MOTORCYCLE_POLICY_ID].filter(
-              (asset) => asset.assetId === selectedBike
+              (asset) => asset.tokenId === selectedBike
             ).map((asset) => (
-              <div key={`selected-${asset.assetId}`} style={{ position: 'absolute', top: 0, left: 0 }}>
+              <div key={`selected-${asset.tokenId}`} style={{ position: 'absolute', top: 0, left: 0 }}>
                 <ImageLoader
-                  src={asset.image.firebase}
-                  alt={asset.displayName}
+                  src={asset.image.url}
+                  alt={asset.tokenName?.display as string}
                   width={288}
                   height={288}
                   style={{ borderRadius: '0.75rem' }}
@@ -278,19 +274,19 @@ const BurnDashboard = () => {
           ) : (
             filteredAssets.map((asset) => (
               <AssetCard
-                key={`asset-${asset.assetId}`}
+                key={`asset-${asset.tokenId}`}
                 imageSrc={formatIpfsImageUrl({
                   ipfsUri: asset.image.ipfs,
                   hasRank: !!asset.rarityRank,
                 })}
-                title={asset.displayName}
+                title={asset.tokenName?.display as string}
                 onClick={() => {
                   selector === 'B'
-                    ? setSelectedBike(asset.assetId)
+                    ? setSelectedBike(asset.tokenId)
                     : selector === 'M'
-                    ? setSelectedMale(asset.assetId)
+                    ? setSelectedMale(asset.tokenId)
                     : selector === 'F'
-                    ? setSelectedFemale(asset.assetId)
+                    ? setSelectedFemale(asset.tokenId)
                     : console.warn('unexpected condition')
 
                   setSelector('')

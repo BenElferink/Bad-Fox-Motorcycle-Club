@@ -1,30 +1,15 @@
-import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../constants'
+import { BAD_FOX_3D_POLICY_ID, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../constants'
+import type { BadApiPopulatedToken } from '../utils/badApi'
 
-export type PolicyId = typeof BAD_FOX_POLICY_ID | typeof BAD_MOTORCYCLE_POLICY_ID | typeof BAD_KEY_POLICY_ID
+export type PolicyId =
+  | typeof BAD_FOX_POLICY_ID
+  | typeof BAD_MOTORCYCLE_POLICY_ID
+  | typeof BAD_KEY_POLICY_ID
+  | typeof BAD_FOX_3D_POLICY_ID
 
-export interface AssetIncludedFile {
-  name: string
-  mediaType: string
-  src: string
-}
-
-export interface PopulatedAsset {
-  assetId: string
-  fingerprint: string
+export interface PopulatedAsset extends BadApiPopulatedToken {
   isBurned: boolean
-  onChainName: string
-  displayName: string
-  serialNumber: number
-  rarityRank: number
   price?: number
-  attributes: {
-    [category: string]: string
-  }
-  image: {
-    ipfs: string
-    firebase: string
-  }
-  files: AssetIncludedFile[]
 }
 
 export interface PopulatedWallet {

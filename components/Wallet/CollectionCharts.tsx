@@ -1,13 +1,14 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import axios from 'axios'
+import { toast } from 'react-hot-toast'
 import { ArrowLongDownIcon, ArrowLongUpIcon, ArrowPathIcon } from '@heroicons/react/24/solid'
 import { Chart as ChartJS, LineElement, PointElement, LinearScale, CategoryScale, Legend, Filler } from 'chart.js'
 import { Line } from 'react-chartjs-2'
+import BadApi from '../../utils/badApi'
 import useWallet from '../../contexts/WalletContext'
 import formatBigNumber from '../../functions/formatters/formatBigNumber'
 import { ADA_SYMBOL } from '../../constants'
-import { FloorSnapshot, PolicyId } from '../../@types'
-import { toast } from 'react-hot-toast'
+import type { FloorSnapshot, PolicyId } from '../../@types'
 
 export interface CollectionChartsProps {
   policyId: PolicyId
@@ -17,6 +18,8 @@ type FloorResponse = {
   count: number
   items: FloorSnapshot[]
 }
+
+const badApi = new BadApi()
 
 ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Legend, Filler)
 
@@ -43,22 +46,21 @@ const CollectionCharts = (props: CollectionChartsProps) => {
       })
 
       for await (const asset of myCollectionAssets) {
-        const stored = localStorage.getItem(`asset-price-${asset.assetId}`)
+        const stored = localStorage.getItem(`asset-price-${asset.tokenId}`)
         const storedPrice = stored ? JSON.parse(stored) : 0
         const storedPriceNum = Number(storedPrice)
 
         if (storedPrice && !isNaN(storedPriceNum)) {
           totalInvested += storedPriceNum
         } else {
-          const {
-            data: { price },
-          } = await axios.get(`/api/asset/${asset.assetId}/market/history`)
+          const data = await badApi.token.market.getActivity(asset.tokenId)
+          const price = data.items.filter(({ activityType }) => activityType === 'BUY')[0]?.price || 0
 
           if (!price) {
             totalNotFound++
           } else {
             totalInvested += price
-            localStorage.setItem(`asset-price-${asset.assetId}`, String(price))
+            localStorage.setItem(`asset-price-${asset.tokenId}`, String(price))
           }
         }
       }
@@ -81,7 +83,7 @@ const CollectionCharts = (props: CollectionChartsProps) => {
   }, [getPortfolioInvestments])
 
   const getFloorPrices = useCallback(async () => {
-    const uri = `/api/policy/${policyId}/market/floor`
+    const uri = `/api/floor/${policyId}`
     let payload: FloorSnapshot[] = []
 
     try {
@@ -98,12 +100,12 @@ const CollectionCharts = (props: CollectionChartsProps) => {
       console.error(error)
     }
 
-    setFloorSnapshots(payload)
+    return payload
   }, [policyId])
 
   useEffect(() => {
     setFloorSnapshots([])
-    getFloorPrices()
+    getFloorPrices().then((data) => setFloorSnapshots(data))
   }, [getFloorPrices])
 
   const getAndRenderCharts = useCallback(() => {
@@ -161,7 +163,7 @@ const CollectionCharts = (props: CollectionChartsProps) => {
           let assetFloorValue = 0
           let assetHighestTraitValue = 0
 
-          if (!assetId || asset.assetId === assetId) {
+          if (!assetId || asset.tokenId === assetId) {
             Object.entries(attributesOfIndex).forEach(([floorPricesCategory, floorPricesTraits]) => {
               const assetCategoryTraitName = asset.attributes[floorPricesCategory]
               const traitFloorValue = floorPricesTraits[assetCategoryTraitName]
@@ -196,11 +198,11 @@ const CollectionCharts = (props: CollectionChartsProps) => {
       myCollectionAssets.forEach((asset) => {
         if (asset) {
           floorPayload.data = floorPayload.data.map((num, i) =>
-            Math.round(num + getFloorAndTraitValues({ assetId: asset.assetId, floorPricesIndex: i }).floor)
+            Math.round(num + getFloorAndTraitValues({ assetId: asset.tokenId, floorPricesIndex: i }).floor)
           )
 
           highestTraitPayload.data = highestTraitPayload.data.map((num, i) =>
-            Math.round(num + getFloorAndTraitValues({ assetId: asset.assetId, floorPricesIndex: i }).highestTrait)
+            Math.round(num + getFloorAndTraitValues({ assetId: asset.tokenId, floorPricesIndex: i }).highestTrait)
           )
         }
       })

@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { Fragment, useCallback, useEffect, useRef, useState } from 'react'
-import axios from 'axios'
+import BadApi from '../../utils/badApi'
 import useWallet from '../../contexts/WalletContext'
 import getFileForPolicyId from '../../functions/getFileForPolicyId'
 import formatIpfsImageUrl from '../../functions/formatters/formatIpfsImageUrl'
@@ -13,8 +13,9 @@ import Modal from '../layout/Modal'
 import ImageLoader from '../Loader/ImageLoader'
 import ModelViewer from '../models/ModelViewer'
 import { ADA_SYMBOL, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants'
-import type { AssetIncludedFile, PolicyId, PopulatedAsset, TraitsFile } from '../../@types'
-import type { ResponsePolicyMarketListings } from '../../pages/api/policy/[policy_id]/market/listed'
+import type { PolicyId, PopulatedAsset, TraitsFile } from '../../@types'
+
+const badApi = new BadApi()
 
 interface AssetModalContentProps {
   policyId: string
@@ -28,18 +29,18 @@ const AssetModalContent = (props: AssetModalContentProps) => {
 
   const [boughtAtPrice, setBoughtAtPrice] = useState(0)
   const [badKeyIdOfBurnedAsset, setBadKeyIdOfBurnedAsset] = useState('')
-  const [displayedFile, setDisplayedFile] = useState<AssetIncludedFile>(
+  const [displayedFile, setDisplayedFile] = useState<PopulatedAsset['files'][0]>(
     asset.files.length
       ? asset.files[0]
       : {
-          name: asset.displayName,
+          name: asset?.tokenName?.display as string,
           mediaType: 'image/png',
           src: asset.image.ipfs,
         }
   )
 
   useEffect(() => {
-    const { isBurned, displayName, attributes } = asset
+    const { isBurned, tokenName, attributes } = asset
 
     if (isBurned) {
       const badKeyTraitCategory =
@@ -52,24 +53,23 @@ const AssetModalContent = (props: AssetModalContentProps) => {
 
       const badKeyAssetsFile = getFileForPolicyId(BAD_KEY_POLICY_ID, 'assets') as PopulatedAsset[]
       const foundBadKey = badKeyAssetsFile.find(
-        (badKey) => badKey.attributes[badKeyTraitCategory] === displayName
+        (badKey) => badKey.attributes[badKeyTraitCategory] === tokenName?.display
       ) as PopulatedAsset
 
-      setBadKeyIdOfBurnedAsset(foundBadKey.assetId)
+      setBadKeyIdOfBurnedAsset(foundBadKey.tokenId)
     }
 
     if (withWallet) {
-      const stored = localStorage.getItem(`asset-price-${asset.assetId}`)
+      const stored = localStorage.getItem(`asset-price-${asset.tokenId}`)
       const storedPrice = stored ? JSON.parse(stored) : 0
       const storedPriceNum = Number(storedPrice)
 
       if (storedPrice && !isNaN(storedPriceNum)) {
         setBoughtAtPrice(storedPriceNum)
       } else {
-        axios.get(`/api/asset/${asset.assetId}/market/history`).then(({ data: { price } }) => {
-          if (price) {
-            setBoughtAtPrice(price)
-          }
+        badApi.token.market.getActivity(asset.tokenId).then((data) => {
+          const price = data.items.filter(({ activityType }) => activityType === 'BUY')[0].price || 0
+          setBoughtAtPrice(price)
         })
       }
     }
@@ -127,44 +127,40 @@ const AssetModalContent = (props: AssetModalContentProps) => {
 
         <div className='flex flex-wrap items-center'>
           {asset.files.length
-            ? asset.files.map((file) =>
-                file.src !== displayedFile.src ? (
-                  <button
-                    key={`file-${file.src}`}
-                    onClick={() => setDisplayedFile(file)}
-                    className='w-32 h-32 m-1'
-                  >
-                    {file.mediaType === 'image/png' ? (
-                      <ImageLoader
+            ? asset.files.map((file) => (
+                // file.src !== displayedFile.src ? (
+                <button key={`file-${file.src}`} onClick={() => setDisplayedFile(file)} className='w-32 h-32 m-1'>
+                  {file.mediaType === 'image/png' ? (
+                    <ImageLoader
+                      src={formatIpfsImageUrl({
+                        ipfsUri: file.src,
+                        hasRank: !!asset.rarityRank,
+                      })}
+                      alt={file.name}
+                      width={150}
+                      height={150}
+                      style={{ flex: 0.42, borderRadius: '1rem' }}
+                    />
+                  ) : file.mediaType === 'model/gltf-binary' ? (
+                    <div className='w-full h-full bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
+                      <ModelViewer
                         src={formatIpfsImageUrl({
                           ipfsUri: file.src,
-                          hasRank: !!asset.rarityRank,
+                          is3D: true,
                         })}
-                        alt={file.name}
-                        width={150}
-                        height={150}
-                        style={{ flex: 0.42, borderRadius: '1rem' }}
+                        freeze
                       />
-                    ) : file.mediaType === 'model/gltf-binary' ? (
-                      <div className='w-full h-full bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
-                        <ModelViewer
-                          src={formatIpfsImageUrl({
-                            ipfsUri: file.src,
-                            is3D: true,
-                          })}
-                          freeze
-                        />
-                      </div>
-                    ) : (
-                      <div className='w-full h-full bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
-                        Unhandled file type:
-                        <br />
-                        {displayedFile.mediaType}
-                      </div>
-                    )}
-                  </button>
-                ) : null
-              )
+                    </div>
+                  ) : (
+                    <div className='w-full h-full bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
+                      Unhandled file type:
+                      <br />
+                      {displayedFile.mediaType}
+                    </div>
+                  )}
+                </button>
+                // ) : null
+              ))
             : null}
         </div>
       </div>
@@ -174,7 +170,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
           <CopyChip prefix='Policy ID' value={policyId} />
         </div>
         <div className='my-1'>
-          <CopyChip prefix='Asset ID' value={asset.assetId} />
+          <CopyChip prefix='Asset ID' value={asset.tokenId} />
         </div>
 
         {withWallet ? (
@@ -186,7 +182,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
                 const val = Number(e.target.value)
 
                 if (!isNaN(val)) {
-                  localStorage.setItem(`asset-price-${asset.assetId}`, String(val))
+                  localStorage.setItem(`asset-price-${asset.tokenId}`, String(val))
                   setBoughtAtPrice(val)
                 }
               }}
@@ -232,7 +228,17 @@ const AssetModalContent = (props: AssetModalContentProps) => {
 
             <button
               onClick={() =>
-                window.open(`https://flipr.io/asset/${asset.assetId}`, '_blank', 'noopener noreferrer')
+                window.open(`https://www.jpg.store/asset/${asset.tokenId}`, '_blank', 'noopener noreferrer')
+              }
+              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+            >
+              <Image unoptimized src='/media/icon/jpgstore.png' alt='' width={30} height={30} className='mr-2' />
+              JPG Store
+            </button>
+
+            <button
+              onClick={() =>
+                window.open(`https://flipr.io/asset/${asset.tokenId}`, '_blank', 'noopener noreferrer')
               }
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
@@ -242,12 +248,22 @@ const AssetModalContent = (props: AssetModalContentProps) => {
 
             <button
               onClick={() =>
-                window.open(`https://www.jpg.store/asset/${asset.assetId}`, '_blank', 'noopener noreferrer')
+                window.open(`https://www.plutus.art/asset/${asset.tokenId}`, '_blank', 'noopener noreferrer')
               }
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image unoptimized src='/media/icon/jpgstore.png' alt='' width={30} height={30} className='mr-2' />
-              JPG Store
+              <Image unoptimized src='/media/icon/plutusart.png' alt='' width={30} height={30} className='mr-2' />
+              Plutus Art
+            </button>
+
+            <button
+              onClick={() =>
+                window.open(`https://epoch.art/asset/${asset.tokenId}`, '_blank', 'noopener noreferrer')
+              }
+              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+            >
+              <Image unoptimized src='/media/icon/epochart.png' alt='' width={30} height={30} className='mr-2' />
+              Epoch Art
             </button>
 
             {asset.rarityRank ? (
@@ -262,7 +278,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
                         : policyId === BAD_MOTORCYCLE_POLICY_ID
                         ? 'badfoxmotorcycleclubbadkey'
                         : ''
-                    }?asset=${asset.onChainName}`,
+                    }?asset=${asset.tokenName?.onChain}`,
                     '_blank',
                     'noopener noreferrer'
                   )
@@ -284,7 +300,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
             <button
               onClick={() =>
                 window.open(
-                  `https://www.cnftjungle.io/asset/${policyId}.${asset.onChainName}`,
+                  `https://www.jngl.io/asset/${policyId}.${asset.tokenName?.onChain}`,
                   '_blank',
                   'noopener noreferrer'
                 )
@@ -292,7 +308,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
               <Image unoptimized src='/media/icon/cnftjungle.png' alt='' width={30} height={30} className='mr-2' />
-              CNFT Jungle
+              Jungle
             </button>
 
             <button
@@ -315,6 +331,33 @@ const AssetModalContent = (props: AssetModalContentProps) => {
             >
               <Image unoptimized src='/media/icon/opencnft.png' alt='' width={30} height={30} className='mr-2' />
               Open CNFT
+            </button>
+
+            <button
+              onClick={() =>
+                window.open(`https://cardanoscan.io/token/${asset.tokenId}`, '_blank', 'noopener noreferrer')
+              }
+              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+            >
+              <Image
+                unoptimized
+                src='/media/icon/cardanoscan.png'
+                alt=''
+                width={30}
+                height={30}
+                className='mr-2'
+              />
+              Cardanoscan
+            </button>
+
+            <button
+              onClick={() =>
+                window.open(`https://cexplorer.io/asset/${asset.fingerprint}`, '_blank', 'noopener noreferrer')
+              }
+              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+            >
+              <Image unoptimized src='/media/icon/cexplorer.png' alt='' width={30} height={30} className='mr-2' />
+              Cexplorer
             </button>
           </Fragment>
         )}
@@ -355,30 +398,26 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
     setFetching(true)
 
     try {
-      const {
-        data: { items: listedItems },
-      } = await axios.get<ResponsePolicyMarketListings>(`/api/policy/${policyId}/market/listed`)
+      const fetched = await badApi.policy.market.getData(policyId)
 
       const traits = getFileForPolicyId(policyId, 'traits') as TraitsFile
       const assets = (getFileForPolicyId(policyId, 'assets') as PopulatedAsset[]).map((asset) => {
-        const foundListing = listedItems.find((listed) => listed.assetId === asset.assetId)
+        const found = fetched.items.find((listed) => listed.tokenId === asset.tokenId)
+
         return {
           ...asset,
-          price: !!foundListing ? foundListing.price : 0,
+          price: !!found ? found.price : 0,
         }
       })
 
-      for await (const listed of listedItems) {
-        const found = assets.find((asset) => asset.assetId === listed.assetId)
+      for await (const listed of fetched.items) {
+        const found = assets.find((asset) => listed.tokenId === asset.tokenId)
 
         if (!found) {
-          const { data } = await axios.get<PopulatedAsset>(
-            `/api/asset/${listed.assetId}/populate?policyId=${policyId}&withRanks=${
-              policyId !== BAD_KEY_POLICY_ID
-            }`
-          )
+          const data: Partial<PopulatedAsset> = await badApi.token.getData(listed.tokenId)
 
           data.price = listed.price
+
           assets.push(data as typeof assets[0])
         }
       }
@@ -440,10 +479,10 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
 
               return (
                 <AssetCard
-                  key={`collection-asset-${asset.assetId}-${idx}`}
+                  key={`collection-asset-${asset.tokenId}-${idx}`}
                   onClick={() => setSelectedAsset(asset)}
                   isBurned={asset.isBurned}
-                  title={asset.displayName}
+                  title={asset.tokenName?.display as string}
                   imageSrc={formatIpfsImageUrl({
                     ipfsUri: asset.image.ipfs,
                     hasRank: !!asset.rarityRank,
@@ -488,7 +527,7 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
       />
 
       {selectedAsset ? (
-        <Modal title={selectedAsset.displayName} open onClose={() => setSelectedAsset(null)}>
+        <Modal title={selectedAsset.tokenName?.display} open onClose={() => setSelectedAsset(null)}>
           <AssetModalContent
             policyId={policyId}
             asset={selectedAsset}
@@ -497,7 +536,7 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
               setSelectedAsset(null)
               setTimeout(() => {
                 const badKeys = getFileForPolicyId(BAD_KEY_POLICY_ID, 'assets') as PopulatedAsset[]
-                const foundBadKey = badKeys.find((asset) => asset.assetId === badKeyId)
+                const foundBadKey = badKeys.find((asset) => asset.tokenId === badKeyId)
                 if (foundBadKey) setSelectedAsset(foundBadKey)
               }, 0)
             }}

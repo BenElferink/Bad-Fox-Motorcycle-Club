@@ -16,6 +16,8 @@ export const navCollections = [
 ]
 
 export const navTools = [
+  { label: 'Bad API', url: '' },
+  { label: 'Bad Snapshot', url: '' },
   { label: 'Bad Drop', url: 'https://drop.badfoxmc.com' },
   { label: 'Bad Poll', url: 'https://poll.badfoxmc.com' },
   { label: 'Bad Raffle', url: '' },
