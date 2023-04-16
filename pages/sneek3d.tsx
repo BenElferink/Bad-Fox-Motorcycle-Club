@@ -42,9 +42,10 @@ const Page = () => {
 
       setOldImageSrc(
         (getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets') as PopulatedAsset[])?.find(
-          (item) => item.displayName === v
-        )?.image.firebase || ''
+          (item) => item.tokenName?.display === v
+        )?.image.url || ''
       )
+
       // @ts-ignore
       setNewImageSrc(avatarPngFilesFile[`${v}.png`])
       // @ts-ignore

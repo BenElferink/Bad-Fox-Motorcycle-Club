@@ -121,7 +121,7 @@ const Reserve3D = () => {
 
         payload.push({
           name: name.replace('Bad', '3D'),
-          num: asset.serialNumber,
+          num: asset.serialNumber as number,
           // @ts-ignore
           src: avatarRendersFile[`${name}.png`],
         })
