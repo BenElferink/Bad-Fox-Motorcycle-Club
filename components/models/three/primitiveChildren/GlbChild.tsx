@@ -1,10 +1,9 @@
-import { MutableRefObject, Suspense, useEffect, useRef } from 'react'
+import { MutableRefObject, useEffect, useRef } from 'react'
 import { useAnimations } from '@react-three/drei'
 import { useFrame, useLoader } from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import Loader from '../Loader'
 
-export interface ModelChildProps {
+export interface GlbChildProps {
   src: string
   scale?: number
   positionX?: number
@@ -13,7 +12,7 @@ export interface ModelChildProps {
   animationName?: string
 }
 
-const ModelChild = (props: ModelChildProps) => {
+const GlbChild = (props: GlbChildProps) => {
   const { src, scale = 1, positionX = 0, positionY = 0, animateScene = () => null, animationName = '' } = props
 
   const ref = useRef(null)
@@ -37,11 +36,7 @@ const ModelChild = (props: ModelChildProps) => {
     animateScene(ref.current)
   })
 
-  return (
-    <Suspense fallback={<Loader size={200} />}>
-      <primitive ref={ref} object={gltf.scene} scale={scale} />
-    </Suspense>
-  )
+  return <primitive ref={ref} object={gltf.scene} scale={scale} />
 }
 
-export default ModelChild
+export default GlbChild

@@ -1,6 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { Fragment, useCallback, useEffect, useRef, useState } from 'react'
+import { FolderArrowDownIcon } from '@heroicons/react/24/solid'
 import BadApi from '../../utils/badApi'
 import useWallet from '../../contexts/WalletContext'
 import getFileForPolicyId from '../../functions/getFileForPolicyId'
@@ -11,8 +12,15 @@ import CopyChip from '../CopyChip'
 import Loader from '../Loader'
 import Modal from '../layout/Modal'
 import ImageLoader from '../Loader/ImageLoader'
-import ModelViewer from '../models/ModelViewer'
-import { ADA_SYMBOL, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants'
+import GlbViewer from '../models/google/GlbViewer'
+import TPoseModel from '../models/three/fbx/TPoseModel'
+import {
+  ADA_SYMBOL,
+  BAD_FOX_3D_POLICY_ID,
+  BAD_FOX_POLICY_ID,
+  BAD_KEY_POLICY_ID,
+  BAD_MOTORCYCLE_POLICY_ID,
+} from '../../constants'
 import type { PolicyId, PopulatedAsset, TraitsFile } from '../../@types'
 
 const badApi = new BadApi()
@@ -29,6 +37,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
 
   const [boughtAtPrice, setBoughtAtPrice] = useState(0)
   const [badKeyIdOfBurnedAsset, setBadKeyIdOfBurnedAsset] = useState('')
+  const [downloading, setDownloading] = useState(false)
   const [displayedFile, setDisplayedFile] = useState<PopulatedAsset['files'][0]>(
     asset.files.length
       ? asset.files[0]
@@ -107,7 +116,19 @@ const AssetModalContent = (props: AssetModalContentProps) => {
         ) : displayedFile.mediaType === 'model/gltf-binary' ? (
           <button onClick={() => {}} className='w-[80vw] md:w-[555px]'>
             <div className='w-[100%] h-[80vw] md:w-[555px] md:h-[555px] bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
-              <ModelViewer
+              <GlbViewer
+                src={formatIpfsImageUrl({
+                  ipfsUri: displayedFile.src,
+                  is3D: true,
+                })}
+              />
+            </div>
+          </button>
+        ) : displayedFile.mediaType === 'application/octet-stream' ? (
+          <button onClick={() => {}} className='w-[80vw] md:w-[555px]'>
+            <div className='w-[100%] h-[80vw] md:w-[555px] md:h-[555px] bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
+              <TPoseModel
+                withControls
                 src={formatIpfsImageUrl({
                   ipfsUri: displayedFile.src,
                   is3D: true,
@@ -117,7 +138,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
           </button>
         ) : (
           <button onClick={() => {}} className='w-[80vw] md:w-[555px]'>
-            <div className='w-[100%] h-[80vw] md:w-[555px] md:h-[555px] bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
+            <div className='w-[100%] h-[80vw] md:w-[555px] md:h-[555px] flex items-center justify-center bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
               Unhandled file type:
               <br />
               {displayedFile.mediaType}
@@ -129,7 +150,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
           {asset.files.length
             ? asset.files.map((file) => (
                 // file.src !== displayedFile.src ? (
-                <button key={`file-${file.src}`} onClick={() => setDisplayedFile(file)} className='w-32 h-32 m-1'>
+                <button key={`file-${file.name}`} onClick={() => setDisplayedFile(file)} className='w-32 h-32 m-1'>
                   {file.mediaType === 'image/png' ? (
                     <ImageLoader
                       src={formatIpfsImageUrl({
@@ -143,7 +164,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
                     />
                   ) : file.mediaType === 'model/gltf-binary' ? (
                     <div className='w-full h-full bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
-                      <ModelViewer
+                      <GlbViewer
                         src={formatIpfsImageUrl({
                           ipfsUri: file.src,
                           is3D: true,
@@ -151,8 +172,17 @@ const AssetModalContent = (props: AssetModalContentProps) => {
                         freeze
                       />
                     </div>
-                  ) : (
+                  ) : file.mediaType === 'application/octet-stream' ? (
                     <div className='w-full h-full bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
+                      <TPoseModel
+                        src={formatIpfsImageUrl({
+                          ipfsUri: file.src,
+                          is3D: true,
+                        })}
+                      />
+                    </div>
+                  ) : (
+                    <div className='w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700 text-xs'>
                       Unhandled file type:
                       <br />
                       {displayedFile.mediaType}
@@ -207,6 +237,41 @@ const AssetModalContent = (props: AssetModalContentProps) => {
             ))}
           </tbody>
         </table>
+
+        {asset.policyId === BAD_FOX_3D_POLICY_ID && asset.files.length
+          ? asset.files.map((file) => {
+              const isGlb = file.mediaType === 'model/gltf-binary'
+
+              return ['model/gltf-binary', 'application/octet-stream'].includes(file.mediaType) ? (
+                <button
+                  key={`download-${file.src}`}
+                  onClick={async () => {
+                    const fileName = `${asset.tokenName?.display}.${isGlb ? 'glb' : 'fbx'}`
+                    const fileUrl = formatIpfsImageUrl({ ipfsUri: file.src, is3D: true })
+
+                    setDownloading(true)
+                    fetch(fileUrl, { method: 'GET' })
+                      .then((response) => response.blob())
+                      .then((blob) => {
+                        const urlBlob = URL.createObjectURL(blob)
+                        const a = document.createElement('a')
+                        a.href = urlBlob
+                        a.innerText = fileName
+                        a.download = fileName
+                        a.click()
+                      })
+                      .catch((error) => console.error(error))
+                      .finally(() => setDownloading(false))
+                  }}
+                  disabled={downloading}
+                  className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200 disabled:bg-opacity-50 disabled:bg-gray-900 disabled:text-gray-700 disabled:border-gray-800 disabled:cursor-not-allowed'
+                >
+                  <FolderArrowDownIcon className='w-8 h-8 mr-2' />
+                  {isGlb ? '.glb (animated, rigged)' : '.fbx (t-pose, not rigged)'}
+                </button>
+              ) : null
+            })
+          : null}
 
         {badKeyIdOfBurnedAsset ? (
           <button
@@ -488,7 +553,7 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
                     hasRank: !!asset.rarityRank,
                   })}
                   tiedImageSrcs={
-                    asset.files?.length
+                    asset.policyId === BAD_KEY_POLICY_ID && asset.files?.length
                       ? asset.files
                           .filter((file) => file.mediaType === 'image/png')
                           .map((file) => ({

@@ -1,14 +1,14 @@
 import { Environment, OrbitControls, SpotLight } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { useState } from 'react'
-import ModelChild from './ModelChild'
+import GlbChild from '../primitiveChildren/GlbChild'
 
-export interface FoxModelProps {
+export interface FoxSneakModelProps {
   src: string
   withSpotlight?: boolean
 }
 
-const FoxModel = (props: FoxModelProps) => {
+const FoxSneakModel = (props: FoxSneakModelProps) => {
   const { src, withSpotlight = false } = props
   const [rotated, setRotated] = useState(false)
 
@@ -19,7 +19,7 @@ const FoxModel = (props: FoxModelProps) => {
       <pointLight position={[-1, 1, 0]} intensity={0.5} />
       <OrbitControls />
 
-      <ModelChild
+      <GlbChild
         src={src}
         scale={2}
         positionY={-0.35}
@@ -36,4 +36,4 @@ const FoxModel = (props: FoxModelProps) => {
   )
 }
 
-export default FoxModel
+export default FoxSneakModel

@@ -11,17 +11,17 @@ import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '
 
 const loading = () => <Loader size={100} />
 
-const HomeKeyModel = dynamic(() => import('../models/HomeKeyModel'), {
+const HomeKeyModel = dynamic(() => import('../models/three/glb/HomeKeyModel'), {
   ssr: false,
   loading,
 })
 
-const HomeFoxModel = dynamic(() => import('../models/HomeFoxModel'), {
+const HomeFoxModel = dynamic(() => import('../models/three/glb/HomeFoxModel'), {
   ssr: false,
   loading,
 })
 
-const HomeMotorcycleModel = dynamic(() => import('../models/HomeMotorcycleModel'), {
+const HomeMotorcycleModel = dynamic(() => import('../models/three/glb/HomeMotorcycleModel'), {
   ssr: false,
   loading,
 })

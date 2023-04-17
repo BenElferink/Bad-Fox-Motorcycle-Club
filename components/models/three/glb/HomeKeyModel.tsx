@@ -1,6 +1,6 @@
 import { Environment } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
-import ModelChild from './ModelChild'
+import GlbChild from '../primitiveChildren/GlbChild'
 
 const HomeKeyModel = () => {
   return (
@@ -8,7 +8,7 @@ const HomeKeyModel = () => {
       <Environment path={'/media/3d/'} files={'env.hdr'} />
       <pointLight position={[-1, 1, 0]} intensity={1} />
 
-      <ModelChild src='/media/3d/key.glb' scale={0.6} positionX={-0.2} positionY={0.1} animationName='Animation' />
+      <GlbChild src='/media/3d/key.glb' scale={0.6} positionX={-0.2} positionY={0.1} animationName='Animation' />
     </Canvas>
   )
 }

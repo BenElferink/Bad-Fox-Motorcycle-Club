@@ -1,7 +1,7 @@
 import { ChangeEventHandler, FormEventHandler, useState } from 'react'
 import { PopulatedAsset } from '../@types'
 import ImageLoader from '../components/Loader/ImageLoader'
-import FoxModel from '../components/models/FoxModel'
+import FoxSneakModel from '../components/models/three/glb/FoxSneakModel'
 import { BAD_FOX_POLICY_ID } from '../constants'
 import avatarPngFilesFile from '../data/3D/png.json'
 import avatarGlbFilesFile from '../data/3D/glb.json'
@@ -109,7 +109,7 @@ const Page = () => {
             </div>
 
             <div className='flex flex-col items-center justify-center w-[270px] md:w-[333px] lg:w-[444px] h-[550px] md:h-[650px] lg:h-[750px] m-4 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700'>
-              <FoxModel
+              <FoxSneakModel
                 withSpotlight
                 src={glbFileSrc.replace('https://firebasestorage.googleapis.com', '/storage')}
               />

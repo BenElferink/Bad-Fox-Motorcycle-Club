@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Canvas } from '@react-three/fiber'
-import ModelChild from './ModelChild'
+import GlbChild from '../primitiveChildren/GlbChild'
 import { Environment } from '@react-three/drei'
 
 const HomeFoxModel = () => {
@@ -11,7 +11,7 @@ const HomeFoxModel = () => {
       <Environment path={'/media/3d/'} files={'env.hdr'} />
       <pointLight position={[-1, 1, 0]} intensity={0.7} />
 
-      <ModelChild
+      <GlbChild
         src='/media/3d/fox.glb'
         scale={2}
         positionY={-0.3}

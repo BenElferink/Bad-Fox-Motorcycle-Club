@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 
-export interface ModelViewerProps {
+export interface GlbViewerProps {
   src: string
   freeze?: boolean
 }
 
-const ModelViewer = (props: ModelViewerProps) => {
+const GlbViewer = (props: GlbViewerProps) => {
   const { src, freeze = false } = props
 
   useEffect(() => {
@@ -38,4 +38,4 @@ const ModelViewer = (props: ModelViewerProps) => {
   )
 }
 
-export default ModelViewer
+export default GlbViewer
