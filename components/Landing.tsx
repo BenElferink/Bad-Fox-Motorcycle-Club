@@ -38,17 +38,17 @@ const About = () => {
         ) : (
           <div className='w-full lg:w-fit'>
             <Link
-              href='/sneek3d'
+              href='/sneak3d'
               className='w-full lg:w-60 my-2 p-4 block text-sm text-center rounded-xl bg-green-900 hover:bg-green-700 bg-opacity-50 hover:bg-opacity-50 hover:text-gray-200 disabled:border border hover:border border-green-700 hover:border-green-700'
             >
               3D Sneak Peeks
             </Link>
-            <Link
+            {/* <Link
               href='/reserve3d'
               className='w-full lg:w-60 my-2 p-4 block text-sm text-center rounded-xl bg-green-900 hover:bg-green-700 bg-opacity-50 hover:bg-opacity-50 hover:text-gray-200 disabled:border border hover:border border-green-700 hover:border-green-700'
             >
               3D Reservation
-            </Link>
+            </Link> */}
           </div>
         )}
       </div>
