@@ -2,7 +2,12 @@ import { Bars3Icon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants'
+import {
+  BAD_FOX_3D_POLICY_ID,
+  BAD_FOX_POLICY_ID,
+  BAD_KEY_POLICY_ID,
+  BAD_MOTORCYCLE_POLICY_ID,
+} from '../../constants'
 import MultipleLinks from './MultipleLinks'
 import SingleLink from './SingleLink'
 
@@ -10,7 +15,7 @@ export const navCollections = [
   { label: 'Bad Fox', path: `/collections/${BAD_FOX_POLICY_ID}` },
   { label: 'Bad Motorcycle', path: `/collections/${BAD_MOTORCYCLE_POLICY_ID}` },
   { label: 'Bad Key', path: `/collections/${BAD_KEY_POLICY_ID}` },
-  { label: '3D Fox', path: '' },
+  { label: '3D Fox', path: `/collections/${BAD_FOX_3D_POLICY_ID}` },
   { label: '3D Motorcycle', path: '' },
   { label: 'Vox Fox', path: '' },
 ]
