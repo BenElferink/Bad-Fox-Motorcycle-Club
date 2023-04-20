@@ -238,7 +238,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
           </tbody>
         </table>
 
-        {asset.policyId === BAD_FOX_3D_POLICY_ID && asset.files.length
+        {withWallet && asset.policyId === BAD_FOX_3D_POLICY_ID && asset.files.length
           ? asset.files.map((file) => {
               const isGlb = file.mediaType === 'model/gltf-binary'
 
