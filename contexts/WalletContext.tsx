@@ -140,7 +140,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
                     return await populateAsset({
                       assetId: unit,
                       policyId: BAD_FOX_3D_POLICY_ID,
-                      withRanks: true,
+                      withRanks: false,
                     })
                   }
 
@@ -240,7 +240,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
                     return await populateAsset({
                       assetId: tokenId,
                       policyId: BAD_FOX_3D_POLICY_ID,
-                      withRanks: true,
+                      withRanks: false,
                     })
                   }
 
