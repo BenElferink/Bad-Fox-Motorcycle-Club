@@ -7,7 +7,7 @@ const TOKEN_IMAGE_SRC = '/media/tokens/md/token.png'
 const TOKEN_POLICY_ID = '772791eb3f4b92874a49d487375a90db631988291c1a643b817668ca'
 const TOKEN_NAME = 'MD'
 const PROJECT_NAME = 'Mad Dog Car Club'
-const WHO_CAN_EARN: WhoCanEarn = ['Bad Fox']
+const WHO_CAN_EARN: WhoCanEarn = ['Bad Fox', 'Bad Motorcycle', 'Bad Key']
 
 const Page = () => {
   return (
@@ -35,9 +35,9 @@ const Page = () => {
             .
           </li>
           <li className='text-sm'>
-            Navigate to the &quot;accumulate&quot; tab, and click &quot;accumulate rewards&quot;.
+            Navigate to the &quot;staking&quot; tab, and click &quot;accumulate rewards&quot;.
             <br />
-            (if you get new NFTs afterwards, you will have to click &quot;sync/refresh&quot; on your wallet page)
+            (if you get new NFTs afterwards, you will have to click &quot;refresh&quot; on the wallet page)
           </li>
           <li className='text-sm'>
             Come back later to claim your tokens from the{' '}
@@ -58,16 +58,8 @@ const Page = () => {
         <h4 className='mb-2 text-gray-200 text-lg text-center'>How much can be earned?</h4>
 
         <div className='mx-auto w-fit'>
-          <h5 className='text-center underline'>Ranks 1 - 1000</h5>
           <p className='text-sm text-center'>
-            0.265 ${TOKEN_NAME} per 1 (eligible) NFT,
-            <br />
-            every day.
-          </p>
-
-          <h5 className='mt-2 text-center underline'>Ranks 1001 - 6000</h5>
-          <p className='text-sm text-center'>
-            0.072 ${TOKEN_NAME} per 1 (eligible) NFT,
+            0.1 ${TOKEN_NAME} per 1 (eligible) NFT,
             <br />
             every day.
           </p>
