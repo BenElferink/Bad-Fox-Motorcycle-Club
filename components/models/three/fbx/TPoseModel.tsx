@@ -12,9 +12,9 @@ const TPoseModel = (props: TPoseModelProps) => {
 
   return (
     <Canvas camera={{ position: [0, 15, 50], fov: 45 }}>
-      <ambientLight intensity={1.5}/>
-      <pointLight position={[0, 100, 0]} intensity={2} />
-      <pointLight position={[0, -100, 0]} intensity={2} />
+      <ambientLight intensity={2}/>
+      <pointLight position={[0, 100, 0]} intensity={3} />
+      <pointLight position={[0, -100, 0]} intensity={3} />
       {withControls ? <OrbitControls /> : null}
 
       <FbxChild src={src} />

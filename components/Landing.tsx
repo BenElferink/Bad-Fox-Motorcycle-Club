@@ -1,11 +1,6 @@
-import dynamic from 'next/dynamic'
 import Image from 'next/image'
-import Link from 'next/link'
 import { Fragment, useEffect, useState } from 'react'
 import useScreenSize from '../hooks/useScreenSize'
-import Loader from './Loader'
-
-const CountDown = dynamic(() => import('./CountDown'), { ssr: false, loading: () => <Loader size={50} /> })
 
 const About = () => {
   return (
@@ -16,38 +11,6 @@ const About = () => {
         with a Web3 brand. We do diverse forms of fund redistributions, integrations into various games/metaverses,
         and we develop tools that benefit everyone on Cardano.
       </p>
-
-      <div className='max-w-[330px] mt-10 mx-auto lg:mx-0 flex flex-col items-center'>
-        <CountDown callbackMintStarted={() => null} />
-
-        <div className='w-full lg:w-fit'>
-          <Link
-            href='https://badfoxmc.ada-anvil.io/'
-            // target='_blank'
-            rel='noopener noreferrer'
-            className='w-full lg:w-60 my-2 p-4 flex items-center justify-center text-sm text-center rounded-xl bg-green-900 hover:bg-green-700 bg-opacity-50 hover:bg-opacity-50 hover:text-gray-200 disabled:border border hover:border border-green-700 hover:border-green-700'
-          >
-            Mint&nbsp;&nbsp;&nbsp;(&nbsp;
-            <Image src='/media/logo/other/adaanvil.png' alt='ADA Anvil logo' width={55} height={55} />
-            &nbsp;)
-          </Link>
-        </div>
-
-        {/* <div className='w-full lg:w-fit'>
-          <Link
-            href='/sneak3d'
-            className='w-full lg:w-60 my-2 p-4 block text-sm text-center rounded-xl bg-green-900 hover:bg-green-700 bg-opacity-50 hover:bg-opacity-50 hover:text-gray-200 disabled:border border hover:border border-green-700 hover:border-green-700'
-          >
-            3D Sneak Peeks
-          </Link>
-          <Link
-            href='/reserve3d'
-            className='w-full lg:w-60 my-2 p-4 block text-sm text-center rounded-xl bg-green-900 hover:bg-green-700 bg-opacity-50 hover:bg-opacity-50 hover:text-gray-200 disabled:border border hover:border border-green-700 hover:border-green-700'
-          >
-            3D Reservation
-          </Link>
-        </div> */}
-      </div>
     </div>
   )
 }

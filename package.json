@@ -34,7 +34,6 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.0",
-    "react-timer-hook": "^3.0.5",
     "swiper": "^9.2.3",
     "three": "^0.151.3",
     "timeago.js": "^4.0.2"
