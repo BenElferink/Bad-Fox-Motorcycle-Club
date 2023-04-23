@@ -25,7 +25,7 @@ const Page = () => {
         items={[
           {
             imageUrl: '/media/tokens/c4/living-land.png',
-            purchaseUrl: 'https://swamplands.cardanocrocsclub.com/',
+            purchaseUrl: 'https://www.jpg.store/collection/swamplandslivinglands',
             texts: ['CCC - Living Land', '1 = stake 1 NFT(s)'],
           },
         ]}
@@ -47,6 +47,19 @@ const Page = () => {
             </Link>
             .
           </li>
+          <li className='text-sm'>
+            Navigate to the{' '}
+            <Link
+              href='https://swamplands.cardanocrocsclub.com/wallet'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-blue-400'
+            >
+              Wallet
+            </Link>{' '}
+            page.
+          </li>
+          <li className='text-sm'>Send/deposit your Living Lands to the custodial wallet.</li>
           <li className='text-sm'>
             Navigate to the{' '}
             <Link
