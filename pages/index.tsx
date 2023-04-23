@@ -47,6 +47,11 @@ const featuredBy = [
     url: 'https://www.youtube.com/@ultimatecnft',
     logoUrl: '/media/logo/other/ultimatecnft.png',
   },
+  {
+    name: 'BossFace Crypto',
+    url: 'https://www.youtube.com/@bossfacecrypto',
+    logoUrl: '/media/logo/other/bossface.png',
+  },
 ]
 
 const certifications = [
