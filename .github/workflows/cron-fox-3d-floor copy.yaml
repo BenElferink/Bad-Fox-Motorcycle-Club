@@ -1,0 +1,13 @@
+name: cron-fox-3d-floor
+on:
+  schedule:
+    - cron: '0 0 * * *'
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call floor prices snapshot API route
+        run: |
+          curl --request HEAD \
+          --url 'https://badfoxmc.com/api/floor/8804474d85430846883b804375b26b17c563df2338ea9b46652c3164' \
+          --header 'admin_code: ${{ secrets.ADMIN_CODE }}'
