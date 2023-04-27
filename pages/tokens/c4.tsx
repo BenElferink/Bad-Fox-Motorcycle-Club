@@ -63,12 +63,12 @@ const Page = () => {
           <li className='text-sm'>
             Navigate to the{' '}
             <Link
-              href='https://swamplands.cardanocrocsclub.com/swamp-lands-aplications'
+              href='https://swamplands.cardanocrocsclub.com/staking/swamp-lands-aplications'
               target='_blank'
               rel='noopener noreferrer'
               className='text-blue-400'
             >
-              Swamplands Apps
+              Land Staking
             </Link>{' '}
             tab.
           </li>
