@@ -70,7 +70,7 @@ const WalletConnect = (props: WalletConnectProps) => {
                     key={`connect-wallet-${wallet.name}`}
                     onClick={() => connectWallet(wallet.name)}
                     disabled={connecting || connected}
-                    className='w-full mt-1 mx-auto py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600'
+                    className='w-full mt-1 mx-auto py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 hover:text-white hover:bg-gray-600 hover:border hover:border-gray-500'
                     style={{
                       borderRadius:
                         idx === 0 && idx === availableWallets.length - 1

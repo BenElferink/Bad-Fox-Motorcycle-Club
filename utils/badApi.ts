@@ -96,12 +96,24 @@ export interface BadApiPool {
   delegators?: StakeKey[]
 }
 
+export interface BadApiUtxo {
+  address: {
+    from: string
+    to: string
+  }
+  tokens: {
+    tokenId: string
+    tokenAmount: {
+      onChain: number
+    }
+  }[]
+}
+
 export interface BadApiTransaction {
   transactionId: TransactionId
   block: string
+  utxos?: BadApiUtxo[]
 }
-
-axios.CancelToken
 
 class BadApi {
   baseUrl: string
@@ -348,8 +360,14 @@ class BadApi {
   }
 
   transaction = {
-    getData: (transactionId: string): Promise<BadApiTransaction> => {
-      const uri = `${this.baseUrl}/transaction/${transactionId}`
+    getData: (
+      transactionId: string,
+      queryOptions?: {
+        withUtxos?: boolean
+      }
+    ): Promise<BadApiTransaction> => {
+      const uri =
+        `${this.baseUrl}/transaction/${transactionId}` + this.getQueryStringFromQueryOptions(queryOptions)
 
       return new Promise(async (resolve, reject) => {
         try {

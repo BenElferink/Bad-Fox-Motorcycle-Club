@@ -1,5 +1,6 @@
-import React, { Fragment, useCallback, useMemo, useState } from 'react'
+import { Fragment, useCallback, useMemo, useState } from 'react'
 import { toast } from 'react-hot-toast'
+import axios from 'axios'
 import { PhotoIcon } from '@heroicons/react/24/solid'
 import { Transaction } from '@meshsdk/core'
 import useWallet from '../../contexts/WalletContext'
@@ -15,7 +16,10 @@ import type { BadApiTransaction } from '../../utils/badApi'
 
 const badApi = new BadApi()
 
-const BURN_ADDRESS = ''
+const BURN_OPEN = false
+const FOX_ADDRESS = 'addr1vytm0f6n564th94cld4xgzr0g8xp4s2j07ww33qn4x2ss6gmmdzlm'
+const BIKE_ADDRESS = 'addr1v8l4qgz688jxgerq788kp3xv7qdjymchddrv3dxyug5e3pg83anxd'
+const KEY_ADDRESS = 'addr1v9tce86r8v9larevjr7el7d5ua3eruz2cn4d93mqmt8w4agmy2leh'
 
 const BurnDashboard = () => {
   const { connectedManually, connectedName, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } =
@@ -28,7 +32,7 @@ const BurnDashboard = () => {
 
   const [loadingTx, setLoadingTx] = useState<boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string>(
-    !BURN_ADDRESS
+    !BURN_OPEN
       ? 'The portal is closed at the moment, please check in with our community for further announcements.'
       : ''
   )
@@ -56,13 +60,12 @@ const BurnDashboard = () => {
   }, [])
 
   const buildTx = useCallback(async () => {
-    if (!BURN_ADDRESS || loadingTx) return
+    if (!wallet || loadingTx) return
     setLoadingTx(true)
 
     try {
       const tx = new Transaction({ initiator: wallet })
-        .sendLovelace({ address: BURN_ADDRESS }, String(4 * ONE_MILLION))
-        .sendAssets({ address: BURN_ADDRESS }, [
+        .sendAssets({ address: FOX_ADDRESS }, [
           {
             unit: selectedMale,
             quantity: '1',
@@ -71,29 +74,37 @@ const BurnDashboard = () => {
             unit: selectedFemale,
             quantity: '1',
           },
+        ])
+        .sendAssets({ address: BIKE_ADDRESS }, [
           {
             unit: selectedBike,
             quantity: '1',
           },
         ])
+        .sendLovelace({ address: KEY_ADDRESS }, String(5 * ONE_MILLION))
 
-      let toastId = toast.loading('Building transaction')
+      toast.loading('Building transaction')
       const unsignedTx = await tx.build()
-      toast.dismiss(toastId)
 
-      toastId = toast.loading('Awaiting signature')
+      toast.dismiss()
+      toast.loading('Awaiting signature')
       const signedTx = await wallet?.signTx(unsignedTx)
-      toast.dismiss(toastId)
 
-      toastId = toast.loading('Submitting transaction')
+      toast.dismiss()
+      toast.loading('Submitting transaction')
       const txHash = await wallet?.submitTx(signedTx as string)
-      toast.dismiss(toastId)
 
-      toastId = toast.loading('Awaiting network confirmation')
+      toast.dismiss()
+      toast.loading('Awaiting network confirmation')
       await txConfirmation(txHash as string)
-      toast.dismiss(toastId)
-
+      toast.dismiss()
       toast.success('Transaction submitted!')
+
+      toast.loading('Minting NFT...')
+      await axios.post('/api/_dev/mint-key', { txHash })
+      toast.dismiss()
+      toast.success('NFT minted!')
+
       await removeAssetsFromWallet([selectedMale, selectedFemale, selectedBike])
       setSelectedMale('')
       setSelectedFemale('')
@@ -239,9 +250,7 @@ const BurnDashboard = () => {
         <button
           type='button'
           onClick={buildTx}
-          disabled={
-            !BURN_ADDRESS || !!errorMessage || loadingTx || !selectedMale || !selectedFemale || !selectedBike
-          }
+          disabled={!BURN_OPEN || !!errorMessage || loadingTx || !selectedMale || !selectedFemale || !selectedBike}
           className='w-full p-4 rounded-xl disabled:bg-gray-900 bg-green-900 hover:bg-green-700 disabled:bg-opacity-50 bg-opacity-50 hover:bg-opacity-50 disabled:text-gray-700 hover:text-gray-200 disabled:border border hover:border disabled:border-gray-800 border-green-700 hover:border-green-700 disabled:cursor-not-allowed hover:cursor-pointer'
         >
           Transcend
