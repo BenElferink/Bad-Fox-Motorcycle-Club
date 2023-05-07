@@ -1,0 +1,20 @@
+{
+  "crons": [
+    {
+      "path": "/api/floor/fa669150ad134964e86b2fa7275a12072f61b438d0d44204d3a2f967/cron",
+      "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/floor/ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba8/cron",
+      "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/floor/80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add14/cron",
+      "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/floor/8804474d85430846883b804375b26b17c563df2338ea9b46652c3164/cron",
+      "schedule": "0 0 * * *"
+    }
+  ]
+}

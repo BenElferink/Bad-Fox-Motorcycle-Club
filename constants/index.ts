@@ -1,8 +1,6 @@
 export const ADA_SYMBOL = '₳'
 export const ONE_MILLION = 1000000
 
-export const ADMIN_CODE = process.env.ADMIN_CODE
-
 export const BAD_FOX_SIGNING_KEY = process.env.BAD_FOX_SIGNING_KEY || ''
 export const BAD_MOTORCYCLE_SIGNING_KEY = process.env.BAD_MOTORCYCLE_SIGNING_KEY || ''
 export const BAD_KEY_SIGNING_KEY = process.env.BAD_KEY_SIGNING_KEY || ''
