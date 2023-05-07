@@ -17,7 +17,6 @@ export const navCollections = [
   { label: 'Bad Key', path: `/collections/${BAD_KEY_POLICY_ID}` },
   { label: '3D Fox', path: `/collections/${BAD_FOX_3D_POLICY_ID}` },
   { label: '3D Motorcycle', path: '' },
-  { label: 'Vox Fox', path: '' },
 ]
 
 export const navTools = [
@@ -42,13 +41,12 @@ export const navTokens = [
 
 export const navGames = [
   { label: 'Degen Royale', path: '/games/degen-royale' },
+  { label: 'OGBears', path: '/games/ogbears' },
   { label: 'Bajuzki Studios', path: '/games/bajuzki' },
   { label: 'Cornucopias', path: '/games/cornucopias' },
-  { label: 'OGBears', path: '/games/ogbears' },
   { label: 'Speed Throne', path: '' },
-  { label: 'Kwicverse', path: '' },
   { label: 'CardaStacks', path: '' },
-  { label: 'Boss Planet', path: '' },
+  { label: 'Kwicverse', path: '' },
   { label: 'U.E (secret: preparation)', path: '' },
 ]
 
@@ -87,7 +85,10 @@ const Navigation = () => {
             <SingleLink label='Team' path='/#team' />
           </li>
           <li onClick={() => setIsNavOpen(false)}>
-            <SingleLink label='Merch' url='https://my-store-d34165.creator-spring.com/' />
+            <SingleLink label='Merch' url='https://my-store-d34165.creator-spring.com' />
+          </li>
+          <li onClick={() => setIsNavOpen(false)}>
+            <SingleLink label='4042' url='https://4042.badfoxmc.com' />
           </li>
 
           <li>
@@ -97,7 +98,6 @@ const Navigation = () => {
               dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
             />
           </li>
-
           <li>
             <MultipleLinks
               title='Tools'
@@ -114,7 +114,7 @@ const Navigation = () => {
           </li>
           <li>
             <MultipleLinks
-              title='Games & Metaverses'
+              title='Games'
               links={navGames}
               dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
             />
