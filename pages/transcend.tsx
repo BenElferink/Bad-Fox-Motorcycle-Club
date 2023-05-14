@@ -1,23 +1,14 @@
-import { Fragment } from 'react'
-import useWallet from '../contexts/WalletContext'
-import WalletConnect from '../components/Wallet/WalletConnect'
-import BurnDashboard from '../components/dashboards/BurnDashboard'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
-const Page = () => {
-  const { connected } = useWallet()
+export default function Page() {
+  const router = useRouter()
 
-  return (
-    <div className='flex flex-col items-center'>
-      {!connected ? (
-        <Fragment>
-          <WalletConnect introText='Connect to transcend your NFTs.' />
-          <p className='pt-[15vh] text-center text-xl text-[var(--pink)]'>Not connected.</p>
-        </Fragment>
-      ) : (
-        <BurnDashboard />
-      )}
-    </div>
-  )
+  useEffect(() => {
+    if (router.query.policyId) {
+      window.location.href = '/burn'
+    }
+  }, [router])
+
+  return <div />
 }
-
-export default Page

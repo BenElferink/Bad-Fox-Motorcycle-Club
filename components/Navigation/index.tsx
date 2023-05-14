@@ -84,11 +84,14 @@ const Navigation = () => {
           <li onClick={() => setIsNavOpen(false)}>
             <SingleLink label='Team' path='/#team' />
           </li>
-          <li onClick={() => setIsNavOpen(false)}>
-            <SingleLink label='Merch' url='https://my-store-d34165.creator-spring.com' />
+          <li onClick={() => setIsNavOpen(false)} className='text-orange-300'>
+            <SingleLink label='Burn' path='/burn' />
           </li>
           <li onClick={() => setIsNavOpen(false)}>
             <SingleLink label='4042' url='https://4042.badfoxmc.com' />
+          </li>
+          <li onClick={() => setIsNavOpen(false)}>
+            <SingleLink label='Merch' url='https://my-store-d34165.creator-spring.com' />
           </li>
 
           <li>

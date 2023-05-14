@@ -81,7 +81,7 @@ const BurnDashboard = () => {
             quantity: '1',
           },
         ])
-        .sendLovelace({ address: KEY_ADDRESS }, String(5 * ONE_MILLION))
+        .sendLovelace({ address: KEY_ADDRESS }, String(8 * ONE_MILLION))
 
       toast.loading('Building transaction')
       const unsignedTx = await tx.build()
