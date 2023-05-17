@@ -16,7 +16,7 @@ import type { BadApiTransaction } from '../../utils/badApi'
 
 const badApi = new BadApi()
 
-const BURN_OPEN = false
+const BURN_OPEN = true
 const FOX_ADDRESS = 'addr1vytm0f6n564th94cld4xgzr0g8xp4s2j07ww33qn4x2ss6gmmdzlm'
 const BIKE_ADDRESS = 'addr1v8l4qgz688jxgerq788kp3xv7qdjymchddrv3dxyug5e3pg83anxd'
 const KEY_ADDRESS = 'addr1v9tce86r8v9larevjr7el7d5ua3eruz2cn4d93mqmt8w4agmy2leh'
@@ -116,10 +116,10 @@ const BurnDashboard = () => {
 
       if (error?.message?.indexOf('Not enough ADA leftover to include non-ADA assets') !== -1) {
         // [Transaction] An error occurred during build: Not enough ADA leftover to include non-ADA assets in a change address.
-        setErrorMessage('TX build failed: your UTXOs are clogged, please send your ADA and your NFTs to yourself.')
+        setErrorMessage('TX build failed: your UTXOs are clogged, try to send all your ADA to yourself, together with the BFMC NFTs.')
       } else if (error?.message?.indexOf('UTxO Balance Insufficient') !== -1) {
         // [Transaction] An error occurred during build: UTxO Balance Insufficient.
-        setErrorMessage('TX build failed: not enough ADA to process TX, please obtain more ADA, then try again.')
+        setErrorMessage('TX build failed: not enough ADA to process TX, please add ADA to your wallet, then try again.')
       }
     }
 
@@ -256,11 +256,11 @@ const BurnDashboard = () => {
           Transcend
         </button>
 
-        {connectedName.toLowerCase() === 'eternl' ? (
+        {/* {connectedName.toLowerCase() === 'eternl' ? (
           <p className='mt-2 text-center text-lg text-[var(--pink)]'>
             Eternl is known to cause problems, please consider using a single-address wallet.
           </p>
-        ) : null}
+        ) : null} */}
         {errorMessage ? <p className='mt-2 text-center text-lg text-[var(--pink)]'>{errorMessage}</p> : null}
       </div>
 
