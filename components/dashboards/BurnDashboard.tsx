@@ -120,6 +120,8 @@ const BurnDashboard = () => {
       } else if (error?.message?.indexOf('UTxO Balance Insufficient') !== -1) {
         // [Transaction] An error occurred during build: UTxO Balance Insufficient.
         setErrorMessage('TX build failed: not enough ADA to process TX, please add ADA to your wallet, then try again.')
+      } else {
+        setErrorMessage(error?.message || error?.toString())
       }
     }
 
