@@ -47,7 +47,7 @@ const Page = () => {
               rel='noopener noreferrer'
               className='text-blue-400'
             >
-              "add NFT to vault"
+              &quot;add NFT to vault&quot;
             </Link>
             .
           </li>
