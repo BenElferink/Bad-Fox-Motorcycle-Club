@@ -1,10 +1,6 @@
 export const ADA_SYMBOL = '₳'
 export const ONE_MILLION = 1000000
 
-export const BAD_FOX_SIGNING_KEY = process.env.BAD_FOX_SIGNING_KEY || ''
-export const BAD_MOTORCYCLE_SIGNING_KEY = process.env.BAD_MOTORCYCLE_SIGNING_KEY || ''
-export const BAD_KEY_SIGNING_KEY = process.env.BAD_KEY_SIGNING_KEY || ''
-
 export const BLOCKFROST_API_KEY = process.env.BLOCKFROST_API_KEY || ''
 
 export const FIREBASE_API_KEY = process.env.NEXT_PUBLIC_FIREBASE_API_KEY
@@ -19,6 +15,13 @@ export const BAD_FOX_POLICY_ID = 'fa669150ad134964e86b2fa7275a12072f61b438d0d442
 export const BAD_MOTORCYCLE_POLICY_ID = 'ab662f7402af587e64d217995e20f95ac3ae3ff8417d9158b04fbba8'
 export const BAD_KEY_POLICY_ID = '80e3ccc66f4dfeff6bc7d906eb166a984a1fc6d314e33721ad6add14'
 export const BAD_FOX_3D_POLICY_ID = '8804474d85430846883b804375b26b17c563df2338ea9b46652c3164'
+
+export const BAD_FOX_WALLET = 'addr1vytm0f6n564th94cld4xgzr0g8xp4s2j07ww33qn4x2ss6gmmdzlm'
+export const BAD_FOX_SIGNING_KEY = process.env.BAD_FOX_SIGNING_KEY || ''
+export const BAD_MOTORCYCLE_WALLET = 'addr1v8l4qgz688jxgerq788kp3xv7qdjymchddrv3dxyug5e3pg83anxd'
+export const BAD_MOTORCYCLE_SIGNING_KEY = process.env.BAD_MOTORCYCLE_SIGNING_KEY || ''
+export const BAD_KEY_WALLET = 'addr1v9tce86r8v9larevjr7el7d5ua3eruz2cn4d93mqmt8w4agmy2leh'
+export const BAD_KEY_SIGNING_KEY = process.env.BAD_KEY_SIGNING_KEY || ''
 
 export const TREASURY_WALLET =
   'addr1q9p9yq4lz834729chxsdwa7utfp5wr754zkn6hltxz42m594guty04nldwlxnhw8xcgd5pndaaqzzu5qzyvnc8tlgdsqtazkyh'

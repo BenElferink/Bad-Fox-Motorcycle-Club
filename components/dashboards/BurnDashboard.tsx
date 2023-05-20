@@ -11,15 +11,19 @@ import WalletHero from '../Wallet/WalletHero'
 import Modal from '../layout/Modal'
 import ImageLoader from '../Loader/ImageLoader'
 import AssetCard from '../cards/AssetCard'
-import { BAD_FOX_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID, ONE_MILLION } from '../../constants'
+import {
+  BAD_FOX_POLICY_ID,
+  BAD_FOX_WALLET,
+  BAD_KEY_WALLET,
+  BAD_MOTORCYCLE_POLICY_ID,
+  BAD_MOTORCYCLE_WALLET,
+  ONE_MILLION,
+} from '../../constants'
 import type { BadApiTransaction } from '../../utils/badApi'
 
 const badApi = new BadApi()
 
 const BURN_OPEN = true
-const FOX_ADDRESS = 'addr1vytm0f6n564th94cld4xgzr0g8xp4s2j07ww33qn4x2ss6gmmdzlm'
-const BIKE_ADDRESS = 'addr1v8l4qgz688jxgerq788kp3xv7qdjymchddrv3dxyug5e3pg83anxd'
-const KEY_ADDRESS = 'addr1v9tce86r8v9larevjr7el7d5ua3eruz2cn4d93mqmt8w4agmy2leh'
 
 const BurnDashboard = () => {
   const { connectedManually, connectedName, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } =
@@ -65,7 +69,7 @@ const BurnDashboard = () => {
 
     try {
       const tx = new Transaction({ initiator: wallet })
-        .sendAssets({ address: FOX_ADDRESS }, [
+        .sendAssets({ address: BAD_FOX_WALLET }, [
           {
             unit: selectedMale,
             quantity: '1',
@@ -75,13 +79,13 @@ const BurnDashboard = () => {
             quantity: '1',
           },
         ])
-        .sendAssets({ address: BIKE_ADDRESS }, [
+        .sendAssets({ address: BAD_MOTORCYCLE_WALLET }, [
           {
             unit: selectedBike,
             quantity: '1',
           },
         ])
-        .sendLovelace({ address: KEY_ADDRESS }, String(8 * ONE_MILLION))
+        .sendLovelace({ address: BAD_KEY_WALLET }, String(8 * ONE_MILLION))
 
       toast.loading('Building transaction')
       const unsignedTx = await tx.build()
@@ -116,10 +120,14 @@ const BurnDashboard = () => {
 
       if (error?.message?.indexOf('Not enough ADA leftover to include non-ADA assets') !== -1) {
         // [Transaction] An error occurred during build: Not enough ADA leftover to include non-ADA assets in a change address.
-        setErrorMessage('TX build failed: your UTXOs are clogged, try to send all your ADA to yourself, together with the BFMC NFTs.')
+        setErrorMessage(
+          'TX build failed: your UTXOs are clogged, try to send all your ADA to yourself, together with the BFMC NFTs.'
+        )
       } else if (error?.message?.indexOf('UTxO Balance Insufficient') !== -1) {
         // [Transaction] An error occurred during build: UTxO Balance Insufficient.
-        setErrorMessage('TX build failed: not enough ADA to process TX, please add ADA to your wallet, then try again.')
+        setErrorMessage(
+          'TX build failed: not enough ADA to process TX, please add ADA to your wallet, then try again.'
+        )
       } else {
         setErrorMessage(error?.message || error?.toString())
       }

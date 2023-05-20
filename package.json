@@ -19,6 +19,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@blockfrost/blockfrost-js": "^5.3.1",
     "@google/model-viewer": "^3.1.0",
     "@heroicons/react": "^2.0.17",
     "@meshsdk/core": "^1.5.2",
