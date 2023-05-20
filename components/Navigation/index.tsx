@@ -34,6 +34,7 @@ export const navTokens = [
   { label: 'CSWAP', path: '/tokens/cswap' },
   { label: 'DDOS', path: '/tokens/ddos' },
   { label: 'HEXO', path: '/tokens/hexo' },
+  { label: 'IDP', path: '/tokens/idp' },
   { label: 'MD', path: '/tokens/md' },
   { label: 'NFTC', path: '/tokens/nftc' },
   { label: 'SOCIETY', path: '/tokens/society' },
