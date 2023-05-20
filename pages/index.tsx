@@ -70,7 +70,7 @@ const certifications = [
 const teamMembers = [
   {
     name: 'Ben Elferink',
-    title: 'Co-Founder / Fullstack Developer',
+    title: 'Founder / Fullstack Developer',
     description:
       'I started my career as Fullstack Developer in 2020 & have been involved in the crypto & NFT space since 2021. I do most of the work around here.',
     profilePicture: '/media/team/Ben.jpg',
@@ -83,7 +83,7 @@ const teamMembers = [
   },
   {
     name: 'Chris Mitrev',
-    title: 'Co-Founder / Artist',
+    title: 'Co-Founder',
     description:
       "I'm a graffiti artist. I helped in the making of the 2D traits, I lead the work & design for our merchandise store. I also make the graphics for social media.",
     profilePicture: '/media/team/Chris.jpg',
@@ -145,7 +145,11 @@ const teamMembers = [
     description:
       "I'm Sydney by name, also known as Happyboi. I'm into trading, and learning technical analysis. I don't have many hobbies, but I love reading books or watching movies whenever I'm free.",
     profilePicture: '/media/team/Happyboi.jpg',
-    socials: ['https://discord.com/users/1024728525015621723', 'https://instagram.com/sydney.chukwu.52'],
+    socials: [
+      'https://discord.com/users/1024728525015621723',
+      'https://twitter.com/mr_hapyyy',
+      'https://instagram.com/sydney.chukwu.52',
+    ],
   },
 ]
 
