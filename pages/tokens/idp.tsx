@@ -52,7 +52,7 @@ const Page = () => {
             .
           </li>
           <li className='text-sm'>Select the NFTs you want to stake.</li>
-          <li className='text-sm'>Done! (note: this is a custodial staking method)</li>
+          <li className='text-sm'>That&apos;s it, all done.</li>
         </ol>
       </div>
 
