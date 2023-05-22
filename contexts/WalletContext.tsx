@@ -169,7 +169,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
 
     try {
       if (_walletIdentifier) {
-        const data = await badApi.wallet.getData(_walletIdentifier)
+        const data = await badApi.wallet.getData(_walletIdentifier, { withTokens: true })
 
         const badFoxAssetsFile = getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets') as PopulatedAsset[]
         const badMotorcycleAssetsFile = getFileForPolicyId(BAD_MOTORCYCLE_POLICY_ID, 'assets') as PopulatedAsset[]
