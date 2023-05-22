@@ -3,7 +3,6 @@ import { BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID, BAD_MOTORCYCLE_WALLET } fr
 import type { NextApiRequest, NextApiResponse } from 'next'
 import blockfrost from '../../../utils/blockfrost'
 import fromHex from '../../../functions/formatters/hex/fromHex'
-import mintKeyFromTxHash from '../../../functions/mintKeyFromTxHash'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req
@@ -41,8 +40,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           } catch (error) {
             console.log('key not minted', keyId)
 
-            const _txHash = await mintKeyFromTxHash(txHash)
-            txHashes.push(_txHash)
+            txHashes.push(txHash)
           }
         }
 
