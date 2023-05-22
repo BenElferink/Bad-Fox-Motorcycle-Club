@@ -285,7 +285,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (!connected) {
-      const connectPaths = ['/wallet', '/reserve3d']
+      const connectPaths = ['/wallet', '/burn']
 
       if (connectPaths.includes(window.location.pathname)) {
         const storageItem = window.localStorage.getItem('connected-wallet')

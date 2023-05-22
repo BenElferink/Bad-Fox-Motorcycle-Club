@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useMemo, useState } from 'react'
+import { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import axios from 'axios'
 import { PhotoIcon } from '@heroicons/react/24/solid'
@@ -14,6 +14,7 @@ import AssetCard from '../cards/AssetCard'
 import {
   BAD_FOX_POLICY_ID,
   BAD_FOX_WALLET,
+  BAD_KEY_POLICY_ID,
   BAD_KEY_WALLET,
   BAD_MOTORCYCLE_POLICY_ID,
   BAD_MOTORCYCLE_WALLET,
@@ -150,6 +151,29 @@ const BurnDashboard = () => {
     [populatedWallet, selector]
   )
 
+  const [mintCount, setMintCount] = useState({ supply: 0, minted: 0, percent: '0%' })
+
+  const getAndSetCounts = async () => {
+    try {
+      const res = await badApi.policy.getData(BAD_KEY_POLICY_ID, { allTokens: true })
+
+      const supply = 3000
+      const count = res.tokens.length
+
+      setMintCount({
+        supply,
+        minted: count,
+        percent: `${((100 / supply) * count).toFixed(1)}%`,
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  useEffect(() => {
+    getAndSetCounts()
+  }, [])
+
   if (connectedManually) {
     return (
       <div className='flex flex-col items-center'>
@@ -271,7 +295,8 @@ const BurnDashboard = () => {
             Eternl is known to cause problems, please consider using a single-address wallet.
           </p>
         ) : null} */}
-        {errorMessage ? <p className='mt-2 text-center text-lg text-[var(--pink)]'>{errorMessage}</p> : null}
+        <p className='mt-2 text-center text-lg text-[var(--online)]'>{mintCount.percent} burned</p>
+        {errorMessage ? <p className='text-center text-[var(--pink)]'>{errorMessage}</p> : null}
       </div>
 
       <Modal
