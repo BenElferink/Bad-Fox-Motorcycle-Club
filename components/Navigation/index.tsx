@@ -20,8 +20,6 @@ export const navCollections = [
 ]
 
 export const navTools = [
-  { label: 'Bad API', url: '' },
-  { label: 'Bad Snapshot', url: '' },
   { label: 'Bad Drop', url: 'https://drop.badfoxmc.com' },
   { label: 'Bad Poll', url: 'https://poll.badfoxmc.com' },
   { label: 'Bad Raffle', url: '' },
@@ -33,6 +31,7 @@ export const navTokens = [
   { label: 'CHILLAZ', path: '/tokens/chillaz' },
   { label: 'CSWAP', path: '/tokens/cswap' },
   { label: 'DDOS', path: '/tokens/ddos' },
+  { label: 'EZY', path: '' },
   { label: 'HEXO', path: '/tokens/hexo' },
   { label: 'IDP', path: '/tokens/idp' },
   { label: 'MD', path: '/tokens/md' },
