@@ -69,10 +69,7 @@ const RecentMarketActivity = (props: RecentMarketActivityProps) => {
                     <ImageLoader
                       width={imageSize}
                       height={imageSize}
-                      src={formatIpfsImageUrl({
-                        ipfsUri: thisAsset?.image.ipfs || '',
-                        hasRank: !!thisAsset?.rarityRank,
-                      })}
+                      src={formatIpfsImageUrl(thisAsset?.image.ipfs || '')}
                       alt={thisAsset?.tokenName?.display || ''}
                       style={{ borderRadius: '100%' }}
                     />

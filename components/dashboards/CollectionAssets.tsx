@@ -77,7 +77,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
         setBoughtAtPrice(storedPriceNum)
       } else {
         badApi.token.market.getActivity(asset.tokenId).then((data) => {
-          const price = data.items.filter(({ activityType }) => activityType === 'BUY')[0].price || 0
+          const price = data.items.filter(({ activityType }) => activityType === 'BUY')[0]?.price || 0
           setBoughtAtPrice(price)
         })
       }
@@ -89,23 +89,11 @@ const AssetModalContent = (props: AssetModalContentProps) => {
       <div>
         {displayedFile.mediaType === 'image/png' ? (
           <button
-            onClick={() =>
-              window.open(
-                formatIpfsImageUrl({
-                  ipfsUri: displayedFile.src,
-                  hasRank: false,
-                }),
-                '_blank',
-                'noopener noreferrer'
-              )
-            }
+            onClick={() => window.open(formatIpfsImageUrl(displayedFile.src), '_blank', 'noopener noreferrer')}
             className='w-[80vw] md:w-[555px]'
           >
             <ImageLoader
-              src={formatIpfsImageUrl({
-                ipfsUri: displayedFile.src,
-                hasRank: false,
-              })}
+              src={formatIpfsImageUrl(displayedFile.src)}
               alt={displayedFile.name}
               width={1000}
               height={1000}
@@ -116,24 +104,13 @@ const AssetModalContent = (props: AssetModalContentProps) => {
         ) : displayedFile.mediaType === 'model/gltf-binary' ? (
           <button onClick={() => {}} className='w-[80vw] md:w-[555px]'>
             <div className='w-[100%] h-[80vw] md:w-[555px] md:h-[555px] bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
-              <GlbViewer
-                src={formatIpfsImageUrl({
-                  ipfsUri: displayedFile.src,
-                  is3D: true,
-                })}
-              />
+              <GlbViewer src={formatIpfsImageUrl(displayedFile.src)} />
             </div>
           </button>
         ) : displayedFile.mediaType === 'application/octet-stream' ? (
           <button onClick={() => {}} className='w-[80vw] md:w-[555px]'>
             <div className='w-[100%] h-[80vw] md:w-[555px] md:h-[555px] bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
-              <TPoseModel
-                withControls
-                src={formatIpfsImageUrl({
-                  ipfsUri: displayedFile.src,
-                  is3D: true,
-                })}
-              />
+              <TPoseModel withControls src={formatIpfsImageUrl(displayedFile.src)} />
             </div>
           </button>
         ) : (
@@ -153,10 +130,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
                 <button key={`file-${file.name}`} onClick={() => setDisplayedFile(file)} className='w-32 h-32 m-1'>
                   {file.mediaType === 'image/png' ? (
                     <ImageLoader
-                      src={formatIpfsImageUrl({
-                        ipfsUri: file.src,
-                        hasRank: !!asset.rarityRank,
-                      })}
+                      src={formatIpfsImageUrl(file.src)}
                       alt={file.name}
                       width={150}
                       height={150}
@@ -164,22 +138,11 @@ const AssetModalContent = (props: AssetModalContentProps) => {
                     />
                   ) : file.mediaType === 'model/gltf-binary' ? (
                     <div className='w-full h-full bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
-                      <GlbViewer
-                        src={formatIpfsImageUrl({
-                          ipfsUri: file.src,
-                          is3D: true,
-                        })}
-                        freeze
-                      />
+                      <GlbViewer src={formatIpfsImageUrl(file.src)} freeze />
                     </div>
                   ) : file.mediaType === 'application/octet-stream' ? (
                     <div className='w-full h-full bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
-                      <TPoseModel
-                        src={formatIpfsImageUrl({
-                          ipfsUri: file.src,
-                          is3D: true,
-                        })}
-                      />
+                      <TPoseModel src={formatIpfsImageUrl(file.src)} />
                     </div>
                   ) : (
                     <div className='w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700 text-xs'>
@@ -247,7 +210,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
                   key={`download-${file.src}`}
                   onClick={async () => {
                     const fileName = `${asset.tokenName?.display}.${isGlb ? 'glb' : 'fbx'}`
-                    const fileUrl = formatIpfsImageUrl({ ipfsUri: file.src, is3D: true })
+                    const fileUrl = formatIpfsImageUrl(file.src)
 
                     setDownloading(true)
                     fetch(fileUrl, { method: 'GET' })
@@ -483,7 +446,7 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
 
           data.price = listed.price
 
-          assets.push(data as typeof assets[0])
+          assets.push(data as (typeof assets)[0])
         }
       }
 
@@ -548,19 +511,13 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
                   onClick={() => setSelectedAsset(asset)}
                   isBurned={asset.isBurned}
                   title={asset.tokenName?.display as string}
-                  imageSrc={formatIpfsImageUrl({
-                    ipfsUri: asset.image.ipfs,
-                    hasRank: !!asset.rarityRank,
-                  })}
+                  imageSrc={formatIpfsImageUrl(asset.image.ipfs)}
                   tiedImageSrcs={
                     asset.policyId === BAD_KEY_POLICY_ID && asset.files?.length
                       ? asset.files
                           .filter((file) => file.mediaType === 'image/png')
                           .map((file) => ({
-                            src: formatIpfsImageUrl({
-                              ipfsUri: file.src,
-                              hasRank: true,
-                            }),
+                            src: formatIpfsImageUrl(file.src),
                             name: `#${asset.attributes[file.name.replace('Bad ', '')].split('#')[1]}`,
                           }))
                       : []
