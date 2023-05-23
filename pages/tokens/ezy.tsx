@@ -27,18 +27,22 @@ const Page = () => {
         <h4 className='mb-2 text-gray-200 text-lg text-center'>How to earn?</h4>
 
         <ol className='mx-auto list-decimal list-inside'>
-          {/* <li className='text-sm'>
-            Connect your wallet to the{' '}
-            <Link href='https://' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
-              Staking Dashboard
+          <li className='text-sm'>Your NFTs are already staking, you just need to claim them.</li>
+          <li className='text-sm'>
+            Go to the{' '}
+            <Link
+              href='https://litstaking.com/rewards.html'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-blue-400'
+            >
+              "LIT" Staking Dashboard
             </Link>
             .
           </li>
-          <li className='text-sm'>Select the NFTs you want to stake.</li>
-          <li className='text-sm'>That&apos;s it, all done.</li> */}
+          <li className='text-sm'>Select all NFTs, and proceed to sign a TX.</li>
+          <li className='text-sm'>That&apos;s it, repeat once a month (it stops accumulating afterwards).</li>
         </ol>
-
-        <p className='text-center text-sm'>Coming soon...</p>
       </div>
 
       <div className='w-full my-2 p-4 px-6 bg-gray-400 bg-opacity-20 rounded-xl'>
