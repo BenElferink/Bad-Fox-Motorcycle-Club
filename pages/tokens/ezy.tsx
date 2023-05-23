@@ -27,7 +27,7 @@ const Page = () => {
         <h4 className='mb-2 text-gray-200 text-lg text-center'>How to earn?</h4>
 
         <ol className='mx-auto list-decimal list-inside'>
-          <li className='text-sm'>Your NFTs are already staking, you just need to claim them.</li>
+          <li className='text-sm'>Your NFTs are already staked, you just need to claim them.</li>
           <li className='text-sm'>
             Go to the{' '}
             <Link
