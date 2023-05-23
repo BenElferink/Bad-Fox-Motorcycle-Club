@@ -36,7 +36,7 @@ const Page = () => {
               rel='noopener noreferrer'
               className='text-blue-400'
             >
-              "LIT" Staking Dashboard
+              &quot;LIT&quot; Staking Dashboard
             </Link>
             .
           </li>
