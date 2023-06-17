@@ -2,6 +2,7 @@ import Link from 'next/link'
 import TokenHeader from '../../components/tokens/TokenHeader'
 import TokenPrerequisites from '../../components/tokens/TokenPrerequisites'
 import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns'
+import PageContainer from '../../components/layout/PageContainer'
 
 const TOKEN_IMAGE_SRC = '/media/tokens/hexo/token.png'
 const TOKEN_POLICY_ID = '27eee19588c997ca54d3137f64afe55a18dfcf9062fa83a724bf2357'
@@ -11,7 +12,7 @@ const WHO_CAN_EARN: WhoCanEarn = ['Bad Fox', 'Bad Motorcycle', 'Bad Key']
 
 const Page = () => {
   return (
-    <div className='max-w-[800px] mx-auto px-4 flex flex-col items-center'>
+    <PageContainer>
       <TokenHeader
         projectName={PROJECT_NAME}
         tokenName={TOKEN_NAME}
@@ -74,7 +75,7 @@ const Page = () => {
           </p>
         </div>
       </div>
-    </div>
+    </PageContainer>
   )
 }
 

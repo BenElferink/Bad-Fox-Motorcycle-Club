@@ -3,6 +3,7 @@ import TokenHeader from '../../components/tokens/TokenHeader'
 import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns'
 import formatBigNumber from '../../functions/formatters/formatBigNumber'
 import { ADA_SYMBOL } from '../../constants'
+import PageContainer from '../../components/layout/PageContainer'
 
 const TOKEN_IMAGE_SRC = '/media/tokens/ada/token.png'
 const TOKEN_NAME = 'ADA'
@@ -11,7 +12,7 @@ const WHO_CAN_EARN: WhoCanEarn = ['Bad Fox', 'Bad Motorcycle', 'Bad Key']
 
 const Page = () => {
   return (
-    <div className='max-w-[800px] mx-auto px-4 flex flex-col items-center'>
+    <PageContainer>
       <TokenHeader projectName={PROJECT_NAME} tokenName={TOKEN_NAME} tokenSrc={TOKEN_IMAGE_SRC} />
       <TokenWhoEarns whoCanEarn={WHO_CAN_EARN} />
 
@@ -89,7 +90,7 @@ const Page = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </PageContainer>
   )
 }
 
