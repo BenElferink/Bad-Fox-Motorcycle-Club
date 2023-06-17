@@ -1,20 +1,39 @@
-import { useEffect } from 'react'
+import Link from 'next/link'
+import PageContainer from '../../components/layout/PageContainer'
+import ImageLoader from '../../components/Loader/ImageLoader'
 
 const Page = () => {
-  useEffect(() => {
-    document.body.style.backgroundImage = "url('/media/games/degen-royale/bg.png')"
-
-    return () => {
-      document.body.style.backgroundImage = "url('/media/landing/bg.png')"
-    }
-  }, [])
-
   return (
-    <div className='flex items-center justify-center'>
-      <div className='w-60 h-40 mt-40 flex items-center justify-center text-gray-100 text-xl bg-gray-400 bg-opacity-50 rounded-xl border border-gray-200'>
-        Coming Soon™️
+    <PageContainer>
+      <div className='w-full my-2 p-4 flex flex-col items-center justify-center bg-gray-400 bg-opacity-20 rounded-xl'>
+        <Link href='https://degenroyale.net' target='_blank' rel='noopener noreferrer'>
+          <ImageLoader src='/media/games/degen-royale/logo.png' alt='' width={80} />
+        </Link>
+
+        <h6 className='mt-2 text-gray-200 text-xl'>Coming Soon™️</h6>
+
+        <ImageLoader
+          src='/media/games/degen-royale/preview_1.jpg'
+          alt=''
+          width={700}
+          style={{ margin: '0.3rem 0', borderRadius: '0.5rem' }}
+        />
+
+        <ImageLoader
+          src='/media/games/degen-royale/preview_2.png'
+          alt=''
+          width={700}
+          style={{ margin: '0.3rem 0', borderRadius: '0.5rem' }}
+        />
+
+        <ImageLoader
+          src='/media/games/degen-royale/preview_3.png'
+          alt=''
+          width={700}
+          style={{ margin: '0.3rem 0', borderRadius: '0.5rem' }}
+        />
       </div>
-    </div>
+    </PageContainer>
   )
 }
 
