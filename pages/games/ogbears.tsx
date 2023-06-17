@@ -2,6 +2,7 @@ import Link from 'next/link'
 import PageContainer from '../../components/layout/PageContainer'
 import ImageLoader from '../../components/Loader/ImageLoader'
 import { GlobeAltIcon } from '@heroicons/react/24/solid'
+import Image from 'next/image'
 
 const Page = () => {
   return (
@@ -25,7 +26,7 @@ const Page = () => {
             rel='noopener noreferrer'
             className='m-1'
           >
-            <img src='/media/app-store.png' width={170} />
+            <Image src='/media/app-store.png' alt='' width={170} height={59} />
           </Link>
 
           <Link
@@ -34,7 +35,7 @@ const Page = () => {
             rel='noopener noreferrer'
             className='m-1'
           >
-            <img src='/media/google-play.png' width={170} />
+            <Image src='/media/google-play.png' alt='' width={170} height={59} />
           </Link>
 
           <Link
@@ -86,7 +87,7 @@ const Page = () => {
           <ul className='list-disc text-sm'>
             <li>
               <span className='text-gray-300'>Guests:</span> No wallet connection. They can play all tracks with a
-              bear but their score won't be posted to the leader boards. So they won't be able to win any rewards
+              bear but their score won&apos;t be posted to the leader boards. So they won&apos;t be able to win any rewards
               as well.
             </li>
             <li>
@@ -109,7 +110,7 @@ const Page = () => {
               Rewards are tied to a season. Every season can have multiple different rewards (NFTs, tokens,
               whitelist spots etc.)
             </li>
-            <li>Eventually the rewards will be replaced with OGBears's $SALMON token.</li>
+            <li>Eventually the rewards will be replaced with OGBears&apos;s $SALMON token.</li>
             <li>Rewards will need to be distributed manually at 1st.</li>
           </ul>
         </div>
