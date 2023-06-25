@@ -35,7 +35,8 @@ const Header = () => {
           />
           <SocialIcon
             network='discord'
-            url='https://discord.gg/BadFoxMC'
+            // url='https://discord.gg/BadFoxMC'
+            url='https://discord.gg/bad-fox-motorcycle-club-951826641695432734'
             color=''
             className='p-1 mx-1 rounded-lg text-sm hover:bg-gray-700 focus:outline-none focus:ring-gray-600 focus:ring-2'
           />
