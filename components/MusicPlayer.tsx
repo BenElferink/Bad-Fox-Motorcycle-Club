@@ -2,7 +2,7 @@ import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon, PauseIcon, PlayIcon } fr
 import { useCallback, useEffect, useState } from 'react'
 
 const songs = [
-  '/media/music/01. Ben Intro.wav',
+  // '/media/music/01. Ben Intro.wav',
   '/media/music/02. Welcome To The Club.wav',
   '/media/music/03. FoxVerse.wav',
   '/media/music/04. Riding Around Town.wav',

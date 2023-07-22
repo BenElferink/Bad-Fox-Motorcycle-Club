@@ -10,7 +10,7 @@ export interface SingleLinkProps {
 const SingleLink = (props: SingleLinkProps) => {
   const { label, path, url } = props
   const router = useRouter()
-  const selected = router.pathname === path || router.asPath === path
+  const selected = router.asPath === path // || router.pathname === path
   const isNothing = !url && !path
 
   return (

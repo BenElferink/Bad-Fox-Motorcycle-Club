@@ -2,6 +2,21 @@ import Image from 'next/image'
 import { Fragment, useEffect, useState } from 'react'
 import useScreenSize from '../hooks/useScreenSize'
 
+const GRAPHICS = [
+  {
+    fox: '/media/landing/tool_fox.png',
+    bike: '/media/landing/tool_bike.png',
+  },
+  {
+    fox: '/media/landing/f_fox.png',
+    bike: '/media/landing/f_bike.png',
+  },
+  {
+    fox: '/media/landing/m_fox.png',
+    bike: '/media/landing/m_bike.png',
+  },
+]
+
 const About = () => {
   return (
     <div className='my-4 mx-2 md:mx-10 max-w-2xl lg:max-w-lg text-gray-300'>
@@ -18,13 +33,13 @@ const About = () => {
 const Landing = () => {
   const { screenWidth } = useScreenSize()
 
-  const [showFemale, setShowFemale] = useState(false)
+  const [showIndex, setShowIndex] = useState(0)
   const [logoSize, setLogoSize] = useState(1)
   const [foxSize, setFoxSize] = useState(1)
   const [bikeSize, setBikeSize] = useState(1)
 
   useEffect(() => {
-    setShowFemale(!!Math.round(Math.random()))
+    setShowIndex(Math.floor(Math.random() * GRAPHICS.length))
   }, [])
 
   useEffect(() => {
@@ -57,21 +72,15 @@ const Landing = () => {
 
         <div className='absolute bottom-0 right-0'>
           <div className='animate__animated animate__fadeInDown'>
-            <Image
-              src={`/media/landing/${showFemale ? 'f_fox.png' : 'm_fox.png'}`}
-              alt='fox'
-              priority
-              width={foxSize}
-              height={foxSize}
-            />
+            <Image src={GRAPHICS[showIndex].fox} alt='fox' priority width={foxSize} height={foxSize} />
           </div>
         </div>
 
         <div className='absolute bottom-0 left-0'>
           <div className='animate__animated animate__fadeInDown'>
             <Image
-              src={`/media/landing/${showFemale ? 'f_bike.png' : 'm_bike.png'}`}
-              alt='motorcycle'
+              src={GRAPHICS[showIndex].bike}
+              alt='bike'
               priority
               width={bikeSize}
               height={bikeSize / 1.7647}

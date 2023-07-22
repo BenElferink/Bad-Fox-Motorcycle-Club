@@ -250,7 +250,14 @@ const AssetModalContent = (props: AssetModalContentProps) => {
               onClick={() => window.open(`https://pool.pm/${asset.fingerprint}`, '_blank', 'noopener noreferrer')}
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image unoptimized src='/media/icon/poolpm.png' alt='' width={30} height={30} className='mr-2' />
+              <Image
+                unoptimized
+                src='/media/logo/other/poolpm.png'
+                alt=''
+                width={30}
+                height={30}
+                className='mr-2'
+              />
               pool.pm
             </button>
 
@@ -260,7 +267,14 @@ const AssetModalContent = (props: AssetModalContentProps) => {
               }
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image unoptimized src='/media/icon/jpgstore.png' alt='' width={30} height={30} className='mr-2' />
+              <Image
+                unoptimized
+                src='/media/logo/other/jpgstore.png'
+                alt=''
+                width={30}
+                height={30}
+                className='mr-2'
+              />
               JPG Store
             </button>
 
@@ -270,7 +284,14 @@ const AssetModalContent = (props: AssetModalContentProps) => {
               }
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image unoptimized src='/media/icon/flipr.png' alt='' width={30} height={30} className='mr-2' />
+              <Image
+                unoptimized
+                src='/media/logo/other/flipr.png'
+                alt=''
+                width={30}
+                height={30}
+                className='mr-2'
+              />
               Flipr
             </button>
 
@@ -280,7 +301,14 @@ const AssetModalContent = (props: AssetModalContentProps) => {
               }
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image unoptimized src='/media/icon/plutusart.png' alt='' width={30} height={30} className='mr-2' />
+              <Image
+                unoptimized
+                src='/media/logo/other/plutusart.png'
+                alt=''
+                width={30}
+                height={30}
+                className='mr-2'
+              />
               Plutus Art
             </button>
 
@@ -290,7 +318,14 @@ const AssetModalContent = (props: AssetModalContentProps) => {
               }
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image unoptimized src='/media/icon/epochart.png' alt='' width={30} height={30} className='mr-2' />
+              <Image
+                unoptimized
+                src='/media/logo/other/epochart.png'
+                alt=''
+                width={30}
+                height={30}
+                className='mr-2'
+              />
               Epoch Art
             </button>
 
@@ -315,7 +350,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
               >
                 <Image
                   unoptimized
-                  src='/media/icon/cnfttools.png'
+                  src='/media/logo/other/cnfttools.png'
                   alt=''
                   width={30}
                   height={30}
@@ -335,7 +370,14 @@ const AssetModalContent = (props: AssetModalContentProps) => {
               }
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image unoptimized src='/media/icon/cnftjungle.png' alt='' width={30} height={30} className='mr-2' />
+              <Image
+                unoptimized
+                src='/media/logo/other/cnftjungle.png'
+                alt=''
+                width={30}
+                height={30}
+                className='mr-2'
+              />
               Jungle
             </button>
 
@@ -357,7 +399,14 @@ const AssetModalContent = (props: AssetModalContentProps) => {
               }
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image unoptimized src='/media/icon/opencnft.png' alt='' width={30} height={30} className='mr-2' />
+              <Image
+                unoptimized
+                src='/media/logo/other/opencnft.png'
+                alt=''
+                width={30}
+                height={30}
+                className='mr-2'
+              />
               Open CNFT
             </button>
 
@@ -369,7 +418,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
             >
               <Image
                 unoptimized
-                src='/media/icon/cardanoscan.png'
+                src='/media/logo/other/cardanoscan.png'
                 alt=''
                 width={30}
                 height={30}
@@ -384,7 +433,14 @@ const AssetModalContent = (props: AssetModalContentProps) => {
               }
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image unoptimized src='/media/icon/cexplorer.png' alt='' width={30} height={30} className='mr-2' />
+              <Image
+                unoptimized
+                src='/media/logo/other/cexplorer.png'
+                alt=''
+                width={30}
+                height={30}
+                className='mr-2'
+              />
               Cexplorer
             </button>
           </Fragment>

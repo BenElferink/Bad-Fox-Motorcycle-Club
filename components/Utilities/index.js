@@ -1,170 +1,174 @@
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import useScreenSize from '../../hooks/useScreenSize'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 import { MinusCircleIcon } from '@heroicons/react/24/outline'
-import MediaWrapper from './MediaWrapper'
-import Loader from '../Loader'
-import ImageLoader from '../Loader/ImageLoader'
+// import MediaWrapper from './MediaWrapper'
+// import ImageLoader from '../Loader/ImageLoader'
+// import Loader from '../Loader'
 import styles from './Utilities.module.css'
 import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants'
 
-const loading = () => <Loader size={100} />
+// const HomeKeyModel = dynamic(() => import('../models/three/glb/HomeKeyModel'), {
+//   ssr: false,
+//   loading,
+// })
 
-const HomeKeyModel = dynamic(() => import('../models/three/glb/HomeKeyModel'), {
-  ssr: false,
-  loading,
-})
+// const HomeFoxModel = dynamic(() => import('../models/three/glb/HomeFoxModel'), {
+//   ssr: false,
+//   loading,
+// })
 
-const HomeFoxModel = dynamic(() => import('../models/three/glb/HomeFoxModel'), {
-  ssr: false,
-  loading,
-})
+// const HomeMotorcycleModel = dynamic(() => import('../models/three/glb/HomeMotorcycleModel'), {
+//   ssr: false,
+//   loading,
+// })
 
-const HomeMotorcycleModel = dynamic(() => import('../models/three/glb/HomeMotorcycleModel'), {
-  ssr: false,
-  loading,
-})
+// const loading = () => <Loader size={100} />
 
 const data = [
   {
-    complete: true,
-    chapter: 'Bad Fox',
+    checked: true,
+    chapter: 'Bad Fox (2D)',
     events: [
       {
-        complete: false,
+        checked: false,
         redirectPath: `/collections/${BAD_FOX_POLICY_ID}`,
-        title: 'Supply 2,280',
+        title: 'Supply 2,042 (burn live)',
       },
       {
-        complete: true,
+        checked: true,
         redirectPath: '/tokens/ada',
         title: 'Royalty Rewards',
       },
       {
-        complete: true,
+        checked: true,
         redirectPath: '/tokens',
         title: 'Token Staking',
       },
     ],
-    renderMedia: (isLeft) => (
-      <MediaWrapper isLeft={isLeft} size={150} posTop='30px'>
-        <ImageLoader src='/media/landing/bad_fox.png' alt='fox' width={150} loaderSize={50} />
-      </MediaWrapper>
-    ),
+    // renderMedia: (isLeft) => (
+    //   <MediaWrapper isLeft={isLeft} size={150} posTop='30px'>
+    //     <ImageLoader src='/media/landing/bad_fox.png' alt='fox' width={150} loaderSize={50} />
+    //   </MediaWrapper>
+    // ),
   },
   {
-    complete: true,
-    chapter: 'Bad Motorcycle',
+    checked: true,
+    chapter: 'Bad Motorcycle (2D)',
     events: [
       {
-        complete: false,
+        checked: false,
         redirectPath: `/collections/${BAD_MOTORCYCLE_POLICY_ID}`,
-        title: 'Supply 1,140',
+        title: 'Supply 1,021 (burn live)',
       },
       {
-        complete: true,
+        checked: true,
         redirectPath: '/tokens/ada',
         title: 'Royalty Rewards',
       },
       {
-        complete: true,
+        checked: true,
         redirectPath: '/tokens',
         title: 'Token Staking',
       },
     ],
-    renderMedia: (isLeft) => (
-      <MediaWrapper isLeft={isLeft} size={300} posTop='70px'>
-        <ImageLoader src='/media/landing/bad_motorcycle.png' alt='motorcycle' width={300} loaderSize={50} />
-      </MediaWrapper>
-    ),
+    // renderMedia: (isLeft) => (
+    //   <MediaWrapper isLeft={isLeft} size={300} posTop='70px'>
+    //     <ImageLoader src='/media/landing/bad_motorcycle.png' alt='motorcycle' width={300} loaderSize={50} />
+    //   </MediaWrapper>
+    // ),
   },
   {
-    complete: true,
+    checked: true,
     chapter: 'Bad Key',
     events: [
       {
-        complete: false,
+        checked: false,
         redirectPath: `/collections/${BAD_KEY_POLICY_ID}`,
-        title: 'Supply 1,860',
+        title: 'Supply 1,979',
       },
       {
-        complete: true,
+        checked: true,
         redirectPath: '/tokens/ada',
         title: 'Royalty Rewards',
       },
       {
-        complete: true,
+        checked: true,
         redirectPath: '/tokens',
         title: 'Token Staking',
       },
       {
-        complete: true,
+        checked: true,
         redirectPath: '/tools',
         title: 'Access to Tools',
       },
       {
-        complete: true,
-        redirectPath: '/games',
-        title: 'Metaverse Benefits',
-      },
-      {
-        complete: true,
+        checked: true,
         redirectPath: '/reserve3d',
         title: 'Lifetime Airdrops',
       },
+      {
+        checked: true,
+        redirectPath: '/games',
+        title: 'Metaverse Benefits',
+      },
     ],
-    renderMedia: (isLeft) => (
-      <MediaWrapper isLeft={isLeft} size={300} posTop='70px'>
-        <HomeKeyModel />
-      </MediaWrapper>
-    ),
+    // renderMedia: (isLeft) => (
+    //   <MediaWrapper isLeft={isLeft} size={300} posTop='70px'>
+    //     <HomeKeyModel />
+    //   </MediaWrapper>
+    // ),
   },
   {
-    complete: false,
-    chapter: '3D Fox',
+    checked: false,
+    chapter: 'Bad Fox (3D)',
     events: [
       {
-        complete: false,
+        checked: false,
         title: 'Supply 6,000',
       },
       {
-        complete: false,
+        checked: false,
+        redirectPath: '/games',
         title: 'Game/Meta Asset (avatar)',
       },
       {
-        complete: false,
+        checked: false,
+        redirectPath: '/wallet',
         title: 'File Custody & IP Ownership',
       },
     ],
-    renderMedia: (isLeft) => (
-      <MediaWrapper isLeft={isLeft} size={300} posTop='0px'>
-        <HomeFoxModel />
-      </MediaWrapper>
-    ),
+    // renderMedia: (isLeft) => (
+    //   <MediaWrapper isLeft={isLeft} size={300} posTop='0px'>
+    //     <HomeFoxModel />
+    //   </MediaWrapper>
+    // ),
   },
   {
-    complete: false,
-    chapter: '3D Motorcycle',
+    checked: false,
+    chapter: 'Bad Motorcycle (3D)',
     events: [
       {
-        complete: false,
+        checked: false,
         title: 'Supply 3,000',
       },
       {
-        complete: false,
+        checked: false,
+        redirectPath: '/games',
         title: 'Game/Meta Asset (vehicle)',
       },
       {
-        complete: false,
+        checked: false,
+        redirectPath: '/wallet',
         title: 'File Custody & IP Ownership',
       },
     ],
-    renderMedia: (isLeft) => (
-      <MediaWrapper isLeft={isLeft} size={300} posTop='20px'>
-        <HomeMotorcycleModel />
-      </MediaWrapper>
-    ),
+    // renderMedia: (isLeft) => (
+    //   <MediaWrapper isLeft={isLeft} size={300} posTop='20px'>
+    //     <HomeMotorcycleModel />
+    //   </MediaWrapper>
+    // ),
   },
 ]
 
@@ -173,8 +177,8 @@ const Utilities = () => {
   const router = useRouter()
 
   return (
-    <div className={`${styles.root} mt-10 text-gray-500`}>
-      <h1 className='mb-5 text-3xl'>Collections & Utilities</h1>
+    <div className='w-full my-12 text-gray-400'>
+      <h1 className='mb-8 text-3xl text-center'>Collections & Utilities</h1>
 
       {data.map((phase, idx) => {
         const isLeft = idx % 2 !== 0
@@ -186,10 +190,10 @@ const Utilities = () => {
               !isMobile ? (isLeft ? styles.leftChapter : styles.rightChapter) : styles.mobileChapter
             }`}
           >
-            {phase.renderMedia(isLeft)}
+            {phase.renderMedia ? phase.renderMedia(isLeft) : null}
 
             <h2 className='text-xl'>
-              {phase.complete ? <CheckCircleIcon className='w-6 h-6' /> : <MinusCircleIcon className='w-6 h-6' />}
+              {phase.checked ? <CheckCircleIcon className='w-6 h-6' /> : <MinusCircleIcon className='w-6 h-6' />}
               {phase.chapter}
             </h2>
 
@@ -206,7 +210,7 @@ const Utilities = () => {
                 }}
               >
                 <h3>
-                  {event.complete ? (
+                  {event.checked ? (
                     <CheckCircleIcon className='w-6 h-6' />
                   ) : (
                     <MinusCircleIcon className='w-6 h-6' />

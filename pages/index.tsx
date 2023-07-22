@@ -1,28 +1,128 @@
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import Image from 'next/image'
 import Landing from '../components/Landing'
-// import Previews from '../components/Previews'
 import Utilities from '../components/Utilities'
 import TeamCard from '../components/cards/TeamCard'
 
-const Previews = dynamic(() => import('../components/Previews'), { ssr: false })
-
 const partnerships = [
-  {
-    name: 'Leon Art Group',
-    url: 'https://twitter.com/leonartgroup',
-    logoUrl: '/media/logo/other/leonartgroup.png',
-  },
   {
     name: 'ADA Anvil',
     url: 'https://ada-anvil.io',
     logoUrl: '/media/logo/other/adaanvil.png',
   },
   {
+    name: 'Leon Art Group',
+    url: 'https://twitter.com/leonartgroup',
+    logoUrl: '/media/logo/other/leonartgroup.png',
+  },
+  {
     name: 'SoundRig',
     url: 'https://www.soundrig.io/artist/bad-fox-4042',
     logoUrl: '/media/logo/other/soundrig.png',
+  },
+  {
+    name: 'Banker Coin',
+    url: 'https://bankercoinada.com',
+    logoUrl: '/media/logo/other/bankercoin.png',
+  },
+
+  // token partners
+  {
+    name: 'CSWAP DEX',
+    url: 'https://www.cswap.fi',
+    logoUrl: '/media/tokens/cswap/token.png',
+  },
+  {
+    name: 'The Ape Society',
+    url: 'https://theapesociety.io',
+    logoUrl: '/media/logo/other/theapesociety.png',
+  },
+  {
+    name: 'Cardano Crocs Club',
+    url: 'https://cardanocrocsclub.com',
+    logoUrl: '/media/logo/other/cardanocrocsclub.png',
+  },
+  {
+    name: 'IDO Pass DAO',
+    url: 'https://idopass.finance',
+    logoUrl: '/media/logo/other/idopassdao.png',
+  },
+  {
+    name: 'Cardano Lands',
+    url: 'https://cardanolands.com',
+    logoUrl: '/media/logo/other/cardanolands.png',
+  },
+  {
+    name: 'Eggscape Club',
+    url: 'https://eggscape.io',
+    logoUrl: '/media/logo/other/eggscapeclub.png',
+  },
+  {
+    name: 'NFT Creative',
+    url: 'https://nftcreative.ca',
+    logoUrl: '/media/logo/other/nftcreative.png',
+  },
+  {
+    name: 'Mad Dog Car Club',
+    url: 'https://mdtoken.io',
+    logoUrl: '/media/logo/other/maddogcarclub.png',
+  },
+  {
+    name: 'The Chillaz',
+    url: 'https://utility.chainchillaz.io',
+    logoUrl: '/media/logo/other/chillaz.png',
+  },
+
+  // game partners
+  {
+    name: 'OGBears',
+    url: 'https://ogbears.com',
+    logoUrl: '/media/logo/other/ogbears.png',
+  },
+  {
+    name: 'Degen Royale',
+    url: 'https://degenroyale.net',
+    logoUrl: '/media/games/degen-royale/logo.png',
+  },
+  {
+    name: 'Bitke',
+    url: 'https://playbitke.com',
+    logoUrl: '/media/logo/other/bitke.png',
+  },
+  {
+    name: 'Speed Throne',
+    url: 'https://speedthrone.io',
+    logoUrl: '/media/logo/other/speedthrone.png',
+  },
+  {
+    name: 'CardaStacks',
+    url: 'https://cardastacks.com',
+    logoUrl: '/media/logo/other/cardastacks.png',
+  },
+  {
+    name: 'KWIC',
+    url: 'https://keyboardwarriorsinternetcafe.io',
+    logoUrl: '/media/logo/other/keyboardwarriorsinternetcafe.png',
+  },
+  {
+    name: 'Space Troopers',
+    url: 'https://spacetroopers.org',
+    logoUrl: '/media/logo/other/spacetroopers.png',
+  },
+  {
+    name: "Summoner's Guild",
+    url: 'https://summonersguild.io',
+    logoUrl: '/media/logo/other/summonersguild.png',
+  },
+  {
+    name: 'Unbounded Earth',
+    url: 'https://unbounded.earth',
+    logoUrl: '/media/logo/other/unboundedearth.png',
+  },
+  {
+    name: 'Bajuzki Studios',
+    url: 'https://bajuzki.art',
+    logoUrl: '/media/games/bajuzki/logo.png',
   },
 ]
 
@@ -82,32 +182,7 @@ const teamMembers = [
     ],
   },
   {
-    name: 'Chris Mitrev',
-    title: 'Co-Founder',
-    description:
-      "I'm a graffiti artist. I helped in the making of the 2D traits, I lead the work & design for our merchandise store. I also make the graphics for social media.",
-    profilePicture: '/media/team/Chris.jpg',
-    socials: [
-      'https://twitter.com/ChrisMitrev',
-      'https://discord.com/users/906518144108101642',
-      'https://instagram.com/m__chris',
-    ],
-  },
-  {
-    name: 'David Minkov',
-    title: '2D Artist',
-    description:
-      "I'm an artist from a young age, and this is my first time being in the CNFT space! I'm excited to lead the work on 2D art for Bad Fox MC.",
-    profilePicture: '/media/team/David.jpg',
-    socials: [
-      'https://twitter.com/Minkov_D',
-      'https://discord.com/users/958536998140907550',
-      'https://instagram.com/david_minkov',
-      'https://www.linkedin.com/in/david-minkov-50187620a',
-    ],
-  },
-  {
-    name: 'Crib King (4042)',
+    name: '4042',
     title: 'Director of Vibes',
     description:
       'I use creative thinking as a means of expression. This helps me to connect dots and build bridges from one point to another. What is a "Director of Vibes" ? Look at it as a less formal version of Community Manager. I\'m here to coordinate the community vibes and connect with the people!',
@@ -130,14 +205,6 @@ const teamMembers = [
       'https://discord.com/users/933925521346138182',
       'https://www.instagram.com/stef_bbq/',
     ],
-  },
-  {
-    name: 'Stevie T',
-    title: 'Moderator',
-    description:
-      "I've been an IT admin for 10+ years, and have been involved in the crypto space since 2019. I found my passion in CNFTs, and am proud to be part of the Bad Fox team.",
-    profilePicture: '/media/team/Stevie.jpg',
-    socials: ['https://twitter.com/StevieTIota', 'https://discord.com/users/677534591636209664'],
   },
   {
     name: 'Happyboi',
@@ -170,7 +237,7 @@ const Badge = (props: BadgeProps) => {
       rel='noopener noreferrer'
       className={'w-20 h-10 my-6 mx-6 flex flex-col items-center justify-center relative ' + className}
     >
-      <Image src={logoUrl} alt='logo' fill sizes='5rem' className='object-contain' />
+      <Image src={logoUrl} alt='logo' fill sizes='5rem' className='object-contain drop-shadow-footeritem' />
       <h6 className='absolute -bottom-7 text-xs whitespace-nowrap'>{name}</h6>
     </Link>
   )
@@ -180,7 +247,6 @@ const Page = () => {
   return (
     <div className='px-4 flex flex-col items-center'>
       <Landing />
-      <Previews />
       <Utilities />
 
       <div className='flex flex-col items-center justify-center my-8 text-gray-500'>
@@ -210,7 +276,7 @@ const Page = () => {
         </div>
       </div>
 
-      <div className='flex flex-wrap justify-center max-w-7xl mb-10'>
+      <div className='flex flex-wrap justify-center max-w-7xl my-12'>
         {teamMembers.map(({ profilePicture, name, title, description, socials }) => (
           <TeamCard
             key={`team-${name}`}

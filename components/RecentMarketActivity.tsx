@@ -57,7 +57,19 @@ const RecentMarketActivity = (props: RecentMarketActivityProps) => {
       {fetching ? (
         <Loader />
       ) : !!slidesPerView ? (
-        <Swiper slidesPerView={slidesPerView} modules={[Navigation]} navigation>
+        <Swiper
+          slidesPerView={slidesPerView}
+          modules={[Navigation]} // Autoplay
+          navigation
+          // autoplay={{
+          //   delay: 1700,
+          //   reverseDirection: false,
+          //   disableOnInteraction: false,
+          //   pauseOnMouseEnter: false,
+          //   stopOnLastSlide: false,
+          // }}
+          // loop
+        >
           {renderItems.map((item, idx) => {
             const thisAsset = assetsFile.find((obj) => obj.tokenId === item.tokenId)
             if (!thisAsset) return null
