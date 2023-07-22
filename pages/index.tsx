@@ -156,12 +156,12 @@ const featuredBy = [
 
 const certifications = [
   {
-    name: 'Bearmarket Doxxing',
+    name: 'Ted Nation Doxxing',
     url: 'https://doxxing.bearmarket.io/bad-fox-motorcycle-club',
     logoUrl: '/media/logo/other/bearmarket.png',
   },
   {
-    name: 'Block Investment Group',
+    name: 'B.I.G  Doxxing',
     url: 'https://blockinvestmentgroup.com/?tab=calendar',
     logoUrl: '/media/logo/other/blockinvestmentgroup.png',
   },
@@ -224,21 +224,22 @@ interface BadgeProps {
   name: string
   url: string
   logoUrl: string
-  className?: string
 }
 
 const Badge = (props: BadgeProps) => {
-  const { name, url, logoUrl, className } = props
+  const { name, url, logoUrl } = props
 
   return (
     <Link
       href={url}
       target='_blank'
       rel='noopener noreferrer'
-      className={'w-20 h-10 my-6 mx-6 flex flex-col items-center justify-center relative ' + className}
+      className='group w-20 h-10 my-8 mx-4 flex flex-col items-center justify-center relative'
     >
       <Image src={logoUrl} alt='logo' fill sizes='5rem' className='object-contain drop-shadow-footeritem' />
-      <h6 className='absolute -bottom-7 text-xs whitespace-nowrap'>{name}</h6>
+      <h6 className='absolute -bottom-7 text-gray-500 group-hover:text-gray-400 text-xs whitespace-nowrap'>
+        {name}
+      </h6>
     </Link>
   )
 }
@@ -249,7 +250,7 @@ const Page = () => {
       <Landing />
       <Utilities />
 
-      <div className='flex flex-col items-center justify-center my-8 text-gray-500'>
+      <div className='flex flex-col items-center justify-center my-8'>
         <h5 className='text-2xl'>Partnerships</h5>
         <div className='flex flex-wrap items-center justify-center'>
           {partnerships.map(({ name, url, logoUrl }) => (
@@ -258,7 +259,7 @@ const Page = () => {
         </div>
       </div>
 
-      <div className='flex flex-col items-center justify-center my-8 text-gray-500'>
+      <div className='flex flex-col items-center justify-center my-8'>
         <h5 className='text-2xl'>Featured by Content Creators</h5>
         <div className='flex flex-wrap items-center justify-center'>
           {featuredBy.map(({ name, url, logoUrl }) => (
@@ -267,11 +268,11 @@ const Page = () => {
         </div>
       </div>
 
-      <div id='team' className='flex flex-col items-center justify-center my-8 text-gray-500'>
+      <div id='team' className='flex flex-col items-center justify-center my-8'>
         <h5 className='text-2xl'>Certifications</h5>
         <div className='flex flex-wrap items-center justify-center'>
           {certifications.map(({ name, url, logoUrl }) => (
-            <Badge key={`certification-${name}`} name={name} url={url} logoUrl={logoUrl} className='mx-8' />
+            <Badge key={`certification-${name}`} name={name} url={url} logoUrl={logoUrl} />
           ))}
         </div>
       </div>
