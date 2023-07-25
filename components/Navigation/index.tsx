@@ -20,9 +20,9 @@ export const navCollections = [
 ]
 
 export const navTools = [
-  { label: 'Bad Drop', url: 'https://drop.badfoxmc.com' },
-  { label: 'Bad Poll', url: 'https://poll.badfoxmc.com' },
-  { label: 'Bad Raffle', url: 'https://raffle.badfoxmc.com' },
+  { label: 'Airdrops', url: 'https://labs.badfoxmc.com/airdrops' },
+  { label: 'Governance', url: 'https://poll.badfoxmc.com' },
+  { label: 'Giveaways', url: 'https://raffle.badfoxmc.com' },
 ]
 
 export const navTokens = [
