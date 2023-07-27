@@ -178,7 +178,7 @@ const teamMembers = [
       'https://twitter.com/BenElferink',
       'https://discord.com/users/791763515554922507',
       'https://www.linkedin.com/in/ben-elferink-37ba251b9',
-      'https://github.com/belferink1996',
+      'https://github.com/BenElferink',
     ],
   },
   {
