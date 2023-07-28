@@ -2,13 +2,13 @@ import Link from 'next/link'
 import TokenHeader from '../../components/tokens/TokenHeader'
 import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns'
 import formatBigNumber from '../../functions/formatters/formatBigNumber'
-import { ADA_SYMBOL } from '../../constants'
 import PageContainer from '../../components/layout/PageContainer'
+import { ADA_SYMBOL } from '../../constants'
 
 const TOKEN_IMAGE_SRC = '/media/tokens/ada/token.png'
 const TOKEN_NAME = 'ADA'
 const PROJECT_NAME = 'Cardano'
-const WHO_CAN_EARN: WhoCanEarn = ['Bad Fox', 'Bad Motorcycle', 'Bad Key']
+const WHO_CAN_EARN: WhoCanEarn = ['2D Fox', '2D Motorcycle', 'Bad Key']
 
 const Page = () => {
   return (
@@ -26,12 +26,12 @@ const Page = () => {
           <br />
           (airdrop via{' '}
           <Link
-            href='https://drop.badfoxmc.com'
+            href='https://labs.badfoxmc.com/airdrops'
             target='_blank'
             rel='noopener noreferrer'
             className='text-blue-400'
           >
-            Bad Drop
+            Bad Labs
           </Link>
           )
         </p>

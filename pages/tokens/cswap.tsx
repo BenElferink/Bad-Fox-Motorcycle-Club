@@ -2,6 +2,7 @@ import Link from 'next/link'
 import TokenHeader from '../../components/tokens/TokenHeader'
 import TokenPrerequisites from '../../components/tokens/TokenPrerequisites'
 import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns'
+import TokenStakeMethod from '../../components/tokens/TokenStakeMethod'
 import PageContainer from '../../components/layout/PageContainer'
 
 const TOKEN_IMAGE_SRC = '/media/tokens/cswap/token.png'
@@ -21,6 +22,8 @@ const Page = () => {
       />
 
       <TokenWhoEarns whoCanEarn={WHO_CAN_EARN} />
+
+      <TokenStakeMethod method='Non Custodial' />
 
       <TokenPrerequisites items={[]} />
 

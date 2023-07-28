@@ -2,13 +2,14 @@ import Link from 'next/link'
 import TokenHeader from '../../components/tokens/TokenHeader'
 import TokenPrerequisites from '../../components/tokens/TokenPrerequisites'
 import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns'
+import TokenStakeMethod from '../../components/tokens/TokenStakeMethod'
 import PageContainer from '../../components/layout/PageContainer'
 
 const TOKEN_IMAGE_SRC = '/media/tokens/nftc/token.png'
 const TOKEN_POLICY_ID = 'b0af30edf2c7f11465853821137e0a6ebc395cab71ee39c24127ffb4'
 const TOKEN_NAME = 'NFTC'
 const PROJECT_NAME = 'NFT Creative'
-const WHO_CAN_EARN: WhoCanEarn = ['Bad Fox', 'Bad Motorcycle', 'Bad Key']
+const WHO_CAN_EARN: WhoCanEarn = ['2D Fox', '2D Motorcycle', 'Bad Key']
 
 const Page = () => {
   return (
@@ -21,6 +22,8 @@ const Page = () => {
       />
 
       <TokenWhoEarns whoCanEarn={WHO_CAN_EARN} />
+
+      <TokenStakeMethod method='Drip / Claim' />
 
       <TokenPrerequisites items={[]} />
 

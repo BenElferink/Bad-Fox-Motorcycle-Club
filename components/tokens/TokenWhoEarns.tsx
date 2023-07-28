@@ -1,7 +1,9 @@
-import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline'
 import React from 'react'
+import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline'
 
-export type WhoCanEarn = ('Bad Fox' | 'Bad Motorcycle' | 'Bad Key')[]
+export type WhoCanEarn = ('2D Fox' | '2D Motorcycle' | 'Bad Key' | '3D Fox' | '3D Motorcycle')[]
+
+const WHO_CAN_EARN: WhoCanEarn = ['2D Fox', '2D Motorcycle', 'Bad Key', '3D Fox', '3D Motorcycle']
 
 interface TokenWhoEarnsProps {
   whoCanEarn: WhoCanEarn
@@ -15,44 +17,21 @@ const TokenWhoEarns = (props: TokenWhoEarnsProps) => {
       <h4 className='mb-2 text-gray-200 text-lg text-center'>Who can earn?</h4>
 
       <ul className='mx-auto flex flex-col md:flex-row md:items-center md:justify-center'>
-        <li
-          className={`flex items-center text-sm ${
-            whoCanEarn.includes('Bad Fox') ? 'text-[var(--online)]' : 'text-[var(--offline)]'
-          }`}
-        >
-          {whoCanEarn.includes('Bad Fox') ? (
-            <CheckCircleIcon className='w-6 h-6 ml-4 mr-1' />
-          ) : (
-            <XCircleIcon className='w-6 h-6 ml-4 mr-1' />
-          )}
-          Bad Fox
-        </li>
-
-        <li
-          className={`flex items-center text-sm ${
-            whoCanEarn.includes('Bad Motorcycle') ? 'text-[var(--online)]' : 'text-[var(--offline)]'
-          }`}
-        >
-          {whoCanEarn.includes('Bad Motorcycle') ? (
-            <CheckCircleIcon className='w-6 h-6 ml-4 mr-1' />
-          ) : (
-            <XCircleIcon className='w-6 h-6 ml-4 mr-1' />
-          )}
-          Bad Motorcycle
-        </li>
-
-        <li
-          className={`flex items-center text-sm ${
-            whoCanEarn.includes('Bad Key') ? 'text-[var(--online)]' : 'text-[var(--offline)]'
-          }`}
-        >
-          {whoCanEarn.includes('Bad Key') ? (
-            <CheckCircleIcon className='w-6 h-6 ml-4 mr-1' />
-          ) : (
-            <XCircleIcon className='w-6 h-6 ml-4 mr-1' />
-          )}
-          Bad Key
-        </li>
+        {WHO_CAN_EARN.map((str) => (
+          <li
+            key={str}
+            className={`flex items-center text-sm ${
+              whoCanEarn.includes(str) ? 'text-[var(--online)]' : 'text-[var(--offline)]'
+            }`}
+          >
+            {whoCanEarn.includes(str) ? (
+              <CheckCircleIcon className='w-6 h-6 ml-4 mr-1' />
+            ) : (
+              <XCircleIcon className='w-6 h-6 ml-4 mr-1' />
+            )}
+            {str}
+          </li>
+        ))}
       </ul>
     </div>
   )

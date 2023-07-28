@@ -1,3 +1,4 @@
+import { GlobeAltIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import React, { useCallback } from 'react'
 
@@ -372,7 +373,7 @@ const SocialIcon = (props: SocialIconProps) => {
         )
 
       default:
-        return null
+        return <GlobeAltIcon className={finalSize} style={{ color: color || '#9146ff' }} />
     }
   }, [url, network, color, size])
 

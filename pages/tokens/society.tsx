@@ -2,13 +2,14 @@ import Link from 'next/link'
 import TokenHeader from '../../components/tokens/TokenHeader'
 import TokenPrerequisites from '../../components/tokens/TokenPrerequisites'
 import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns'
+import TokenStakeMethod from '../../components/tokens/TokenStakeMethod'
 import PageContainer from '../../components/layout/PageContainer'
 
 const TOKEN_IMAGE_SRC = '/media/tokens/society/token.png'
 const TOKEN_POLICY_ID = '25f0fc240e91bd95dcdaebd2ba7713fc5168ac77234a3d79449fc20c'
 const TOKEN_NAME = 'SOCIETY'
 const PROJECT_NAME = 'The Ape Society'
-const WHO_CAN_EARN: WhoCanEarn = ['Bad Fox', 'Bad Motorcycle', 'Bad Key']
+const WHO_CAN_EARN: WhoCanEarn = ['2D Fox', '2D Motorcycle', 'Bad Key']
 
 const Page = () => {
   return (
@@ -21,6 +22,8 @@ const Page = () => {
       />
 
       <TokenWhoEarns whoCanEarn={WHO_CAN_EARN} />
+
+      <TokenStakeMethod method='Non Custodial' />
 
       <TokenPrerequisites
         items={[

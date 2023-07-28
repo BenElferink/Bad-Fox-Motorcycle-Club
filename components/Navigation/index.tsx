@@ -12,8 +12,8 @@ import MultipleLinks from './MultipleLinks'
 import SingleLink from './SingleLink'
 
 export const navCollections = [
-  { label: 'Bad Fox', path: `/collections/${BAD_FOX_POLICY_ID}` },
-  { label: 'Bad Motorcycle', path: `/collections/${BAD_MOTORCYCLE_POLICY_ID}` },
+  { label: '2D Fox', path: `/collections/${BAD_FOX_POLICY_ID}` },
+  { label: '2D Motorcycle', path: `/collections/${BAD_MOTORCYCLE_POLICY_ID}` },
   { label: 'Bad Key', path: `/collections/${BAD_KEY_POLICY_ID}` },
   { label: '3D Fox', path: `/collections/${BAD_FOX_3D_POLICY_ID}` },
   { label: '3D Motorcycle', path: '' },
@@ -82,16 +82,10 @@ const Navigation = () => {
             <SingleLink label='Home' path={'/'} />
           </li>
           <li onClick={() => setIsNavOpen(false)}>
-            <SingleLink label='Team' path='/#team' />
+            <SingleLink label='Merch' url='https://my-store-d34165.creator-spring.com' />
           </li>
           <li onClick={() => setIsNavOpen(false)} className='text-orange-300'>
             <SingleLink label='Burn' path='/burn' />
-          </li>
-          <li onClick={() => setIsNavOpen(false)}>
-            <SingleLink label='4042' url='https://4042.badfoxmc.com' />
-          </li>
-          <li onClick={() => setIsNavOpen(false)}>
-            <SingleLink label='Merch' url='https://my-store-d34165.creator-spring.com' />
           </li>
 
           <li>

@@ -192,6 +192,7 @@ const teamMembers = [
       'https://discord.com/users/829116071663370250',
       'https://www.youtube.com/@badfox4042',
       'https://soundcloud.com/badfox4042',
+      'https://4042.badfoxmc.com',
     ],
   },
   {

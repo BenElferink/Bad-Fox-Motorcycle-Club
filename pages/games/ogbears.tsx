@@ -1,8 +1,8 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import PageContainer from '../../components/layout/PageContainer'
 import ImageLoader from '../../components/Loader/ImageLoader'
-import { GlobeAltIcon } from '@heroicons/react/24/solid'
-import Image from 'next/image'
+// import { GlobeAltIcon } from '@heroicons/react/24/solid'
 
 const Page = () => {
   return (
@@ -38,7 +38,7 @@ const Page = () => {
             <Image src='/media/google-play.png' alt='' width={170} height={59} />
           </Link>
 
-          <Link
+          {/* <Link
             href='https://www.ogverse.io/motopaws'
             target='_blank'
             rel='noopener noreferrer'
@@ -51,7 +51,7 @@ const Page = () => {
               <br />
               <span className='text-lg'>WEB (browser)</span>
             </p>
-          </Link>
+          </Link> */}
         </div>
       </div>
 
@@ -87,8 +87,8 @@ const Page = () => {
           <ul className='list-disc text-sm'>
             <li>
               <span className='text-gray-300'>Guests:</span> No wallet connection. They can play all tracks with a
-              bear but their score won&apos;t be posted to the leader boards. So they won&apos;t be able to win any rewards
-              as well.
+              bear but their score won&apos;t be posted to the leader boards. So they won&apos;t be able to win any
+              rewards as well.
             </li>
             <li>
               <span className='text-gray-300'>Non Holders:</span> These players do not hold a bear, a 3d fox or
