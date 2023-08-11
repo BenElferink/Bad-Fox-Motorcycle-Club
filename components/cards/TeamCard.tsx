@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import SocialIcon from '../SocialIcon'
+import SocialIcon from '../buttons/SocialIcon'
 
 export interface TeamCardProps {
   profilePicture: string

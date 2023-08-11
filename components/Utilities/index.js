@@ -29,7 +29,7 @@ import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '
 const data = [
   {
     checked: true,
-    chapter: 'Bad Fox (2D)',
+    chapter: '2D Fox',
     events: [
       {
         checked: false,
@@ -55,7 +55,7 @@ const data = [
   },
   {
     checked: true,
-    chapter: 'Bad Motorcycle (2D)',
+    chapter: '2D Motorcycle',
     events: [
       {
         checked: false,
@@ -122,7 +122,7 @@ const data = [
   },
   {
     checked: false,
-    chapter: 'Bad Fox (3D)',
+    chapter: '3D Fox',
     events: [
       {
         checked: false,
@@ -147,7 +147,7 @@ const data = [
   },
   {
     checked: false,
-    chapter: 'Bad Motorcycle (3D)',
+    chapter: '3D Motorcycle',
     events: [
       {
         checked: false,

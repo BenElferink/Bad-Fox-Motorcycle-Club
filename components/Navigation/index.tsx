@@ -40,8 +40,8 @@ export const navTokens = [
 
 export const navGames = [
   { label: 'OGBears', path: '/games/ogbears' },
-  { label: 'Bajuzki Studios', path: '/games/bajuzki' },
   { label: 'Degen Royale', path: '/games/degen-royale' },
+  { label: 'Bajuzki Studios', path: '/games/bajuzki' },
   { label: 'Bitke', path: '' },
   { label: 'Cornucopias', path: '' },
   { label: 'Speed Throne', path: '' },

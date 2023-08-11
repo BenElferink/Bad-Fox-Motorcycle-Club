@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import MusicPlayer from '../MusicPlayer'
 import Navigation from '../Navigation'
-import SocialIcon from '../SocialIcon'
+import SocialIcon from '../buttons/SocialIcon'
 
 const Header = () => {
   return (
