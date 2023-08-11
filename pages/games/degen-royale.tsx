@@ -59,21 +59,31 @@ const Page = () => {
               . They can play the game using avatar #5736.
             </li>
             <li>
-              <span className='text-gray-300'>3D Fox & Degen Royale Holders:</span> These players have at least 1{' '}
-              <Link
-                href={`https://www.jpg.store/collection/${BAD_FOX_3D_POLICY_ID}`}
-                target='_blank'
-                rel='noopener noreferrer'
-                className='text-blue-400'
-              >
-                3D Fox NFT
-              </Link>
-              , and at least 1{' '}
-              <Link href='https://magiceden.io/marketplace/degenroyale' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
-                Degen Royale NFT
-              </Link>
-              . They can play the game using their own personal avatar.
+              <span className='text-gray-300'>Coming Soon™️&nbsp;</span>
+              <p className='inline line-through opacity-50'>
+                <span className='text-gray-300'>3D Fox & DR Holders:</span> These players have at least 1{' '}
+                <Link
+                  href={`https://www.jpg.store/collection/${BAD_FOX_3D_POLICY_ID}`}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='text-blue-400'
+                >
+                  3D Fox NFT
+                </Link>
+                , and at least 1{' '}
+                <Link href='https://magiceden.io/marketplace/degenroyale' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
+                  Degen Royale NFT
+                </Link>
+                . They can play the game using their own personal avatar.
+              </p>
             </li>
+          </ul>
+        </div>
+
+        <div className='max-w-[80%] w-full my-2'>
+          <h5 className='text-gray-200'>Profile and Avatars:</h5>
+          <ul className='list-disc text-sm'>
+            <li>Personal avatars will be supported in a future game update.</li>
           </ul>
         </div>
       </div>
