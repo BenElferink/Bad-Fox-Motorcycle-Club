@@ -25,12 +25,7 @@ const Page = () => {
           No need to make a submission/claim!
           <br />
           (airdrop via{' '}
-          <Link
-            href='https://labs.badfoxmc.com/airdrops'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='text-blue-400'
-          >
+          <Link href='https://labs.badfoxmc.com/airdrops' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
             Bad Labs
           </Link>
           )
@@ -42,12 +37,7 @@ const Page = () => {
 
         <p className='mx-auto text-sm text-center'>
           Every time the{' '}
-          <Link
-            href='https://pool.pm/$bfmc_royalty'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='text-blue-400'
-          >
+          <Link href='https://pool.pm/$bfmc_royalty' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
             royalty wallet
           </Link>{' '}
           reaches {ADA_SYMBOL}
@@ -62,31 +52,14 @@ const Page = () => {
           <p className='text-sm'>Holders get almost 90% from the royalty pool.</p>
           <ul className='ml-2 text-xs list-disc list-inside'>
             <li>80% - base rewards</li>
-            <li>{formatBigNumber(5000)} - bonus rewards</li>
-            <li>leftovers - team wallet</li>
+            <li>20% - team wallet</li>
           </ul>
 
-          <p className='mt-2 text-sm'>
-            &quot;80% base rewards&quot; are divided by {formatBigNumber(12000)} shares as following:
-          </p>
+          <p className='mt-2 text-sm'>&quot;80% base rewards&quot; are divided by {formatBigNumber(12000)} shares as following:</p>
           <ul className='ml-2 text-xs list-disc list-inside'>
             <li>1x shares - Bad Fox</li>
             <li>2x shares - Bad Motorcycle</li>
             <li>4x shares - Bad Key</li>
-          </ul>
-
-          <p className='mt-2 text-sm'>
-            &quot;{formatBigNumber(5000)} bonus rewards&quot; are earned by holding some special traits.
-            <br />
-            Each trait earns {ADA_SYMBOL}10 with every distribution, they can stack.
-          </p>
-          <ul className='ml-2 text-xs list-disc list-inside'>
-            <li>Bad Fox - Mouth: (F) Crypto</li>
-            <li>Bad Fox - Mouth: (M) Cash Bag</li>
-            <li>Bad Motorcycle - Anterior: (VE) Piggy Savings</li>
-            <li>Bad Motorcycle - Above: (NI) Cash Bag</li>
-            <li>Bad Motorcycle - Rear: (CH) Ada Bag</li>
-            <li>Bad Motorcycle - Rear: (HB) Vault</li>
           </ul>
         </div>
       </div>
