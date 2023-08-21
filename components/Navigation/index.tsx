@@ -22,7 +22,7 @@ export const navCollections = [
 export const navTools = [
   { label: 'Airdrops', url: 'https://labs.badfoxmc.com/airdrops' },
   { label: 'Governance', url: 'https://poll.badfoxmc.com' },
-  { label: 'Giveaways', url: 'https://raffle.badfoxmc.com' },
+  { label: 'Giveaways', url: 'https://labs.badfoxmc.com/giveaways' },
 ]
 
 export const navTokens = [
