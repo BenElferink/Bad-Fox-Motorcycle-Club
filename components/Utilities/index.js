@@ -34,7 +34,7 @@ const data = [
       {
         checked: false,
         redirectPath: `/collections/${BAD_FOX_POLICY_ID}`,
-        title: 'Supply 2,042 (burn live)',
+        title: 'Supply 2,000 (burn live)',
       },
       {
         checked: true,
@@ -60,7 +60,7 @@ const data = [
       {
         checked: false,
         redirectPath: `/collections/${BAD_MOTORCYCLE_POLICY_ID}`,
-        title: 'Supply 1,021 (burn live)',
+        title: 'Supply 1,000 (burn live)',
       },
       {
         checked: true,
@@ -86,7 +86,7 @@ const data = [
       {
         checked: false,
         redirectPath: `/collections/${BAD_KEY_POLICY_ID}`,
-        title: 'Supply 1,979',
+        title: 'Supply 2,000',
       },
       {
         checked: true,
