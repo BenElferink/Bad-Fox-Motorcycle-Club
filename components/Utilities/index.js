@@ -100,7 +100,7 @@ const data = [
       },
       {
         checked: true,
-        redirectPath: '/tools',
+        redirectPath: 'https://labs.badfoxmc.com',
         title: 'Access to Tools',
       },
       {
@@ -186,9 +186,7 @@ const Utilities = () => {
         return (
           <div
             key={phase.chapter}
-            className={`relative ${styles.chapter} ${
-              !isMobile ? (isLeft ? styles.leftChapter : styles.rightChapter) : styles.mobileChapter
-            }`}
+            className={`relative ${styles.chapter} ${!isMobile ? (isLeft ? styles.leftChapter : styles.rightChapter) : styles.mobileChapter}`}
           >
             {phase.renderMedia ? phase.renderMedia(isLeft) : null}
 
@@ -205,16 +203,16 @@ const Utilities = () => {
                 }`}
                 onClick={() => {
                   if (event.redirectPath) {
-                    router.push(event.redirectPath)
+                    if (event.redirectPath.indexOf('https') === 0) {
+                      window.open(event.redirectPath, '_blank', 'noopener noreferrer')
+                    } else {
+                      router.push(event.redirectPath)
+                    }
                   }
                 }}
               >
                 <h3>
-                  {event.checked ? (
-                    <CheckCircleIcon className='w-6 h-6' />
-                  ) : (
-                    <MinusCircleIcon className='w-6 h-6' />
-                  )}
+                  {event.checked ? <CheckCircleIcon className='w-6 h-6' /> : <MinusCircleIcon className='w-6 h-6' />}
                   {event.title}
                 </h3>
               </div>
