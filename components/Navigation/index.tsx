@@ -2,12 +2,7 @@ import { Bars3Icon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import {
-  BAD_FOX_3D_POLICY_ID,
-  BAD_FOX_POLICY_ID,
-  BAD_KEY_POLICY_ID,
-  BAD_MOTORCYCLE_POLICY_ID,
-} from '../../constants'
+import { BAD_FOX_3D_POLICY_ID, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants'
 import MultipleLinks from './MultipleLinks'
 import SingleLink from './SingleLink'
 
@@ -17,12 +12,6 @@ export const navCollections = [
   { label: 'Bad Key', path: `/collections/${BAD_KEY_POLICY_ID}` },
   { label: '3D Fox', path: `/collections/${BAD_FOX_3D_POLICY_ID}` },
   { label: '3D Motorcycle', path: '' },
-]
-
-export const navTools = [
-  { label: 'Airdrops', url: 'https://labs.badfoxmc.com/airdrops' },
-  { label: 'Governance', url: 'https://poll.badfoxmc.com' },
-  { label: 'Giveaways', url: 'https://labs.badfoxmc.com/giveaways' },
 ]
 
 export const navTokens = [
@@ -87,34 +76,17 @@ const Navigation = () => {
           <li onClick={() => setIsNavOpen(false)} className='text-orange-300'>
             <SingleLink label='Burn' path='/burn' />
           </li>
-
-          <li>
-            <MultipleLinks
-              title='Collections'
-              links={navCollections}
-              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
-            />
+          <li onClick={() => setIsNavOpen(false)}>
+            <SingleLink label='Lab/Tools' url='https://labs.badfoxmc.com' />
           </li>
           <li>
-            <MultipleLinks
-              title='Tools'
-              links={navTools}
-              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
-            />
+            <MultipleLinks title='Tokens' links={navTokens} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
           </li>
           <li>
-            <MultipleLinks
-              title='Tokens'
-              links={navTokens}
-              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
-            />
+            <MultipleLinks title='Games' links={navGames} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
           </li>
           <li>
-            <MultipleLinks
-              title='Games'
-              links={navGames}
-              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
-            />
+            <MultipleLinks title='Collections' links={navCollections} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
           </li>
         </ul>
       </div>
@@ -125,9 +97,7 @@ const Navigation = () => {
           onClick={() => window.scroll({ top: 0, left: 0 })}
           className={
             'mx-2 p-4 rounded-lg text-sm ' +
-            (router.pathname === '/wallet'
-              ? 'bg-gray-700 text-white'
-              : 'bg-gray-900 hover:bg-gray-700 hover:text-white')
+            (router.pathname === '/wallet' ? 'bg-gray-700 text-white' : 'bg-gray-900 hover:bg-gray-700 hover:text-white')
           }
         >
           Wallet
