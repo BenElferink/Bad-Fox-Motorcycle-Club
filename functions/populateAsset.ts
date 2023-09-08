@@ -10,13 +10,14 @@ const populateAsset: (options: {
   policyId: PolicyId
   assetId: string
   withRanks?: boolean | undefined
+  populateMintTx?: boolean | undefined
   firebaseImageUrl?: string | undefined
 }) => Promise<PopulatedAsset> = async (options) => {
-  const { policyId, assetId, withRanks, firebaseImageUrl } = options
+  const { policyId, assetId, withRanks, populateMintTx, firebaseImageUrl } = options
   console.log(`Populating asset with ID ${assetId}`)
 
   try {
-    const data = await badApi.token.getData(assetId)
+    const data = await badApi.token.getData(assetId, { populateMintTx })
 
     if (!cnftToolsAssets) {
       cnftToolsAssets = {}

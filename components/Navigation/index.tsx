@@ -39,6 +39,11 @@ export const navGames = [
   { label: 'U.E (secret: preparation)', path: '' },
 ]
 
+export const limitedEvents = [
+  { label: 'Burn Event', path: '/burn' },
+  { label: '2D Trade In', path: '/trade' },
+]
+
 const Navigation = () => {
   const router = useRouter()
   const [isNavOpen, setIsNavOpen] = useState(false)
@@ -70,11 +75,11 @@ const Navigation = () => {
           >
             <SingleLink label='Home' path={'/'} />
           </li>
+          <li className='text-orange-300'>
+            <MultipleLinks title='Limited Events' links={limitedEvents} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
+          </li>
           <li onClick={() => setIsNavOpen(false)}>
             <SingleLink label='Merch' url='https://my-store-d34165.creator-spring.com' />
-          </li>
-          <li onClick={() => setIsNavOpen(false)} className='text-orange-300'>
-            <SingleLink label='Burn' path='/burn' />
           </li>
           <li onClick={() => setIsNavOpen(false)}>
             <SingleLink label='Lab/Tools' url='https://labs.badfoxmc.com' />

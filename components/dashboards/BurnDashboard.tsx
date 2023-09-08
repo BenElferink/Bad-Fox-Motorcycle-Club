@@ -27,8 +27,7 @@ const badApi = new BadApi()
 const BURN_OPEN = true
 
 const BurnDashboard = () => {
-  const { connectedManually, connectedName, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } =
-    useWallet()
+  const { connectedManually, connectedName, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } = useWallet()
 
   const [selector, setSelector] = useState<'M' | 'F' | 'B' | ''>('')
   const [selectedMale, setSelectedMale] = useState<string>('')
@@ -37,9 +36,7 @@ const BurnDashboard = () => {
 
   const [loadingTx, setLoadingTx] = useState<boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string>(
-    !BURN_OPEN
-      ? 'The portal is closed at the moment, please check in with our community for further announcements.'
-      : ''
+    !BURN_OPEN ? 'The portal is closed at the moment, please check in with our community for further announcements.' : ''
   )
 
   const txConfirmation = useCallback(async (_txHash: string): Promise<BadApiTransaction> => {
@@ -86,7 +83,7 @@ const BurnDashboard = () => {
             quantity: '1',
           },
         ])
-        .sendLovelace({ address: BAD_KEY_WALLET }, String(3 * ONE_MILLION))
+        .sendLovelace({ address: BAD_KEY_WALLET }, String(4 * ONE_MILLION))
 
       toast.loading('Building transaction')
       const unsignedTx = await tx.build()
@@ -121,14 +118,10 @@ const BurnDashboard = () => {
 
       if (error?.message?.indexOf('Not enough ADA leftover to include non-ADA assets') !== -1) {
         // [Transaction] An error occurred during build: Not enough ADA leftover to include non-ADA assets in a change address.
-        setErrorMessage(
-          'TX build failed: your UTXOs are clogged, try to send all your ADA to yourself, together with the BFMC NFTs.'
-        )
+        setErrorMessage('TX build failed: your UTXOs are clogged, try to send all your ADA to yourself, together with the BFMC NFTs.')
       } else if (error?.message?.indexOf('UTxO Balance Insufficient') !== -1) {
         // [Transaction] An error occurred during build: UTxO Balance Insufficient.
-        setErrorMessage(
-          'TX build failed: not enough ADA to process TX, please add ADA to your wallet, then try again.'
-        )
+        setErrorMessage('TX build failed: not enough ADA to process TX, please add ADA to your wallet, then try again.')
       } else {
         setErrorMessage(error?.message || error?.toString())
       }
@@ -144,9 +137,7 @@ const BurnDashboard = () => {
         .sort((a, b) => (a?.serialNumber || 0) - (b?.serialNumber || 0))
         .filter(
           (asset) =>
-            selector === 'B' ||
-            (selector === 'M' && asset.attributes.Gender === 'Male') ||
-            (selector === 'F' && asset.attributes.Gender === 'Female')
+            selector === 'B' || (selector === 'M' && asset.attributes.Gender === 'Male') || (selector === 'F' && asset.attributes.Gender === 'Female')
         ) || [],
     [populatedWallet, selector]
   )
@@ -204,19 +195,17 @@ const BurnDashboard = () => {
           className='relative flex flex-col items-center justify-center w-72 h-72 my-4 bg-gray-900 hover:bg-gray-700 bg-opacity-50 hover:bg-opacity-50 rounded-xl border border-gray-700 hover:border-gray-500 hover:text-gray-200'
         >
           {selectedMale ? (
-            populatedWallet?.assets[BAD_FOX_POLICY_ID].filter((asset) => asset.tokenId === selectedMale).map(
-              (asset) => (
-                <div key={`selected-${asset.tokenId}`} style={{ position: 'absolute', top: 0, left: 0 }}>
-                  <ImageLoader
-                    src={asset.image.url}
-                    alt={asset.tokenName?.display as string}
-                    width={288}
-                    height={288}
-                    style={{ borderRadius: '0.75rem' }}
-                  />
-                </div>
-              )
-            )
+            populatedWallet?.assets[BAD_FOX_POLICY_ID].filter((asset) => asset.tokenId === selectedMale).map((asset) => (
+              <div key={`selected-${asset.tokenId}`} style={{ position: 'absolute', top: 0, left: 0 }}>
+                <ImageLoader
+                  src={asset.image.url}
+                  alt={asset.tokenName?.display as string}
+                  width={288}
+                  height={288}
+                  style={{ borderRadius: '0.75rem' }}
+                />
+              </div>
+            ))
           ) : (
             <Fragment>
               <PhotoIcon className='w-12 h-12' />
@@ -231,19 +220,17 @@ const BurnDashboard = () => {
           className='relative flex flex-col items-center justify-center w-72 h-72 my-4 bg-gray-900 hover:bg-gray-700 bg-opacity-50 hover:bg-opacity-50 rounded-xl border border-gray-700 hover:border-gray-500 hover:text-gray-200'
         >
           {selectedFemale ? (
-            populatedWallet?.assets[BAD_FOX_POLICY_ID].filter((asset) => asset.tokenId === selectedFemale).map(
-              (asset) => (
-                <div key={`selected-${asset.tokenId}`} style={{ position: 'absolute', top: 0, left: 0 }}>
-                  <ImageLoader
-                    src={asset.image.url}
-                    alt={asset.tokenName?.display as string}
-                    width={288}
-                    height={288}
-                    style={{ borderRadius: '0.75rem' }}
-                  />
-                </div>
-              )
-            )
+            populatedWallet?.assets[BAD_FOX_POLICY_ID].filter((asset) => asset.tokenId === selectedFemale).map((asset) => (
+              <div key={`selected-${asset.tokenId}`} style={{ position: 'absolute', top: 0, left: 0 }}>
+                <ImageLoader
+                  src={asset.image.url}
+                  alt={asset.tokenName?.display as string}
+                  width={288}
+                  height={288}
+                  style={{ borderRadius: '0.75rem' }}
+                />
+              </div>
+            ))
           ) : (
             <Fragment>
               <PhotoIcon className='w-12 h-12' />
@@ -258,9 +245,7 @@ const BurnDashboard = () => {
           className='relative flex flex-col items-center justify-center w-72 h-72 my-4 bg-gray-900 hover:bg-gray-700 bg-opacity-50 hover:bg-opacity-50 rounded-xl border border-gray-700 hover:border-gray-500 hover:text-gray-200'
         >
           {selectedBike ? (
-            populatedWallet?.assets[BAD_MOTORCYCLE_POLICY_ID].filter(
-              (asset) => asset.tokenId === selectedBike
-            ).map((asset) => (
+            populatedWallet?.assets[BAD_MOTORCYCLE_POLICY_ID].filter((asset) => asset.tokenId === selectedBike).map((asset) => (
               <div key={`selected-${asset.tokenId}`} style={{ position: 'absolute', top: 0, left: 0 }}>
                 <ImageLoader
                   src={asset.image.url}
@@ -287,7 +272,7 @@ const BurnDashboard = () => {
           disabled={!BURN_OPEN || !!errorMessage || loadingTx || !selectedMale || !selectedFemale || !selectedBike}
           className='w-full p-4 rounded-xl disabled:bg-gray-900 bg-green-900 hover:bg-green-700 disabled:bg-opacity-50 bg-opacity-50 hover:bg-opacity-50 disabled:text-gray-700 hover:text-gray-200 disabled:border border hover:border disabled:border-gray-800 border-green-700 hover:border-green-700 disabled:cursor-not-allowed hover:cursor-pointer'
         >
-          Transcend
+          Burn
         </button>
 
         {/* {connectedName.toLowerCase() === 'eternl' ? (
@@ -302,15 +287,7 @@ const BurnDashboard = () => {
       <Modal
         open={!!selector}
         onClose={() => setSelector('')}
-        title={
-          selector === 'B'
-            ? 'Select a Motorcycle'
-            : selector === 'M'
-            ? 'Select a Male Fox'
-            : selector === 'F'
-            ? 'Select a Female Fox'
-            : ''
-        }
+        title={selector === 'B' ? 'Select a Motorcycle' : selector === 'M' ? 'Select a Male Fox' : selector === 'F' ? 'Select a Female Fox' : ''}
       >
         <div className='md:max-m-[90vw] m-fit flex flex-wrap items-center justify-evenly'>
           {!filteredAssets.length ? (

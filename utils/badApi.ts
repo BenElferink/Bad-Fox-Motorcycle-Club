@@ -61,6 +61,8 @@ export interface BadApiPopulatedToken extends BadApiRankedToken {
   fingerprint: string
   policyId: PolicyId
   serialNumber?: number
+  mintTransactionId: string
+  mintBlockHeight?: number
   image: {
     ipfs: string
     url: string
@@ -112,6 +114,7 @@ export interface BadApiUtxo {
 export interface BadApiTransaction {
   transactionId: TransactionId
   block: string
+  blockHeight: number
   utxos?: BadApiUtxo[]
 }
 
@@ -131,11 +134,7 @@ class BadApi {
     return query ? `?${query.slice(1)}` : ''
   }
 
-  private handleError = async (
-    error: any,
-    reject: (reason: string) => void,
-    retry: () => Promise<any>
-  ): Promise<any> => {
+  private handleError = async (error: any, reject: (reason: string) => void, retry: () => Promise<any>): Promise<any> => {
     console.error(error)
 
     if ([400, 404, 500, 504].includes(error?.response?.status)) {
@@ -165,11 +164,7 @@ class BadApi {
 
           return resolve(data)
         } catch (error: any) {
-          return await this.handleError(
-            error,
-            reject,
-            async () => await this.wallet.getData(walletId, queryOptions)
-          )
+          return await this.handleError(error, reject, async () => await this.wallet.getData(walletId, queryOptions))
         }
       })
     },
@@ -196,11 +191,7 @@ class BadApi {
 
           return resolve(data)
         } catch (error: any) {
-          return await this.handleError(
-            error,
-            reject,
-            async () => await this.policy.getData(policyId, queryOptions)
-          )
+          return await this.handleError(error, reject, async () => await this.policy.getData(policyId, queryOptions))
         }
       })
     },
@@ -236,11 +227,7 @@ class BadApi {
 
             return resolve(data)
           } catch (error: any) {
-            return await this.handleError(
-              error,
-              reject,
-              async () => await this.policy.market.getActivity(policyId)
-            )
+            return await this.handleError(error, reject, async () => await this.policy.market.getActivity(policyId))
           }
         })
       },
@@ -248,8 +235,13 @@ class BadApi {
   }
 
   token = {
-    getData: (tokenId: string): Promise<BadApiPopulatedToken> => {
-      const uri = `${this.baseUrl}/token/${tokenId}`
+    getData: (
+      tokenId: string,
+      queryOptions?: {
+        populateMintTx?: boolean
+      }
+    ): Promise<BadApiPopulatedToken> => {
+      const uri = `${this.baseUrl}/token/${tokenId}` + this.getQueryStringFromQueryOptions(queryOptions)
 
       return new Promise(async (resolve, reject) => {
         try {
@@ -283,11 +275,7 @@ class BadApi {
 
           return resolve(data)
         } catch (error: any) {
-          return await this.handleError(
-            error,
-            reject,
-            async () => await this.token.getOwners(tokenId, queryOptions)
-          )
+          return await this.handleError(error, reject, async () => await this.token.getOwners(tokenId, queryOptions))
         }
       })
     },
@@ -349,11 +337,7 @@ class BadApi {
 
           return resolve(data)
         } catch (error: any) {
-          return await this.handleError(
-            error,
-            reject,
-            async () => await this.stakePool.getData(poolId, queryOptions)
-          )
+          return await this.handleError(error, reject, async () => await this.stakePool.getData(poolId, queryOptions))
         }
       })
     },
@@ -366,8 +350,7 @@ class BadApi {
         withUtxos?: boolean
       }
     ): Promise<BadApiTransaction> => {
-      const uri =
-        `${this.baseUrl}/transaction/${transactionId}` + this.getQueryStringFromQueryOptions(queryOptions)
+      const uri = `${this.baseUrl}/transaction/${transactionId}` + this.getQueryStringFromQueryOptions(queryOptions)
 
       return new Promise(async (resolve, reject) => {
         try {

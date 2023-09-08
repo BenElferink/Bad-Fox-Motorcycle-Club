@@ -267,7 +267,7 @@ const Page = () => {
   //   <div className='flex flex-col items-center'>
   //     {!connected ? (
   //       <Fragment>
-  //         <WalletConnect introText='Connect to transcend your NFTs.' />
+  //         <WalletConnect introText='Connect to reserve your NFTs.' />
   //         <p className='pt-[15vh] text-center text-xl text-[var(--pink)]'>Not connected.</p>
   //       </Fragment>
   //     ) : (

@@ -79,8 +79,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
         const badKeyAssetsFile = getFileForPolicyId(BAD_KEY_POLICY_ID, 'assets') as PopulatedAsset[]
         const badFox3dAssetsFile = getFileForPolicyId(BAD_FOX_3D_POLICY_ID, 'assets') as PopulatedAsset[]
 
-        const filterAssetsForPolicy = (pId: string) =>
-          tokens?.filter(({ tokenId }) => tokenId.indexOf(pId) == 0) || []
+        const filterAssetsForPolicy = (pId: string) => tokens?.filter(({ tokenId }) => tokenId.indexOf(pId) == 0) || []
 
         setPopulatedWallet({
           stakeKey,
@@ -179,8 +178,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
         const badKeyAssetsFile = getFileForPolicyId(BAD_KEY_POLICY_ID, 'assets') as PopulatedAsset[]
         const badFox3dAssetsFile = getFileForPolicyId(BAD_FOX_3D_POLICY_ID, 'assets') as PopulatedAsset[]
 
-        const filterAssetsForPolicy = (pId: string) =>
-          data.tokens?.filter(({ tokenId }) => tokenId.indexOf(pId) == 0) || []
+        const filterAssetsForPolicy = (pId: string) => data.tokens?.filter(({ tokenId }) => tokenId.indexOf(pId) == 0) || []
 
         setPopulatedWallet({
           stakeKey: data.stakeKey,
@@ -288,7 +286,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (!connected) {
-      const connectPaths = ['/wallet', '/burn']
+      const connectPaths = ['/wallet', '/burn', '/trade']
 
       if (connectPaths.includes(window.location.pathname)) {
         const storageItem = window.localStorage.getItem('connected-wallet')

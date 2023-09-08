@@ -23,10 +23,13 @@ export const BAD_MOTORCYCLE_SIGNING_KEY = process.env.BAD_MOTORCYCLE_SIGNING_KEY
 export const BAD_KEY_WALLET = 'addr1v9tce86r8v9larevjr7el7d5ua3eruz2cn4d93mqmt8w4agmy2leh'
 export const BAD_KEY_SIGNING_KEY = process.env.BAD_KEY_SIGNING_KEY || ''
 
-export const TREASURY_WALLET =
-  'addr1q9p9yq4lz834729chxsdwa7utfp5wr754zkn6hltxz42m594guty04nldwlxnhw8xcgd5pndaaqzzu5qzyvnc8tlgdsqtazkyh'
-export const ROYALTY_WALLET =
-  'addr1qyv7wgxd4fjvp9jxr2v6tdpygmjxwatesaemvassemq6jq2rqhw6rvndlmdnp0y7mwvaux4v2wpz5rusyy8c636az70sjxtwe6'
+export const TRADE_APP_MNEMONIC = Array.isArray(process.env.TRADE_APP_MNEMONIC)
+  ? process.env.TRADE_APP_MNEMONIC
+  : process.env.TRADE_APP_MNEMONIC?.split(',') || []
+
+export const TREASURY_WALLET = 'addr1q9p9yq4lz834729chxsdwa7utfp5wr754zkn6hltxz42m594guty04nldwlxnhw8xcgd5pndaaqzzu5qzyvnc8tlgdsqtazkyh'
+export const ROYALTY_WALLET = 'addr1qyv7wgxd4fjvp9jxr2v6tdpygmjxwatesaemvassemq6jq2rqhw6rvndlmdnp0y7mwvaux4v2wpz5rusyy8c636az70sjxtwe6'
+export const TRADE_APP_WALLET = 'addr1v86z46xfdzfyvv9dmm4aafc2qyqcu7m6av9gnpvqk68fd5cvvzfpm'
 
 export const MARKETPLACE_ADDRESSES = [
   'addr1zxgx3far7qygq0k6epa0zcvcvrevmn0ypsnfsue94nsn3tvpw288a4x0xf8pxgcntelxmyclq83s0ykeehchz2wtspks905plm', // jpg.store
