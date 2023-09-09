@@ -134,7 +134,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             throw new Error(`No more keys available for TX of type ${type}`)
           }
 
-          requestedUnit = treasuryKeys[0].tokenId
+          if (!!treasuryKeys.find((item) => item.tokenId === requestedTokenId)) {
+            requestedUnit = requestedTokenId
+          } else {
+            requestedUnit = treasuryKeys[0].tokenId
+          }
         }
 
         const provider = new BlockfrostProvider(BLOCKFROST_API_KEY)
