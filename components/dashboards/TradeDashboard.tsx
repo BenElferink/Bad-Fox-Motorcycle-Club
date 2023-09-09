@@ -21,7 +21,7 @@ import { BAD_FOX_3D_POLICY_ID, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCY
 
 const badApi = new BadApi()
 
-const TRADE_OPEN = false
+const TRADE_OPEN = true
 
 const TradeDashboard = () => {
   const { connectedManually, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } = useWallet()
