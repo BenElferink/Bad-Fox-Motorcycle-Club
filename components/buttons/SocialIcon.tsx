@@ -23,6 +23,7 @@ export type SocialNetwork =
   | 'dribbble'
   | 'reddit'
   | 'twitter'
+  | 'x'
   | 'whatsapp'
   | 'twitch'
 
@@ -242,6 +243,18 @@ const SocialIcon = (props: SocialIconProps) => {
           </svg>
         )
 
+      case 'x':
+        return (
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1668.56 1221.19' className={finalSize} style={{ color: color || '#000000' }}>
+            <g transform='translate(52.39 -25.059)'>
+              <path
+                fill='currentColor'
+                d='M283.94 167.31l386.39 516.64L281.5 1104h87.51l340.42-367.76L984.48 1104h297.8L874.15 558.3l361.92-390.99h-87.51l-313.51 338.7-253.31-338.7h-297.8zm128.69 64.46h136.81l604.13 807.76h-136.81L412.63 231.77z'
+              />
+            </g>
+          </svg>
+        )
+
       case 'whatsapp':
         return (
           <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' className={finalSize} style={{ color: color || '#128c7e' }}>
@@ -263,7 +276,7 @@ const SocialIcon = (props: SocialIconProps) => {
         )
 
       default:
-        return <GlobeAltIcon className={finalSize} style={{ color: color || '#9146ff' }} />
+        return <GlobeAltIcon className={finalSize} style={{ color: color || '#ffffff' }} />
     }
   }, [url, network, color, size])
 

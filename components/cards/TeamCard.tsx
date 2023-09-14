@@ -36,7 +36,7 @@ const TeamCard = (props: TeamCardProps) => {
             key={`social-${url}`}
             url={url}
             color='#d4d4d8' // === 'text-zinc-300'
-            size='w-5 h-5'
+            size='w-6 h-6'
             className='p-1 rounded-lg hover:bg-[var(--orange)]'
           />
         ))}

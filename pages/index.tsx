@@ -12,7 +12,7 @@ const partnerships = [
   },
   {
     name: 'Leon Art Group',
-    url: 'https://twitter.com/leonartgroup',
+    url: 'https://x.com/leonartgroup',
     logoUrl: '/media/logo/other/leonartgroup.png',
   },
   {
@@ -175,7 +175,7 @@ const teamMembers = [
       'I started my career as Fullstack Developer in 2020 & have been involved in the crypto & NFT space since 2021. I do most of the work around here.',
     profilePicture: '/media/team/Ben.jpg',
     socials: [
-      'https://twitter.com/BenElferink',
+      'https://x.com/BenElferink',
       'https://discord.com/users/791763515554922507',
       'https://www.linkedin.com/in/ben-elferink-37ba251b9',
       'https://github.com/BenElferink',
@@ -188,7 +188,7 @@ const teamMembers = [
       'I use creative thinking as a means of expression. This helps me to connect dots and build bridges from one point to another. What is a "Director of Vibes" ? Look at it as a less formal version of Community Manager. I\'m here to coordinate the community vibes and connect with the people!',
     profilePicture: '/media/team/4042.jpg',
     socials: [
-      'https://twitter.com/BadFox4042',
+      'https://x.com/BadFox4042',
       'https://discord.com/users/829116071663370250',
       'https://www.youtube.com/@badfox4042',
       'https://soundcloud.com/badfox4042',
@@ -201,11 +201,7 @@ const teamMembers = [
     description:
       "I remote operate offshore oil and gas producing platforms from an onshore controlroom for a living, I've been into crypto for about 1,5 years and became a NFT enthousiast on Cardano little over a year ago. BadFoxMC has got a special place in my heart.",
     profilePicture: '/media/team/Stef.jpg',
-    socials: [
-      'https://twitter.com/Stef_bbq',
-      'https://discord.com/users/933925521346138182',
-      'https://www.instagram.com/stef_bbq/',
-    ],
+    socials: ['https://x.com/Stef_bbq', 'https://discord.com/users/933925521346138182', 'https://www.instagram.com/stef_bbq/'],
   },
   {
     name: 'Happyboi',
@@ -213,11 +209,7 @@ const teamMembers = [
     description:
       "I'm Sydney by name, also known as Happyboi. I'm into trading, and learning technical analysis. I don't have many hobbies, but I love reading books or watching movies whenever I'm free.",
     profilePicture: '/media/team/Happyboi.jpg',
-    socials: [
-      'https://discord.com/users/1024728525015621723',
-      'https://twitter.com/mr_hapyyy',
-      'https://instagram.com/sydney.chukwu.52',
-    ],
+    socials: ['https://x.com/mr_hapyyy', 'https://discord.com/users/1024728525015621723', 'https://instagram.com/sydney.chukwu.52'],
   },
 ]
 
@@ -238,9 +230,7 @@ const Badge = (props: BadgeProps) => {
       className='group w-20 h-10 my-8 mx-4 flex flex-col items-center justify-center relative'
     >
       <Image src={logoUrl} alt='logo' fill sizes='5rem' className='object-contain drop-shadow-footeritem' />
-      <h6 className='absolute -bottom-7 text-gray-500 group-hover:text-gray-400 text-xs whitespace-nowrap'>
-        {name}
-      </h6>
+      <h6 className='absolute -bottom-7 text-gray-500 group-hover:text-gray-400 text-xs whitespace-nowrap'>{name}</h6>
     </Link>
   )
 }
@@ -280,14 +270,7 @@ const Page = () => {
 
       <div className='flex flex-wrap justify-center max-w-7xl my-12'>
         {teamMembers.map(({ profilePicture, name, title, description, socials }) => (
-          <TeamCard
-            key={`team-${name}`}
-            profilePicture={profilePicture}
-            name={name}
-            title={title}
-            description={description}
-            socials={socials}
-          />
+          <TeamCard key={`team-${name}`} profilePicture={profilePicture} name={name} title={title} description={description} socials={socials} />
         ))}
       </div>
     </div>
