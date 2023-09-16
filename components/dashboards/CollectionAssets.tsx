@@ -14,13 +14,7 @@ import Modal from '../layout/Modal'
 import ImageLoader from '../Loader/ImageLoader'
 import GlbViewer from '../models/google/GlbViewer'
 import TPoseModel from '../models/three/fbx/TPoseModel'
-import {
-  ADA_SYMBOL,
-  BAD_FOX_3D_POLICY_ID,
-  BAD_FOX_POLICY_ID,
-  BAD_KEY_POLICY_ID,
-  BAD_MOTORCYCLE_POLICY_ID,
-} from '../../constants'
+import { ADA_SYMBOL, BAD_FOX_3D_POLICY_ID, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants'
 import type { PolicyId, PopulatedAsset, TraitsFile } from '../../@types'
 
 const badApi = new BadApi()
@@ -44,7 +38,11 @@ const AssetModalContent = (props: AssetModalContentProps) => {
       : {
           name: asset?.tokenName?.display as string,
           mediaType: 'image/png',
-          src: asset.image.ipfs,
+          src:
+            // (getFileForPolicyId(policyId as PolicyId, 'assets') as PopulatedAsset[]).find(
+            //   (item) => item.tokenId === asset.tokenId
+            // )?.image.url ||
+            asset.image.url || asset.image.ipfs,
         }
   )
 
@@ -61,9 +59,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
           : 'Motorcycle'
 
       const badKeyAssetsFile = getFileForPolicyId(BAD_KEY_POLICY_ID, 'assets') as PopulatedAsset[]
-      const foundBadKey = badKeyAssetsFile.find(
-        (badKey) => badKey.attributes[badKeyTraitCategory] === tokenName?.display
-      ) as PopulatedAsset
+      const foundBadKey = badKeyAssetsFile.find((badKey) => badKey.attributes[badKeyTraitCategory] === tokenName?.display) as PopulatedAsset
 
       setBadKeyIdOfBurnedAsset(foundBadKey.tokenId)
     }
@@ -230,7 +226,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
                   className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200 disabled:bg-opacity-50 disabled:bg-gray-900 disabled:text-gray-700 disabled:border-gray-800 disabled:cursor-not-allowed'
                 >
                   <FolderArrowDownIcon className='w-8 h-8 mr-2' />
-                  {isGlb ? '.glb (animated, rigged)' : '.fbx (t-pose, not rigged)'}
+                  {isGlb ? '.glb (animated, rigged)' : '.fbx (a-pose, not rigged)'}
                 </button>
               ) : null
             })
@@ -250,82 +246,47 @@ const AssetModalContent = (props: AssetModalContentProps) => {
               onClick={() => window.open(`https://pool.pm/${asset.fingerprint}`, '_blank', 'noopener noreferrer')}
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image
-                unoptimized
-                src='/media/logo/other/poolpm.png'
-                alt=''
-                width={30}
-                height={30}
-                className='mr-2'
-              />
+              <Image unoptimized src='/media/logo/other/poolpm.png' alt='' width={30} height={30} className='mr-2' />
               pool.pm
             </button>
 
-            <button
-              onClick={() =>
-                window.open(`https://www.jpg.store/asset/${asset.tokenId}`, '_blank', 'noopener noreferrer')
-              }
+            {/* <button
+              onClick={() => window.open(`https://www.taptools.io/charts/nft?assets&policyID=${asset.policyId}`, '_blank', 'noopener noreferrer')}
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image
-                unoptimized
-                src='/media/logo/other/jpgstore.png'
-                alt=''
-                width={30}
-                height={30}
-                className='mr-2'
-              />
+              <Image unoptimized src='/media/logo/other/taptools.webp' alt='' width={30} height={30} className='mr-2' />
+              TapTools
+            </button> */}
+
+            <button
+              onClick={() => window.open(`https://www.jpg.store/asset/${asset.tokenId}`, '_blank', 'noopener noreferrer')}
+              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+            >
+              <Image unoptimized src='/media/logo/other/jpgstore.png' alt='' width={30} height={30} className='mr-2' />
               JPG Store
             </button>
 
             <button
-              onClick={() =>
-                window.open(`https://flipr.io/asset/${asset.tokenId}`, '_blank', 'noopener noreferrer')
-              }
+              onClick={() => window.open(`https://flipr.io/asset/${asset.tokenId}`, '_blank', 'noopener noreferrer')}
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image
-                unoptimized
-                src='/media/logo/other/flipr.png'
-                alt=''
-                width={30}
-                height={30}
-                className='mr-2'
-              />
+              <Image unoptimized src='/media/logo/other/flipr.png' alt='' width={30} height={30} className='mr-2' />
               Flipr
             </button>
 
             <button
-              onClick={() =>
-                window.open(`https://www.plutus.art/asset/${asset.tokenId}`, '_blank', 'noopener noreferrer')
-              }
+              onClick={() => window.open(`https://www.plutus.art/asset/${asset.tokenId}`, '_blank', 'noopener noreferrer')}
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image
-                unoptimized
-                src='/media/logo/other/plutusart.png'
-                alt=''
-                width={30}
-                height={30}
-                className='mr-2'
-              />
+              <Image unoptimized src='/media/logo/other/plutusart.png' alt='' width={30} height={30} className='mr-2' />
               Plutus Art
             </button>
 
             <button
-              onClick={() =>
-                window.open(`https://epoch.art/asset/${asset.tokenId}`, '_blank', 'noopener noreferrer')
-              }
+              onClick={() => window.open(`https://epoch.art/asset/${asset.tokenId}`, '_blank', 'noopener noreferrer')}
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image
-                unoptimized
-                src='/media/logo/other/epochart.png'
-                alt=''
-                width={30}
-                height={30}
-                className='mr-2'
-              />
+              <Image unoptimized src='/media/logo/other/epochart.png' alt='' width={30} height={30} className='mr-2' />
               Epoch Art
             </button>
 
@@ -348,36 +309,16 @@ const AssetModalContent = (props: AssetModalContentProps) => {
                 }
                 className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
               >
-                <Image
-                  unoptimized
-                  src='/media/logo/other/cnfttools.png'
-                  alt=''
-                  width={30}
-                  height={30}
-                  className='mr-2'
-                />
+                <Image unoptimized src='/media/logo/other/cnfttools.png' alt='' width={30} height={30} className='mr-2' />
                 CNFT Tools
               </button>
             ) : null}
 
             <button
-              onClick={() =>
-                window.open(
-                  `https://www.jngl.io/asset/${policyId}.${asset.tokenName?.onChain}`,
-                  '_blank',
-                  'noopener noreferrer'
-                )
-              }
+              onClick={() => window.open(`https://www.jngl.io/asset/${policyId}.${asset.tokenName?.onChain}`, '_blank', 'noopener noreferrer')}
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image
-                unoptimized
-                src='/media/logo/other/cnftjungle.png'
-                alt=''
-                width={30}
-                height={30}
-                className='mr-2'
-              />
+              <Image unoptimized src='/media/logo/other/cnftjungle.png' alt='' width={30} height={30} className='mr-2' />
               Jungle
             </button>
 
@@ -399,48 +340,23 @@ const AssetModalContent = (props: AssetModalContentProps) => {
               }
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image
-                unoptimized
-                src='/media/logo/other/opencnft.png'
-                alt=''
-                width={30}
-                height={30}
-                className='mr-2'
-              />
+              <Image unoptimized src='/media/logo/other/opencnft.png' alt='' width={30} height={30} className='mr-2' />
               Open CNFT
             </button>
 
             <button
-              onClick={() =>
-                window.open(`https://cardanoscan.io/token/${asset.tokenId}`, '_blank', 'noopener noreferrer')
-              }
+              onClick={() => window.open(`https://cardanoscan.io/token/${asset.tokenId}`, '_blank', 'noopener noreferrer')}
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image
-                unoptimized
-                src='/media/logo/other/cardanoscan.png'
-                alt=''
-                width={30}
-                height={30}
-                className='mr-2'
-              />
+              <Image unoptimized src='/media/logo/other/cardanoscan.png' alt='' width={30} height={30} className='mr-2' />
               Cardanoscan
             </button>
 
             <button
-              onClick={() =>
-                window.open(`https://cexplorer.io/asset/${asset.fingerprint}`, '_blank', 'noopener noreferrer')
-              }
+              onClick={() => window.open(`https://cexplorer.io/asset/${asset.fingerprint}`, '_blank', 'noopener noreferrer')}
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image
-                unoptimized
-                src='/media/logo/other/cexplorer.png'
-                alt=''
-                width={30}
-                height={30}
-                className='mr-2'
-              />
+              <Image unoptimized src='/media/logo/other/cexplorer.png' alt='' width={30} height={30} className='mr-2' />
               Cexplorer
             </button>
           </Fragment>
