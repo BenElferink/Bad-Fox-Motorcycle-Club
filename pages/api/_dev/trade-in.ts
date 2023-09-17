@@ -106,9 +106,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             if (!!treasuryBikes.find((item) => item.tokenId === requestedTokenId)) {
               requestedUnit = requestedTokenId
             } else {
+              const [sentUnit] = receivedTokenIds
+              requestedUnit = sentUnit
+
+              console.warn(`Token ${requestedTokenId} not available for TX of type ${type}, returning ${sentUnit} to sender`)
               // throw new Error(`Token ${requestedTokenId} not available for TX of type ${type}`)
-              console.warn(`Token ${requestedTokenId} not available for TX of type ${type}, returning to sender`)
-              requestedUnit = receivedTokenIds[0]
             }
           }
         } else {
