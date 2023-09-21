@@ -4,7 +4,7 @@ import Landing from '../components/Landing'
 import Utilities from '../components/Utilities'
 import TeamCard from '../components/cards/TeamCard'
 
-const partnerships = [
+const partners = [
   {
     name: 'ADA Anvil',
     url: 'https://ada-anvil.io',
@@ -126,6 +126,44 @@ const partnerships = [
   },
 ]
 
+const clients = [
+  {
+    name: '$LAB Token',
+    url: 'https://www.lab-token.com',
+    logoUrl: '/media/logo/other/labtoken.png',
+  },
+  {
+    name: 'Ape Nation',
+    url: 'https://apenationcnft.com',
+    logoUrl: '/media/logo/other/apenation.png',
+  },
+  {
+    name: 'Mallard Order',
+    url: 'https://www.mallardorder.io',
+    logoUrl: '/media/logo/other/mallardorder.png',
+  },
+  {
+    name: 'Porky Island',
+    url: 'https://porkyisland.com',
+    logoUrl: '/media/logo/other/porkyisland.png',
+  },
+  {
+    name: 'Walkers',
+    url: 'https://walkerscardano.xyz',
+    logoUrl: '/media/logo/other/walkers.png',
+  },
+  {
+    name: 'Whiskees',
+    url: 'https://whiskeesnfts.com',
+    logoUrl: '/media/logo/other/whiskees.png',
+  },
+  {
+    name: 'IDO Pass DAO',
+    url: 'https://idopass.finance',
+    logoUrl: '/media/logo/other/idopassdao.png',
+  },
+]
+
 const featuredBy = [
   {
     name: 'Awesomeisjayell',
@@ -242,10 +280,19 @@ const Page = () => {
       <Utilities />
 
       <div className='flex flex-col items-center justify-center my-8'>
-        <h5 className='text-2xl'>Partnerships</h5>
+        <h5 className='text-2xl'>Partners</h5>
         <div className='flex flex-wrap items-center justify-center'>
-          {partnerships.map(({ name, url, logoUrl }) => (
+          {partners.map(({ name, url, logoUrl }) => (
             <Badge key={`partner-${name}`} name={name} url={url} logoUrl={logoUrl} />
+          ))}
+        </div>
+      </div>
+
+      <div className='flex flex-col items-center justify-center my-8'>
+        <h5 className='text-2xl'>Clients</h5>
+        <div className='flex flex-wrap items-center justify-center'>
+          {clients.map(({ name, url, logoUrl }) => (
+            <Badge key={`client-${name}`} name={name} url={url} logoUrl={logoUrl} />
           ))}
         </div>
       </div>
