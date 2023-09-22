@@ -1,7 +1,7 @@
 import { createContext, useState, useContext, useMemo, useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 import { BrowserWallet, Wallet } from '@meshsdk/core'
-import BadApi from '../utils/badApi'
+import badLabsApi from '../utils/badLabsApi'
 import getFileForPolicyId from '../functions/getFileForPolicyId'
 import populateAsset from '../functions/populateAsset'
 import { BAD_FOX_3D_POLICY_ID, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../constants'
@@ -40,8 +40,6 @@ const WalletContext = createContext<ContextValue>({
   removeAssetsFromWallet: async (_assetIds: string[]) => {},
 })
 
-const badApi = new BadApi()
-
 export default function useWallet() {
   return useContext(WalletContext)
 }
@@ -72,7 +70,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
         const stakeKey = stakeKeys[0]
 
         const walletAddress = await _wallet.getChangeAddress()
-        const { tokens } = await badApi.wallet.getData(stakeKey, { withTokens: true })
+        const { tokens } = await badLabsApi.wallet.getData(stakeKey, { withTokens: true })
 
         const badFoxAssetsFile = getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets') as PopulatedAsset[]
         const badMotorcycleAssetsFile = getFileForPolicyId(BAD_MOTORCYCLE_POLICY_ID, 'assets') as PopulatedAsset[]
@@ -171,7 +169,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
 
     try {
       if (_walletIdentifier) {
-        const data = await badApi.wallet.getData(_walletIdentifier, { withTokens: true })
+        const data = await badLabsApi.wallet.getData(_walletIdentifier, { withTokens: true })
 
         const badFoxAssetsFile = getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets') as PopulatedAsset[]
         const badMotorcycleAssetsFile = getFileForPolicyId(BAD_MOTORCYCLE_POLICY_ID, 'assets') as PopulatedAsset[]

@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import { Fragment, useCallback, useEffect, useRef, useState } from 'react'
 import { FolderArrowDownIcon } from '@heroicons/react/24/solid'
-import BadApi from '../../utils/badApi'
+import badLabsApi from '../../utils/badLabsApi'
 import useWallet from '../../contexts/WalletContext'
 import getFileForPolicyId from '../../functions/getFileForPolicyId'
 import formatIpfsImageUrl from '../../functions/formatters/formatIpfsImageUrl'
@@ -16,8 +16,6 @@ import GlbViewer from '../models/google/GlbViewer'
 import TPoseModel from '../models/three/fbx/TPoseModel'
 import { ADA_SYMBOL, BAD_FOX_3D_POLICY_ID, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants'
 import type { PolicyId, PopulatedAsset, TraitsFile } from '../../@types'
-
-const badApi = new BadApi()
 
 interface AssetModalContentProps {
   policyId: string
@@ -72,7 +70,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
       if (storedPrice && !isNaN(storedPriceNum)) {
         setBoughtAtPrice(storedPriceNum)
       } else {
-        badApi.token.market.getActivity(asset.tokenId).then((data) => {
+        badLabsApi.token.market.getActivity(asset.tokenId).then((data) => {
           const price = data.items.filter(({ activityType }) => activityType === 'BUY')[0]?.price || 0
           setBoughtAtPrice(price)
         })
@@ -398,7 +396,7 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
     setFetching(true)
 
     try {
-      const fetched = await badApi.policy.market.getData(policyId)
+      const fetched = await badLabsApi.policy.market.getData(policyId)
 
       const traits = getFileForPolicyId(policyId, 'traits') as TraitsFile
       const assets = (getFileForPolicyId(policyId, 'assets') as PopulatedAsset[]).map((asset) => {
@@ -414,7 +412,7 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
         const found = assets.find((asset) => listed.tokenId === asset.tokenId)
 
         if (!found) {
-          const data: Partial<PopulatedAsset> = await badApi.token.getData(listed.tokenId)
+          const data: Partial<PopulatedAsset> = await badLabsApi.token.getData(listed.tokenId)
 
           data.price = listed.price
 

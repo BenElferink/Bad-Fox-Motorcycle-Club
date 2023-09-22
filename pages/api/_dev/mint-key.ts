@@ -1,6 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import BadApi from '../../../utils/badApi'
+import { AppWallet, BlockfrostProvider, ForgeScript, Mint, Transaction } from '@meshsdk/core'
+import badLabsApi from '../../../utils/badLabsApi'
+import toHex from '../../../functions/formatters/hex/toHex'
 import getFileForPolicyId from '../../../functions/getFileForPolicyId'
+import type { PopulatedAsset } from '../../../@types'
 import {
   BAD_FOX_POLICY_ID,
   BAD_FOX_WALLET,
@@ -10,9 +13,6 @@ import {
   BAD_MOTORCYCLE_WALLET,
   BLOCKFROST_API_KEY,
 } from '../../../constants'
-import { PopulatedAsset } from '../../../@types'
-import toHex from '../../../functions/formatters/hex/toHex'
-import { AppWallet, BlockfrostProvider, ForgeScript, Mint, Transaction } from '@meshsdk/core'
 
 const SLOT = '112468367'
 const KEY_HASH = '578c9f433b0bfe8f2c90fd9ff9b4e76391f04ac4ead2c760daceeaf5'
@@ -25,8 +25,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       case 'POST': {
         const { txHash } = body
 
-        const badApi = new BadApi()
-        const txData = await badApi.transaction.getData(txHash, { withUtxos: true })
+        const txData = await badLabsApi.transaction.getData(txHash, { withUtxos: true })
 
         if (!txData) {
           throw new Error('TX not submitted yet')
@@ -119,7 +118,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
         try {
           const tokenId = `${BAD_KEY_POLICY_ID}${toHex(badKeyPayload.assetName)}`
-          const foundToken = await badApi.token.getData(tokenId)
+          const foundToken = await badLabsApi.token.getData(tokenId)
 
           if (!!foundToken) {
             throw new Error('Already minted this!')

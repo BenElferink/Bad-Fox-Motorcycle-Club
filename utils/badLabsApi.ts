@@ -15,7 +15,7 @@ interface Address {
   isScript: boolean
 }
 
-export interface BadApiBaseToken {
+export interface BadLabsApiBaseToken {
   tokenId: TokenId
   isFungible: boolean
   tokenAmount: {
@@ -30,7 +30,7 @@ export interface BadApiBaseToken {
   }
 }
 
-export interface BadApiMarketToken {
+export interface BadLabsApiMarketToken {
   tokenId: string
   signingAddress?: string
   price: number
@@ -41,23 +41,23 @@ export interface BadApiMarketToken {
   bundledTokens?: string[]
 }
 
-export interface BadApiRankedToken extends BadApiBaseToken {
+export interface BadLabsApiRankedToken extends BadLabsApiBaseToken {
   rarityRank?: number
 }
 
-export interface BadApiWallet {
+export interface BadLabsApiWallet {
   stakeKey: StakeKey
   addresses: Address[]
   poolId?: PoolId
-  tokens?: BadApiBaseToken[]
+  tokens?: BadLabsApiBaseToken[]
 }
 
-export interface BadApiPolicy {
+export interface BadLabsApiPolicy {
   policyId: PolicyId
-  tokens: BadApiBaseToken[] | BadApiRankedToken[]
+  tokens: BadLabsApiBaseToken[] | BadLabsApiRankedToken[]
 }
 
-export interface BadApiPopulatedToken extends BadApiRankedToken {
+export interface BadLabsApiPopulatedToken extends BadLabsApiRankedToken {
   fingerprint: string
   policyId: PolicyId
   serialNumber?: number
@@ -77,12 +77,12 @@ export interface BadApiPopulatedToken extends BadApiRankedToken {
   }
 }
 
-export interface BadApiMarket {
+export interface BadLabsApiMarket {
   tokenId: string
-  items: BadApiMarketToken[]
+  items: BadLabsApiMarketToken[]
 }
 
-export interface BadApiTokenOwners {
+export interface BadLabsApiTokenOwners {
   tokenId: string
   page: number
   owners: {
@@ -92,13 +92,13 @@ export interface BadApiTokenOwners {
   }[]
 }
 
-export interface BadApiPool {
+export interface BadLabsApiPool {
   poolId: PoolId
   ticker: string
   delegators?: StakeKey[]
 }
 
-export interface BadApiUtxo {
+export interface BadLabsApiUtxo {
   address: {
     from: string
     to: string
@@ -111,18 +111,18 @@ export interface BadApiUtxo {
   }[]
 }
 
-export interface BadApiTransaction {
+export interface BadLabsApiTransaction {
   transactionId: TransactionId
   block: string
   blockHeight: number
-  utxos?: BadApiUtxo[]
+  utxos?: BadLabsApiUtxo[]
 }
 
-class BadApi {
+class BadLabsApi {
   baseUrl: string
 
   constructor() {
-    this.baseUrl = 'https://api.badfoxmc.com/api'
+    this.baseUrl = 'https://labs.badfoxmc.com/api/cardano'
   }
 
   private getQueryStringFromQueryOptions = (options: Record<string, any> = {}): string => {
@@ -151,14 +151,14 @@ class BadApi {
         withStakePool?: boolean
         withTokens?: boolean
       }
-    ): Promise<BadApiWallet> => {
+    ): Promise<BadLabsApiWallet> => {
       const uri = `${this.baseUrl}/wallet/${walletId}` + this.getQueryStringFromQueryOptions(queryOptions)
 
       return new Promise(async (resolve, reject) => {
         try {
           console.log('Fetching wallet:', walletId)
 
-          const { data } = await axios.get<BadApiWallet>(uri)
+          const { data } = await axios.get<BadLabsApiWallet>(uri)
 
           console.log('Fetched wallet:', data.stakeKey)
 
@@ -178,14 +178,14 @@ class BadApi {
         withBurned?: boolean
         withRanks?: boolean
       }
-    ): Promise<BadApiPolicy> => {
+    ): Promise<BadLabsApiPolicy> => {
       const uri = `${this.baseUrl}/policy/${policyId}` + this.getQueryStringFromQueryOptions(queryOptions)
 
       return new Promise(async (resolve, reject) => {
         try {
           console.log('Fetching policy tokens:', policyId)
 
-          const { data } = await axios.get<BadApiPolicy>(uri)
+          const { data } = await axios.get<BadLabsApiPolicy>(uri)
 
           console.log('Fetched policy tokens:', data.tokens.length)
 
@@ -197,14 +197,14 @@ class BadApi {
     },
 
     market: {
-      getData: (policyId: string): Promise<BadApiMarket> => {
+      getData: (policyId: string): Promise<BadLabsApiMarket> => {
         const uri = `${this.baseUrl}/policy/${policyId}/market`
 
         return new Promise(async (resolve, reject) => {
           try {
             console.log('Fetching policy market data:', policyId)
 
-            const { data } = await axios.get<BadApiMarket>(uri)
+            const { data } = await axios.get<BadLabsApiMarket>(uri)
 
             console.log('Fetched policy market data:', data.items.length)
 
@@ -214,14 +214,14 @@ class BadApi {
           }
         })
       },
-      getActivity: (policyId: string): Promise<BadApiMarket> => {
+      getActivity: (policyId: string): Promise<BadLabsApiMarket> => {
         const uri = `${this.baseUrl}/policy/${policyId}/market/activity`
 
         return new Promise(async (resolve, reject) => {
           try {
             console.log('Fetching policy market activity:', policyId)
 
-            const { data } = await axios.get<BadApiMarket>(uri)
+            const { data } = await axios.get<BadLabsApiMarket>(uri)
 
             console.log('Fetched policy market activity:', data.items.length)
 
@@ -240,14 +240,14 @@ class BadApi {
       queryOptions?: {
         populateMintTx?: boolean
       }
-    ): Promise<BadApiPopulatedToken> => {
+    ): Promise<BadLabsApiPopulatedToken> => {
       const uri = `${this.baseUrl}/token/${tokenId}` + this.getQueryStringFromQueryOptions(queryOptions)
 
       return new Promise(async (resolve, reject) => {
         try {
           console.log('Fetching token:', tokenId)
 
-          const { data } = await axios.get<BadApiPopulatedToken>(uri)
+          const { data } = await axios.get<BadLabsApiPopulatedToken>(uri)
 
           console.log('Fetched token:', data.fingerprint)
 
@@ -262,14 +262,14 @@ class BadApi {
       queryOptions?: {
         page?: number
       }
-    ): Promise<BadApiTokenOwners> => {
+    ): Promise<BadLabsApiTokenOwners> => {
       const uri = `${this.baseUrl}/token/${tokenId}/owners` + this.getQueryStringFromQueryOptions(queryOptions)
 
       return new Promise(async (resolve, reject) => {
         try {
           console.log('Fetching token owners:', tokenId)
 
-          const { data } = await axios.get<BadApiTokenOwners>(uri)
+          const { data } = await axios.get<BadLabsApiTokenOwners>(uri)
 
           console.log('Fetched token owners:', data.owners.length)
 
@@ -281,14 +281,14 @@ class BadApi {
     },
 
     market: {
-      getData: (tokenId: string): Promise<BadApiMarket> => {
+      getData: (tokenId: string): Promise<BadLabsApiMarket> => {
         const uri = `${this.baseUrl}/token/${tokenId}/market`
 
         return new Promise(async (resolve, reject) => {
           try {
             console.log('Fetching token market data:', tokenId)
 
-            const { data } = await axios.get<BadApiMarket>(uri)
+            const { data } = await axios.get<BadLabsApiMarket>(uri)
 
             console.log('Fetched token market data:', data.items.length)
 
@@ -298,14 +298,14 @@ class BadApi {
           }
         })
       },
-      getActivity: (tokenId: string): Promise<BadApiMarket> => {
+      getActivity: (tokenId: string): Promise<BadLabsApiMarket> => {
         const uri = `${this.baseUrl}/token/${tokenId}/market/activity`
 
         return new Promise(async (resolve, reject) => {
           try {
             console.log('Fetching token market activity:', tokenId)
 
-            const { data } = await axios.get<BadApiMarket>(uri)
+            const { data } = await axios.get<BadLabsApiMarket>(uri)
 
             console.log('Fetched token market activity:', data.items.length)
 
@@ -324,14 +324,14 @@ class BadApi {
       queryOptions?: {
         withDelegators?: boolean
       }
-    ): Promise<BadApiPool> => {
+    ): Promise<BadLabsApiPool> => {
       const uri = `${this.baseUrl}/pool/${poolId}` + this.getQueryStringFromQueryOptions(queryOptions)
 
       return new Promise(async (resolve, reject) => {
         try {
           console.log('Fetching stake pool:', poolId)
 
-          const { data } = await axios.get<BadApiPool>(uri)
+          const { data } = await axios.get<BadLabsApiPool>(uri)
 
           console.log('Fetched stake pool:', data.ticker)
 
@@ -349,14 +349,14 @@ class BadApi {
       queryOptions?: {
         withUtxos?: boolean
       }
-    ): Promise<BadApiTransaction> => {
+    ): Promise<BadLabsApiTransaction> => {
       const uri = `${this.baseUrl}/transaction/${transactionId}` + this.getQueryStringFromQueryOptions(queryOptions)
 
       return new Promise(async (resolve, reject) => {
         try {
           console.log('Fetching transaction:', transactionId)
 
-          const { data } = await axios.get<BadApiTransaction>(uri)
+          const { data } = await axios.get<BadLabsApiTransaction>(uri)
 
           console.log('Fetched transaction:', data.block)
 
@@ -369,4 +369,6 @@ class BadApi {
   }
 }
 
-export default BadApi
+const badLabsApi = new BadLabsApi()
+
+export default badLabsApi

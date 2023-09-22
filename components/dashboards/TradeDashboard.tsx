@@ -4,7 +4,7 @@ import axios from 'axios'
 import { ArrowPathIcon, PhotoIcon } from '@heroicons/react/24/solid'
 import { Transaction } from '@meshsdk/core'
 import useWallet from '../../contexts/WalletContext'
-import BadApi from '../../utils/badApi'
+import badLabsApi from '../../utils/badLabsApi'
 import { firestore } from '../../utils/firebase'
 import formatIpfsImageUrl from '../../functions/formatters/formatIpfsImageUrl'
 import getFileForPolicyId from '../../functions/getFileForPolicyId'
@@ -16,10 +16,8 @@ import ImageLoader from '../Loader/ImageLoader'
 import WalletHero from '../Wallet/WalletHero'
 import AssetCard from '../cards/AssetCard'
 import type { PolicyId, PopulatedAsset, PopulatedWallet, Trade } from '../../@types'
-import type { BadApiTransaction } from '../../utils/badApi'
+import type { BadLabsApiTransaction } from '../../utils/badLabsApi'
 import { BAD_FOX_3D_POLICY_ID, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID, ONE_MILLION, TRADE_APP_WALLET } from '../../constants'
-
-const badApi = new BadApi()
 
 const TRADE_OPEN = true
 
@@ -44,7 +42,7 @@ const TradeDashboard = () => {
       setLoading(true)
 
       try {
-        const data = await badApi.wallet.getData(TRADE_APP_WALLET, { withTokens: true })
+        const data = await badLabsApi.wallet.getData(TRADE_APP_WALLET, { withTokens: true })
 
         const badFoxAssetsFile = getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets') as PopulatedAsset[]
         const badMotorcycleAssetsFile = getFileForPolicyId(BAD_MOTORCYCLE_POLICY_ID, 'assets') as PopulatedAsset[]
@@ -160,9 +158,9 @@ const TradeDashboard = () => {
     [selectorType, self2Ds, bank2Ds]
   )
 
-  const txConfirmation = useCallback(async (_txHash: string): Promise<BadApiTransaction> => {
+  const txConfirmation = useCallback(async (_txHash: string): Promise<BadLabsApiTransaction> => {
     try {
-      const data = await badApi.transaction.getData(_txHash)
+      const data = await badLabsApi.transaction.getData(_txHash)
 
       if (data.block) {
         return data

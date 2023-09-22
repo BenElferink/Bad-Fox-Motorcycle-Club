@@ -4,7 +4,7 @@ import axios from 'axios'
 import { PhotoIcon } from '@heroicons/react/24/solid'
 import { Transaction } from '@meshsdk/core'
 import useWallet from '../../contexts/WalletContext'
-import BadApi from '../../utils/badApi'
+import badLabsApi from '../../utils/badLabsApi'
 import sleep from '../../functions/sleep'
 import formatIpfsImageUrl from '../../functions/formatters/formatIpfsImageUrl'
 import WalletHero from '../Wallet/WalletHero'
@@ -20,14 +20,12 @@ import {
   BAD_MOTORCYCLE_WALLET,
   ONE_MILLION,
 } from '../../constants'
-import type { BadApiTransaction } from '../../utils/badApi'
-
-const badApi = new BadApi()
+import type { BadLabsApiTransaction } from '../../utils/badLabsApi'
 
 const BURN_OPEN = true
 
 const BurnDashboard = () => {
-  const { connectedManually, connectedName, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } = useWallet()
+  const { connectedManually, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } = useWallet()
 
   const [selector, setSelector] = useState<'M' | 'F' | 'B' | ''>('')
   const [selectedMale, setSelectedMale] = useState<string>('')
@@ -39,9 +37,9 @@ const BurnDashboard = () => {
     !BURN_OPEN ? 'The portal is closed at the moment, please check in with our community for further announcements.' : ''
   )
 
-  const txConfirmation = useCallback(async (_txHash: string): Promise<BadApiTransaction> => {
+  const txConfirmation = useCallback(async (_txHash: string): Promise<BadLabsApiTransaction> => {
     try {
-      const data = await badApi.transaction.getData(_txHash)
+      const data = await badLabsApi.transaction.getData(_txHash)
 
       if (data.block) {
         return data
@@ -146,7 +144,7 @@ const BurnDashboard = () => {
 
   const getAndSetCounts = async () => {
     try {
-      const res = await badApi.policy.getData(BAD_KEY_POLICY_ID, { allTokens: true })
+      const res = await badLabsApi.policy.getData(BAD_KEY_POLICY_ID, { allTokens: true })
 
       const supply = 3000
       const count = res.tokens.length

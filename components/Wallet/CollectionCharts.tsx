@@ -1,14 +1,14 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { ArrowLongDownIcon, ArrowLongUpIcon, ArrowPathIcon } from '@heroicons/react/24/solid'
 import { Chart as ChartJS, LineElement, PointElement, LinearScale, CategoryScale, Legend, Filler } from 'chart.js'
 import { Line } from 'react-chartjs-2'
-import BadApi from '../../utils/badApi'
+import badLabsApi from '../../utils/badLabsApi'
 import useWallet from '../../contexts/WalletContext'
 import formatBigNumber from '../../functions/formatters/formatBigNumber'
-import { ADA_SYMBOL } from '../../constants'
 import type { FloorSnapshot, PolicyId } from '../../@types'
+import { ADA_SYMBOL } from '../../constants'
 
 export interface CollectionChartsProps {
   policyId: PolicyId
@@ -18,8 +18,6 @@ type FloorResponse = {
   count: number
   items: FloorSnapshot[]
 }
-
-const badApi = new BadApi()
 
 ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Legend, Filler)
 
@@ -53,7 +51,7 @@ const CollectionCharts = (props: CollectionChartsProps) => {
         if (storedPrice && !isNaN(storedPriceNum)) {
           totalInvested += storedPriceNum
         } else {
-          const data = await badApi.token.market.getActivity(asset.tokenId)
+          const data = await badLabsApi.token.market.getActivity(asset.tokenId)
           const price = data.items.filter(({ activityType }) => activityType === 'BUY')[0]?.price || 0
 
           if (!price) {
@@ -236,9 +234,7 @@ const CollectionCharts = (props: CollectionChartsProps) => {
       const highestTraitLast = highestTraitPayload.data[highestTraitPayload.data.length - 1]
 
       const highestTraitDifference = highestTraitLast - highestTraitFirst
-      highestTraitPayload.differencePercent = Number(
-        ((100 / highestTraitFirst) * highestTraitDifference).toFixed(2)
-      )
+      highestTraitPayload.differencePercent = Number(((100 / highestTraitFirst) * highestTraitDifference).toFixed(2))
 
       if (highestTraitDifference >= 0) {
         highestTraitPayload.borderColor = 'rgba(68, 183, 0, 1)' // green
@@ -274,10 +270,7 @@ const CollectionCharts = (props: CollectionChartsProps) => {
         <button
           onClick={() => getPortfolioInvestments()}
           disabled={loadingPortfolio}
-          className={
-            'absolute top-2 left-2 w-fit h-fit p-0 bg-transparent border-0 ' +
-            (loadingPortfolio ? 'animate-spin' : '')
-          }
+          className={'absolute top-2 left-2 w-fit h-fit p-0 bg-transparent border-0 ' + (loadingPortfolio ? 'animate-spin' : '')}
         >
           <ArrowPathIcon className='w-6 h-6 text-gray-200' />
         </button>
@@ -288,9 +281,7 @@ const CollectionCharts = (props: CollectionChartsProps) => {
             {ADA_SYMBOL}
             {formatBigNumber(myStats.invested)}
           </h4>
-          {myStats.priceNotFound ? (
-            <div className='text-xs'>could not locate price of {myStats.priceNotFound} assets</div>
-          ) : null}
+          {myStats.priceNotFound ? <div className='text-xs'>could not locate price of {myStats.priceNotFound} assets</div> : null}
         </div>
 
         <div>
@@ -300,73 +291,67 @@ const CollectionCharts = (props: CollectionChartsProps) => {
         </div>
       </div>
 
-      {charts.map(
-        ({ name, data, labels, borderColor, backgroundColor, totalBalance, differencePercent, daysAgo }) => {
-          const isUp = differencePercent >= 0
+      {charts.map(({ name, data, labels, borderColor, backgroundColor, totalBalance, differencePercent, daysAgo }) => {
+        const isUp = differencePercent >= 0
 
-          if (!totalBalance) {
-            return null
-          }
+        if (!totalBalance) {
+          return null
+        }
 
-          return (
-            <div
-              key={`chart-${policyId}-${name}`}
-              className='relative h-56 w-64 m-1 mx-2 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700 [text-shadow:_0px_0px_2px_rgb(0_0_0_/_100%)]'
-            >
-              <div className='absolute top-1 right-2 z-10 text-end'>
-                <h6>{name}</h6>
-                <h4 className='text-2xl text-gray-200'>
-                  {ADA_SYMBOL}
-                  {formatBigNumber(totalBalance)}
-                  {/* {formatBigNumber(totalBalance * adaInUsd)} */}
-                </h4>
-                <div
-                  className={
-                    'flex items-center text-xs ' + (isUp ? 'text-[var(--online)]' : 'text-[var(--offline)]')
-                  }
-                >
-                  <span>{differencePercent}%</span>
-                  {isUp ? <ArrowLongUpIcon className='w-4 h-4' /> : <ArrowLongDownIcon className='w-4 h-4' />}
-                  <p className='text-gray-400'>than {!!daysAgo ? `${daysAgo} days ago` : 'last month'}</p>
-                </div>
-              </div>
-
-              <div className='absolute bottom-0 right-0 z-0'>
-                <Line
-                  height={155}
-                  width={255}
-                  options={{
-                    plugins: {
-                      legend: { display: false },
-                    },
-                    scales: {
-                      x: { display: false },
-                      y: { display: false },
-                    },
-                    elements: {
-                      line: {
-                        tension: 0,
-                        fill: 'start',
-                        backgroundColor,
-                        borderColor,
-                        borderWidth: 2,
-                      },
-                      point: {
-                        radius: 0,
-                        hitRadius: 0,
-                      },
-                    },
-                  }}
-                  data={{
-                    labels,
-                    datasets: [{ data }],
-                  }}
-                />
+        return (
+          <div
+            key={`chart-${policyId}-${name}`}
+            className='relative h-56 w-64 m-1 mx-2 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700 [text-shadow:_0px_0px_2px_rgb(0_0_0_/_100%)]'
+          >
+            <div className='absolute top-1 right-2 z-10 text-end'>
+              <h6>{name}</h6>
+              <h4 className='text-2xl text-gray-200'>
+                {ADA_SYMBOL}
+                {formatBigNumber(totalBalance)}
+                {/* {formatBigNumber(totalBalance * adaInUsd)} */}
+              </h4>
+              <div className={'flex items-center text-xs ' + (isUp ? 'text-[var(--online)]' : 'text-[var(--offline)]')}>
+                <span>{differencePercent}%</span>
+                {isUp ? <ArrowLongUpIcon className='w-4 h-4' /> : <ArrowLongDownIcon className='w-4 h-4' />}
+                <p className='text-gray-400'>than {!!daysAgo ? `${daysAgo} days ago` : 'last month'}</p>
               </div>
             </div>
-          )
-        }
-      )}
+
+            <div className='absolute bottom-0 right-0 z-0'>
+              <Line
+                height={155}
+                width={255}
+                options={{
+                  plugins: {
+                    legend: { display: false },
+                  },
+                  scales: {
+                    x: { display: false },
+                    y: { display: false },
+                  },
+                  elements: {
+                    line: {
+                      tension: 0,
+                      fill: 'start',
+                      backgroundColor,
+                      borderColor,
+                      borderWidth: 2,
+                    },
+                    point: {
+                      radius: 0,
+                      hitRadius: 0,
+                    },
+                  },
+                }}
+                data={{
+                  labels,
+                  datasets: [{ data }],
+                }}
+              />
+            </div>
+          </div>
+        )
+      })}
     </div>
   )
 }

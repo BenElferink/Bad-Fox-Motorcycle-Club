@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { AppWallet, BlockfrostProvider, Transaction } from '@meshsdk/core'
 import { firestore } from '../../../utils/firebase'
-import BadApi from '../../../utils/badApi'
+import badLabsApi from '../../../utils/badLabsApi'
 import getFileForPolicyId from '../../../functions/getFileForPolicyId'
 import populateAsset from '../../../functions/populateAsset'
 import type { PopulatedAsset, Trade } from '../../../@types'
@@ -37,8 +37,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           throw new Error('Already withdrawn')
         }
 
-        const badApi = new BadApi()
-        const txData = await badApi.transaction.getData(depositTx, { withUtxos: true })
+        const txData = await badLabsApi.transaction.getData(depositTx, { withUtxos: true })
 
         if (!txData) {
           throw new Error('TX not submitted yet')
@@ -62,8 +61,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           throw new Error(`Received ${receivedTokenIds.length} asset(s) from TX for type ${type}`)
         }
 
-        const tradeWallet = await badApi.wallet.getData(TRADE_APP_WALLET, { withTokens: true })
-        const requestingWallet = await badApi.wallet.getData(stakeKey)
+        const tradeWallet = await badLabsApi.wallet.getData(TRADE_APP_WALLET, { withTokens: true })
+        const requestingWallet = await badLabsApi.wallet.getData(stakeKey)
         let requestedUnit = ''
 
         if (type === '1:1') {

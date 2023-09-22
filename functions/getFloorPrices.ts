@@ -1,4 +1,4 @@
-import BadApi from '../utils/badApi'
+import badLabsApi from '../utils/badLabsApi'
 import getFileForPolicyId from './getFileForPolicyId'
 import type { FloorPrices, PolicyId, PopulatedAsset, TraitsFile } from '../@types'
 
@@ -18,8 +18,7 @@ const getFloorPrices = async (
     traitsData[cat] = traits.map(({ onChainName }) => onChainName)
   })
 
-  const badApi = new BadApi()
-  const listings = (await badApi.policy.market.getData(policyId)).items
+  const listings = (await badLabsApi.policy.market.getData(policyId)).items
 
   console.log('Detecting floor prices for every attribute')
 

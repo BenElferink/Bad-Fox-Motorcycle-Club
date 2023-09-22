@@ -1,10 +1,8 @@
-import BadApi from '../utils/badApi'
-import type { BadApiRankedToken } from '../utils/badApi'
+import badLabsApi from '../utils/badLabsApi'
+import type { BadLabsApiRankedToken } from '../utils/badLabsApi'
 import type { PolicyId, PopulatedAsset } from '../@types'
 
-const badApi = new BadApi()
-
-let cnftToolsAssets: Partial<Record<PolicyId, BadApiRankedToken[]>> | null = null
+let cnftToolsAssets: Partial<Record<PolicyId, BadLabsApiRankedToken[]>> | null = null
 
 const populateAsset: (options: {
   policyId: PolicyId
@@ -17,14 +15,14 @@ const populateAsset: (options: {
   console.log(`Populating asset with ID ${assetId}`)
 
   try {
-    const data = await badApi.token.getData(assetId, { populateMintTx })
+    const data = await badLabsApi.token.getData(assetId, { populateMintTx })
 
     if (!cnftToolsAssets) {
       cnftToolsAssets = {}
     }
 
     if (!cnftToolsAssets[policyId]?.length) {
-      cnftToolsAssets[policyId] = (await badApi.policy.getData(policyId, { withRanks, allTokens: true })).tokens
+      cnftToolsAssets[policyId] = (await badLabsApi.policy.getData(policyId, { withRanks, allTokens: true })).tokens
     }
 
     const rarityRank = cnftToolsAssets[policyId]?.find((item) => item.tokenId === assetId)?.rarityRank || 0
