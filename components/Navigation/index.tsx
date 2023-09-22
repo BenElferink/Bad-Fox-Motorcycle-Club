@@ -75,9 +75,6 @@ const Navigation = () => {
           >
             <SingleLink label='Home' path={'/'} />
           </li>
-          <li className='text-orange-300'>
-            <MultipleLinks title='Limited Events' links={limitedEvents} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
-          </li>
           <li onClick={() => setIsNavOpen(false)}>
             <SingleLink label='Merch' url='https://my-store-d34165.creator-spring.com' />
           </li>
@@ -85,13 +82,16 @@ const Navigation = () => {
             <SingleLink label='Lab/Tools' url='https://labs.badfoxmc.com' />
           </li>
           <li>
-            <MultipleLinks title='Tokens' links={navTokens} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
+            <MultipleLinks title='Collections' links={navCollections} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
+          </li>
+          <li>
+            <MultipleLinks title='Staking' links={navTokens} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
           </li>
           <li>
             <MultipleLinks title='Games' links={navGames} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
           </li>
-          <li>
-            <MultipleLinks title='Collections' links={navCollections} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
+          <li className='text-orange-300'>
+            <MultipleLinks title='Limited Events' links={limitedEvents} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
           </li>
         </ul>
       </div>

@@ -211,12 +211,25 @@ const teamMembers = [
     title: 'Founder / Fullstack Developer',
     description:
       'I started my career as Fullstack Developer in 2020 & have been involved in the crypto & NFT space since 2021. I do most of the work around here.',
-    profilePicture: '/media/team/Ben.jpg',
+    profilePicture: '/media/team/ben_elferink.jpg',
     socials: [
       'https://x.com/BenElferink',
       'https://discord.com/users/791763515554922507',
       'https://www.linkedin.com/in/ben-elferink-37ba251b9',
       'https://github.com/BenElferink',
+    ],
+  },
+  {
+    name: 'David Minkov',
+    title: '2D Artist',
+    description:
+      "I'm an artist from a young age, and this is my first time being in the CNFT space, I'm excited to work on the 2D art for Bad Fox MC!",
+    profilePicture: '/media/team/david_minkov.jpg',
+    socials: [
+      'https://x.com/Minkov_D',
+      'https://discord.com/users/958536998140907550',
+      'https://instagram.com/david_minkov',
+      'https://www.linkedin.com/in/david-minkov-50187620a',
     ],
   },
   {
@@ -230,7 +243,6 @@ const teamMembers = [
       'https://discord.com/users/829116071663370250',
       'https://www.youtube.com/@badfox4042',
       'https://soundcloud.com/badfox4042',
-      'https://4042.badfoxmc.com',
     ],
   },
   {
@@ -238,7 +250,7 @@ const teamMembers = [
     title: 'Moderator',
     description:
       "I remote operate offshore oil and gas producing platforms from an onshore controlroom for a living, I've been into crypto for about 1,5 years and became a NFT enthousiast on Cardano little over a year ago. BadFoxMC has got a special place in my heart.",
-    profilePicture: '/media/team/Stef.jpg',
+    profilePicture: '/media/team/stef_bbq.jpg',
     socials: ['https://x.com/Stef_bbq', 'https://discord.com/users/933925521346138182', 'https://www.instagram.com/stef_bbq/'],
   },
   {
@@ -246,7 +258,7 @@ const teamMembers = [
     title: 'Moderator',
     description:
       "I'm Sydney by name, also known as Happyboi. I'm into trading, and learning technical analysis. I don't have many hobbies, but I love reading books or watching movies whenever I'm free.",
-    profilePicture: '/media/team/Happyboi.jpg',
+    profilePicture: '/media/team/happyboi.jpg',
     socials: ['https://x.com/mr_hapyyy', 'https://discord.com/users/1024728525015621723', 'https://instagram.com/sydney.chukwu.52'],
   },
 ]
