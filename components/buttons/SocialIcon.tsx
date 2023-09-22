@@ -245,13 +245,11 @@ const SocialIcon = (props: SocialIconProps) => {
 
       case 'x':
         return (
-          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1668.56 1221.19' className={finalSize} style={{ color: color || '#000000' }}>
-            <g transform='translate(52.39 -25.059)'>
-              <path
-                fill='currentColor'
-                d='M283.94 167.31l386.39 516.64L281.5 1104h87.51l340.42-367.76L984.48 1104h297.8L874.15 558.3l361.92-390.99h-87.51l-313.51 338.7-253.31-338.7h-297.8zm128.69 64.46h136.81l604.13 807.76h-136.81L412.63 231.77z'
-              />
-            </g>
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300' className={finalSize} style={{ color: color || '#000000', padding: 3 }}>
+            <path
+              fill='currentColor'
+              d='M178.57 127.15L290.27 0h-26.46l-97.03 110.38L89.34 0H0l117.13 166.93L0 300.25h26.46l102.4-116.59 81.8 116.59H300M36.01 19.54h40.65l187.13 262.13h-40.66'
+            />
           </svg>
         )
 
