@@ -1,4 +1,4 @@
-const formatIpfsImageUrl = (ipfsUri: string) => {
+const formatIpfsUrl = (ipfsUri: string) => {
   return ipfsUri.replace('ipfs://', 'https://image-optimizer.jpgstoreapis.com/')
 
   // return ipfsUri.replace('ipfs://', 'https://ipfs.blockfrost.dev/ipfs/')
@@ -7,4 +7,4 @@ const formatIpfsImageUrl = (ipfsUri: string) => {
   // return ipfsUri.replace('ipfs://', 'https://alwaysinvert.mypinata.cloud/ipfs/')
 }
 
-export default formatIpfsImageUrl
+export default formatIpfsUrl

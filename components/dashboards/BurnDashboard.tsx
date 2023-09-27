@@ -6,7 +6,7 @@ import { Transaction } from '@meshsdk/core'
 import useWallet from '../../contexts/WalletContext'
 import badLabsApi from '../../utils/badLabsApi'
 import sleep from '../../functions/sleep'
-import formatIpfsImageUrl from '../../functions/formatters/formatIpfsImageUrl'
+import formatIpfsUrl from '../../functions/formatters/formatIpfsUrl'
 import WalletHero from '../Wallet/WalletHero'
 import Modal from '../layout/Modal'
 import ImageLoader from '../Loader/ImageLoader'
@@ -294,7 +294,7 @@ const BurnDashboard = () => {
             filteredAssets.map((asset) => (
               <AssetCard
                 key={`asset-${asset.tokenId}`}
-                imageSrc={formatIpfsImageUrl(asset.image.ipfs)}
+                imageSrc={formatIpfsUrl(asset.image.ipfs)}
                 title={asset.tokenName?.display as string}
                 onClick={() => {
                   selector === 'B'

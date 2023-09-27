@@ -6,7 +6,7 @@ import { Transaction } from '@meshsdk/core'
 import useWallet from '../../contexts/WalletContext'
 import badLabsApi from '../../utils/badLabsApi'
 import { firestore } from '../../utils/firebase'
-import formatIpfsImageUrl from '../../functions/formatters/formatIpfsImageUrl'
+import formatIpfsUrl from '../../functions/formatters/formatIpfsUrl'
 import getFileForPolicyId from '../../functions/getFileForPolicyId'
 import populateAsset from '../../functions/populateAsset'
 import sleep from '../../functions/sleep'
@@ -525,7 +525,7 @@ const TradeDashboard = () => {
             filteredAssets.map((asset) => (
               <AssetCard
                 key={`asset-${asset.tokenId}`}
-                imageSrc={formatIpfsImageUrl(asset.image.ipfs)}
+                imageSrc={formatIpfsUrl(asset.image.ipfs)}
                 title={asset.tokenName?.display as string}
                 onClick={() => {
                   selectorType === 'SELF:1'

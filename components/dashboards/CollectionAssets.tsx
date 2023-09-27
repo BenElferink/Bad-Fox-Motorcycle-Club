@@ -1,11 +1,11 @@
 'use client'
 import Image from 'next/image'
 import { Fragment, useCallback, useEffect, useRef, useState } from 'react'
-import { FolderArrowDownIcon } from '@heroicons/react/24/solid'
+import { FolderArrowDownIcon, MusicalNoteIcon } from '@heroicons/react/24/solid'
 import badLabsApi from '../../utils/badLabsApi'
 import useWallet from '../../contexts/WalletContext'
 import getFileForPolicyId from '../../functions/getFileForPolicyId'
-import formatIpfsImageUrl from '../../functions/formatters/formatIpfsImageUrl'
+import formatIpfsUrl from '../../functions/formatters/formatIpfsUrl'
 import AssetFilters from '../filters/AssetFilters'
 import AssetCard from '../cards/AssetCard'
 import CopyChip from '../CopyChip'
@@ -16,6 +16,7 @@ import GlbViewer from '../models/google/GlbViewer'
 import TPoseModel from '../models/three/fbx/TPoseModel'
 import { ADA_SYMBOL, BAD_FOX_3D_POLICY_ID, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants'
 import type { PolicyId, PopulatedAsset, TraitsFile } from '../../@types'
+import MusicPlayerWaves from '../MusicPlayerWaves'
 
 interface AssetModalContentProps {
   policyId: string
@@ -82,12 +83,9 @@ const AssetModalContent = (props: AssetModalContentProps) => {
     <div className='flex flex-col lg:flex-row lg:justify-between md:px-6'>
       <div>
         {displayedFile.mediaType === 'image/png' ? (
-          <button
-            onClick={() => window.open(formatIpfsImageUrl(displayedFile.src), '_blank', 'noopener noreferrer')}
-            className='w-[80vw] md:w-[555px]'
-          >
+          <button onClick={() => window.open(formatIpfsUrl(displayedFile.src), '_blank', 'noopener noreferrer')} className='w-[80vw] md:w-[555px]'>
             <ImageLoader
-              src={formatIpfsImageUrl(displayedFile.src)}
+              src={formatIpfsUrl(displayedFile.src)}
               alt={displayedFile.name}
               width={1000}
               height={1000}
@@ -95,16 +93,34 @@ const AssetModalContent = (props: AssetModalContentProps) => {
               style={{ borderRadius: '1rem' }}
             />
           </button>
+        ) : displayedFile.mediaType === 'video/mp4' ? (
+          <button onClick={() => {}} className='w-[80vw] md:w-[555px]'>
+            <video
+              src={formatIpfsUrl(displayedFile.src)}
+              controls
+              autoPlay
+              loop
+              muted
+              playsInline
+              width={1000}
+              height={1000}
+              style={{ borderRadius: '1rem' }}
+            />
+          </button>
+        ) : displayedFile.mediaType === 'audio/mp3' ? (
+          <button onClick={() => {}} className='w-[80vw] md:w-[555px]'>
+            <MusicPlayerWaves src={formatIpfsUrl(displayedFile.src)} w='w-[80vw] md:w-[555px]' h='h-[80vw] md:h-[555px]' />
+          </button>
         ) : displayedFile.mediaType === 'model/gltf-binary' ? (
           <button onClick={() => {}} className='w-[80vw] md:w-[555px]'>
             <div className='w-[100%] h-[80vw] md:w-[555px] md:h-[555px] bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
-              <GlbViewer src={formatIpfsImageUrl(displayedFile.src)} />
+              <GlbViewer src={formatIpfsUrl(displayedFile.src)} />
             </div>
           </button>
         ) : displayedFile.mediaType === 'application/octet-stream' ? (
           <button onClick={() => {}} className='w-[80vw] md:w-[555px]'>
             <div className='w-[100%] h-[80vw] md:w-[555px] md:h-[555px] bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
-              <TPoseModel withControls src={formatIpfsImageUrl(displayedFile.src)} />
+              <TPoseModel withControls src={formatIpfsUrl(displayedFile.src)} />
             </div>
           </button>
         ) : (
@@ -117,33 +133,35 @@ const AssetModalContent = (props: AssetModalContentProps) => {
           </button>
         )}
 
-        <div className='flex flex-wrap items-center'>
+        <div className='w-[80vw] md:w-[555px] flex flex-wrap items-center'>
           {asset.files.length
             ? asset.files.map((file) => (
                 // file.src !== displayedFile.src ? (
-                <button key={`file-${file.name}`} onClick={() => setDisplayedFile(file)} className='w-32 h-32 m-1'>
+                <button
+                  key={`file-${file.name}`}
+                  onClick={() => setDisplayedFile(file)}
+                  className='w-32 h-32 m-1 flex items-center justify-center text-xs rounded-2xl border border-gray-700 bg-gray-900/50'
+                >
                   {file.mediaType === 'image/png' ? (
-                    <ImageLoader
-                      src={formatIpfsImageUrl(file.src)}
-                      alt={file.name}
-                      width={150}
-                      height={150}
-                      style={{ flex: 0.42, borderRadius: '1rem' }}
-                    />
+                    <ImageLoader src={formatIpfsUrl(file.src)} alt={file.name} width={150} height={150} style={{ borderRadius: '1rem' }} />
+                  ) : file.mediaType === 'video/mp4' ? (
+                    <video src={formatIpfsUrl(file.src)} playsInline width={150} height={150} style={{ borderRadius: '1rem' }} />
+                  ) : file.mediaType === 'audio/mp3' ? (
+                    <MusicalNoteIcon className='w-24 h-24' />
                   ) : file.mediaType === 'model/gltf-binary' ? (
                     <div className='w-full h-full bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
-                      <GlbViewer src={formatIpfsImageUrl(file.src)} freeze />
+                      <GlbViewer src={formatIpfsUrl(file.src)} freeze />
                     </div>
                   ) : file.mediaType === 'application/octet-stream' ? (
                     <div className='w-full h-full bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
-                      <TPoseModel src={formatIpfsImageUrl(file.src)} />
+                      <TPoseModel src={formatIpfsUrl(file.src)} />
                     </div>
                   ) : (
-                    <div className='w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700 text-xs'>
+                    <Fragment>
                       Unhandled file type:
                       <br />
-                      {displayedFile.mediaType}
-                    </div>
+                      {file.mediaType}
+                    </Fragment>
                   )}
                 </button>
                 // ) : null
@@ -204,7 +222,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
                   key={`download-${file.src}`}
                   onClick={async () => {
                     const fileName = `${asset.tokenName?.display}.${isGlb ? 'glb' : 'fbx'}`
-                    const fileUrl = formatIpfsImageUrl(file.src)
+                    const fileUrl = formatIpfsUrl(file.src)
 
                     setDownloading(true)
                     fetch(fileUrl, { method: 'GET' })
@@ -481,13 +499,13 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
                   onClick={() => setSelectedAsset(asset)}
                   isBurned={asset.isBurned}
                   title={asset.tokenName?.display as string}
-                  imageSrc={formatIpfsImageUrl(asset.image.ipfs)}
+                  imageSrc={formatIpfsUrl(asset.image.ipfs)}
                   tiedImageSrcs={
                     asset.policyId === BAD_KEY_POLICY_ID && asset.files?.length
                       ? asset.files
                           .filter((file) => file.mediaType === 'image/png')
                           .map((file) => ({
-                            src: formatIpfsImageUrl(file.src),
+                            src: formatIpfsUrl(file.src),
                             name: `#${asset.attributes[file.name.replace('Bad ', '')].split('#')[1]}`,
                           }))
                       : []

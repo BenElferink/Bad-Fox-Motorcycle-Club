@@ -18,9 +18,7 @@ const CollectionSelector = (props: CollectionSelectorProps) => {
     <div className='flex flex-wrap items-center justify-center'>
       {collectionsFile.map((coll) => {
         const ownsThisCollection = !!withWallet
-          ? Object.entries(populatedWallet?.assets || {}).find(
-              ([policyId, assets]) => coll.policyId === policyId && !!assets.length
-            )
+          ? Object.entries(populatedWallet?.assets || {}).find(([policyId, assets]) => coll.policyId === policyId && !!assets.length)
           : true
 
         return !!coll.collections ? (
@@ -34,9 +32,7 @@ const CollectionSelector = (props: CollectionSelectorProps) => {
             }}
             className={
               'relative flex flex-col items-center w-[200px] m-1 mx-2 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700  ' +
-              (ownsThisCollection
-                ? 'hover:bg-gray-700 hover:bg-opacity-50 hover:border-gray-500 hover:text-white'
-                : 'cursor-not-allowed')
+              (ownsThisCollection ? 'hover:bg-gray-700 hover:bg-opacity-50 hover:border-gray-500 hover:text-white' : 'cursor-not-allowed')
             }
           >
             <ImageLoader
@@ -44,7 +40,7 @@ const CollectionSelector = (props: CollectionSelectorProps) => {
               alt={coll.name}
               width={200}
               height={200}
-              style={{ borderRadius: '0.75rem 0.75rem 0 0' }}
+              style={{ width: 200, height: 200, borderRadius: '0.75rem 0.75rem 0 0', objectFit: 'contain' }}
             />
             <h6 className='w-full m-1 text-center text-lg font-light truncate'>{coll.name}</h6>
 

@@ -3,22 +3,18 @@ import { useEffect, useMemo, useState } from 'react'
 import { format } from 'timeago.js'
 import { Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import badLabsApi from '../utils/badLabsApi'
-import useScreenSize from '../hooks/useScreenSize'
+import badLabsApi from '@/utils/badLabsApi'
+import useScreenSize from '@/hooks/useScreenSize'
+import getFileForPolicyId from '@/functions/getFileForPolicyId'
+import formatIpfsUrl from '@/functions/formatters/formatIpfsUrl'
+import formatBigNumber from '@/functions/formatters/formatBigNumber'
 import Loader from './Loader'
 import ImageLoader from './Loader/ImageLoader'
-import getFileForPolicyId from '../functions/getFileForPolicyId'
-import formatIpfsImageUrl from '../functions/formatters/formatIpfsImageUrl'
-import formatBigNumber from '../functions/formatters/formatBigNumber'
-import { ADA_SYMBOL } from '../constants'
-import type { BadLabsApiMarket } from '../utils/badLabsApi'
-import type { PolicyId, PopulatedAsset } from '../@types'
+import type { BadLabsApiMarket } from '@/utils/badLabsApi'
+import type { PolicyId, PopulatedAsset } from '@/@types'
+import { ADA_SYMBOL } from '@/constants'
 
-export interface RecentMarketActivityProps {
-  policyId: PolicyId
-}
-
-const RecentMarketActivity = (props: RecentMarketActivityProps) => {
+const RecentMarketActivity = (props: { policyId: PolicyId }) => {
   const { policyId } = props
   const { screenWidth } = useScreenSize()
 
@@ -74,14 +70,19 @@ const RecentMarketActivity = (props: RecentMarketActivityProps) => {
 
             return (
               <SwiperSlide key={`recently-sold-${item.tokenId}-${idx}`}>
-                <div className='relative rounded-full border border-gray-900 shadow-inner'>
-                  <Link href={`https://jpg.store/asset/${item.tokenId}`} target='_blank' rel='noopener noreferrer'>
+                <div className='relative rounded-full border border-gray-900 shadow-inner' style={{ width: imageSize, height: imageSize }}>
+                  <Link
+                    href={`https://jpg.store/asset/${item.tokenId}`}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    style={{ width: imageSize, height: imageSize }}
+                  >
                     <ImageLoader
+                      src={formatIpfsUrl(thisAsset?.image.ipfs || '')}
+                      alt={thisAsset?.tokenName?.display || ''}
                       width={imageSize}
                       height={imageSize}
-                      src={formatIpfsImageUrl(thisAsset?.image.ipfs || '')}
-                      alt={thisAsset?.tokenName?.display || ''}
-                      style={{ borderRadius: '100%' }}
+                      style={{ width: imageSize, height: imageSize, borderRadius: '100%', objectFit: 'cover' }}
                     />
                     <p className='whitespace-nowrap px-1 rounded-lg bg-gray-900 text-xs text-center font-light absolute bottom-0 left-1/2 -translate-x-1/2 z-20'>
                       <span className='text-sm text-gray-200'>

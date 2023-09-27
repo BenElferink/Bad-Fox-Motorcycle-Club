@@ -34,17 +34,12 @@ const data = [
       {
         checked: false,
         redirectPath: `/collections/${BAD_FOX_POLICY_ID}`,
-        title: 'Supply 2,000 (burn live)',
-      },
-      {
-        checked: true,
-        redirectPath: '/tokens/ada',
-        title: 'Royalty Rewards',
+        title: 'Supply 1,878 (burn live)',
       },
       {
         checked: true,
         redirectPath: '/tokens',
-        title: 'Token Staking',
+        title: 'Staking Rewards',
       },
     ],
     // renderMedia: (isLeft) => (
@@ -60,17 +55,12 @@ const data = [
       {
         checked: false,
         redirectPath: `/collections/${BAD_MOTORCYCLE_POLICY_ID}`,
-        title: 'Supply 1,000 (burn live)',
-      },
-      {
-        checked: true,
-        redirectPath: '/tokens/ada',
-        title: 'Royalty Rewards',
+        title: 'Supply 939 (burn live)',
       },
       {
         checked: true,
         redirectPath: '/tokens',
-        title: 'Token Staking',
+        title: 'Staking Rewards',
       },
     ],
     // renderMedia: (isLeft) => (
@@ -86,17 +76,17 @@ const data = [
       {
         checked: false,
         redirectPath: `/collections/${BAD_KEY_POLICY_ID}`,
-        title: 'Supply 2,000',
+        title: 'Supply 2,061',
+      },
+      {
+        checked: true,
+        redirectPath: '/tokens',
+        title: 'Staking Rewards',
       },
       {
         checked: true,
         redirectPath: '/tokens/ada',
         title: 'Royalty Rewards',
-      },
-      {
-        checked: true,
-        redirectPath: '/tokens',
-        title: 'Token Staking',
       },
       {
         checked: true,
@@ -106,12 +96,7 @@ const data = [
       {
         checked: true,
         redirectPath: '/reserve3d',
-        title: 'Lifetime Airdrops',
-      },
-      {
-        checked: true,
-        redirectPath: '/games',
-        title: 'Metaverse Benefits',
+        title: '3D Airdrops',
       },
     ],
     // renderMedia: (isLeft) => (
@@ -203,7 +188,7 @@ const Utilities = () => {
                 }`}
                 onClick={() => {
                   if (event.redirectPath) {
-                    if (event.redirectPath.indexOf('https') === 0) {
+                    if (event.redirectPath.indexOf('http') === 0) {
                       window.open(event.redirectPath, '_blank', 'noopener noreferrer')
                     } else {
                       router.push(event.redirectPath)

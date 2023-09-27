@@ -37,7 +37,8 @@
     "react-hot-toast": "^2.4.1",
     "swiper": "^9.3.2",
     "three": "^0.151.3",
-    "timeago.js": "^4.0.2"
+    "timeago.js": "^4.0.2",
+    "wavesurfer.js": "^7.3.2"
   },
   "devDependencies": {
     "@types/node": "^20.2.3",
