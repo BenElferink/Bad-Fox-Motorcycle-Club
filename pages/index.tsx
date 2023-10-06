@@ -48,6 +48,11 @@ const partners = [
     logoUrl: '/media/logo/other/idopassdao.png',
   },
   {
+    name: 'Pangolin Protocol',
+    url: 'https://pangolinprotocol.com',
+    logoUrl: '/media/logo/other/pangolinprotocol.png',
+  },
+  {
     name: 'Cardano Lands',
     url: 'https://cardanolands.com',
     logoUrl: '/media/logo/other/cardanolands.png',
