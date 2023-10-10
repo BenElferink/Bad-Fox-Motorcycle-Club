@@ -30,7 +30,7 @@ const partners = [
   {
     name: 'CSWAP DEX',
     url: 'https://www.cswap.fi',
-    logoUrl: '/media/tokens/cswap/token.png',
+    logoUrl: '/media/logo/other/cswap.png',
   },
   {
     name: 'The Ape Society',

@@ -6,7 +6,7 @@ import TokenStakeMethod from '../../components/tokens/TokenStakeMethod'
 import PageContainer from '../../components/layout/PageContainer'
 
 const TOKEN_IMAGE_SRC = '/media/tokens/cswap/token.png'
-const TOKEN_POLICY_ID = '???'
+const TOKEN_POLICY_ID = 'bf524874448cbf52be3a26133b0a0edf5eb65c09ffed383b881ad327'
 const TOKEN_NAME = 'CSWAP'
 const PROJECT_NAME = 'CSWAP DEX'
 const WHO_CAN_EARN: WhoCanEarn = ['Bad Key']
@@ -14,17 +14,9 @@ const WHO_CAN_EARN: WhoCanEarn = ['Bad Key']
 const Page = () => {
   return (
     <PageContainer>
-      <TokenHeader
-        projectName={PROJECT_NAME}
-        tokenName={TOKEN_NAME}
-        tokenSrc={TOKEN_IMAGE_SRC}
-        policyId={TOKEN_POLICY_ID}
-      />
-
+      <TokenHeader projectName={PROJECT_NAME} tokenName={TOKEN_NAME} tokenSrc={TOKEN_IMAGE_SRC} policyId={TOKEN_POLICY_ID} />
       <TokenWhoEarns whoCanEarn={WHO_CAN_EARN} />
-
       <TokenStakeMethod method='Non Custodial' />
-
       <TokenPrerequisites items={[]} />
 
       <div className='w-full my-2 p-4 px-6 flex flex-col bg-gray-400 bg-opacity-20 rounded-xl'>
@@ -33,12 +25,7 @@ const Page = () => {
         <ol className='mx-auto list-decimal list-inside'>
           <li className='text-sm'>
             Connect your wallet to the{' '}
-            <Link
-              href='https://app.cswap.fi/nftstaking'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-blue-400'
-            >
+            <Link href='https://app.cswap.fi/nftstaking' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
               CSWAP Staking Dashboard
             </Link>
             .
