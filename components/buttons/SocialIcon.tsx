@@ -28,7 +28,7 @@ export type SocialNetwork =
   | 'twitch'
 
 export interface SocialIconProps {
-  url: string
+  url?: string
   network?: SocialNetwork
   color?: string
   size?: string
@@ -39,8 +39,8 @@ const SocialIcon = (props: SocialIconProps) => {
   const { url, network, color, size, className } = props
 
   const renderIcon = useCallback(() => {
-    const networkFromUrl = url.split('.com')[0].replace('https://', '').replace('www.', '')
-    const finalSize = size || 'w-7 h-7'
+    const networkFromUrl = url?.replace('https://', '').replace('www.', '').split('.')[0]
+    const finalSize = size || 'w-8 h-8'
 
     switch (network || networkFromUrl) {
       case 'soundcloud':
@@ -277,6 +277,10 @@ const SocialIcon = (props: SocialIconProps) => {
         return <GlobeAltIcon className={finalSize} style={{ color: color || '#ffffff' }} />
     }
   }, [url, network, color, size])
+
+  if (!url) {
+    return <div className={className}>{renderIcon()}</div>
+  }
 
   return (
     <Link href={url} target='_blank' rel='noopener noreferrer' className={className}>
