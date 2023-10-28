@@ -18,7 +18,7 @@ export const navTokens = [
   { label: 'ADA', path: '/tokens/ada' },
   { label: 'C4', path: '/tokens/c4' },
   { label: 'CHILLAZ', path: '/tokens/chillaz' },
-  { label: 'CSWAP', path: '/tokens/cswap' },
+  { label: 'CSWAP / CSXP', path: '/tokens/cswap' },
   { label: 'EZY', path: '/tokens/ezy' },
   { label: 'HEXO', path: '/tokens/hexo' },
   { label: 'IDP', path: '/tokens/idp' },
