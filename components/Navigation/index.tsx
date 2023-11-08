@@ -16,33 +16,29 @@ export const navCollections = [
 
 export const navTokens = [
   { label: 'ADA', path: '/tokens/ada' },
-  { label: 'C4', path: '/tokens/c4' },
-  { label: 'CHILLAZ', path: '/tokens/chillaz' },
   { label: 'CSWAP / CSXP', path: '/tokens/cswap' },
-  { label: 'EZY', path: '/tokens/ezy' },
-  { label: 'HEXO', path: '/tokens/hexo' },
-  { label: 'IDP', path: '/tokens/idp' },
-  { label: 'MD', path: '/tokens/md' },
-  { label: 'NFTC', path: '/tokens/nftc' },
   { label: 'SOC', path: '/tokens/soc' },
+  { label: 'C4', path: '/tokens/c4' },
+  { label: 'IDP', path: '/tokens/idp' },
+  { label: 'HEXO', path: '/tokens/hexo' },
+  { label: 'EZY', path: '/tokens/ezy' },
+  { label: 'NFTC', path: '/tokens/nftc' },
+  { label: 'MD', path: '/tokens/md' },
+  { label: 'CHILLAZ', path: '/tokens/chillaz' },
 ]
 
 export const navGames = [
   { label: 'OGBears', path: '/games/ogbears' },
   { label: 'Degen Royale', path: '/games/degen-royale' },
   { label: 'Bajuzki Studios', path: '/games/bajuzki' },
-  { label: 'Bitke', path: '' },
-  { label: 'Cornucopias', path: '' },
-  { label: 'Speed Throne', path: '' },
-  { label: 'CardaStacks', path: '' },
   { label: 'Kwicverse', path: '' },
+  { label: 'Speed Throne', path: '' },
+  { label: 'Bitke', path: '' },
+  { label: 'CardaStacks', path: '' },
   { label: 'U.E (secret: preparation)', path: '' },
 ]
 
-export const limitedEvents = [
-  { label: 'Burn Event', path: '/burn' },
-  { label: '2D Trade In' },
-]
+export const limitedEvents = [{ label: 'Burn Event', path: '/burn' }]
 
 const Navigation = () => {
   const router = useRouter()

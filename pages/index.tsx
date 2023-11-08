@@ -4,7 +4,7 @@ import Landing from '../components/Landing'
 import Utilities from '../components/Utilities'
 import TeamCard from '../components/cards/TeamCard'
 
-const partners = [
+const creativePartners = [
   {
     name: 'ADA Anvil',
     url: 'https://ada-anvil.io',
@@ -20,13 +20,9 @@ const partners = [
     url: 'https://www.soundrig.io/artist/bad-fox-4042',
     logoUrl: '/media/logo/other/soundrig.png',
   },
-  {
-    name: 'Banker Coin',
-    url: 'https://bankercoinada.com',
-    logoUrl: '/media/logo/other/bankercoin.png',
-  },
+]
 
-  // token partners
+const tokenPartners = [
   {
     name: 'CSWAP DEX',
     url: 'https://www.cswap.fi',
@@ -47,11 +43,11 @@ const partners = [
     url: 'https://idopass.finance',
     logoUrl: '/media/logo/other/idopassdao.png',
   },
-  {
-    name: 'Pangolin Protocol',
-    url: 'https://pangolinprotocol.com',
-    logoUrl: '/media/logo/other/pangolinprotocol.png',
-  },
+  // {
+  //   name: 'Pangolin Protocol',
+  //   url: 'https://pangolinprotocol.com',
+  //   logoUrl: '/media/logo/other/pangolinprotocol.png',
+  // },
   {
     name: 'Cardano Lands',
     url: 'https://cardanolands.com',
@@ -77,8 +73,9 @@ const partners = [
     url: 'https://utility.chainchillaz.io',
     logoUrl: '/media/logo/other/chillaz.png',
   },
+]
 
-  // game partners
+const gamePartners = [
   {
     name: 'OGBears',
     url: 'https://ogbears.com',
@@ -90,19 +87,9 @@ const partners = [
     logoUrl: '/media/games/degen-royale/logo.png',
   },
   {
-    name: 'Bitke',
-    url: 'https://playbitke.com',
-    logoUrl: '/media/logo/other/bitke.png',
-  },
-  {
-    name: 'Speed Throne',
-    url: 'https://speedthrone.io',
-    logoUrl: '/media/logo/other/speedthrone.png',
-  },
-  {
-    name: 'CardaStacks',
-    url: 'https://cardastacks.com',
-    logoUrl: '/media/logo/other/cardastacks.png',
+    name: 'Bajuzki Studios',
+    url: 'https://bajuzki.art',
+    logoUrl: '/media/games/bajuzki/logo.png',
   },
   {
     name: 'KWIC',
@@ -115,19 +102,24 @@ const partners = [
     logoUrl: '/media/logo/other/spacetroopers.png',
   },
   {
-    name: "Summoner's Guild",
-    url: 'https://summonersguild.io',
-    logoUrl: '/media/logo/other/summonersguild.png',
+    name: 'Speed Throne',
+    url: 'https://speedthrone.io',
+    logoUrl: '/media/logo/other/speedthrone.png',
+  },
+  {
+    name: 'Bitke',
+    url: 'https://playbitke.com',
+    logoUrl: '/media/logo/other/bitke.png',
+  },
+  {
+    name: 'CardaStacks',
+    url: 'https://cardastacks.com',
+    logoUrl: '/media/logo/other/cardastacks.png',
   },
   {
     name: 'Unbounded Earth',
     url: 'https://unbounded.earth',
     logoUrl: '/media/logo/other/unboundedearth.png',
-  },
-  {
-    name: 'Bajuzki Studios',
-    url: 'https://bajuzki.art',
-    logoUrl: '/media/games/bajuzki/logo.png',
   },
 ]
 
@@ -153,47 +145,29 @@ const clients = [
     logoUrl: '/media/logo/other/porkyisland.png',
   },
   {
-    name: 'Walkers',
-    url: 'https://walkerscardano.xyz',
-    logoUrl: '/media/logo/other/walkers.png',
-  },
-  {
     name: 'Whiskees',
     url: 'https://whiskeesnfts.com',
     logoUrl: '/media/logo/other/whiskees.png',
   },
   {
-    name: 'IDO Pass DAO',
-    url: 'https://idopass.finance',
-    logoUrl: '/media/logo/other/idopassdao.png',
-  },
-]
-
-const featuredBy = [
-  {
-    name: 'Awesomeisjayell',
-    url: 'https://www.youtube.com/@awesomeisjayell',
-    logoUrl: '/media/logo/other/awesomeisjayell.png',
+    name: 'ADA Punks',
+    url: 'https://adapunks.net',
+    logoUrl: '/media/logo/other/adapunks.png',
   },
   {
-    name: 'Atlanick',
-    url: 'https://www.youtube.com/@Atlanick',
-    logoUrl: '/media/logo/other/atlanick.png',
+    name: 'Walkers',
+    url: 'https://walkerscardano.xyz',
+    logoUrl: '/media/logo/other/walkers.png',
   },
   {
-    name: 'Cardano Thor',
-    url: 'https://www.youtube.com/@CardanoThor',
-    logoUrl: '/media/logo/other/cardanothor.png',
+    name: 'Banker Coin',
+    url: 'https://bankercoinada.com',
+    logoUrl: '/media/logo/other/bankercoin.png',
   },
   {
-    name: 'Ultimate CNFT',
-    url: 'https://www.youtube.com/@ultimatecnft',
-    logoUrl: '/media/logo/other/ultimatecnft.png',
-  },
-  {
-    name: 'BossFace Crypto',
-    url: 'https://www.youtube.com/@bossfacecrypto',
-    logoUrl: '/media/logo/other/bossface.png',
+    name: 'Tortol Token',
+    url: 'https://theturtlesyndicate.xyz/tortol',
+    logoUrl: '/media/logo/other/tortoltoken.png',
   },
 ]
 
@@ -282,10 +256,14 @@ const Badge = (props: BadgeProps) => {
       href={url}
       target='_blank'
       rel='noopener noreferrer'
-      className='group w-20 h-10 my-8 mx-4 flex flex-col items-center justify-center relative'
+      // className='group w-20 h-10 my-8 mx-4 flex flex-col items-center justify-center relative'
+      className='group w-32 m-2 p-4 rounded-xl bg-zinc-200/20 hover:bg-zinc-200/30 backdrop-blur shadow-[-1px_-1px_0.3rem_0_rgba(255,255,255,0.5)] flex flex-col items-center justify-center'
     >
-      <Image src={logoUrl} alt='logo' fill sizes='5rem' className='object-contain drop-shadow-footeritem' />
-      <h6 className='absolute -bottom-7 text-gray-500 group-hover:text-gray-400 text-xs whitespace-nowrap'>{name}</h6>
+      <div className='w-20 h-10 relative'>
+        <Image src={logoUrl} alt='logo' fill sizes='5rem' unoptimized className='object-contain' />
+      </div>
+      {/* <span className='absolute -bottom-7 text-gray-500 group-hover:text-gray-400 text-xs whitespace-nowrap'>{name}</span> */}
+      <span className='mt-2 group-hover:text-white text-xs whitespace-nowrap'>{name}</span>
     </Link>
   )
 }
@@ -297,10 +275,28 @@ const Page = () => {
       <Utilities />
 
       <div className='flex flex-col items-center justify-center my-8'>
-        <h5 className='text-2xl'>Partners</h5>
+        <h5 className='text-2xl'>Creative Partners</h5>
         <div className='flex flex-wrap items-center justify-center'>
-          {partners.map(({ name, url, logoUrl }) => (
-            <Badge key={`partner-${name}`} name={name} url={url} logoUrl={logoUrl} />
+          {creativePartners.map(({ name, url, logoUrl }) => (
+            <Badge key={`creative-partner: ${name}`} name={name} url={url} logoUrl={logoUrl} />
+          ))}
+        </div>
+      </div>
+
+      <div className='flex flex-col items-center justify-center my-8'>
+        <h5 className='text-2xl'>Token Partners</h5>
+        <div className='flex flex-wrap items-center justify-center'>
+          {tokenPartners.map(({ name, url, logoUrl }) => (
+            <Badge key={`token-partner:${name}`} name={name} url={url} logoUrl={logoUrl} />
+          ))}
+        </div>
+      </div>
+
+      <div className='flex flex-col items-center justify-center my-8'>
+        <h5 className='text-2xl'>Game Partners</h5>
+        <div className='flex flex-wrap items-center justify-center'>
+          {gamePartners.map(({ name, url, logoUrl }) => (
+            <Badge key={`game-partner: ${name}`} name={name} url={url} logoUrl={logoUrl} />
           ))}
         </div>
       </div>
@@ -314,15 +310,6 @@ const Page = () => {
         </div>
       </div>
 
-      <div className='flex flex-col items-center justify-center my-8'>
-        <h5 className='text-2xl'>Featured by Content Creators</h5>
-        <div className='flex flex-wrap items-center justify-center'>
-          {featuredBy.map(({ name, url, logoUrl }) => (
-            <Badge key={`featured-${name}`} name={name} url={url} logoUrl={logoUrl} />
-          ))}
-        </div>
-      </div>
-
       <div id='team' className='flex flex-col items-center justify-center my-8'>
         <h5 className='text-2xl'>Certifications</h5>
         <div className='flex flex-wrap items-center justify-center'>
@@ -332,7 +319,7 @@ const Page = () => {
         </div>
       </div>
 
-      <div className='flex flex-wrap justify-center max-w-7xl my-12'>
+      <div className='my-12 flex flex-wrap justify-center'>
         {teamMembers.map(({ profilePicture, name, title, description, socials }) => (
           <TeamCard key={`team-${name}`} profilePicture={profilePicture} name={name} title={title} description={description} socials={socials} />
         ))}
