@@ -35,7 +35,6 @@ export const navGames = [
   { label: 'Speed Throne', path: '' },
   { label: 'Bitke', path: '' },
   { label: 'CardaStacks', path: '' },
-  { label: 'U.E (secret: preparation)', path: '' },
 ]
 
 export const limitedEvents = [{ label: 'Burn Event', path: '/burn' }]

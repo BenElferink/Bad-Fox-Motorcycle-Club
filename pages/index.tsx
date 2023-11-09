@@ -116,11 +116,6 @@ const gamePartners = [
     url: 'https://cardastacks.com',
     logoUrl: '/media/logo/other/cardastacks.png',
   },
-  {
-    name: 'Unbounded Earth',
-    url: 'https://unbounded.earth',
-    logoUrl: '/media/logo/other/unboundedearth.png',
-  },
 ]
 
 const clients = [
