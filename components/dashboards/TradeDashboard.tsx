@@ -19,7 +19,7 @@ import type { PolicyId, PopulatedAsset, PopulatedWallet, Trade } from '../../@ty
 import type { BadLabsApiTransaction } from '../../utils/badLabsApi'
 import { BAD_FOX_3D_POLICY_ID, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID, ONE_MILLION, TRADE_APP_WALLET } from '../../constants'
 
-const TRADE_OPEN = false
+const TRADE_OPEN = true
 
 const TradeDashboard = () => {
   const { connectedManually, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } = useWallet()
@@ -335,7 +335,7 @@ const TradeDashboard = () => {
           <span className='mr-4'>2D for 2D</span>
         </button>
 
-        <button
+        {/* <button
           type='button'
           disabled={loading || !bankKeys.length}
           onClick={() => {
@@ -360,7 +360,7 @@ const TradeDashboard = () => {
             <ImageLoader src='/media/trade/2vs1.png' alt='' width={288} height={288} style={{ borderRadius: '0.75rem' }} />
           </div>
           <span className='mr-4'>2Ds for Key</span>
-        </button>
+        </button> */}
       </div>
 
       {tradeType ? <div className='w-1/2 h-1 mx-auto bg-gray-700 rounded-lg' /> : null}
