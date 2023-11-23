@@ -37,7 +37,11 @@ export const navGames = [
   { label: 'CardaStacks', path: '' },
 ]
 
-export const limitedEvents = [{ label: 'Burn Event', path: '/burn' },{ label: 'Trade In', path: '/trade' }]
+export const limitedEvents = [
+  { label: 'Burn Event', path: '/burn' },
+  { label: 'Trade In', path: '/trade' },
+  { label: '3D Sneak Peeks', path: '/sneak3d' },
+]
 
 const Navigation = () => {
   const router = useRouter()

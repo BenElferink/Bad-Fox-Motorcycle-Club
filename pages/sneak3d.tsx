@@ -1,12 +1,11 @@
 import { ChangeEventHandler, FormEventHandler, useState } from 'react'
-import { PopulatedAsset } from '../@types'
-import ImageLoader from '../components/Loader/ImageLoader'
-import FoxSneakModel from '../components/models/three/glb/FoxSneakModel'
-import { BAD_FOX_POLICY_ID } from '../constants'
-import avatarPngFilesFile from '../data/3D/png.json'
-import avatarGlbFilesFile from '../data/3D/glb.json'
-import avatarFbxFilesFile from '../data/3D/fbx.json'
-import getFileForPolicyId from '../functions/getFileForPolicyId'
+import { PopulatedAsset } from '@/@types'
+import ImageLoader from '@/components/Loader/ImageLoader'
+import GlbViewer from '@/components/models/google/GlbViewer'
+import { BAD_MOTORCYCLE_POLICY_ID } from '@/constants'
+import pngFiles from '@/data/3D/bike-png.json'
+import glbFiles from '@/data/3D/bike-glb.json'
+import getFileForPolicyId from '@/functions/getFileForPolicyId'
 
 const Page = () => {
   const [search, setSearch] = useState('')
@@ -15,43 +14,38 @@ const Page = () => {
     const v = e.target.value
     const numV = Number(v)
 
-    if (!isNaN(numV) && numV >= 0 && numV <= 6000) {
+    if (!isNaN(numV) && numV >= 0 && numV <= 3000) {
       setSearch(v)
     }
   }
 
-  const [foxName, setFoxName] = useState('')
+  const [displayName, setDisplayName] = useState('')
   const [oldImageSrc, setOldImageSrc] = useState('')
   const [newImageSrc, setNewImageSrc] = useState('')
   const [glbFileSrc, setGlbFileSrc] = useState('')
-  const [fbxFileSrc, setFbxFileSrc] = useState('')
 
   const searchSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e?.preventDefault()
-    setFoxName('')
+    setDisplayName('')
 
     setTimeout(() => {
       let v = String(Number(search))
       while (v.length < 4) {
         v = `0${v}`
       }
-      v = `Bad Fox #${v}`
+      v = `Bad Motorcycle #${v}`
 
       setSearch('')
-      setFoxName(v)
+      setDisplayName(v)
 
       setOldImageSrc(
-        (getFileForPolicyId(BAD_FOX_POLICY_ID, 'assets') as PopulatedAsset[])?.find(
-          (item) => item.tokenName?.display === v
-        )?.image.url || ''
+        (getFileForPolicyId(BAD_MOTORCYCLE_POLICY_ID, 'assets') as PopulatedAsset[])?.find((item) => item.tokenName?.display === v)?.image.url || ''
       )
 
       // @ts-ignore
-      setNewImageSrc(avatarPngFilesFile[`${v}.png`])
+      setNewImageSrc(pngFiles[`${v}.png`])
       // @ts-ignore
-      setGlbFileSrc(avatarGlbFilesFile[`${v}.glb`])
-      // @ts-ignore
-      setFbxFileSrc(avatarFbxFilesFile[`${v}.fbx`])
+      setGlbFileSrc(glbFiles[`${v}.glb`])
     }, 0)
   }
 
@@ -59,7 +53,7 @@ const Page = () => {
     <div className='flex flex-col items-center'>
       <form onSubmit={searchSubmit} className='w-72 mt-4 relative'>
         <input
-          placeholder='Search Fox #ID'
+          placeholder='Search Motorcycle #ID'
           value={search}
           onChange={searchChange}
           className='w-full my-2 p-3 rounded-lg bg-gray-900 border border-gray-700 text-sm hover:bg-gray-700 hover:border-gray-500 hover:text-white'
@@ -76,9 +70,9 @@ const Page = () => {
         </button>
       </form>
 
-      {!!foxName ? (
+      {!!displayName ? (
         <div>
-          <h6 className='text-center text-xl'>{foxName}</h6>
+          <h6 className='text-center text-xl'>{displayName}</h6>
           <div className='flex flex-wrap items-start justify-center'>
             <div
               onClick={() => window.open(oldImageSrc, '_blank', '_noopener noreferrer')}
@@ -108,17 +102,14 @@ const Page = () => {
               />
             </div>
 
-            <div className='flex flex-col items-center justify-center w-[270px] md:w-[333px] lg:w-[444px] h-[550px] md:h-[650px] lg:h-[750px] m-4 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700'>
-              <FoxSneakModel
-                withSpotlight
-                src={glbFileSrc.replace('https://firebasestorage.googleapis.com', '/storage')}
-              />
+            <div className='flex flex-col items-center justify-center w-[270px] md:w-[333px] lg:w-[444px] h-[270px] md:h-[333px] lg:h-[444px] m-4 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700'>
+              <GlbViewer src={glbFileSrc.replace('https://firebasestorage.googleapis.com', '/storage')} />
             </div>
           </div>
         </div>
       ) : (
         <p className='text-center'>
-          Want to see what your Bad Fox will look like in 3D?
+          Want to see what your Bad Motorcycle will look like in 3D?
           <br />
           No problem, we got you covered!
         </p>
