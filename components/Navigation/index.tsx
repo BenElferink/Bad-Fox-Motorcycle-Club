@@ -39,8 +39,9 @@ export const navGames = [
 
 export const limitedEvents = [
   { label: 'Burn Event', path: '/burn' },
-  { label: 'Trade In', path: '/trade' },
+  { label: '2D Trade Ins', path: '/trade' },
   { label: '3D Sneak Peeks', path: '/sneak3d' },
+  { label: '3D Reservations', path: '' },
 ]
 
 const Navigation = () => {
