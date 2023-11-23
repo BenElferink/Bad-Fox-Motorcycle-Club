@@ -77,6 +77,11 @@ const tokenPartners = [
 
 const gamePartners = [
   {
+    name: 'Space Troopers',
+    url: 'https://spacetroopers.org',
+    logoUrl: '/media/logo/other/spacetroopers.png',
+  },
+  {
     name: 'OGBears',
     url: 'https://ogbears.com',
     logoUrl: '/media/logo/other/ogbears.png',
@@ -95,11 +100,6 @@ const gamePartners = [
     name: 'KWIC',
     url: 'https://keyboardwarriorsinternetcafe.io',
     logoUrl: '/media/logo/other/keyboardwarriorsinternetcafe.png',
-  },
-  {
-    name: 'Space Troopers',
-    url: 'https://spacetroopers.org',
-    logoUrl: '/media/logo/other/spacetroopers.png',
   },
   {
     name: 'Speed Throne',
