@@ -4,6 +4,13 @@ import isPolicyIdAllowed from '../../../../functions/isPolicyIdAllowed'
 import getFloorPrices from '../../../../functions/getFloorPrices'
 import type { PolicyId } from '../../../../@types'
 
+export const config = {
+  maxDuration: 300,
+  api: {
+    responseLimit: false,
+  },
+}
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { query } = req
 

@@ -14,6 +14,13 @@ import {
   TRADE_APP_WALLET,
 } from '../../../constants'
 
+export const config = {
+  maxDuration: 300,
+  api: {
+    responseLimit: false,
+  },
+}
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req
 

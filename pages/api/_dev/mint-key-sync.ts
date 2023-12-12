@@ -4,6 +4,13 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import blockfrost from '../../../utils/blockfrost'
 import fromHex from '../../../functions/formatters/hex/fromHex'
 
+export const config = {
+  maxDuration: 300,
+  api: {
+    responseLimit: false,
+  },
+}
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req
 
@@ -22,9 +29,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             if (amount.unit.indexOf(BAD_MOTORCYCLE_POLICY_ID) === 0) {
               toCheck.push({
                 txHash: utxo.tx_hash,
-                keyId: `${BAD_KEY_POLICY_ID}${toHex(
-                  fromHex(amount.unit.replace(BAD_MOTORCYCLE_POLICY_ID, '')).replace('BadMotorcycle', 'BadKey')
-                )}`,
+                keyId: `${BAD_KEY_POLICY_ID}${toHex(fromHex(amount.unit.replace(BAD_MOTORCYCLE_POLICY_ID, '')).replace('BadMotorcycle', 'BadKey'))}`,
               })
             }
           })

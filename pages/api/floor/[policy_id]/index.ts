@@ -4,6 +4,13 @@ import isPolicyIdAllowed from '../../../../functions/isPolicyIdAllowed'
 import getFloorPrices from '../../../../functions/getFloorPrices'
 import type { FloorPrices, PolicyId } from '../../../../@types'
 
+export const config = {
+  maxDuration: 300,
+  api: {
+    responseLimit: false,
+  },
+}
+
 export interface FloorResponse {
   count: number
   items: {
@@ -62,9 +69,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<FloorResponse>)
           // .limit(limit * projects.length)
           .get()
 
-        const docs = docsQuery.docs
-          .map((doc) => doc.data())
-          .filter((doc) => doc.policyId === policyId) as FloorResponse['items']
+        const docs = docsQuery.docs.map((doc) => doc.data()).filter((doc) => doc.policyId === policyId) as FloorResponse['items']
 
         while (docs.length > limit) {
           docs.shift()

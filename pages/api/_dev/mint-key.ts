@@ -14,6 +14,13 @@ import {
   BLOCKFROST_API_KEY,
 } from '../../../constants'
 
+export const config = {
+  maxDuration: 300,
+  api: {
+    responseLimit: false,
+  },
+}
+
 const SLOT = '112468367'
 const KEY_HASH = '578c9f433b0bfe8f2c90fd9ff9b4e76391f04ac4ead2c760daceeaf5'
 
@@ -120,12 +127,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           const tokenId = `${BAD_KEY_POLICY_ID}${toHex(badKeyPayload.assetName)}`
           const foundToken = await badLabsApi.token.getData(tokenId)
 
-          if (!!foundToken) {
-            throw new Error('Already minted this!')
+          if (!!foundToken) throw new Error('Already minted this!')
+        } catch (error: any) {
+          if (typeof error === 'string' && error.indexOf('Token not found:') === 0) {
+            console.log('token does not exist, continuing with mint')
+          } else {
+            console.log(error.message)
+
+            return res.status(405).end(error.message)
           }
-        } catch (error) {
-          // Token not found:
-          // THIS IS OK!
         }
 
         const blockchainProvider = new BlockfrostProvider(BLOCKFROST_API_KEY)

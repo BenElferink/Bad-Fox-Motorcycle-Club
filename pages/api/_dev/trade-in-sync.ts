@@ -1,6 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { firestore } from '../../../utils/firebase'
 
+export const config = {
+  maxDuration: 300,
+  api: {
+    responseLimit: false,
+  },
+}
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req
 
@@ -10,7 +17,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         const collection = firestore.collection('trades')
         const { docs } = await collection.where('withdrawTx', '==', '').get()
 
-        const needToWithdraw = docs.map((doc) => doc.id)
+        const needToWithdraw = docs.map((doc) => ({ ...doc.data(), id: doc.id }))
 
         return res.status(200).json({
           needToWithdraw,
