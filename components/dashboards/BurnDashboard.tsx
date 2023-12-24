@@ -22,7 +22,7 @@ import {
 } from '../../constants'
 import type { BadLabsApiTransaction } from '../../utils/badLabsApi'
 
-const BURN_OPEN = true
+const BURN_OPEN = false
 
 const BurnDashboard = () => {
   const { connectedManually, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } = useWallet()
