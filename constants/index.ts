@@ -1,5 +1,6 @@
 export const ADA_SYMBOL = '₳'
 export const ONE_MILLION = 1000000
+export const APRIL_20_BLOCK = 8668854
 
 export const BLOCKFROST_API_KEY = process.env.BLOCKFROST_API_KEY || ''
 

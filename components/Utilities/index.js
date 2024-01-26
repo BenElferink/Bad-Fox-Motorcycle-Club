@@ -1,30 +1,9 @@
-// import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import useScreenSize from '../../hooks/useScreenSize'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 import { MinusCircleIcon } from '@heroicons/react/24/outline'
-// import MediaWrapper from './MediaWrapper'
-// import ImageLoader from '../Loader/ImageLoader'
-// import Loader from '../Loader'
 import styles from './Utilities.module.css'
 import { BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants'
-
-// const HomeKeyModel = dynamic(() => import('../models/three/glb/HomeKeyModel'), {
-//   ssr: false,
-//   loading,
-// })
-
-// const HomeFoxModel = dynamic(() => import('../models/three/glb/HomeFoxModel'), {
-//   ssr: false,
-//   loading,
-// })
-
-// const HomeMotorcycleModel = dynamic(() => import('../models/three/glb/HomeMotorcycleModel'), {
-//   ssr: false,
-//   loading,
-// })
-
-// const loading = () => <Loader size={100} />
 
 const data = [
   {
@@ -36,17 +15,7 @@ const data = [
         redirectPath: `/collections/${BAD_FOX_POLICY_ID}`,
         title: 'Supply 1,722',
       },
-      {
-        checked: true,
-        redirectPath: '/tokens',
-        title: 'Staking Rewards',
-      },
     ],
-    // renderMedia: (isLeft) => (
-    //   <MediaWrapper isLeft={isLeft} size={150} posTop='30px'>
-    //     <ImageLoader src='/media/landing/bad_fox.png' alt='fox' width={150} loaderSize={50} />
-    //   </MediaWrapper>
-    // ),
   },
   {
     checked: true,
@@ -57,17 +26,7 @@ const data = [
         redirectPath: `/collections/${BAD_MOTORCYCLE_POLICY_ID}`,
         title: 'Supply 861',
       },
-      {
-        checked: true,
-        redirectPath: '/tokens',
-        title: 'Staking Rewards',
-      },
     ],
-    // renderMedia: (isLeft) => (
-    //   <MediaWrapper isLeft={isLeft} size={300} posTop='70px'>
-    //     <ImageLoader src='/media/landing/bad_motorcycle.png' alt='motorcycle' width={300} loaderSize={50} />
-    //   </MediaWrapper>
-    // ),
   },
   {
     checked: true,
@@ -99,11 +58,6 @@ const data = [
         title: '3D Airdrops',
       },
     ],
-    // renderMedia: (isLeft) => (
-    //   <MediaWrapper isLeft={isLeft} size={300} posTop='70px'>
-    //     <HomeKeyModel />
-    //   </MediaWrapper>
-    // ),
   },
   {
     checked: false,
@@ -124,11 +78,6 @@ const data = [
         title: 'File Custody & IP Ownership',
       },
     ],
-    // renderMedia: (isLeft) => (
-    //   <MediaWrapper isLeft={isLeft} size={300} posTop='0px'>
-    //     <HomeFoxModel />
-    //   </MediaWrapper>
-    // ),
   },
   {
     checked: false,
@@ -149,11 +98,6 @@ const data = [
         title: 'File Custody & IP Ownership',
       },
     ],
-    // renderMedia: (isLeft) => (
-    //   <MediaWrapper isLeft={isLeft} size={300} posTop='20px'>
-    //     <HomeMotorcycleModel />
-    //   </MediaWrapper>
-    // ),
   },
 ]
 
