@@ -12,7 +12,7 @@ import { WalletProvider } from '@/contexts/WalletContext'
 import { RenderProvider } from '@/contexts/RenderContext'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-import SnowCanvas from '@/components/canvas/SnowCanvas'
+// import SnowCanvas from '@/components/canvas/SnowCanvas'
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
@@ -39,7 +39,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       <Toaster />
       <Header />
       <main className='w-screen min-h-screen bg-black bg-opacity-50'>
-        <SnowCanvas />
+        {/* <SnowCanvas /> */}
 
         <WalletProvider>
           <RenderProvider>
