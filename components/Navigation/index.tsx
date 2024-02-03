@@ -75,6 +75,9 @@ const Navigation = () => {
             <SingleLink label='Home' path={'/'} />
           </li>
           <li onClick={() => setIsNavOpen(false)}>
+            <SingleLink label='Merch' url='https://my-store-d34165.creator-spring.com' />
+          </li>
+          <li onClick={() => setIsNavOpen(false)}>
             <SingleLink label='Lab/Tools' url='https://labs.badfoxmc.com' />
           </li>
           <li>
