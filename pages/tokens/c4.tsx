@@ -14,12 +14,7 @@ const WHO_CAN_EARN: WhoCanEarn = ['2D Fox', '2D Motorcycle', 'Bad Key']
 const Page = () => {
   return (
     <PageContainer>
-      <TokenHeader
-        projectName={PROJECT_NAME}
-        tokenName={TOKEN_NAME}
-        tokenSrc={TOKEN_IMAGE_SRC}
-        policyId={TOKEN_POLICY_ID}
-      />
+      <TokenHeader projectName={PROJECT_NAME} tokenName={TOKEN_NAME} tokenSrc={TOKEN_IMAGE_SRC} policyId={TOKEN_POLICY_ID} />
 
       <TokenWhoEarns whoCanEarn={WHO_CAN_EARN} />
 
@@ -40,25 +35,15 @@ const Page = () => {
 
         <ol className='mx-auto list-decimal list-inside'>
           <li className='text-sm'>
-            Connect your wallet to the{' '}
-            <Link
-              href='https://swamplands.cardanocrocsclub.com/'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-blue-400'
-            >
-              CCC Swamp
+            Connect your wallet to{' '}
+            <Link href='https://cportal.io/' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
+              cPortal
             </Link>
             .
           </li>
           <li className='text-sm'>
             Navigate to the{' '}
-            <Link
-              href='https://swamplands.cardanocrocsclub.com/wallet'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-blue-400'
-            >
+            <Link href='https://cportal.io/wallet' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
               Wallet
             </Link>{' '}
             page.
@@ -66,13 +51,8 @@ const Page = () => {
           <li className='text-sm'>Send/deposit your Living Lands to the custodial wallet.</li>
           <li className='text-sm'>
             Navigate to the{' '}
-            <Link
-              href='https://swamplands.cardanocrocsclub.com/staking/swamp-lands-aplications'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-blue-400'
-            >
-              Land Staking
+            <Link href='https://cportal.io/nft-staking' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
+              NFT Staking
             </Link>{' '}
             tab.
           </li>

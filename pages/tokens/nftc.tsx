@@ -9,17 +9,12 @@ const TOKEN_IMAGE_SRC = '/media/tokens/nftc/token.png'
 const TOKEN_POLICY_ID = 'b0af30edf2c7f11465853821137e0a6ebc395cab71ee39c24127ffb4'
 const TOKEN_NAME = 'NFTC'
 const PROJECT_NAME = 'NFT Creative'
-const WHO_CAN_EARN: WhoCanEarn = ['2D Fox', '2D Motorcycle', 'Bad Key']
+const WHO_CAN_EARN: WhoCanEarn = ['Bad Key']
 
 const Page = () => {
   return (
     <PageContainer>
-      <TokenHeader
-        projectName={PROJECT_NAME}
-        tokenName={TOKEN_NAME}
-        tokenSrc={TOKEN_IMAGE_SRC}
-        policyId={TOKEN_POLICY_ID}
-      />
+      <TokenHeader projectName={PROJECT_NAME} tokenName={TOKEN_NAME} tokenSrc={TOKEN_IMAGE_SRC} policyId={TOKEN_POLICY_ID} />
 
       <TokenWhoEarns whoCanEarn={WHO_CAN_EARN} />
 
@@ -32,9 +27,9 @@ const Page = () => {
 
         <ol className='mx-auto list-decimal list-inside'>
           <li className='text-sm'>
-            Connect your wallet with{' '}
-            <Link href='https://dripdropz.io/' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
-              Drip Dropz
+            Connect your wallet to the{' '}
+            <Link href='https://nftcdrip.xyz/' target='_blank' rel='noopener noreferrer' className='text-blue-400'>
+              NFTC Claim Portal
             </Link>
             .
           </li>
