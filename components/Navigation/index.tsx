@@ -40,6 +40,7 @@ export const navGames = [
 export const limitedEvents = [
   { label: '3D Reservations (Fox)', path: '/reserve3d' },
   { label: '3D Previews (Motorcycle)', path: '/sneak3d' },
+  { label: '2D Trade-In', path: '/trade' },
 ]
 
 const Navigation = () => {

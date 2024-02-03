@@ -19,12 +19,13 @@ import type { PolicyId, PopulatedAsset, PopulatedWallet, Trade } from '../../@ty
 import type { BadLabsApiTransaction } from '../../utils/badLabsApi'
 import { BAD_FOX_3D_POLICY_ID, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID, ONE_MILLION, TRADE_APP_WALLET } from '../../constants'
 
-const TRADE_OPEN = false
+const TRADE_OPEN = true
 
 const TradeDashboard = () => {
   const { connectedManually, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } = useWallet()
 
-  const [tradeType, setTradeType] = useState<'1:1' | '2:1' | ''>('')
+  const tradeType = '2:1'
+  // const [tradeType, setTradeType] = useState<'1:1' | '2:1' | ''>('')
   const [selectorType, setSelectorType] = useState<'SELF:1' | 'SELF:2' | 'BANK' | ''>('')
   const [selfSelectedTokenIdOne, setSelfSelectedTokenIdOne] = useState<string>('')
   const [selfSelectedTokenIdTwo, setSelfSelectedTokenIdTwo] = useState<string>('')
@@ -36,6 +37,32 @@ const TradeDashboard = () => {
   )
 
   const [bankWallet, setBankWallet] = useState<PopulatedWallet | null>(null)
+
+  const self2Ds = useMemo(
+    () =>
+      populatedWallet?.assets[BAD_FOX_POLICY_ID].concat(populatedWallet?.assets[BAD_MOTORCYCLE_POLICY_ID]).sort(
+        (a, b) => (a?.serialNumber || 0) - (b?.serialNumber || 0)
+      ) || [],
+    [populatedWallet?.assets]
+  )
+
+  const bank2Ds = useMemo(
+    () =>
+      bankWallet?.assets[BAD_FOX_POLICY_ID].concat(bankWallet?.assets[BAD_MOTORCYCLE_POLICY_ID]).sort(
+        (a, b) => (a?.serialNumber || 0) - (b?.serialNumber || 0)
+      ) || [],
+    [bankWallet?.assets]
+  )
+
+  const bankKeys = useMemo(
+    () => bankWallet?.assets[BAD_KEY_POLICY_ID].sort((a, b) => (a?.mintBlockHeight || 0) - (b?.mintBlockHeight || 0)) || [],
+    [bankWallet?.assets]
+  )
+
+  const filteredAssets = useMemo(
+    () => (selectorType === 'SELF:1' || selectorType === 'SELF:2' ? self2Ds : selectorType === 'BANK' ? bank2Ds : []),
+    [selectorType, self2Ds, bank2Ds]
+  )
 
   useEffect(() => {
     const getBank = async () => {
@@ -105,17 +132,21 @@ const TradeDashboard = () => {
           },
         }
 
-        if (tradeType && tradeType === '1:1') {
-          setBankSelectedTokenId((prev) =>
-            prev &&
-            (!!payload.assets[BAD_FOX_POLICY_ID].find((item) => item.tokenId === prev) ||
-              !!payload.assets[BAD_MOTORCYCLE_POLICY_ID].find((item) => item.tokenId === prev))
-              ? prev
-              : ''
-          )
-        } else if (tradeType && tradeType === '2:1') {
-          setBankSelectedTokenId(payload.assets[BAD_KEY_POLICY_ID].sort((a, b) => (a?.mintBlockHeight || 0) - (b?.mintBlockHeight || 0))[0].tokenId)
-        }
+        // if (tradeType && tradeType === '1:1') {
+        //   setBankSelectedTokenId((prev) =>
+        //     prev &&
+        //     (!!payload.assets[BAD_FOX_POLICY_ID].find((item) => item.tokenId === prev) ||
+        //       !!payload.assets[BAD_MOTORCYCLE_POLICY_ID].find((item) => item.tokenId === prev))
+        //       ? prev
+        //       : ''
+        //   )
+        // } else if (tradeType && tradeType === '2:1') {
+        //   setBankSelectedTokenId(payload.assets[BAD_KEY_POLICY_ID].sort((a, b) => (a?.mintBlockHeight || 0) - (b?.mintBlockHeight || 0))[0].tokenId)
+        // }
+
+        setBankSelectedTokenId(
+          payload.assets[BAD_KEY_POLICY_ID].sort((a, b) => (a?.mintBlockHeight || 0) - (b?.mintBlockHeight || 0))[0]?.tokenId || ''
+        )
 
         setBankWallet(payload)
       } catch (error: any) {
@@ -131,32 +162,6 @@ const TradeDashboard = () => {
     const interval = setInterval(getBank, 1000 * 60)
     return () => clearInterval(interval)
   }, [tradeType])
-
-  const self2Ds = useMemo(
-    () =>
-      populatedWallet?.assets[BAD_FOX_POLICY_ID].concat(populatedWallet?.assets[BAD_MOTORCYCLE_POLICY_ID]).sort(
-        (a, b) => (a?.serialNumber || 0) - (b?.serialNumber || 0)
-      ) || [],
-    [populatedWallet?.assets]
-  )
-
-  const bank2Ds = useMemo(
-    () =>
-      bankWallet?.assets[BAD_FOX_POLICY_ID].concat(bankWallet?.assets[BAD_MOTORCYCLE_POLICY_ID]).sort(
-        (a, b) => (a?.serialNumber || 0) - (b?.serialNumber || 0)
-      ) || [],
-    [bankWallet?.assets]
-  )
-
-  const bankKeys = useMemo(
-    () => bankWallet?.assets[BAD_KEY_POLICY_ID].sort((a, b) => (a?.mintBlockHeight || 0) - (b?.mintBlockHeight || 0)) || [],
-    [bankWallet?.assets]
-  )
-
-  const filteredAssets = useMemo(
-    () => (selectorType === 'SELF:1' || selectorType === 'SELF:2' ? self2Ds : selectorType === 'BANK' ? bank2Ds : []),
-    [selectorType, self2Ds, bank2Ds]
-  )
 
   const txConfirmation = useCallback(async (_txHash: string): Promise<BadLabsApiTransaction> => {
     try {
@@ -185,27 +190,40 @@ const TradeDashboard = () => {
     setLoading(true)
 
     try {
+      // const tx = new Transaction({ initiator: wallet })
+      //   .sendAssets(
+      //     { address: TRADE_APP_WALLET },
+      //     tradeType === '1:1'
+      //       ? [
+      //           {
+      //             unit: selfSelectedTokenIdOne,
+      //             quantity: '1',
+      //           },
+      //         ]
+      //       : [
+      //           {
+      //             unit: selfSelectedTokenIdOne,
+      //             quantity: '1',
+      //           },
+      //           {
+      //             unit: selfSelectedTokenIdTwo,
+      //             quantity: '1',
+      //           },
+      //         ]
+      //   )
+      //   .sendLovelace({ address: TRADE_APP_WALLET }, String(4 * ONE_MILLION))
+
       const tx = new Transaction({ initiator: wallet })
-        .sendAssets(
-          { address: TRADE_APP_WALLET },
-          tradeType === '1:1'
-            ? [
-                {
-                  unit: selfSelectedTokenIdOne,
-                  quantity: '1',
-                },
-              ]
-            : [
-                {
-                  unit: selfSelectedTokenIdOne,
-                  quantity: '1',
-                },
-                {
-                  unit: selfSelectedTokenIdTwo,
-                  quantity: '1',
-                },
-              ]
-        )
+        .sendAssets({ address: TRADE_APP_WALLET }, [
+          {
+            unit: selfSelectedTokenIdOne,
+            quantity: '1',
+          },
+          {
+            unit: selfSelectedTokenIdTwo,
+            quantity: '1',
+          },
+        ])
         .sendLovelace({ address: TRADE_APP_WALLET }, String(4 * ONE_MILLION))
 
       toast.loading('Building transaction')
@@ -243,7 +261,8 @@ const TradeDashboard = () => {
       toast.dismiss()
       toast.success('Trade in complete!')
 
-      await removeAssetsFromWallet(tradeType === '1:1' ? [selfSelectedTokenIdOne] : [selfSelectedTokenIdOne, selfSelectedTokenIdTwo])
+      // await removeAssetsFromWallet(tradeType === '1:1' ? [selfSelectedTokenIdOne] : [selfSelectedTokenIdOne, selfSelectedTokenIdTwo])
+      await removeAssetsFromWallet([selfSelectedTokenIdOne, selfSelectedTokenIdTwo])
 
       setBankWallet((prev) => {
         if (!prev) return prev
@@ -263,7 +282,7 @@ const TradeDashboard = () => {
       setSelfSelectedTokenIdOne('')
       setSelfSelectedTokenIdTwo('')
       setBankSelectedTokenId('')
-      setTradeType('')
+      // setTradeType('')
     } catch (error: any) {
       console.error(error)
       toast.remove()
@@ -287,7 +306,7 @@ const TradeDashboard = () => {
   if (connectedManually) {
     return (
       <div className='flex flex-col items-center'>
-        <p className='pt-[5vh] text-center text-lg text-[var(--pink)]'>
+        <p className='pt-[5vh] text-center text-lg text-red-400'>
           Error! You connected manually.
           <br />
           Please re-connect in a non-manual way.
@@ -307,7 +326,7 @@ const TradeDashboard = () => {
     <div>
       <WalletHero />
 
-      <div className='flex items-center justify-center w-full'>
+      {/* <div className='flex items-center justify-center w-full'>
         <button
           type='button'
           disabled={loading || !bank2Ds.length}
@@ -335,7 +354,7 @@ const TradeDashboard = () => {
           <span className='mr-4'>2D for 2D</span>
         </button>
 
-        {/* <button
+        <button
           type='button'
           disabled={loading || !bankKeys.length}
           onClick={() => {
@@ -360,12 +379,12 @@ const TradeDashboard = () => {
             <ImageLoader src='/media/trade/2vs1.png' alt='' width={288} height={288} style={{ borderRadius: '0.75rem' }} />
           </div>
           <span className='mr-4'>2Ds for Key</span>
-        </button> */}
-      </div>
+        </button>
+      </div> */}
 
-      {tradeType ? <div className='w-1/2 h-1 mx-auto bg-gray-700 rounded-lg' /> : null}
+      {/* {tradeType ? <div className='w-1/2 h-1 mx-auto bg-gray-700 rounded-lg' /> : null} */}
 
-      {tradeType === '1:1' ? (
+      {/* {tradeType === '1:1' ? (
         <div className='flex items-center justify-center w-full'>
           <button
             type='button'
@@ -485,9 +504,75 @@ const TradeDashboard = () => {
             <ImageLoader src='/media/key.png' alt='key' width={288} height={288} style={{ borderRadius: '0.75rem' }} />
           </button>
         </div>
-      ) : null}
+      ) : null} */}
 
-      <div style={{ width: '100%' }}>
+      <p className={'m-2 text-center ' + (bankKeys.length ? 'text-green-400' : 'text-red-400')}>{bankKeys.length} Bad Keys available</p>
+
+      <div className='flex items-center justify-center w-full'>
+        <button
+          type='button'
+          onClick={() => setSelectorType('SELF:1')}
+          className='flex flex-col items-center justify-center w-72 h-72 bg-gray-900/50 hover:bg-gray-700/50 rounded-xl border border-gray-700 hover:border-gray-500 hover:text-gray-200'
+        >
+          {selfSelectedTokenIdOne ? (
+            self2Ds
+              .filter((asset) => asset.tokenId === selfSelectedTokenIdOne)
+              .map((asset) => (
+                <ImageLoader
+                  key={`selected-${asset.tokenId}`}
+                  src={asset.image.url}
+                  alt={asset.tokenName?.display as string}
+                  width={288}
+                  height={288}
+                  style={{ borderRadius: '0.75rem' }}
+                />
+              ))
+          ) : (
+            <Fragment>
+              <PhotoIcon className='w-12 h-12' />
+              <p>My 2D (1/2)</p>
+            </Fragment>
+          )}
+        </button>
+
+        <button
+          type='button'
+          onClick={() => setSelectorType('SELF:2')}
+          className='flex flex-col items-center justify-center w-72 h-72 m-2 bg-gray-900/50 hover:bg-gray-700/50 rounded-xl border border-gray-700 hover:border-gray-500 hover:text-gray-200'
+        >
+          {selfSelectedTokenIdTwo ? (
+            self2Ds
+              .filter((asset) => asset.tokenId === selfSelectedTokenIdTwo)
+              .map((asset) => (
+                <ImageLoader
+                  key={`selected-${asset.tokenId}`}
+                  src={asset.image.url}
+                  alt={asset.tokenName?.display as string}
+                  width={288}
+                  height={288}
+                  style={{ borderRadius: '0.75rem' }}
+                />
+              ))
+          ) : (
+            <Fragment>
+              <PhotoIcon className='w-12 h-12' />
+              <p>My 2D (2/2)</p>
+            </Fragment>
+          )}
+        </button>
+
+        <ArrowPathIcon className='w-8 h-8 m-2 text-gray-400' />
+
+        <button
+          type='button'
+          disabled
+          className='flex flex-col items-center justify-center w-72 h-72 m-2 bg-gray-900/50 rounded-xl border border-gray-700'
+        >
+          <ImageLoader src='/media/key.png' alt='key' width={288} height={288} style={{ borderRadius: '0.75rem' }} />
+        </button>
+      </div>
+
+      <div className='w-full'>
         {loading ? (
           <Loader />
         ) : (
@@ -499,7 +584,7 @@ const TradeDashboard = () => {
                 !!errorMessage ||
                 loading ||
                 !tradeType ||
-                (tradeType === '1:1' && (!selfSelectedTokenIdOne || !bankSelectedTokenId)) ||
+                // (tradeType === '1:1' && (!selfSelectedTokenIdOne || !bankSelectedTokenId)) ||
                 (tradeType === '2:1' && (!selfSelectedTokenIdOne || !selfSelectedTokenIdTwo || !bankSelectedTokenId))
               }
               onClick={buildTx}
@@ -508,7 +593,7 @@ const TradeDashboard = () => {
               Trade
             </button>
 
-            {errorMessage ? <p className='text-center text-[var(--pink)]'>{errorMessage}</p> : null}
+            {errorMessage ? <p className='m-2 text-center text-red-400'>{errorMessage}</p> : null}
           </Fragment>
         )}
       </div>
