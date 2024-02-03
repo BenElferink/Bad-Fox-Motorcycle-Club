@@ -161,8 +161,13 @@ const clients = [
   },
   {
     name: 'Tortol Token',
-    url: 'https://theturtlesyndicate.xyz/tortol',
+    url: 'https://theturtlesyndicate.xyz',
     logoUrl: '/media/logo/other/tortoltoken.png',
+  },
+  {
+    name: 'Hyena Coin',
+    url: 'https://hyenacoin.xyz',
+    logoUrl: '/media/logo/other/hyenacoin.png',
   },
 ]
 
