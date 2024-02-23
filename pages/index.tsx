@@ -77,11 +77,6 @@ const tokenPartners = [
 
 const gamePartners = [
   {
-    name: 'Space Troopers',
-    url: 'https://spacetroopers.org',
-    logoUrl: '/media/logo/other/spacetroopers.png',
-  },
-  {
     name: 'OGBears',
     url: 'https://ogbears.com',
     logoUrl: '/media/logo/other/ogbears.png',
@@ -120,11 +115,6 @@ const gamePartners = [
 
 const clients = [
   {
-    name: '$LAB Token',
-    url: 'https://www.lab-token.com',
-    logoUrl: '/media/logo/other/labtoken.png',
-  },
-  {
     name: 'Ape Nation',
     url: 'https://apenationcnft.com',
     logoUrl: '/media/logo/other/apenation.png',
@@ -140,6 +130,11 @@ const clients = [
     logoUrl: '/media/logo/other/porkyisland.png',
   },
   {
+    name: '$SHARKY',
+    url: 'https://www.sharkycoinada.com',
+    logoUrl: '/media/logo/other/sharky.png',
+  },
+  {
     name: 'Whiskees',
     url: 'https://whiskeesnfts.com',
     logoUrl: '/media/logo/other/whiskees.png',
@@ -148,6 +143,11 @@ const clients = [
     name: 'ADA Punks',
     url: 'https://adapunks.net',
     logoUrl: '/media/logo/other/adapunks.png',
+  },
+  {
+    name: 'The A.R.F $LAB',
+    url: 'https://www.lab-token.com',
+    logoUrl: '/media/logo/other/arflab.png',
   },
   {
     name: 'Walkers',
