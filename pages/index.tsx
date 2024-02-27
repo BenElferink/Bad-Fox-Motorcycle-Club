@@ -113,64 +113,6 @@ const gamePartners = [
   },
 ]
 
-const clients = [
-  {
-    name: 'Ape Nation',
-    url: 'https://apenationcnft.com',
-    logoUrl: '/media/logo/other/apenation.png',
-  },
-  {
-    name: 'Mallard Order',
-    url: 'https://www.mallardorder.io',
-    logoUrl: '/media/logo/other/mallardorder.png',
-  },
-  {
-    name: 'Porky Island',
-    url: 'https://porkyisland.com',
-    logoUrl: '/media/logo/other/porkyisland.png',
-  },
-  {
-    name: '$SHARKY',
-    url: 'https://www.sharkycoinada.com',
-    logoUrl: '/media/logo/other/sharky.png',
-  },
-  {
-    name: 'Whiskees',
-    url: 'https://whiskeesnfts.com',
-    logoUrl: '/media/logo/other/whiskees.png',
-  },
-  {
-    name: 'ADA Punks',
-    url: 'https://adapunks.net',
-    logoUrl: '/media/logo/other/adapunks.png',
-  },
-  {
-    name: 'The A.R.F $LAB',
-    url: 'https://www.lab-token.com',
-    logoUrl: '/media/logo/other/arflab.png',
-  },
-  {
-    name: 'Walkers',
-    url: 'https://walkerscardano.xyz',
-    logoUrl: '/media/logo/other/walkers.png',
-  },
-  {
-    name: 'Banker Coin',
-    url: 'https://bankercoinada.com',
-    logoUrl: '/media/logo/other/bankercoin.png',
-  },
-  {
-    name: 'Tortol Token',
-    url: 'https://theturtlesyndicate.xyz',
-    logoUrl: '/media/logo/other/tortoltoken.png',
-  },
-  {
-    name: 'Hyena Coin',
-    url: 'https://hyenacoin.xyz',
-    logoUrl: '/media/logo/other/hyenacoin.png',
-  },
-]
-
 const certifications = [
   {
     name: 'Ted Nation Doxxing',
@@ -297,15 +239,6 @@ const Page = () => {
         <div className='flex flex-wrap items-center justify-center'>
           {gamePartners.map(({ name, url, logoUrl }) => (
             <Badge key={`game-partner: ${name}`} name={name} url={url} logoUrl={logoUrl} />
-          ))}
-        </div>
-      </div>
-
-      <div className='flex flex-col items-center justify-center my-8'>
-        <h5 className='text-2xl'>Clients</h5>
-        <div className='flex flex-wrap items-center justify-center'>
-          {clients.map(({ name, url, logoUrl }) => (
-            <Badge key={`client-${name}`} name={name} url={url} logoUrl={logoUrl} />
           ))}
         </div>
       </div>
