@@ -22,7 +22,6 @@ export const navTokens = [
   { label: 'IDP', path: '/tokens/idp' },
   { label: 'HEXO', path: '/tokens/hexo' },
   { label: 'EZY', path: '/tokens/ezy' },
-  { label: 'NFTC', path: '/tokens/nftc' },
   { label: 'MD', path: '/tokens/md' },
   { label: 'CHILLAZ', path: '/tokens/chillaz' },
 ]

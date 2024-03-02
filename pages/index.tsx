@@ -59,11 +59,6 @@ const tokenPartners = [
     logoUrl: '/media/logo/other/eggscapeclub.png',
   },
   {
-    name: 'NFT Creative',
-    url: 'https://nftcreative.ca',
-    logoUrl: '/media/logo/other/nftcreative.png',
-  },
-  {
     name: 'Mad Dog Car Club',
     url: 'https://mdtoken.io',
     logoUrl: '/media/logo/other/maddogcarclub.png',
@@ -165,14 +160,6 @@ const teamMembers = [
       'https://www.youtube.com/@badfox4042',
       'https://soundcloud.com/badfox4042',
     ],
-  },
-  {
-    name: 'Stef BBQ',
-    title: 'Moderator',
-    description:
-      "I remote operate offshore oil and gas producing platforms from an onshore controlroom for a living, I've been into crypto for about 1,5 years and became a NFT enthousiast on Cardano little over a year ago. BadFoxMC has got a special place in my heart.",
-    profilePicture: '/media/team/stef_bbq.jpg',
-    socials: ['https://x.com/Stef_bbq', 'https://discord.com/users/933925521346138182', 'https://www.instagram.com/stef_bbq/'],
   },
   {
     name: 'Happyboi',
