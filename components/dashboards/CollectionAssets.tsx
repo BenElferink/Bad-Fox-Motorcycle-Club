@@ -282,30 +282,6 @@ const AssetModalContent = (props: AssetModalContentProps) => {
               JPG Store
             </button>
 
-            <button
-              onClick={() => window.open(`https://flipr.io/asset/${asset.tokenId}`, '_blank', 'noopener noreferrer')}
-              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
-            >
-              <Image unoptimized src='/media/logo/other/flipr.png' alt='' width={30} height={30} className='mr-2' />
-              Flipr
-            </button>
-
-            <button
-              onClick={() => window.open(`https://www.plutus.art/asset/${asset.tokenId}`, '_blank', 'noopener noreferrer')}
-              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
-            >
-              <Image unoptimized src='/media/logo/other/plutusart.png' alt='' width={30} height={30} className='mr-2' />
-              Plutus Art
-            </button>
-
-            <button
-              onClick={() => window.open(`https://epoch.art/asset/${asset.tokenId}`, '_blank', 'noopener noreferrer')}
-              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
-            >
-              <Image unoptimized src='/media/logo/other/epochart.png' alt='' width={30} height={30} className='mr-2' />
-              Epoch Art
-            </button>
-
             {asset.rarityRank ? (
               <button
                 onClick={() =>
@@ -329,36 +305,6 @@ const AssetModalContent = (props: AssetModalContentProps) => {
                 CNFT Tools
               </button>
             ) : null}
-
-            <button
-              onClick={() => window.open(`https://www.jngl.io/asset/${policyId}.${asset.tokenName?.onChain}`, '_blank', 'noopener noreferrer')}
-              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
-            >
-              <Image unoptimized src='/media/logo/other/cnftjungle.png' alt='' width={30} height={30} className='mr-2' />
-              Jungle
-            </button>
-
-            <button
-              onClick={() =>
-                window.open(
-                  `https://opencnft.io/${
-                    policyId === BAD_FOX_POLICY_ID
-                      ? 'bad-fox-motorcycle-club-fox-collection'
-                      : policyId === BAD_MOTORCYCLE_POLICY_ID
-                      ? 'bad-fox-motorcycle-club-bad-motorcycle'
-                      : policyId === BAD_MOTORCYCLE_POLICY_ID
-                      ? 'bad-fox-motorcycle-club-bad-key'
-                      : ''
-                  }/asset/${asset.fingerprint}`,
-                  '_blank',
-                  'noopener noreferrer'
-                )
-              }
-              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
-            >
-              <Image unoptimized src='/media/logo/other/opencnft.png' alt='' width={30} height={30} className='mr-2' />
-              Open CNFT
-            </button>
 
             <button
               onClick={() => window.open(`https://cardanoscan.io/token/${asset.tokenId}`, '_blank', 'noopener noreferrer')}
