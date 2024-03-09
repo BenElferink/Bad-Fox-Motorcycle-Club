@@ -24,9 +24,14 @@ const creativePartners = [
 
 const tokenPartners = [
   {
+    name: 'Banker Coin',
+    url: 'https://bankerlabs.io',
+    logoUrl: '/media/tokens/bank/token.png',
+  },
+  {
     name: 'CSWAP DEX',
     url: 'https://www.cswap.fi',
-    logoUrl: '/media/logo/other/cswap.png',
+    logoUrl: '/media/tokens/cswap/token.png',
   },
   {
     name: 'The Ape Society',
@@ -43,11 +48,11 @@ const tokenPartners = [
     url: 'https://idopass.finance',
     logoUrl: '/media/logo/other/idopassdao.png',
   },
-  // {
-  //   name: 'Pangolin Protocol',
-  //   url: 'https://pangolinprotocol.com',
-  //   logoUrl: '/media/logo/other/pangolinprotocol.png',
-  // },
+  {
+    name: 'Pangolin Protocol',
+    url: 'https://pangolinprotocol.com',
+    logoUrl: '/media/logo/other/pangolinprotocol.png',
+  },
   {
     name: 'Cardano Lands',
     url: 'https://cardanolands.com',
@@ -59,14 +64,14 @@ const tokenPartners = [
     logoUrl: '/media/logo/other/eggscapeclub.png',
   },
   {
-    name: 'Mad Dog Car Club',
-    url: 'https://mdtoken.io',
-    logoUrl: '/media/logo/other/maddogcarclub.png',
-  },
-  {
     name: 'The Chillaz',
     url: 'https://utility.chainchillaz.io',
     logoUrl: '/media/logo/other/chillaz.png',
+  },
+  {
+    name: 'Mad Dog Car Club',
+    url: 'https://mdtoken.io',
+    logoUrl: '/media/logo/other/maddogcarclub.png',
   },
 ]
 
@@ -213,7 +218,7 @@ const Page = () => {
       </div>
 
       <div className='flex flex-col items-center justify-center my-8'>
-        <h5 className='text-2xl'>Token Partners</h5>
+        <h5 className='text-2xl'>Staking Partners</h5>
         <div className='flex flex-wrap items-center justify-center'>
           {tokenPartners.map(({ name, url, logoUrl }) => (
             <Badge key={`token-partner:${name}`} name={name} url={url} logoUrl={logoUrl} />
@@ -222,7 +227,7 @@ const Page = () => {
       </div>
 
       <div className='flex flex-col items-center justify-center my-8'>
-        <h5 className='text-2xl'>Game Partners</h5>
+        <h5 className='text-2xl'>Gaming Partners</h5>
         <div className='flex flex-wrap items-center justify-center'>
           {gamePartners.map(({ name, url, logoUrl }) => (
             <Badge key={`game-partner: ${name}`} name={name} url={url} logoUrl={logoUrl} />

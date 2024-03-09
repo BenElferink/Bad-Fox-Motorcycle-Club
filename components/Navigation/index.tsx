@@ -16,14 +16,16 @@ export const navCollections = [
 
 export const navTokens = [
   { label: 'ADA', path: '/tokens/ada' },
-  { label: 'CSWAP / CSXP', path: '/tokens/cswap' },
-  { label: 'SOC', path: '/tokens/soc' },
+  { label: 'BANK', path: '' },
   { label: 'C4', path: '/tokens/c4' },
-  { label: 'IDP', path: '/tokens/idp' },
-  { label: 'HEXO', path: '/tokens/hexo' },
-  { label: 'EZY', path: '/tokens/ezy' },
-  { label: 'MD', path: '/tokens/md' },
   { label: 'CHILLAZ', path: '/tokens/chillaz' },
+  { label: 'CSWAP / CSXP', path: '/tokens/cswap' },
+  { label: 'EZY', path: '/tokens/ezy' },
+  { label: 'HEXO', path: '/tokens/hexo' },
+  { label: 'IDP', path: '/tokens/idp' },
+  { label: 'MD', path: '/tokens/md' },
+  { label: 'SCALE', path: '' },
+  { label: 'SOC', path: '/tokens/soc' },
 ]
 
 export const navGames = [
