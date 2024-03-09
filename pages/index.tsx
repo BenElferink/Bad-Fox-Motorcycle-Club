@@ -149,15 +149,15 @@ const teamMembers = [
     socials: [
       'https://x.com/Minkov_D',
       'https://discord.com/users/958536998140907550',
-      'https://instagram.com/david_minkov',
       'https://www.linkedin.com/in/david-minkov-50187620a',
+      'https://instagram.com/david_minkov',
     ],
   },
   {
     name: '4042',
     title: 'Director of Vibes',
     description:
-      'I use creative thinking as a means of expression. This helps me to connect dots and build bridges from one point to another. What is a "Director of Vibes" ? Look at it as a less formal version of Community Manager. I\'m here to coordinate the community vibes and connect with the people!',
+      'I use creative thinking as a means of expression. This helps me to connect dots and build bridges from one point to another. What is a "Director of Vibes"? Look at it as a less formal version of Community Manager. I\'m here to coordinate the community vibes and connect with the people!',
     profilePicture: '/media/team/4042.jpg',
     socials: [
       'https://x.com/BadFox4042',
@@ -165,14 +165,6 @@ const teamMembers = [
       'https://www.youtube.com/@badfox4042',
       'https://soundcloud.com/badfox4042',
     ],
-  },
-  {
-    name: 'Happyboi',
-    title: 'Moderator',
-    description:
-      "I'm Sydney by name, also known as Happyboi. I'm into trading, and learning technical analysis. I don't have many hobbies, but I love reading books or watching movies whenever I'm free.",
-    profilePicture: '/media/team/happyboi.jpg',
-    socials: ['https://x.com/mr_hapyyy', 'https://discord.com/users/1024728525015621723', 'https://instagram.com/sydney.chukwu.52'],
   },
 ]
 
