@@ -4,16 +4,8 @@ import useScreenSize from '../hooks/useScreenSize'
 
 const GRAPHICS = [
   {
-    fox: '/media/landing/tool_fox.png',
-    bike: '/media/landing/tool_bike.png',
-  },
-  {
-    fox: '/media/landing/f_fox.png',
-    bike: '/media/landing/f_bike.png',
-  },
-  {
-    fox: '/media/landing/m_fox.png',
-    bike: '/media/landing/m_bike.png',
+    fox: '/media/landing/fox.png',
+    bike: '/media/landing/bike.png',
   },
 ]
 
@@ -37,9 +29,9 @@ const Landing = () => {
   const [foxSize, setFoxSize] = useState(1)
   const [bikeSize, setBikeSize] = useState(1)
 
-  // useEffect(() => {
-  //   setShowIndex(Math.floor(Math.random() * GRAPHICS.length))
-  // }, [])
+  useEffect(() => {
+    setShowIndex(Math.floor(Math.random() * GRAPHICS.length))
+  }, [])
 
   useEffect(() => {
     setLogoSize((screenWidth / 100) * 30.5)
