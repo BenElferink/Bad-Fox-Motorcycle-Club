@@ -1,13 +1,15 @@
 import { Fragment, useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { CheckIcon, NoSymbolIcon } from '@heroicons/react/24/solid'
-import { firestore } from '../utils/firebase'
-import useWallet from '../contexts/WalletContext'
-import WalletConnect from '../components/Wallet/WalletConnect'
-import ImageLoader from '../components/Loader/ImageLoader'
-import { APRIL_20_BLOCK, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID } from '../constants'
-import avatarRendersFile from '../data/3D/fox-png.json'
-import avatarAssetsFile from '../data/assets/bad-fox-3d.json'
+import { Transaction } from '@meshsdk/core'
+import { firebase, firestore } from '@/utils/firebase'
+import useWallet from '@/contexts/WalletContext'
+import WalletConnect from '@/components/Wallet/WalletConnect'
+import ImageLoader from '@/components/Loader/ImageLoader'
+import Loader from '@/components/Loader'
+import { ADA_SYMBOL, APRIL_20_BLOCK, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, ONE_MILLION, ROYALTY_WALLET } from '@/constants'
+import avatarRendersFile from '@/data/3D/fox-png.json'
+import avatarAssetsFile from '@/data/assets/bad-fox-3d.json'
 
 interface ChoiceItem {
   name: string
@@ -17,12 +19,14 @@ interface ChoiceItem {
 
 interface Reservation {
   stakeKey: string
+  paidFor: number
   serialNumbers: number[]
 }
 
 const Reserve3D = () => {
-  const { populatedWallet } = useWallet()
+  const { populatedWallet, wallet } = useWallet()
   const [loading, setLoading] = useState(false)
+  const [numberOfPaidFor, setNumberOfPaidFor] = useState(0)
   const [numberOfChoices, setNumberOfChoices] = useState(0)
   const [reserved, setReserved] = useState<number[]>([])
   const [availableChoices, setAvailableChoices] = useState<ChoiceItem[]>([])
@@ -37,7 +41,7 @@ const Reserve3D = () => {
         const thisDoc = collectionQuery.docs[0].data() as Reservation
 
         const okReserves: number[] = []
-        ;(thisDoc?.serialNumbers || []).forEach((num) => {
+        ;(thisDoc.serialNumbers || []).forEach((num) => {
           const choiceIdx = choices.findIndex((item) => item.num === num)
 
           if (choiceIdx !== -1) {
@@ -52,6 +56,7 @@ const Reserve3D = () => {
 
         // update local states with approved reserves
         setReserved(okReserves)
+        setNumberOfPaidFor(thisDoc.paidFor || 0)
       }
     } catch (error: any) {
       console.error(error)
@@ -176,6 +181,82 @@ const Reserve3D = () => {
     }
   }, [populatedWallet])
 
+  if (numberOfPaidFor < numberOfChoices) {
+    return (
+      <div className='flex flex-col items-center'>
+        <h2 className='text-center text-xl'>
+          You covered fees for{' '}
+          <strong className='text-gray-200'>
+            {numberOfPaidFor} / {numberOfChoices}
+          </strong>{' '}
+          airdrops!
+        </h2>
+
+        <p className='my-4 text-center text-sm'>
+          Each NFT requires 2 ADA to cover the airdrop fees &amp; UTXOs (total
+          {2 * numberOfChoices}
+          {ADA_SYMBOL}).
+          <br />
+          At the time of airdrop, you will get 1.5 ADA per NFT back (total
+          {1.5 * numberOfChoices}
+          {ADA_SYMBOL}).
+        </p>
+
+        {loading ? (
+          <Loader />
+        ) : (
+          <button
+            disabled={loading}
+            onClick={async () => {
+              if (wallet) {
+                setLoading(true)
+
+                try {
+                  const stakeKey = populatedWallet?.stakeKey
+                  const toPayFor = numberOfChoices - numberOfPaidFor
+
+                  const tx = new Transaction({ initiator: wallet }).sendLovelace({ address: ROYALTY_WALLET }, String(toPayFor * 2 * ONE_MILLION))
+                  const unsiged = await tx.build()
+                  const signed = await wallet.signTx(unsiged)
+                  const txHash = await wallet.submitTx(signed)
+
+                  console.log(txHash)
+
+                  const collection = firestore.collection('reservations')
+                  const collectionQuery = await collection.where('stakeKey', '==', stakeKey).get()
+
+                  if (!collectionQuery.docs.length) {
+                    await collection.add({
+                      stakeKey,
+                      paidFor: toPayFor,
+                      serialNumbers: [],
+                    })
+                  } else {
+                    const { FieldValue } = firebase.firestore
+                    const documentId = collectionQuery.docs[0].id
+
+                    await collection.doc(documentId).update({
+                      paidFor: FieldValue.increment(toPayFor),
+                    })
+
+                    setNumberOfPaidFor(toPayFor)
+                  }
+                } catch (error: any) {
+                  alert(error?.message || error?.toString())
+                }
+
+                setLoading(false)
+              }
+            }}
+            className='p-4 bg-green-900 hover:bg-green-700 bg-opacity-50 hover:bg-opacity-50 rounded-xl border border-green-900 hover:border-green-700 text-base text-gray-200'
+          >
+            Pay & Continue
+          </button>
+        )}
+      </div>
+    )
+  }
+
   return (
     <div className='flex flex-col items-center'>
       <h2 className='text-center text-xl'>
@@ -184,7 +265,6 @@ const Reserve3D = () => {
           {reserved.length} / {numberOfChoices}
         </strong>{' '}
         free airdrops!
-        <br />
       </h2>
 
       {reserved.length > numberOfChoices ? (
@@ -201,7 +281,7 @@ const Reserve3D = () => {
           <br />
           If you do not reserve {numberOfChoices} avatars, the remaining airdrops will be random.
           <br />
-          If you do not own the asset at the time of the airdrop, the reservation will cancel.
+          If you do not own the asset at the time of the airdrop, the reservation will cancel and be replaced by a random.
         </p>
       )}
 
