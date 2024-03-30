@@ -20,6 +20,11 @@ const creativePartners = [
     url: 'https://www.soundrig.io/artist/bad-fox-4042',
     logoUrl: '/media/logo/other/soundrig.png',
   },
+  {
+    name: 'Bangr',
+    url: 'https://bangr.io',
+    logoUrl: '/media/logo/other/bangr.png',
+  },
 ]
 
 const tokenPartners = [

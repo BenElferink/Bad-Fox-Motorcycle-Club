@@ -270,7 +270,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
               onClick={() => window.open(`https://www.taptools.io/charts/nft?assets&policyID=${asset.policyId}`, '_blank', 'noopener noreferrer')}
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image unoptimized src='/media/logo/other/taptools.webp' alt='' width={30} height={30} className='mr-2' />
+              <Image unoptimized src='/media/logo/other/taptools.png' alt='' width={30} height={30} className='mr-2' />
               TapTools
             </button> */}
 
