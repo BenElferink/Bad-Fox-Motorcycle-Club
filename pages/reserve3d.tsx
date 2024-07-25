@@ -321,11 +321,11 @@ const Reserve3D = () => {
 const Page = () => {
   const { connected, connectedManually, disconnectWallet } = useWallet()
 
-  // return (
-  //   <div className='flex flex-col items-center'>
-  //     <p className='pt-[5vh] text-center text-lg text-[var(--pink)]'>3D reservations are closed.</p>
-  //   </div>
-  // )
+  return (
+    <div className='flex flex-col items-center'>
+      <p className='pt-[5vh] text-center text-lg text-[var(--pink)]'>3D reservations are closed.</p>
+    </div>
+  )
 
   if (connectedManually) {
     return (
