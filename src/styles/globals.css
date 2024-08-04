@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-gray-400;
+  }
+}
+
+:root {
+  --online: #44b700;
+  --offline: #b74400;
+
+  --cardano-blue: #1231a6;
+  --discord-purple: #7289da;
+
+  --orange: rgb(255, 80, 55);
+  --pink: rgb(255, 0, 130);
+  --gradient: linear-gradient(65deg, var(--orange), var(--pink));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0.1);
+  background-image: url('/media/landing/background.png');
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+model-viewer {
+  width: 100%;
+  height: 100%;
+}
