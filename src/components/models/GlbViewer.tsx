@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 
 export interface GlbViewerProps {
   src: string
@@ -13,13 +13,17 @@ const GlbViewer = (props: GlbViewerProps) => {
     // https://modelviewer.dev
   }, [])
 
-  const attributes = freeze
-    ? {}
-    : {
-        'camera-controls': true,
-        'auto-rotate': true,
-        autoplay: true,
-      }
+  const attributes = useMemo(
+    () =>
+      freeze
+        ? {}
+        : {
+            'camera-controls': true,
+            'auto-rotate': true,
+            autoplay: true,
+          },
+    [freeze]
+  )
 
   return (
     // @ts-ignore

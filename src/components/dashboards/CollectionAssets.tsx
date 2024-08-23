@@ -12,11 +12,10 @@ import CopyChip from '../CopyChip'
 import Loader from '../Loader'
 import Modal from '../layout/Modal'
 import ImageLoader from '../Loader/ImageLoader'
-import GlbViewer from '../models/google/GlbViewer'
-import TPoseModel from '../models/three/fbx/TPoseModel'
+import MusicPlayerWaves from '../MusicPlayerWaves'
+import GlbViewer from '../models/GlbViewer'
 import { ADA_SYMBOL, BAD_FOX_3D_POLICY_ID, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants'
 import type { PolicyId, PopulatedAsset, TraitsFile } from '../../@types'
-import MusicPlayerWaves from '../MusicPlayerWaves'
 
 interface AssetModalContentProps {
   policyId: string
@@ -117,12 +116,6 @@ const AssetModalContent = (props: AssetModalContentProps) => {
               <GlbViewer src={formatIpfsUrl(displayedFile.src)} />
             </div>
           </button>
-        ) : displayedFile.mediaType === 'application/octet-stream' ? (
-          <button onClick={() => {}} className='w-[80vw] md:w-[555px]'>
-            <div className='w-[100%] h-[80vw] md:w-[555px] md:h-[555px] bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
-              <TPoseModel withControls src={formatIpfsUrl(displayedFile.src)} />
-            </div>
-          </button>
         ) : (
           <button onClick={() => {}} className='w-[80vw] md:w-[555px]'>
             <div className='w-[100%] h-[80vw] md:w-[555px] md:h-[555px] flex items-center justify-center bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
@@ -134,39 +127,27 @@ const AssetModalContent = (props: AssetModalContentProps) => {
         )}
 
         <div className='w-[80vw] md:w-[555px] flex flex-wrap items-center'>
-          {asset.files.length
-            ? asset.files.map((file) => (
-                // file.src !== displayedFile.src ? (
-                <button
-                  key={`file-${file.name}`}
-                  onClick={() => setDisplayedFile(file)}
-                  className='w-32 h-32 m-1 flex items-center justify-center text-xs rounded-2xl border border-gray-700 bg-gray-900/50'
-                >
-                  {file.mediaType === 'image/png' ? (
-                    <ImageLoader src={formatIpfsUrl(file.src)} alt={file.name} width={150} height={150} style={{ borderRadius: '1rem' }} />
-                  ) : file.mediaType === 'video/mp4' ? (
-                    <video src={formatIpfsUrl(file.src)} playsInline width={150} height={150} style={{ borderRadius: '1rem' }} />
-                  ) : file.mediaType === 'audio/mp3' ? (
-                    <MusicalNoteIcon className='w-24 h-24' />
-                  ) : file.mediaType === 'model/gltf-binary' ? (
-                    <div className='w-full h-full bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
-                      <GlbViewer src={formatIpfsUrl(file.src)} freeze />
-                    </div>
-                  ) : file.mediaType === 'application/octet-stream' ? (
-                    <div className='w-full h-full bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
-                      <TPoseModel src={formatIpfsUrl(file.src)} />
-                    </div>
-                  ) : (
-                    <Fragment>
-                      Unhandled file type:
-                      <br />
-                      {file.mediaType}
-                    </Fragment>
-                  )}
-                </button>
-                // ) : null
-              ))
-            : null}
+          {asset.files?.map((file) =>
+            ['image/png', 'video/mp4', 'audio/mp3', 'model/gltf-binary'].includes(file.mediaType) ? (
+              <button
+                key={`file-${file.name}`}
+                onClick={() => setDisplayedFile(file)}
+                className='w-32 h-32 m-1 flex items-center justify-center text-xs rounded-2xl border border-gray-700 bg-gray-900/50'
+              >
+                {file.mediaType === 'image/png' ? (
+                  <ImageLoader src={formatIpfsUrl(file.src)} alt={file.name} width={150} height={150} style={{ borderRadius: '1rem' }} />
+                ) : file.mediaType === 'video/mp4' ? (
+                  <video src={formatIpfsUrl(file.src)} playsInline width={150} height={150} style={{ borderRadius: '1rem' }} />
+                ) : file.mediaType === 'audio/mp3' ? (
+                  <MusicalNoteIcon className='w-24 h-24' />
+                ) : file.mediaType === 'model/gltf-binary' ? (
+                  <div className='w-full h-full bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
+                    <GlbViewer src={formatIpfsUrl(file.src)} freeze />
+                  </div>
+                ) : null}
+              </button>
+            ) : null
+          )}
         </div>
       </div>
 
@@ -262,64 +243,24 @@ const AssetModalContent = (props: AssetModalContentProps) => {
               onClick={() => window.open(`https://pool.pm/${asset.fingerprint}`, '_blank', 'noopener noreferrer')}
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image unoptimized src='/media/logo/other/poolpm.png' alt='' width={30} height={30} className='mr-2' />
+              <Image unoptimized src='/media/logo/other/pool_pm.png' alt='' width={30} height={30} className='mr-2' />
               pool.pm
             </button>
-
-            {/* <button
-              onClick={() => window.open(`https://www.taptools.io/charts/nft?assets&policyID=${asset.policyId}`, '_blank', 'noopener noreferrer')}
-              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
-            >
-              <Image unoptimized src='/media/logo/other/taptools.png' alt='' width={30} height={30} className='mr-2' />
-              TapTools
-            </button> */}
 
             <button
               onClick={() => window.open(`https://www.jpg.store/asset/${asset.tokenId}`, '_blank', 'noopener noreferrer')}
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image unoptimized src='/media/logo/other/jpgstore.png' alt='' width={30} height={30} className='mr-2' />
+              <Image unoptimized src='/media/logo/other/jpg_store.png' alt='' width={30} height={30} className='mr-2' />
               JPG Store
             </button>
 
-            {asset.rarityRank ? (
-              <button
-                onClick={() =>
-                  window.open(
-                    `https://cnft.tools/${
-                      policyId === BAD_FOX_POLICY_ID
-                        ? 'badfoxmotorcycleclub'
-                        : policyId === BAD_MOTORCYCLE_POLICY_ID
-                        ? 'bfmcbadmotorcycle'
-                        : policyId === BAD_MOTORCYCLE_POLICY_ID
-                        ? 'badfoxmotorcycleclubbadkey'
-                        : ''
-                    }?asset=${asset.tokenName?.onChain}`,
-                    '_blank',
-                    'noopener noreferrer'
-                  )
-                }
-                className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
-              >
-                <Image unoptimized src='/media/logo/other/cnfttools.png' alt='' width={30} height={30} className='mr-2' />
-                CNFT Tools
-              </button>
-            ) : null}
-
             <button
-              onClick={() => window.open(`https://cardanoscan.io/token/${asset.tokenId}`, '_blank', 'noopener noreferrer')}
+              onClick={() => window.open(`https://beta.explorer.cardano.org/en/token/${asset.fingerprint}`, '_blank', 'noopener noreferrer')}
               className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
             >
-              <Image unoptimized src='/media/logo/other/cardanoscan.png' alt='' width={30} height={30} className='mr-2' />
-              Cardanoscan
-            </button>
-
-            <button
-              onClick={() => window.open(`https://cexplorer.io/asset/${asset.fingerprint}`, '_blank', 'noopener noreferrer')}
-              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
-            >
-              <Image unoptimized src='/media/logo/other/cexplorer.png' alt='' width={30} height={30} className='mr-2' />
-              Cexplorer
+              <Image unoptimized src='/media/logo/other/cardano_explorer.png' alt='' width={30} height={30} className='mr-2' />
+              Cardano Explorer
             </button>
           </Fragment>
         )}

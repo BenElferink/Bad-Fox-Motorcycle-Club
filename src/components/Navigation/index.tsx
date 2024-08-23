@@ -17,8 +17,8 @@ export const navCollections = [
 export const navTokens = [
   { label: 'BANK', logoSrc: '/media/tokens/bank.png', url: 'https://bankerlabs.io' },
   { label: 'C4', logoSrc: '/media/tokens/c4.png', url: 'https://cportal.io/nft-staking' },
-  { label: 'CSWAP', logoSrc: '/media/tokens/cswap.png', url: 'https://app.cswap.fi/nftstaking' },
-  { label: 'HEXO', logoSrc: '/media/tokens/hexo.png', url: 'https://app.cardanolands.com/collection/bfmc' },
+  { label: 'CSWAP', logoSrc: '/media/tokens/cswap.png', url: '' }, // https://app.cswap.fi/nftstaking
+  { label: 'HEXO', logoSrc: '/media/tokens/hexo.png', url: '' }, // https://app.cardanolands.com/collection/bfmc
   { label: 'IDP', logoSrc: '/media/tokens/idp.png', url: 'https://dapp.ada-anvil.io' },
   { label: 'SCALE', logoSrc: '/media/tokens/scale.png', url: '' }, // https://pangolin.ada-anvil.io
 ]
@@ -60,7 +60,7 @@ const Navigation = () => {
           >
             <SingleLink label='Home' path={'/'} />
           </li>
-          <li onClick={() => setIsNavOpen(false)}>
+          <li onClick={() => setIsNavOpen(false)} className='text-orange-300'>
             <SingleLink label='Lab/Tools' url='https://labs.badfoxmc.com' />
           </li>
           <li>
@@ -69,7 +69,7 @@ const Navigation = () => {
           <li>
             <MultipleLinks title='Staking' links={navTokens} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
           </li>
-          <li className='text-orange-300'>
+          <li>
             <MultipleLinks title='Events' links={limitedEvents} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
           </li>
         </ul>

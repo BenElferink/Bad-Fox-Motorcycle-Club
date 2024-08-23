@@ -1,7 +1,7 @@
 import { ChangeEventHandler, FormEventHandler, useState } from 'react'
 import { PopulatedAsset } from '@/src/@types'
 import ImageLoader from '@/src/components/Loader/ImageLoader'
-import GlbViewer from '@/src/components/models/google/GlbViewer'
+import GlbViewer from '@/src/components/models/GlbViewer'
 import { BAD_MOTORCYCLE_POLICY_ID } from '@/src/constants'
 import pngFiles from '@/src/data/3D/bike-png.json'
 import glbFiles from '@/src/data/3D/bike-glb.json'

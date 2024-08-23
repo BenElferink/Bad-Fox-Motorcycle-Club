@@ -2,8 +2,6 @@ export const ADA_SYMBOL = '₳'
 export const ONE_MILLION = 1000000
 export const APRIL_20_BLOCK = 8668854
 
-export const BLOCKFROST_API_KEY = process.env.BLOCKFROST_API_KEY || ''
-
 export const FIREBASE_API_KEY = process.env.NEXT_PUBLIC_FIREBASE_API_KEY
 export const FIREBASE_APP_ID = process.env.NEXT_PUBLIC_FIREBASE_APP_ID
 export const FIREBASE_AUTH_DOMAIN = process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
