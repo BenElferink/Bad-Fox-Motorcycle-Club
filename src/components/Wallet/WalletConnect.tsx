@@ -13,15 +13,7 @@ export interface WalletConnectProps {
 const WalletConnect = (props: WalletConnectProps) => {
   const { allowManual = false, introText = '' } = props
 
-  const {
-    availableWallets,
-    connectWallet,
-    connectWalletManually,
-    connecting,
-    connected,
-    connectedName,
-    populatedWallet,
-  } = useWallet()
+  const { availableWallets, connectWallet, connectWalletManually, connecting, connected, connectedName, populatedWallet } = useWallet()
   const router = useRouter()
 
   const [openModal, setOpenModal] = useState(true)
@@ -65,38 +57,35 @@ const WalletConnect = (props: WalletConnectProps) => {
               <p className='my-2 text-[var(--pink)]'>No wallets installed</p>
             ) : (
               <div className='flex flex-col min-w-[280px] w-[85%] md:w-[75%] '>
-                {availableWallets.map((wallet, idx) => (
-                  <button
-                    key={`connect-wallet-${wallet.name}`}
-                    onClick={() => connectWallet(wallet.name)}
-                    disabled={connecting || connected}
-                    className='w-full mt-1 mx-auto py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 hover:text-white hover:bg-gray-600 hover:border hover:border-gray-500'
-                    style={{
-                      borderRadius:
-                        idx === 0 && idx === availableWallets.length - 1
-                          ? '1rem'
-                          : idx === 0
-                          ? '1rem 1rem 0 0'
-                          : idx === availableWallets.length - 1
-                          ? '0 0 1rem 1rem'
-                          : '0',
-                    }}
-                  >
-                    <Image
-                      unoptimized
-                      src={wallet.icon}
-                      alt={wallet.name}
-                      width={35}
-                      height={35}
-                      className='mr-2'
-                    />
-                    {wallet.name}
-                  </button>
-                ))}
+                {availableWallets.map((wallet, idx) => {
+                  let trimmedName = wallet.name.toLowerCase().replace('wallet', '')
+                  trimmedName = `${trimmedName.charAt(0).toUpperCase()}${trimmedName.slice(1)}`
+
+                  return (
+                    <button
+                      key={`connect-wallet-${wallet.id}`}
+                      onClick={() => connectWallet(wallet.id)}
+                      disabled={connecting || connected}
+                      className='w-full mt-1 mx-auto p-4 flex items-center justify-start bg-gray-700 border border-gray-600 hover:text-white hover:bg-gray-600 hover:border hover:border-gray-500'
+                      style={{
+                        borderRadius:
+                          idx === 0 && idx === availableWallets.length - 1
+                            ? '1rem'
+                            : idx === 0
+                            ? '1rem 1rem 0 0'
+                            : idx === availableWallets.length - 1
+                            ? '0 0 1rem 1rem'
+                            : '0',
+                      }}
+                    >
+                      <Image unoptimized src={wallet.icon} alt={wallet.id} width={35} height={35} className='mr-4' />
+                      {trimmedName}&nbsp;<span className='text-xs'>({wallet.version})</span>
+                    </button>
+                  )
+                })}
 
                 <p className='w-full my-2 px-1 text-xs text-start'>
-                  <u>Disclaimer</u>: Connecting your wallet does not require a password. It&apos;s a read-only
-                  process.
+                  <u>Disclaimer</u>: Connecting your wallet does not require a password. It&apos;s a read-only process.
                 </p>
               </div>
             )}
@@ -104,9 +93,7 @@ const WalletConnect = (props: WalletConnectProps) => {
             {allowManual ? (
               <Fragment>
                 <h4 className='mt-4'>- OR -</h4>
-                <p className='text-sm'>
-                  Alternatively you can connect manually by pasting your ADA Handle / Wallet Address / Stake Key:
-                </p>
+                <p className='text-sm'>Alternatively you can connect manually by pasting your ADA Handle / Wallet Address / Stake Key:</p>
 
                 <form onSubmit={submitManualWallet} className='w-3/4 md:w-2/3 m-4 relative'>
                   <input
@@ -119,8 +106,7 @@ const WalletConnect = (props: WalletConnectProps) => {
                     type='submit'
                     disabled={connecting}
                     className={
-                      (input ? 'block' : 'hidden') +
-                      ' absolute top-1/2 right-1 -translate-y-1/2 p-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-sm'
+                      (input ? 'block' : 'hidden') + ' absolute top-1/2 right-1 -translate-y-1/2 p-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-sm'
                     }
                   >
                     CONNECT
