@@ -20,14 +20,12 @@ import type { PolicyId, PopulatedAsset, TraitsFile } from '../../@types'
 interface AssetModalContentProps {
   policyId: string
   asset: PopulatedAsset
-  withWallet: boolean
   selectBadKeyOfBurnedAsset: (assetId: string) => void
 }
 
 const AssetModalContent = (props: AssetModalContentProps) => {
-  const { policyId, asset, withWallet, selectBadKeyOfBurnedAsset } = props
+  const { policyId, asset, selectBadKeyOfBurnedAsset } = props
 
-  const [boughtAtPrice, setBoughtAtPrice] = useState(0)
   const [badKeyIdOfBurnedAsset, setBadKeyIdOfBurnedAsset] = useState('')
   const [downloading, setDownloading] = useState(false)
   const [displayedFile, setDisplayedFile] = useState<PopulatedAsset['files'][0]>(
@@ -61,22 +59,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
 
       setBadKeyIdOfBurnedAsset(foundBadKey.tokenId)
     }
-
-    if (withWallet) {
-      const stored = localStorage.getItem(`asset-price-${asset.tokenId}`)
-      const storedPrice = stored ? JSON.parse(stored) : 0
-      const storedPriceNum = Number(storedPrice)
-
-      if (storedPrice && !isNaN(storedPriceNum)) {
-        setBoughtAtPrice(storedPriceNum)
-      } else {
-        badLabsApi.token.market.getActivity(asset.tokenId).then((data) => {
-          const price = data.items.filter(({ activityType }) => activityType === 'BUY')[0]?.price || 0
-          setBoughtAtPrice(price)
-        })
-      }
-    }
-  }, [policyId, asset, withWallet])
+  }, [policyId, asset])
 
   return (
     <div className='flex flex-col lg:flex-row lg:justify-between md:px-6'>
@@ -159,24 +142,6 @@ const AssetModalContent = (props: AssetModalContentProps) => {
           <CopyChip prefix='Asset ID' value={asset.tokenId} />
         </div>
 
-        {withWallet ? (
-          <div className='mt-1 flex items-center'>
-            <p className='mx-2 whitespace-nowrap'>Bought for:</p>
-            <input
-              value={boughtAtPrice}
-              onChange={(e) => {
-                const val = Number(e.target.value)
-
-                if (!isNaN(val)) {
-                  localStorage.setItem(`asset-price-${asset.tokenId}`, String(val))
-                  setBoughtAtPrice(val)
-                }
-              }}
-              className='w-full p-3 rounded-lg bg-gray-900 border border-gray-700 text-sm hover:bg-gray-700 hover:border-gray-500 hover:text-white'
-            />
-          </div>
-        ) : null}
-
         <table className='mx-2 my-4 border-collapse'>
           <thead>
             <tr>
@@ -194,11 +159,12 @@ const AssetModalContent = (props: AssetModalContentProps) => {
           </tbody>
         </table>
 
-        {withWallet && asset.policyId === BAD_FOX_3D_POLICY_ID && asset.files.length
+        {asset.policyId === BAD_FOX_3D_POLICY_ID && asset.files.length
           ? asset.files.map((file) => {
-              const isGlb = file.mediaType === 'model/gltf-binary'
+              const mediaTypes = ['model/gltf-binary', 'application/octet-stream']
+              const isGlb = file.mediaType === mediaTypes[0]
 
-              return ['model/gltf-binary', 'application/octet-stream'].includes(file.mediaType) ? (
+              return mediaTypes.includes(file.mediaType) ? (
                 <button
                   key={`download-${file.src}`}
                   onClick={async () => {
@@ -428,7 +394,6 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
           <AssetModalContent
             policyId={policyId}
             asset={selectedAsset}
-            withWallet={withWallet}
             selectBadKeyOfBurnedAsset={(badKeyId) => {
               setSelectedAsset(null)
               setTimeout(() => {

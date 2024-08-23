@@ -1,6 +1,6 @@
-import useWallet from '../../contexts/WalletContext'
-import WalletConnect from '../../components/Wallet/WalletConnect'
-import Wallet from '../../components/Wallet'
+import useWallet from '../contexts/WalletContext'
+import WalletConnect from '../components/Wallet/WalletConnect'
+import Wallet from '../components/Wallet'
 import { Fragment } from 'react'
 
 const Page = () => {

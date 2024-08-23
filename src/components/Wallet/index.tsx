@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import WalletHero from './WalletHero'
 import CollectionSelector from './CollectionSelector'
 import CollectionAssets from '../dashboards/CollectionAssets'
@@ -28,8 +28,10 @@ const Wallet = () => {
 
       {selectedPolicyId ? (
         <div>
-          <div className='w-full h-0.5 my-8 bg-gray-700 rounded-lg' />
-          <CollectionAssets policyId={selectedPolicyId} withWallet />
+          <div className='w-1/2 h-1 mx-auto bg-gray-700 rounded-lg' />
+          <div className='my-4'>
+            <CollectionAssets policyId={selectedPolicyId} withWallet />
+          </div>
         </div>
       ) : null}
     </div>
