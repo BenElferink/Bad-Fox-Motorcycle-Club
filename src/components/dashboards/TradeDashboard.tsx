@@ -321,8 +321,8 @@ const TradeDashboard = () => {
           <tbody>
             <tr className='text-center'>
               <td className={bank3Ds.length ? 'text-green-400' : 'text-red-400'}>{bank3Ds.length}</td>
-              <td className={amountToSend ? 'text-green-400' : 'text-inherit'}>{amountToSend}</td>
-              <td className={amountToGet ? 'text-green-400' : 'text-inherit'}>{amountToGet}</td>
+              <td className={amountToSend ? 'text-blue-400' : 'text-inherit'}>{amountToSend}</td>
+              <td className={amountToGet ? 'text-blue-400' : 'text-inherit'}>{amountToGet}</td>
               <td className='text-green-400'>{amountOfTrades}</td>
             </tr>
           </tbody>
