@@ -253,7 +253,7 @@ const TradeDashboard = () => {
         <div className='w-[45%] flex flex-col items-center'>
           <h5 className='text-center text-xl text-gray-200'>2D Trade-Ins</h5>
           <p className='my-2 text-center text-sm'>
-            In an attempt to further remove any remaining 2D NFTs from criculation, we offer you this trade-in program.
+            In an attempt to further remove any remaining 2D NFTs from circulation, we offer you this trade-in program.
           </p>
           <ul className='text-center text-sm list-disc'>
             <li>Every 2D earns you a 3D (1-to-1)</li>
