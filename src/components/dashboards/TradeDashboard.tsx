@@ -14,8 +14,10 @@ import type { BadLabsApiTransaction } from '../../utils/badLabsApi'
 import {
   BAD_FOX_3D_POLICY_ID,
   BAD_FOX_POLICY_ID,
+  BAD_FOX_WALLET,
   BAD_KEY_POLICY_ID,
   BAD_MOTORCYCLE_POLICY_ID,
+  BAD_MOTORCYCLE_WALLET,
   ONE_MILLION,
   TRADE_APP_WALLET,
   TREASURY_WALLET,
@@ -126,19 +128,50 @@ const TradeDashboard = () => {
     const { id: docId } = await collection.add(payload)
 
     const assetsToSend: Asset[] = []
+    const foxesToSend: Asset[] = []
+    const bikesToSend: Asset[] = []
+    const lovelaces = String(amountToSend * ONE_MILLION)
 
     for (let i = 0; i < amountToSend; i++) {
-      assetsToSend.push({
-        unit: self2Ds[i].tokenId,
+      const t = self2Ds[i]
+      const p = {
+        unit: t.tokenId,
         quantity: '1',
-      })
+      }
+
+      if (t.policyId === BAD_FOX_POLICY_ID) {
+        foxesToSend.push(p)
+      } else if (t.policyId === BAD_MOTORCYCLE_POLICY_ID) {
+        bikesToSend.push(p)
+      } else {
+        assetsToSend.push(p)
+      }
     }
 
     try {
       const tx = new Transaction({ initiator: wallet })
-        .setTxInputs(keepRelevant(new Map(assetsToSend.map((x) => [x.unit, x.quantity])), await wallet.getUtxos()))
-        .sendAssets({ address: TREASURY_WALLET }, assetsToSend)
-        .sendLovelace({ address: TRADE_APP_WALLET }, String(amountToSend * ONE_MILLION))
+        .setTxInputs(
+          keepRelevant(
+            new Map(
+              [
+                {
+                  unit: 'lovelace',
+                  quantity: lovelaces,
+                },
+              ]
+                .concat(foxesToSend)
+                .concat(bikesToSend)
+                .concat(assetsToSend)
+                .map((x) => [x.unit, x.quantity])
+            ),
+            await wallet.getUtxos()
+          )
+        )
+        .sendLovelace({ address: TRADE_APP_WALLET }, lovelaces)
+
+      if (foxesToSend.length) tx.sendAssets({ address: BAD_FOX_WALLET }, foxesToSend)
+      if (bikesToSend.length) tx.sendAssets({ address: BAD_MOTORCYCLE_WALLET }, bikesToSend)
+      if (assetsToSend.length) tx.sendAssets({ address: TREASURY_WALLET }, assetsToSend)
 
       toast.dismiss()
       toast.loading('Building transaction')
