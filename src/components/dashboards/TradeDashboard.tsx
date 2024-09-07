@@ -128,50 +128,22 @@ const TradeDashboard = () => {
     const { id: docId } = await collection.add(payload)
 
     const assetsToSend: Asset[] = []
-    const foxesToSend: Asset[] = []
-    const bikesToSend: Asset[] = []
     const lovelaces = String(amountToSend * ONE_MILLION)
 
     for (let i = 0; i < amountToSend; i++) {
       const t = self2Ds[i]
-      const p = {
+
+      assetsToSend.push({
         unit: t.tokenId,
         quantity: '1',
-      }
-
-      if (t.policyId === BAD_FOX_POLICY_ID) {
-        foxesToSend.push(p)
-      } else if (t.policyId === BAD_MOTORCYCLE_POLICY_ID) {
-        bikesToSend.push(p)
-      } else {
-        assetsToSend.push(p)
-      }
+      })
     }
 
     try {
-      const tx = new Transaction({ initiator: wallet })
-        .setTxInputs(
-          keepRelevant(
-            new Map(
-              [
-                {
-                  unit: 'lovelace',
-                  quantity: lovelaces,
-                },
-              ]
-                .concat(foxesToSend)
-                .concat(bikesToSend)
-                .concat(assetsToSend)
-                .map((x) => [x.unit, x.quantity])
-            ),
-            await wallet.getUtxos()
-          )
-        )
+      const tx = new Transaction({ initiator: wallet, verbose: true })
+        .setTxInputs(keepRelevant(new Map(assetsToSend.map((x) => [x.unit, x.quantity])), await wallet.getUtxos()))
+        .sendAssets({ address: TREASURY_WALLET }, assetsToSend)
         .sendLovelace({ address: TRADE_APP_WALLET }, lovelaces)
-
-      if (foxesToSend.length) tx.sendAssets({ address: BAD_FOX_WALLET }, foxesToSend)
-      if (bikesToSend.length) tx.sendAssets({ address: BAD_MOTORCYCLE_WALLET }, bikesToSend)
-      if (assetsToSend.length) tx.sendAssets({ address: TREASURY_WALLET }, assetsToSend)
 
       toast.dismiss()
       toast.loading('Building transaction')
