@@ -40,6 +40,7 @@ export interface FloorSnapshot {
 }
 
 export interface Trade {
+  timestamp: number
   stakeKey: string
   depositAmount: number
   depositTx: string

@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Asset, BlockfrostProvider, keepRelevant, MeshWallet, Transaction } from '@meshsdk/core'
-import { firestore } from '../../utils/firebase'
-import badLabsApi from '../../utils/badLabsApi'
-import type { Trade } from '../../@types'
+import { firestore } from '@/src/utils/firebase'
+import badLabsApi from '@/src/utils/badLabsApi'
+import type { Trade } from '@/src/@types'
 import {
   BAD_FOX_POLICY_ID,
   BAD_MOTORCYCLE_POLICY_ID,
@@ -11,7 +11,7 @@ import {
   TRADE_APP_MNEMONIC,
   TRADE_APP_WALLET,
   TREASURY_WALLET,
-} from '../../constants'
+} from '@/src/constants'
 
 export const config = {
   maxDuration: 300,
@@ -25,7 +25,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     switch (method) {
-      case 'GET':
       case 'POST': {
         const { docId } = body
 
@@ -43,6 +42,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         const txData = await badLabsApi.transaction.getData(depositTx, { withUtxos: true })
 
         if (!txData) throw new Error('deposit TX not confirmed yet')
+        if (!docData.timestamp) await collection.doc(docId).update({ timestamp: Date.now() })
 
         const receivedTokenIds: string[] = []
 

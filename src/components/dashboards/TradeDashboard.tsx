@@ -114,6 +114,7 @@ const TradeDashboard = () => {
     setLoading(true)
 
     const payload: Trade = {
+      timestamp: 0,
       stakeKey: populatedWallet?.stakeKey as Trade['stakeKey'],
       depositAmount: amountToSend,
       depositTx: '',
