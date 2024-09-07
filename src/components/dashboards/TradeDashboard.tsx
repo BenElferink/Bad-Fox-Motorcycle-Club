@@ -54,6 +54,7 @@ const TradeDashboard = () => {
   const [bankWallet, setBankWallet] = useState<PopulatedWallet | null>(null)
   const [amountToSend, setAmountToSend] = useState(0)
   const [amountToGet, setAmountToGet] = useState(0)
+  const [amountOfTrades, setAmountOfTrades] = useState(0)
 
   const [loading, setLoading] = useState<boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string>(
@@ -67,6 +68,17 @@ const TradeDashboard = () => {
   )
 
   useEffect(() => {
+    const countTrades = async () => {
+      const collection = firestore.collection('trades')
+      const { docs } = await collection.where('withdrawTx', '!=', '').get()
+
+      let count = 0
+      docs.forEach((d) => (count += (d.data() as Trade).depositAmount))
+      setAmountOfTrades(count)
+    }
+
+    countTrades()
+
     const getBank = async () => {
       setLoading(true)
 
@@ -148,6 +160,8 @@ const TradeDashboard = () => {
       }
     }
 
+    const concattedAssets = foxesToSend.concat(bikesToSend).concat(assetsToSend)
+
     try {
       const tx = new Transaction({ initiator: wallet })
         .setTxInputs(
@@ -159,9 +173,7 @@ const TradeDashboard = () => {
                   quantity: lovelaces,
                 },
               ]
-                .concat(foxesToSend)
-                .concat(bikesToSend)
-                .concat(assetsToSend)
+                .concat(concattedAssets)
                 .map((x) => [x.unit, x.quantity])
             ),
             await wallet.getUtxos()
@@ -192,7 +204,8 @@ const TradeDashboard = () => {
       toast.loading('Awaiting network confirmation')
 
       await txConfirmation(txHash as string)
-      removeAssetsFromWallet(assetsToSend.map((x) => x.unit))
+      removeAssetsFromWallet(concattedAssets.map((x) => x.unit))
+      setAmountOfTrades((p) => p + concattedAssets.length)
 
       toast.dismiss()
       toast.success('Transaction submitted,\nTrade-in complete!')
@@ -302,13 +315,15 @@ const TradeDashboard = () => {
               <th className='px-4'>Available 3Ds</th>
               <th className='px-4'>2Ds to Send</th>
               <th className='px-4'>3Ds to Get</th>
+              <th className='px-4'>2Ds Traded Globally</th>
             </tr>
           </thead>
           <tbody>
             <tr className='text-center'>
               <td className={bank3Ds.length ? 'text-green-400' : 'text-red-400'}>{bank3Ds.length}</td>
-              <td>{amountToSend}</td>
-              <td>{amountToGet}</td>
+              <td className={amountToSend ? 'text-green-400' : 'text-inherit'}>{amountToSend}</td>
+              <td className={amountToGet ? 'text-green-400' : 'text-inherit'}>{amountToGet}</td>
+              <td className='text-green-400'>{amountOfTrades}</td>
             </tr>
           </tbody>
         </table>
