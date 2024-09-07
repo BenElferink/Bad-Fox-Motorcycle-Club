@@ -130,7 +130,7 @@ const TradeDashboard = () => {
     const assetsToSend: Asset[] = []
     const foxesToSend: Asset[] = []
     const bikesToSend: Asset[] = []
-    const lovelaces = String(amountToSend * ONE_MILLION)
+    const lovelaces = String(amountToSend * 1.5 * ONE_MILLION)
 
     for (let i = 0; i < amountToSend; i++) {
       const t = self2Ds[i]
