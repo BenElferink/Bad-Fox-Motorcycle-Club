@@ -10,7 +10,8 @@ import {
   BLOCKFROST_API_KEY,
   TRADE_APP_MNEMONIC,
   TRADE_APP_WALLET,
-  TREASURY_WALLET,
+  BAD_FOX_WALLET,
+  BAD_MOTORCYCLE_WALLET,
 } from '@/src/constants'
 
 export const config = {
@@ -48,11 +49,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
         for (const { address, tokens } of txData.utxos || []) {
           for (const { tokenId } of tokens) {
-            if (tokenId.indexOf(BAD_FOX_POLICY_ID) == 0 && address.to === TREASURY_WALLET) {
+            if (tokenId.indexOf(BAD_FOX_POLICY_ID) == 0 && address.to === BAD_FOX_WALLET) {
               receivedTokenIds.push(tokenId)
             }
 
-            if (tokenId.indexOf(BAD_MOTORCYCLE_POLICY_ID) == 0 && address.to === TREASURY_WALLET) {
+            if (tokenId.indexOf(BAD_MOTORCYCLE_POLICY_ID) == 0 && address.to === BAD_MOTORCYCLE_WALLET) {
               receivedTokenIds.push(tokenId)
             }
           }
@@ -96,7 +97,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           },
         })
 
-        const tx = new Transaction({ initiator: wallet, verbose: true })
+        const tx = new Transaction({ initiator: wallet })
           .setTxInputs(keepRelevant(new Map(assetsToSend.map((x) => [x.unit, x.quantity])), await wallet.getUtxos()))
           .sendAssets({ address: recipientAddress }, assetsToSend)
 
