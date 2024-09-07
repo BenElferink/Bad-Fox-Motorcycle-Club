@@ -6,10 +6,11 @@ export interface SingleLinkProps {
   logoSrc?: string
   path?: string
   url?: string
+  deprecated?: boolean
 }
 
 const SingleLink = (props: SingleLinkProps) => {
-  const { label, logoSrc, path, url } = props
+  const { label, logoSrc, path, url, deprecated } = props
   const router = useRouter()
   const selected = router.asPath === path // || router.pathname === path
   const isNothing = !url && !path
@@ -32,11 +33,12 @@ const SingleLink = (props: SingleLinkProps) => {
       <span className='flex items-center'>
         {logoSrc ? (
           <div className='w-6 h-6 flex items-center'>
-            <img src={logoSrc} alt='' className='w-4 object-cover' />
+            <img src={logoSrc} alt='' className='w-4 object-cover rounded-full' />
           </div>
         ) : null}
 
         {label}
+        {deprecated ? <span className='ml-1 text-xs text-start text-red-400'>(deprecated)</span> : null}
       </span>
     </Link>
   )

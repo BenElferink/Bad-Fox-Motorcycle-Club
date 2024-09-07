@@ -21,7 +21,7 @@ const CollectionSelector = (props: CollectionSelectorProps) => {
           ? Object.entries(populatedWallet?.assets || {}).find(([policyId, assets]) => coll.policyId === policyId && !!assets.length)
           : true
 
-        return !!coll.collections ? (
+        return !!coll.policyId ? (
           <button
             key={`collection-${coll.policyId}`}
             type='button'

@@ -23,7 +23,7 @@ interface ContextValue {
   connectedManually: boolean
   wallet: BrowserWallet | null
   populatedWallet: PopulatedWallet | null
-  removeAssetsFromWallet: (_assetIds: string[]) => Promise<void>
+  removeAssetsFromWallet: (_assetIds: string[]) => void
 }
 
 const WalletContext = createContext<ContextValue>({
@@ -37,7 +37,7 @@ const WalletContext = createContext<ContextValue>({
   connectedName: '',
   wallet: null,
   populatedWallet: null,
-  removeAssetsFromWallet: async (_assetIds: string[]) => {},
+  removeAssetsFromWallet: (_assetIds: string[]) => {},
 })
 
 export default function useWallet() {
@@ -282,27 +282,27 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [connected])
 
-  useEffect(() => {
-    if (!connected) {
-      const connectPaths = ['/wallet', '/trade']
+  // useEffect(() => {
+  //   if (!connected) {
+  //     const connectPaths = ['/wallet', '/trade']
 
-      if (connectPaths.includes(window.location.pathname)) {
-        const storageItem = window.localStorage.getItem('connected-wallet')
+  //     if (connectPaths.includes(window.location.pathname)) {
+  //       const storageItem = window.localStorage.getItem('connected-wallet')
 
-        if (storageItem) {
-          const connectedWallet: LocalStorageConnectedWallet = JSON.parse(storageItem)
+  //       if (storageItem) {
+  //         const connectedWallet: LocalStorageConnectedWallet = JSON.parse(storageItem)
 
-          if (connectedWallet.walletProvider === 'Blockfrost') {
-            connectWalletManually(connectedWallet.stakeKey)
-          } else {
-            connectWallet(connectedWallet.walletProvider)
-          }
-        }
-      }
-    }
-  }, [])
+  //         if (connectedWallet.walletProvider === 'Blockfrost') {
+  //           connectWalletManually(connectedWallet.stakeKey)
+  //         } else {
+  //           connectWallet(connectedWallet.walletProvider)
+  //         }
+  //       }
+  //     }
+  //   }
+  // }, [])
 
-  const removeAssetsFromWallet = async (_assetIds: string[]) => {
+  const removeAssetsFromWallet = (_assetIds: string[]) => {
     if (connecting) return
     setConnecting(true)
 

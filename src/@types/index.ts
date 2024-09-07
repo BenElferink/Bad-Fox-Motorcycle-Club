@@ -41,8 +41,8 @@ export interface FloorSnapshot {
 
 export interface Trade {
   stakeKey: string
-  type: '1:1' | '2:1'
-  requestedTokenId: string
+  depositAmount: number
   depositTx: string
+  withdrawAmount: number
   withdrawTx: string
 }

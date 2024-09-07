@@ -4,15 +4,16 @@ import { useEffect, useState } from 'react'
 import { Bars3Icon } from '@heroicons/react/24/solid'
 import MultipleLinks from './MultipleLinks'
 import SingleLink from './SingleLink'
-import { BAD_FOX_3D_POLICY_ID, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../../constants'
+import collectionsData from '@/src/data/collections.json'
 
-export const navCollections = [
-  // { label: '2D Fox', url: `https://www.jpg.store/collection/${BAD_FOX_POLICY_ID}` },
-  // { label: '2D Motorcycle', url: `https://www.jpg.store/collection/${BAD_MOTORCYCLE_POLICY_ID}` },
-  { label: 'Bad Key', url: `https://www.jpg.store/collection/${BAD_KEY_POLICY_ID}` },
-  { label: '3D Fox', url: `https://www.jpg.store/collection/${BAD_FOX_3D_POLICY_ID}` },
-  { label: '3D Motorcycle', url: '' },
-]
+export const navCollections = collectionsData
+  .map((x) => ({
+    label: x.name,
+    url: x.policyId ? `https://www.jpg.store/collection/${x.policyId}` : '',
+    logoSrc: x.image,
+    deprecated: x.deprecated,
+  }))
+  .filter((x) => !!x)
 
 export const navTokens = [
   { label: 'BANK', logoSrc: '/media/tokens/bank.png', url: 'https://bankerlabs.io' },
@@ -24,9 +25,9 @@ export const navTokens = [
 ]
 
 export const limitedEvents = [
+  { label: '2D Trade-In', path: '/trade' },
   { label: '3D Previews', path: '/sneak3d' },
   { label: '3D Reservations', path: '' },
-  { label: '2D Trade-In', path: '' },
 ]
 
 const Navigation = () => {
