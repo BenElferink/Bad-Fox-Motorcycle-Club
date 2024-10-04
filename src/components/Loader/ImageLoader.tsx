@@ -28,7 +28,7 @@ const ImageLoader = (props: ImageLoaderProps) => {
         src={src}
         alt={alt}
         unoptimized={!optimized}
-        onLoadingComplete={() => setLoading(false)}
+        onLoad={() => setLoading(false)}
         width={width}
         height={height}
         style={style}
