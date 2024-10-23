@@ -1,6 +1,6 @@
-import Image from 'next/image'
-import { useState } from 'react'
-import Loader from '.'
+import Image from 'next/image';
+import { useState } from 'react';
+import Loader from '.';
 
 export interface ImageLoaderProps {
   src: string
@@ -13,8 +13,8 @@ export interface ImageLoaderProps {
 }
 
 const ImageLoader = (props: ImageLoaderProps) => {
-  const { src = '', alt = '', optimized = false, width = 100, height = 100, loaderSize = 0, style = {} } = props
-  const [loading, setLoading] = useState(true)
+  const { src = '', alt = '', optimized = false, width = 100, height = 100, loaderSize = 0, style = {} } = props;
+  const [loading, setLoading] = useState(true);
 
   return (
     <div className='relative z-10' style={style}>
@@ -34,7 +34,7 @@ const ImageLoader = (props: ImageLoaderProps) => {
         style={style}
       />
     </div>
-  )
-}
+  );
+};
 
-export default ImageLoader
+export default ImageLoader;

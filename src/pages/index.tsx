@@ -1,4 +1,4 @@
-import Landing from '../components/Landing'
+import Landing from '../components/Landing';
 // import TeamCard from '../components/cards/TeamCard'
 
 const Page = () => {
@@ -28,7 +28,7 @@ const Page = () => {
         ))}
       </div> */}
     </div>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

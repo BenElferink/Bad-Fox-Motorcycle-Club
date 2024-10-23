@@ -1,10 +1,10 @@
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
-import { Bars3Icon } from '@heroicons/react/24/solid'
-import MultipleLinks from './MultipleLinks'
-import SingleLink from './SingleLink'
-import collectionsData from '@/src/data/collections.json'
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { Bars3Icon } from '@heroicons/react/24/solid';
+import MultipleLinks from './MultipleLinks';
+import SingleLink from './SingleLink';
+import collectionsData from '@/src/data/collections.json';
 
 export const navCollections = collectionsData
   .map((x) => ({
@@ -13,7 +13,7 @@ export const navCollections = collectionsData
     logoSrc: x.image,
     deprecated: x.deprecated,
   }))
-  .filter((x) => !!x)
+  .filter((x) => !!x);
 
 export const navTokens = [
   { label: 'BANK', logoSrc: '/media/tokens/bank.png', url: 'https://bankerlabs.io' },
@@ -22,24 +22,24 @@ export const navTokens = [
   { label: 'HEXO', logoSrc: '/media/tokens/hexo.png', url: '' }, // https://app.cardanolands.com/collection/bfmc
   { label: 'IDP', logoSrc: '/media/tokens/idp.png', url: 'https://dapp.ada-anvil.io' },
   { label: 'SCALE', logoSrc: '/media/tokens/scale.png', url: '' }, // https://pangolin.ada-anvil.io
-]
+];
 
 export const limitedEvents = [
   { label: '2D Trade-In', path: '/trade' },
   { label: '3D Previews', path: '/sneak3d' },
   { label: '3D Reservations', path: '' },
-]
+];
 
 const Navigation = () => {
-  const router = useRouter()
-  const [isNavOpen, setIsNavOpen] = useState(false)
-  const [openDropdownName, setOpenDropdownName] = useState('')
+  const router = useRouter();
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [openDropdownName, setOpenDropdownName] = useState('');
 
   useEffect(() => {
     if (!openDropdownName) {
-      setIsNavOpen(false)
+      setIsNavOpen(false);
     }
-  }, [openDropdownName])
+  }, [openDropdownName]);
 
   return (
     <nav className='flex items-center'>
@@ -55,8 +55,8 @@ const Navigation = () => {
         <ul className='flex flex-col xl:flex-row absolute right-0 xl:static overflow-auto xl:overflow-visible max-h-[80vh] xl:max-h-auto w-80 xl:w-auto mt-8 xl:mt-0 p-4 bg-gray-900 border xl:border-0 rounded-lg border-gray-700 xl:space-x-8'>
           <li
             onClick={() => {
-              if (router.pathname === '/') window.scrollTo({ top: 0 })
-              setIsNavOpen(false)
+              if (router.pathname === '/') window.scrollTo({ top: 0 });
+              setIsNavOpen(false);
             }}
           >
             <SingleLink label='Home' path={'/'} />
@@ -89,7 +89,7 @@ const Navigation = () => {
         </Link>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;

@@ -1,5 +1,5 @@
-import { BAD_FOX_3D_POLICY_ID, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../constants'
-import type { BadLabsApiPopulatedToken } from '../utils/badLabsApi'
+import { BAD_FOX_3D_POLICY_ID, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../constants';
+import type { BadLabsApiPopulatedToken } from '../utils/badLabsApi';
 
 export type PolicyId = typeof BAD_FOX_POLICY_ID | typeof BAD_MOTORCYCLE_POLICY_ID | typeof BAD_KEY_POLICY_ID | typeof BAD_FOX_3D_POLICY_ID
 

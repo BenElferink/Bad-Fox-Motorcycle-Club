@@ -5,7 +5,7 @@ export interface LoaderProps {
 }
 
 const Loader = (props: LoaderProps) => {
-  const { size = 150 } = props
+  const { size = 150 } = props;
 
   return (
     <div className='flex flex-col items-center justify-center'>
@@ -79,7 +79,7 @@ const Loader = (props: LoaderProps) => {
         </svg>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Loader
+export default Loader;

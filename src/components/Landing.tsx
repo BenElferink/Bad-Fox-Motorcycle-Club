@@ -1,13 +1,13 @@
-import Image from 'next/image'
-import { Fragment, useEffect, useState } from 'react'
-import useScreenSize from '../hooks/useScreenSize'
+import Image from 'next/image';
+import { Fragment, useEffect, useState } from 'react';
+import useScreenSize from '../hooks/useScreenSize';
 
 const GRAPHICS = [
   {
     fox: '/media/landing/fox.png',
     bike: '/media/landing/bike.png',
   },
-]
+];
 
 const About = () => {
   return (
@@ -18,26 +18,26 @@ const About = () => {
         forms of fund redistributions, integrations into various games/metaverses, and we develop tools that benefit everyone on Cardano.
       </p>
     </div>
-  )
-}
+  );
+};
 
 const Landing = () => {
-  const { screenWidth } = useScreenSize()
+  const { screenWidth } = useScreenSize();
 
-  const [showIndex, setShowIndex] = useState(0)
-  const [logoSize, setLogoSize] = useState(1)
-  const [foxSize, setFoxSize] = useState(1)
-  const [bikeSize, setBikeSize] = useState(1)
-
-  useEffect(() => {
-    setShowIndex(Math.floor(Math.random() * GRAPHICS.length))
-  }, [])
+  const [showIndex, setShowIndex] = useState(0);
+  const [logoSize, setLogoSize] = useState(1);
+  const [foxSize, setFoxSize] = useState(1);
+  const [bikeSize, setBikeSize] = useState(1);
 
   useEffect(() => {
-    setLogoSize((screenWidth / 100) * 30.5)
-    setFoxSize((screenWidth / 100) * 42)
-    setBikeSize((screenWidth / 100) * 50)
-  }, [screenWidth])
+    setShowIndex(Math.floor(Math.random() * GRAPHICS.length));
+  }, []);
+
+  useEffect(() => {
+    setLogoSize((screenWidth / 100) * 30.5);
+    setFoxSize((screenWidth / 100) * 42);
+    setBikeSize((screenWidth / 100) * 50);
+  }, [screenWidth]);
 
   return (
     <Fragment>
@@ -77,7 +77,7 @@ const Landing = () => {
         <About />
       </div>
     </Fragment>
-  )
-}
+  );
+};
 
-export default Landing
+export default Landing;

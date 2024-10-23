@@ -1,15 +1,15 @@
-import { BAD_FOX_3D_POLICY_ID, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../constants'
+import { BAD_FOX_3D_POLICY_ID, BAD_FOX_POLICY_ID, BAD_KEY_POLICY_ID, BAD_MOTORCYCLE_POLICY_ID } from '../constants';
 
-import badFoxAssetsFile from '../data/assets/bad-fox-2d.json'
-import badMotorcycleAssetsFile from '../data/assets/bad-motorcycle-2d.json'
-import badKeyAssetsFile from '../data/assets/bad-key.json'
-import badFox3dAssetsFile from '../data/assets/bad-fox-3d.json'
+import badFoxAssetsFile from '../data/assets/bad-fox-2d.json';
+import badMotorcycleAssetsFile from '../data/assets/bad-motorcycle-2d.json';
+import badKeyAssetsFile from '../data/assets/bad-key.json';
+import badFox3dAssetsFile from '../data/assets/bad-fox-3d.json';
 
-import badFoxTraitsFile from '../data/traits/bad-fox-2d.json'
-import badMotorcycleTraitsFile from '../data/traits/bad-motorcycle-2d.json'
-import badFox3dTraitsFile from '../data/traits/bad-fox-3d.json'
+import badFoxTraitsFile from '../data/traits/bad-fox-2d.json';
+import badMotorcycleTraitsFile from '../data/traits/bad-motorcycle-2d.json';
+import badFox3dTraitsFile from '../data/traits/bad-fox-3d.json';
 
-import { PolicyId, PopulatedAsset, TraitsFile } from '../@types'
+import { PolicyId, PopulatedAsset, TraitsFile } from '../@types';
 
 const getFileForPolicyId = (policyId: PolicyId, fileType: 'assets' | 'traits') => {
   switch (fileType) {
@@ -23,7 +23,7 @@ const getFileForPolicyId = (policyId: PolicyId, fileType: 'assets' | 'traits') =
         ? badKeyAssetsFile.assets
         : policyId === BAD_FOX_3D_POLICY_ID
         ? badFox3dAssetsFile.assets
-        : []) as unknown as PopulatedAsset[]
+        : []) as unknown as PopulatedAsset[];
 
     case 'traits':
       return (
@@ -34,11 +34,11 @@ const getFileForPolicyId = (policyId: PolicyId, fileType: 'assets' | 'traits') =
           : policyId === BAD_FOX_3D_POLICY_ID
           ? badFox3dTraitsFile
           : {}
-      ) as TraitsFile
+      ) as TraitsFile;
 
     default:
-      return null
+      return null;
   }
-}
+};
 
-export default getFileForPolicyId
+export default getFileForPolicyId;

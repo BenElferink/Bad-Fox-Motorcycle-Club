@@ -1,6 +1,6 @@
-import { ChevronDownIcon } from '@heroicons/react/24/solid'
-import { Dispatch, SetStateAction } from 'react'
-import SingleLink, { SingleLinkProps } from './SingleLink'
+import { ChevronDownIcon } from '@heroicons/react/24/solid';
+import { Dispatch, SetStateAction } from 'react';
+import SingleLink, { SingleLinkProps } from './SingleLink';
 
 export interface MultipleLinksProps {
   title: string
@@ -12,8 +12,8 @@ export interface MultipleLinksProps {
 }
 
 const MultipleLinks = (props: MultipleLinksProps) => {
-  const { title, links, dropdownState } = props
-  const open = dropdownState.value === title
+  const { title, links, dropdownState } = props;
+  const open = dropdownState.value === title;
 
   return (
     <div className='relative'>
@@ -21,8 +21,8 @@ const MultipleLinks = (props: MultipleLinksProps) => {
         type='button'
         onClick={() =>
           dropdownState.setValue((prev) => {
-            if (prev === title) return ''
-            return title
+            if (prev === title) return '';
+            return title;
           })
         }
         className={
@@ -50,7 +50,7 @@ const MultipleLinks = (props: MultipleLinksProps) => {
         </ul>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MultipleLinks
+export default MultipleLinks;

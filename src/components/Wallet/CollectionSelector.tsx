@@ -1,9 +1,9 @@
-import React from 'react'
-import useWallet from '../../contexts/WalletContext'
-import ImageLoader from '../Loader/ImageLoader'
-import collectionsFile from '../../data/collections.json'
-import { PolicyId } from '../../@types'
-import { LockClosedIcon } from '@heroicons/react/24/outline'
+import React from 'react';
+import useWallet from '../../contexts/WalletContext';
+import ImageLoader from '../Loader/ImageLoader';
+import collectionsFile from '../../data/collections.json';
+import { PolicyId } from '../../@types';
+import { LockClosedIcon } from '@heroicons/react/24/outline';
 
 export interface CollectionSelectorProps {
   onSelected: (_policyId: PolicyId) => void
@@ -11,15 +11,15 @@ export interface CollectionSelectorProps {
 }
 
 const CollectionSelector = (props: CollectionSelectorProps) => {
-  const { onSelected, withWallet = false } = props
-  const { populatedWallet } = useWallet()
+  const { onSelected, withWallet = false } = props;
+  const { populatedWallet } = useWallet();
 
   return (
     <div className='flex flex-wrap items-center justify-center'>
       {collectionsFile.map((coll) => {
         const ownsThisCollection = !!withWallet
           ? Object.entries(populatedWallet?.assets || {}).find(([policyId, assets]) => coll.policyId === policyId && !!assets.length)
-          : true
+          : true;
 
         return !!coll.policyId ? (
           <button
@@ -27,7 +27,7 @@ const CollectionSelector = (props: CollectionSelectorProps) => {
             type='button'
             onClick={() => {
               if (ownsThisCollection) {
-                onSelected(coll.policyId as PolicyId)
+                onSelected(coll.policyId as PolicyId);
               }
             }}
             className={
@@ -54,10 +54,10 @@ const CollectionSelector = (props: CollectionSelectorProps) => {
               <LockClosedIcon className='w-3/4 h-3/4 text-gray-200' />
             </div>
           </button>
-        ) : null
+        ) : null;
       })}
     </div>
-  )
-}
+  );
+};
 
-export default CollectionSelector
+export default CollectionSelector;

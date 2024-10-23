@@ -1,53 +1,53 @@
-import { ChangeEventHandler, FormEventHandler, useState } from 'react'
-import { PopulatedAsset } from '@/src/@types'
-import ImageLoader from '@/src/components/Loader/ImageLoader'
-import GlbViewer from '@/src/components/models/GlbViewer'
-import { BAD_MOTORCYCLE_POLICY_ID } from '@/src/constants'
-import pngFiles from '@/src/data/3D/bike-png.json'
-import glbFiles from '@/src/data/3D/bike-glb.json'
-import getFileForPolicyId from '@/src/functions/getFileForPolicyId'
+import { ChangeEventHandler, FormEventHandler, useState } from 'react';
+import { PopulatedAsset } from '@/src/@types';
+import ImageLoader from '@/src/components/Loader/ImageLoader';
+import GlbViewer from '@/src/components/models/GlbViewer';
+import { BAD_MOTORCYCLE_POLICY_ID } from '@/src/constants';
+import pngFiles from '@/src/data/3D/bike-png.json';
+import glbFiles from '@/src/data/3D/bike-glb.json';
+import getFileForPolicyId from '@/src/functions/getFileForPolicyId';
 
 const Page = () => {
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
 
   const searchChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const v = e.target.value
-    const numV = Number(v)
+    const v = e.target.value;
+    const numV = Number(v);
 
     if (!isNaN(numV) && numV >= 0 && numV <= 3000) {
-      setSearch(v)
+      setSearch(v);
     }
-  }
+  };
 
-  const [displayName, setDisplayName] = useState('')
-  const [oldImageSrc, setOldImageSrc] = useState('')
-  const [newImageSrc, setNewImageSrc] = useState('')
-  const [glbFileSrc, setGlbFileSrc] = useState('')
+  const [displayName, setDisplayName] = useState('');
+  const [oldImageSrc, setOldImageSrc] = useState('');
+  const [newImageSrc, setNewImageSrc] = useState('');
+  const [glbFileSrc, setGlbFileSrc] = useState('');
 
   const searchSubmit: FormEventHandler<HTMLFormElement> = (e) => {
-    e?.preventDefault()
-    setDisplayName('')
+    e?.preventDefault();
+    setDisplayName('');
 
     setTimeout(() => {
-      let v = String(Number(search))
+      let v = String(Number(search));
       while (v.length < 4) {
-        v = `0${v}`
+        v = `0${v}`;
       }
-      v = `Bad Motorcycle #${v}`
+      v = `Bad Motorcycle #${v}`;
 
-      setSearch('')
-      setDisplayName(v)
+      setSearch('');
+      setDisplayName(v);
 
       setOldImageSrc(
         (getFileForPolicyId(BAD_MOTORCYCLE_POLICY_ID, 'assets') as PopulatedAsset[])?.find((item) => item.tokenName?.display === v)?.image.url || ''
-      )
+      );
 
       // @ts-ignore
-      setNewImageSrc(pngFiles[`${v}.png`])
+      setNewImageSrc(pngFiles[`${v}.png`]);
       // @ts-ignore
-      setGlbFileSrc(glbFiles[`${v}.glb`])
-    }, 0)
-  }
+      setGlbFileSrc(glbFiles[`${v}.glb`]);
+    }, 0);
+  };
 
   return (
     <div className='flex flex-col items-center'>
@@ -115,7 +115,7 @@ const Page = () => {
         </p>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

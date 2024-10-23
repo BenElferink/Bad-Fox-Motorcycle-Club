@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo } from 'react';
 
 export interface GlbViewerProps {
   src: string
@@ -6,12 +6,12 @@ export interface GlbViewerProps {
 }
 
 const GlbViewer = (props: GlbViewerProps) => {
-  const { src, freeze = false } = props
+  const { src, freeze = false } = props;
 
   useEffect(() => {
-    import('@google/model-viewer').catch(console.error)
+    import('@google/model-viewer').catch(console.error);
     // https://modelviewer.dev
-  }, [])
+  }, []);
 
   const attributes = useMemo(
     () =>
@@ -23,7 +23,7 @@ const GlbViewer = (props: GlbViewerProps) => {
             autoplay: true,
           },
     [freeze]
-  )
+  );
 
   return (
     // @ts-ignore
@@ -39,7 +39,7 @@ const GlbViewer = (props: GlbViewerProps) => {
       ar-modes='webxr scene-viewer quick-look'
       // @ts-ignore
     ></model-viewer>
-  )
-}
+  );
+};
 
-export default GlbViewer
+export default GlbViewer;

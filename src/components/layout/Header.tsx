@@ -1,9 +1,9 @@
-import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import MusicPlayer from '../MusicPlayer'
-import Navigation from '../Navigation'
-import SocialIcon from '../buttons/SocialIcon'
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import MusicPlayer from '../MusicPlayer';
+import Navigation from '../Navigation';
+import SocialIcon from '../buttons/SocialIcon';
 
 const Header = () => {
   return (
@@ -33,7 +33,7 @@ const Header = () => {
         <Navigation />
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

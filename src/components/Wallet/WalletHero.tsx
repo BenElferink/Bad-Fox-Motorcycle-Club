@@ -1,10 +1,10 @@
-import Image from 'next/image'
-import React, { useMemo } from 'react'
-import useWallet from '../../contexts/WalletContext'
+import Image from 'next/image';
+import React, { useMemo } from 'react';
+import useWallet from '../../contexts/WalletContext';
 
 const WalletHero = ({ title = 'My Wallet' }: { title?: string }) => {
-  const { populatedWallet, connectedName, availableWallets, disconnectWallet } = useWallet()
-  const walletAppInfo = useMemo(() => availableWallets.find((x) => x.id === connectedName), [connectedName, availableWallets])
+  const { populatedWallet, connectedName, availableWallets, disconnectWallet } = useWallet();
+  const walletAppInfo = useMemo(() => availableWallets.find((x) => x.id === connectedName), [connectedName, availableWallets]);
 
   return (
     <section className='w-full p-2 bg-gray-900 bg-opacity-50 text-center rounded-xl border border-gray-700'>
@@ -22,7 +22,7 @@ const WalletHero = ({ title = 'My Wallet' }: { title?: string }) => {
         Disconnect
       </button>
     </section>
-  )
-}
+  );
+};
 
-export default WalletHero
+export default WalletHero;

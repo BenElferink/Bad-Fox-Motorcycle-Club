@@ -1,8 +1,8 @@
-import badLabsApi from '../utils/badLabsApi'
-import type { BadLabsApiRankedToken } from '../utils/badLabsApi'
-import type { PolicyId, PopulatedAsset } from '../@types'
+import badLabsApi from '../utils/badLabsApi';
+import type { BadLabsApiRankedToken } from '../utils/badLabsApi';
+import type { PolicyId, PopulatedAsset } from '../@types';
 
-let cnftToolsAssets: Partial<Record<PolicyId, BadLabsApiRankedToken[]>> | null = null
+let cnftToolsAssets: Partial<Record<PolicyId, BadLabsApiRankedToken[]>> | null = null;
 
 const populateAsset: (options: {
   policyId: PolicyId
@@ -11,21 +11,21 @@ const populateAsset: (options: {
   populateMintTx?: boolean | undefined
   firebaseImageUrl?: string | undefined
 }) => Promise<PopulatedAsset> = async (options) => {
-  const { policyId, assetId, withRanks, populateMintTx, firebaseImageUrl } = options
-  console.log(`Populating asset with ID ${assetId}`)
+  const { policyId, assetId, withRanks, populateMintTx, firebaseImageUrl } = options;
+  console.log(`Populating asset with ID ${assetId}`);
 
   try {
-    const data = await badLabsApi.token.getData(assetId, { populateMintTx })
+    const data = await badLabsApi.token.getData(assetId, { populateMintTx });
 
     if (!cnftToolsAssets) {
-      cnftToolsAssets = {}
+      cnftToolsAssets = {};
     }
 
     if (!cnftToolsAssets[policyId]?.length) {
-      cnftToolsAssets[policyId] = (await badLabsApi.policy.getData(policyId, { withRanks, allTokens: true })).tokens
+      cnftToolsAssets[policyId] = (await badLabsApi.policy.getData(policyId, { withRanks, allTokens: true })).tokens;
     }
 
-    const rarityRank = cnftToolsAssets[policyId]?.find((item) => item.tokenId === assetId)?.rarityRank || 0
+    const rarityRank = cnftToolsAssets[policyId]?.find((item) => item.tokenId === assetId)?.rarityRank || 0;
 
     return {
       ...data,
@@ -35,12 +35,12 @@ const populateAsset: (options: {
         ipfs: data.image.ipfs,
         url: firebaseImageUrl || data.image.url || '',
       },
-    }
+    };
   } catch (error) {
-    console.error(`Error populating asset with ID ${assetId}`)
+    console.error(`Error populating asset with ID ${assetId}`);
 
-    return await populateAsset(options)
+    return await populateAsset(options);
   }
-}
+};
 
-export default populateAsset
+export default populateAsset;

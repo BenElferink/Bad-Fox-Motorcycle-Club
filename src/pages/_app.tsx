@@ -1,16 +1,16 @@
-import Head from 'next/head'
-import { AppProps } from 'next/app'
-import { Fragment } from 'react'
-import { Toaster } from 'react-hot-toast'
-import 'animate.css'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import '@/src/styles/swiper-overrides.css'
-import '@/src/styles/globals.css'
-import { WalletProvider } from '@/src/contexts/WalletContext'
-import { RenderProvider } from '@/src/contexts/RenderContext'
-import Header from '@/src/components/layout/Header'
+import Head from 'next/head';
+import { AppProps } from 'next/app';
+import { Fragment } from 'react';
+import { Toaster } from 'react-hot-toast';
+import 'animate.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import '@/src/styles/swiper-overrides.css';
+import '@/src/styles/globals.css';
+import { WalletProvider } from '@/src/contexts/WalletContext';
+import { RenderProvider } from '@/src/contexts/RenderContext';
+import Header from '@/src/components/layout/Header';
 // import SnowCanvas from '@/src/components/canvas/SnowCanvas'
 
 const App = ({ Component, pageProps }: AppProps) => {
@@ -47,7 +47,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         </WalletProvider>
       </main>
     </Fragment>
-  )
-}
+  );
+};
 
-export default App
+export default App;

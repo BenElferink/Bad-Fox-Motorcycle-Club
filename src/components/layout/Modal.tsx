@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 
 export interface ModalProps {
   open: boolean
@@ -12,20 +12,20 @@ export interface ModalProps {
 }
 
 const Modal = (props: ModalProps) => {
-  const { open, onClose, title, noModal, className = '', style = {}, children, scrollToTop } = props
+  const { open, onClose, title, noModal, className = '', style = {}, children, scrollToTop } = props;
 
   useEffect(() => {
     if (!!open && !!scrollToTop) {
-      window.scrollTo({ top: 0 })
-      document.body.style.overflow = 'hidden'
+      window.scrollTo({ top: 0 });
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = ''
+      document.body.style.overflow = '';
     }
 
     return () => {
-      document.body.style.overflow = ''
-    }
-  }, [open, scrollToTop])
+      document.body.style.overflow = '';
+    };
+  }, [open, scrollToTop]);
 
   return (
     <div
@@ -57,7 +57,7 @@ const Modal = (props: ModalProps) => {
         </section>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Modal
+export default Modal;

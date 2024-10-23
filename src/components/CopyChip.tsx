@@ -1,18 +1,18 @@
-import { ClipboardIcon } from '@heroicons/react/24/outline'
-import { Fragment, useState } from 'react'
+import { ClipboardIcon } from '@heroicons/react/24/outline';
+import { Fragment, useState } from 'react';
 
 function CopyChip({ prefix, value }: { prefix?: string; value: string }) {
-  const [isCopied, setIsCopied] = useState(false)
+  const [isCopied, setIsCopied] = useState(false);
 
   const clickCopy = () => {
     if (!isCopied) {
-      setIsCopied(true)
-      navigator.clipboard.writeText(value)
+      setIsCopied(true);
+      navigator.clipboard.writeText(value);
       setTimeout(() => {
-        setIsCopied(false)
-      }, 1000)
+        setIsCopied(false);
+      }, 1000);
     }
-  }
+  };
 
   return (
     <button
@@ -31,7 +31,7 @@ function CopyChip({ prefix, value }: { prefix?: string; value: string }) {
         )}
       </p>
     </button>
-  )
+  );
 }
 
-export default CopyChip
+export default CopyChip;

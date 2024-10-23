@@ -1,5 +1,5 @@
-import Link from 'next/link'
-import { useRouter } from 'next/router'
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export interface SingleLinkProps {
   label: string
@@ -10,10 +10,10 @@ export interface SingleLinkProps {
 }
 
 const SingleLink = (props: SingleLinkProps) => {
-  const { label, logoSrc, path, url, deprecated } = props
-  const router = useRouter()
-  const selected = router.asPath === path // || router.pathname === path
-  const isNothing = !url && !path
+  const { label, logoSrc, path, url, deprecated } = props;
+  const router = useRouter();
+  const selected = router.asPath === path; // || router.pathname === path
+  const isNothing = !url && !path;
 
   return (
     <Link
@@ -22,7 +22,7 @@ const SingleLink = (props: SingleLinkProps) => {
       target={!!url ? '_blank' : ''}
       rel={!!url ? 'noopener noreferrer' : ''}
       onClick={() => {
-        if (!isNothing) window.scroll({ top: 0, left: 0 })
+        if (!isNothing) window.scroll({ top: 0, left: 0 });
       }}
       className={
         (selected ? 'text-white' : 'xl:border-0') +
@@ -41,7 +41,7 @@ const SingleLink = (props: SingleLinkProps) => {
         {deprecated ? <span className='ml-1 text-xs text-start text-red-400'>(deprecated)</span> : null}
       </span>
     </Link>
-  )
-}
+  );
+};
 
-export default SingleLink
+export default SingleLink;

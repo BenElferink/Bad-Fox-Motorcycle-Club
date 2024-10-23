@@ -1,10 +1,10 @@
-import { Fragment } from 'react'
-import useWallet from '../contexts/WalletContext'
-import WalletConnect from '../components/Wallet/WalletConnect'
-import TradeDashboard from '../components/dashboards/TradeDashboard'
+import { Fragment } from 'react';
+import useWallet from '../contexts/WalletContext';
+import WalletConnect from '../components/Wallet/WalletConnect';
+import TradeDashboard from '../components/dashboards/TradeDashboard';
 
 const Page = () => {
-  const { connected } = useWallet()
+  const { connected } = useWallet();
 
   return (
     <div className='flex flex-col items-center'>
@@ -17,7 +17,7 @@ const Page = () => {
         <TradeDashboard />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

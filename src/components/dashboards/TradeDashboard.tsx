@@ -1,16 +1,16 @@
-import { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
-import { toast } from 'react-hot-toast'
-import axios from 'axios'
-import { Asset, keepRelevant, Transaction } from '@meshsdk/core'
-import useWallet from '../../contexts/WalletContext'
-import badLabsApi from '../../utils/badLabsApi'
-import { firestore } from '../../utils/firebase'
-import getFileForPolicyId from '../../functions/getFileForPolicyId'
-import populateAsset from '../../functions/populateAsset'
-import Loader from '../Loader'
-import WalletHero from '../Wallet/WalletHero'
-import type { PopulatedAsset, PopulatedWallet, Trade } from '../../@types'
-import type { BadLabsApiTransaction } from '../../utils/badLabsApi'
+import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
+import { toast } from 'react-hot-toast';
+import axios from 'axios';
+import { Asset, keepRelevant, Transaction } from '@meshsdk/core';
+import useWallet from '../../contexts/WalletContext';
+import badLabsApi from '../../utils/badLabsApi';
+import { firestore } from '../../utils/firebase';
+import getFileForPolicyId from '../../functions/getFileForPolicyId';
+import populateAsset from '../../functions/populateAsset';
+import Loader from '../Loader';
+import WalletHero from '../Wallet/WalletHero';
+import type { PopulatedAsset, PopulatedWallet, Trade } from '../../@types';
+import type { BadLabsApiTransaction } from '../../utils/badLabsApi';
 import {
   BAD_FOX_3D_POLICY_ID,
   BAD_FOX_POLICY_ID,
@@ -21,71 +21,71 @@ import {
   ONE_MILLION,
   TRADE_APP_WALLET,
   TREASURY_WALLET,
-} from '../../constants'
+} from '../../constants';
 
-const TRADE_OPEN = true
+const TRADE_OPEN = true;
 
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(() => resolve(true), ms))
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(() => resolve(true), ms));
 const txConfirmation = async (_txHash: string): Promise<BadLabsApiTransaction> => {
   try {
-    const data = await badLabsApi.transaction.getData(_txHash)
+    const data = await badLabsApi.transaction.getData(_txHash);
 
     if (data.block) {
-      return data
+      return data;
     } else {
-      await sleep(1000)
-      return await txConfirmation(_txHash)
+      await sleep(1000);
+      return await txConfirmation(_txHash);
     }
   } catch (error: any) {
-    const errMsg = error?.response?.data || error?.message || error?.toString() || 'UNKNOWN ERROR'
+    const errMsg = error?.response?.data || error?.message || error?.toString() || 'UNKNOWN ERROR';
 
     if (errMsg === `The requested component has not been found. ${_txHash}`) {
-      await sleep(1000)
-      return await txConfirmation(_txHash)
+      await sleep(1000);
+      return await txConfirmation(_txHash);
     } else {
-      throw new Error(errMsg)
+      throw new Error(errMsg);
     }
   }
-}
+};
 
 const TradeDashboard = () => {
-  const { connectedManually, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } = useWallet()
+  const { connectedManually, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } = useWallet();
 
-  const [bankWallet, setBankWallet] = useState<PopulatedWallet | null>(null)
-  const [amountToSend, setAmountToSend] = useState(0)
-  const [amountToGet, setAmountToGet] = useState(0)
-  const [amountOfTrades, setAmountOfTrades] = useState(0)
+  const [bankWallet, setBankWallet] = useState<PopulatedWallet | null>(null);
+  const [amountToSend, setAmountToSend] = useState(0);
+  const [amountToGet, setAmountToGet] = useState(0);
+  const [amountOfTrades, setAmountOfTrades] = useState(0);
 
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>(
     !TRADE_OPEN ? 'The portal is closed at the moment, please check in with our community for further announcements.' : ''
-  )
+  );
 
-  const bank3Ds = useMemo(() => bankWallet?.assets[BAD_FOX_3D_POLICY_ID] || [], [bankWallet?.assets])
+  const bank3Ds = useMemo(() => bankWallet?.assets[BAD_FOX_3D_POLICY_ID] || [], [bankWallet?.assets]);
   const self2Ds = useMemo(
     () => populatedWallet?.assets[BAD_FOX_POLICY_ID].concat(populatedWallet?.assets[BAD_MOTORCYCLE_POLICY_ID]) || [],
     [populatedWallet?.assets]
-  )
+  );
 
   useEffect(() => {
     const countTrades = async () => {
-      const collection = firestore.collection('trades')
-      const { docs } = await collection.where('withdrawTx', '!=', '').get()
+      const collection = firestore.collection('trades');
+      const { docs } = await collection.where('withdrawTx', '!=', '').get();
 
-      let count = 0
-      docs.forEach((d) => (count += (d.data() as Trade).depositAmount))
-      setAmountOfTrades(count)
-    }
+      let count = 0;
+      docs.forEach((d) => (count += (d.data() as Trade).depositAmount));
+      setAmountOfTrades(count);
+    };
 
-    countTrades()
+    countTrades();
 
     const getBank = async () => {
-      setLoading(true)
+      setLoading(true);
 
       try {
-        const data = await badLabsApi.wallet.getData(TRADE_APP_WALLET, { withTokens: true })
-        const badFox3dAssetsFile = getFileForPolicyId(BAD_FOX_3D_POLICY_ID, 'assets') as PopulatedAsset[]
-        const filterAssetsForPolicy = (pId: string) => data.tokens?.filter(({ tokenId }) => tokenId.indexOf(pId) == 0) || []
+        const data = await badLabsApi.wallet.getData(TRADE_APP_WALLET, { withTokens: true });
+        const badFox3dAssetsFile = getFileForPolicyId(BAD_FOX_3D_POLICY_ID, 'assets') as PopulatedAsset[];
+        const filterAssetsForPolicy = (pId: string) => data.tokens?.filter(({ tokenId }) => tokenId.indexOf(pId) == 0) || [];
 
         const payload = {
           stakeKey: data.stakeKey,
@@ -106,26 +106,26 @@ const TradeDashboard = () => {
                 )
               )) || [],
           },
-        }
+        };
 
-        setBankWallet(payload)
+        setBankWallet(payload);
       } catch (error: any) {
-        console.error(error)
-        toast.error(error.message)
+        console.error(error);
+        toast.error(error.message);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    getBank()
+    getBank();
 
-    const interval = setInterval(getBank, 1000 * 60)
-    return () => clearInterval(interval)
-  }, [])
+    const interval = setInterval(getBank, 1000 * 60);
+    return () => clearInterval(interval);
+  }, []);
 
   const buildTx = useCallback(async () => {
-    if (!wallet) return
-    setLoading(true)
+    if (!wallet) return;
+    setLoading(true);
 
     const payload: Trade = {
       timestamp: 0,
@@ -134,33 +134,33 @@ const TradeDashboard = () => {
       depositTx: '',
       withdrawAmount: amountToGet,
       withdrawTx: '',
-    }
+    };
 
-    const collection = firestore.collection('trades')
-    const { id: docId } = await collection.add(payload)
+    const collection = firestore.collection('trades');
+    const { id: docId } = await collection.add(payload);
 
-    const assetsToSend: Asset[] = []
-    const foxesToSend: Asset[] = []
-    const bikesToSend: Asset[] = []
-    const lovelaces = String(amountToSend * 1.5 * ONE_MILLION)
+    const assetsToSend: Asset[] = [];
+    const foxesToSend: Asset[] = [];
+    const bikesToSend: Asset[] = [];
+    const lovelaces = String(amountToSend * 1.5 * ONE_MILLION);
 
     for (let i = 0; i < amountToSend; i++) {
-      const t = self2Ds[i]
+      const t = self2Ds[i];
       const p = {
         unit: t.tokenId,
         quantity: '1',
-      }
+      };
 
       if (t.policyId === BAD_FOX_POLICY_ID) {
-        foxesToSend.push(p)
+        foxesToSend.push(p);
       } else if (t.policyId === BAD_MOTORCYCLE_POLICY_ID) {
-        bikesToSend.push(p)
+        bikesToSend.push(p);
       } else {
-        assetsToSend.push(p)
+        assetsToSend.push(p);
       }
     }
 
-    const concattedAssets = foxesToSend.concat(bikesToSend).concat(assetsToSend)
+    const concattedAssets = foxesToSend.concat(bikesToSend).concat(assetsToSend);
 
     try {
       const tx = new Transaction({ initiator: wallet })
@@ -179,52 +179,52 @@ const TradeDashboard = () => {
             await wallet.getUtxos()
           )
         )
-        .sendLovelace({ address: TRADE_APP_WALLET }, lovelaces)
+        .sendLovelace({ address: TRADE_APP_WALLET }, lovelaces);
 
-      if (foxesToSend.length) tx.sendAssets({ address: BAD_FOX_WALLET }, foxesToSend)
-      if (bikesToSend.length) tx.sendAssets({ address: BAD_MOTORCYCLE_WALLET }, bikesToSend)
-      if (assetsToSend.length) tx.sendAssets({ address: TREASURY_WALLET }, assetsToSend)
+      if (foxesToSend.length) tx.sendAssets({ address: BAD_FOX_WALLET }, foxesToSend);
+      if (bikesToSend.length) tx.sendAssets({ address: BAD_MOTORCYCLE_WALLET }, bikesToSend);
+      if (assetsToSend.length) tx.sendAssets({ address: TREASURY_WALLET }, assetsToSend);
 
-      toast.dismiss()
-      toast.loading('Building transaction')
-      const unsignedTx = await tx.build()
+      toast.dismiss();
+      toast.loading('Building transaction');
+      const unsignedTx = await tx.build();
 
-      toast.dismiss()
-      toast.loading('Awaiting signature')
-      const signedTx = await wallet?.signTx(unsignedTx)
+      toast.dismiss();
+      toast.loading('Awaiting signature');
+      const signedTx = await wallet?.signTx(unsignedTx);
 
-      toast.dismiss()
-      toast.loading('Submitting transaction')
-      const txHash = await wallet?.submitTx(signedTx as string)
+      toast.dismiss();
+      toast.loading('Submitting transaction');
+      const txHash = await wallet?.submitTx(signedTx as string);
 
-      payload['depositTx'] = txHash
-      await collection.doc(docId).update(payload)
+      payload['depositTx'] = txHash;
+      await collection.doc(docId).update(payload);
 
-      toast.dismiss()
-      toast.loading('Awaiting network confirmation')
+      toast.dismiss();
+      toast.loading('Awaiting network confirmation');
 
-      await txConfirmation(txHash as string)
-      removeAssetsFromWallet(concattedAssets.map((x) => x.unit))
-      setAmountOfTrades((p) => p + concattedAssets.length)
+      await txConfirmation(txHash as string);
+      removeAssetsFromWallet(concattedAssets.map((x) => x.unit));
+      setAmountOfTrades((p) => p + concattedAssets.length);
 
-      toast.dismiss()
-      toast.success('Transaction submitted,\nTrade-in complete!')
+      toast.dismiss();
+      toast.success('Transaction submitted,\nTrade-in complete!');
 
       try {
-        await axios.post('/api/trade', { docId })
+        await axios.post('/api/trade', { docId });
       } catch (error) {}
     } catch (error: any) {
-      console.error(error)
+      console.error(error);
 
-      toast.dismiss()
-      toast.error('Woopsies!')
+      toast.dismiss();
+      toast.error('Woopsies!');
 
-      setErrorMessage(error?.message || error?.toString())
+      setErrorMessage(error?.message || error?.toString());
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [wallet, populatedWallet?.stakeKey, self2Ds, amountToSend])
+  }, [wallet, populatedWallet?.stakeKey, self2Ds, amountToSend]);
 
   if (connectedManually) {
     return (
@@ -242,7 +242,7 @@ const TradeDashboard = () => {
           Disconnect Wallet
         </button>
       </div>
-    )
+    );
   }
 
   return (
@@ -273,24 +273,24 @@ const TradeDashboard = () => {
             value={amountToSend}
             // disabled={!bank3Ds.length || !self2Ds.length}
             onChange={(e) => {
-              const avl = bank3Ds.length
-              const l = self2Ds.length
-              const n = Number(e.target.value)
+              const avl = bank3Ds.length;
+              const l = self2Ds.length;
+              const n = Number(e.target.value);
 
               if (n > avl) {
-                toast.dismiss()
-                toast.error(`Cannot select ${n},\nThere are ${avl} available assets!`)
+                toast.dismiss();
+                toast.error(`Cannot select ${n},\nThere are ${avl} available assets!`);
               } else if (n > l) {
-                toast.dismiss()
-                toast.error(`Cannot select ${n},\nYou have ${l} assets!`)
+                toast.dismiss();
+                toast.error(`Cannot select ${n},\nYou have ${l} assets!`);
               } else {
-                setAmountToSend(n)
+                setAmountToSend(n);
                 if (n === 5) {
-                  setAmountToGet(n + 2)
+                  setAmountToGet(n + 2);
                 } else if (n >= 3) {
-                  setAmountToGet(n + 1)
+                  setAmountToGet(n + 1);
                 } else {
-                  setAmountToGet(n)
+                  setAmountToGet(n);
                 }
               }
             }}
@@ -348,7 +348,7 @@ const TradeDashboard = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TradeDashboard
+export default TradeDashboard;

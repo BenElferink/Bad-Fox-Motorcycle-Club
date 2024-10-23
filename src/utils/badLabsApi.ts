@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 
 type PolicyId = string
 type TokenId = string
@@ -119,30 +119,30 @@ export interface BadLabsApiTransaction {
 }
 
 class BadLabsApi {
-  baseUrl: string
+  baseUrl: string;
 
   constructor() {
-    this.baseUrl = 'https://labs.badfoxmc.com/api/cardano'
+    this.baseUrl = 'https://labs.badfoxmc.com/api/cardano';
   }
 
   private getQueryStringFromQueryOptions = (options: Record<string, any> = {}): string => {
     const query = Object.entries(options)
       .filter(([key, val]) => key && val)
       .map(([key, cal]) => `&${key.replace(/[A-Z]/g, (char) => `_${char.toLowerCase()}`)}=${cal}`)
-      .join('')
+      .join('');
 
-    return query ? `?${query.slice(1)}` : ''
-  }
+    return query ? `?${query.slice(1)}` : '';
+  };
 
   private handleError = async (error: any, reject: (reason: string) => void, retry: () => Promise<any>): Promise<any> => {
-    console.error(error)
+    console.error(error);
 
     if ([400, 404, 500, 504].includes(error?.response?.status)) {
-      return reject(error?.response?.data || error?.message || 'UNKNOWN ERROR')
+      return reject(error?.response?.data || error?.message || 'UNKNOWN ERROR');
     } else {
-      return await retry()
+      return await retry();
     }
-  }
+  };
 
   wallet = {
     getData: (
@@ -152,23 +152,23 @@ class BadLabsApi {
         withTokens?: boolean
       }
     ): Promise<BadLabsApiWallet> => {
-      const uri = `${this.baseUrl}/wallet/${walletId}` + this.getQueryStringFromQueryOptions(queryOptions)
+      const uri = `${this.baseUrl}/wallet/${walletId}` + this.getQueryStringFromQueryOptions(queryOptions);
 
       return new Promise(async (resolve, reject) => {
         try {
-          console.log('Fetching wallet:', walletId)
+          console.log('Fetching wallet:', walletId);
 
-          const { data } = await axios.get<BadLabsApiWallet>(uri)
+          const { data } = await axios.get<BadLabsApiWallet>(uri);
 
-          console.log('Fetched wallet:', data.stakeKey)
+          console.log('Fetched wallet:', data.stakeKey);
 
-          return resolve(data)
+          return resolve(data);
         } catch (error: any) {
-          return await this.handleError(error, reject, async () => await this.wallet.getData(walletId, queryOptions))
+          return await this.handleError(error, reject, async () => await this.wallet.getData(walletId, queryOptions));
         }
-      })
+      });
     },
-  }
+  };
 
   policy = {
     getData: (
@@ -179,60 +179,60 @@ class BadLabsApi {
         withRanks?: boolean
       }
     ): Promise<BadLabsApiPolicy> => {
-      const uri = `${this.baseUrl}/policy/${policyId}` + this.getQueryStringFromQueryOptions(queryOptions)
+      const uri = `${this.baseUrl}/policy/${policyId}` + this.getQueryStringFromQueryOptions(queryOptions);
 
       return new Promise(async (resolve, reject) => {
         try {
-          console.log('Fetching policy tokens:', policyId)
+          console.log('Fetching policy tokens:', policyId);
 
-          const { data } = await axios.get<BadLabsApiPolicy>(uri)
+          const { data } = await axios.get<BadLabsApiPolicy>(uri);
 
-          console.log('Fetched policy tokens:', data.tokens.length)
+          console.log('Fetched policy tokens:', data.tokens.length);
 
-          return resolve(data)
+          return resolve(data);
         } catch (error: any) {
-          return await this.handleError(error, reject, async () => await this.policy.getData(policyId, queryOptions))
+          return await this.handleError(error, reject, async () => await this.policy.getData(policyId, queryOptions));
         }
-      })
+      });
     },
 
     market: {
       getData: (policyId: string): Promise<BadLabsApiMarket> => {
-        const uri = `${this.baseUrl}/policy/${policyId}/market`
+        const uri = `${this.baseUrl}/policy/${policyId}/market`;
 
         return new Promise(async (resolve, reject) => {
           try {
-            console.log('Fetching policy market data:', policyId)
+            console.log('Fetching policy market data:', policyId);
 
-            const { data } = await axios.get<BadLabsApiMarket>(uri)
+            const { data } = await axios.get<BadLabsApiMarket>(uri);
 
-            console.log('Fetched policy market data:', data.items.length)
+            console.log('Fetched policy market data:', data.items.length);
 
-            return resolve(data)
+            return resolve(data);
           } catch (error: any) {
-            return await this.handleError(error, reject, async () => await this.policy.market.getData(policyId))
+            return await this.handleError(error, reject, async () => await this.policy.market.getData(policyId));
           }
-        })
+        });
       },
       getActivity: (policyId: string): Promise<BadLabsApiMarket> => {
-        const uri = `${this.baseUrl}/policy/${policyId}/market/activity`
+        const uri = `${this.baseUrl}/policy/${policyId}/market/activity`;
 
         return new Promise(async (resolve, reject) => {
           try {
-            console.log('Fetching policy market activity:', policyId)
+            console.log('Fetching policy market activity:', policyId);
 
-            const { data } = await axios.get<BadLabsApiMarket>(uri)
+            const { data } = await axios.get<BadLabsApiMarket>(uri);
 
-            console.log('Fetched policy market activity:', data.items.length)
+            console.log('Fetched policy market activity:', data.items.length);
 
-            return resolve(data)
+            return resolve(data);
           } catch (error: any) {
-            return await this.handleError(error, reject, async () => await this.policy.market.getActivity(policyId))
+            return await this.handleError(error, reject, async () => await this.policy.market.getActivity(policyId));
           }
-        })
+        });
       },
     },
-  }
+  };
 
   token = {
     getData: (
@@ -241,21 +241,21 @@ class BadLabsApi {
         populateMintTx?: boolean
       }
     ): Promise<BadLabsApiPopulatedToken> => {
-      const uri = `${this.baseUrl}/token/${tokenId}` + this.getQueryStringFromQueryOptions(queryOptions)
+      const uri = `${this.baseUrl}/token/${tokenId}` + this.getQueryStringFromQueryOptions(queryOptions);
 
       return new Promise(async (resolve, reject) => {
         try {
-          console.log('Fetching token:', tokenId)
+          console.log('Fetching token:', tokenId);
 
-          const { data } = await axios.get<BadLabsApiPopulatedToken>(uri)
+          const { data } = await axios.get<BadLabsApiPopulatedToken>(uri);
 
-          console.log('Fetched token:', data.fingerprint)
+          console.log('Fetched token:', data.fingerprint);
 
-          return resolve(data)
+          return resolve(data);
         } catch (error: any) {
-          return await this.handleError(error, reject, async () => await this.token.getData(tokenId))
+          return await this.handleError(error, reject, async () => await this.token.getData(tokenId));
         }
-      })
+      });
     },
     getOwners: (
       tokenId: string,
@@ -263,60 +263,60 @@ class BadLabsApi {
         page?: number
       }
     ): Promise<BadLabsApiTokenOwners> => {
-      const uri = `${this.baseUrl}/token/${tokenId}/owners` + this.getQueryStringFromQueryOptions(queryOptions)
+      const uri = `${this.baseUrl}/token/${tokenId}/owners` + this.getQueryStringFromQueryOptions(queryOptions);
 
       return new Promise(async (resolve, reject) => {
         try {
-          console.log('Fetching token owners:', tokenId)
+          console.log('Fetching token owners:', tokenId);
 
-          const { data } = await axios.get<BadLabsApiTokenOwners>(uri)
+          const { data } = await axios.get<BadLabsApiTokenOwners>(uri);
 
-          console.log('Fetched token owners:', data.owners.length)
+          console.log('Fetched token owners:', data.owners.length);
 
-          return resolve(data)
+          return resolve(data);
         } catch (error: any) {
-          return await this.handleError(error, reject, async () => await this.token.getOwners(tokenId, queryOptions))
+          return await this.handleError(error, reject, async () => await this.token.getOwners(tokenId, queryOptions));
         }
-      })
+      });
     },
 
     market: {
       getData: (tokenId: string): Promise<BadLabsApiMarket> => {
-        const uri = `${this.baseUrl}/token/${tokenId}/market`
+        const uri = `${this.baseUrl}/token/${tokenId}/market`;
 
         return new Promise(async (resolve, reject) => {
           try {
-            console.log('Fetching token market data:', tokenId)
+            console.log('Fetching token market data:', tokenId);
 
-            const { data } = await axios.get<BadLabsApiMarket>(uri)
+            const { data } = await axios.get<BadLabsApiMarket>(uri);
 
-            console.log('Fetched token market data:', data.items.length)
+            console.log('Fetched token market data:', data.items.length);
 
-            return resolve(data)
+            return resolve(data);
           } catch (error: any) {
-            return await this.handleError(error, reject, async () => await this.token.market.getData(tokenId))
+            return await this.handleError(error, reject, async () => await this.token.market.getData(tokenId));
           }
-        })
+        });
       },
       getActivity: (tokenId: string): Promise<BadLabsApiMarket> => {
-        const uri = `${this.baseUrl}/token/${tokenId}/market/activity`
+        const uri = `${this.baseUrl}/token/${tokenId}/market/activity`;
 
         return new Promise(async (resolve, reject) => {
           try {
-            console.log('Fetching token market activity:', tokenId)
+            console.log('Fetching token market activity:', tokenId);
 
-            const { data } = await axios.get<BadLabsApiMarket>(uri)
+            const { data } = await axios.get<BadLabsApiMarket>(uri);
 
-            console.log('Fetched token market activity:', data.items.length)
+            console.log('Fetched token market activity:', data.items.length);
 
-            return resolve(data)
+            return resolve(data);
           } catch (error: any) {
-            return await this.handleError(error, reject, async () => await this.token.market.getActivity(tokenId))
+            return await this.handleError(error, reject, async () => await this.token.market.getActivity(tokenId));
           }
-        })
+        });
       },
     },
-  }
+  };
 
   stakePool = {
     getData: (
@@ -325,23 +325,23 @@ class BadLabsApi {
         withDelegators?: boolean
       }
     ): Promise<BadLabsApiPool> => {
-      const uri = `${this.baseUrl}/pool/${poolId}` + this.getQueryStringFromQueryOptions(queryOptions)
+      const uri = `${this.baseUrl}/pool/${poolId}` + this.getQueryStringFromQueryOptions(queryOptions);
 
       return new Promise(async (resolve, reject) => {
         try {
-          console.log('Fetching stake pool:', poolId)
+          console.log('Fetching stake pool:', poolId);
 
-          const { data } = await axios.get<BadLabsApiPool>(uri)
+          const { data } = await axios.get<BadLabsApiPool>(uri);
 
-          console.log('Fetched stake pool:', data.ticker)
+          console.log('Fetched stake pool:', data.ticker);
 
-          return resolve(data)
+          return resolve(data);
         } catch (error: any) {
-          return await this.handleError(error, reject, async () => await this.stakePool.getData(poolId, queryOptions))
+          return await this.handleError(error, reject, async () => await this.stakePool.getData(poolId, queryOptions));
         }
-      })
+      });
     },
-  }
+  };
 
   transaction = {
     getData: (
@@ -350,25 +350,25 @@ class BadLabsApi {
         withUtxos?: boolean
       }
     ): Promise<BadLabsApiTransaction> => {
-      const uri = `${this.baseUrl}/transaction/${transactionId}` + this.getQueryStringFromQueryOptions(queryOptions)
+      const uri = `${this.baseUrl}/transaction/${transactionId}` + this.getQueryStringFromQueryOptions(queryOptions);
 
       return new Promise(async (resolve, reject) => {
         try {
-          console.log('Fetching transaction:', transactionId)
+          console.log('Fetching transaction:', transactionId);
 
-          const { data } = await axios.get<BadLabsApiTransaction>(uri)
+          const { data } = await axios.get<BadLabsApiTransaction>(uri);
 
-          console.log('Fetched transaction:', data.block)
+          console.log('Fetched transaction:', data.block);
 
-          return resolve(data)
+          return resolve(data);
         } catch (error: any) {
-          return await this.handleError(error, reject, async () => await this.transaction.getData(transactionId))
+          return await this.handleError(error, reject, async () => await this.transaction.getData(transactionId));
         }
-      })
+      });
     },
-  }
+  };
 }
 
-const badLabsApi = new BadLabsApi()
+const badLabsApi = new BadLabsApi();
 
-export default badLabsApi
+export default badLabsApi;
