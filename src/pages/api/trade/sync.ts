@@ -26,7 +26,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           .filter(({ timestamp }) => timestamp && now - timestamp > 3 * 60 * 1000)
 
         // for await (const { id } of needToWithdraw) {
-        const url = IS_DEV ? 'http://localhost:3000' : 'https://badfoxmc.com' + '/api/trade'
+        const url = (IS_DEV ? 'http://localhost:3000' : 'https://badfoxmc.com') + '/api/trade'
         const { id } = needToWithdraw[0] || {}
 
         if (!!id) {
