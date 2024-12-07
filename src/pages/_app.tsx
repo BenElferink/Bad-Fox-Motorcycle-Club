@@ -11,7 +11,7 @@ import '@/styles/globals.css'
 import { WalletProvider } from '@/contexts/WalletContext'
 import { RenderProvider } from '@/contexts/RenderContext'
 import Header from '@/components/layout/Header'
-// import SnowCanvas from '@/components/canvas/SnowCanvas'
+import SnowCanvas from '@/components/canvas/SnowCanvas'
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
@@ -37,7 +37,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       <Toaster />
       <Header />
       <main className='w-screen min-h-[91vh] bg-black bg-opacity-50'>
-        {/* <SnowCanvas /> */}
+        <SnowCanvas />
 
         <WalletProvider>
           <RenderProvider>
