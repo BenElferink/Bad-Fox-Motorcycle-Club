@@ -3,14 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://badfoxmc.com",
-  "author": "Ben Elferink <ben.elferink@icloud.com> (https://www.linkedin.com/in/ben-elferink-37ba251b9)",
+  "author": "Ben Elferink <ben.elferink@icloud.com> (https://github.com/BenElferink)",
   "repository": {
     "type": "git",
     "url": "https://github.com/BenElferink/badfoxmc-website.git"
   },
   "bugs": {
-    "url": "https://github.com/BenElferink/badfoxmc-website/issues",
-    "email": "ben.elferink@icloud.com"
+    "url": "https://github.com/BenElferink/badfoxmc-website/issues"
   },
   "scripts": {
     "dev": "next dev",
