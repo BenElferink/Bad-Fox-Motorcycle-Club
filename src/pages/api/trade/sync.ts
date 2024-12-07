@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
-import { firestore } from '@/src/utils/firebase'
-import type { Trade } from '@/src/@types'
-import { IS_DEV } from '@/src/constants'
+import { firestore } from '@/utils/firebase'
+import type { Trade } from '@/@types'
+import { IS_DEV } from '@/constants'
 
 export const config = {
   maxDuration: 300,

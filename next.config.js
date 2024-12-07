@@ -2,9 +2,24 @@
 
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   images: {
-    domains: ['firebasestorage.googleapis.com', 'images.cnft.tools', 'ipfs.jpgstoreapis.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ipfs.jpgstoreapis.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.cnft.tools',
+        pathname: '**',
+      },
+    ],
   },
   async rewrites() {
     return [

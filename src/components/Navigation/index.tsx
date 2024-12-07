@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Bars3Icon } from '@heroicons/react/24/solid';
 import MultipleLinks from './MultipleLinks';
 import SingleLink from './SingleLink';
-import collectionsData from '@/src/data/collections.json';
+import collectionsData from '@/data/collections.json';
 
 export const navCollections = collectionsData
   .map((x) => ({

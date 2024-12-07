@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { PauseIcon, PlayIcon } from '@heroicons/react/24/solid';
 import WaveSurfer from 'wavesurfer.js';
-import { useRender } from '@/src/contexts/RenderContext';
+import { useRender } from '@/contexts/RenderContext';
 
 const MusicPlayerWaves = (props: { src: string; w?: string; h?: string }) => {
   const { src, w = 'w-full', h = 'h-full' } = props;

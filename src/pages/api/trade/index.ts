@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Asset, BlockfrostProvider, keepRelevant, MeshWallet, Transaction } from '@meshsdk/core';
-import { firestore } from '@/src/utils/firebase';
-import badLabsApi from '@/src/utils/badLabsApi';
-import type { Trade } from '@/src/@types';
+import { firestore } from '@/utils/firebase';
+import badLabsApi from '@/utils/badLabsApi';
+import type { Trade } from '@/@types';
 import {
   BAD_FOX_POLICY_ID,
   BAD_MOTORCYCLE_POLICY_ID,
@@ -12,7 +12,7 @@ import {
   TRADE_APP_WALLET,
   BAD_FOX_WALLET,
   BAD_MOTORCYCLE_WALLET,
-} from '@/src/constants';
+} from '@/constants';
 
 export const config = {
   maxDuration: 300,

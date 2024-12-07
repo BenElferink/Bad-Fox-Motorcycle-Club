@@ -1,11 +1,11 @@
 import { ChangeEventHandler, FormEventHandler, useState } from 'react';
-import { PopulatedAsset } from '@/src/@types';
-import ImageLoader from '@/src/components/Loader/ImageLoader';
-import GlbViewer from '@/src/components/models/GlbViewer';
-import { BAD_MOTORCYCLE_POLICY_ID } from '@/src/constants';
-import pngFiles from '@/src/data/3D/bike-png.json';
-import glbFiles from '@/src/data/3D/bike-glb.json';
-import getFileForPolicyId from '@/src/functions/getFileForPolicyId';
+import { PopulatedAsset } from '@/@types';
+import ImageLoader from '@/components/Loader/ImageLoader';
+import GlbViewer from '@/components/models/GlbViewer';
+import { BAD_MOTORCYCLE_POLICY_ID } from '@/constants';
+import pngFiles from '@/data/3D/bike-png.json';
+import glbFiles from '@/data/3D/bike-glb.json';
+import getFileForPolicyId from '@/functions/getFileForPolicyId';
 
 const Page = () => {
   const [search, setSearch] = useState('');

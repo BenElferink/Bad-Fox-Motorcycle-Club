@@ -1,15 +1,15 @@
 {
-  "name": "bad-fox-motorcycle-club",
+  "name": "badfoxmc-website",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://badfoxmc.com",
   "author": "Ben Elferink <ben.elferink@icloud.com> (https://www.linkedin.com/in/ben-elferink-37ba251b9)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/BenElferink/bad-fox-motorcycle-club.git"
+    "url": "https://github.com/BenElferink/badfoxmc-website.git"
   },
   "bugs": {
-    "url": "https://github.com/BenElferink/bad-fox-motorcycle-club/issues",
+    "url": "https://github.com/BenElferink/badfoxmc-website/issues",
     "email": "ben.elferink@icloud.com"
   },
   "scripts": {
@@ -20,29 +20,29 @@
     "lint-fix": "next lint --fix"
   },
   "dependencies": {
-    "@google/model-viewer": "^3.5.0",
-    "@heroicons/react": "^2.1.5",
-    "@meshsdk/core": "^1.7.9",
-    "@meshsdk/react": "^1.7.9",
+    "@google/model-viewer": "^4.0.0",
+    "@heroicons/react": "^2.2.0",
+    "@meshsdk/core": "^1.7.31",
+    "@meshsdk/react": "^1.7.31",
     "animate.css": "^4.1.1",
-    "axios": "^1.7.7",
-    "firebase": "^11.0.1",
-    "next": "15.0.1",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "axios": "^1.7.9",
+    "firebase": "^11.0.2",
+    "next": "15.0.4",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "react-hot-toast": "^2.4.1",
-    "swiper": "^11.1.14",
-    "wavesurfer.js": "^7.8.7"
+    "swiper": "^11.1.15",
+    "wavesurfer.js": "^7.8.10"
   },
   "devDependencies": {
-    "@types/node": "^22.7.9",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
+    "@types/node": "^22.10.1",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.1",
     "autoprefixer": "^10.4.20",
-    "eslint": "^9.13.0",
-    "eslint-config-next": "^15.0.1",
-    "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.14",
-    "typescript": "^5.6.3"
+    "eslint": "^9.16.0",
+    "eslint-config-next": "^15.0.4",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.16",
+    "typescript": "^5.7.2"
   }
 }
